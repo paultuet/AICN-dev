@@ -1,0 +1,19 @@
+{
+  "name": "aicn-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/frontend",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "pnpm run --parallel dev",
+    "build": "pnpm run --parallel build",
+    "test": "pnpm run --parallel test",
+    "lint": "pnpm run --parallel lint",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0"
+  }
+}
