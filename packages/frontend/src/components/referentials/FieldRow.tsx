@@ -42,7 +42,7 @@ const FieldRow: React.FC<FieldRowProps> = ({
         <div className="flex items-center justify-center">
           {isSelected && (
             <IconButton
-              size="sm"
+              size="xs"
               variant="primary"
               round
               className="mr-2 bg-blue-500 hover:bg-red-500"
