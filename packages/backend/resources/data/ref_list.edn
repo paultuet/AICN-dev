@@ -1,0 +1,956 @@
+[{:fields
+  {:Base-2 ["rec0qVHWmqmE1ypm6"],
+   :ref_name "Code ICMS des équipements",
+   :Type "LoV"},
+  :createdTime "2025-04-08T10:28:41.000Z",
+  :id "rec3kWumrd0BSW92m"}
+ {:fields
+  {:Base-2
+   ["recDYNZOEUVuHwoEr"
+    "rec7W90mWRKdTG9Lb"
+    "recqw8qZfPeyCQzjb"
+    "recpevDTjfVaG5Wko"],
+   :ref_name "Table 23 Omniclass - Equipements",
+   :Type "LoV"},
+  :createdTime "2025-03-29T14:50:39.000Z",
+  :id "rec3n3RuyFLOgicIa"}
+ {:fields
+  {:Base-2 ["recFDUILXN1RmJDKV" "recBtEcYSEMlRcF1N"],
+   :Etat-visuel-des-équipements
+   ["recW1A0wNQX8DSi08"
+    "recVX9ux66GmnA3mv"
+    "rechq1xTV1hDBD44Y"
+    "recQWajnPui5Et9Xx"],
+   :ref_name "Etat visuel des équipements",
+   :Type "LoV"},
+  :createdTime "2025-03-29T14:33:10.000Z",
+  :id "rec6BlulA4wzPbh4w"}
+ {:fields
+  {:Base-2 ["recbVlYzyd7zHZ7SZ"],
+   :Base
+   ["rec8O9YtueR9aA60R"
+    "recGiDzzlo9vB3rte"
+    "recXbc2g6u02uqzXS"
+    "recVC3N97j34SabUn"
+    "rec6OXQjbBCZKYKIi"
+    "rec6nJJi7GkafCS3r"
+    "recNvrfE1KJYbRpOW"
+    "rectoeCj2jbWLv2LZ"
+    "reciEp3H1Vvi8r9dv"
+    "recjUzWRuXGdJXyNc"
+    "reczYYmef49PGt2QF"
+    "recfugAgCq77KFraT"
+    "recgmCzedRQysqmJX"
+    "recBDvnHeTbe4cgyr"
+    "recB5Tqw4ltSjnffW"
+    "recaPkOVN3fLqL3tg"
+    "recFz5JY4DQHYjxTI"
+    "rec1qIg3UeeG9uJ6s"
+    "rechKKYE9ebJSn4Ak"
+    "recoUlwZ4P6qwSmxG"
+    "reciV6E8WIy6UvYxw"
+    "rech5kszIgMmVGIDo"
+    "recaHO8ioU60cQFxu"
+    "reckXoqWzbva8AsM4"
+    "recFDUILXN1RmJDKV"
+    "recwmnuU7eR4XSMmK"
+    "recHiiigGbXnlzL7K"
+    "recDYNZOEUVuHwoEr"
+    "recIj84s6nUbefw6E"
+    "recWhCJHKPiflTfW3"
+    "recR5xhUsZFvuIYw7"
+    "recQvDAIcqX7mloHK"
+    "recsID4ePrVXUIEO7"
+    "recA7b3vsdvqDOv9o"
+    "recREZCkmHDygjFW5"
+    "recekdfhVM1QnaaxH"
+    "rec49tNIvzDCqCf7C"
+    "recbCPP3Lvg4qdd3U"
+    "recK1laR48cjeJYyf"
+    "recwc7y8HqQF7LhPW"
+    "recCD7TNRv0HP7oQA"],
+   :ref_name "Inventaire d'équipements",
+   :Type "RIO"},
+  :createdTime "2025-03-29T10:51:43.000Z",
+  :id "rec6UfjT6LZMWwKom"}
+ {:fields
+  {:Base-2 ["recWrUpdNgW0RAzIm"],
+   :Etat-visuel-des-équipements
+   ["rec7kTQqcAUiONxLh"
+    "recfWNWtJ51AnfS5i"
+    "recZA4rAaTY7Mqz5X"
+    "rec3a9GQhWkC2CEaT"],
+   :ref_name "Type de Zone/Regroupement d'espaces",
+   :Type "LoV"},
+  :createdTime "2025-04-06T09:21:21.000Z",
+  :id "rec7gscVoKLdHbzYM"}
+ {:fields
+  {:Base-2 ["recmBaNgCvoBfpttM"],
+   :ref_name "Classification SYPEMI des équipements",
+   :Type "LoV"},
+  :createdTime "2025-04-08T10:28:51.000Z",
+  :id "recDrn24A7MtkLGFf"}
+ {:fields
+  {:ref_name "Nomenclature des missions et responsabilités PM",
+   :Type "NMR"},
+  :createdTime "2025-03-29T10:51:43.000Z",
+  :id "recEzjPMMcQYu5uYv"}
+ {:fields
+  {:Etat-visuel-des-équipements
+   ["recYG1oNjssJXRV4P"
+    "receskuUPLz8FdYQQ"
+    "recn0sInuvFx7gs0A"
+    "recXAQA9Wrep5zxfc"
+    "recc8WUxBJzo5zldy"
+    "recHugDl7Rz0OPga9"
+    "recw4i1SyJwrV1g2E"
+    "reczef9xxgqBpMfVS"
+    "recMrYXRwk5hOIjDf"],
+   :ref_name "Objet de chantier/travaux",
+   :Type "LoV"},
+  :createdTime "2025-04-08T09:13:23.000Z",
+  :id "recJzTsdfcuq6Umbr"}
+ {:fields
+  {:Base-2
+   ["reclN8ZKGcy2gcFfm"
+    "rec1GBHcky01ofmVa"
+    "recEKRsH2BIoI6vcG"
+    "recyDnmd8Sm6GTv4P"],
+   :ref_name "Table 13 Omniclass - Espaces",
+   :Type "LoV"},
+  :createdTime "2025-04-06T09:39:10.000Z",
+  :id "recKX2qtJHABRzzbq"}
+ {:fields
+  {:Base-2 ["recjn3WeLS94TeWgG"],
+   :Etat-visuel-des-équipements
+   ["rec45wSHHtcadNalg"
+    "recUazYV3rLvnkzBJ"
+    "rec3qhh1Ghlgylgq1"
+    "recmNiGc2QveXlYbA"
+    "recekgTc7hOhX25la"
+    "recNS9SIAjpRMfKid"
+    "recaxq2mkQVnUNXFB"],
+   :ref_name "Catégorie d'usage décret tertiaire",
+   :Type "LoV"},
+  :createdTime "2025-03-30T06:37:00.000Z",
+  :id "recQA7Q7On2rSssH6"}
+ {:fields
+  {:Base
+   ["recL5B9IWV9g14URM"
+    "recAPqlLLoZYLUPYr"
+    "recQlLBniyH5LoFRJ"
+    "recYOSSi6VFKYOkyK"
+    "recnzx8jeos6e1L4l"
+    "recfW6BpBgHOgnKVD"
+    "recektrGeLGb3mFRE"
+    "recmflAwWZugGOMIn"
+    "rec3jDoLOYxIPQs3r"
+    "recGjnkO88uD1fkFo"
+    "recAAMMHG7Hx8dlex"
+    "recUIpGLQb8WAzf93"
+    "recKZvineIJpB8PdA"
+    "recIk9j1oko3pRQwU"
+    "recT8qwrCRzn8zkhy"
+    "recpRrvSsJGY7gT9F"
+    "rec9SxQ5yRAXkjyzU"
+    "recnpLvvpeVphsyuD"
+    "recXUCGs0ujnB9X8V"
+    "recTg8gQ7bXaGLxQP"
+    "recmGvWiMYF2mbsWN"
+    "recvnoRs9DKDgu2Ly"
+    "recua9kGoMABrZa2Y"
+    "recZS6E0m9f27oxRm"
+    "reckT3RVm4kgJAGGe"
+    "recsmKKocbFwMSg6P"
+    "recBtEcYSEMlRcF1N"
+    "recezWEJqcpDEoTkV"
+    "recmBaNgCvoBfpttM"
+    "rec0qVHWmqmE1ypm6"
+    "recMS9dpnbFoGGWec"
+    "recEofpQwwIdU8JiJ"
+    "recKj8qdVo5F3wEb9"
+    "rec1LMw6t966UXBjp"
+    "recxQpEfp6Nt3fYK7"
+    "recflVTuHFWJD1PyZ"
+    "recRJNU7YdNvuLFRd"
+    "recQl9LOKCRUlNOp6"
+    "recpevDTjfVaG5Wko"],
+   :ref_name "PPAT",
+   :Type "RIO"},
+  :createdTime "2025-04-08T08:11:52.000Z",
+  :id "recUkSc1Y1ELAJneL"}
+ {:fields
+  {:Base-2 ["recUIpGLQb8WAzf93"],
+   :Etat-visuel-des-équipements
+   ["recXLA4NrMG7Zw2bD" "recDGd2GeGCbQLHVk" "rec4Y7xmjuo3lHg5P"],
+   :ref_name "Validations de chantiers PPAT",
+   :Type "LoV"},
+  :createdTime "2025-04-08T08:35:29.000Z",
+  :id "recVz8B9wqZIqOnZB"}
+ {:fields
+  {:Base-2 ["recwmnuU7eR4XSMmK" "recezWEJqcpDEoTkV"],
+   :Etat-visuel-des-équipements
+   ["recj1GqVOPN10aLQN"
+    "recgfNlBYQUuk9pbg"
+    "recWEFDr0ZpXWq9pg"
+    "recs43sTgut3JzYYJ"],
+   :ref_name "Etat de fonction des équipements",
+   :Type "LoV"},
+  :createdTime "2025-03-29T10:53:36.000Z",
+  :id "recYY7dKJJoGMZq9L"}
+ {:fields
+  {:Etat-visuel-des-équipements
+   ["recO6JMvtybPgOumr"
+    "recZkwp56Qi9qg6rE"
+    "rech0spT1KgZ1k9nT"
+    "recOplflyJIpxrZu9"
+    "rec8njpKSBIW8uTpn"
+    "recNQUA7XqC6HaSwZ"
+    "recZXhnt1F5FRPaH5"
+    "reczYLtG8MnvsIBKo"
+    "rec7t7QMWaIK8w8y3"
+    "recTF9UEKuvPucWK7"
+    "reccteZZSw8GeHKZJ"
+    "recWomOfuPMjUCCZv"
+    "rec05IMQmTDgn3yVo"
+    "rectZab7nSvpDkDiR"
+    "recuT6pDd9k6HFk9N"
+    "recXoNCyHnQjbGfkA"
+    "recziwqKxoTmVRXdl"
+    "recHsxH41ByQjyzDU"
+    "recKvt5yYTYPCAoXT"],
+   :ref_name
+   "Domaine technique de la prise en charge d'une observation de bureau de Contrôle",
+   :Type "LoV"},
+  :createdTime "2025-04-07T18:12:52.000Z",
+  :id "recZlLBPcifII7nVM"}
+ {:fields
+  {:ref_name "Historiques de consommation électrique", :Type "RIO"},
+  :createdTime "2025-03-29T10:53:00.000Z",
+  :id "recbEftbWdcIbvcQ6"}
+ {:fields
+  {:Etat-visuel-des-équipements
+   ["rec0rMOyvyiR3jrG9"
+    "recxkaCItqsp0cjw0"
+    "recVM5UMP6YDsrrcs"
+    "rec6xV1S2e1gjOr4f"],
+   :ref_name "Catégorie d'espace",
+   :Type "LoV"},
+  :createdTime "2025-04-06T09:18:40.000Z",
+  :id "recdr6F6MwtUns4xg"}
+ {:fields
+  {:Base-2 ["recfbeq7UG0DXT5A0" "recVE9MzSLUpAt9aV"],
+   :Etat-visuel-des-équipements
+   ["recGjvM3q5X1wNgik" "recAs1FR8Mzbg3rNY" "recgIuaiNzlMscCsQ"],
+   :ref_name "Type de criticité d'observation rapport BdC",
+   :Type "LoV"},
+  :createdTime "2025-04-07T19:05:21.000Z",
+  :id "recfb5wiCa7pVeQP9"}
+ {:fields
+  {:Base-2 ["recCD7TNRv0HP7oQA"],
+   :Base
+   ["recx4EzfcrB7yKVe1"
+    "recHLjgSfPFBzpc57"
+    "recT57ynH1Rx5AqeH"
+    "recGFD9Kyf8eUOnE0"
+    "recYnFVORKgMEGNPR"
+    "rec29OUHsIurm8GUz"
+    "recZA84ulAmw7azBn"
+    "recrk38AS07h7v3SP"
+    "recw9LZ6PALPzGU57"
+    "recuyhNNv3Ox7kDzZ"
+    "recVoXBJwMkrcZf5m"
+    "recc8oxLOD84k4dnX"
+    "recrJ8N9dCpqDiD36"],
+   :ref_name "Inventaire de contrats",
+   :Type "RIO"},
+  :createdTime "2025-03-29T14:55:37.000Z",
+  :id "rechGf2dN6KDIGWvH"}
+ {:fields
+  {:Base-2 ["reckT3RVm4kgJAGGe"],
+   :Etat-visuel-des-équipements
+   ["recTHs42P1PSt2sW3"
+    "reciX1MbFVcluv01y"
+    "rec0XMQHikbCoAUR1"
+    "recI6pTcg4QfxIW9D"
+    "recg8ht65TimAeaQ6"
+    "rec4moe6AwXrsREQf"
+    "rec9FcGLhzn5kVNok"
+    "recseHrla3Gde0bLP"
+    "recskHnzGGAqi0EZ3"
+    "recCms6SXtuhFtyeV"
+    "recYhsakdc7JnXLfW"
+    "rec2QiNz4K2mbst5J"
+    "recG14FnOa4Sl7AZZ"
+    "recWlAJccdx9OIk5w"
+    "recbASiQFEIbOL566"
+    "recTrPwbz6kVVqny9"
+    "recL3uwA9qqMtaAuk"
+    "rec7UekPmTbmNdwJ3"
+    "recUbZhxCJ4nDXdVV"
+    "recaFzrym0L8r1zCF"
+    "rec5gg1qNHedwR7ud"
+    "recLcv5TSQc5ojcLy"
+    "rec7kYI5vB27zeUfR"
+    "recV3HQtKvNh0lZw3"
+    "recixNLAuOhB4Mnfc"
+    "recLM5usiKe7E2lL1"
+    "recfyZvMnIVfJKBbD"
+    "rechBTeSQAKfBP2ZW"
+    "recu4g46h5hW8UVCA"
+    "recbpL0tjG3n4rcff"
+    "rec7EJBcdZ1s8kgRF"
+    "recULoenDVMmtA7r5"
+    "recHuj3wLUtIOEokt"
+    "recRgspff0TIhNEtH"
+    "recQplmoGyY8nfbz3"
+    "recdZYB1vyQsh9CRl"
+    "recHZpHuX2gr128fv"
+    "recceklHovTcJ58H8"
+    "rec9NmujnUR0ArwEL"
+    "recVnIF0Z1YBUFr0s"
+    "recX7oRmY7PxOQ27e"
+    "recuT4vU12bzOtZcz"
+    "recYwmLOSbicrhaJ3"
+    "recPTgm3GNRO2CPCn"
+    "recxCMc7SZwoFR4O6"
+    "recODmOsO06lxrBQ6"
+    "rec2xprj3I86KMrrr"
+    "recNDcfdA9Cm6S2vO"
+    "receI75E8NtHmqk04"
+    "recZ4aGXWiT20l8Sv"
+    "recwEQReSJdaIEQ02"
+    "reccgkOMvO2asBO4n"
+    "recEWErWIsjlcXE20"
+    "rec1QKWFJOzIaotO7"
+    "recZmo6ikZDANUc61"
+    "recLVbw4ndnKTPm8a"
+    "recYkhJlWFjmD3WZw"
+    "recW2F4KuFW6jyXdP"
+    "recaUhpHXi1AMbwXN"
+    "reckhUETjJjR4xXiS"
+    "recudRmidYyNm5Lgm"
+    "recDWg4dgABMuHqxN"
+    "reciZnmOHKyH4MTTe"
+    "recUqz3KFaPzn0hgI"
+    "recSt6h3GurDKmAT6"
+    "recGM6cKdMCLKmwhO"
+    "recufKYPFGCwlp03P"
+    "recgJixN0Y1zjueFe"
+    "recvSr0nPWGzw0w9Y"
+    "recdfOQzX6SqjaVsD"
+    "reclCnowuW4uaALEq"
+    "rec6r2Ik321sQbfqX"
+    "rec5pPuN8j0lrgBDd"
+    "recJBP0RVYjuTW2wK"
+    "recQv7hKtVGPrXaBj"
+    "reckoA3aUlNCBrtDL"
+    "recJesGEdZiCbtiDf"
+    "recPPzlTWEzNOd3og"
+    "recoIjvsrRoIpVOUB"
+    "recQ3K7PWESsfbvA7"
+    "recv0SZMFPm44kCzc"
+    "recnuZNjD1ZOMHsM7"
+    "recOyrROB2QomwwL9"
+    "recP8CvTPlFzZ699u"
+    "recswLu0PbfTasnrM"
+    "rec6zbD627QnIemOy"
+    "recw5SbWbqcy11MkR"
+    "recfTiUSiOUuB4R3T"
+    "recgllIB6O9PYFB9n"
+    "recgL0IgsfrxmXi5M"
+    "recGJwgQyoWxtRZSf"
+    "recXIQrZWTPN7PHpb"
+    "recYY5P9AtgsziR3m"
+    "recmmIlSUSn78DICf"
+    "recgQjLV52wRUDKWj"
+    "recCVyCIsC1ILsMZU"
+    "rec6V2y2Uv4fAse3c"
+    "recTY0enVUoiDCK2W"
+    "recg6XMcrQps1evMi"
+    "recCCoA0HzHZiNVaS"
+    "reckeiPbkYJ5nVbOi"
+    "recSChpI4aYGsxHqV"
+    "recWh0cjajZQgII30"
+    "recLVpRvRSrXyKJo8"
+    "recHxUadt7jVw9w25"
+    "rec4uQu7m07QON3bA"
+    "recCZUNS7gUPf362O"
+    "recMSgXWBTr4d1Z2F"
+    "recPfmo7flaookuvT"
+    "recdHoePIljaxjsS3"
+    "recCytpnXBzORPTsN"
+    "rec6WVcShaXXqN1My"
+    "recuzTTCJg124eXAi"
+    "recr2TJWm9B4WgqSm"
+    "recOCjWobHE6hSCvz"
+    "recDlvtOPLEGlw4VZ"
+    "recTn0TPwaI2iwA2K"
+    "rec3Je6CJpTioF2cd"
+    "recBVar59htNwjz6B"
+    "recXLVqRGjAjSFvCJ"
+    "recSUz1um6waZsTik"
+    "recLFOq9kDqezvcH2"
+    "rec40SkXvkjnxubpB"
+    "recJBCaXiPJkTkrg6"
+    "recPhlDexvlmiirwk"
+    "recCqPeZzgnWAqBI0"
+    "recGx3GTamh4A0A9C"
+    "recNJdns6VD5rljBi"
+    "rectcaQq0wrZyz59m"
+    "recp9caJnH1HGU8rQ"
+    "reczwJuzUVvyg1C4t"
+    "recPMpjxry7hieXbW"
+    "recZENzWORb2jdDFa"
+    "reczjkB5EYvm2NDsM"
+    "recqUReGTkOR2yPhc"
+    "recvSHlxbUju2YnTL"
+    "recefkFo2LF45ZTJR"
+    "rechvL8Jrhk0Lukag"
+    "recweSJVAGOK1bOEa"
+    "recvCLbSitYjkyGDh"
+    "rechr7GugJS3oFHPP"
+    "rec7VNehWZz20J9az"
+    "rec37bpLll57C7XE3"
+    "recEUSEGGuYWtXsHc"
+    "recVHhCFueLvzxodh"
+    "recMazJdKwZjxumO8"
+    "rec1gaiR9qndS4QWF"
+    "recv0tRXsBrtNkty1"
+    "recvqcK1zuEnvHAPQ"
+    "recKSC86xRrcajzti"
+    "recTGFFYsxTSYATUW"
+    "recJ5FP4gKhVtan2d"
+    "recjVaVEpKguEiiPn"
+    "rec6a3Oe8KUU83ncT"
+    "recMs7jBA3knZf8uy"
+    "recM2gj8NhWe83aSI"
+    "recTxQZpafDbRx5Ow"
+    "recsjOVRJZylgQ3nv"
+    "rec068qfBtV688YnY"
+    "reccVov19886Fj3yW"
+    "recfyQ28PNazT1UtA"
+    "recfdDORzBQMO52sA"
+    "recrHFoMD6ZOMfiTM"
+    "recZawsP4oN2r6l3N"
+    "recQ68Iai2XrBXmmz"
+    "recAWcSyRuxIRgPLL"
+    "recWrEO02WBxJcwqu"
+    "recLr1OGuMUlhWAhM"
+    "recFAJj9tBIhFkHQi"
+    "rec4I8P8ORxBto5ib"
+    "receBjiLn29hiU3YM"
+    "recJICmBxZ5VswDVF"
+    "recRzZbbn3yVTRp2K"
+    "rec7myLv7P9Prm9i1"
+    "recMDrw8OZUqlhqf3"
+    "recbAbsKeQu1ibkfG"
+    "recShFBIP9daR1EN9"
+    "rec4S3RNKq8GU3OE2"
+    "recZuL1njQ2K7U1eP"],
+   :ref_name "FIDJI ACT",
+   :Type "LoV"},
+  :createdTime "2025-04-08T08:49:05.000Z",
+  :id "recjm9gFrU9JQllDi"}
+ {:fields
+  {:Base-2
+   ["recgmCzedRQysqmJX"
+    "recOi424urXE6QUAE"
+    "rec4vICca0GXjadln"
+    "rec4bKpYhobyVqfvF"
+    "recc8oxLOD84k4dnX"
+    "recoLpSr8bNF9wDnr"
+    "recKSDSmwliEME8hI"
+    "recmflAwWZugGOMIn"
+    "rec3jDoLOYxIPQs3r"],
+   :Base
+   ["recxJ3aRUI3lJd1b5"
+    "rectzuVA6OPiUJtVK"
+    "recpwtQUll6e87OD3"
+    "recuDvvXFyLtZASTn"
+    "reclN8ZKGcy2gcFfm"
+    "rec1GBHcky01ofmVa"
+    "recEKRsH2BIoI6vcG"
+    "recyDnmd8Sm6GTv4P"
+    "recicBP4nyhYtawoP"
+    "recN8dPrPnIKk3z1m"
+    "recWrUpdNgW0RAzIm"
+    "recdHhhyG8laf3UWi"
+    "recF3KR1TK71wwRqe"
+    "recYrY37IaL2LRa9v"
+    "rec8SUP4gBNVFzZ2y"],
+   :ref_name "Inventaire d'espaces",
+   :Type "RIO"},
+  :createdTime "2025-03-29T10:51:43.000Z",
+  :id "recjmX1dBcT00wa1d"}
+ {:fields {:ref_name "Inventaires de systèmes", :Type "RIO"},
+  :createdTime "2025-03-29T10:53:30.000Z",
+  :id "reckZeEE7tI5wROBS"}
+ {:fields
+  {:Base-2 ["recHLjgSfPFBzpc57"],
+   :Etat-visuel-des-équipements
+   ["recYkh6WBoy1lE4or" "recIK1o8faqsMrZTz" "recLouDryCviygbg5"],
+   :ref_name "Type de contrat",
+   :Type "LoV"},
+  :createdTime "2025-04-07T17:53:35.000Z",
+  :id "recmhZiZfQtRIrrLj"}
+ {:fields
+  {:Base-2 ["recnpLvvpeVphsyuD"],
+   :Etat-visuel-des-équipements
+   ["recaL2GI237nInCGw" "rec5xK6BWgjc2ZIH0" "recrqes0UWvTDkfrj"],
+   :ref_name "Statut du chantier PPAT",
+   :Type "LoV"},
+  :createdTime "2025-04-08T08:39:35.000Z",
+  :id "recoHy3w92s70hRo6"}
+ {:fields
+  {:Base
+   ["rec6kQjJKtGKLekz2"
+    "recRIkGT5AtaHBfQT"
+    "recCIKfGFIBiwshgL"
+    "rec7ZFWJeJGS3tI3G"
+    "recjAu9kYoxAnP52c"
+    "recmLUMxb4AlpFcF1"
+    "recOy9WSpfphYWYuX"
+    "recaMJIH61GuSHm1m"
+    "recOi424urXE6QUAE"
+    "receVNTkXmXR4T5Uf"
+    "recpnUJwIkNQAQcHg"
+    "recnmqaOgpLVg7mOR"
+    "rec7Nm6jqdC03kccu"
+    "rec6wQbZpJNKcGLx7"
+    "recyf2FCPLI0vM5oK"
+    "recBcmVNMbE1a67ck"
+    "recpDSCxhAWRDBB7g"
+    "recE4Juwb9fzWP0al"
+    "recRVoyMQM9RCHU1d"
+    "recLCKmTzyP8LP8Fq"
+    "rectyXJIA3ERklCOX"
+    "recvjYUFmCrI3TUGp"
+    "recsFHqio3Sh9Wd0S"
+    "recH58jB9h8RaOCGR"
+    "rec4vICca0GXjadln"
+    "reczaLzI1rT2HFKyF"
+    "recUOY4SabtFpSr12"
+    "recfASBq9nWQ5O6Ai"
+    "recjn3WeLS94TeWgG"
+    "recs74JBrsnIaN8Xq"
+    "recZaDYQLwPTIwZLd"
+    "recFDh7C7JXObkeP4"
+    "recQxGZMEhhUudyis"
+    "recbW7IVNUYsBlUOq"
+    "recelaPmGlqK1uJmi"
+    "recQiNFYdSHLornic"
+    "rec4bKpYhobyVqfvF"
+    "recHzEj1JR0sFYxoZ"],
+   :ref_name "Plans de comptage électriques",
+   :Type "RIO"},
+  :createdTime "2025-03-29T10:52:46.000Z",
+  :id "recoVgsqv8wIwjuKS"}
+ {:fields
+  {:Base-2 ["recsmKKocbFwMSg6P"],
+   :Etat-visuel-des-équipements
+   ["recO3pVRP2JUQs8yj"
+    "rec3J6kKrbIVNg22c"
+    "rec59KjFPhHixcbc8"
+    "recaZkUL7vYq0lCxb"],
+   :ref_name "Motif de l'intervention de maintenance",
+   :Type "LoV"},
+  :createdTime "2025-04-08T10:21:13.000Z",
+  :id "recpkUe5TY7DUzRNe"}
+ {:fields
+  {:Base-2
+   ["recs74JBrsnIaN8Xq"
+    "recZaDYQLwPTIwZLd"
+    "recFDh7C7JXObkeP4"
+    "recQxGZMEhhUudyis"],
+   :Etat-visuel-des-équipements
+   ["recYm6DHaNlphDqe1"
+    "recSCOs7Tv1kCDZeo"
+    "recTqqLRMY7VFOVal"
+    "recvZl6MFPbTR7GCx"
+    "recrR1ELy8Btls2GE"
+    "recDLoi9SeWcCD9H3"
+    "recjLLSmRGYnLTANi"
+    "rec3r66vIsGI6PWIT"
+    "rech2UpeQyHMKR1cJ"
+    "recF3TkE3IDXnYTpH"
+    "recIGyH9CG70JUQOT"
+    "rec3RhTqGm77IM1XJ"
+    "recQnjXcXaOKUMCX6"
+    "recT9dO1ntLTWcdGD"
+    "recK4d1ZadC1cymOh"
+    "recQl2vkqVay9yXjr"
+    "recX17ZnMymERLEnd"
+    "recKalrmw24xJrXzX"
+    "recKzXMbW1D5zOAuf"
+    "reclfl0Vg2poNexy0"
+    "recNBqVxlPpTHeqfI"
+    "recoWMdHjPy1Klk1R"
+    "rec6LYpO926qsPUgT"
+    "recs3LMWlPKFSL2bw"
+    "rect2cymI08dtVSi2"
+    "rectWwXGEABIccimZ"
+    "rec7oPbOsVVElo0Hn"
+    "reckFp3HnOYVRk141"
+    "recLRuOanJzAbv8CB"
+    "recjTy4nUtH2lC0GY"
+    "recobnsl7zfKL8oqf"
+    "recLaDf3ULO9omTIk"
+    "recXvl3Agao1PZI6t"
+    "recKYVkhkUW5c7x0C"
+    "recigc6eKfm5nS7UE"
+    "recWkSFhwK1ZtMwmK"
+    "rec6OvkGySojLW6LG"
+    "recPleTKhX9GhTUcb"
+    "recQZeOXTRacFCllD"
+    "recR1tXEZyrWMRz41"
+    "rec8FiNiE3Xj7MX9C"
+    "recOLEHGKWc2KyTvd"
+    "recU2cVNcmPd8qUG1"
+    "recRY5UFUPr5X1zGG"
+    "recfodrotN1xMkSac"
+    "recZvynwbo79Lx27E"
+    "reckzDZcZeyQMpM9L"
+    "recdIa4G2AWG44lDg"
+    "recJy7XjIpn90mBGY"
+    "recKToZPi0a9rQD6C"
+    "recW3QfhmfpxuAY1q"
+    "recUj1LINh3AE8WvU"
+    "recgJNnel5kLMamSQ"
+    "recOJHXR9eYBZITUL"
+    "recxSkkFVQD8ljdWi"
+    "recCuq6Qeb2bWahhU"
+    "rec1Y02tHvBz6OQL6"
+    "recnfl6isqEM87Fkt"
+    "recmA8O9w3T9z6fxh"],
+   :ref_name "Typologie d'usage RE2020",
+   :Type "LoV"},
+  :createdTime "2025-03-30T07:28:42.000Z",
+  :id "recqY5ku8APx2V3eX"}
+ {:fields
+  {:Base-2 ["reczaLzI1rT2HFKyF" "recUOY4SabtFpSr12"],
+   :Etat-visuel-des-équipements
+   ["rectTPSrNdNGZUtKn"
+    "rec7ra8YavMVpOUi6"
+    "rectg44ZXUoiFMz5J"
+    "recjwCZ0ib4KOm7Ij"
+    "recE6xJxVPsTQmfTP"
+    "recZIZHbkNLB83YYg"
+    "recnmuuAxOKO05YGq"
+    "recBk7OU02O1FkRp0"
+    "recm1NfprCBdjLqME"
+    "recsqSu2DeCfgobj8"
+    "recvrzFGdB0rHbAtq"
+    "recbu1NHzlYE8lnBL"
+    "recVfD4q3VPvGfYxF"
+    "recRJxkajuVKyb2CP"
+    "recMlkCmsi56asNql"
+    "recV5wchLF4zeYzMS"
+    "recXzy013scmMa4w0"
+    "recj22i2MVWWIE4K1"
+    "recEJG2RnLh3xchlC"
+    "recvAaemIQ8OR15rL"
+    "recUDWTUttnzl0nCP"
+    "recRlKJoR0W6AYXk9"
+    "rec1vNq7fQE5sgQWs"
+    "recIXGqvzWY4JAzZk"
+    "rec4CHAjM6zw66jph"
+    "reci2Dv4TvnkDR3oe"
+    "recXqxLcBNuU7D0FI"
+    "recgIlHVaHTVWLf5R"
+    "recJ68IOWUrd2Mr6k"
+    "rechn5PxOtg4VHyY5"
+    "recrq4kY5tIFvl41Z"
+    "receZj0W74twpc9uZ"
+    "recvtAF1CPKnpYSRC"
+    "rec2UYaZRI0SqQqzm"
+    "recCn15IWIAw2PoHP"
+    "recsID8WAyaPmtxij"
+    "recn5BwxEb8sWYYqG"
+    "rec9YDpDRyk2tsluh"
+    "recbynNBle8QAGhjp"
+    "recT2qiESMciaJSrB"
+    "recli7p6puewgHLbe"
+    "rec1SVa3YAsqdamIZ"
+    "recqaAqLNwnLifdrK"
+    "rec6WmkIRnrRkJyaQ"
+    "rec0A1nHhVC4XkkdB"
+    "recCRqPWjUHh8dyRk"
+    "recnVtUpmgwELfgFW"
+    "recKnZDcpYZE5rGse"
+    "rec9YpNS3Ees8WZXm"
+    "recru7Q7biMecPhL7"
+    "recG8Gd4W3cLdO0Vi"
+    "recQH8AiLuemL4uxj"
+    "recZqS3XlxQoUpkTj"
+    "rec5rf8x8JZkNz2Ua"
+    "recgLIUM7oPKL4L4i"
+    "rec5GqSYTqlWnNKZ0"
+    "rec6roRxSwXkjeIUn"
+    "recJ9L5MVYjEhnbZC"
+    "recWW8gZD6kFoO9Uo"
+    "rec8ctPJx42Vkpf3V"
+    "recOt5iANf0bYNAjO"
+    "recEG579h2XanBMCq"
+    "recm0eLvNcJbP3OAm"
+    "recAZdPcaZ2NDIxHH"
+    "recrXjJxlgfToYKCy"
+    "recG2RllDoXi8tc94"
+    "reczE11ev1eWmMRMi"
+    "recBt1P2mYepB1wIh"
+    "rec8gxELLW2Idphib"
+    "recaCRufHavt8nlmY"
+    "recVRzd01PbpOqClo"
+    "recCnt9m9TEKtcUHT"
+    "recRVLhKShZZai4FT"
+    "reckuE0g00gWVDY2C"
+    "recF7O2Zud9lYpEDP"
+    "recCpc5eYZX6XZTxj"
+    "recH4alX3MnEZsUOM"
+    "rec0gf3xNT3rrffvu"
+    "recPQCViDoyfMO38Y"
+    "recug1NC8n1byXENY"
+    "recv8M554p6QQQ1rk"
+    "recwHyZyz1MvP2VzB"
+    "recrEu7yhgxHdNqrq"
+    "recV1WewLDjCuJpeW"
+    "recOp7jENZxlcbXtn"
+    "recQZ5FseW8yR76Ou"
+    "reco71DHYbCo9NtgB"
+    "rec5P24OsJa5YtKbs"
+    "recPHdUILBOrIma5D"
+    "recOWUuQsSM048aUE"
+    "recmrxGtdOwKbERBC"
+    "recwqJfPfJuXA8jpV"
+    "recb68hyIrbhMyOva"
+    "recQZtDUkUrTNNc2O"
+    "recKGxn9swCYS1fDy"
+    "rec8yJv5QNT8z7Y87"
+    "recomuqz2WxI5Qj65"
+    "recMJ3n6AAxGN53QG"
+    "rec6828XUwMErtoLb"
+    "recAddCGxWH6imXFo"
+    "rect96fV4dfrFcJix"
+    "recuG4Sa4Uy7OIzhP"
+    "reck3mSF54gYq0aag"
+    "rec8Ou6MPtM3C7Nni"
+    "recNc6qbxwusbBKTM"
+    "recAJbORgLJolxhbC"
+    "recxAaIR9UfB1Nrj4"
+    "recRsQ3Xex3pZMZky"
+    "recDiwogEIBh02ZeV"
+    "rec5Do8mIFGcOGds7"
+    "rec8yyS89iwK5vKrc"
+    "reckzAxlecnaNOZzX"
+    "rec1GT898VPtWyLKa"
+    "recCbez1qaPmZRfnq"
+    "recJrf8wh7bPKYeJu"
+    "recyGgZAmz0Sfu9cf"
+    "recnYJ8JLrlsgFdED"
+    "reck1am7aCoiUXoW2"
+    "rece2PiEGbKH0KuXD"
+    "recKHjbz3YjRmNga8"
+    "recqg9LS75JKl1S22"
+    "recyxRZHPvajfNpGg"
+    "rec0UOISjPbvwUbWg"
+    "recynELFidfvcYfGO"
+    "reclLhvADwL9a3ofY"
+    "recTv2xarVTnzfNDX"
+    "recqlzxk0Bmz6HMYR"
+    "recDUQ8okjOvpFiL7"
+    "rec2EWrxt2JB3MkhL"
+    "reczJDF6L5pdoW98L"
+    "recbxOkoZ3zazsolZ"
+    "rec0jjHQJuBl0tcgj"
+    "recReiR0GaLxCBFj7"
+    "recbLCElTnLQT5IqG"
+    "recaOb0er3xDRIbbE"
+    "recsD148qIKq896k1"
+    "recIFJr7PyYaeITTc"
+    "recLzV2KQhI4Lgnn0"
+    "recQyOQQSY38sGgBf"
+    "recr0tluDMYl2Hbs0"
+    "recngIleqKgUzMMZ8"
+    "recE1ztXv3QKCkIxT"
+    "recAC40nLbPsFb2V8"
+    "recQ4jj095lL4o0Lh"
+    "rech9Qqb8vgL5vvbq"
+    "recmBaly4WUCue695"
+    "reckSO5GDv27lu2FC"
+    "recyRii9JpAtfbfPg"
+    "rec5ei0NvxyZm6UQf"
+    "recGuID7lOAAgNPmc"
+    "recFDiey2bNopaPjN"
+    "recplGvnYHhZc2X96"
+    "recj0KucE0SigrviY"
+    "rec1WfMlHrO2u29BB"
+    "recbGLfB1qDHBS4eW"
+    "recm9SZqM5vcFV1I1"
+    "receF6L0bs0Nbxqhz"
+    "recDmFD6ReMDzA9gs"
+    "reccS6PCFGB8YBIX7"
+    "recgY4PatFAM2VSMr"
+    "recq4DKFtgX3EbZtU"
+    "recU8KK30QHYCpc79"
+    "recb0fi8o3IxpqPcN"
+    "rec2WoSILuVB1RrRq"
+    "recQsUQNhyZuHrayD"
+    "recJoLgLP2wni3uJs"
+    "rec7um6aD5qbBdySQ"
+    "recNg9KHoEzuOD4aD"
+    "recuTdYtOmPSHUCaY"
+    "recmbTsTSRqxfFJLf"
+    "rec7XcklR6svNq0Zm"
+    "recmLexNDzTr5U4hB"
+    "recF3e97b5KxKKxis"
+    "recvJVPtQbzLbm11W"
+    "reclFmmHg7Qf1BXLb"
+    "recxP6XS9V1upiJDf"
+    "recSK98fETUe3iMGS"
+    "recJQuNMJu9jd72Kt"
+    "recJH3ScjBX03ioie"
+    "recwgiUa1Ll6LLE2o"
+    "recMCm8RcMYUYimXR"
+    "recLYUhjjIEjstYcF"
+    "recqSW3vtMz9B3mhq"
+    "reczkLbdWTU5qLI8U"
+    "recD3BUa7nY7aAnU8"
+    "recztjwFuiZBDHFXt"
+    "recHf8jf8m2SOZkw9"
+    "recDgbfIggONZQVZb"
+    "recWT6SBKfxWcDkub"
+    "recQwXW8NQ2592R2a"
+    "rec4MVR4cMmEI9nOI"
+    "recWvER6kxbNchfFL"
+    "recVY4If8wePkScB1"
+    "recYUhpeHyQmHjAXk"
+    "recmptntjOgFeqpZp"
+    "recwvMyNiZuBq31s7"
+    "recpm64f6hmVlXtdV"
+    "rec5SqqLZmn9PiOpZ"
+    "recrLYEoIfqvj38Hs"
+    "recXyY6t1u4Qi1ooN"
+    "rec5080MVx6KpTAhO"
+    "recjFuK9MkviSLhcE"
+    "rec7X95891VLZuWlO"
+    "recFSbdQ7oYfQgP5A"
+    "recWSQZRbzOp0zXYT"
+    "recCntXhuD1bpBg5c"
+    "recz1gXD0wtjEFxvC"
+    "recLKM8Ku0pA4zBEE"
+    "rec4lqmVpxu7SsGiC"
+    "recUs09iQZPPZ7D9R"
+    "recjq6xCxsVzn9k6w"
+    "recXgvnqiWBnL4eaK"
+    "recdNEfftJGoa9iOn"
+    "recRSTBs4DrlAK61W"
+    "rec5AY8dDQS1Ra4NP"
+    "recT1GYfUC09V5eFR"
+    "rec1R4GgzfZy8Gpxh"
+    "recOrkxuh7dmn78RF"
+    "receMM4xvrGhIPvk3"
+    "recUUwxSeG7VCJTb4"
+    "recx4pm7mz6dyqAHn"
+    "recOy9wsWOiNKJFO1"
+    "recswnmN0mRlhBtVW"
+    "recWscW8QjVxHoFXx"
+    "rec9B8wKT23awX4Mw"
+    "recuNuJqtAIgwlLmS"
+    "rec96C42x6MwsKbIA"
+    "recb2HBZUUOYvHHeI"
+    "recxvmnBDshXDf1I8"
+    "rec1qYA8zuorkTY9J"
+    "recxB4aK7LCela0yC"
+    "recPx759J0XNad6Us"
+    "recVOpPtKu369CpEE"
+    "recctbTds2SBdKmmM"
+    "recPLuDmvGaf2rKQI"
+    "recA2AiofJdhvmNMb"
+    "reczzcPPhAXPV5DRZ"
+    "rec5ycmHpCm528EUX"
+    "recmqtIy3hZf79uXW"
+    "recAMZ7wcKEF0KcCJ"
+    "reccZgsjG2H9XkmKK"
+    "recUKHtWxuH8hIF4h"
+    "recXbwzWBClkewrnq"
+    "recUrI84iPHUV58nA"
+    "recccN9P9Ip8EzNae"
+    "rec971N2XVvXc000R"
+    "recNkFQvxQ7aH4M4F"
+    "recg2TVJD0svzVtcH"
+    "recFh7mqCo2s7Igks"
+    "recjh9AsWEIgreYEg"
+    "reccSuOfcOf5GczFa"
+    "reckdQQYaNBrUPaZ6"
+    "rechN6w2DmKFHONDw"
+    "recOXXvOcBcu5B5sF"
+    "rec4G1OcxcGB8D5IR"
+    "recUPB2pL7CxLplR8"
+    "rec4uGe6TJzSMmdUn"
+    "recMqQDfB1S8JFH3E"
+    "recT8sahTJsIUd2J6"
+    "rec9xjFsCkXzFqPCA"
+    "rec8vn4G0tmd9qJU6"],
+   :ref_name "Activités décret tertiaire",
+   :Type "LoV"},
+  :createdTime "2025-03-30T06:33:45.000Z",
+  :id "recqZYDq0OjBDPax2"}
+ {:fields
+  {:Base
+   ["reczYbT8HCxBVLOft"
+    "recoLpSr8bNF9wDnr"
+    "recVY3Dd9plDjEnTL"
+    "recJ2KJ9LmkHdTwoA"
+    "recARNYWuLE0Gy6LY"
+    "recdQFQfAvt67GOga"
+    "recT0467lMkgXnCoM"
+    "recqLmZamWNP12hVG"
+    "reck59J9Ej4jj5Drt"
+    "recYN43y5FMsdeLqR"
+    "rec7W90mWRKdTG9Lb"
+    "recqw8qZfPeyCQzjb"
+    "recsq5RWcrLiaQnrx"
+    "recfbeq7UG0DXT5A0"
+    "recK3acFN5VUjrRLc"
+    "recKSDSmwliEME8hI"
+    "recbVlYzyd7zHZ7SZ"
+    "recgyyzz5feiuYoiB"
+    "recgvXFGXsOLppCO2"
+    "recwBo4GfiM2tuVEG"
+    "recVE9MzSLUpAt9aV"
+    "recr6dbmwiSu60zZ9"
+    "rec4ky3IDgIINUs4J"
+    "recBXw3eTtsL0Qqhs"
+    "recnooop5en4jD7Q3"
+    "rec49FHihWMsXk1vm"],
+   :ref_name "Rapports d'observations de bureaux de contrôle",
+   :Type "RIO"},
+  :createdTime "2025-03-29T10:53:10.000Z",
+  :id "recqeTXJkRBI2g1SO"}
+ {:fields
+  {:Base-2
+   ["recZA84ulAmw7azBn" "recw9LZ6PALPzGU57" "recJ2KJ9LmkHdTwoA"],
+   :Base
+   ["receaIeYPZnS7w9t4"
+    "recp4kxA1ta75tvvh"
+    "reckDsXBmV34hm1Sn"
+    "recGTbl1lxGBoEhdl"
+    "recXOnM6MkHEZ2apw"
+    "recJSipwVDc85ZSaM"
+    "rec8VHUEDb81mfOGI"
+    "recNCjTYUsbokQc5O"
+    "recBtBO8Noc9BH1Is"
+    "recbiU1OxSgzY0wJP"
+    "recU2GxwJXcXqEM38"],
+   :ref_name "Inventaire de Tiers",
+   :Type "RIO"},
+  :createdTime "2025-04-07T17:53:52.000Z",
+  :id "recxAoyP3MyMMRZib"}
+ {:fields
+  {:Base-2 ["recHzEj1JR0sFYxoZ" "recsFHqio3Sh9Wd0S"],
+   :Etat-visuel-des-équipements
+   ["recxEpgpVYPDaH53P" "recO8nhu44jows015" "recQtbKAyHMbZVQlm"],
+   :ref_name "Affectation du compteur (LoV Décret tertiaire)",
+   :Type "LoV"},
+  :createdTime "2025-03-30T06:09:02.000Z",
+  :id "recyWaJ8o4WT8sH08"}]

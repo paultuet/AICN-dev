@@ -1,0 +1,4423 @@
+[{:fields
+  {:ID 365,
+   :Ordre "13",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Chauffage"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "rec05IMQmTDgn3yVo"}
+ {:fields
+  {:ID 566,
+   :ID-Entrée "18_1",
+   :Ordre "159",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique - Réaliser une étude globale d'exposition aux risques climatiques, sans visite sur site"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec068qfBtV688YnY"}
+ {:fields
+  {:ID 56,
+   :Ordre "45",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Primeurs - Zone en température dirigée"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec0A1nHhVC4XkkdB"}
+ {:fields
+  {:ID 134,
+   :Ordre "123",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSB - Cours matériaux non couverte (extérieur - appoint éclairage)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec0UOISjPbvwUbWg"}
+ {:fields
+  {:ID 410,
+   :ID-Entrée "1_3_",
+   :Ordre "3",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "1- Enveloppe bâtiment - Installer une toiture végétalisée "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec0XMQHikbCoAUR1"}
+ {:fields
+  {:ID 89,
+   :Ordre "78",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché - Station service"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec0gf3xNT3rrffvu"}
+ {:fields
+  {:ID 143,
+   :Ordre "132",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSS - Zone de réserve Equipement de la personne et loisirs - Température ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec0jjHQJuBl0tcgj"}
+ {:fields
+  {:ID 341, :Ordre "1", :ref ["recdr6F6MwtUns4xg"], :lib_fr "Site"},
+  :createdTime "2025-04-06T09:19:47.000Z",
+  :id "rec0rMOyvyiR3jrG9"}
+ {:fields
+  {:ID 124,
+   :Ordre "113",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché - Aire de lavage"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec1GT898VPtWyLKa"}
+ {:fields
+  {:ID 461,
+   :ID-Entrée "5_12",
+   :Ordre "54",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Mettre en place le pilotage du CVC via une GTB "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec1QKWFJOzIaotO7"}
+ {:fields
+  {:ID 228,
+   :Ordre "217",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Culture et spectacles - Musée en bâtiment sans protection patrimoniale"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec1R4GgzfZy8Gpxh"}
+ {:fields
+  {:ID 53,
+   :Ordre "42",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerce de gros"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec1SVa3YAsqdamIZ"}
+ {:fields
+  {:ID 165,
+   :Ordre "154",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Equipement de la personne et Loisirs (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec1WfMlHrO2u29BB"}
+ {:fields
+  {:ID 338,
+   :Ordre "13",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "13. Equipements de production locale d’électricité,"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rec1Y02tHvBz6OQL6"}
+ {:fields
+  {:ID 554,
+   :ID-Entrée "16_5",
+   :Ordre "147",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "16- Mobilité - Installer / maintenir des IRVE (Installation Recharge Véhicules Electriques)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec1gaiR9qndS4QWF"}
+ {:fields
+  {:ID 241,
+   :Ordre "230",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Salle de spectacles vivants - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec1qYA8zuorkTY9J"}
+ {:fields
+  {:ID 34,
+   :Ordre "23",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Blanchisserie industrielle - Nettoyage à sec"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec1vNq7fQE5sgQWs"}
+ {:fields
+  {:ID 140,
+   :Ordre "129",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Zone de vente - Sports et  Outdoor "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec2EWrxt2JB3MkhL"}
+ {:fields
+  {:ID 419,
+   :ID-Entrée "1_12",
+   :Ordre "12",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "1- Enveloppe bâtiment - Autre action sur l’enveloppe"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec2QiNz4K2mbst5J"}
+ {:fields
+  {:ID 45,
+   :Ordre "34",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Bureaux - Grande salle de réunion - Auditorium - Amphithéâtre (à partir de 30 places)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec2UYaZRI0SqQqzm"}
+ {:fields
+  {:ID 175,
+   :Ordre "164",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Soins & Beauté (Parfumerie, cosmétique…) - Zone vente "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec2WoSILuVB1RrRq"}
+ {:fields
+  {:ID 454,
+   :ID-Entrée "5_5_",
+   :Ordre "47",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Installer modules d'équilibrage automatique du réseau"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec2xprj3I86KMrrr"}
+ {:fields
+  {:ID 550,
+   :ID-Entrée "16_1",
+   :Ordre "143",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "16- Mobilité - Elaborer un plan de mobilité douce du site pour réduire les émissions liées au trafic routier"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec37bpLll57C7XE3"}
+ {:fields
+  {:ID 597,
+   :Ordre "2",
+   :ref ["recpkUe5TY7DUzRNe"],
+   :lib_fr "Préventif / Cycle théorique constructeur"},
+  :createdTime "2025-04-08T10:21:45.000Z",
+  :id "rec3J6kKrbIVNg22c"}
+ {:fields
+  {:ID 525,
+   :ID-Entrée "13_5",
+   :Ordre "118",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "13- Eau - Réinjecter les eaux de pluie dans les usages le permettant"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec3Je6CJpTioF2cd"}
+ {:fields
+  {:ID 293,
+   :Ordre "8,13",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.1.3 Chauffe-eau. ballon ECS"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rec3RhTqGm77IM1XJ"}
+ {:fields
+  {:ID 348,
+   :Ordre "4",
+   :ref ["rec7gscVoKLdHbzYM"],
+   :lib_fr "Zone/regroupement maintenance "},
+  :createdTime "2025-04-06T09:34:19.000Z",
+  :id "rec3a9GQhWkC2CEaT"}
+ {:fields
+  {:ID 276,
+   :Ordre "3",
+   :ref ["recQA7Q7On2rSssH6"],
+   :lib_fr "chauffage et climatisation"},
+  :createdTime "2025-03-30T06:37:28.000Z",
+  :id "rec3qhh1Ghlgylgq1"}
+ {:fields
+  {:ID 289,
+   :Ordre "8",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8. CVC (chauffage ventilation refroidissement, ECS),"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rec3r66vIsGI6PWIT"}
+ {:fields
+  {:ID 530,
+   :ID-Entrée "14_3",
+   :Ordre "123",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "14- Numérique - Mettre en place une coupure centralisée des équipements bureautique"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec40SkXvkjnxubpB"}
+ {:fields
+  {:ID 274,
+   :Ordre "1",
+   :ref ["recQA7Q7On2rSssH6"],
+   :lib_fr "chauffage"},
+  :createdTime "2025-03-30T06:37:28.000Z",
+  :id "rec45wSHHtcadNalg"}
+ {:fields
+  {:ID 36,
+   :Ordre "25",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux – Services Publics - Banque"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec4CHAjM6zw66jph"}
+ {:fields
+  {:ID 266,
+   :Ordre "255",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Espèces vivantes - Parc zoologique (Enclos fermés et couverts d'hébergement des animaux)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec4G1OcxcGB8D5IR"}
+ {:fields
+  {:ID 577,
+   :ID-Entrée "19_2",
+   :Ordre "170",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Etablir un bilan carbone du site"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec4I8P8ORxBto5ib"}
+ {:fields
+  {:ID 202,
+   :Ordre "191",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Chocolatier, Confiseur - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec4MVR4cMmEI9nOI"}
+ {:fields
+  {:ID 585,
+   :ID-Entrée "19_1",
+   :Ordre "178",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Mettre en place un Contrat de Performance Energétique « Service » et / ou « travaux »"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec4S3RNKq8GU3OE2"}
+ {:fields
+  {:ID 404,
+   :Ordre "3",
+   :ref ["recVz8B9wqZIqOnZB"],
+   :lib_fr "Demande de modification"},
+  :createdTime "2025-04-08T08:35:10.000Z",
+  :id "rec4Y7xmjuo3lHg5P"}
+ {:fields
+  {:ID 220,
+   :Ordre "209",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Bibliothèque et médiathèque - Zone de conservation des archives avec traitement climatique"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec4lqmVpxu7SsGiC"}
+ {:fields
+  {:ID 413,
+   :ID-Entrée "1_6_",
+   :Ordre "6",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "1- Enveloppe bâtiment - Isoler par l'intérieur (ITI)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec4moe6AwXrsREQf"}
+ {:fields
+  {:ID 268,
+   :Ordre "257",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Espèces vivantes - Zone de soins vétérinaires"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec4uGe6TJzSMmdUn"}
+ {:fields
+  {:ID 513,
+   :ID-Entrée "11_1",
+   :Ordre "106",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Autre action organisation / communication"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec4uQu7m07QON3bA"}
+ {:fields
+  {:ID 212,
+   :Ordre "201",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Halles et marchés couverts (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec5080MVx6KpTAhO"}
+ {:fields
+  {:ID 598,
+   :Ordre "3",
+   :ref ["recpkUe5TY7DUzRNe"],
+   :lib_fr "Prédictique"},
+  :createdTime "2025-04-08T10:22:00.000Z",
+  :id "rec59KjFPhHixcbc8"}
+ {:fields
+  {:ID 226,
+   :Ordre "215",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Musée en bâtiment historique - Zone de conservation des collections avec traitement climatique"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec5AY8dDQS1Ra4NP"}
+ {:fields
+  {:ID 121,
+   :Ordre "110",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché -  Accueil et zone de caisses"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec5Do8mIFGcOGds7"}
+ {:fields
+  {:ID 67,
+   :Ordre "56",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Supérette (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec5GqSYTqlWnNKZ0"}
+ {:fields
+  {:ID 99,
+   :Ordre "88",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché - Zone de vente primeur"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec5P24OsJa5YtKbs"}
+ {:fields
+  {:ID 209,
+   :Ordre "198",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Alimentaire - Réserve froid positif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec5SqqLZmn9PiOpZ"}
+ {:fields
+  {:ID 160,
+   :Ordre "149",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "C Commercial et G Commerciale - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec5ei0NvxyZm6UQf"}
+ {:fields
+  {:ID 428,
+   :ID-Entrée "2_9_",
+   :Ordre "21",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "2- Eclairage - Autre action sur l’éclairage"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec5gg1qNHedwR7ud"}
+ {:fields
+  {:ID 480,
+   :ID-Entrée "8_3_",
+   :Ordre "73",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "8- Comptage & suivi énergie eau - Installer ou remplacer des sous-compteurs énergie"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec5pPuN8j0lrgBDd"}
+ {:fields
+  {:ID 65,
+   :Ordre "54",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Zone de présentation en température ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec5rf8x8JZkNz2Ua"}
+ {:fields
+  {:ID 406,
+   :Ordre "2",
+   :ref ["recoHy3w92s70hRo6"],
+   :lib_fr "Validé / En cours"},
+  :createdTime "2025-04-08T08:40:03.000Z",
+  :id "rec5xK6BWgjc2ZIH0"}
+ {:fields
+  {:ID 249,
+   :Ordre "238",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Salle de spectacles vivants - Ateliers Décors"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec5ycmHpCm528EUX"}
+ {:fields
+  {:ID 110,
+   :Ordre "99",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché  - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec6828XUwMErtoLb"}
+ {:fields
+  {:ID 304,
+   :Ordre "8,4",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.4 Traitement de l'air et éléments de désenfumage"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rec6LYpO926qsPUgT"}
+ {:fields
+  {:ID 318,
+   :Ordre "10,2",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "10.2 Dispositifs pour la sécurité"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rec6OvkGySojLW6LG"}
+ {:fields
+  {:ID 504,
+   :ID-Entrée "11_1",
+   :Ordre "97",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Veiller à la fermeture des portes / ouvrants des zones chauffées ou climatisées"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec6V2y2Uv4fAse3c"}
+ {:fields
+  {:ID 519,
+   :ID-Entrée "12_6",
+   :Ordre "112",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "12- Achats responsables - Mettre en place au sein de l’entreprise une charte d’achat responsable"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec6WVcShaXXqN1My"}
+ {:fields
+  {:ID 55,
+   :Ordre "44",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerce de gros - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec6WmkIRnrRkJyaQ"}
+ {:fields
+  {:ID 561,
+   :ID-Entrée "17_4",
+   :Ordre "154",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "17- Réduction & gestion des déchets - Sensibiliser les utilisateurs du site à la limitation de production de déchets et au recyclage"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec6a3Oe8KUU83ncT"}
+ {:fields
+  {:ID 479,
+   :ID-Entrée "8_2_",
+   :Ordre "72",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "8- Comptage & suivi énergie eau - Mettre en place télérelève / système de management de l'énergie"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec6r2Ik321sQbfqX"}
+ {:fields
+  {:ID 68,
+   :Ordre "57",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Supérette - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec6roRxSwXkjeIUn"}
+ {:fields
+  {:ID 344,
+   :Ordre "4",
+   :ref ["recdr6F6MwtUns4xg"],
+   :lib_fr "Etage / niveau"},
+  :createdTime "2025-04-06T09:20:37.000Z",
+  :id "rec6xV1S2e1gjOr4f"}
+ {:fields
+  {:ID 493,
+   :ID-Entrée "9_9_",
+   :Ordre "86",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "9- BACS / gtb - Connecter le BACS à la météo et l’activité prévisionnelle du site pour anticiper les besoins "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec6zbD627QnIemOy"}
+ {:fields
+  {:ID 438,
+   :ID-Entrée "3_10",
+   :Ordre "31",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Vérifier réglage HP BP flottante sur centrale eau glacée"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec7EJBcdZ1s8kgRF"}
+ {:fields
+  {:ID 425,
+   :ID-Entrée "2_6_",
+   :Ordre "18",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "2- Eclairage - Eteindre les écrans de publicité & les enseignes lumineuses la nuit le plus tôt possible"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec7UekPmTbmNdwJ3"}
+ {:fields
+  {:ID 549,
+   :ID-Entrée "15_1",
+   :Ordre "142",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "15- Biodiversité - Autre action sur la biodiversité"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec7VNehWZz20J9az"}
+ {:fields
+  {:ID 214,
+   :Ordre "203",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Halles et marchés couverts - Etale ou stand alimentaire"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec7X95891VLZuWlO"}
+ {:fields
+  {:ID 182,
+   :Ordre "171",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Equipement de la personne et Loisirs - Réserve d'approche"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec7XcklR6svNq0Zm"}
+ {:fields
+  {:ID 345,
+   :Ordre "1",
+   :ref ["rec7gscVoKLdHbzYM"],
+   :lib_fr "Lot Commercial"},
+  :createdTime "2025-04-06T09:21:40.000Z",
+  :id "rec7kTQqcAUiONxLh"}
+ {:fields
+  {:ID 430,
+   :ID-Entrée "3_2_",
+   :Ordre "23",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Baisser t° chauffage quand site inoccupé sur courte durée (par ex. 16°C nuit & WE)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec7kYI5vB27zeUfR"}
+ {:fields
+  {:ID 581,
+   :ID-Entrée "19_6",
+   :Ordre "174",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Mettre en place une base de connaissance des équipements du site"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec7myLv7P9Prm9i1"}
+ {:fields
+  {:ID 308,
+   :Ordre "8,5",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.5 Réseaux et conduits"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rec7oPbOsVVElo0Hn"}
+ {:fields
+  {:ID 13,
+   :Ordre "2",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Local vacant"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec7ra8YavMVpOUi6"}
+ {:fields
+  {:ID 361,
+   :Ordre "9",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Portes et portails automatiques"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "rec7t7QMWaIK8w8y3"}
+ {:fields
+  {:ID 178,
+   :Ordre "167",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Service Laverie automatique - Zone public"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec7um6aD5qbBdySQ"}
+ {:fields
+  {:ID 322,
+   :Ordre "10,6",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "10.6 Tableaux et appareillages"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rec8FiNiE3Xj7MX9C"}
+ {:fields
+  {:ID 115,
+   :Ordre "104",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché - Zone de préparation cuisson"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec8Ou6MPtM3C7Nni"}
+ {:fields
+  {:ID 71,
+   :Ordre "60",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Supérette - Réserve et Drive Froid négatif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec8ctPJx42Vkpf3V"}
+ {:fields
+  {:ID 80,
+   :Ordre "69",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Petit supermarché - Zone de préparation en température dirigée froid positif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec8gxELLW2Idphib"}
+ {:fields
+  {:ID 357,
+   :Ordre "5",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Elévateurs vertical / Plateforme handicapés"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "rec8njpKSBIW8uTpn"}
+ {:fields
+  {:ID 272,
+   :Ordre "261",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Enseignement Primaire - Salles d'enseignement Maternelle"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec8vn4G0tmd9qJU6"}
+ {:fields
+  {:ID 107,
+   :Ordre "96",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché - Aire de lavage"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec8yJv5QNT8z7Y87"}
+ {:fields
+  {:ID 122,
+   :Ordre "111",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché -  Zone et traitement des déchets"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec8yyS89iwK5vKrc"}
+ {:fields
+  {:ID 238,
+   :Ordre "227",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Salle d'exposition & Galerie d'art  - Salle d'animation audiovisuelle"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec96C42x6MwsKbIA"}
+ {:fields
+  {:ID 257,
+   :Ordre "246",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Cinéma - Local de projection "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec971N2XVvXc000R"}
+ {:fields
+  {:ID 236,
+   :Ordre "225",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Salle d'exposition & Galerie d'art  - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec9B8wKT23awX4Mw"}
+ {:fields
+  {:ID 414,
+   :ID-Entrée "1_7_",
+   :Ordre "7",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "1- Enveloppe bâtiment - Protéger du soleil la façade / les menuiseries (brise-soleil, store, films solaires, arbres,…)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec9FcGLhzn5kVNok"}
+ {:fields
+  {:ID 446,
+   :ID-Entrée "4_5_",
+   :Ordre "39",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "4- Maintenance CVC - Contrôler régulièrement l’eau des réseaux hydrauliques et traiter au besoin"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rec9NmujnUR0ArwEL"}
+ {:fields
+  {:ID 49,
+   :Ordre "38",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Banque -  Zone guichets accueil personnalisé"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec9YDpDRyk2tsluh"}
+ {:fields
+  {:ID 60,
+   :Ordre "49",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Crèmerie, Fromagerie - Zone en température dirigée"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec9YpNS3Ees8WZXm"}
+ {:fields
+  {:ID 271,
+   :Ordre "260",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Enseignement Primaire - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rec9xjFsCkXzFqPCA"}
+ {:fields
+  {:ID 247,
+   :Ordre "236",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Salle de spectacles vivants - Régie (éclairage scénique, salle et vidéo)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recA2AiofJdhvmNMb"}
+ {:fields
+  {:ID 154,
+   :Ordre "143",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recAC40nLbPsFb2V8"}
+ {:fields
+  {:ID 117,
+   :Ordre "106",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Hypermarché - Zone de vente Produits frais et surgelés - Froid positif et négatif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recAJbORgLJolxhbC"}
+ {:fields
+  {:ID 251,
+   :Ordre "240",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Salle de spectacles vivants - Zone de conservation des décors"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recAMZ7wcKEF0KcCJ"}
+ {:fields
+  {:ID 573,
+   :ID-Entrée "18_8",
+   :Ordre "166",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique - Effectuer diagnostic gestion de l’eau à la parcelle & intensité de déconnexion au réseau"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recAWcSyRuxIRgPLL"}
+ {:fields
+  {:ID 75,
+   :Ordre "64",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recAZdPcaZ2NDIxHH"}
+ {:fields
+  {:ID 111,
+   :Ordre "100",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché - Réserve et Drive température ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recAddCGxWH6imXFo"}
+ {:fields
+  {:ID 400,
+   :Ordre "2",
+   :ref ["recfb5wiCa7pVeQP9"],
+   :lib_fr "Sécurité des biens"},
+  :createdTime "2025-04-07T19:11:33.000Z",
+  :id "recAs1FR8Mzbg3rNY"}
+ {:fields
+  {:ID 526,
+   :ID-Entrée "13_6",
+   :Ordre "119",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "13- Eau - Mettre en place équipements hydro-économes"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recBVar59htNwjz6B"}
+ {:fields
+  {:ID 19,
+   :Ordre "8",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Audiovisuel - Radio"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recBk7OU02O1FkRp0"}
+ {:fields
+  {:ID 79,
+   :Ordre "68",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché - Réserve et Drive Froid négatif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recBt1P2mYepB1wIh"}
+ {:fields
+  {:ID 507,
+   :ID-Entrée "11_4",
+   :Ordre "100",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Mettre en sommeil tout ou partie du site en définissant des plages de fermeture"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recCCoA0HzHZiNVaS"}
+ {:fields
+  {:ID 57,
+   :Ordre "46",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Boucherie - Zone en température dirigée"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recCRqPWjUHh8dyRk"}
+ {:fields
+  {:ID 503,
+   :ID-Entrée "10_9",
+   :Ordre "96",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "10- Froid alimentaire - Autre action froid alimentaire"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recCVyCIsC1ILsMZU"}
+ {:fields
+  {:ID 514,
+   :ID-Entrée "12_1",
+   :Ordre "107",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "12- Achats responsables - Augmenter le % EnR garantie d’origine dans le contrat fourniture énergie"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recCZUNS7gUPf362O"}
+ {:fields
+  {:ID 125,
+   :Ordre "114",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerce - Grande Surface de Bricolage"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recCbez1qaPmZRfnq"}
+ {:fields
+  {:ID 417,
+   :ID-Entrée "1_10",
+   :Ordre "10",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "1- Enveloppe bâtiment - Isoler le plancher haut (combles ou terrasse)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recCms6SXtuhFtyeV"}
+ {:fields
+  {:ID 46,
+   :Ordre "35",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux - Zone archive sans contrainte hygrothermique"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recCn15IWIAw2PoHP"}
+ {:fields
+  {:ID 83,
+   :Ordre "72",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Petit supermarché - Zone de vente Produits frais et surgelés - Froid positif et négatif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recCnt9m9TEKtcUHT"}
+ {:fields
+  {:ID 217,
+   :Ordre "206",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bibliothèque et médiathèque (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recCntXhuD1bpBg5c"}
+ {:fields
+  {:ID 87,
+   :Ordre "76",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché -  Accueil et zone de caisses"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recCpc5eYZX6XZTxj"}
+ {:fields
+  {:ID 533,
+   :ID-Entrée "14_6",
+   :Ordre "126",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "14- Numérique - Prôner la sobriété numérique quant aux données stockées"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recCqPeZzgnWAqBI0"}
+ {:fields
+  {:ID 337,
+   :Ordre "12,3",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "12.3 Nacelles de nettoyage"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recCuq6Qeb2bWahhU"}
+ {:fields
+  {:ID 518,
+   :ID-Entrée "12_5",
+   :Ordre "111",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "12- Achats responsables - Inciter les achats à favoriser le réemploi, notamment sur les matériaux de 2nd œuvre "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recCytpnXBzORPTsN"}
+ {:fields
+  {:ID 196,
+   :Ordre "185",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Equipement de la maison - Réserve d'approche"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recD3BUa7nY7aAnU8"}
+ {:fields
+  {:ID 403, :Ordre "2", :ref ["recVz8B9wqZIqOnZB"], :lib_fr "Refusé"},
+  :createdTime "2025-04-08T08:35:02.000Z",
+  :id "recDGd2GeGCbQLHVk"}
+ {:fields
+  {:ID 287,
+   :Ordre "6",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "6. Façades et menuiseries extérieures,"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recDLoi9SeWcCD9H3"}
+ {:fields
+  {:ID 139,
+   :Ordre "128",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSS - Zone de vente - Equipement de la personne (Vêtements , Lingerie, Linge de maison, Chaussures, Maroquinerie et bagages)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recDUQ8okjOvpFiL7"}
+ {:fields
+  {:ID 469,
+   :ID-Entrée "6_7_",
+   :Ordre "62",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "6- EnR / Abandon énergies fossiles - Installer et maintenir une micro-installation de cogénération"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recDWg4dgABMuHqxN"}
+ {:fields
+  {:ID 199,
+   :Ordre "188",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Alimentaire - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recDgbfIggONZQVZb"}
+ {:fields
+  {:ID 120,
+   :Ordre "109",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché - Zone de vente - Electroménager et média"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recDiwogEIBh02ZeV"}
+ {:fields
+  {:ID 523,
+   :ID-Entrée "13_3",
+   :Ordre "116",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "13- Eau - Mettre en place une collecte des eaux grises pour les réutiliser"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recDlvtOPLEGlw4VZ"}
+ {:fields
+  {:ID 169,
+   :Ordre "158",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Culture, Média et Loisirs (Libraire, produits culturels, jeux et loisirs...) - Zone de vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recDmFD6ReMDzA9gs"}
+ {:fields
+  {:ID 153,
+   :Ordre "142",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Equipement automobile et moto (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recE1ztXv3QKCkIxT"}
+ {:fields
+  {:ID 16,
+   :Ordre "5",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Accueil petite enfance - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recE6xJxVPsTQmfTP"}
+ {:fields
+  {:ID 73,
+   :Ordre "62",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Supérette - Zone de vente hors froid"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recEG579h2XanBMCq"}
+ {:fields
+  {:ID 30,
+   :Ordre "19",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Blanchisserie industrielle (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recEJG2RnLh3xchlC"}
+ {:fields
+  {:ID 551,
+   :ID-Entrée "16_2",
+   :Ordre "144",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "16- Mobilité - Adapter le site aux utilisateurs de vélo (locaux & accès sécurisés, douches, réparation…)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recEUSEGGuYWtXsHc"}
+ {:fields
+  {:ID 460,
+   :ID-Entrée "5_11",
+   :Ordre "53",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Raccorder le bâtiment à un réseau urbain de chaleur ou de froid"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recEWErWIsjlcXE20"}
+ {:fields
+  {:ID 291,
+   :Ordre "8,11",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8,1,1 Chaudière"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recF3TkE3IDXnYTpH"}
+ {:fields
+  {:ID 184,
+   :Ordre "173",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Equipement de la maison (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recF3e97b5KxKKxis"}
+ {:fields
+  {:ID 86,
+   :Ordre "75",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Petit supermarché - Zone de vente - Electroménager et média"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recF7O2Zud9lYpEDP"}
+ {:fields
+  {:ID 576,
+   :ID-Entrée "19_1",
+   :Ordre "169",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Réaliser l’audit énergétique d’un site"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recFAJj9tBIhFkHQi"}
+ {:fields
+  {:ID 162,
+   :Ordre "151",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "C Commercial et G Commerciale - Zones techniques  Commerces"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recFDiey2bNopaPjN"}
+ {:fields
+  {:ID 215,
+   :Ordre "204",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Halles et marchés couverts - Etale ou stand non-alimentaire"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recFSbdQ7oYfQgP5A"}
+ {:fields
+  {:ID 260,
+   :Ordre "249",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Espèces vivantes (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recFh7mqCo2s7Igks"}
+ {:fields
+  {:ID 420,
+   :ID-Entrée "2_1_",
+   :Ordre "13",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "2- Eclairage - Éteindre éclairage dès que les espaces intérieurs sont inoccupés (détecteurs de présence)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recG14FnOa4Sl7AZZ"}
+ {:fields
+  {:ID 77,
+   :Ordre "66",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Petit supermarché - Réserve et Drive température ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recG2RllDoXi8tc94"}
+ {:fields
+  {:ID 62,
+   :Ordre "51",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Autres produits alimentaires - Zone en température dirigée"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recG8Gd4W3cLdO0Vi"}
+ {:fields
+  {:ID 498,
+   :ID-Entrée "10_4",
+   :Ordre "91",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "10- Froid alimentaire - Remplacer centrale froid alimentaire en fin de vie"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recGJwgQyoWxtRZSf"}
+ {:fields
+  {:ID 473,
+   :ID-Entrée "7_3_",
+   :Ordre "66",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "7- Eau chaude sanitaire - Isoler ballon ECS, réseau ECS et points singuliers (échangeurs, vannes 3 voies, …) "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recGM6cKdMCLKmwhO"}
+ {:fields
+  {:ID 399,
+   :Ordre "1",
+   :ref ["recfb5wiCa7pVeQP9"],
+   :lib_fr "Sécurité des personnes"},
+  :createdTime "2025-04-07T19:11:30.000Z",
+  :id "recGjvM3q5X1wNgik"}
+ {:fields
+  {:ID 161,
+   :Ordre "150",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "C Commercial et G Commerciale - Zones accessibles au public "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recGuID7lOAAgNPmc"}
+ {:fields
+  {:ID 534,
+   :ID-Entrée "14_7",
+   :Ordre "127",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "14- Numérique - Réduire temps d’utilisation & luminosité écrans dans espaces communs, yc ascenseur"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recGx3GTamh4A0A9C"}
+ {:fields
+  {:ID 88,
+   :Ordre "77",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché -  Zone et traitement des déchets"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recH4alX3MnEZsUOM"}
+ {:fields
+  {:ID 444,
+   :ID-Entrée "4_3_",
+   :Ordre "37",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "4- Maintenance CVC - Rétro-commissionner régulièrement les installations CVC"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recHZpHuX2gr128fv"}
+ {:fields
+  {:ID 198,
+   :Ordre "187",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Alimentaire (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recHf8jf8m2SOZkw9"}
+ {:fields
+  {:ID 370,
+   :Ordre "18",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr
+   "Installations gaz (hors chaudière et appareils de cuisson)"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recHsxH41ByQjyzDU"}
+ {:fields
+  {:ID 592,
+   :Ordre "6",
+   :ref ["recJzTsdfcuq6Umbr"],
+   :lib_fr "REE Rénovation Remplacement / Maintenance"},
+  :createdTime "2025-04-08T10:19:19.000Z",
+  :id "recHugDl7Rz0OPga9"}
+ {:fields
+  {:ID 440,
+   :ID-Entrée "3_12",
+   :Ordre "33",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "3- Réglage CVC - Vérifier réglage des lois d’eau"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recHuj3wLUtIOEokt"}
+ {:fields
+  {:ID 512,
+   :ID-Entrée "11_9",
+   :Ordre "105",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Sensibiliser aux écogestes, notamment pour réduire appels de P. en période tension réseau"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recHxUadt7jVw9w25"}
+ {:fields
+  {:ID 411,
+   :ID-Entrée "1_4_",
+   :Ordre "4",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "1- Enveloppe bâtiment - Végétaliser une façade"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recI6pTcg4QfxIW9D"}
+ {:fields
+  {:ID 148,
+   :Ordre "137",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Zone de vente - Electroménager"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recIFJr7PyYaeITTc"}
+ {:fields
+  {:ID 292,
+   :Ordre "8,12",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.1.2 Pompe à chaleur"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recIGyH9CG70JUQOT"}
+ {:fields
+  {:ID 350, :Ordre "2", :ref ["recmhZiZfQtRIrrLj"], :lib_fr "Contrat"},
+  :createdTime "2025-04-07T18:01:13.000Z",
+  :id "recIK1o8faqsMrZTz"}
+ {:fields
+  {:ID 35,
+   :Ordre "24",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Blanchisserie industrielle - Traitement linge résidents ou particuliers"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recIXGqvzWY4JAzZk"}
+ {:fields
+  {:ID 559,
+   :ID-Entrée "17_2",
+   :Ordre "152",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "17- Réduction & gestion des déchets - Suivre ratio d’intensité déchets du site - par ex. kg/occupant ou kg/m2 - et communiquer"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recJ5FP4gKhVtan2d"}
+ {:fields
+  {:ID 40,
+   :Ordre "29",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux -  Flex Office"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recJ68IOWUrd2Mr6k"}
+ {:fields
+  {:ID 69,
+   :Ordre "58",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Supérette - Réserve et Drive température ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recJ9L5MVYjEhnbZC"}
+ {:fields
+  {:ID 531,
+   :ID-Entrée "14_4",
+   :Ordre "124",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "14- Numérique - Se concerter avec l'IT pour ajuster t° consigne clim. salle serveur au max. acceptable"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recJBCaXiPJkTkrg6"}
+ {:fields
+  {:ID 481,
+   :ID-Entrée "8_4_",
+   :Ordre "74",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "8- Comptage & suivi énergie eau - Cartographier les compteurs / sous-compteurs eau"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recJBP0RVYjuTW2wK"}
+ {:fields
+  {:ID 190,
+   :Ordre "179",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Cuisine, Salles de bains - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recJH3ScjBX03ioie"}
+ {:fields
+  {:ID 579,
+   :ID-Entrée "19_4",
+   :Ordre "172",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Modéliser la trajectoire carbone 2050 du site, à l’aide d’un outil connecté au plan d’actions"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recJICmBxZ5VswDVF"}
+ {:fields
+  {:ID 189,
+   :Ordre "178",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Bricolage, Décoration - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recJQuNMJu9jd72Kt"}
+ {:fields
+  {:ID 484,
+   :ID-Entrée "8_7_",
+   :Ordre "77",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "8- Comptage & suivi énergie eau - Autre action comptage suivi"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recJesGEdZiCbtiDf"}
+ {:fields
+  {:ID 177,
+   :Ordre "166",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Service Conseil (Agences de voyages…) - Zone vente "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recJoLgLP2wni3uJs"}
+ {:fields
+  {:ID 126,
+   :Ordre "115",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSB (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recJrf8wh7bPKYeJu"}
+ {:fields
+  {:ID 330,
+   :Ordre "11,23",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "11.2.3 Système de vidéosurveillance"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recJy7XjIpn90mBGY"}
+ {:fields
+  {:ID 296,
+   :Ordre "8,16",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.1.6 Tour de refroidissement. aéroréfrigérant"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recK4d1ZadC1cymOh"}
+ {:fields
+  {:ID 106,
+   :Ordre "95",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché - Station service"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recKGxn9swCYS1fDy"}
+ {:fields
+  {:ID 131,
+   :Ordre "120",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSB - Zone découpe matériau"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recKHjbz3YjRmNga8"}
+ {:fields
+  {:ID 557,
+   :ID-Entrée "16_8",
+   :Ordre "150",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "16- Mobilité - Autre action sur la mobilité"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recKSC86xRrcajzti"}
+ {:fields
+  {:ID 331,
+   :Ordre "11,24",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "11.2.4 Système d’éclairage de sécurité"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recKToZPi0a9rQD6C"}
+ {:fields
+  {:ID 315,
+   :Ordre "9,22",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "9.2.2 Traitement thermique ou chimique"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recKYVkhkUW5c7x0C"}
+ {:fields
+  {:ID 299,
+   :Ordre "8,2",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.2 Systèmes de cogénération"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recKalrmw24xJrXzX"}
+ {:fields
+  {:ID 59,
+   :Ordre "48",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Volailler et gibiers - Zone en température dirigée"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recKnZDcpYZE5rGse"}
+ {:fields
+  {:ID 371, :Ordre "19", :ref ["recZlLBPcifII7nVM"], :lib_fr "Autres"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recKvt5yYTYPCAoXT"}
+ {:fields
+  {:ID 300,
+   :Ordre "8,3",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.3 Systèmes d'émission"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recKzXMbW1D5zOAuf"}
+ {:fields
+  {:ID 424,
+   :ID-Entrée "2_5_",
+   :Ordre "17",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "2- Eclairage - Moderniser l’éclairage avec des sources lumineuses économes en énergie"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recL3uwA9qqMtaAuk"}
+ {:fields
+  {:ID 529,
+   :ID-Entrée "14_2",
+   :Ordre "122",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "14- Numérique - Paramétrer mise en veille / extinction automatique  des systèmes"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recLFOq9kDqezvcH2"}
+ {:fields
+  {:ID 219,
+   :Ordre "208",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bibliothèque et médiathèque - Salle de lecture"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recLKM8Ku0pA4zBEE"}
+ {:fields
+  {:ID 433,
+   :ID-Entrée "3_5_",
+   :Ordre "26",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Adapter t° aux besoins, par ex. à l’aide de thermostats / détection / zonage"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recLM5usiKe7E2lL1"}
+ {:fields
+  {:ID 310,
+   :Ordre "8,7",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.7 Fluides frigorigènes"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recLRuOanJzAbv8CB"}
+ {:fields
+  {:ID 463,
+   :ID-Entrée "6_1_",
+   :Ordre "56",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "6- EnR / Abandon énergies fossiles - Remplacer chauffage gaz / fioul par pompe(s) à chaleur"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recLVbw4ndnKTPm8a"}
+ {:fields
+  {:ID 511,
+   :ID-Entrée "11_8",
+   :Ordre "104",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Rendre ludique l’effort commun, par exemple sous forme de jeu participatif"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recLVpRvRSrXyKJo8"}
+ {:fields
+  {:ID 193,
+   :Ordre "182",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerces et service de détail - Jardinerie - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recLYUhjjIEjstYcF"}
+ {:fields
+  {:ID 313,
+   :Ordre "9,2",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "9.2 Canalisations, réseaux et systèmes de traitement"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recLaDf3ULO9omTIk"}
+ {:fields
+  {:ID 429,
+   :ID-Entrée "3_1_",
+   :Ordre "22",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Réduire la saison de chauffe (retarder le début et avancer la fin)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recLcv5TSQc5ojcLy"}
+ {:fields
+  {:ID 351,
+   :Ordre "3",
+   :ref ["recmhZiZfQtRIrrLj"],
+   :lib_fr "Avenant à un contrat"},
+  :createdTime "2025-04-07T18:01:27.000Z",
+  :id "recLouDryCviygbg5"}
+ {:fields
+  {:ID 575,
+   :ID-Entrée "18_1",
+   :Ordre "168",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique - Autre action adaptation risque climatique"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recLr1OGuMUlhWAhM"}
+ {:fields
+  {:ID 149,
+   :Ordre "138",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Zone de vente - Jardinerie"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recLzV2KQhI4Lgnn0"}
+ {:fields
+  {:ID 563,
+   :ID-Entrée "17_6",
+   :Ordre "156",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "17- Réduction & gestion des déchets - Favoriser le réemploi, par exemple réemploi de mobilier lors d’un réaménagement de bureaux"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recM2gj8NhWe83aSI"}
+ {:fields
+  {:ID 192,
+   :Ordre "181",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerces et service de détail - Fleuriste - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recMCm8RcMYUYimXR"}
+ {:fields
+  {:ID 582,
+   :ID-Entrée "19_7",
+   :Ordre "175",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Obtenir niveau élevé certification environnementale pour le bâtiment"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recMDrw8OZUqlhqf3"}
+ {:fields
+  {:ID 109,
+   :Ordre "98",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recMJ3n6AAxGN53QG"}
+ {:fields
+  {:ID 515,
+   :ID-Entrée "12_2",
+   :Ordre "108",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "12- Achats responsables - Recourir aux PPA dans la stratégie d'achat pour inciter aux développements des EnR"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recMSgXWBTr4d1Z2F"}
+ {:fields
+  {:ID 553,
+   :ID-Entrée "16_4",
+   :Ordre "146",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "16- Mobilité - Inciter financièrement les collaborateurs du site à limiter leurs déplacements en voiture"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recMazJdKwZjxumO8"}
+ {:fields
+  {:ID 26,
+   :Ordre "15",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Télévision - Administration et rédaction "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recMlkCmsi56asNql"}
+ {:fields
+  {:ID 269,
+   :Ordre "258",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Enseignement Primaire"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recMqQDfB1S8JFH3E"}
+ {:fields
+  {:ID 595,
+   :Ordre "9",
+   :ref ["recJzTsdfcuq6Umbr"],
+   :lib_fr "Amélioration & Valorisation/ Création de valeur"},
+  :createdTime "2025-04-08T10:19:53.000Z",
+  :id "recMrYXRwk5hOIjDf"}
+ {:fields
+  {:ID 562,
+   :ID-Entrée "17_5",
+   :Ordre "155",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "17- Réduction & gestion des déchets - Inciter financièrement les utilisateurs du site à réduire leurs déchets / à augmenter le tri"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recMs7jBA3knZf8uy"}
+ {:fields
+  {:ID 302,
+   :Ordre "8,32",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr
+   "8.3.2 Emetteurs électriques : convecteur. ventilo-convecteur. rayonnant"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recNBqVxlPpTHeqfI"}
+ {:fields
+  {:ID 455,
+   :ID-Entrée "5_6_",
+   :Ordre "48",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Installer VMC double flux"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recNDcfdA9Cm6S2vO"}
+ {:fields
+  {:ID 535,
+   :ID-Entrée "14_8",
+   :Ordre "128",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "14- Numérique - Récupérer l’énergie produite par les serveurs (préchauffage eau, …)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recNJdns6VD5rljBi"}
+ {:fields
+  {:ID 358,
+   :Ordre "6",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Escaliers mécaniques et trottoirs roulants"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recNQUA7XqC6HaSwZ"}
+ {:fields
+  {:ID 279,
+   :Ordre "6",
+   :ref ["recQA7Q7On2rSssH6"],
+   :lib_fr "climatisation et autres usages"},
+  :createdTime "2025-03-30T06:37:28.000Z",
+  :id "recNS9SIAjpRMfKid"}
+ {:fields
+  {:ID 116,
+   :Ordre "105",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché - Zone de vente primeur"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recNc6qbxwusbBKTM"}
+ {:fields
+  {:ID 179,
+   :Ordre "168",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Service Pressing - Accueil public et process"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recNg9KHoEzuOD4aD"}
+ {:fields
+  {:ID 258,
+   :Ordre "247",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Cinéma - Salle de cinéma "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recNkFQvxQ7aH4M4F"}
+ {:fields
+  {:ID 596,
+   :Ordre "1",
+   :ref ["recpkUe5TY7DUzRNe"],
+   :lib_fr "Curatif / Correctif / Sinistre"},
+  :createdTime "2025-04-08T10:21:30.000Z",
+  :id "recO3pVRP2JUQs8yj"}
+ {:fields
+  {:ID 353,
+   :Ordre "1",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Autres appareils de levage"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recO6JMvtybPgOumr"}
+ {:fields
+  {:ID 10,
+   :Ordre "2",
+   :ref ["recyWaJ8o4WT8sH08"],
+   :lib_fr "2. Consommation Commune répartie"},
+  :createdTime "2025-03-30T06:08:24.000Z",
+  :id "recO8nhu44jows015"}
+ {:fields
+  {:ID 522,
+   :ID-Entrée "13_2",
+   :Ordre "115",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "13- Eau - Raccorder les organes de pilotage de la distribution d’eau à la GTB"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recOCjWobHE6hSCvz"}
+ {:fields
+  {:ID 453,
+   :ID-Entrée "5_4_",
+   :Ordre "46",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Installer régulateur de cascade sur une installation comprenant plusieurs chaudières"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recODmOsO06lxrBQ6"}
+ {:fields
+  {:ID 335,
+   :Ordre "12,1",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "12.1 Ascenseurs, monte-charges"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recOJHXR9eYBZITUL"}
+ {:fields
+  {:ID 323,
+   :Ordre "10,61",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "10.6.1 Transformateur électrique"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recOLEHGKWc2KyTvd"}
+ {:fields
+  {:ID 101,
+   :Ordre "90",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Grand supermarché - Zone de vente Produits de grande consommation (épicerie, boissons, produits d'entretien de la personne et de la maison)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recOWUuQsSM048aUE"}
+ {:fields
+  {:ID 265,
+   :Ordre "254",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Espèces vivantes - Vivarium"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recOXXvOcBcu5B5sF"}
+ {:fields
+  {:ID 96,
+   :Ordre "85",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché - Réserve et Drive Froid négatif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recOp7jENZxlcbXtn"}
+ {:fields
+  {:ID 356,
+   :Ordre "4",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Ancrages et lignes de vie"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recOplflyJIpxrZu9"}
+ {:fields
+  {:ID 229,
+   :Ordre "218",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Musée en bâtiment sans protection patrimoniale (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recOrkxuh7dmn78RF"}
+ {:fields
+  {:ID 72,
+   :Ordre "61",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Supérette - Zone de vente froid positif et négatif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recOt5iANf0bYNAjO"}
+ {:fields
+  {:ID 233,
+   :Ordre "222",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Musée en bâtiment sans protection patrimoniale - Zone de conservation des collections sans traitement climatique"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recOy9wsWOiNKJFO1"}
+ {:fields
+  {:ID 490,
+   :ID-Entrée "9_6_",
+   :Ordre "83",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "9- BACS / gtb - Vérifier mise à jour des logiciels GTB (sécurité, efficacité énergétique…)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recOyrROB2QomwwL9"}
+ {:fields
+  {:ID 491,
+   :ID-Entrée "9_7_",
+   :Ordre "84",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "9- BACS / gtb - Raccorder au BACS les équipements énergivores, y compris ascenseurs, cuisines, IRVE"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recP8CvTPlFzZ699u"}
+ {:fields
+  {:ID 100,
+   :Ordre "89",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Grand supermarché - Zone de vente Produits frais et surgelés - Froid positif et négatif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recPHdUILBOrIma5D"}
+ {:fields
+  {:ID 246,
+   :Ordre "235",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Salle de spectacles vivants - Loges artistes et zone maquillage (ou salon - espace gathering)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recPLuDmvGaf2rKQI"}
+ {:fields
+  {:ID 539,
+   :ID-Entrée "15_2",
+   :Ordre "132",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Formaliser un plan d’action pour gérer la biodiversité sur le site"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recPMpjxry7hieXbW"}
+ {:fields
+  {:ID 485,
+   :ID-Entrée "9_1_",
+   :Ordre "78",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "9- BACS / gtb - Installer / moderniser une GTB avec une classe C a minima selon norme ISO 52120-1:2022 "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recPPzlTWEzNOd3og"}
+ {:fields
+  {:ID 90,
+   :Ordre "79",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché - Aire de lavage"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recPQCViDoyfMO38Y"}
+ {:fields
+  {:ID 451,
+   :ID-Entrée "5_2_",
+   :Ordre "44",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Installer nouvel équipement performant du point de vue énergétique & environnemental"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recPTgm3GNRO2CPCn"}
+ {:fields
+  {:ID 516,
+   :ID-Entrée "12_3",
+   :Ordre "109",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "12- Achats responsables - Intégrer l’obtention de Certificats d’Economie d’Energie dans la démarche d’achat"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recPfmo7flaookuvT"}
+ {:fields
+  {:ID 532,
+   :ID-Entrée "14_5",
+   :Ordre "125",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "14- Numérique - Prôner la sobriété numérique quant aux flux (vidéo, pièces jointes email, …)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recPhlDexvlmiirwk"}
+ {:fields
+  {:ID 319,
+   :Ordre "10,3",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "10.3 Éclairage intérieur"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recPleTKhX9GhTUcb"}
+ {:fields
+  {:ID 243,
+   :Ordre "232",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Salle de spectacles vivants - Salles de répétition"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recPx759J0XNad6Us"}
+ {:fields
+  {:ID 487,
+   :ID-Entrée "9_3_",
+   :Ordre "80",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "9- BACS / gtb - S’assurer que la GTB intègre un suivi avec historisation des consommations énergétiques"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recQ3K7PWESsfbvA7"}
+ {:fields
+  {:ID 155,
+   :Ordre "144",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Zone de vente - Equipement automobile et moto"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recQ4jj095lL4o0Lh"}
+ {:fields
+  {:ID 572,
+   :ID-Entrée "18_7",
+   :Ordre "165",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique -  Créer ou améliorer les bassins de rétention"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recQ68Iai2XrBXmmz"}
+ {:fields
+  {:ID 63,
+   :Ordre "52",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Fleurs et végétaux - Zone en température dirigée"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recQH8AiLuemL4uxj"}
+ {:fields
+  {:ID 4,
+   :Ordre "4",
+   :ref ["rec6BlulA4wzPbh4w"],
+   :lib_eng "4. Very Poor / To be replaced",
+   :lib_fr "4. Très mauvais / à remplacer"},
+  :createdTime "2025-03-29T14:36:44.000Z",
+  :id "recQWajnPui5Et9Xx"}
+ {:fields
+  {:ID 97,
+   :Ordre "86",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Grand supermarché - Zone de préparation en température dirigée froid positif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recQZ5FseW8yR76Ou"}
+ {:fields
+  {:ID 320,
+   :Ordre "10,4",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "10.4 Éclairage extérieur sur le bâtiment"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recQZeOXTRacFCllD"}
+ {:fields
+  {:ID 105,
+   :Ordre "94",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché -  Zone et traitement des déchets"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recQZtDUkUrTNNc2O"}
+ {:fields
+  {:ID 297,
+   :Ordre "8,17",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.1.7 Sous-station d’échange thermique"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recQl2vkqVay9yXjr"}
+ {:fields
+  {:ID 294,
+   :Ordre "8,14",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.1.4 Poêle. cheminée. insert"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recQnjXcXaOKUMCX6"}
+ {:fields
+  {:ID 442,
+   :ID-Entrée "4_1_",
+   :Ordre "35",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "4- Maintenance CVC - Mettre en place un protocole de maintenance de tous les équipements CVC"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recQplmoGyY8nfbz3"}
+ {:fields
+  {:ID 176,
+   :Ordre "165",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Services Equipements de la personne (Cordonnerie, Couturier,…) - Accueil public et process"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recQsUQNhyZuHrayD"}
+ {:fields
+  {:ID 11,
+   :Ordre "3",
+   :ref ["recyWaJ8o4WT8sH08"],
+   :lib_fr "3. Consommation des Espaces Communs"},
+  :createdTime "2025-03-30T06:08:24.000Z",
+  :id "recQtbKAyHMbZVQlm"}
+ {:fields
+  {:ID 482,
+   :ID-Entrée "8_5_",
+   :Ordre "75",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "8- Comptage & suivi énergie eau - Mettre en place télérelève / système de management de l’eau "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recQv7hKtVGPrXaBj"}
+ {:fields
+  {:ID 201,
+   :Ordre "190",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Boulangerie, Pâtisserie - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recQwXW8NQ2592R2a"}
+ {:fields
+  {:ID 150,
+   :Ordre "139",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Zone de vente - Luminaires"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recQyOQQSY38sGgBf"}
+ {:fields
+  {:ID 321,
+   :Ordre "10,5",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "10.5 Systèmes d’automatisation et de contrôle"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recR1tXEZyrWMRz41"}
+ {:fields
+  {:ID 25,
+   :Ordre "14",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Télévision (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recRJxkajuVKyb2CP"}
+ {:fields
+  {:ID 225,
+   :Ordre "214",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Musée en bâtiment historique - Salle d'exposition ouverte au public"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recRSTBs4DrlAK61W"}
+ {:fields
+  {:ID 84,
+   :Ordre "73",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Petit supermarché - Zone de vente Produits de grande consommation (épicerie, boissons, produits d'entretien de la personne et de la maison)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recRVLhKShZZai4FT"}
+ {:fields
+  {:ID 325,
+   :Ordre "11",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "11. Réseaux de communication (Courants faibles),"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recRY5UFUPr5X1zGG"}
+ {:fields
+  {:ID 144,
+   :Ordre "133",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce - Grande Surface Spécialisée - Equipement de la maison"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recReiR0GaLxCBFj7"}
+ {:fields
+  {:ID 441,
+   :ID-Entrée "3_13",
+   :Ordre "34",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "3- Réglage CVC - Autre action réglage CVC"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recRgspff0TIhNEtH"}
+ {:fields
+  {:ID 33,
+   :Ordre "22",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Blanchisserie industrielle - Lavage, Séchage et Finition"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recRlKJoR0W6AYXk9"}
+ {:fields
+  {:ID 119,
+   :Ordre "108",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Hypermarché -  Zone de vente - Textile, bazar, maison et bricolage"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recRsQ3Xex3pZMZky"}
+ {:fields
+  {:ID 580,
+   :ID-Entrée "19_5",
+   :Ordre "173",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Suivre dans le temps le plan d'action du site au format Fidji ACT"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recRzZbbn3yVTRp2K"}
+ {:fields
+  {:ID 283,
+   :Ordre "2",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "2. Fondations et infrastructures,"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recSCOs7Tv1kCDZeo"}
+ {:fields
+  {:ID 509,
+   :ID-Entrée "11_6",
+   :Ordre "102",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Désigner 1 référent - ou 1 équipe pluridisciplinaire - en charge du plan d’action"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recSChpI4aYGsxHqV"}
+ {:fields
+  {:ID 188,
+   :Ordre "177",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Art de la table - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recSK98fETUe3iMGS"}
+ {:fields
+  {:ID 528,
+   :ID-Entrée "14_1",
+   :Ordre "121",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "14- Numérique - Réaliser un audit énergétique des équipements IT sur site"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recSUz1um6waZsTik"}
+ {:fields
+  {:ID 584,
+   :ID-Entrée "19_9",
+   :Ordre "177",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Identifier et prévenir les risques à fort impact carbone (incendie, fuites fluides frigorigènes…)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recShFBIP9daR1EN9"}
+ {:fields
+  {:ID 472,
+   :ID-Entrée "7_2_",
+   :Ordre "65",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "7- Eau chaude sanitaire - Arrêter la production d’eau chaude, sauf cas indispensable "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recSt6h3GurDKmAT6"}
+ {:fields
+  {:ID 227,
+   :Ordre "216",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Musée en bâtiment historique - Zone de conservation des collections sans traitement climatique"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recT1GYfUC09V5eFR"}
+ {:fields
+  {:ID 51,
+   :Ordre "40",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Banque -  Salle des coffres"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recT2qiESMciaJSrB"}
+ {:fields
+  {:ID 270,
+   :Ordre "259",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Enseignement Primaire (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recT8sahTJsIUd2J6"}
+ {:fields
+  {:ID 295,
+   :Ordre "8,15",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.1.5 Groupe de production de froid"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recT9dO1ntLTWcdGD"}
+ {:fields
+  {:ID 362,
+   :Ordre "10",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Protection contre la foudre"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recTF9UEKuvPucWK7"}
+ {:fields
+  {:ID 558,
+   :ID-Entrée "17_1",
+   :Ordre "151",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "17- Réduction & gestion des déchets - Réaliser un audit pour identifier les types de déchets et les exutoires disponibles"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recTGFFYsxTSYATUW"}
+ {:fields
+  {:ID 408,
+   :ID-Entrée "1_1_",
+   :Ordre "1",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "1- Enveloppe bâtiment - Isoler par l'extérieur (ITE) les façades"},
+  :createdTime "2025-04-08T08:52:26.000Z",
+  :id "recTHs42P1PSt2sW3"}
+ {:fields
+  {:ID 505,
+   :ID-Entrée "11_2",
+   :Ordre "98",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Planifier regroupement des personnes présentes sur site dans zones prédéfinies"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recTY0enVUoiDCK2W"}
+ {:fields
+  {:ID 524,
+   :ID-Entrée "13_4",
+   :Ordre "117",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "13- Eau - Installer un récupérateur d'eaux pluviales"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recTn0TPwaI2iwA2K"}
+ {:fields
+  {:ID 284,
+   :Ordre "3",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "3. Superstructure et maçonnerie,"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recTqqLRMY7VFOVal"}
+ {:fields
+  {:ID 423,
+   :ID-Entrée "2_4_",
+   :Ordre "16",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "2- Eclairage - Optimiser l’apport d’éclairage naturel (créer puit de lumière, changer menuiseries, vitrages)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recTrPwbz6kVVqny9"}
+ {:fields
+  {:ID 137,
+   :Ordre "126",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSS - Equipement de la personne et Loisirs (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recTv2xarVTnzfNDX"}
+ {:fields
+  {:ID 564,
+   :ID-Entrée "17_7",
+   :Ordre "157",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "17- Réduction & gestion des déchets - Organiser l’utilisation systématique de contenants & couverts réutilisables "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recTxQZpafDbRx5Ow"}
+ {:fields
+  {:ID 324,
+   :Ordre "10,62",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "10.6.2 Tableaux et armoires électriques"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recU2cVNcmPd8qUG1"}
+ {:fields
+  {:ID 173,
+   :Ordre "162",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Santé Optique - Zone vente "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recU8KK30QHYCpc79"}
+ {:fields
+  {:ID 32,
+   :Ordre "21",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Blanchisserie industrielle - Stockage et Tri"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recUDWTUttnzl0nCP"}
+ {:fields
+  {:ID 253,
+   :Ordre "242",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Culture et spectacles - Cinéma"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recUKHtWxuH8hIF4h"}
+ {:fields
+  {:ID 439,
+   :ID-Entrée "3_11",
+   :Ordre "32",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "3- Réglage CVC - Vérifier réglage freecooling"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recULoenDVMmtA7r5"}
+ {:fields
+  {:ID 267,
+   :Ordre "256",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Espèces vivantes - Haras (Ecuries)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recUPB2pL7CxLplR8"}
+ {:fields
+  {:ID 231,
+   :Ordre "220",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Musée en bâtiment sans protection patrimoniale - Salle d'exposition ouverte au public"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recUUwxSeG7VCJTb4"}
+ {:fields
+  {:ID 275,
+   :Ordre "2",
+   :ref ["recQA7Q7On2rSssH6"],
+   :lib_fr "climatisation"},
+  :createdTime "2025-03-30T06:37:28.000Z",
+  :id "recUazYV3rLvnkzBJ"}
+ {:fields
+  {:ID 426,
+   :ID-Entrée "2_7_",
+   :Ordre "19",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "2- Eclairage - Installer un système de commande de l’éclairage "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recUbZhxCJ4nDXdVV"}
+ {:fields
+  {:ID 333,
+   :Ordre "11,3",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "11.3 Installations techniques et appareillages"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recUj1LINh3AE8WvU"}
+ {:fields
+  {:ID 471,
+   :ID-Entrée "7_1_",
+   :Ordre "64",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "7- Eau chaude sanitaire - Optimiser la production d’ECS en f° des besoins et adapter l’installation si nécessaire"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recUqz3KFaPzn0hgI"}
+ {:fields
+  {:ID 255,
+   :Ordre "244",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Cinéma - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recUrI84iPHUV58nA"}
+ {:fields
+  {:ID 221,
+   :Ordre "210",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Bibliothèque et médiathèque - Zone de conservation des archives sans traitement climatique"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recUs09iQZPPZ7D9R"}
+ {:fields
+  {:ID 95,
+   :Ordre "84",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché - Réserve et Drive Froid positif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recV1WewLDjCuJpeW"}
+ {:fields
+  {:ID 431,
+   :ID-Entrée "3_3_",
+   :Ordre "24",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Mettre le bâtiment hors-gel (7°C) lorsqu'inoccupé pendant plus de 3 jours"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recV3HQtKvNh0lZw3"}
+ {:fields
+  {:ID 27,
+   :Ordre "16",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Télévision - Studio d’enregistrement et de diffusion d’émissions télévisées"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recV5wchLF4zeYzMS"}
+ {:fields
+  {:ID 552,
+   :ID-Entrée "16_3",
+   :Ordre "145",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "16- Mobilité - Mettre à disposition des collaborateurs des solutions de mobilité douce à tarif préférentiel"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recVHhCFueLvzxodh"}
+ {:fields
+  {:ID 343, :Ordre "3", :ref ["recdr6F6MwtUns4xg"], :lib_fr "Aile"},
+  :createdTime "2025-04-06T09:20:23.000Z",
+  :id "recVM5UMP6YDsrrcs"}
+ {:fields
+  {:ID 244,
+   :Ordre "233",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Salle de spectacles vivants - Salle de spectacle (Partie publics)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recVOpPtKu369CpEE"}
+ {:fields
+  {:ID 82,
+   :Ordre "71",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché - Zone de vente primeur"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recVRzd01PbpOqClo"}
+ {:fields
+  {:ID 2,
+   :Ordre "2",
+   :ref ["rec6BlulA4wzPbh4w"],
+   :lib_eng "2. Fair / Obsolete",
+   :lib_fr "2. Moyen / Obsolète"},
+  :createdTime "2025-03-29T14:34:13.000Z",
+  :id "recVX9ux66GmnA3mv"}
+ {:fields
+  {:ID 204,
+   :Ordre "193",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Fromagerie, Crèmerie - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recVY4If8wePkScB1"}
+ {:fields
+  {:ID 24,
+   :Ordre "13",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Audiovisuel - Télévision et télédiffusion"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recVfD4q3VPvGfYxF"}
+ {:fields
+  {:ID 447,
+   :ID-Entrée "4_6_",
+   :Ordre "40",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "4- Maintenance CVC - Désembouer réseau hydraulique / installer filtres anti-boues"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recVnIF0Z1YBUFr0s"}
+ {:fields
+  {:ID 1,
+   :Ordre "1",
+   :ref ["rec6BlulA4wzPbh4w"],
+   :lib_eng "1. Good",
+   :lib_fr "1. Bon"},
+  :createdTime "2025-03-29T14:34:13.000Z",
+  :id "recW1A0wNQX8DSi08"}
+ {:fields
+  {:ID 465,
+   :ID-Entrée "6_3_",
+   :Ordre "58",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "6- EnR / Abandon énergies fossiles - Remplacer chauffage gaz / fioul par raccordement réseau de chaleur"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recW2F4KuFW6jyXdP"}
+ {:fields
+  {:ID 332,
+   :Ordre "11,25",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "11.2.5 Système de sécurité incendie"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recW3QfhmfpxuAY1q"}
+ {:fields
+  {:ID 7,
+   :Ordre "3",
+   :ref ["recYY7dKJJoGMZq9L"],
+   :lib_fr "3. Assuré à risque"},
+  :createdTime "2025-03-29T15:30:57.000Z",
+  :id "recWEFDr0ZpXWq9pg"}
+ {:fields
+  {:ID 216,
+   :Ordre "205",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Culture et spectacles - Bibliothèque et médiathèque"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recWSQZRbzOp0zXYT"}
+ {:fields
+  {:ID 200,
+   :Ordre "189",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Boucherie, Charcuterie - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recWT6SBKfxWcDkub"}
+ {:fields
+  {:ID 70,
+   :Ordre "59",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Supérette - Réserve et Drive Froid positif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recWW8gZD6kFoO9Uo"}
+ {:fields
+  {:ID 510,
+   :ID-Entrée "11_7",
+   :Ordre "103",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Communiquer sur nouveaux réglages afin d’en favoriser l’acceptation et motiver les efforts"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recWh0cjajZQgII30"}
+ {:fields
+  {:ID 317,
+   :Ordre "10,1",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "10.1 Réseaux électriques"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recWkSFhwK1ZtMwmK"}
+ {:fields
+  {:ID 421,
+   :ID-Entrée "2_2_",
+   :Ordre "14",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "2- Eclairage - Graduer l’éclairage intérieur / extérieur en fonction des apports de lumière du jour"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recWlAJccdx9OIk5w"}
+ {:fields
+  {:ID 364,
+   :Ordre "12",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Moyens de secours contre l'incendie"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recWomOfuPMjUCCZv"}
+ {:fields
+  {:ID 574,
+   :ID-Entrée "18_9",
+   :Ordre "167",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique - Prévenir risque éventuel d’exposition aux feux de forêt (débroussaillage, pare-feux, …)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recWrEO02WBxJcwqu"}
+ {:fields
+  {:ID 235,
+   :Ordre "224",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Salle d'exposition & Galerie d'art (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recWscW8QjVxHoFXx"}
+ {:fields
+  {:ID 203,
+   :Ordre "192",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Epicerie, Caviste  - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recWvER6kxbNchfFL"}
+ {:fields
+  {:ID 298,
+   :Ordre "8,18",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.1.8 Régulation de production"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recX17ZnMymERLEnd"}
+ {:fields
+  {:ID 448,
+   :ID-Entrée "4_7_",
+   :Ordre "41",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "4- Maintenance CVC - Installer / remplacer des filtres à air performants, adaptés au besoin"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recX7oRmY7PxOQ27e"}
+ {:fields
+  {:ID 590,
+   :Ordre "4",
+   :ref ["recJzTsdfcuq6Umbr"],
+   :lib_fr "Mise en conformité - Nouvelle règle"},
+  :createdTime "2025-04-08T09:15:24.000Z",
+  :id "recXAQA9Wrep5zxfc"}
+ {:fields
+  {:ID 499,
+   :ID-Entrée "10_5",
+   :Ordre "92",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "10- Froid alimentaire - Retrofit fluide frigorigène installation froid positif ou négatif"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recXIQrZWTPN7PHpb"}
+ {:fields
+  {:ID 402, :Ordre "1", :ref ["recVz8B9wqZIqOnZB"], :lib_fr "Validé"},
+  :createdTime "2025-04-08T08:27:57.000Z",
+  :id "recXLA4NrMG7Zw2bD"}
+ {:fields
+  {:ID 527,
+   :ID-Entrée "13_7",
+   :Ordre "120",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "13- Eau - Autre action sur les consommations d’eau "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recXLVqRGjAjSFvCJ"}
+ {:fields
+  {:ID 254,
+   :Ordre "243",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Cinéma (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recXbwzWBClkewrnq"}
+ {:fields
+  {:ID 223,
+   :Ordre "212",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Musée en bâtiment historique (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recXgvnqiWBnL4eaK"}
+ {:fields
+  {:ID 368,
+   :Ordre "16",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Equipements sous pression"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recXoNCyHnQjbGfkA"}
+ {:fields
+  {:ID 38,
+   :Ordre "27",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux - Bureaux standards"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recXqxLcBNuU7D0FI"}
+ {:fields
+  {:ID 314,
+   :Ordre "9,21",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "9.2.1 Adoucisseur"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recXvl3Agao1PZI6t"}
+ {:fields
+  {:ID 211,
+   :Ordre "200",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Halles et marchés couverts"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recXyY6t1u4Qi1ooN"}
+ {:fields
+  {:ID 28,
+   :Ordre "17",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Télévision - Studio d’enregistrement et de diffusion d’émissions télévisées avec public"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recXzy013scmMa4w0"}
+ {:fields
+  {:ID 587,
+   :Ordre "1",
+   :ref ["recJzTsdfcuq6Umbr"],
+   :lib_fr "Sécurité - Sécurité des biens"},
+  :createdTime "2025-04-08T09:14:09.000Z",
+  :id "recYG1oNjssJXRV4P"}
+ {:fields
+  {:ID 205,
+   :Ordre "194",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerces et service de détail - Primeurs - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recYUhpeHyQmHjAXk"}
+ {:fields
+  {:ID 500,
+   :ID-Entrée "10_6",
+   :Ordre "93",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "10- Froid alimentaire - Remplacer / Améliorer la GTC froid alimentaire"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recYY5P9AtgsziR3m"}
+ {:fields
+  {:ID 418,
+   :ID-Entrée "1_11",
+   :Ordre "11",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "1- Enveloppe bâtiment - Remplacer façade existante (mur-rideau, ...) par solution écoénergétique"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recYhsakdc7JnXLfW"}
+ {:fields
+  {:ID 349,
+   :Ordre "1",
+   :ref ["recmhZiZfQtRIrrLj"],
+   :lib_fr "Accord Cadre"},
+  :createdTime "2025-04-06T09:35:03.000Z",
+  :id "recYkh6WBoy1lE4or"}
+ {:fields
+  {:ID 464,
+   :ID-Entrée "6_2_",
+   :Ordre "57",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "6- EnR / Abandon énergies fossiles - Remplacer chauffage gaz / fioul par chaudière biomasse"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recYkhJlWFjmD3WZw"}
+ {:fields
+  {:ID 282, :Ordre "1", :ref ["recqY5ku8APx2V3eX"], :lib_fr "1. VRD"},
+  :createdTime "2025-03-30T07:28:12.000Z",
+  :id "recYm6DHaNlphDqe1"}
+ {:fields
+  {:ID 450,
+   :ID-Entrée "5_1_",
+   :Ordre "43",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Remplacer équipement énergivore et/ou en fin de vie en adaptant la puissance installée"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recYwmLOSbicrhaJ3"}
+ {:fields
+  {:ID 457,
+   :ID-Entrée "5_8_",
+   :Ordre "50",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Mettre en place une récupération de chaleur issue de l’air extrait ou d’un process "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recZ4aGXWiT20l8Sv"}
+ {:fields
+  {:ID 347,
+   :Ordre "3",
+   :ref ["rec7gscVoKLdHbzYM"],
+   :lib_fr "Zone/regroupement énergie"},
+  :createdTime "2025-04-06T09:33:45.000Z",
+  :id "recZA4rAaTY7Mqz5X"}
+ {:fields
+  {:ID 540,
+   :ID-Entrée "15_3",
+   :Ordre "133",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Mettre en place un traitement raisonné des espaces verts, respectueux de la biodiversité"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recZENzWORb2jdDFa"}
+ {:fields
+  {:ID 17,
+   :Ordre "6",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Accueil petite enfance - Crèche"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recZIZHbkNLB83YYg"}
+ {:fields
+  {:ID 359,
+   :Ordre "7",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Installations électriques"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recZXhnt1F5FRPaH5"}
+ {:fields
+  {:ID 571,
+   :ID-Entrée "18_6",
+   :Ordre "164",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique -  Créer ou améliorer les noues"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recZawsP4oN2r6l3N"}
+ {:fields
+  {:ID 354,
+   :Ordre "2",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Ascenseurs"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recZkwp56Qi9qg6rE"}
+ {:fields
+  {:ID 462,
+   :ID-Entrée "5_13",
+   :Ordre "55",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Autre travaux CVC"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recZmo6ikZDANUc61"}
+ {:fields
+  {:ID 64,
+   :Ordre "53",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Produits non périssables - Zone en température ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recZqS3XlxQoUpkTj"}
+ {:fields
+  {:ID 586,
+   :ID-Entrée "19_1",
+   :Ordre "179",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Autre action environnementale"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recZuL1njQ2K7U1eP"}
+ {:fields
+  {:ID 327,
+   :Ordre "11,2",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "11.2 Systèmes de sécurité (personnes et bien)"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recZvynwbo79Lx27E"}
+ {:fields
+  {:ID 81,
+   :Ordre "70",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché - Zone de préparation cuisson"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recaCRufHavt8nlmY"}
+ {:fields
+  {:ID 427,
+   :ID-Entrée "2_8_",
+   :Ordre "20",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "2- Eclairage - Piloter l'éclairage depuis le système d'automatisation et de contrôle du bâtiment (BACS)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recaFzrym0L8r1zCF"}
+ {:fields
+  {:ID 405,
+   :Ordre "1",
+   :ref ["recoHy3w92s70hRo6"],
+   :lib_fr "Prévisionnel"},
+  :createdTime "2025-04-08T08:39:56.000Z",
+  :id "recaL2GI237nInCGw"}
+ {:fields
+  {:ID 146,
+   :Ordre "135",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recaOb0er3xDRIbbE"}
+ {:fields
+  {:ID 466,
+   :ID-Entrée "6_4_",
+   :Ordre "59",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "6- EnR / Abandon énergies fossiles - Tendre vers l’abandon du gaz sur site déjà équipé d’appareils hybrides PAC-gaz"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recaUhpHXi1AMbwXN"}
+ {:fields
+  {:ID 599,
+   :Ordre "4",
+   :ref ["recpkUe5TY7DUzRNe"],
+   :lib_fr "Amélioration / Autre"},
+  :createdTime "2025-04-08T10:22:09.000Z",
+  :id "recaZkUL7vYq0lCxb"}
+ {:fields
+  {:ID 280,
+   :Ordre "7",
+   :ref ["recQA7Q7On2rSssH6"],
+   :lib_fr "tous les usages "},
+  :createdTime "2025-03-30T06:37:28.000Z",
+  :id "recaxq2mkQVnUNXFB"}
+ {:fields
+  {:ID 174,
+   :Ordre "163",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Soins & Beauté  (Beauté & bien être) - Zone soins"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recb0fi8o3IxpqPcN"}
+ {:fields
+  {:ID 239,
+   :Ordre "228",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Culture et spectacles - Salle de spectacles vivants "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recb2HBZUUOYvHHeI"}
+ {:fields
+  {:ID 104,
+   :Ordre "93",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché -  Accueil et zone de caisses"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recb68hyIrbhMyOva"}
+ {:fields
+  {:ID 422,
+   :ID-Entrée "2_3_",
+   :Ordre "15",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "2- Eclairage - Réduire durée éclairage extérieur la nuit et l'éteindre le plus tôt possible"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recbASiQFEIbOL566"}
+ {:fields
+  {:ID 583,
+   :ID-Entrée "19_8",
+   :Ordre "176",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Obtenir niveau élevé certification environnementale pour la gestion du bâtiment"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recbAbsKeQu1ibkfG"}
+ {:fields
+  {:ID 166,
+   :Ordre "155",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Equipement de la personne et Loisirs - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recbGLfB1qDHBS4eW"}
+ {:fields
+  {:ID 145,
+   :Ordre "134",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Equipement de la maison (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recbLCElTnLQT5IqG"}
+ {:fields
+  {:ID 437,
+   :ID-Entrée "3_9_",
+   :Ordre "30",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Couper l'alimentation des équipements non utilisés sur une période prolongée "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recbpL0tjG3n4rcff"}
+ {:fields
+  {:ID 23,
+   :Ordre "12",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Radio -Studio d’enregistrement et de diffusion d’émissions radiophoniques avec public"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recbu1NHzlYE8lnBL"}
+ {:fields
+  {:ID 142,
+   :Ordre "131",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSS - Zone de vente - Santé, Soins & Beauté (Pharmacie, Parapharmacie, Opticien,  Beauté & bien être, Parfumerie…)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recbxOkoZ3zazsolZ"}
+ {:fields
+  {:ID 50,
+   :Ordre "39",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Banque -  Zone guichets automatiques"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recbynNBle8QAGhjp"}
+ {:fields
+  {:ID 591,
+   :Ordre "5",
+   :ref ["recJzTsdfcuq6Umbr"],
+   :lib_fr "REE Rénovation Remplacement / Confort des occupants"},
+  :createdTime "2025-04-08T10:19:08.000Z",
+  :id "recc8WUxBJzo5zldy"}
+ {:fields
+  {:ID 170,
+   :Ordre "159",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Equipement de la personne (Vêtements, lingeries, linges de maison, chaussures, maroquinerie et bagages...) - Zone de vente "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reccS6PCFGB8YBIX7"}
+ {:fields
+  {:ID 262,
+   :Ordre "251",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Espèces vivantes - Hall d'accueil"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reccSuOfcOf5GczFa"}
+ {:fields
+  {:ID 567,
+   :ID-Entrée "18_2",
+   :Ordre "160",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique - Réaliser un audit sur site de résilience de l’actif (îlots de chaleur, inondation, …)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "reccVov19886Fj3yW"}
+ {:fields
+  {:ID 252,
+   :Ordre "241",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Salle de spectacles vivants - Zone de conservation des costumes"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reccZgsjG2H9XkmKK"}
+ {:fields
+  {:ID 256,
+   :Ordre "245",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Cinéma - Hall d'accueil et salon d'attente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recccN9P9Ip8EzNae"}
+ {:fields
+  {:ID 445,
+   :ID-Entrée "4_4_",
+   :Ordre "38",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "4- Maintenance CVC - Vérifier régulièrement état des pompes de circulation chauffage & eau glacée"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recceklHovTcJ58H8"}
+ {:fields
+  {:ID 459,
+   :ID-Entrée "5_10",
+   :Ordre "52",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Mettre en place un système de freecooling"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "reccgkOMvO2asBO4n"}
+ {:fields
+  {:ID 245,
+   :Ordre "234",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Salle de spectacles vivants - Scène (comprenant l'espace fosse d'orchestre pour les opéras) "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recctbTds2SBdKmmM"}
+ {:fields
+  {:ID 363,
+   :Ordre "11",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Qualité de l'air"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "reccteZZSw8GeHKZJ"}
+ {:fields
+  {:ID 517,
+   :ID-Entrée "12_4",
+   :Ordre "110",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "12- Achats responsables - Privilégier achats à faible impact en intégrant durée de vie, TCO, externalité positive"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recdHoePIljaxjsS3"}
+ {:fields
+  {:ID 329,
+   :Ordre "11,22",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "11.2.2 Système de contrôle d’accès"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recdIa4G2AWG44lDg"}
+ {:fields
+  {:ID 224,
+   :Ordre "213",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Musée en bâtiment historique - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recdNEfftJGoa9iOn"}
+ {:fields
+  {:ID 443,
+   :ID-Entrée "4_2_",
+   :Ordre "36",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "4- Maintenance CVC - Mettre en place un monitoring des indicateurs de performance de l’installation CVC"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recdZYB1vyQsh9CRl"}
+ {:fields
+  {:ID 477,
+   :ID-Entrée "7_7_",
+   :Ordre "70",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "7- Eau chaude sanitaire - Autres Réglage / travaux ECS"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recdfOQzX6SqjaVsD"}
+ {:fields
+  {:ID 130,
+   :Ordre "119",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSB - Zone de vente électro-intensif (présentation luminaires)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rece2PiEGbKH0KuXD"}
+ {:fields
+  {:ID 578,
+   :ID-Entrée "19_3",
+   :Ordre "171",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "19- Autres actions environnementales - Calculer le « payback carbone » d’un projet de rénovation"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "receBjiLn29hiU3YM"}
+ {:fields
+  {:ID 168,
+   :Ordre "157",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail  - Bien être (Sauna -Hammam) - Zone Public"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "receF6L0bs0Nbxqhz"}
+ {:fields
+  {:ID 456,
+   :ID-Entrée "5_7_",
+   :Ordre "49",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Installer des sondes CO2 pour moduler le débit de la ventilation en f° de l’occupation"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "receI75E8NtHmqk04"}
+ {:fields
+  {:ID 230,
+   :Ordre "219",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Musée en bâtiment sans protection patrimoniale - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "receMM4xvrGhIPvk3"}
+ {:fields
+  {:ID 43,
+   :Ordre "32",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux - Salle Haute Intensité – Centre d’appel"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "receZj0W74twpc9uZ"}
+ {:fields
+  {:ID 544,
+   :ID-Entrée "15_7",
+   :Ordre "137",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Installer de la végétation hors sol quand la végétalisation pleine terre n'est pas possible"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recefkFo2LF45ZTJR"}
+ {:fields
+  {:ID 278,
+   :Ordre "5",
+   :ref ["recQA7Q7On2rSssH6"],
+   :lib_fr "chauffage et autres usages"},
+  :createdTime "2025-03-30T06:37:28.000Z",
+  :id "recekgTc7hOhX25la"}
+ {:fields
+  {:ID 588,
+   :Ordre "2",
+   :ref ["recJzTsdfcuq6Umbr"],
+   :lib_fr "Sécurité - Sécurité des personnes"},
+  :createdTime "2025-04-08T09:14:40.000Z",
+  :id "receskuUPLz8FdYQQ"}
+ {:fields
+  {:ID 495,
+   :ID-Entrée "10_1",
+   :Ordre "88",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "10- Froid alimentaire - Maximiser remplissage des meubles réfrigérés"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recfTiUSiOUuB4R3T"}
+ {:fields
+  {:ID 346,
+   :Ordre "2",
+   :ref ["rec7gscVoKLdHbzYM"],
+   :lib_fr "Zone/regroupement contrôle règlementaire"},
+  :createdTime "2025-04-06T09:33:27.000Z",
+  :id "recfWNWtJ51AnfS5i"}
+ {:fields
+  {:ID 569,
+   :ID-Entrée "18_4",
+   :Ordre "162",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique - Perméabiliser tout ou partie des surfaces de parking"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recfdDORzBQMO52sA"}
+ {:fields
+  {:ID 326,
+   :Ordre "11,1",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "11.1 Réseaux électriques et de communications"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recfodrotN1xMkSac"}
+ {:fields
+  {:ID 568,
+   :ID-Entrée "18_3",
+   :Ordre "161",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique - Mettre en place un plan de résilience du bâtiment et de continuité de l’activité"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recfyQ28PNazT1UtA"}
+ {:fields
+  {:ID 434,
+   :ID-Entrée "3_6_",
+   :Ordre "27",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Asservir apport air neuf au taux d’occupation (sauf pièces humides)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recfyZvMnIVfJKBbD"}
+ {:fields
+  {:ID 259,
+   :Ordre "248",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Culture et spectacles - Espèces vivantes"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recg2TVJD0svzVtcH"}
+ {:fields
+  {:ID 506,
+   :ID-Entrée "11_3",
+   :Ordre "99",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Organiser l’occupation des espaces du site pour limiter les besoins de chaleur / climatisation"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recg6XMcrQps1evMi"}
+ {:fields
+  {:ID 412,
+   :ID-Entrée "1_5_",
+   :Ordre "5",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "1- Enveloppe bâtiment - Appliquer peinture anti-chaleur sur toiture"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recg8ht65TimAeaQ6"}
+ {:fields
+  {:ID 39,
+   :Ordre "28",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux - Open Space"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recgIlHVaHTVWLf5R"}
+ {:fields
+  {:ID 401,
+   :Ordre "3",
+   :ref ["recfb5wiCa7pVeQP9"],
+   :lib_fr "Conformité documentaire"},
+  :createdTime "2025-04-07T19:11:47.000Z",
+  :id "recgIuaiNzlMscCsQ"}
+ {:fields
+  {:ID 334,
+   :Ordre "12",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr
+   "12. Appareils élévateurs et autres équipements de transport,"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recgJNnel5kLMamSQ"}
+ {:fields
+  {:ID 475,
+   :ID-Entrée "7_5_",
+   :Ordre "68",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "7- Eau chaude sanitaire - Installer système ECS solaire"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recgJixN0Y1zjueFe"}
+ {:fields
+  {:ID 497,
+   :ID-Entrée "10_3",
+   :Ordre "90",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "10- Froid alimentaire - Remplacer meubles froid alimentaire en fin de vie"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recgL0IgsfrxmXi5M"}
+ {:fields
+  {:ID 66,
+   :Ordre "55",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce - Grande Surface Alimentaire - Supérette (surface de vente < 400 m²)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recgLIUM7oPKL4L4i"}
+ {:fields
+  {:ID 502,
+   :ID-Entrée "10_8",
+   :Ordre "95",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "10- Froid alimentaire - Récupérer les calories frigo pour un autre usage (ECS, préchauffage, …)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recgQjLV52wRUDKWj"}
+ {:fields
+  {:ID 171,
+   :Ordre "160",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Numérique et téléphonie - Zone vente "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recgY4PatFAM2VSMr"}
+ {:fields
+  {:ID 6,
+   :Ordre "2",
+   :ref ["recYY7dKJJoGMZq9L"],
+   :lib_fr "2. Assuré à grands frais"},
+  :createdTime "2025-03-29T15:30:47.000Z",
+  :id "recgfNlBYQUuk9pbg"}
+ {:fields
+  {:ID 496,
+   :ID-Entrée "10_2",
+   :Ordre "89",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "10- Froid alimentaire - Vérifier bon réglage HP BP flottante centrale froid positif ou négatif"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recgllIB6O9PYFB9n"}
+ {:fields
+  {:ID 355,
+   :Ordre "3",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Climatisation et systèmes thermodynamiques"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "rech0spT1KgZ1k9nT"}
+ {:fields
+  {:ID 290,
+   :Ordre "8,1",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr
+   "8.1 Équipements de production (chaud/froid) [hors cogénération]"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rech2UpeQyHMKR1cJ"}
+ {:fields
+  {:ID 156,
+   :Ordre "145",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Zone ateliers - Equipement automobile et moto"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rech9Qqb8vgL5vvbq"}
+ {:fields
+  {:ID 435,
+   :ID-Entrée "3_7_",
+   :Ordre "28",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Prioriser mode chauffage PAC sur équipement hybride PAC – gaz"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rechBTeSQAKfBP2ZW"}
+ {:fields
+  {:ID 264,
+   :Ordre "253",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Espèces vivantes - Aquarium"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rechN6w2DmKFHONDw"}
+ {:fields
+  {:ID 41,
+   :Ordre "30",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux - Espace Co-Working"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rechn5PxOtg4VHyY5"}
+ {:fields
+  {:ID 3,
+   :Ordre "3",
+   :ref ["rec6BlulA4wzPbh4w"],
+   :lib_eng "3. Poor / Out of service",
+   :lib_fr "3. Mauvais / Hors service"},
+  :createdTime "2025-03-29T14:34:13.000Z",
+  :id "rechq1xTV1hDBD44Y"}
+ {:fields
+  {:ID 548,
+   :ID-Entrée "15_1",
+   :Ordre "141",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Communiquer sur les actions en faveur de la biodiversité"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rechr7GugJS3oFHPP"}
+ {:fields
+  {:ID 545,
+   :ID-Entrée "15_8",
+   :Ordre "138",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "15- Biodiversité - Mettre en place de l’éco-pâturage"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rechvL8Jrhk0Lukag"}
+ {:fields
+  {:ID 37,
+   :Ordre "26",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reci2Dv4TvnkDR3oe"}
+ {:fields
+  {:ID 409,
+   :ID-Entrée "1_2_",
+   :Ordre "2",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "1- Enveloppe bâtiment - Isoler par l'extérieur (ITE) la toiture"},
+  :createdTime "2025-04-08T08:52:28.000Z",
+  :id "reciX1MbFVcluv01y"}
+ {:fields
+  {:ID 470,
+   :ID-Entrée "6_8_",
+   :Ordre "63",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "6- EnR / Abandon énergies fossiles - Autre action EnR / abandon gaz & fioul"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "reciZnmOHKyH4MTTe"}
+ {:fields
+  {:ID 316,
+   :Ordre "10",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "10. Réseaux d'énergie (courant fort)"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recigc6eKfm5nS7UE"}
+ {:fields
+  {:ID 432,
+   :ID-Entrée "3_4_",
+   :Ordre "25",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Optimiser t° consigne climatisation et diminuer t° chauffage suivant réglementation"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recixNLAuOhB4Mnfc"}
+ {:fields
+  {:ID 164,
+   :Ordre "153",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et services de détail - Equipement de la personne et loisirs "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recj0KucE0SigrviY"}
+ {:fields
+  {:ID 5, :Ordre "1", :ref ["recYY7dKJJoGMZq9L"], :lib_fr "1. Assuré"},
+  :createdTime "2025-03-29T15:30:09.000Z",
+  :id "recj1GqVOPN10aLQN"}
+ {:fields
+  {:ID 29,
+   :Ordre "18",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Blanchisserie dite \"industrielle\""},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recj22i2MVWWIE4K1"}
+ {:fields
+  {:ID 213,
+   :Ordre "202",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Halles et marchés couverts - Partie commune (mail et locaux technique)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recjFuK9MkviSLhcE"}
+ {:fields
+  {:ID 288,
+   :Ordre "8",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8. CVC (chauffage ventilation refroidissement, ECS),"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recjLLSmRGYnLTANi"}
+ {:fields
+  {:ID 311,
+   :Ordre "9",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "9. Installations sanitaires"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recjTy4nUtH2lC0GY"}
+ {:fields
+  {:ID 560,
+   :ID-Entrée "17_3",
+   :Ordre "153",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "17- Réduction & gestion des déchets - Organiser traitement de certains déchets in situ pour limiter le % envoyé en décharge"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recjVaVEpKguEiiPn"}
+ {:fields
+  {:ID 261,
+   :Ordre "250",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Espèces vivantes - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recjh9AsWEIgreYEg"}
+ {:fields
+  {:ID 222,
+   :Ordre "211",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Culture et spectacles - Musée en bâtiment historique classé ou inscrit"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recjq6xCxsVzn9k6w"}
+ {:fields
+  {:ID 15,
+   :Ordre "4",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Accueil petite enfance (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recjwCZ0ib4KOm7Ij"}
+ {:fields
+  {:ID 129,
+   :Ordre "118",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSB - Zone de vente non électro-intensif "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reck1am7aCoiUXoW2"}
+ {:fields
+  {:ID 114,
+   :Ordre "103",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Hypermarché - Zone de préparation en température dirigée froid positif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reck3mSF54gYq0aag"}
+ {:fields
+  {:ID 309,
+   :Ordre "8,6",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.6 Stockage"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "reckFp3HnOYVRk141"}
+ {:fields
+  {:ID 158,
+   :Ordre "147",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Parties communes des centres commerciaux et des galeries commerciales"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reckSO5GDv27lu2FC"}
+ {:fields
+  {:ID 263,
+   :Ordre "252",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Espèces vivantes - Serres"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reckdQQYaNBrUPaZ6"}
+ {:fields
+  {:ID 508,
+   :ID-Entrée "11_5",
+   :Ordre "101",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "11- Organisation / communication - Animer un comité avec toutes les parties prenantes pour définir et suivre un plan d’action"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "reckeiPbkYJ5nVbOi"}
+ {:fields
+  {:ID 467,
+   :ID-Entrée "6_5_",
+   :Ordre "60",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "6- EnR / Abandon énergies fossiles - Installer EnR : photovoltaïque / solaire thermique / éolienne / géothermie / …"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "reckhUETjJjR4xXiS"}
+ {:fields
+  {:ID 483,
+   :ID-Entrée "8_6_",
+   :Ordre "76",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "8- Comptage & suivi énergie eau - Installer ou remplacer des sous-compteurs eau"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "reckoA3aUlNCBrtDL"}
+ {:fields
+  {:ID 85,
+   :Ordre "74",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Petit supermarché -  Zone de vente - Textile, bazar, maison et bricolage"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reckuE0g00gWVDY2C"}
+ {:fields
+  {:ID 123,
+   :Ordre "112",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché - Station service"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reckzAxlecnaNOZzX"}
+ {:fields
+  {:ID 328,
+   :Ordre "11,21",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "11.2.1 Système de détection d'intrusion"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "reckzDZcZeyQMpM9L"}
+ {:fields
+  {:ID 478,
+   :ID-Entrée "8_1_",
+   :Ordre "71",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "8- Comptage & suivi énergie eau - Cartographier les compteurs / sous-compteurs énergie"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "reclCnowuW4uaALEq"}
+ {:fields
+  {:ID 186,
+   :Ordre "175",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Ameublement - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reclFmmHg7Qf1BXLb"}
+ {:fields
+  {:ID 136,
+   :Ordre "125",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce - Grande Surface Spécialisée - Equipement de la personne et loisirs "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reclLhvADwL9a3ofY"}
+ {:fields
+  {:ID 301,
+   :Ordre "8,31",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.3.1 Emetteurs à eau chaude. pompes"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "reclfl0Vg2poNexy0"}
+ {:fields
+  {:ID 52,
+   :Ordre "41",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Banque -  Distributeur automatique de billets indépendant"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recli7p6puewgHLbe"}
+ {:fields
+  {:ID 74,
+   :Ordre "63",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce - Grande Surface Alimentaire - Petit supermarché (surface de vente comprise entre 400 m² et 1 000 m²)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recm0eLvNcJbP3OAm"}
+ {:fields
+  {:ID 20,
+   :Ordre "9",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Radio (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recm1NfprCBdjLqME"}
+ {:fields
+  {:ID 167,
+   :Ordre "156",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Accessoire de mode (Bijouterie, …) - Zone de vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recm9SZqM5vcFV1I1"}
+ {:fields
+  {:ID 340,
+   :Ordre "14",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "14. Fluides frigorigènes"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recmA8O9w3T9z6fxh"}
+ {:fields
+  {:ID 157,
+   :Ordre "146",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Zone de réserve - Equipement automobile et moto"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recmBaly4WUCue695"}
+ {:fields
+  {:ID 183,
+   :Ordre "172",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et services de détail - Equipement de la maison"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recmLexNDzTr5U4hB"}
+ {:fields
+  {:ID 277,
+   :Ordre "4",
+   :ref ["recQA7Q7On2rSssH6"],
+   :lib_fr "autres usages"},
+  :createdTime "2025-03-30T06:37:28.000Z",
+  :id "recmNiGc2QveXlYbA"}
+ {:fields
+  {:ID 181,
+   :Ordre "170",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Sports et Outdoor - Zone vente "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recmbTsTSRqxfFJLf"}
+ {:fields
+  {:ID 501,
+   :ID-Entrée "10_7",
+   :Ordre "94",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "10- Froid alimentaire - Installer portes performantes sur meubles frigorifiques"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recmmIlSUSn78DICf"}
+ {:fields
+  {:ID 206,
+   :Ordre "195",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerces et service de détail - Surgelés - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recmptntjOgFeqpZp"}
+ {:fields
+  {:ID 250,
+   :Ordre "239",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Salle de spectacles vivants - Ateliers Costumes"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recmqtIy3hZf79uXW"}
+ {:fields
+  {:ID 102,
+   :Ordre "91",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Grand supermarché -  Zone de vente - Textile, bazar, maison et bricolage"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recmrxGtdOwKbERBC"}
+ {:fields
+  {:ID 589,
+   :Ordre "3",
+   :ref ["recJzTsdfcuq6Umbr"],
+   :lib_fr "Mise en conformité - Règle existante"},
+  :createdTime "2025-04-08T09:15:08.000Z",
+  :id "recn0sInuvFx7gs0A"}
+ {:fields
+  {:ID 48,
+   :Ordre "37",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux - Autres activités de services"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recn5BwxEb8sWYYqG"}
+ {:fields
+  {:ID 58,
+   :Ordre "47",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Charcuterie et salaison - Zone en température dirigée"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recnVtUpmgwELfgFW"}
+ {:fields
+  {:ID 128,
+   :Ordre "117",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSB - Réserve température ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recnYJ8JLrlsgFdED"}
+ {:fields
+  {:ID 339,
+   :Ordre "13,1",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "13.1 Panneaux photo-voltaïques"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recnfl6isqEM87Fkt"}
+ {:fields
+  {:ID 152,
+   :Ordre "141",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce - Grande Surface Spécialisée - Equipement automobile et Moto "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recngIleqKgUzMMZ8"}
+ {:fields
+  {:ID 18,
+   :Ordre "7",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Accueil petite enfance - Halte garderie"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recnmuuAxOKO05YGq"}
+ {:fields
+  {:ID 489,
+   :ID-Entrée "9_5_",
+   :Ordre "82",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "9- BACS / gtb - Mettre en place / tenir à jour le carnet de GTB incluant l’analyse fonctionnelle"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recnuZNjD1ZOMHsM7"}
+ {:fields
+  {:ID 98,
+   :Ordre "87",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché - Zone de préparation cuisson"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reco71DHYbCo9NtgB"}
+ {:fields
+  {:ID 486,
+   :ID-Entrée "9_2_",
+   :Ordre "79",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "9- BACS / gtb - Inspecter régulièrement le bon fonctionnement de la GTB et optimiser son paramétrage"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recoIjvsrRoIpVOUB"}
+ {:fields
+  {:ID 303,
+   :Ordre "8,4",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.4 Traitement de l'air et éléments de désenfumage"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recoWMdHjPy1Klk1R"}
+ {:fields
+  {:ID 312,
+   :Ordre "9,1",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "9.1 Éléments sanitaires et robinetterie"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recobnsl7zfKL8oqf"}
+ {:fields
+  {:ID 108,
+   :Ordre "97",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce - Grande Surface Alimentaire - Hypermarché (surface de vente supérieure à 2 500 m²)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recomuqz2WxI5Qj65"}
+ {:fields
+  {:ID 537,
+   :ID-Entrée "14_1",
+   :Ordre "130",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "14- Numérique - Autre action sur le numérique"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recp9caJnH1HGU8rQ"}
+ {:fields
+  {:ID 163,
+   :Ordre "152",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "C Commercial et G Commerciale - Zones Sécurité"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recplGvnYHhZc2X96"}
+ {:fields
+  {:ID 208,
+   :Ordre "197",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Alimentaire - Réserve froid négatif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recpm64f6hmVlXtdV"}
+ {:fields
+  {:ID 172,
+   :Ordre "161",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Santé, Soins  (Pharmacie, Parapharmacie) - Zone vente "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recq4DKFtgX3EbZtU"}
+ {:fields
+  {:ID 194,
+   :Ordre "183",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerces et service de détail - Luminaire - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recqSW3vtMz9B3mhq"}
+ {:fields
+  {:ID 542,
+   :ID-Entrée "15_5",
+   :Ordre "135",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Végétaliser les espaces en pleine terre en privilégiant les essences indigènes autonomes en eau"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recqUReGTkOR2yPhc"}
+ {:fields
+  {:ID 54,
+   :Ordre "43",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerce de gros (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recqaAqLNwnLifdrK"}
+ {:fields
+  {:ID 132,
+   :Ordre "121",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSB - Atelier clients"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recqg9LS75JKl1S22"}
+ {:fields
+  {:ID 138,
+   :Ordre "127",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSS - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recqlzxk0Bmz6HMYR"}
+ {:fields
+  {:ID 151,
+   :Ordre "140",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSS - Zone de réserve Equipement de la maison - Température ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recr0tluDMYl2Hbs0"}
+ {:fields
+  {:ID 521,
+   :ID-Entrée "13_1",
+   :Ordre "114",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "13- Eau - Systématiser recherche de fuite et être réactif suite à détection de fuite"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recr2TJWm9B4WgqSm"}
+ {:fields
+  {:ID 94,
+   :Ordre "83",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Grand supermarché - Réserve et Drive température ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recrEu7yhgxHdNqrq"}
+ {:fields
+  {:ID 570,
+   :ID-Entrée "18_5",
+   :Ordre "163",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "18- Adaptation au risque climatique - Créer espace ombragé sur zones piétons & parking (arbres, ombrière végétale ou PV, …)"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recrHFoMD6ZOMfiTM"}
+ {:fields
+  {:ID 210,
+   :Ordre "199",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Alimentaire - Réserve froid ambiante"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recrLYEoIfqvj38Hs"}
+ {:fields
+  {:ID 286,
+   :Ordre "5",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr
+   "5. Cloisonnement, doublages, plafonds suspendus, menuiseries,"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recrR1ELy8Btls2GE"}
+ {:fields
+  {:ID 76,
+   :Ordre "65",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché  - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recrXjJxlgfToYKCy"}
+ {:fields
+  {:ID 42,
+   :Ordre "31",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux - Salle Haute Intensité – Salle de marché"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recrq4kY5tIFvl41Z"}
+ {:fields
+  {:ID 407, :Ordre "3", :ref ["recoHy3w92s70hRo6"], :lib_fr "Terminé"},
+  :createdTime "2025-04-08T08:40:12.000Z",
+  :id "recrqes0UWvTDkfrj"}
+ {:fields
+  {:ID 61,
+   :Ordre "50",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce de gros - Produits de la mer - Zone en température dirigée"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recru7Q7biMecPhL7"}
+ {:fields
+  {:ID 305,
+   :Ordre "8,41",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr
+   "8.4.1 Centrale de traitement d’air, caisson de ventilation"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recs3LMWlPKFSL2bw"}
+ {:fields
+  {:ID 8,
+   :Ordre "4",
+   :ref ["recYY7dKJJoGMZq9L"],
+   :lib_fr "4.Non assuré"},
+  :createdTime "2025-03-29T15:31:06.000Z",
+  :id "recs43sTgut3JzYYJ"}
+ {:fields
+  {:ID 147,
+   :Ordre "136",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSS - Zone de vente - Ameublement, Cuisines et Salles de bains, Art de la table"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recsD148qIKq896k1"}
+ {:fields
+  {:ID 47,
+   :Ordre "36",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux - Centre Documentaire"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recsID8WAyaPmtxij"}
+ {:fields
+  {:ID 415,
+   :ID-Entrée "1_8_",
+   :Ordre "8",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "1- Enveloppe bâtiment - Remplacer menuiseries extérieures par modèle plus performant sur le plan énergétique"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recseHrla3Gde0bLP"}
+ {:fields
+  {:ID 565,
+   :ID-Entrée "17_8",
+   :Ordre "158",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "17- Réduction & gestion des déchets - Autre action sur la réduction et la gestion des déchets"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recsjOVRJZylgQ3nv"}
+ {:fields
+  {:ID 416,
+   :ID-Entrée "1_9_",
+   :Ordre "9",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "1- Enveloppe bâtiment - Isoler le plancher bas en contact avec un vide sanitaire ou un terre-plein"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recskHnzGGAqi0EZ3"}
+ {:fields
+  {:ID 21,
+   :Ordre "10",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Radio - Administration et rédaction "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recsqSu2DeCfgobj8"}
+ {:fields
+  {:ID 492,
+   :ID-Entrée "9_8_",
+   :Ordre "85",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "9- BACS / gtb - Connecter le BACS à un dispositif de flexibilité du réseau électrique"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recswLu0PbfTasnrM"}
+ {:fields
+  {:ID 234,
+   :Ordre "223",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Culture et spectacles - Salle d'exposition & Galerie d'art"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recswnmN0mRlhBtVW"}
+ {:fields
+  {:ID 306,
+   :Ordre "8,41",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr
+   "8.4.1 Centrale de traitement d’air, caisson de ventilation"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rect2cymI08dtVSi2"}
+ {:fields
+  {:ID 112,
+   :Ordre "101",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché - Réserve et Drive Froid positif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rect96fV4dfrFcJix"}
+ {:fields
+  {:ID 12,
+   :Ordre "1",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Local vacant"},
+  :createdTime "2025-03-30T06:17:34.000Z",
+  :id "rectTPSrNdNGZUtKn"}
+ {:fields
+  {:ID 307,
+   :Ordre "8,42",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "8.4.2 Caisson de désenfumage"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "rectWwXGEABIccimZ"}
+ {:fields
+  {:ID 366,
+   :Ordre "14",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Appareils de cuisson"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "rectZab7nSvpDkDiR"}
+ {:fields
+  {:ID 536,
+   :ID-Entrée "14_9",
+   :Ordre "129",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "14- Numérique - Opter pour prestataire d’hébergement signataire du code européen des datacenters"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "rectcaQq0wrZyz59m"}
+ {:fields
+  {:ID 14,
+   :Ordre "3",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Accueil petite enfance"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "rectg44ZXUoiFMz5J"}
+ {:fields
+  {:ID 436,
+   :ID-Entrée "3_8_",
+   :Ordre "29",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "3- Réglage CVC - Décaler horaire remise en chauffe pour éviter appel de Puissance en heure de pointe"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recu4g46h5hW8UVCA"}
+ {:fields
+  {:ID 113,
+   :Ordre "102",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Hypermarché - Réserve et Drive Froid négatif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recuG4Sa4Uy7OIzhP"}
+ {:fields
+  {:ID 237,
+   :Ordre "226",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Salle d'exposition & Galerie d'art  - Salle d'exposition ouverte au public"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recuNuJqtAIgwlLmS"}
+ {:fields
+  {:ID 449,
+   :ID-Entrée "4_8_",
+   :Ordre "42",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "4- Maintenance CVC - Autre action maintenance CVC "},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recuT4vU12bzOtZcz"}
+ {:fields
+  {:ID 367,
+   :Ordre "15",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Aération et assainissement"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recuT6pDd9k6HFk9N"}
+ {:fields
+  {:ID 180,
+   :Ordre "169",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce et service de détail - Soins de la personne (Coiffeur, Salon d'esthétique, Massage) - Zone vente "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recuTdYtOmPSHUCaY"}
+ {:fields
+  {:ID 468,
+   :ID-Entrée "6_6_",
+   :Ordre "61",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "6- EnR / Abandon énergies fossiles - Installer / maintenir unités stockage d’énergie thermique / électrique"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recudRmidYyNm5Lgm"}
+ {:fields
+  {:ID 474,
+   :ID-Entrée "7_4_",
+   :Ordre "67",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "7- Eau chaude sanitaire - Récupérer énergie sur eaux grises ou air extrait pour préchauffage ECS"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recufKYPFGCwlp03P"}
+ {:fields
+  {:ID 91,
+   :Ordre "80",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerce - Grande Surface Alimentaire - Grand supermarché (surface de vente comprise entre 1 000 m² et 2 500 m²)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recug1NC8n1byXENY"}
+ {:fields
+  {:ID 520,
+   :ID-Entrée "12_7",
+   :Ordre "113",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "12- Achats responsables - Autre action sur les achats responsables"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recuzTTCJg124eXAi"}
+ {:fields
+  {:ID 488,
+   :ID-Entrée "9_4_",
+   :Ordre "81",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "9- BACS / gtb - Mettre en place un plan de formation sur l’utilisation des équipements connectés à la GTB"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recv0SZMFPm44kCzc"}
+ {:fields
+  {:ID 555,
+   :ID-Entrée "16_6",
+   :Ordre "148",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "16- Mobilité - Mettre en œuvre  des solutions d’autopartage"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recv0tRXsBrtNkty1"}
+ {:fields
+  {:ID 92,
+   :Ordre "81",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recv8M554p6QQQ1rk"}
+ {:fields
+  {:ID 31,
+   :Ordre "20",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Blanchisserie industrielle - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recvAaemIQ8OR15rL"}
+ {:fields
+  {:ID 547,
+   :ID-Entrée "15_1",
+   :Ordre "140",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Rendre les espaces verts accessibles et ludiques pour les utilisateurs du site"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recvCLbSitYjkyGDh"}
+ {:fields
+  {:ID 185,
+   :Ordre "174",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Equipement de la maison - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recvJVPtQbzLbm11W"}
+ {:fields
+  {:ID 543,
+   :ID-Entrée "15_6",
+   :Ordre "136",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Renaturer les espaces extérieurs artificialisés : parkings, cours de service, parvis, pieds de murs, …"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recvSHlxbUju2YnTL"}
+ {:fields
+  {:ID 476,
+   :ID-Entrée "7_6_",
+   :Ordre "69",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "7- Eau chaude sanitaire - Installer système ECS thermodynamique"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recvSr0nPWGzw0w9Y"}
+ {:fields
+  {:ID 285,
+   :Ordre "4",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "4. Couverture, étanchéité, charpente et zinguerie,"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recvZl6MFPbTR7GCx"}
+ {:fields
+  {:ID 556,
+   :ID-Entrée "16_7",
+   :Ordre "149",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "16- Mobilité - Communiquer sur le plan de mobilité"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recvqcK1zuEnvHAPQ"}
+ {:fields
+  {:ID 22,
+   :Ordre "11",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Radio - Studio d’enregistrement et de diffusion d’émissions radiophoniques"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recvrzFGdB0rHbAtq"}
+ {:fields
+  {:ID 44,
+   :Ordre "33",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bureaux - Zone Accueil Public"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recvtAF1CPKnpYSRC"}
+ {:fields
+  {:ID 593,
+   :Ordre "7",
+   :ref ["recJzTsdfcuq6Umbr"],
+   :lib_fr "Amélioration & Valorisation / Confort des occupants"},
+  :createdTime "2025-04-08T10:19:27.000Z",
+  :id "recw4i1SyJwrV1g2E"}
+ {:fields
+  {:ID 494,
+   :ID-Entrée "9_10",
+   :Ordre "87",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr "9- BACS / gtb - Autre action BACS / GTB"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recw5SbWbqcy11MkR"}
+ {:fields
+  {:ID 458,
+   :ID-Entrée "5_9_",
+   :Ordre "51",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Installer déstratificateur dans locaux chauffés avec grande hauteur sous plafond"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recwEQReSJdaIEQ02"}
+ {:fields
+  {:ID 93,
+   :Ordre "82",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Grand supermarché - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recwHyZyz1MvP2VzB"}
+ {:fields
+  {:ID 546,
+   :ID-Entrée "15_9",
+   :Ordre "139",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Veiller à ce que l’éclairage du site respecte l'obscurité nocture nécessaire à la biodiversité"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recweSJVAGOK1bOEa"}
+ {:fields
+  {:ID 191,
+   :Ordre "180",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Electroménager, Vidéo et HIFI - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recwgiUa1Ll6LLE2o"}
+ {:fields
+  {:ID 103,
+   :Ordre "92",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Grand supermarché - Zone de vente - Electroménager et média"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recwqJfPfJuXA8jpV"}
+ {:fields
+  {:ID 207,
+   :Ordre "196",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerces et service de détail - Traiteur - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recwvMyNiZuBq31s7"}
+ {:fields
+  {:ID 232,
+   :Ordre "221",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Musée en bâtiment sans protection patrimoniale - Zone de conservation des collections avec traitement climatique"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recx4pm7mz6dyqAHn"}
+ {:fields
+  {:ID 118,
+   :Ordre "107",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Hypermarché - Zone de vente Produits de grande consommation (épicerie, boissons, produits d'entretien de la personne et de la maison)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recxAaIR9UfB1Nrj4"}
+ {:fields
+  {:ID 242,
+   :Ordre "231",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Salle de spectacles vivants - Hall d'accueil"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recxB4aK7LCela0yC"}
+ {:fields
+  {:ID 452,
+   :ID-Entrée "5_3_",
+   :Ordre "45",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "5- Travaux CVC (hors abandon gaz & fioul) - Isoler canalisations de chauffage / eau glacée"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "recxCMc7SZwoFR4O6"}
+ {:fields
+  {:ID 9,
+   :Ordre "1",
+   :ref ["recyWaJ8o4WT8sH08"],
+   :lib_fr "1. Consommation Privative"},
+  :createdTime "2025-03-29T15:31:52.000Z",
+  :id "recxEpgpVYPDaH53P"}
+ {:fields
+  {:ID 187,
+   :Ordre "176",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerces et service de détail - Animalerie - Zone vente"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recxP6XS9V1upiJDf"}
+ {:fields
+  {:ID 336,
+   :Ordre "12,2",
+   :ref ["recqY5ku8APx2V3eX"],
+   :lib_fr "12.2 Escaliers mécaniques"},
+  :createdTime "2025-03-30T07:28:17.000Z",
+  :id "recxSkkFVQD8ljdWi"}
+ {:fields
+  {:ID 342,
+   :Ordre "2",
+   :ref ["recdr6F6MwtUns4xg"],
+   :lib_fr "Bâtiment"},
+  :createdTime "2025-04-06T09:20:07.000Z",
+  :id "recxkaCItqsp0cjw0"}
+ {:fields
+  {:ID 240,
+   :Ordre "229",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Salle de spectacles vivants (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recxvmnBDshXDf1I8"}
+ {:fields
+  {:ID 127,
+   :Ordre "116",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSB - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recyGgZAmz0Sfu9cf"}
+ {:fields
+  {:ID 159,
+   :Ordre "148",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "C Commercial et G Commerciale (Valeur par défaut)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recyRii9JpAtfbfPg"}
+ {:fields
+  {:ID 135,
+   :Ordre "124",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "GSB - Drive isolé"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recynELFidfvcYfGO"}
+ {:fields
+  {:ID 133,
+   :Ordre "122",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSB - Cours matériaux couverte (espace d'exposition éclairé et non chauffé)"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recyxRZHPvajfNpGg"}
+ {:fields
+  {:ID 218,
+   :Ordre "207",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Bibliothèque et médiathèque - Administration et bureaux"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recz1gXD0wtjEFxvC"}
+ {:fields
+  {:ID 78,
+   :Ordre "67",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Petit supermarché - Réserve et Drive Froid positif"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reczE11ev1eWmMRMi"}
+ {:fields
+  {:ID 141,
+   :Ordre "130",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "GSS - Zone de vente - Culture, Média et Loisirs (Librairie, téléphonie, produits culturels et technologiques, jeux et loisirs) "},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reczJDF6L5pdoW98L"}
+ {:fields
+  {:ID 360,
+   :Ordre "8",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Monte-charges"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "reczYLtG8MnvsIBKo"}
+ {:fields
+  {:ID 594,
+   :Ordre "8",
+   :ref ["recJzTsdfcuq6Umbr"],
+   :lib_fr "Amélioration & Valorisation/ Environnementale"},
+  :createdTime "2025-04-08T10:19:35.000Z",
+  :id "reczef9xxgqBpMfVS"}
+ {:fields
+  {:ID 369,
+   :Ordre "17",
+   :ref ["recZlLBPcifII7nVM"],
+   :lib_fr "Machines et équipements de travail"},
+  :createdTime "2025-04-07T19:05:55.000Z",
+  :id "recziwqKxoTmVRXdl"}
+ {:fields
+  {:ID 541,
+   :ID-Entrée "15_4",
+   :Ordre "134",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Installer des abris pour la faune sur les espaces extérieurs et sur le bâti"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "reczjkB5EYvm2NDsM"}
+ {:fields
+  {:ID 195,
+   :Ordre "184",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr
+   "Commerces et service de détail - Service et Réparation de produits et équipements - Accueil public et process"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reczkLbdWTU5qLI8U"}
+ {:fields
+  {:ID 197,
+   :Ordre "186",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Commerces et services de détail - Alimentaire"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "recztjwFuiZBDHFXt"}
+ {:fields
+  {:ID 538,
+   :ID-Entrée "15_1",
+   :Ordre "131",
+   :ref ["recjm9gFrU9JQllDi"],
+   :lib_fr
+   "15- Biodiversité - Effectuer un diagnostic biodiversité du site en intégrant un référentiel harmonisé tel que CBSh ou GBS"},
+  :createdTime "2025-04-08T08:52:41.000Z",
+  :id "reczwJuzUVvyg1C4t"}
+ {:fields
+  {:ID 248,
+   :Ordre "237",
+   :ref ["recqZYDq0OjBDPax2"],
+   :lib_fr "Salle de spectacles vivants - Machinerie et Grill"},
+  :createdTime "2025-03-30T06:32:13.000Z",
+  :id "reczzcPPhAXPV5DRZ"}]
