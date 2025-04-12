@@ -260,15 +260,6 @@ const HomePage = () => {
     clearAllSelections();
   }, [clearAllSelections]);
   
-  // Pour déboguer
-  useEffect(() => {
-    console.log('Conversations chargées:', conversations);
-  }, [conversations]);
-  
-  // Déboguer les sélections
-  useEffect(() => {
-    console.log('Sélections actuelles:', selectedItems);
-  }, [selectedItems]);
 
   // Afficher le spinner de chargement
   if (loading) {
