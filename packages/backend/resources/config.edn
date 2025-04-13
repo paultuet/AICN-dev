@@ -2,12 +2,12 @@
 {:adapter/airtable {:token "patwAngcaYTKHNkKH.cce10c30445139105b2ee155835a2b34b7058ff3eb149f5cef3a2ac09d10dcca"
                     :app-id "app1JbI9haIqgWkiz"}
  :db/pg {:jdbc {:dbtype "postgresql"
-                :dbname "postgres"
+                :dbname "aicn_db"
                 :host #env DB_HOST
                 :port #long #env DB_PORT
                 :user #env DB_USER
                 :password #env DB_PASSWORD
-                :sslmode "require"}}
+                :sslmode #env SSL_MODE}}
  :http/server {:port #long #or [#env PORT 1337]
                :dev-mode? true
                :db/ds #ig/ref :db/pg}}

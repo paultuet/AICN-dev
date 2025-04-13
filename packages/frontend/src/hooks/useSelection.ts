@@ -40,12 +40,12 @@ export function useSelection({ referentials, onSelectionChange }: UseSelectionPr
     
     // Si le champ est déjà sélectionné, désélectionner
     if (existingFieldIndex >= 0) {
-      const newSelectedItems = [];
+      const newSelectedItems: Selection[] = [];
       setSelectedItems(newSelectedItems);
       if (onSelectionChange) onSelectionChange(newSelectedItems);
     } else {
       // Sinon, remplacer toute sélection actuelle par ce champ uniquement
-      const newSelectedItems = [{
+      const newSelectedItems: Selection[] = [{
         type: 'field',
         entityId,
         fieldIds: [fieldId]
@@ -65,12 +65,12 @@ export function useSelection({ referentials, onSelectionChange }: UseSelectionPr
     
     if (existingSelectionIndex >= 0) {
       // Si le groupe est déjà sélectionné, tout désélectionner
-      const newSelectedItems = [];
+      const newSelectedItems: Selection[] = [];
       setSelectedItems(newSelectedItems);
       if (onSelectionChange) onSelectionChange(newSelectedItems);
     } else {
       // Si le groupe n'est pas sélectionné, remplacer toute sélection existante par ce groupe
-      const newSelectedItems = [{
+      const newSelectedItems: Selection[] = [{
         type: 'group',
         entityId,
         groupName

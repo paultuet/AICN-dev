@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import api from '../services/api';
 import { Entity } from '../types/referential';
-import { Conversation } from '../types/conversation';
+// import { Conversation } from '../types/conversation';
 
 // Composants
 import LoadingSpinner from '../components/ui/LoadingSpinner';
@@ -16,7 +16,7 @@ import ConversationSidebar from '../components/conversations/ConversationSidebar
 // Hooks personnalisés
 import useConversation from '../hooks/useConversation';
 import useReferentialFilters from '../hooks/useReferentialFilters';
-import useSelection from '../hooks/useSelection';
+// import useSelection from '../hooks/useSelection';
 
 // Utilitaires
 import { getConversationsForField, getConversationsForGroup } from '../utils/referentialUtils';
@@ -42,7 +42,7 @@ const HomePage = () => {
     createConversation,
     sendMessage,
     fieldBelongsToGroupWithConversation,
-    clearSelection: clearConversationSelection,
+    clearSelection,  // Renamed from clearConversationSelection
     openConversation,
     setViewMode,
     setSelectedConversationId,

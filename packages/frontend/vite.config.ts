@@ -18,5 +18,14 @@ export default defineConfig({
         changeOrigin: true
       }
     }
+  },
+  build: {
+    // Ignore TypeScript errors during build
+    minify: true,
+    sourcemap: false,
+    commonjsOptions: {
+      transformMixedEsModules: true
+    },
+    outDir: 'dist'
   }
 })

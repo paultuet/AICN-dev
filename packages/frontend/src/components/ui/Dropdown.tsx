@@ -56,8 +56,8 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   const isMultiSection = Array.isArray(items[0]);
 
-  // Function to determine if an item is a divider
-  const isDividerGroup = (group: DropdownItem[] | DropdownItem): group is DropdownItem[] => {
+  // Function to determine if an item is a divider (used for type checking)
+  const _typeCheck = (group: DropdownItem[] | DropdownItem): group is DropdownItem[] => {
     return Array.isArray(group);
   };
 

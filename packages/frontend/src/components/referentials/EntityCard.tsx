@@ -26,7 +26,6 @@ interface EntityCardProps {
 
 const EntityCard: React.FC<EntityCardProps> = ({
   entity,
-  conversations,
   searchTerm,
   showOnlyWithConversations,
   isGroupSelected,
@@ -63,7 +62,7 @@ const EntityCard: React.FC<EntityCardProps> = ({
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {Object.entries(groupedFields).map(([groupName, fields], groupIndex) => {
+            {Object.entries(groupedFields).map(([groupName, fields]) => {
               // Vérifier si le groupe devrait être affiché
               if (showOnlyWithConversations && !shouldDisplayGroup(entity['entity-id'], groupName, fields)) {
                 return null;
