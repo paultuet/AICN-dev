@@ -16,8 +16,8 @@
 
 (defn get-api-routes [opts]
   ["" {:interceptors [(core/init-system-interceptor opts)
-                      #_auth/authentication-interceptor
-                      #_auth/authorization-interceptor]}
+                      auth/authentication-interceptor
+                      auth/authorization-interceptor]}
    ["/referentiels" {:get {:summary "Get all referentiels"
                            :responses {200 {:body :any}}
                            :interceptors [core/get-all-referentiels-interceptor]

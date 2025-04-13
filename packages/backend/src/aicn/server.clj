@@ -5,9 +5,7 @@
             [reitit.http :as http]
             [integrant.core :as ig]
             [aicn.routes :refer [get-api-routes]]
-            [reitit.swagger :as swagger]
             [reitit.swagger-ui :as swagger-ui]
-            [ring.util.time :as ring-time]
             [reitit.openapi :as openapi]
             [reitit.dev.pretty :as pretty]
             [ring.middleware.reload :as reload]
@@ -53,23 +51,18 @@
   (-> (http/ring-handler
        (http/router
         [["/api"
-          ["/swagger.json"
-           {:get {:no-doc true
-                  :swagger {:info {:title "my-api"
-                                   :description {:name "math", :description "math api"}}}
-                  :handler (swagger/create-swagger-handler)}}]
           ["/openapi.json"
            {:get {:no-doc true
-                  :openapi {:info {:title "my-api"
-                                   :description "openapi3-docs with reitit-http"
+                  :openapi {:info {:title "AICN ref api"
+                                   :description "API des référenciels AICN"
                                    :version "0.0.1"}
                             :components {:securitySchemes
-                                         {:bearer-auth
+                                         {:bearerHttpAuthentication
                                           {:type "http"
                                            :scheme "bearer"
                                            :bearerFormat "JWT"
-                                           :description "Le bearer"}}
-                                         :security [{:bearer-auth []}]}}
+                                           :description "Bearer token using a JWT"}}}
+                            :security [{:bearerHttpAuthentication []}]}
                   :handler (openapi/create-openapi-handler)}}]
           (get-api-routes opts)
           (auth/routes opts)]]
@@ -82,8 +75,7 @@
                             :default-values true
                             :options nil})
                 :muuntaja muuntaja-core/instance
-                :interceptors [swagger/swagger-feature
-                               openapi/openapi-feature
+                :interceptors [openapi/openapi-feature
                                (parameters/parameters-interceptor)
                                (muuntaja/format-negotiate-interceptor)
                                (muuntaja/format-response-interceptor)
@@ -96,8 +88,7 @@
         (swagger-ui/create-swagger-ui-handler
          {:path "/api"
           :config {:validatorUrl nil
-                   :urls [{:name "swagger", :url "swagger.json"}
-                          {:name "openapi", :url "openapi.json"}]
+                   :urls [{:name "openapi", :url "openapi.json"}]
                    :urls.primaryName "openapi"
                    :operationsSorter "alpha"}})
         (ring/create-default-handler
