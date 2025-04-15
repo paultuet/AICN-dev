@@ -7,6 +7,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: aicn_db
+      # Force script execution
+      POSTGRES_INITDB_ARGS: "--data-checksums"
     ports:
       - "5439:5432"
     volumes:
@@ -51,8 +53,6 @@ services:
       PORT: 3000
     ports:
       - "3000:3000"
-    expose:
-      - "3000"
     depends_on:
       - backend
     networks:
