@@ -31,8 +31,6 @@ services:
       PGPASSWORD: postgres
       PGDATABASE: aicn_db
       PGHOST: postgres
-    volumes:
-      - ./scripts:/scripts
     command: >
       sh -c "
         # Attendez que PostgreSQL soit prêt
@@ -41,8 +39,55 @@ services:
           sleep 1
         done
         echo 'PostgreSQL is ready! Executing initialization script...'
-        # Exécutez le script d'initialisation
-        psql -f /scripts/init-db.sql
+        
+        # Commandes d'initialisation
+        psql -U postgres -d aicn_db -h postgres -c 'CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";'
+        psql -U postgres -d aicn_db -h postgres -c 'CREATE SCHEMA IF NOT EXISTS ecr;'
+        
+        # Table users
+        psql -U postgres -d aicn_db -h postgres -c 'CREATE TABLE IF NOT EXISTS users (
+          id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+          email VARCHAR(255) UNIQUE NOT NULL, 
+          password_hash VARCHAR(255) NOT NULL,
+          name VARCHAR(255) NOT NULL,
+          organization VARCHAR(255) NOT NULL,
+          role VARCHAR(50) NOT NULL CHECK (role IN (\"ADMIN\", \"USER\")),
+          access_rights JSONB NOT NULL DEFAULT \"{\\\"referenceIds\\\": [], \\\"categoryIds\\\": []}\",
+          created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+          updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+        );'
+        
+        # Table conversations
+        psql -U postgres -d aicn_db -h postgres -c 'CREATE TABLE IF NOT EXISTS conversations (
+          id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+          table_id UUID NOT NULL,
+          item_id VARCHAR(255) NOT NULL,
+          status VARCHAR(50) NOT NULL CHECK (status IN (\"OPEN\", \"CLOSED\", \"ARCHIVED\")),
+          created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+          updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+          closed_at TIMESTAMP WITH TIME ZONE,
+          archived_at TIMESTAMP WITH TIME ZONE
+        );'
+        
+        # Table messages
+        psql -U postgres -d aicn_db -h postgres -c 'CREATE TABLE IF NOT EXISTS messages (
+          id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+          conversation_id UUID NOT NULL REFERENCES conversations(id),
+          user_id UUID NOT NULL REFERENCES users(id),
+          content TEXT NOT NULL,
+          created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+        );'
+        
+        # Index
+        psql -U postgres -d aicn_db -h postgres -c 'CREATE INDEX IF NOT EXISTS idx_conversations_table_id ON conversations(table_id);'
+        psql -U postgres -d aicn_db -h postgres -c 'CREATE INDEX IF NOT EXISTS idx_conversations_status ON conversations(status);'
+        psql -U postgres -d aicn_db -h postgres -c 'CREATE INDEX IF NOT EXISTS idx_messages_conversation_id ON messages(conversation_id);'
+        psql -U postgres -d aicn_db -h postgres -c 'CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);'
+        
+        # Utilisateur admin
+        psql -U postgres -d aicn_db -h postgres -c 'INSERT INTO users (email, password_hash, name, organization, role)
+        VALUES (''admin@example.com'', ''bcrypt+blake2b-512$54ea933c69de0d145ef87d47c8e1a836$12$e8f22c729a5dd00d866c76a6754058b0f098d5986a3f47d9'', ''Admin'', ''AICN'', ''ADMIN'') ON CONFLICT (email) DO NOTHING;'
+        
         echo 'Initialization script executed!'
       "
     depends_on:
