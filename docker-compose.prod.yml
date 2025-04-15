@@ -1,7 +1,7 @@
 services:
   # Base de données PostgreSQL
   postgres:
-    image: postgres:17
+    image: postgres:15
     container_name: aicn-postgres
     environment:
       POSTGRES_USER: postgres
