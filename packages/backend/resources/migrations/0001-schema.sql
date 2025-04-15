@@ -1,11 +1,13 @@
--- Create UUID extension
+-- Schema configuration
+-- This migration ensures the schema is configured properly
+
+-- Create UUID extension if needed
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Create schema
+-- Create schema and set search path 
 CREATE SCHEMA IF NOT EXISTS aicn_db;
 
--- Create tables in public schema since the application code doesn't use schema prefixes
--- Create users table
+-- Create users table in public schema for backward compatibility
 CREATE TABLE IF NOT EXISTS public.users (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     email VARCHAR(255) UNIQUE NOT NULL,
@@ -18,7 +20,7 @@ CREATE TABLE IF NOT EXISTS public.users (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Create conversations table
+-- Create conversations table in public schema
 CREATE TABLE IF NOT EXISTS public.conversations (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     table_id UUID NOT NULL,
@@ -30,7 +32,7 @@ CREATE TABLE IF NOT EXISTS public.conversations (
     archived_at TIMESTAMP WITH TIME ZONE
 );
 
--- Create messages table
+-- Create messages table in public schema
 CREATE TABLE IF NOT EXISTS public.messages (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     conversation_id UUID NOT NULL REFERENCES public.conversations(id),
@@ -40,11 +42,12 @@ CREATE TABLE IF NOT EXISTS public.messages (
 );
 
 -- Create indexes
-CREATE INDEX idx_conversations_table_id ON public.conversations(table_id);
-CREATE INDEX idx_conversations_status ON public.conversations(status);
-CREATE INDEX idx_messages_conversation_id ON public.messages(conversation_id);
-CREATE INDEX idx_messages_user_id ON public.messages(user_id);
+CREATE INDEX IF NOT EXISTS idx_conversations_table_id ON public.conversations(table_id);
+CREATE INDEX IF NOT EXISTS idx_conversations_status ON public.conversations(status);
+CREATE INDEX IF NOT EXISTS idx_messages_conversation_id ON public.messages(conversation_id);
+CREATE INDEX IF NOT EXISTS idx_messages_user_id ON public.messages(user_id);
 
--- Insert admin user (password: adminpass)
+-- Insert admin user (password: adminpass) if not exists
 INSERT INTO public.users (email, password_hash, name, organization, role)
-VALUES ('admin@example.com', 'bcrypt+blake2b-512$54ea933c69de0d145ef87d47c8e1a836$12$e8f22c729a5dd00d866c76a6754058b0f098d5986a3f47d9' , 'Admin', 'AICN', 'ADMIN') ON CONFLICT (email) DO NOTHING;
+VALUES ('admin@example.com', 'bcrypt+blake2b-512$54ea933c69de0d145ef87d47c8e1a836$12$e8f22c729a5dd00d866c76a6754058b0f098d5986a3f47d9', 'Admin', 'AICN', 'ADMIN') 
+ON CONFLICT (email) DO NOTHING;
