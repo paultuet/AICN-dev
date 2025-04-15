@@ -32,7 +32,7 @@ services:
       PGDATABASE: aicn_db
       PGHOST: postgres
     volumes:
-      - ./scripts/init-db.sql:/init-db.sql
+      - ./scripts:/scripts
     command: >
       sh -c "
         # Attendez que PostgreSQL soit prêt
@@ -42,7 +42,7 @@ services:
         done
         echo 'PostgreSQL is ready! Executing initialization script...'
         # Exécutez le script d'initialisation
-        psql -f /init-db.sql
+        psql -f /scripts/init-db.sql
         echo 'Initialization script executed!'
       "
     depends_on:
