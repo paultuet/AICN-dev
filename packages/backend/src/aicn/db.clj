@@ -217,6 +217,7 @@
                  (.setConnectionTimeout 30000)
                  (.setLeakDetectionThreshold 60000) ;; Détecte les fuites après 60s
                  (.setPoolName "supabase-pool")
+                 (.setSchema (:current-schema db-spec))
                  ;; SSL pour Supabase
                  (.addDataSourceProperty "sslmode" (:sslmode db-spec))
                  ;; Paramètres de connexion supplémentaires
