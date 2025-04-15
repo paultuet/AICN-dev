@@ -32,9 +32,9 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
       SSL_MODE: disable
-      VIRTUAL_HOST: api.example.com
+      VIRTUAL_HOST: api.bisou.finance
       VIRTUAL_PORT: 1337
-      LETSENCRYPT_HOST: api.example.com
+      LETSENCRYPT_HOST: api.bisou.finance
     expose:
       - "1337"
     depends_on:
@@ -49,9 +49,9 @@ services:
       context: ./packages/frontend
     container_name: aicn-frontend
     environment:
-      VIRTUAL_HOST: example.com
+      VIRTUAL_HOST: bisou.finance,www.bisou.finance
       VIRTUAL_PORT: 80
-      LETSENCRYPT_HOST: example.com
+      LETSENCRYPT_HOST: bisou.finance,www.bisou.finance
     expose:
       - "80"
     depends_on:
@@ -84,7 +84,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - acme:/etc/acme.sh
     environment:
-      DEFAULT_EMAIL: votre-email@example.com
+      DEFAULT_EMAIL: carvalho.thomas@gmail.com
     depends_on:
       - nginx-proxy
     networks:
