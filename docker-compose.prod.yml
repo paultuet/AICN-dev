@@ -32,7 +32,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
       SSL_MODE: disable
-      COOLIFY_DOMAIN: rwkcww4c48sso0gw44wwgo0o.185.172.57.92.sslip.io
+      COOLIFY_DOMAIN: yggg488g8cos0ogwkgog0oks.185.172.57.92.sslip.io
     expose:
       - "1337"
     depends_on:
@@ -49,8 +49,8 @@ services:
     environment:
       COOLIFY_DOMAIN: yggg488g8cos0ogwkgog0oks.185.172.57.92.sslip.io
       PORT: 3000
-    expose:
-      - "3000"
+    ports:
+      - "3000:3000"
     depends_on:
       - backend
     networks:
