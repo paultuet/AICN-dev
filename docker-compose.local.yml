@@ -10,7 +10,7 @@ services:
     ports:
       - "5439:5432"
     volumes:
-      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - ./scripts:/docker-entrypoint-initdb.d/
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -35,35 +35,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      db-init:
-        condition: service_completed_successfully
-    
-  # Service pour initialiser la base de données
-  db-init:
-    image: postgres:15-alpine
-    container_name: aicn-db-init
-    environment:
-      PGUSER: postgres
-      PGPASSWORD: postgres
-      PGDATABASE: aicn_db
-      PGHOST: postgres
-    volumes:
-      - ./scripts/init-db.sql:/init-db.sql
-    command: >
-      sh -c "
-        # Attendez que PostgreSQL soit prêt
-        until pg_isready -h postgres -U postgres; do
-          echo 'Waiting for PostgreSQL to be ready...'
-          sleep 1
-        done
-        echo 'PostgreSQL is ready! Executing initialization script...'
-        # Exécutez le script d'initialisation
-        psql -f /init-db.sql
-        echo 'Initialization script executed!'
-      "
-    depends_on:
-      postgres:
-        condition: service_healthy
 
   # Frontend React application
   frontend:
@@ -74,5 +45,4 @@ services:
       - "80:80"
     depends_on:
       - backend
-      - db-init
 
