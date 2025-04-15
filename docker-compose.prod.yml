@@ -51,8 +51,8 @@ services:
           password_hash VARCHAR(255) NOT NULL,
           name VARCHAR(255) NOT NULL,
           organization VARCHAR(255) NOT NULL,
-          role VARCHAR(50) NOT NULL CHECK (role IN (\"ADMIN\", \"USER\")),
-          access_rights JSONB NOT NULL DEFAULT \"{\\\"referenceIds\\\": [], \\\"categoryIds\\\": []}\",
+          role VARCHAR(50) NOT NULL CHECK (role IN ('"'"'ADMIN'"'"', '"'"'USER'"'"')),
+          access_rights JSONB NOT NULL DEFAULT '"'"'{"referenceIds": [], "categoryIds": []}'"'"',
           created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
           updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
         );'
@@ -62,7 +62,7 @@ services:
           id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
           table_id UUID NOT NULL,
           item_id VARCHAR(255) NOT NULL,
-          status VARCHAR(50) NOT NULL CHECK (status IN (\"OPEN\", \"CLOSED\", \"ARCHIVED\")),
+          status VARCHAR(50) NOT NULL CHECK (status IN ('"'"'OPEN'"'"', '"'"'CLOSED'"'"', '"'"'ARCHIVED'"'"')),
           created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
           updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
           closed_at TIMESTAMP WITH TIME ZONE,
