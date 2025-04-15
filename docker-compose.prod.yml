@@ -92,6 +92,7 @@ services:
         psql -U postgres -d aicn_db -h postgres -f /tmp/init-simple.sql
         
         echo 'Initialization script executed!'
+        exit 0
       "
     depends_on:
       postgres:
