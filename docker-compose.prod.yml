@@ -48,8 +48,9 @@ services:
     container_name: aicn-frontend
     environment:
       COOLIFY_DOMAIN: yggg488g8cos0ogwkgog0oks.185.172.57.92.sslip.io
+      PORT: 3000
     expose:
-      - "80"
+      - "3000"
     depends_on:
       - backend
     networks:
