@@ -1,8 +1,12 @@
 #!/bin/bash
 set -e
 
+# Wait for PostgreSQL to be ready
+echo "Waiting for PostgreSQL to be ready..."
+sleep 10
+
 # Initialization script for AICN database
-PGPASSWORD=${POSTGRES_PASSWORD} psql -v ON_ERROR_STOP=1 --username "${POSTGRES_USER}" --dbname "${POSTGRES_DB}" <<-EOSQL
+psql -v ON_ERROR_STOP=1 --username "${POSTGRES_USER}" --dbname "${POSTGRES_DB}" <<-EOSQL
 -- Create UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
@@ -51,7 +55,7 @@ CREATE INDEX idx_messages_user_id ON messages(user_id);
 
 -- Insert admin user (password: adminpass)
 INSERT INTO users (email, password_hash, name, organization, role)
-VALUES ('admin@example.com', 'bcrypt+blake2b-512$54ea933c69de0d145ef87d47c8e1a836$12$e8f22c729a5dd00d866c76a6754058b0f098d5986a3f47d9' , 'Admin', 'AICN', 'ADMIN') ON CONFLICT (email) DO NOTHING;
+VALUES ('admin@example.com', 'bcrypt+blake2b-512$54ea933c69de0d145ef87d47c8e1a836$12$e8f22c729a5dd00d866c76a6754058b0f098d5986a3f47d9', 'Admin', 'AICN', 'ADMIN') ON CONFLICT (email) DO NOTHING;
 EOSQL
 
 echo "Database initialization completed successfully"
