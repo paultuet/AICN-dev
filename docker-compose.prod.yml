@@ -33,7 +33,7 @@ services:
       DB_PASSWORD: postgres
       SSL_MODE: disable
     labels:
-      coolify.hostname: api.bisou.finance
+      - "coolify.hostname=api.bisou.finance"
     expose:
       - "1337"
     depends_on:
@@ -48,7 +48,8 @@ services:
       context: ./packages/frontend
     container_name: aicn-frontend
     labels:
-      coolify.hostname: bisou.finance,www.bisou.finance
+      - "coolify.hostname=bisou.finance"
+      - "coolify.hostname.alias=www.bisou.finance"
     expose:
       - "80"
     depends_on:
