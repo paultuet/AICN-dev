@@ -2,7 +2,7 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Create schema
-CREATE SCHEMA IF NOT EXISTS ecr;
+CREATE SCHEMA IF NOT EXISTS aicn_db;
 
 -- Create users table
 CREATE TABLE IF NOT EXISTS users (
