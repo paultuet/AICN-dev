@@ -10,7 +10,7 @@ services:
     ports:
       - "5439:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      # - postgres-data:/var/lib/postgresql/data
       - ./scripts/01-init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
@@ -57,8 +57,8 @@ services:
       - aicn-network
 
 
-volumes:
-  postgres-data:
+# volumes:
+  # postgres-data:
 
 networks:
   aicn-network:
