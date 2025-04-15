@@ -46,5 +46,4 @@ CREATE INDEX idx_messages_user_id ON messages(user_id);
 
 -- Insert admin user (password: adminpass)
 INSERT INTO users (email, password_hash, name, organization, role)
-VALUES ('admin@example.com', '\$2a\$10\$hHDWWf5Nf9Z8tBXNgcG3L.ERF.xK.DgKEDJtNdnNI9X1yXOgEXniq', 'Admin', 'AICN', 'ADMIN')
-ON CONFLICT (email) DO NOTHING;
+VALUES ('admin@example.com', 'bcrypt+blake2b-512$54ea933c69de0d145ef87d47c8e1a836$12$e8f22c729a5dd00d866c76a6754058b0f098d5986a3f47d9' , 'Admin', 'AICN', 'ADMIN') ON CONFLICT (email) DO NOTHING;

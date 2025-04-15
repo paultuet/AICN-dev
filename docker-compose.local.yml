@@ -16,8 +16,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    networks:
-      - aicn-network
 
   # Backend Clojure application
   backend:
@@ -39,8 +37,6 @@ services:
         condition: service_healthy
       db-init:
         condition: service_completed_successfully
-    networks:
-      - aicn-network
     
   # Service pour initialiser la base de données
   db-init:
@@ -68,8 +64,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    networks:
-      - aicn-network
 
   # Frontend React application
   frontend:
@@ -81,9 +75,4 @@ services:
     depends_on:
       - backend
       - db-init
-    networks:
-      - aicn-network
 
-networks:
-  aicn-network:
-    driver: bridge
