@@ -11,14 +11,7 @@ services:
       - "5439:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ./scripts:/docker-scripts
-    command: >
-      bash -c "
-        docker-entrypoint.sh postgres &
-        sleep 10
-        psql -U postgres -d aicn_db -f /docker-scripts/init-db.sql || true
-        wait %1
-      "
+      - ./scripts:/docker-entrypoint-initdb.d/
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
