@@ -127,8 +127,8 @@
   (let [s (atom nil)]
     (reset! s (run-server {:dev-mode? dev-mode?
                            :opts opts
-                           :server-options {:join? false :port port}}))
-    (println (format "server running in port %d" port))
+                           :server-options {:join? false :port port :host "0.0.0.0"}}))
+    (println (format "server running on 0.0.0.0:%d" port))
     @s))
 
 (defmethod ig/init-key :http/server [_ opts]
