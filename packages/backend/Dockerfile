@@ -63,13 +63,7 @@ WORKDIR /app
 COPY --from=backend-builder /app/target/aicn.jar ./app.jar
 
 # Default environment variables
-ENV PORT=1337 \
-    DB_HOST=aws-0-eu-west-3.pooler.supabase.com \
-    DB_PORT=5432 \
-    DB_USER=postgres.yaskxhahopdeearpjlhw \
-    DB_PASSWORD=BRc8n$7bzU \
-    DB_NAME=postgres \
-    SSL_MODE=enable
+ENV PORT=1337
 
 # Expose the port
 EXPOSE ${PORT}

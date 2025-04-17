@@ -10,13 +10,7 @@ primary_region = 'cdg'
   dockerfile = 'packages/backend/Dockerfile'
 
 [env]
-  DB_HOST = 'aws-0-eu-west-3.pooler.supabase.com'
-  DB_NAME = 'postgres'
-  DB_PASSWORD = 'BRc8n$7bzU'
-  DB_PORT = '5432'
-  DB_USER = 'postgres.yaskxhahopdeearpjlhw'
   PORT = '8080'
-  SSL_MODE = 'require'
 
 [http_service]
   internal_port = 1337
