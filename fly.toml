@@ -10,7 +10,7 @@ primary_region = 'cdg'
   dockerfile = 'packages/backend/Dockerfile'
 
 [env]
-  PORT = '8080'
+  PORT = '1337'
 
 [http_service]
   internal_port = 1337
