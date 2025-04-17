@@ -1,38 +1,75 @@
-FROM clojure:latest AS build
+# Stage 1: Build frontend
+FROM node:18-alpine AS frontend-builder
 
 WORKDIR /app
 
-# Copy dependencies first for better caching
-COPY deps.edn build.clj ./
+# Install pnpm globally
+RUN npm install -g pnpm
+
+# Copy frontend files
+COPY packages/frontend/package.json packages/frontend/
+COPY packages/frontend/tsconfig.json packages/frontend/tsconfig.node.json packages/frontend/vite.config.ts packages/frontend/
+COPY packages/frontend/tailwind.config.js packages/frontend/postcss.config.js packages/frontend/index.html packages/frontend/
+
+# Install frontend dependencies
+WORKDIR /app/packages/frontend
+RUN pnpm install
+
+# Copy frontend source code
+COPY packages/frontend/public ./public
+COPY packages/frontend/src ./src
+
+# Update the vite config to output API URLs correctly for production
+RUN sed -i 's/target: .*/target: "http:\/\/127.0.0.1:1337",/' vite.config.ts
+
+# Build frontend
+RUN pnpm build
+
+# Stage 2: Build backend
+FROM clojure:latest AS backend-builder
+
+WORKDIR /app
+
+# Copy backend dependencies
+COPY packages/backend/deps.edn packages/backend/build.clj ./
+
+# Resolve dependencies
 RUN clojure -P
 
-# Copy source code
-COPY src/ src/
-COPY resources/ resources/
-COPY dev/ dev/
+# Create resources directory and public folder for static files
+RUN mkdir -p resources/public
+
+# Copy configuration files
+COPY packages/backend/resources/config.edn resources/
+# COPY packages/backend/resources/config.local.edn resources/
+COPY packages/backend/resources/data/ resources/data/
+
+# Copy frontend build to backend resources
+COPY --from=frontend-builder /app/packages/frontend/dist/ resources/public/
+
+# Copy backend source code
+COPY packages/backend/src/ src/
+COPY packages/backend/dev/ dev/
 
 # Build uberjar
 RUN clojure -T:build ci
 
-# Create runtime image
+# Stage 3: Runtime
 FROM eclipse-temurin:17-jre-jammy
 
 WORKDIR /app
 
-# Copy the uberjar from the build stage
-COPY --from=build /app/target/aicn.jar ./app.jar
+# Copy the uberjar from the backend build stage
+COPY --from=backend-builder /app/target/aicn.jar ./app.jar
 
-# Define environment variables with default values
+# Default environment variables
 ENV PORT=1337 \
-    DB_HOST=postgres \
+    DB_HOST=aws-0-eu-west-3.pooler.supabase.com \
     DB_PORT=5432 \
-    DB_USER=postgres \
-    DB_PASSWORD=postgres \
-    DB_NAME=aicn_db \
-    SSL_MODE=disable \
-    VIRTUAL_HOST=api.example.com \
-    VIRTUAL_PORT=1337 \
-    LETSENCRYPT_HOST=api.example.com
+    DB_USER=postgres.yaskxhahopdeearpjlhw \
+    DB_PASSWORD=BRc8n$7bzU \
+    DB_NAME=postgres \
+    SSL_MODE=enable
 
 # Expose the port
 EXPOSE ${PORT}

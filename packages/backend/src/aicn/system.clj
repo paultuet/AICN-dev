@@ -25,7 +25,13 @@
    {:profile profile}))
 
 (defn -main [& args]
-  (ig/init (get-config :dev)))
+  (let [config-file (if (System/getenv "DB_HOST")
+                     ;; Si DB_HOST est défini, utiliser la config de production
+                     (get-config :prod)
+                     ;; Sinon, utiliser la config locale
+                     (get-config :local))]
+    (println "Starting system with config profile:" (if (System/getenv "DB_HOST") :prod :local))
+    (ig/init config-file)))
 
 (comment
   (get-system))

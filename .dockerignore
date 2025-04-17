@@ -1,0 +1,120 @@
+# flyctl launch added from .gitignore
+# Dependencies
+**/node_modules
+**/.pnp
+**/.pnp.js
+
+# Production
+**/dist
+**/build
+**/target
+**/out
+
+# Clojure
+**/.cpcache
+**/.nrepl-port
+**/.clj-kondo/.cache
+**/.lsp/.cache
+
+# Logs
+**/logs
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# Editor directories and files
+**/.vscode/*
+!**/.vscode/extensions.json
+!**/.vscode/settings.json
+**/.idea
+**/.DS_Store
+**/*.suo
+**/*.ntvs*
+**/*.njsproj
+**/*.sln
+**/*.sw?
+
+# Environment variables
+**/.env
+**/.env.*
+!**/.env.example
+
+# Cache
+**/.eslintcache
+**/.stylelintcache
+
+# flyctl launch added from .husky/_/.gitignore
+.husky/_/**/*
+
+# flyctl launch added from node_modules/.pnpm/tailwindcss@3.4.17/node_modules/tailwindcss/stubs/.gitignore
+!node_modules/.pnpm/tailwindcss@3.4.17/node_modules/tailwindcss/stubs/**/*
+
+# flyctl launch added from packages/backend/.gitignore
+packages/backend/**/.calva/output-window
+packages/backend/**/.classpath
+packages/backend/**/.clj-kondo/.cache
+packages/backend/**/.cpcache
+packages/backend/**/.eastwood
+packages/backend/**/.factorypath
+packages/backend/**/.hg
+packages/backend/**/.hgignore
+packages/backend/**/.java-version
+packages/backend/**/.lein-*
+packages/backend/**/.lsp/.cache
+packages/backend/**/.lsp/sqlite.db
+packages/backend/**/.nrepl-history
+packages/backend/**/.nrepl-port
+packages/backend/**/.project
+packages/backend/**/.rebel_readline_history
+packages/backend/**/.settings
+packages/backend/**/.socket-repl-port
+packages/backend/**/.sw*
+packages/backend/**/.vscode
+packages/backend/**/*.class
+packages/backend/**/*.jar
+packages/backend/**/*.swp
+packages/backend/**/*~
+packages/backend/checkouts
+packages/backend/classes
+packages/backend/target
+packages/backend/**/*.DS_Store
+
+packages/backend/**/node_modules
+packages/backend/**/.shadow-cljs
+packages/backend/**/package-lock.json
+packages/backend/**/resources/public/js/cljs-runtime
+packages/backend/**/resources/public/js/main.js
+packages/backend/**/resources/public/css/main.css
+packages/backend/**/resources/public/js/manifest.edn
+packages/backend/**/node_modules
+packages/backend/**/.env
+packages/backend/**/resources/config.local.edn
+
+# flyctl launch added from packages/frontend/.gitignore
+# Logs
+packages/frontend/**/logs
+packages/frontend/**/*.log
+packages/frontend/**/npm-debug.log*
+packages/frontend/**/yarn-debug.log*
+packages/frontend/**/yarn-error.log*
+packages/frontend/**/pnpm-debug.log*
+packages/frontend/**/lerna-debug.log*
+
+packages/frontend/**/node_modules
+packages/frontend/**/dist
+packages/frontend/**/dist-ssr
+packages/frontend/**/*.local
+
+# Editor directories and files
+packages/frontend/**/.vscode/*
+!packages/frontend/**/.vscode/extensions.json
+packages/frontend/**/.idea
+packages/frontend/**/.DS_Store
+packages/frontend/**/*.suo
+packages/frontend/**/*.ntvs*
+packages/frontend/**/*.njsproj
+packages/frontend/**/*.sln
+packages/frontend/**/*.sw?
+fly.toml
