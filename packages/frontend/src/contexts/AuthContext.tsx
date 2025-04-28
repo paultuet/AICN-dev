@@ -106,20 +106,25 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const register = async (userData: RegisterCredentials) => {
     try {
       console.log("Register with:", userData);
-      const { token } = await authService.register(userData)
+      const { user } = await authService.register(userData)
+
+      if (!user) {
+        throw new Error("Error on registration");
+      }
+
 
       // Save token
-      localStorage.setItem('authToken', token)
+      // localStorage.setItem('authToken', token)
 
       // Set in axios headers
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+      // api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       // Get user from token
-      const userDataFromToken = authService.getCurrentUser()
+      // const userDataFromToken = authService.getCurrentUser()
 
       // Set user
-      setUser(userDataFromToken)
-      setIsAuthenticated(true)
+      // setUser(userDataFromToken)
+      // setIsAuthenticated(true)
 
     } catch (error) {
       console.error("Register error:", error);
