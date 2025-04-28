@@ -1,13 +1,14 @@
 ;; resources/config.edn
-{:adapter/airtable {:token "patwAngcaYTKHNkKH.cce10c30445139105b2ee155835a2b34b7058ff3eb149f5cef3a2ac09d10dcca"
-                    :app-id "app1JbI9haIqgWkiz"}
- :db/pg {:jdbc {:dbtype "postgresql"
-                :dbname #env DB_NAME
-                :host #env DB_HOST
-                :port #long #env DB_PORT
-                :user #env DB_USER
-                :password #env DB_PASSWORD
-                :sslmode #env SSL_MODE}}
+{:adapter/airtable {:token #env AIRTABLE_TOKEN
+                    :app-id #env AIRTABLE_APP_ID}
+ :db/jdbc {:dbtype "postgresql"
+           :dbname #env DB_NAME
+           :host #env DB_HOST
+           :port #long #env DB_PORT
+           :user #env DB_USER
+           :password #env DB_PASSWORD
+           :sslmode #env SSL_MODE}
+ :db/pg {:jdbc #ig/ref :db/jdbc}
  :email/sender {:host #env EMAIL_HOST
                 :port #long #or [#env EMAIL_PORT 587]
                 :username #env EMAIL_USERNAME
@@ -16,7 +17,7 @@
                 :tls true}
  :logger/telemere {:min-level #keyword #or [#env LOG_LEVEL "info"]
                    :appenders {:println {:enabled? true}}}
- :migrations/runner {:db-conn #ig/ref :db/pg
+ :migrations/runner {:db-spec #ig/ref :db/jdbc
                      :migrations-dir "migrations"}
  :http/server {:port #long #or [#env PORT 1337]
                :dev-mode? true
