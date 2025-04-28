@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import authService from '../services/auth'
 import api from '../services/api'
+import { AxiosError } from 'axios'
 
 // Utilisez ces interfaces temporairement jusqu'à ce que le backend fonctionne
 interface AuthUser {

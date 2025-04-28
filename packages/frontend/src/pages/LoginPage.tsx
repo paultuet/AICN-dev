@@ -48,7 +48,16 @@ const LoginPage = () => {
               <svg className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span>{error}</span>
+              <div>
+                <span>{error}</span>
+                {error.includes("Email not verified") && (
+                  <div className="mt-2">
+                    <Link to="/resend-verification" className="text-indigo-600 underline">
+                      Renvoyer l'email de vérification
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           )}
           

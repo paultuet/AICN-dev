@@ -4,6 +4,8 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import NotFoundPage from './pages/NotFoundPage'
+import VerifyEmailPage from './pages/VerifyEmailPage'
+import ResendVerificationPage from './pages/ResendVerificationPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import { useAuth } from './contexts/AuthContext'
 
@@ -43,6 +45,8 @@ function App() {
           <RegisterPage />
         </AuthRedirect>
       } />
+      <Route path="/verify-email" element={<VerifyEmailPage />} />
+      <Route path="/resend-verification" element={<ResendVerificationPage />} />
       
       {/* Routes protégées (accessibles uniquement aux utilisateurs connectés) */}
       <Route element={<ProtectedRoute />}>

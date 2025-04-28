@@ -6,9 +6,15 @@
    [java-time.api :as time]
    [re-frame.core :as rf]
    [aicn.core :as core]
-   [aicn.db :as repo]))
+   [aicn.db :as repo]
+   [aicn.email :as email]
+   [aicn.logger :as log]
+   [ring.util.response :as response]))
 
 (def secret "votre-clé-secrète-très-longue")
+
+(defn get-frontend-url [config]
+  (get-in config [:frontend :url] "http://localhost:3000"))
 
 (defn hash-password [password]
   (hashers/derive password {:alg :bcrypt+blake2b-512
@@ -18,9 +24,20 @@
   (let [{:keys [valid]} (hashers/verify plain-password hashed-password)]
     valid))
 
+(defn send-verification-email 
+  ([user frontend-url]
+   (send-verification-email user frontend-url false))
+  ([user frontend-url is-resend]
+   (when user
+     (let [email-builder (if is-resend
+                           email/build-resend-verification-email
+                           email/build-verification-email)
+           verification-email (email-builder frontend-url user)]
+       (email/send-email! verification-email)))))
+
 (defn create-user-with-password
   "Helper function to create a user with a plain text password that gets hashed"
-  [datasource {:keys [email password name organization role]
+  [datasource {:keys [email password name organization role verification-token verification-token-expires-at]
                :or {role "USER"}}]
   (try
     (let [password-hash (hash-password password)
@@ -30,7 +47,9 @@
                      :name name
                      :organization organization
                      :role role
-                     :access-rights access-rights}]
+                     :access-rights access-rights
+                     :verification-token verification-token
+                     :verification-token-expires-at verification-token-expires-at}]
       (repo/create-user datasource user-data))
     (catch Exception e
       (throw (ex-info "Failed to create user"
@@ -39,7 +58,7 @@
                       e)))))
 
 (defn login
-  [{:keys [db/ds parameters]}]
+  [{:keys [db/ds parameters config]}]
   (if (nil? parameters)
     {:status 400 :body {:message "No parameters received"}}
 
@@ -51,12 +70,17 @@
 
         (if-let [user (repo/get-user-by-email ds (str/lower-case email))]
           (if (valid-password? password (:password-hash user))
-            (let [claims {:email (:email user)
-                          :id (:id user)
-                          :exp (time/plus (time/instant) (time/seconds 3600))}
-                  token (jwt/sign claims secret {:alg :hs512})]
-              {:status 200
-               :body {:token token}})
+            (if (:email-verified user)
+              (let [claims {:email (:email user)
+                            :id (:id user)
+                            :exp (time/plus (time/instant) (time/seconds 3600))}
+                    token (jwt/sign claims secret {:alg :hs512})]
+                {:status 200
+                 :body {:token token}})
+              (do
+                (send-verification-email user (get-frontend-url config))
+                {:status 403
+                 :body {:message "Email not verified. Please check your email to verify your account."}}))
             {:status 400
              :body {:message "wrong auth data"}})
           {:status 400
@@ -86,8 +110,22 @@
                   (assoc :response {:status 401 :body {:error "Non autorisé"}})
                   (assoc :queue nil))))})
 
+(defn- generate-verification-token []
+  (java.util.UUID/randomUUID))
+
+(defn- generate-token-expiry []
+  (time/plus (time/instant) (time/hours 24)))
+
+
+
+(defn send-welcome-email [user frontend-url]
+  (let [welcome-email (email/build-welcome-email frontend-url user)]
+    (email/send-email! welcome-email)))
+
+
+
 (defn register
-  [{:keys [db/ds parameters]}]
+  [{:keys [db/ds parameters config]}]
   (if (nil? parameters)
     {:status 400 :body {:message "No parameters received"}}
 
@@ -95,7 +133,8 @@
     (let [params (or (:form parameters)
                      (:body parameters)
                      {})
-          {:keys [email password name organization]} params]
+          {:keys [email password name organization]} params
+          frontend-url (get-frontend-url config)]
 
       (if (or (nil? email) (nil? password) (nil? name) (nil? organization))
         {:status 400 :body {:message "Missing required fields"}}
@@ -108,19 +147,25 @@
           ;; Create new user
           (try
             (println "Attempting to create user...")
-            (let [user-data {:email email
+            (let [verification-token (generate-verification-token)
+                  token-expires-at (generate-token-expiry)
+                  user-data {:email email
                              :password password
                              :name name
-                             :organization organization}
-                  user (create-user-with-password ds user-data)
-                  claims {:email (:email user)
-                          :id (:id user)
-                          :exp (time/plus (time/instant) (time/seconds 3600))}
-                  token (jwt/sign claims secret {:alg :hs512})
-                  result {:status 201
-                          :body {:token token
-                                 :user (select-keys user [:id :email :name :organization :role])}}]
-              result)
+                             :organization organization
+                             :verification-token verification-token
+                             :verification-token-expires-at token-expires-at}
+                  user (create-user-with-password ds user-data)]
+
+              ;; Send verification email
+              (send-verification-email
+               (assoc user :verification-token verification-token)
+               frontend-url
+               false)
+
+              {:status 201
+               :body {:message "User registered successfully. Please check your email to verify your account."
+                      :user (select-keys user [:id :email :name :organization :role])}})
             (catch Exception e
               ;; Formatez l'erreur pour inclure autant d'informations que possible
               (let [error-details {:message (.getMessage e)
@@ -130,6 +175,69 @@
                 {:status 500
                  :body {:error "Failed to register user"
                         :details error-details}}))))))))
+
+(defn verify-email
+  [{:keys [db/ds parameters config]}]
+  (let [token (get-in parameters [:query :token])
+        _ (println token)
+        frontend-url (get-in config [:frontend :url] "http://localhost:3000")]
+    (if (nil? token)
+      {:status 400 :body {:message "Missing verification token"}}
+
+      (if-let [user (repo/get-user-by-verification-token ds token)]
+        (let [now (time/instant)
+              _ (println user)
+              token-expired? (time/after? now (:verification-token-expires-at user))
+              _ (println token-expired?)]
+
+          (if token-expired?
+            {:status 400 :body {:message "Verification token has expired. Please request a new one."}}
+
+            ;; Mark email as verified and clear token
+            (do
+              (try
+                (repo/update-user ds {:id (:id user)
+                                      :email-verified true
+                                      :verification-token nil
+                                      :verification-token-expires-at nil})
+                (catch Exception e
+                  (log/error e)))
+
+              ;; Send welcome email
+              (send-welcome-email user frontend-url)
+
+              {:status 200 :body {:message "Email verified successfully. You can now log in."}})))
+
+        {:status 404 :body {:message "Invalid verification token"}}))))
+
+(defn resend-verification-email
+  [{:keys [db/ds parameters config]}]
+  (let [email (get-in parameters [:body :email])
+        frontend-url (get-in config [:frontend :url] "http://localhost:3000")]
+    (if (nil? email)
+      {:status 400 :body {:message "Email is required"}}
+
+      (if-let [user (repo/get-user-by-email ds email)]
+        (if (:email-verified user)
+          {:status 400 :body {:message "Email is already verified"}}
+
+          (let [verification-token (generate-verification-token)
+                token-expires-at (generate-token-expiry)
+                updated-user (try
+                               (repo/update-user ds {:id (:id user)
+                                                     :verification-token verification-token
+                                                     :verification-token-expires-at token-expires-at})
+                               (catch Exception e (log/error e)))]
+
+            ;; Send verification email
+            (send-verification-email
+             (assoc updated-user :verification-token verification-token)
+             frontend-url
+             true)
+
+            {:status 200 :body {:message "Verification email sent. Please check your inbox."}}))
+
+        {:status 404 :body {:message "User not found"}}))))
 
 (defn routes [opts]
   ["/auth" {:openapi {:tags ["auth"]}
@@ -157,6 +265,22 @@
                      :responses {200 {:body :any}}
                      :handler (fn [request]
                                 (login request))}}]
+   ["/verify-email" {:get {:summary "Verify email address"
+                           :parameters {:query [:map
+                                                [:token :string]]}
+                           :responses {200 {:body :any}
+                                       400 {:body :any}
+                                       404 {:body :any}}
+                           :handler (fn [request]
+                                      (verify-email request))}}]
+   ["/resend-verification" {:post {:summary "Resend verification email"
+                                   :parameters {:body [:map
+                                                       [:email :string]]}
+                                   :responses {200 {:body :any}
+                                               400 {:body :any}
+                                               404 {:body :any}}
+                                   :handler (fn [request]
+                                              (resend-verification-email request))}}]
    ["/me" {:openapi {:tags ["auth"]}
            :interceptors [authentication-interceptor
                           authorization-interceptor]
@@ -171,7 +295,6 @@
                                  :body (select-keys user [:id :email :name :organization :role])}
                                 {:status 404
                                  :body {:error "User not found"}})))}}]])
-
 
 
 

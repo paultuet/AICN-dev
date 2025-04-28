@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenue chez AICN !</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4f46e5;
+    }
+    h1 {
+      color: #111;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .login-button {
+      display: inline-block;
+      background-color: #4f46e5;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 500;
+      margin: 20px 0;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #666;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+    .tips {
+      background-color: #f9f9ff;
+      border-left: 4px solid #4f46e5;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .feature {
+      margin: 15px 0;
+    }
+    .feature-title {
+      font-weight: bold;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">AICN</div>
+  </div>
+
+  <h1>Félicitations, {{name}} !</h1>
+
+  <p>Votre compte a été vérifié avec succès. Bienvenue dans la communauté AICN !</p>
+
+  <p>Vous pouvez maintenant vous connecter à votre compte et commencer à utiliser notre plateforme.</p>
+
+  <div style="text-align: center;">
+    <a href="{{login-url}}" class="login-button">Se connecter</a>
+  </div>
+
+  <div class="tips">
+    <p><strong>Quelques conseils pour bien débuter :</strong></p>
+    <div class="feature">
+      <div class="feature-title">Complétez votre profil</div>
+      <p>Personnalisez votre profil pour tirer le meilleur parti de nos services.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-title">Explorez nos fonctionnalités</div>
+      <p>Découvrez toutes les fonctionnalités que nous proposons pour vous aider dans votre travail.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-title">Contactez-nous</div>
+      <p>Notre équipe est disponible pour répondre à vos questions et vous aider dans vos démarches.</p>
+    </div>
+  </div>
+
+  <p>Nous vous remercions de votre confiance et sommes ravis de vous compter parmi nos utilisateurs.</p>
+
+  <div class="footer">
+    <p>&copy; {{year}} AICN. Tous droits réservés.</p>
+    <p>Pour tout problème ou question, n'hésitez pas à nous contacter.</p>
+  </div>
+</body>
+</html>

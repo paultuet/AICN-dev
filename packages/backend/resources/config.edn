@@ -8,7 +8,18 @@
                 :user #env DB_USER
                 :password #env DB_PASSWORD
                 :sslmode #env SSL_MODE}}
+ :email/sender {:host #env EMAIL_HOST
+                :port #long #or [#env EMAIL_PORT 587]
+                :username #env EMAIL_USERNAME
+                :password #env EMAIL_PASSWORD
+                :from #env EMAIL_FROM
+                :tls true}
+ :logger/telemere {:min-level #keyword #or [#env LOG_LEVEL "info"]
+                   :appenders {:println {:enabled? true}}}
+ :migrations/runner {:db-conn #ig/ref :db/pg
+                     :migrations-dir "migrations"}
  :http/server {:port #long #or [#env PORT 1337]
                :dev-mode? true
-               :db/ds #ig/ref :db/pg}}
+               :db/ds #ig/ref :db/pg
+               :config {:frontend {:url #or [#env FRONTEND_URL "http://localhost:3000"]}}}}
 

@@ -7,9 +7,12 @@
             [next.jdbc.connection :as connection]
             [next.jdbc.sql :as sql]
             [aicn.schema :refer [encode decode]]
+            [hikari-cp.core :as hk]
             [malli.core :as m]
             [aicn.model :as model]
-            [malli.util :as mu])
+            [malli.util :as mu]
+            [next.jdbc.date-time]
+            [aicn.logger :as log])
   (:import (org.postgresql.util PGobject)
            (com.zaxxer.hikari HikariDataSource HikariConfig)
            (java.sql PreparedStatement)
@@ -60,18 +63,51 @@
     (<-pgobject v)))
 
 ;; User functions
-(defn create-user [datasource {:keys [email password-hash name organization role access-rights]}]
+(defn create-user [datasource {:keys [email password-hash name organization role access-rights verification-token verification-token-expires-at]}]
   (->> (jdbc/execute-one! datasource
-                     ["INSERT INTO users (email, password_hash, name, organization, role, access_rights) 
-      VALUES (?::text, ?::text, ?::text, ?::text, ?::text, ?::jsonb) 
-      RETURNING *"
-                      email password-hash name organization role access-rights]
-                     {:builder-fn rs/as-unqualified-maps})
+                          ["INSERT INTO users (
+                       email, 
+                       password_hash, 
+                       name, 
+                       organization, 
+                       role, 
+                       access_rights,
+                       email_verified,
+                       verification_token,
+                       verification_token_expires_at
+                     ) 
+                      VALUES (
+                        ?::text, 
+                        ?::text, 
+                        ?::text, 
+                        ?::text, 
+                        ?::text, 
+                        ?::jsonb,
+                        FALSE,
+                        ?::uuid,
+                        ?::timestamptz
+                      ) 
+                      RETURNING *"
+                           email
+                           password-hash
+                           name
+                           organization
+                           role
+                           access-rights
+                           verification-token
+                           verification-token-expires-at]
+                          {:builder-fn rs/as-unqualified-maps})
        (decode model/User)))
 
 (defn get-user-by-email [datasource email]
   (->> (jdbc/execute-one! datasource
                           ["SELECT * FROM users WHERE email = ?::text" email]
+                          {:builder-fn rs/as-unqualified-maps})
+       (decode model/User)))
+
+(defn get-user-by-verification-token [datasource token]
+  (->> (jdbc/execute-one! datasource
+                          ["SELECT * FROM users WHERE verification_token = ?::uuid" token]
                           {:builder-fn rs/as-unqualified-maps})
        (decode model/User)))
 
@@ -81,19 +117,26 @@
                           {:builder-fn rs/as-unqualified-maps})
        (decode model/User)))
 
-(defn update-user [datasource {:keys [id name organization role access-rights]}]
-  (->> (jdbc/execute-one! datasource
-                          ["UPDATE users SET 
+(defn update-user [datasource {:keys [id name organization role access-rights email-verified verification-token verification-token-expires-at]}]
+  (let [log-ds (jdbc/with-logging datasource (fn [sym sql-params]
+                                               (prn sym sql-params)))
+
+        res (jdbc/execute-one! log-ds
+                               ["UPDATE users SET 
                             name = COALESCE(?::text, name),
                             organization = COALESCE(?::text, organization),
                             role = COALESCE(?::text, role),
                             access_rights = COALESCE(?::jsonb, access_rights),
+                            email_verified = COALESCE(?::boolean, email_verified),
+                            verification_token = ?::uuid,
+                            verification_token_expires_at = ?::timestamptz,
                             updated_at = NOW()
                             WHERE id = ?::uuid
                             RETURNING *"
-                           name organization role access-rights id]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/User)))
+                                name organization role access-rights email-verified verification-token verification-token-expires-at id]
+                               {:builder-fn rs/as-unqualified-maps})]
+    (println res)
+    (decode model/User res)))
 
 (defn update-user-password [datasource {:keys [id password-hash]}]
   (->> (jdbc/execute-one! datasource
@@ -131,7 +174,7 @@
 (defn get-conversation-by-table-and-item [datasource table-id item-id]
   (->> (jdbc/execute-one! datasource
                           ["SELECT * FROM conversations 
-                            WHERE table_id = ?::uuid AND item_id = ?::text" 
+                            WHERE table_id = ?::uuid AND item_id = ?::text"
                            table-id item-id]
                           {:builder-fn rs/as-unqualified-maps})
        (decode model/Conversation)))
@@ -203,7 +246,6 @@
                       {:builder-fn rs/as-unqualified-maps})
        (decode [:vector (mu/assoc model/Message :user-name :string)])))
 
-
 (defn create-datasource [db-spec]
   (let [config (doto (HikariConfig.)
                  (.setJdbcUrl (str "jdbc:postgresql://" (:host db-spec) ":" (:port db-spec) "/" (:dbname db-spec)))
@@ -225,8 +267,30 @@
                  (.setConnectionTestQuery "SELECT 1"))]
     (HikariDataSource. config)))
 
+(defn jdbc->hk-config [jdbc]
+  {:auto-commit        true
+   :read-only          false
+   :connection-timeout 30000
+   :validation-timeout 5000
+   :idle-timeout       600000
+   :max-lifetime       1800000
+   :minimum-idle       10
+   :maximum-pool-size  10
+   :pool-name          "supabase-pool"
+   :adapter            "postgresql"
+   :username           (:user jdbc)
+   :password           (:password jdbc)
+   :database-name      (:dbname jdbc)
+   :server-name        (:host jdbc)
+   :port-number        (:port jdbc)
+   :register-mbeans    false
+   :sslmode (:sslmode jdbc)})
+
+(defmethod ig/init-key :db/jdbc [_ jdbc]
+  jdbc)
+
 (defmethod ig/init-key :db/pg [_ {:keys [jdbc init]}]
-  (let [ds (create-datasource jdbc)]
+  (let [ds (create-datasource jdbc) #_(hk/make-datasource (jdbc->hk-config jdbc))]
     {:ds ds}))
 
 (defmethod ig/resolve-key :db/pg [_ {:keys [ds]}]
@@ -237,6 +301,8 @@
   (.close ds))
 
 (comment
+  (def conf (aicn.system/get-config :local))
+  (jdbc->hk-config (get-in conf [:db/pg :jdbc]))
   (def s (aicn.system/get-system))
   (def ds (get-in s [:db/pg :ds]))
   (get-all-users ds))

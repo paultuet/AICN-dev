@@ -18,7 +18,7 @@ export interface LoginResponse {
 }
 
 export interface RegisterResponse {
-  token: string
+  message: string
   user: {
     id: string
     email: string
@@ -59,6 +59,22 @@ const authService = {
       console.error("Registration error:", err);
       throw err;
     }
+  },
+  
+  /**
+   * Verify email with token
+   */
+  verifyEmail: async (token: string): Promise<{ message: string }> => {
+    const response = await api.get(`/auth/verify-email?token=${token}`)
+    return response.data
+  },
+  
+  /**
+   * Resend verification email
+   */
+  resendVerification: async (email: string): Promise<{ message: string }> => {
+    const response = await api.post('/auth/resend-verification', { email })
+    return response.data
   },
 
   /**

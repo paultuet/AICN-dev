@@ -5,6 +5,9 @@
             [clojure.java.io :as io]
             [aicn.server]
             [aicn.adapters.airtable]
+            [aicn.email]
+            [aicn.migrations]
+            [aicn.logger]
             [integrant.repl.state])
   (:gen-class))
 

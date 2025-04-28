@@ -10,6 +10,9 @@
    [:organization :string]
    [:role [:enum "ADMIN" "USER"]]
    [:access-rights :map]
+   [:email-verified {:optional true} [:maybe :boolean]]
+   [:verification-token {:optional true} [:maybe :uuid]]
+   [:verification-token-expires-at {:optional true} [:maybe inst?]]
    [:created-at inst?]
    [:updated-at inst?]])
 

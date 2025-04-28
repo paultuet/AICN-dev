@@ -21,3 +21,9 @@
 ## Database
 - Local PostgreSQL via Docker: `docker-compose up -d`
 - Database name: `aicn_db`, user: `postgres`, password: `postgres`
+
+## Database Migrations
+- Run migrations: `cd packages/backend && clojure -M:migrate`
+- Rollback last migration: `cd packages/backend && clojure -M:rollback`
+- Create new migration: `cd packages/backend && clojure -M:cli create my-migration-name`
+- Migration files are stored in `packages/backend/resources/migrations/`
