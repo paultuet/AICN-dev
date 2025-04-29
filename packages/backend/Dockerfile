@@ -43,6 +43,7 @@ RUN mkdir -p resources/public
 COPY packages/backend/resources/config.edn resources/
 # COPY packages/backend/resources/config.local.edn resources/
 COPY packages/backend/resources/data/ resources/data/
+COPY packages/backend/resources/migrations/ resources/migrations/
 
 # Copy frontend build to backend resources
 COPY --from=frontend-builder /app/packages/frontend/dist/ resources/public/
