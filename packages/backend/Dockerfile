@@ -63,10 +63,10 @@ WORKDIR /app
 COPY --from=backend-builder /app/target/aicn.jar ./app.jar
 
 # Default environment variables
-# ENV PORT=1337
+ENV PORT=1337
 
 # Expose the port
-# EXPOSE ${PORT}
+EXPOSE ${PORT}
 
 # Start the application
 CMD ["java", "-jar", "app.jar"]
