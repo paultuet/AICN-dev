@@ -23,7 +23,8 @@
             [clojure.java.io :as io]
             [malli.util :as mu]
             [clojure.string :as str]
-            [aicn.auth :as auth]))
+            [aicn.auth :as auth]
+            [aicn.logger :as logger]))
 
 (defn reloading-ring-handler
   "Reload ring handler on each request."
@@ -79,7 +80,14 @@
                                (parameters/parameters-interceptor)
                                (muuntaja/format-negotiate-interceptor)
                                (muuntaja/format-response-interceptor)
-                               (exception/exception-interceptor)
+                               (exception/exception-interceptor
+                                {:on-exception (fn [exception request]
+                                                 (logger/error "API Error:" (.getMessage exception) 
+                                                              {:exception-data (ex-data exception)
+                                                               :uri (:uri request)
+                                                               :request-method (:request-method request)
+                                                               :params (:params request)})
+                                                 (throw exception))})
                                (muuntaja/format-request-interceptor)
                                (coercion/coerce-response-interceptor)
                                (coercion/coerce-request-interceptor)
