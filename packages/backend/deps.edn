@@ -51,6 +51,8 @@
         day8.re-frame/http-fx {:mvn/version "0.2.4"}
         dev.weavejester/ragtime {:mvn/version "0.11.0"}
         com.taoensso/telemere {:mvn/version "1.0.0-RC5"}
+        com.taoensso/telemere-slf4j {:mvn/version "1.0.0-RC5"}
+        org.slf4j/slf4j-api {:mvn/version "2.0.17"}
         org.clojure/tools.cli {:mvn/version "1.1.230"}
         com.sun.mail/jakarta.mail {:mvn/version "2.0.1"}}
 
