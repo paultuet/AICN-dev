@@ -264,7 +264,9 @@
                  (.addDataSourceProperty "sslmode" (:sslmode db-spec))
                  ;; Paramètres de connexion supplémentaires
                  (.setAutoCommit true)
-                 (.setConnectionTestQuery "SELECT 1"))]
+                 (.setConnectionTestQuery "SELECT 1")
+                 ;; Réduire la verbosité des logs
+                 (.setRegisterMbeans false))]
     (HikariDataSource. config)))
 
 (defn jdbc->hk-config [jdbc]
