@@ -44,6 +44,7 @@ COPY packages/backend/resources/config.edn resources/
 # COPY packages/backend/resources/config.local.edn resources/
 COPY packages/backend/resources/data/ resources/data/
 COPY packages/backend/resources/migrations/ resources/migrations/
+COPY packages/backend/resources/templates/ resources/templates/
 
 # Copy frontend build to backend resources
 COPY --from=frontend-builder /app/packages/frontend/dist/ resources/public/
@@ -71,4 +72,10 @@ EXPOSE ${PORT}
 
 # Make sure we're listening on the correct address
 CMD echo "Starting application on 0.0.0.0:${PORT}" && \
-    java -Djava.net.preferIPv4Stack=true -Djetty.host=0.0.0.0 -Djetty.http.host=0.0.0.0 -jar app.jar
+    java -Djava.awt.headless=true \
+         -Djava.net.preferIPv4Stack=true \
+         -Djetty.host=0.0.0.0 \
+         -Djetty.http.host=0.0.0.0 \
+         -Djetty.port=${PORT} \
+         -Djava.rmi.server.hostname=0.0.0.0 \
+         -jar app.jar
