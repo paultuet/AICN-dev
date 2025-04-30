@@ -24,9 +24,9 @@
   (let [{:keys [valid]} (hashers/verify plain-password hashed-password)]
     valid))
 
-(defn send-verification-email 
+(defn send-verification-email-template! 
   ([user frontend-url]
-   (send-verification-email user frontend-url false))
+   (send-verification-email-template! user frontend-url false))
   ([user frontend-url is-resend]
    (when user
      (let [email-builder (if is-resend
@@ -57,8 +57,51 @@
                        :data {:email email :name name :organization organization}}
                       e)))))
 
+(defn- generate-verification-token []
+  (java.util.UUID/randomUUID))
+
+(defn- generate-token-expiry []
+  (time/plus (time/instant) (time/hours 24)))
+
+
+
+(defn send-welcome-email [user frontend-url]
+  (let [welcome-email (email/build-welcome-email frontend-url user)]
+    (email/send-email! welcome-email)))
+
+(defn send-verification-email
+  ([opts]
+   (send-verification-email opts {:resend? false}))
+  ([{:keys [db/ds parameters config]} {:keys [resend?] :or {resend? false}}]
+   (let [email (get-in parameters [:body :email])
+         frontend-url (get-in config [:frontend :url] "http://localhost:3000")]
+     (if (nil? email)
+       {:status 400 :body {:message "Email is required"}}
+
+       (if-let [user (repo/get-user-by-email ds email)]
+         (if (:email-verified user)
+           {:status 400 :body {:message "Email is already verified"}}
+
+           (let [verification-token (generate-verification-token)
+                 token-expires-at (generate-token-expiry)
+                 updated-user (try
+                                (repo/update-user ds {:id (:id user)
+                                                      :verification-token verification-token
+                                                      :verification-token-expires-at token-expires-at})
+                                (catch Exception e (log/error e)))]
+
+             ;; Send verification email
+             (send-verification-email-template! 
+              (assoc updated-user :verification-token verification-token)
+              frontend-url
+              resend?)
+
+             {:status 200 :body {:message "Verification email sent. Please check your inbox."}}))
+
+         {:status 404 :body {:message "User not found"}})))))
+
 (defn login
-  [{:keys [db/ds parameters config]}]
+  [{:keys [db/ds parameters config] :as opts}]
   (if (nil? parameters)
     {:status 400 :body {:message "No parameters received"}}
 
@@ -78,7 +121,7 @@
                 {:status 200
                  :body {:token token}})
               (do
-                (send-verification-email user (get-frontend-url config))
+                (send-verification-email (assoc-in opts [:parameters :body :email] email))
                 {:status 403
                  :body {:message "Email not verified. Please check your email to verify your account."}}))
             {:status 400
@@ -110,22 +153,8 @@
                   (assoc :response {:status 401 :body {:error "Non autorisé"}})
                   (assoc :queue nil))))})
 
-(defn- generate-verification-token []
-  (java.util.UUID/randomUUID))
-
-(defn- generate-token-expiry []
-  (time/plus (time/instant) (time/hours 24)))
-
-
-
-(defn send-welcome-email [user frontend-url]
-  (let [welcome-email (email/build-welcome-email frontend-url user)]
-    (email/send-email! welcome-email)))
-
-
-
 (defn register
-  [{:keys [db/ds parameters config]}]
+  [{:keys [db/ds parameters config] :as opts}]
   (if (nil? parameters)
     {:status 400 :body {:message "No parameters received"}}
 
@@ -146,7 +175,7 @@
 
           ;; Create new user
           (try
-            (println "Attempting to create user...")
+            (log/debug "Attempting to create user...")
             (let [verification-token (generate-verification-token)
                   token-expires-at (generate-token-expiry)
                   user-data {:email email
@@ -158,10 +187,7 @@
                   user (create-user-with-password ds user-data)]
 
               ;; Send verification email
-              (send-verification-email
-               (assoc user :verification-token verification-token)
-               frontend-url
-               false)
+              (send-verification-email (assoc-in opts [:parameters :body :email] email))
 
               {:status 201
                :body {:message "User registered successfully. Please check your email to verify your account."
@@ -179,65 +205,30 @@
 (defn verify-email
   [{:keys [db/ds parameters config]}]
   (let [token (get-in parameters [:query :token])
-        _ (println token)
         frontend-url (get-in config [:frontend :url] "http://localhost:3000")]
     (if (nil? token)
       {:status 400 :body {:message "Missing verification token"}}
 
       (if-let [user (repo/get-user-by-verification-token ds token)]
         (let [now (time/instant)
-              _ (println user)
-              token-expired? (time/after? now (:verification-token-expires-at user))
-              _ (println token-expired?)]
+              token-expired? (time/after? now (time/instant (:verification-token-expires-at user)))]
 
           (if token-expired?
             {:status 400 :body {:message "Verification token has expired. Please request a new one."}}
 
             ;; Mark email as verified and clear token
             (do
-              (try
-                (repo/update-user ds {:id (:id user)
-                                      :email-verified true
-                                      :verification-token nil
-                                      :verification-token-expires-at nil})
-                (catch Exception e
-                  (log/error e)))
-
-              ;; Send welcome email
+              (repo/update-user ds {:id (:id user)
+                                    :email-verified true
+                                    :verification-token nil
+                                    :verification-token-expires-at nil})
               (send-welcome-email user frontend-url)
 
               {:status 200 :body {:message "Email verified successfully. You can now log in."}})))
 
         {:status 404 :body {:message "Invalid verification token"}}))))
 
-(defn resend-verification-email
-  [{:keys [db/ds parameters config]}]
-  (let [email (get-in parameters [:body :email])
-        frontend-url (get-in config [:frontend :url] "http://localhost:3000")]
-    (if (nil? email)
-      {:status 400 :body {:message "Email is required"}}
 
-      (if-let [user (repo/get-user-by-email ds email)]
-        (if (:email-verified user)
-          {:status 400 :body {:message "Email is already verified"}}
-
-          (let [verification-token (generate-verification-token)
-                token-expires-at (generate-token-expiry)
-                updated-user (try
-                               (repo/update-user ds {:id (:id user)
-                                                     :verification-token verification-token
-                                                     :verification-token-expires-at token-expires-at})
-                               (catch Exception e (log/error e)))]
-
-            ;; Send verification email
-            (send-verification-email
-             (assoc updated-user :verification-token verification-token)
-             frontend-url
-             true)
-
-            {:status 200 :body {:message "Verification email sent. Please check your inbox."}}))
-
-        {:status 404 :body {:message "User not found"}}))))
 
 (defn routes [opts]
   ["/auth" {:openapi {:tags ["auth"]}
@@ -280,7 +271,7 @@
                                                400 {:body :any}
                                                404 {:body :any}}
                                    :handler (fn [request]
-                                              (resend-verification-email request))}}]
+                                              (send-verification-email request {:resend? true}))}}]
    ["/me" {:openapi {:tags ["auth"]}
            :interceptors [authentication-interceptor
                           authorization-interceptor]
