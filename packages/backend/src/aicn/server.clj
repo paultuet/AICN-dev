@@ -81,13 +81,15 @@
                                (muuntaja/format-negotiate-interceptor)
                                (muuntaja/format-response-interceptor)
                                (exception/exception-interceptor
-                                {:on-exception (fn [exception request]
+                                (merge 
+                                  exception/default-handlers
+                                  {::exception (fn [exception request]
                                                  (logger/error "API Error:" (.getMessage exception) 
                                                               {:exception-data (ex-data exception)
                                                                :uri (:uri request)
                                                                :request-method (:request-method request)
                                                                :params (:params request)})
-                                                 (throw exception))})
+                                                 (throw exception))}))
                                (muuntaja/format-request-interceptor)
                                (coercion/coerce-response-interceptor)
                                (coercion/coerce-request-interceptor)
@@ -133,10 +135,21 @@
 
 (defn start [{:keys [dev-mode? port] :as opts}]
   (let [s (atom nil)]
+    (println (format "Starting server on 0.0.0.0:%d (PORT=%s)" port (System/getenv "PORT")))
+    (logger/info "Starting server" {:port port :env-port (System/getenv "PORT") :host "0.0.0.0"})
+    ;; Utilisation explicite de l'adresse 0.0.0.0 et configuration des connecteurs
+    (System/setProperty "jetty.host" "0.0.0.0")
     (reset! s (run-server {:dev-mode? dev-mode?
                            :opts opts
-                           :server-options {:join? false :port port :host "0.0.0.0"}}))
-    (println (format "server running on 0.0.0.0:%d" port))
+                           :server-options {:join? false 
+                                           :port port 
+                                           :host "0.0.0.0"
+                                           :configurator (fn [server]
+                                                          (let [connectors (.getConnectors server)]
+                                                            (doseq [connector connectors]
+                                                              (.setHost connector "0.0.0.0"))))}}))
+    (println (format "Server started on 0.0.0.0:%d" port))
+    (logger/info "Server started" {:port port :host "0.0.0.0"})
     @s))
 
 (defmethod ig/init-key :http/server [_ opts]

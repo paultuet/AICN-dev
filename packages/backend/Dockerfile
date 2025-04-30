@@ -69,5 +69,6 @@ ENV PORT=1337
 # Expose the port
 EXPOSE ${PORT}
 
-# Start the application
-CMD ["java", "-jar", "app.jar"]
+# Make sure we're listening on the correct address
+CMD echo "Starting application on 0.0.0.0:${PORT}" && \
+    java -Djava.net.preferIPv4Stack=true -Djetty.host=0.0.0.0 -Djetty.http.host=0.0.0.0 -jar app.jar

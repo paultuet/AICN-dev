@@ -10,7 +10,7 @@ primary_region = 'cdg'
   dockerfile = 'packages/backend/Dockerfile'
 
 [env]
-  PORT = '8080'
+  PORT = '1337'
 
 [http_service]
   internal_port = 1337
@@ -21,8 +21,8 @@ primary_region = 'cdg'
   processes = ['app']
 
 [[services]]
-  protocol = ''
-  internal_port = 0
+  protocol = 'tcp'
+  internal_port = 1337
 
   [[services.ports]]
     port = 80
@@ -45,11 +45,12 @@ primary_region = 'cdg'
 
   [[services.http_checks]]
     interval = '10s'
-    timeout = '2s'
-    grace_period = '5s'
+    timeout = '10s'
+    grace_period = '60s'
     method = 'get'
     path = '/api/health'
     protocol = 'http'
+    tls_skip_verify = true
 
 [[vm]]
   memory = '1gb'
