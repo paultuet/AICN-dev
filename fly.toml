@@ -11,6 +11,7 @@ primary_region = 'cdg'
 
 [env]
   PORT = '1337'
+  HOST = '0.0.0.0'
 
 [http_service]
   internal_port = 1337
