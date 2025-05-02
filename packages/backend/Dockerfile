@@ -25,6 +25,9 @@ RUN sed -i 's/target: .*/target: "http:\/\/0.0.0.0:1337",/' vite.config.ts
 # Build frontend
 RUN pnpm build
 
+# Compile emails
+RUN pnpm compile-emails
+
 # Stage 2: Build backend
 FROM clojure:latest AS backend-builder
 
@@ -44,7 +47,7 @@ COPY packages/backend/resources/config.edn resources/
 # COPY packages/backend/resources/config.local.edn resources/
 COPY packages/backend/resources/data/ resources/data/
 COPY packages/backend/resources/migrations/ resources/migrations/
-COPY packages/backend/resources/templates/ resources/templates/
+COPY packages/backend/resources/templates/emails-html/ resources/templates/emails-html/
 
 # Copy frontend build to backend resources
 COPY --from=frontend-builder /app/packages/frontend/dist/ resources/public/

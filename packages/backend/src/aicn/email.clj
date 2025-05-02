@@ -26,7 +26,7 @@
 
 ;; Template initialization
 (defn init-templates []
-  (selmer/set-resource-path! (io/resource "templates"))
+  (selmer/set-resource-path! (io/resource "templates/emails-html"))
   ;; Add custom filters if needed
   (selmer/add-filter! :uppercase (fn [s] (str/upper-case s))))
 
@@ -72,7 +72,7 @@
         template-data {:name name
                        :verification-url verification-url
                        :year (current-year)}
-        email-body (selmer/render-file "email/verification.html" template-data)]
+        email-body (selmer/render-file "verification.html" template-data)]
     {:to email
      :subject "Vérifiez votre compte AICN"
      :body email-body}))
@@ -83,7 +83,7 @@
         template-data {:name name
                        :verification-url verification-url
                        :year (current-year)}
-        email-body (selmer/render-file "email/resend-verification.html" template-data)]
+        email-body (selmer/render-file "resend-verification.html" template-data)]
     {:to email
      :subject "Nouveau lien de vérification pour votre compte AICN"
      :body email-body}))
@@ -94,7 +94,7 @@
         template-data {:name name
                        :login-url login-url
                        :year (current-year)}
-        email-body (selmer/render-file "email/welcome.html" template-data)]
+        email-body (selmer/render-file "welcome.html" template-data)]
     {:to email
      :subject "Bienvenue chez AICN !"
      :body email-body}))
