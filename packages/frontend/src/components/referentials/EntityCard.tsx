@@ -4,6 +4,8 @@ import { Conversation } from '../../types/conversation';
 import GroupRow from './GroupRow';
 import FieldRow from './FieldRow';
 import { groupFieldsByLibGroup } from '../../utils/referentialUtils';
+import useFeatureFlag from '../../hooks/useFeatureFlag';
+
 
 interface EntityCardProps {
   entity: Entity;
@@ -42,6 +44,7 @@ const EntityCard: React.FC<EntityCardProps> = ({
   referentialEntityMap
 }) => {
   const groupedFields = groupFieldsByLibGroup(entity.fields);
+  const isFeatureConversationsEnabled = useFeatureFlag('conversations');
 
   return (
     <div className="mb-6 sm:mb-8 bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">

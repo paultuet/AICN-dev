@@ -35,4 +35,13 @@
    [:content :string]
    [:created-at inst?]])
 
+(def FeatureFlag
+  [:map
+   [:id :int]
+   [:name :string]
+   [:description {:optional true} [:maybe :string]]
+   [:enabled :boolean]
+   [:percentage {:optional true} [:maybe :int]]
+   [:created-at inst?]
+   [:updated-at inst?]])
 

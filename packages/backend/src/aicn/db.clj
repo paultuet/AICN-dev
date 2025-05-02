@@ -246,6 +246,13 @@
                       {:builder-fn rs/as-unqualified-maps})
        (decode [:vector (mu/assoc model/Message :user-name :string)])))
 
+;; Feature Flag functions
+(defn get-all-feature-flags [datasource]
+  (->> (jdbc/execute! datasource
+                     ["SELECT * FROM feature_flags ORDER BY name ASC"]
+                     {:builder-fn rs/as-unqualified-maps})
+       (decode [:vector model/FeatureFlag])))
+
 (defn create-datasource [db-spec]
   (let [config (doto (HikariConfig.)
                  (.setJdbcUrl (str "jdbc:postgresql://" (:host db-spec) ":" (:port db-spec) "/" (:dbname db-spec)))

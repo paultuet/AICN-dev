@@ -16,6 +16,8 @@ import ConversationSidebar from '../components/conversations/ConversationSidebar
 // Hooks personnalisés
 import useConversation from '../hooks/useConversation';
 import useReferentialFilters from '../hooks/useReferentialFilters';
+import useFeatureFlag from '../hooks/useFeatureFlag';
+
 // import useSelection from '../hooks/useSelection';
 
 // Utilitaires
@@ -29,7 +31,10 @@ const HomePage = () => {
   const [referentials, setReferentials] = useState<Entity[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  
+
+  const isConversationsFeatureEnabled = useFeatureFlag('conversations');
+
+
   // Gestion des conversations
   const {
     conversations,
@@ -47,7 +52,7 @@ const HomePage = () => {
     setViewMode,
     setSelectedConversationId,
     setConversations
-  } = useConversation({ initialConversations: mockConversations });
+  } = useConversation({ initialConversations: isConversationsFeatureEnabled ? mockConversations : [] });
 
   // Gestion des filtres
   const {
@@ -61,63 +66,61 @@ const HomePage = () => {
     shouldDisplayField
   } = useReferentialFilters({ conversations });
 
-  // Gestion des sélections - sans utiliser useSelection pour éviter la duplication d'état
-  // Nous utilisons directement l'état de selectedItems du hook useConversation
-  
+
   // Vérifier si un champ est sélectionné
   const isFieldSelected = useCallback((entityId: string, fieldId: number): boolean => {
     return selectedItems.some(
-      selection => 
-        (selection.type === 'field' && 
-         selection.entityId === entityId && 
-         selection.fieldIds?.includes(fieldId)) ||
-        (selection.type === 'group' && 
-         selection.entityId === entityId &&
-         referentials.find(e => e['entity-id'] === entityId)?.fields
-          .filter(f => f['lib-group'] === selection.groupName)
-          .some(f => f['id-field'] === fieldId))
+      selection =>
+        (selection.type === 'field' &&
+          selection.entityId === entityId &&
+          selection.fieldIds?.includes(fieldId)) ||
+        (selection.type === 'group' &&
+          selection.entityId === entityId &&
+          referentials.find(e => e['entity-id'] === entityId)?.fields
+            .filter(f => f['lib-group'] === selection.groupName)
+            .some(f => f['id-field'] === fieldId))
     );
   }, [selectedItems, referentials]);
 
   // Vérifier si un groupe est sélectionné
   const isGroupSelected = useCallback((entityId: string, groupName: string): boolean => {
     return selectedItems.some(
-      selection => selection.type === 'group' && 
-                  selection.entityId === entityId && 
-                  selection.groupName === groupName
+      selection => selection.type === 'group' &&
+        selection.entityId === entityId &&
+        selection.groupName === groupName
     );
   }, [selectedItems]);
-  
+
   // Toggle la sélection d'un champ
   const toggleFieldSelection = useCallback((entityId: string, fieldId: number) => {
     const fieldConversations = getConversationsForField(conversations, entityId, fieldId);
     const existingFieldIndex = selectedItems.findIndex(
-      selection => selection.type === 'field' && 
-                  selection.entityId === entityId && 
-                  selection.fieldIds?.includes(fieldId)
+      selection => selection.type === 'field' &&
+        selection.entityId === entityId &&
+        selection.fieldIds?.includes(fieldId)
     );
-    
+
     // Trouver le champ
     const entity = referentials.find(e => e['entity-id'] === entityId);
     if (!entity) return;
-    
+
     const field = entity.fields.find(f => f['id-field'] === fieldId);
     if (!field) return;
-    
+
     const fieldGroupName = field['lib-group'];
-    
+
     // Vérifier si un groupe contenant ce champ est déjà sélectionné
     const groupSelectedIndex = selectedItems.findIndex(
-      selection => selection.type === 'group' && 
-                  selection.entityId === entityId && 
-                  selection.groupName === fieldGroupName
+      selection => selection.type === 'group' &&
+        selection.entityId === entityId &&
+        selection.groupName === fieldGroupName
     );
-    
+
     // Si le groupe est déjà sélectionné, ne rien faire car le champ est déjà inclus
     if (groupSelectedIndex >= 0) {
       return;
     }
-    
+
     // Mettre à jour les sélections
     if (existingFieldIndex >= 0) {
       // Si déjà sélectionné, désélectionner
@@ -129,7 +132,7 @@ const HomePage = () => {
         entityId,
         fieldIds: [fieldId]
       }]);
-      
+
       // Si le champ a des conversations, ouvrir la première
       if (fieldConversations.length > 0) {
         setSelectedConversationId(fieldConversations[0].id);
@@ -137,20 +140,20 @@ const HomePage = () => {
       } else {
         setViewMode('selection');
       }
-      
+
       setSidebarOpen(true);
     }
   }, [setSelectedItems, referentials, selectedItems, conversations, getConversationsForField, setSelectedConversationId, setViewMode, setSidebarOpen]);
-  
+
   // Toggle la sélection d'un groupe
   const toggleGroupSelection = useCallback((entityId: string, groupName: string) => {
     const groupConversations = getConversationsForGroup(conversations, entityId, groupName);
     const existingIndex = selectedItems.findIndex(
-      selection => selection.type === 'group' && 
-                  selection.entityId === entityId && 
-                  selection.groupName === groupName
+      selection => selection.type === 'group' &&
+        selection.entityId === entityId &&
+        selection.groupName === groupName
     );
-    
+
     // Mettre à jour les sélections
     if (existingIndex >= 0) {
       // Si déjà sélectionné, désélectionner
@@ -162,7 +165,7 @@ const HomePage = () => {
         entityId,
         groupName
       }]);
-      
+
       // Si le groupe a des conversations, ouvrir la première
       if (groupConversations.length > 0) {
         setSelectedConversationId(groupConversations[0].id);
@@ -170,7 +173,7 @@ const HomePage = () => {
       } else {
         setViewMode('selection');
       }
-      
+
       setSidebarOpen(true);
     }
   }, [setSelectedItems, selectedItems, conversations, getConversationsForGroup, setSelectedConversationId, setViewMode, setSidebarOpen]);
@@ -190,53 +193,52 @@ const HomePage = () => {
     };
 
     fetchReferentials();
-    
-    // Assurer que les conversations sont chargées
-    setConversations(mockConversations);
-  }, [setConversations]);
+    if (isConversationsFeatureEnabled) {
+      setConversations(mockConversations);
+    }
+  }, [setConversations, isConversationsFeatureEnabled]);
 
   // Filtrer les référentiels en fonction des critères
   const filteredReferentials = referentials.filter(entity => {
-    // Filtrer par entité sélectionnée s'il y en a une
     if (selectedEntityId && entity['entity-id'] !== selectedEntityId) {
       return false;
     }
-    
+
     // Filtrer par la présence de conversations
     if (showOnlyWithConversations) {
       // Vérifier si l'entité a des groupes ou des champs avec des conversations
       const hasConversations = entity.fields.some(field => {
         // Vérifier si le champ a des conversations directes
         const fieldHasConversations = getConversationsForField(conversations, entity['entity-id'], field['id-field']).length > 0;
-        
+
         // Vérifier si le groupe du champ a des conversations
         const groupHasConversations = getConversationsForGroup(conversations, entity['entity-id'], field['lib-group']).length > 0;
-        
+
         return fieldHasConversations || groupHasConversations;
       });
-      
+
       if (!hasConversations) {
         return false;
       }
     }
-    
+
     // Filtrer par terme de recherche
     if (searchTerm) {
       const searchTermLower = searchTerm.toLowerCase();
-      
+
       // Rechercher dans le nom de l'entité
       if (entity['entity-name'].toLowerCase().includes(searchTermLower)) {
         return true;
       }
-      
+
       // Rechercher dans les champs
-      return entity.fields.some(field => 
+      return entity.fields.some(field =>
         field['lib-fonc'].toLowerCase().includes(searchTermLower) ||
         (field.desc && field.desc.toLowerCase().includes(searchTermLower)) ||
         field['lib-group'].toLowerCase().includes(searchTermLower)
       );
     }
-    
+
     return true;
   });
 
@@ -253,13 +255,13 @@ const HomePage = () => {
     setSelectedConversationId(null);
     setViewMode('selection');
   }, [setSelectedItems, setSidebarOpen, setSelectedConversationId, setViewMode]);
-  
+
   // Gérer la fermeture du panneau et la désélection complète
   const handleCloseSidebar = useCallback(() => {
     // Utiliser notre fonction de désélection complète
     clearAllSelections();
   }, [clearAllSelections]);
-  
+
 
   // Afficher le spinner de chargement
   if (loading) {
@@ -274,10 +276,9 @@ const HomePage = () => {
   return (
     <div className="relative w-full sm:px-3 md:px-4 py-4 sm:py-6 bg-gray-50 min-h-screen">
       {/* Bouton d'ouverture du panneau latéral */}
-      <button
-        className={`fixed z-30 right-6 bottom-6 bg-indigo-600 text-white rounded-full p-4 shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 ease-out transform ${
-          sidebarOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100 hover:scale-110'
-        }`}
+      {isConversationsFeatureEnabled && <button
+        className={`fixed z-30 right-6 bottom-6 bg-indigo-600 text-white rounded-full p-4 shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 ease-out transform ${sidebarOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100 hover:scale-110'
+          }`}
         onClick={() => setSidebarOpen(true)}
         style={{
           background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
@@ -287,10 +288,10 @@ const HomePage = () => {
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
         </svg>
-      </button>
-      
+      </button>}
+
       {/* Panneau latéral de conversation */}
-      <ConversationSidebar 
+      {isConversationsFeatureEnabled && <ConversationSidebar
         isOpen={sidebarOpen}
         selectedItems={selectedItems}
         viewMode={viewMode}
@@ -303,42 +304,41 @@ const HomePage = () => {
         onSelectConversation={setSelectedConversationId}
         onCreateConversation={createConversation}
         onSendMessage={sendMessage}
-      />
-      
+      />}
+
       {/* Overlay semi-transparent avec animation quand le panneau est ouvert */}
-      <div 
-        className={`fixed inset-0 bg-black transition-opacity duration-300 ease-out z-10 ${
-          sidebarOpen ? 'opacity-25' : 'opacity-0 pointer-events-none'
-        }`}
+      <div
+        className={`fixed inset-0 bg-black transition-opacity duration-300 ease-out z-10 ${sidebarOpen ? 'opacity-25' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={handleCloseSidebar}
       />
-      
+
       <h1 className="text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 text-black">Référentiels AICN</h1>
-      
+
       <div className="bg-white shadow-lg rounded-lg p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-gray-200">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col md:flex-row gap-6">
-            <SearchBar 
+            <SearchBar
               value={searchTerm}
               onChange={setSearchTerm}
               placeholder="Rechercher par libellé, description..."
               className="flex-1"
             />
-            
-            <EntityFilter 
+
+            <EntityFilter
               entities={referentials}
               selectedEntity={selectedEntityId}
               onChange={setSelectedEntityId}
               className="w-full md:w-80"
             />
           </div>
-          
-          <div className="flex items-center">
-            <ConversationFilterButton 
+
+          {isConversationsFeatureEnabled && <div className="flex items-center">
+            <ConversationFilterButton
               active={showOnlyWithConversations}
               onChange={setShowOnlyWithConversations}
             />
-          </div>
+          </div>}
         </div>
 
         <div className="mt-5 text-sm">
@@ -353,36 +353,36 @@ const HomePage = () => {
           )}
         </div>
       </div>
-      
+
       {/* Message pour indiquer comment sélectionner */}
-      <SelectionInfoBox />
-      
+      {isConversationsFeatureEnabled && <SelectionInfoBox />}
+
       {/* Affichage des référentiels */}
       {filteredReferentials.map((entity) => (
-        <EntityCard 
+        <EntityCard
           key={entity['entity-id']}
           entity={entity}
           conversations={conversations}
           searchTerm={searchTerm}
-          showOnlyWithConversations={showOnlyWithConversations}
+          showOnlyWithConversations={isConversationsFeatureEnabled && showOnlyWithConversations}
           isGroupSelected={isGroupSelected}
           isFieldSelected={isFieldSelected}
           toggleGroupSelection={toggleGroupSelection}
           toggleFieldSelection={toggleFieldSelection}
           openConversation={openConversation}
-          getConversationsForGroup={(entityId, groupName) => 
+          getConversationsForGroup={(entityId, groupName) =>
             getConversationsForGroup(conversations, entityId, groupName)
           }
-          getConversationsForField={(entityId, fieldId) => 
+          getConversationsForField={(entityId, fieldId) =>
             getConversationsForField(conversations, entityId, fieldId)
           }
-          fieldBelongsToGroupWithConversation={(entityId, fieldId) => 
+          fieldBelongsToGroupWithConversation={(entityId, fieldId) =>
             fieldBelongsToGroupWithConversation(entityId, fieldId, entity.fields)
           }
-          shouldDisplayGroup={(entityId, groupName, fields) => 
+          shouldDisplayGroup={(entityId, groupName, fields) =>
             shouldDisplayGroup(entityId, groupName, fields)
           }
-          shouldDisplayField={(entityId, fieldId) => 
+          shouldDisplayField={(entityId, fieldId) =>
             shouldDisplayField(entityId, fieldId, entity.fields)
           }
           clearSelection={clearAllSelections}

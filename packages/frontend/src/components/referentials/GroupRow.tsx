@@ -4,6 +4,7 @@ import { Conversation } from '../../types/conversation';
 import IconBadge from '../ui/badges/IconBadge';
 import CountBadge from '../ui/badges/CountBadge';
 import IconButton from '../ui/buttons/IconButton';
+import useFeatureFlag from '@/hooks/useFeatureFlag';
 
 interface GroupRowProps {
   entityId: string;
@@ -26,10 +27,12 @@ const GroupRow: React.FC<GroupRowProps> = ({
   onOpenConversation,
   onClearSelection
 }) => {
+  const isFeatureConversationsEnabled = useFeatureFlag('conversations');
+
   return (
-    <tr 
+    <tr
       className={`bg-indigo-100 cursor-pointer ${isSelected ? 'bg-indigo-200' : 'hover:bg-indigo-200'}`}
-      onClick={() => onSelect(entityId, groupName)}
+      onClick={() => isFeatureConversationsEnabled && onSelect(entityId, groupName)}
     >
       <td colSpan={5} className="px-2 md:px-4 py-2 md:py-3 text-indigo-800">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-2 items-center">
@@ -37,7 +40,7 @@ const GroupRow: React.FC<GroupRowProps> = ({
           <div className="md:col-span-8 flex flex-col">
             <div className="flex items-center">
               <div className="mr-2 flex-shrink-0">
-                {isSelected ? (
+                {isFeatureConversationsEnabled && isSelected ? (
                   <IconButton
                     size="md"
                     variant="ghost"
@@ -61,13 +64,13 @@ const GroupRow: React.FC<GroupRowProps> = ({
                 )}
               </div>
               <h3 className="text-base font-bold truncate pr-2">{groupName}</h3>
-              
+
               {/* Badge du nombre de champs (version mobile) */}
               <div className="ml-auto md:hidden">
                 <CountBadge count={fields.length} label="champ" color="indigo" />
               </div>
             </div>
-            
+
             {/* Indicateur de conversations pour le groupe - déplacé sous le titre */}
             {groupConversations.length > 0 && (
               <div className="flex flex-wrap gap-1 mt-1 ml-7">
@@ -77,14 +80,14 @@ const GroupRow: React.FC<GroupRowProps> = ({
                       <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                     </svg>
                   );
-                  
+
                   return (
                     <IconBadge
                       key={conv.id}
                       icon={groupIcon}
                       color="purple"
                       clickable
-                      onClick={() => onOpenConversation(conv.id)}
+                      onClick={() => isFeatureConversationsEnabled && onOpenConversation(conv.id)}
                     >
                       {conv.messageCount}
                     </IconBadge>
@@ -93,7 +96,7 @@ const GroupRow: React.FC<GroupRowProps> = ({
               </div>
             )}
           </div>
-          
+
           {/* Col droite avec badge count */}
           <div className="md:col-span-4 flex items-center justify-between md:justify-end">
             {/* Badge du nombre de champs (version desktop) */}
