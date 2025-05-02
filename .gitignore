@@ -40,6 +40,9 @@ pnpm-debug.log*
 .env.*
 !.env.example
 
+packages/backend/resources/templates/emails-html/*
+!packages/backend/resources/templates/emails-html/.gitkeep
+
 # Cache
 .eslintcache
 .stylelintcache
