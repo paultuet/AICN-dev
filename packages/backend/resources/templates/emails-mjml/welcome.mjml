@@ -25,12 +25,20 @@
         >
           Se connecter
         </mj-button>
+
         <mj-text>
           <p>
             Nous vous remercions de votre confiance et sommes ravis de vous
             compter parmi nos utilisateurs.
           </p>
+        </mj-text>
+        <mj-divider
+          border-width="1px"
+          border-style="solid"
+          border-color="lightgrey"
+        />
 
+        <mj-text color="lightgray">
           <div class="footer">
             <p>&copy; {{year}} AICN. Tous droits réservés.</p>
             <p>

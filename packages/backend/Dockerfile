@@ -10,6 +10,8 @@ RUN npm install -g pnpm
 COPY packages/frontend/package.json packages/frontend/
 COPY packages/frontend/tsconfig.json packages/frontend/tsconfig.node.json packages/frontend/vite.config.ts packages/frontend/
 COPY packages/frontend/tailwind.config.js packages/frontend/postcss.config.js packages/frontend/index.html packages/frontend/
+COPY packages/backend/resources/templates/emails-mjml packages/backend/resources/templates/emails-mjml/
+RUN mkdir -p packages/backend/resources/templates/emails-html
 
 # Install frontend dependencies
 WORKDIR /app/packages/frontend
@@ -47,10 +49,11 @@ COPY packages/backend/resources/config.edn resources/
 # COPY packages/backend/resources/config.local.edn resources/
 COPY packages/backend/resources/data/ resources/data/
 COPY packages/backend/resources/migrations/ resources/migrations/
-COPY packages/backend/resources/templates/emails-html/ resources/templates/emails-html/
+# COPY packages/backend/resources/templates/emails-html/ resources/templates/emails-html/
 
 # Copy frontend build to backend resources
 COPY --from=frontend-builder /app/packages/frontend/dist/ resources/public/
+COPY --from=frontend-builder /app/packages/backend/resources/templates/emails-html/ resources/templates/emails-html/
 
 # Copy backend source code
 COPY packages/backend/src/ src/
