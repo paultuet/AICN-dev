@@ -1,5 +1,5 @@
-import { Field } from '../types/referential';
-import { Conversation } from '../types/conversation';
+import { Field } from '@/types/referential';
+import { Conversation } from '@/types/conversation';
 
 /**
  * Groupe les champs par leur attribut lib-group

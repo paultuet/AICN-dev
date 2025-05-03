@@ -1,30 +1,27 @@
 import { useEffect, useState, useCallback } from 'react';
-import api from '../services/api';
-import { Entity } from '../types/referential';
-// import { Conversation } from '../types/conversation';
-
+import api from '@/services/api';
+import { Entity } from '@/types/referential';
 // Composants
-import LoadingSpinner from '../components/ui/LoadingSpinner';
-import ErrorMessage from '../components/ui/ErrorMessage';
-import SearchBar from '../components/ui/SearchBar';
-import EntityFilter from '../components/referentials/EntityFilter';
-import ConversationFilterButton from '../components/referentials/ConversationFilterButton';
-import SelectionInfoBox from '../components/referentials/SelectionInfoBox';
-import EntityCard from '../components/referentials/EntityCard';
-import ConversationSidebar from '../components/conversations/ConversationSidebar';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import ErrorMessage from '@/components/ui/ErrorMessage';
+import SearchBar from '@/components/ui/SearchBar';
+import EntityFilter from '@/components/referentials/EntityFilter';
+import ConversationFilterButton from '@/components/referentials/ConversationFilterButton';
+import SelectionInfoBox from '@/components/referentials/SelectionInfoBox';
+import EntityCard from '@/components/referentials/EntityCard';
+import ConversationSidebar from '@/components/conversations/ConversationSidebar';
 
 // Hooks personnalisés
-import useConversation from '../hooks/useConversation';
-import useReferentialFilters from '../hooks/useReferentialFilters';
-import useFeatureFlag from '../hooks/useFeatureFlag';
+import useConversation from '@/hooks/useConversation';
+import useReferentialFilters from '@/hooks/useReferentialFilters';
+import useFeatureFlag from '@/hooks/useFeatureFlag';
 
 // import useSelection from '../hooks/useSelection';
 
-// Utilitaires
 import { getConversationsForField, getConversationsForGroup } from '../utils/referentialUtils';
 
 // Données de test pour les conversations
-import { mockConversations } from '../mock/conversationsMock';
+import { mockConversations } from '@/mock/conversationsMock';
 
 const HomePage = () => {
   // État des données de référentiel

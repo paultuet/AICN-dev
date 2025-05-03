@@ -1,6 +1,6 @@
 import React from 'react';
-import { Message } from '../../types/conversation';
-import { formatDate } from '../../utils/dateUtils';
+import { Message } from '@/types/conversation';
+import { formatDate } from '@/utils/dateUtils';
 
 interface MessageItemProps {
   message: Message;

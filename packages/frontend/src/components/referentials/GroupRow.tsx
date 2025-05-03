@@ -1,9 +1,7 @@
 import React from 'react';
-import { Field } from '../../types/referential';
-import { Conversation } from '../../types/conversation';
-import IconBadge from '../ui/badges/IconBadge';
-import CountBadge from '../ui/badges/CountBadge';
-import IconButton from '../ui/buttons/IconButton';
+import { Field } from '@/types/referential';
+import { Conversation } from '@/types/conversation';
+import { IconBadge, CountBadge, IconButton } from '@/components/ui';
 import useFeatureFlag from '@/hooks/useFeatureFlag';
 
 interface GroupRowProps {

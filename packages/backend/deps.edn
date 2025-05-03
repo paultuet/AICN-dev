@@ -57,18 +57,13 @@
         com.sun.mail/jakarta.mail {:mvn/version "2.0.1"}}
 
  :aliases
- {:run-m {:main-opts ["-m" "aicn.core"]}
-  :run-x {:ns-default aicn.core
-          :exec-fn greet
-          :exec-args {:name "Clojure"}}
+ {:run {:main-opts ["-m" "aicn.system"]}
   :build {:deps {io.github.clojure/tools.build
                  {:git/tag "v0.9.2" :git/sha "fe6b140"}}
           :ns-default build}
   :test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner
-                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}
-  :cli {:main-opts ["-m" "aicn.cli"]}
-  :migrate {:main-opts ["-m" "aicn.cli" "migrate"]}
-  :rollback {:main-opts ["-m" "aicn.cli" "rollback"]}
-  :neil {:project {:name aicn/core}}}}
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+         :main-opts ["-m" "cognitect.test-runner"]
+         :exec-fn cognitect.test-runner.api/test}}}

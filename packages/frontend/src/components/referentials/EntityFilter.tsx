@@ -1,5 +1,5 @@
 import React from 'react';
-import { Entity } from '../../types/referential';
+import { Entity } from '@/types/referential';
 
 interface EntityFilterProps {
   entities: Entity[];

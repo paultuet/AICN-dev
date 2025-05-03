@@ -11,9 +11,6 @@ importers:
       husky:
         specifier: ^8.0.0
         version: 8.0.3
-      mjml:
-        specifier: ^4.15.3
-        version: 4.15.3
 
   packages/frontend:
     dependencies:
@@ -60,6 +57,9 @@ importers:
       eslint-plugin-react-refresh:
         specifier: ^0.4.5
         version: 0.4.19(eslint@8.57.1)
+      mjml:
+        specifier: ^4.15.3
+        version: 4.15.3
       postcss:
         specifier: ^8.4.35
         version: 8.5.3

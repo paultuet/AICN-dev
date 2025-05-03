@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
 import { useState } from 'react'
+import { useAuth } from '@/contexts/AuthContext'
 
 const Navbar = () => {
   const { isAuthenticated, logout, user } = useAuth()

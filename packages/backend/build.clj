@@ -20,7 +20,6 @@
 (defn- uber-opts [opts]
   (assoc opts
          :lib lib :main main
-         ; :uber-file (format "target/%s-%s.jar" lib version)
          :uber-file (format "target/%s.jar" lib)
          :basis (b/create-basis {})
          :class-dir class-dir

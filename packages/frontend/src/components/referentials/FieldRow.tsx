@@ -1,8 +1,7 @@
 import React from 'react';
-import { Field } from '../../types/referential';
-import { Conversation } from '../../types/conversation';
-import IconBadge from '../ui/badges/IconBadge';
-import IconButton from '../ui/buttons/IconButton';
+import { Field } from '@/types/referential';
+import { Conversation } from '@/types/conversation';
+import { IconBadge, IconButton } from '@/components/ui';
 import useFeatureFlag from '@/hooks/useFeatureFlag';
 
 interface FieldRowProps {

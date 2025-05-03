@@ -7,8 +7,6 @@
             [hikari-cp.core :as hk]
             [aicn.logger :as log]))
 
-
-
 (defn run-migrations [config]
   (log/info "Running database migrations...")
   (repl/migrate config)
@@ -54,7 +52,6 @@
 (comment
   (def s (aicn.system/get-system))
   (def config (:migrations/runner s))
-    
 
   (repl/migrate config)
   (repl/rollback config))

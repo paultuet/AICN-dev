@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { Conversation, Selection } from '../../types/conversation';
-import { Entity } from '../../types/referential';
+import { Conversation, Selection } from '@/types/conversation';
+import { Entity } from '@/types/referential';
 import ConversationForm from './ConversationForm';
 import MessageForm from './MessageForm';
 import MessageItem from './MessageItem';
-import { formatDate } from '../../utils/dateUtils';
+import { formatDate } from '@/utils/dateUtils';
 
 interface ConversationSidebarProps {
   isOpen: boolean;

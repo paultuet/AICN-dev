@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import authService from '../services/auth'
+import authService from '@/services/auth'
 
 const ResendVerificationPage = () => {
   const [email, setEmail] = useState('')

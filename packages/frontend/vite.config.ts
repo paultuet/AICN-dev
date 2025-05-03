@@ -20,7 +20,6 @@ export default defineConfig({
     }
   },
   build: {
-    // Ignore TypeScript errors during build
     minify: true,
     sourcemap: false,
     commonjsOptions: {

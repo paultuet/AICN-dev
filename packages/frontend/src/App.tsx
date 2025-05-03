@@ -1,13 +1,13 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import Layout from './components/Layout'
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import NotFoundPage from './pages/NotFoundPage'
-import VerifyEmailPage from './pages/VerifyEmailPage'
-import ResendVerificationPage from './pages/ResendVerificationPage'
-import ProtectedRoute from './components/ProtectedRoute'
-import { useAuth } from './contexts/AuthContext'
+import Layout from '@/components/Layout'
+import HomePage from '@/pages/HomePage'
+import LoginPage from '@/pages/LoginPage'
+import RegisterPage from '@/pages/RegisterPage'
+import NotFoundPage from '@/pages/NotFoundPage'
+import VerifyEmailPage from '@/pages/VerifyEmailPage'
+import ResendVerificationPage from '@/pages/ResendVerificationPage'
+import ProtectedRoute from '@/components/ProtectedRoute'
+import { useAuth } from '@/contexts/AuthContext'
 
 // Composant qui redirige les utilisateurs déjà authentifiés vers la page d'accueil
 const AuthRedirect = ({ children }: { children: JSX.Element }) => {

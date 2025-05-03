@@ -1,10 +1,10 @@
 import React from 'react';
-import { Entity, Field } from '../../types/referential';
-import { Conversation } from '../../types/conversation';
+import { Entity, Field } from '@/types/referential';
+import { Conversation } from '@/types/conversation';
 import GroupRow from './GroupRow';
 import FieldRow from './FieldRow';
-import { groupFieldsByLibGroup } from '../../utils/referentialUtils';
-import useFeatureFlag from '../../hooks/useFeatureFlag';
+import { groupFieldsByLibGroup } from '@/utils/referentialUtils';
+import useFeatureFlag from '@/hooks/useFeatureFlag';
 
 
 interface EntityCardProps {

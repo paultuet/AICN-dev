@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import featureFlagsService, { FeatureFlag } from '../services/featureFlags';
+import featureFlagsService, { FeatureFlag } from '@/services/featureFlags';
 
 interface FeatureFlagsContextType {
   /**

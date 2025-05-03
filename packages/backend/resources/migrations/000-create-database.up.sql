@@ -1,9 +1,6 @@
 -- Create UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Create schema
-CREATE SCHEMA IF NOT EXISTS aicn_db;
-
 -- Create tables in public schema since the application code doesn't use schema prefixes
 -- Create users table
 CREATE TABLE IF NOT EXISTS public.users (
@@ -40,10 +37,10 @@ CREATE TABLE IF NOT EXISTS public.messages (
 );
 
 -- Create indexes
-CREATE INDEX idx_conversations_table_id ON public.conversations(table_id);
-CREATE INDEX idx_conversations_status ON public.conversations(status);
-CREATE INDEX idx_messages_conversation_id ON public.messages(conversation_id);
-CREATE INDEX idx_messages_user_id ON public.messages(user_id);
+CREATE INDEX IF NOT EXISTS idx_conversations_table_id ON public.conversations(table_id);
+CREATE INDEX IF NOT EXISTS idx_conversations_status ON public.conversations(status);
+CREATE INDEX IF NOT EXISTS idx_messages_conversation_id ON public.messages(conversation_id);
+CREATE INDEX IF NOT EXISTS idx_messages_user_id ON public.messages(user_id);
 
 -- Insert admin user (password: adminpass)
 INSERT INTO public.users (email, password_hash, name, organization, role)
