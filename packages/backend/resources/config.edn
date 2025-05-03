@@ -18,7 +18,8 @@
  :logger/telemere {:min-level #keyword #or [#env LOG_LEVEL "info"]
                    :appenders {:println {:enabled? true}}}
  :migrations/runner {:db-spec #ig/ref :db/jdbc
-                     :migrations-dir "migrations"}
+                     :migrations-dir "migrations"
+                     :migrations-table "migrations"}
  :http/server {:port #long #or [#env PORT 1337]
                :dev-mode? true
                :db/ds #ig/ref :db/pg

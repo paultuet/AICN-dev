@@ -41,11 +41,9 @@
                    (.getName down-file))))
   (log/info "Migration files created"))
 
-(defmethod ig/init-key :migrations/runner [_ {:keys [db-spec migrations-dir]}]
-  (let [config {:datastore (jdbc/sql-database db-spec)
-                :migrations (jdbc/load-resources migrations-dir)
-                #_#_:reporter (fn [message]
-                                (log/info message))}]
+(defmethod ig/init-key :migrations/runner [_ {:keys [db-spec migrations-dir migrations-table]}]
+  (let [config {:datastore (jdbc/sql-database db-spec {:migrations-table migrations-table})
+                :migrations (jdbc/load-resources migrations-dir)}]
     (run-migrations config)
     config))
 
