@@ -46,6 +46,9 @@
 
 (def tables ["base" "lov" "cat_ref" "ref_list"])
 
+(defn get-tables-names []
+  tables)
+
 (defn- read-file-table [table]
   (read-string (slurp (io/resource (format "data/%s.edn" table)))))
 
@@ -141,7 +144,7 @@
 
   (def all-base (fetch-all auth "base"))
   (read-string (slurp "resources/data/base.edn"))
-  (sync auth tables)
+  (sync-tables auth tables)
 
   (def all-fields (get-all-fields))
   

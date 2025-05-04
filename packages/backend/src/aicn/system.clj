@@ -27,13 +27,14 @@
                   "config.edn"))
    {:profile profile}))
 
+(defn production? []
+  (not (nil? (System/getenv "DB_HOST"))))
+
 (defn -main [& args]
-  (let [config-file (if (System/getenv "DB_HOST")
-                     ;; Si DB_HOST est défini, utiliser la config de production
-                     (get-config :prod)
-                     ;; Sinon, utiliser la config locale
-                     (get-config :local))]
-    (println "Starting system with config profile:" (if (System/getenv "DB_HOST") :prod :local))
+  (let [profile (if (production?) :prod :local)
+        config-file (get-config profile)]
+                     
+    (println "Starting system with config profile:" profile)
     (ig/init config-file)))
 
 (comment

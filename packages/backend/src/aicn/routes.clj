@@ -33,6 +33,14 @@
    ;; Protected routes requiring authentication
    ["" {:interceptors [auth/authentication-interceptor
                        auth/authorization-interceptor]}
+    ["/sync" {:post {:summary "Sync from airtable"
+                     :interceptors [(auth/restrict-role-interceptor "ADMIN")
+                                    core/sync-referentiels-from-airtable-interceptor
+                                    core/get-all-referentiels-interceptor]
+                     :handler (fn [{:keys [aicn/all-referentiels]}]
+                                {:status 200
+                                 :body all-referentiels})}}]
+              
     ["/referentiels" {:get {:summary "Get all referentiels"
                             :responses {200 {:body :any}}
                             :interceptors [core/get-all-referentiels-interceptor]

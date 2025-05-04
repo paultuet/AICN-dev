@@ -21,7 +21,7 @@
                      :migrations-dir "migrations"
                      :migrations-table "migrations"}
  :http/server {:port #long #or [#env PORT 1337]
-               :dev-mode? true
+               :dev-mode? false
                :db/ds #ig/ref :db/pg
                :config {:frontend {:url #or [#env FRONTEND_URL "http://localhost:3000"]}}}}
 

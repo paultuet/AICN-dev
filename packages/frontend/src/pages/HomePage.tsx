@@ -22,6 +22,7 @@ import { getConversationsForField, getConversationsForGroup } from '../utils/ref
 
 // Données de test pour les conversations
 import { mockConversations } from '@/mock/conversationsMock';
+import AdminActions from '@/components/AdminActions';
 
 const HomePage = () => {
   // État des données de référentiel
@@ -311,6 +312,8 @@ const HomePage = () => {
       />
 
       <h1 className="text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 text-black">Référentiels AICN</h1>
+
+      <AdminActions />
 
       <div className="bg-white shadow-lg rounded-lg p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-gray-200">
         <div className="flex flex-col gap-6">

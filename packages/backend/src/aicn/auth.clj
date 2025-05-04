@@ -4,12 +4,10 @@
    [buddy.sign.jwt :as jwt]
    [clojure.string :as str]
    [java-time.api :as time]
-   [re-frame.core :as rf]
    [aicn.core :as core]
    [aicn.db :as repo]
    [aicn.email :as email]
-   [aicn.logger :as log]
-   [ring.util.response :as response]))
+   [aicn.logger :as log]))
 
 (def secret "votre-clé-secrète-très-longue")
 
@@ -63,8 +61,6 @@
 (defn- generate-token-expiry []
   (time/plus (time/instant) (time/hours 24)))
 
-
-
 (defn send-welcome-email [user frontend-url]
   (let [welcome-email (email/build-welcome-email frontend-url user)]
     (email/send-email! welcome-email)))
@@ -115,6 +111,7 @@
           (if (valid-password? password (:password-hash user))
             (if (:email-verified user)
               (let [claims {:email (:email user)
+                            :role (:role user)
                             :id (:id user)
                             :exp (time/plus (time/instant) (time/seconds 3600))}
                     token (jwt/sign claims secret {:alg :hs512})]
@@ -143,6 +140,18 @@
               (if ident
                 (assoc-in context [:request :session/user] ident)
                 context)))})
+
+(defn restrict-role-interceptor 
+  [role]
+  {:name ::restrict-role-interceptor
+   :enter (fn [{{:keys [session/user db/ds]} :request :as context}]
+            (let [_ (println user)
+                  user-db (repo/get-user-by-id ds (:id user))]
+              (if (= (:role user-db) role)
+                context
+                (-> context
+                  (assoc :response {:status 401 :body {:error "Non autorisé"}})
+                  (assoc :queue nil)))))})
 
 (def authorization-interceptor
   {:name ::authorization
@@ -232,12 +241,7 @@
 
 (defn routes [opts]
   ["/auth" {:openapi {:tags ["auth"]}
-            :interceptors [(core/init-system-interceptor opts)]
-            :options {:summary "Handle CORS preflight"
-                      :handler (fn [_]
-                                 {:status 200
-                                  :body ""})}}
-
+            :interceptors [(core/init-system-interceptor opts)]}
    ["/register" {:post {:summary "Register a new user"
                         :parameters {:body [:map
                                             [:email :string]

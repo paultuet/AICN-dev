@@ -32,6 +32,7 @@ export interface AuthUser {
   id: string
   email: string
   exp: number
+  role: string
 }
 
 const authService = {
