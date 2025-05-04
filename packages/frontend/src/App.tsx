@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from '@/components/Layout'
 import HomePage from '@/pages/HomePage'
 import LoginPage from '@/pages/LoginPage'
@@ -12,7 +12,7 @@ import { useAuth } from '@/contexts/AuthContext'
 // Composant qui redirige les utilisateurs déjà authentifiés vers la page d'accueil
 const AuthRedirect = ({ children }: { children: JSX.Element }) => {
   const { isAuthenticated, loading } = useAuth()
-  
+
   // Pendant la vérification de l'authentification, afficher un loader
   if (loading) {
     return (
@@ -21,17 +21,17 @@ const AuthRedirect = ({ children }: { children: JSX.Element }) => {
       </div>
     )
   }
-  
+
   // Si déjà authentifié, rediriger vers la page d'accueil
   if (isAuthenticated) {
     return <Navigate to="/" replace />
   }
-  
+
   // Sinon, afficher la page demandée
   return children
 }
 
-function App() {
+function Root() {
   return (
     <Routes>
       {/* Routes d'authentification (accessibles uniquement aux utilisateurs non connectés) */}
@@ -47,7 +47,7 @@ function App() {
       } />
       <Route path="/verify-email" element={<VerifyEmailPage />} />
       <Route path="/resend-verification" element={<ResendVerificationPage />} />
-      
+
       {/* Routes protégées (accessibles uniquement aux utilisateurs connectés) */}
       <Route element={<ProtectedRoute />}>
         <Route path="/" element={<Layout />}>
@@ -59,4 +59,10 @@ function App() {
   )
 }
 
-export default App
+const router = createBrowserRouter([
+  { path: "*", element: <Root /> },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}
