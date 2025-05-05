@@ -43,6 +43,7 @@ RUN clojure -P
 
 # Create resources directory and public folder for static files
 RUN mkdir -p resources/public
+RUN mkdir -p resources/templates/emails-html
 
 # Copy configuration files
 COPY packages/backend/resources/config.edn resources/
