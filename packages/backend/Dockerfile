@@ -8,8 +8,8 @@ RUN npm install -g pnpm
 
 # Copy frontend files
 COPY packages/frontend/package.json packages/frontend/
-COPY packages/frontend/tsconfig.json packages/frontend/tsconfig.node.json packages/frontend/vite.config.ts packages/frontend/
-COPY packages/frontend/tailwind.config.js packages/frontend/postcss.config.js packages/frontend/index.html packages/frontend/
+COPY packages/frontend/tsconfig.json packages/frontend/tsconfig.node.json packages/frontend/vite.config.mts packages/frontend/
+COPY packages/frontend/tailwind.config.js packages/frontend/index.html packages/frontend/
 COPY packages/backend/resources/templates/emails-mjml packages/backend/resources/templates/emails-mjml/
 RUN mkdir -p packages/backend/resources/templates/emails-html
 
