@@ -22,7 +22,7 @@ COPY packages/frontend/public ./public
 COPY packages/frontend/src ./src
 
 # Update the vite config to output API URLs correctly for production
-RUN sed -i 's/target: .*/target: "http:\/\/0.0.0.0:1337",/' vite.config.ts
+RUN sed -i 's/target: .*/target: "http:\/\/0.0.0.0:1337",/' vite.config.mts
 
 # Build frontend
 RUN pnpm build
