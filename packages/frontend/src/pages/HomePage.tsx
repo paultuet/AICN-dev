@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import api from '@/services/api';
-import { Entity } from '@/types/referential';
+import { Entity, HierarchicalEntity } from '@/types/referential';
 // Composants
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorMessage from '@/components/ui/ErrorMessage';
@@ -9,6 +9,7 @@ import EntityFilter from '@/components/referentials/EntityFilter';
 import ConversationFilterButton from '@/components/referentials/ConversationFilterButton';
 import SelectionInfoBox from '@/components/referentials/SelectionInfoBox';
 import EntityCard from '@/components/referentials/EntityCard';
+import HierarchicalView from '@/components/referentials/HierarchicalView';
 import ConversationSidebar from '@/components/conversations/ConversationSidebar';
 
 // Hooks personnalisés
@@ -27,6 +28,8 @@ import AdminActions from '@/components/AdminActions';
 const HomePage = () => {
   // État des données de référentiel
   const [referentials, setReferentials] = useState<Entity[]>([]);
+  const [hierarchicalData, setHierarchicalData] = useState<HierarchicalEntity[]>([]);
+  const [viewMode, setViewMode] = useState<'flat' | 'hierarchical'>('hierarchical');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,7 +41,7 @@ const HomePage = () => {
     conversations,
     selectedItems,
     selectedConversationId,
-    viewMode,
+    // viewMode,
     sidebarOpen,
     setSelectedItems,
     setSidebarOpen,
@@ -47,7 +50,7 @@ const HomePage = () => {
     fieldBelongsToGroupWithConversation,
     clearSelection,  // Renamed from clearConversationSelection
     openConversation,
-    setViewMode,
+    // setViewMode,
     setSelectedConversationId,
     setConversations
   } = useConversation({ initialConversations: isConversationsFeatureEnabled ? mockConversations : [] });
@@ -181,7 +184,20 @@ const HomePage = () => {
     const fetchReferentials = async () => {
       try {
         const response = await api.get('/referentiels');
-        setReferentials(response.data);
+        
+        // La réponse est maintenant une liste de HierarchicalEntity
+        if (Array.isArray(response.data)) {
+          setHierarchicalData(response.data);
+          
+          // Pour maintenir la compatibilité avec l'ancienne structure
+          // Convertir les données hiérarchiques en structure plate
+          const flatEntities = convertHierarchicalToFlat(response.data);
+          setReferentials(flatEntities);
+        } else {
+          console.error('Unexpected data format from API:', response.data);
+          setError('Format de données inattendu du serveur');
+        }
+        
         setLoading(false);
       } catch (err) {
         console.error('Error fetching referentials:', err);
@@ -195,6 +211,38 @@ const HomePage = () => {
       setConversations(mockConversations);
     }
   }, [setConversations, isConversationsFeatureEnabled]);
+  
+  // Fonction pour convertir les données hiérarchiques en structure plate
+  const convertHierarchicalToFlat = (hierarchical: HierarchicalEntity[]): Entity[] => {
+    const flatEntities: Entity[] = [];
+    
+    // Fonction récursive pour extraire les entités et leurs champs
+    const extractEntities = (entity: HierarchicalEntity | HierarchicalField, parentEntity?: Entity) => {
+      // Si c'est une entité avec des champs, l'ajouter à la liste
+      if ('fields' in entity && entity.fields.length > 0) {
+        const newEntity: Entity = {
+          'entity-id': entity['entity-id'],
+          'entity-name': entity['entity-name'],
+          'fields': entity.fields
+        };
+        flatEntities.push(newEntity);
+      }
+      
+      // Si l'entité a des enfants, parcourir récursivement
+      if ('children' in entity) {
+        entity.children.forEach(child => {
+          extractEntities(child);
+        });
+      }
+    };
+    
+    // Parcourir toutes les entités de niveau 1
+    hierarchical.forEach(entity => {
+      extractEntities(entity);
+    });
+    
+    return flatEntities;
+  };
 
   // Filtrer les référentiels en fonction des critères
   const filteredReferentials = referentials.filter(entity => {
@@ -333,62 +381,106 @@ const HomePage = () => {
             />
           </div>
 
-          {isConversationsFeatureEnabled && <div className="flex items-center">
-            <ConversationFilterButton
-              active={showOnlyWithConversations}
-              onChange={setShowOnlyWithConversations}
-            />
-          </div>}
+          <div className="flex items-center justify-between">
+            {isConversationsFeatureEnabled && (
+              <ConversationFilterButton
+                active={showOnlyWithConversations}
+                onChange={setShowOnlyWithConversations}
+              />
+            )}
+            
+            {/* Toggle pour basculer entre les vues */}
+            <div className="flex items-center space-x-2">
+              <span className="text-sm font-medium text-gray-700">Vue:</span>
+              <div className="inline-flex rounded-md shadow-sm">
+                <button
+                  type="button"
+                  className={`px-4 py-2 text-sm font-medium rounded-l-md ${
+                    viewMode === 'hierarchical'
+                      ? 'bg-indigo-600 text-white'
+                      : 'bg-white text-gray-700 hover:bg-gray-50'
+                  } border border-gray-300`}
+                  onClick={() => setViewMode('hierarchical')}
+                >
+                  Hiérarchique
+                </button>
+                <button
+                  type="button"
+                  className={`px-4 py-2 text-sm font-medium rounded-r-md ${
+                    viewMode === 'flat'
+                      ? 'bg-indigo-600 text-white'
+                      : 'bg-white text-gray-700 hover:bg-gray-50'
+                  } border border-l-0 border-gray-300`}
+                  onClick={() => setViewMode('flat')}
+                >
+                  Détaillée
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="mt-5 text-sm">
-          {filteredReferentials.length === 0 && searchTerm && (
-            <p className="text-red-500 font-medium">Aucun résultat trouvé pour "{searchTerm}"</p>
-          )}
-          {filteredReferentials.length > 0 && (
+          {viewMode === 'flat' ? (
+            <>
+              {filteredReferentials.length === 0 && searchTerm && (
+                <p className="text-red-500 font-medium">Aucun résultat trouvé pour "{searchTerm}"</p>
+              )}
+              {filteredReferentials.length > 0 && (
+                <p className="text-black font-medium">
+                  Affichage de {filteredReferentials.length} référentiel{filteredReferentials.length > 1 ? 's' : ''}
+                  {searchTerm && ` pour la recherche "${searchTerm}"`}
+                </p>
+              )}
+            </>
+          ) : (
             <p className="text-black font-medium">
-              Affichage de {filteredReferentials.length} référentiel{filteredReferentials.length > 1 ? 's' : ''}
-              {searchTerm && ` pour la recherche "${searchTerm}"`}
+              Affichage de la structure hiérarchique des référentiels
             </p>
           )}
         </div>
       </div>
 
       {/* Message pour indiquer comment sélectionner */}
-      {isConversationsFeatureEnabled && <SelectionInfoBox />}
+      {isConversationsFeatureEnabled && viewMode === 'flat' && <SelectionInfoBox />}
 
-      {/* Affichage des référentiels */}
-      {filteredReferentials.map((entity) => (
-        <EntityCard
-          key={entity['entity-id']}
-          entity={entity}
-          conversations={conversations}
-          searchTerm={searchTerm}
-          showOnlyWithConversations={isConversationsFeatureEnabled && showOnlyWithConversations}
-          isGroupSelected={isGroupSelected}
-          isFieldSelected={isFieldSelected}
-          toggleGroupSelection={toggleGroupSelection}
-          toggleFieldSelection={toggleFieldSelection}
-          openConversation={openConversation}
-          getConversationsForGroup={(entityId, groupName) =>
-            getConversationsForGroup(conversations, entityId, groupName)
-          }
-          getConversationsForField={(entityId, fieldId) =>
-            getConversationsForField(conversations, entityId, fieldId)
-          }
-          fieldBelongsToGroupWithConversation={(entityId, fieldId) =>
-            fieldBelongsToGroupWithConversation(entityId, fieldId, entity.fields)
-          }
-          shouldDisplayGroup={(entityId, groupName, fields) =>
-            shouldDisplayGroup(entityId, groupName, fields)
-          }
-          shouldDisplayField={(entityId, fieldId) =>
-            shouldDisplayField(entityId, fieldId, entity.fields)
-          }
-          clearSelection={clearAllSelections}
-          referentialEntityMap={referentialEntityMap}
-        />
-      ))}
+      {/* Affichage des référentiels selon le mode de vue */}
+      {viewMode === 'hierarchical' ? (
+        <HierarchicalView data={hierarchicalData} searchTerm={searchTerm} />
+      ) : (
+        // Vue détaillée (ancienne vue)
+        filteredReferentials.map((entity) => (
+          <EntityCard
+            key={entity['entity-id']}
+            entity={entity}
+            conversations={conversations}
+            searchTerm={searchTerm}
+            showOnlyWithConversations={isConversationsFeatureEnabled && showOnlyWithConversations}
+            isGroupSelected={isGroupSelected}
+            isFieldSelected={isFieldSelected}
+            toggleGroupSelection={toggleGroupSelection}
+            toggleFieldSelection={toggleFieldSelection}
+            openConversation={openConversation}
+            getConversationsForGroup={(entityId, groupName) =>
+              getConversationsForGroup(conversations, entityId, groupName)
+            }
+            getConversationsForField={(entityId, fieldId) =>
+              getConversationsForField(conversations, entityId, fieldId)
+            }
+            fieldBelongsToGroupWithConversation={(entityId, fieldId) =>
+              fieldBelongsToGroupWithConversation(entityId, fieldId, entity.fields)
+            }
+            shouldDisplayGroup={(entityId, groupName, fields) =>
+              shouldDisplayGroup(entityId, groupName, fields)
+            }
+            shouldDisplayField={(entityId, fieldId) =>
+              shouldDisplayField(entityId, fieldId, entity.fields)
+            }
+            clearSelection={clearAllSelections}
+            referentialEntityMap={referentialEntityMap}
+          />
+        ))
+      )}
     </div>
   );
 };

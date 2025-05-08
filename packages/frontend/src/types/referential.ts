@@ -19,3 +19,21 @@ export type Entity = {
   'entity-name': string
   'fields': Field[]
 }
+
+// Nouveaux types pour la structure d'arborescence
+export type HierarchicalField = {
+  'entity-id': string
+  'entity-name': string
+  'niveau': number
+  'id-record': string
+  'fields': Field[]
+}
+
+export type HierarchicalEntity = {
+  'entity-id': string
+  'entity-name': string
+  'niveau': number
+  'id-record': string
+  'type': string
+  'children': (HierarchicalEntity | HierarchicalField)[]
+}

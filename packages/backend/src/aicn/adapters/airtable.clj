@@ -42,9 +42,9 @@
 (defn sync-tables [auth tables]
   (doseq [table tables]
     (let [data (fetch-all auth table)]
-      (spit-pretty (io/resource (format "data/%s.edn" table)) data))))
+      (spit-pretty (io/resource (format "data/%s.edn" (str/replace table #" " "-"))) data))))
 
-(def tables ["base" "lov" "cat_ref" "ref_list"])
+(def tables ["liens niveaux" "lov" "cat_ref" "ref_list"])
 
 (defn get-tables-names []
   tables)
@@ -67,30 +67,31 @@
        :name (get-in entity-data [:fields :ref_name])})))
 
 (defn get-all-fields []
-  (let [base-table (read-file-table "base")
+  (let [ref-list-data (read-file-table "ref_list")
         cat-ref-map (md/index-by :id (read-file-table "cat_ref"))
-        ref-list-map (md/index-by :id (read-file-table "ref_list"))
+        ref-list-map (md/index-by :id ref-list-data)
+        liens-niveaux (read-file-table "liens-niveaux")
         lov-table (read-file-table "lov")]
-    (->> (m/search base-table
-                  (m/scan {:fields {:desc_fr ?desc
-                                    :link_entity (m/or [!link-entity-id] nil),
-                                    :lib_group ?lib-group
-                                    :lib_fonc_fr ?lib-fonc
-                                    :cat_ref [?category-id],
-                                    :Identifiant-unique-du-champ ?id-field,
-                                    :var_type ?var-type,
-                                    :entity [?entity-id]}})
-                  {:desc ?desc
-                   :link-entity-id (first !link-entity-id)
-                   :lib-group ?lib-group
-                   :lib-fonc ?lib-fonc
-                   :category-id ?category-id
-                   :category (get-category cat-ref-map ?category-id)
-                   :id-field ?id-field
-                   :var-type ?var-type
-                   :entity-id ?entity-id
-                   :entity (get-entity ref-list-map ?entity-id)})
+    (->> ref-list-data
+         (filter #(= "RIO" (get-in % [:fields :Type_record])))
+         (map (fn [ref-item]
+                (let [entity-id (:id ref-item)
+                      record-name (get-in ref-item [:fields :record_name])
+                      niveau (get-in ref-item [:fields :Niveau_record])
+                      id-record (get-in ref-item [:fields :ID_record])
+                      var-type (get-in ref-item [:fields :Var_type])
+                      link-entity-id (when-let [links (get-in ref-item [:fields :link])]
+                                       (first links))]
+                  {:id-field id-record
+                   :lib-fonc record-name 
+                   :var-type var-type
+                   :niveau niveau
+                   :entity-id entity-id
+                   :entity {:id entity-id
+                            :name record-name}
+                   :link-entity-id link-entity-id})))
          (into []))))
+
 
 
 (defn- normalize-string [s]
@@ -114,35 +115,150 @@
       (str/replace "ç" "c")))
 
 (defn- group-and-sort-by-entity [data]
-  ;; Regrouper par entity-id
-  (let [grouped (group-by #(get-in % [:entity :id]) data)
-        ;; Pour chaque groupe, trier les éléments par :id-field
-        sorted-groups (reduce-kv (fn [acc k v]
-                                   (assoc acc k (sort-by :id-field v)))
-                                 {}
-                                 grouped)
-        ;; Convertir en séquence de paires [entity-id, fields] pour faciliter l'affichage
-        result-seq (map (fn [[entity-id fields]]
-                          {:entity-id entity-id
-                           :entity-name (get-in (first fields) [:entity :name])
-                           :fields (vec fields)}) 
-                        sorted-groups)
-        ;; Trier les entités par leur nom NORMALISÉ pour ignorer les accents et la casse
-        sorted-result (sort-by #(normalize-string (:entity-name %)) result-seq)]
-    sorted-result))
+  (let [;; Get liens-niveaux data for relationships
+        liens-niveaux (read-file-table "liens-niveaux")
+        ;; Get all reference data
+        ref-list-data (read-file-table "ref_list")
+        ;; Index ref_list by id for quick lookup
+        ref-list-map (md/index-by :id ref-list-data)
+        
+        ;; Create mappings for parent-child relationships
+        ;; Map NIV3 -> NIV2
+        niv3-to-niv2 (reduce (fn [acc link]
+                              (let [niv3-ids (get-in link [:fields :NIV3])
+                                    niv2-ids (get-in link [:fields :NIV2])]
+                                (if (and niv3-ids niv2-ids)
+                                  (reduce (fn [a niv3-id]
+                                            (assoc a niv3-id (first niv2-ids)))
+                                          acc
+                                          niv3-ids)
+                                  acc)))
+                            {}
+                            liens-niveaux)
+        
+        ;; Map NIV2 -> NIV1
+        niv2-to-niv1 (reduce (fn [acc link]
+                              (let [niv2-ids (get-in link [:fields :NIV2])
+                                    niv1-ids (get-in link [:fields :NIV1])]
+                                (if (and niv2-ids niv1-ids)
+                                  (reduce (fn [a niv2-id]
+                                            (assoc a niv2-id (first niv1-ids)))
+                                          acc
+                                          niv2-ids)
+                                  acc)))
+                            {}
+                            liens-niveaux)
+                              
+        ;; Function to get entity details from ref-list
+        get-entity-details (fn [entity-id]
+                            (when-let [entity (get ref-list-map entity-id)]
+                              {:id entity-id
+                               :name (get-in entity [:fields :record_name])
+                               :niveau (get-in entity [:fields :Niveau_record])
+                               :type (get-in entity [:fields :Type_record])
+                               :id-record (get-in entity [:fields :ID_record])
+                               :exemple (get-in entity [:field :Exemple])
+                               :link (get-in entity [:field :link])
+                               :var-type (get-in entity [:field :Var_type])
+                               :desc-fr (get-in entity [:field :Desc_fr])}))
+                               
+        
+        ;; Get all NIV1 entities
+        niveau1-entities (->> ref-list-data
+                              (filter #(and (= 1 (get-in % [:fields :Niveau_record]))
+                                           true #_(= "NMR" (get-in % [:fields :Type_record]))))
+                              (map :id)
+                              (sort-by (fn [id] 
+                                         (normalize-string 
+                                           (or (:name (get-entity-details id)) "")))))]
+    
+    ;; Build hierarchical structure
+    (reduce (fn [acc niv1-id]
+              (let [niv1-details (get-entity-details niv1-id)
+                    ;; Find all NIV2 that have this NIV1 as parent
+                    niv2-ids (map first (filter #(= niv1-id (second %)) niv2-to-niv1))
+                    ;; Sort NIV2 by name
+                    sorted-niv2-ids (sort-by (fn [id] 
+                                               (normalize-string 
+                                                 (or (:name (get-entity-details id)) "")))
+                                            niv2-ids)
+                    ;; Process each NIV2
+                    niv2-entries (map (fn [niv2-id]
+                                       (let [niv2-details (get-entity-details niv2-id)
+                                             ;; Find all NIV3 that have this NIV2 as parent
+                                             niv3-ids (map first (filter #(= niv2-id (second %)) niv3-to-niv2))
+                                             ;; Group NIV3 by type
+                                             niv3-by-type (group-by (fn [id] 
+                                                                     (get-in (get-entity-details id) [:type]))
+                                                                    niv3-ids)
+                                             ;; Get RIO type NIV3s (your data structure)
+                                             rio-niv3s (->> (get niv3-by-type "RIO" [])
+                                                           (map (fn [niv3-id]
+                                                                 (let [niv3-details (get-entity-details niv3-id)
+                                                                       fields-data (->> data
+                                                                                        (filter #(= niv3-id (:entity-id %))))]
+                                                                   {:entity-id niv3-id
+                                                                    :entity-name (:name niv3-details)
+                                                                    :niveau 3
+                                                                    :id-record (:id-record niv3-details)
+                                                                    :type (:type niv3-details)
+                                                                    :desc-fr (:desc-fr niv3-details)
+                                                                    :link (:link niv3-details)
+                                                                    :var-type (:var-type niv3-details)
+                                                                    :exemple (:exemple niv3-details)
+                                                                    :fields (vec fields-data)})))
+                                                           (sort-by #(normalize-string (:entity-name %))))
+                                             ;; Get NMR type NIV3s (structure entities)
+                                             nmr-niv3s (->> (get niv3-by-type "NMR" [])
+                                                           (map (fn [niv3-id]
+                                                                 (let [niv3-details (get-entity-details niv3-id)]
+                                                                   {:entity-id niv3-id
+                                                                    :entity-name (:name niv3-details)
+                                                                    :type (:type niv3-details)
+                                                                    :desc-fr (:desc-fr niv3-details)
+                                                                    :var-type (:var-type niv3-details)
+                                                                    :link (:link niv3-details)
+                                                                    :exemple (:exemple niv3-details)
+                                                                    :niveau 3
+                                                                    :id-record (:id-record niv3-details)
+                                                                    :children []})))
+                                                           (sort-by #(normalize-string (:entity-name %))))]
+                                         {:entity-id niv2-id
+                                          :entity-name (:name niv2-details)
+                                          :niveau 2
+                                          :id-record (:id-record niv2-details)
+                                          :type (:type niv2-details)
+                                          :exemple (:exemple niv2-details)
+                                          :link (:link niv2-details)
+                                          :var-type (:var-type niv2-details)
+                                          :desc-fr (:desc-fr niv2-details)
+                                          :children (concat rio-niv3s nmr-niv3s)}))
+                                     sorted-niv2-ids)]
+                (conj acc 
+                      {:entity-id niv1-id
+                       :entity-name (:name niv1-details)
+                       :niveau 1
+                       :id-record (:id-record niv1-details)
+                       :var-type (:var-type niv1-details)
+                       :link (:link niv1-details)
+                       :type (:type niv1-details)
+                       :desc-fr (:desc-fr niv1-details)
+                       :exemple (:exemple niv1-details)
+                       :children niv2-entries})))
+            []
+            niveau1-entities)))
 
 (defn get-all-referentiels []
   (->> (get-all-fields)
-       group-and-sort-by-entity
-       (into [])))
+       group-and-sort-by-entity))
 
 (comment
   (def s (aicn.system/get-system))
   (def auth (get s :adapter/airtable))
   (def resp1 (request auth {:method :get
-                            :table-name "base"}))
+                            :table-name "Liens Niveaux"}))
 
-  (def all-base (fetch-all auth "base"))
+  (def all-base (fetch-all auth "liens niveaux"))
   (read-string (slurp "resources/data/base.edn"))
   (sync-tables auth tables)
 

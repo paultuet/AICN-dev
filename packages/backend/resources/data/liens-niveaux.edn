@@ -1,0 +1,3750 @@
+[{:fields
+  {:NIV2 ["recFSTrntXbxWHdhF"],
+   :Unique_ID 190,
+   :NIV3 ["rec2qyOzN6qfag2lM"],
+   :ID_record_from_NIV2 ["[2]-228"],
+   :ID_record_from_NIV3 ["[3]-605"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec015qQqvnUQfVlu"}
+ {:fields
+  {:NIV2 ["recso4TC6iKdoXx5u"],
+   :Unique_ID 202,
+   :NIV3 ["recu5N67SU6JskEVo"],
+   :ID_record_from_NIV2 ["[2]-242"],
+   :ID_record_from_NIV3 ["[3]-617"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec0UkzLdTr4k5yR7"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 259,
+   :NIV3 ["recFOorlHy63eLPG8"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-674"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec0YPMa0YrIPrNoR"}
+ {:fields
+  {:NIV2 ["recscwQwQknBl7Nkn"],
+   :Unique_ID 151,
+   :NIV3 ["recdz3qyYChJVJWww"],
+   :ID_record_from_NIV2 ["[2]-191"],
+   :ID_record_from_NIV3 ["[3]-566"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec0fL58gHZDJvsUJ"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 182,
+   :NIV3 ["recdVv20v5O2EnEzh"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-597"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec0jGPnKJAuycCTS"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 179,
+   :NIV3 ["recII8JUHeuG2gaj1"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-802"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec0speAc332XTG0K"}
+ {:fields
+  {:NIV2 ["recuYAnhsXlACwvwX"],
+   :Unique_ID 210,
+   :NIV3 ["recR3uhBHQz7IXl3J"],
+   :ID_record_from_NIV2 ["[2]-246"],
+   :ID_record_from_NIV3 ["[3]-625"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec0tqxiokW1Cb4Ww"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 271,
+   :NIV3 ["rec8dYIWsNKdCDGRd"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-686"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec0uod8xOOt9bpdT"}
+ {:fields
+  {:NIV2 ["rec1NBS9MQN111H4q"],
+   :Unique_ID 288,
+   :NIV3 ["recccnURHzFF47QQk"],
+   :ID_record_from_NIV2 ["[2]-327"],
+   :ID_record_from_NIV3 ["[3]-703"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec11IWkm1Mw3bbGF"}
+ {:fields
+  {:NIV2 ["recvOiqoGL2iNwEYt"],
+   :Unique_ID 221,
+   :NIV3 ["recupAflN9Ao0hcTE"],
+   :ID_record_from_NIV2 ["[2]-261"],
+   :ID_record_from_NIV3 ["[3]-636"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec131zXBbNiuYt9Z"}
+ {:fields
+  {:NIV2 ["recDGLJmhO3GYI2gK"],
+   :Unique_ID 226,
+   :NIV3 ["rec2GNxQ3cUxHcYt6"],
+   :ID_record_from_NIV2 ["[2]-264"],
+   :ID_record_from_NIV3 ["[3]-641"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec19BZpMSpAsA4UW"}
+ {:fields
+  {:NIV2 ["recCkmmB5csKGgeXY"],
+   :Unique_ID 197,
+   :NIV3 ["recnm4KGjQ4XEIg6X"],
+   :ID_record_from_NIV2 ["[2]-236"],
+   :ID_record_from_NIV3 ["[3]-612"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec1Hw3K2IkkH0gZS"}
+ {:fields
+  {:NIV2 ["recTEEEheLrrL8P3J"],
+   :Unique_ID 8,
+   :NIV3 ["recknvgyQ7CxPflqh"],
+   :ID_record_from_NIV2 ["[2]-47"],
+   :ID_record_from_NIV3 ["[3]-423"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "rec1MoEg6s9KPc0Ds"}
+ {:fields
+  {:NIV2 ["recop1KvSCCNQbkO8"],
+   :Unique_ID 307,
+   :NIV3 ["recju5fZNSCqrkXGi"],
+   :ID_record_from_NIV2 ["[2]-345"],
+   :ID_record_from_NIV3 ["[3]-722"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec1VYLVG7fR1cBGo"}
+ {:fields
+  {:NIV2 ["rec1SGL81xTz5sL8y"],
+   :Unique_ID 286,
+   :NIV3 ["reclNqwiwRlhdl8a8"],
+   :ID_record_from_NIV2 ["[2]-323"],
+   :ID_record_from_NIV3 ["[3]-661"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec1jG8VSqLwU1YGf"}
+ {:fields
+  {:NIV2 ["rechpxIsMJ30F6uC0"],
+   :Unique_ID 230,
+   :NIV3 ["recszFChno4LjJg6m"],
+   :ID_record_from_NIV2 ["[2]-270"],
+   :ID_record_from_NIV3 ["[3]-645"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec1lzdkPxaPx17M4"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 175,
+   :NIV3 ["recHWPOWtjI9eCVyc"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-590"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec1qLSw9XgyyLz0O"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 155,
+   :NIV3 ["recrwnP86rG5zEvqI"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-570"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec1whWma2rTPkoYq"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 160,
+   :NIV3 ["recdOIgfCeSMDhbuI"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-575"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec25Twfu1gZ7EtBf"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 254,
+   :NIV3 ["reczJoxMacRlCYLUb"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-837"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec25YLLFYx2VO1xl"}
+ {:fields
+  {:NIV2 ["rec6qwOCR6QuPyAuZ"],
+   :Unique_ID 359,
+   :NIV3 ["recabRawnRCFbnson"],
+   :ID_record_from_NIV2 ["[2]-396"],
+   :ID_record_from_NIV3 ["[3]-871"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec2FLSxQRTiaSYw8"}
+ {:fields
+  {:NIV2 ["recUUpzqH1KmTmGyW"],
+   :Unique_ID 184,
+   :NIV3 ["rec1UYAr1EPE6GtYZ"],
+   :ID_record_from_NIV2 ["[2]-224"],
+   :ID_record_from_NIV3 ["[3]-599"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec2IhF5nLQiKEPs1"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 87,
+   :NIV3 ["recrxQu9FQYmTORrK"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-502"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec2f1BG81mnZ5cjA"}
+ {:fields
+  {:NIV2 ["recOWqacZGpo9eR8I"],
+   :Unique_ID 110,
+   :NIV3 ["recOwIP1z8pePBFjo"],
+   :ID_record_from_NIV2 ["[2]-150"],
+   :ID_record_from_NIV3 ["[3]-795"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec2xz5tZBmDAjOaX"}
+ {:fields
+  {:NIV2 ["recCcSb2qQrvjnqt9"],
+   :Unique_ID 107,
+   :NIV3 ["recsMu7sb8H2lA82S"],
+   :ID_record_from_NIV2 ["[2]-146"],
+   :ID_record_from_NIV3 ["[3]-522"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec30tM6IUkuOdV29"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 76,
+   :NIV3 ["recBpGXKayMcSAH9R"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-491"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec342LMxEWNeOBUB"}
+ {:fields
+  {:NIV2 ["recscwQwQknBl7Nkn"],
+   :Unique_ID 152,
+   :NIV3 ["recJEfvihDy2G2eZX"],
+   :ID_record_from_NIV2 ["[2]-191"],
+   :ID_record_from_NIV3 ["[3]-567"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec4CCTKbY3mO9fnL"}
+ {:fields
+  {:NIV2 ["recHenanZPr9sng22"],
+   :Unique_ID 329,
+   :NIV3 ["rec7iUdWaPVAknCjn"],
+   :ID_record_from_NIV2 ["[2]-369"],
+   :ID_record_from_NIV3 ["[3]-861"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec4Eh67Z2exA3e9g"}
+ {:fields
+  {:NIV2 ["rec6qwOCR6QuPyAuZ"],
+   :Unique_ID 356,
+   :NIV3 ["recvXq8a7SF95Pxhi"],
+   :ID_record_from_NIV2 ["[2]-396"],
+   :ID_record_from_NIV3 ["[3]-771"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec4G0N1BPp4vYCFh"}
+ {:fields
+  {:NIV2 ["recOFsRvc4NpyJUbn"],
+   :Unique_ID 332,
+   :NIV3 ["recc94ZZQAcbKF0Tu"],
+   :ID_record_from_NIV2 ["[2]-372"],
+   :ID_record_from_NIV3 ["[3]-747"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec4NnQ2QfM4nVzNx"}
+ {:fields
+  {:NIV2 ["recBC8Jf7WxWS5u0Y"],
+   :Unique_ID 298,
+   :NIV3 ["recWqa70uOzMHVPfR"],
+   :ID_record_from_NIV2 ["[2]-336"],
+   :ID_record_from_NIV3 ["[3]-713"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec4WC2RMyW6CRPZv"}
+ {:fields
+  {:NIV2 ["recYt9QKvLJHg9htr"],
+   :Unique_ID 143,
+   :NIV3 ["recflkuwlYohJuuAw"],
+   :ID_record_from_NIV2 ["[2]-183"],
+   :ID_record_from_NIV3 ["[3]-558"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec4Xlke8dqd3QDWY"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 274,
+   :NIV3 ["recheRCj6RN9SHOGx"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-689"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec4Zmh1qaqJudPIg"}
+ {:fields
+  {:NIV2 ["recEk82DLcMx6WUhf"],
+   :Unique_ID 313,
+   :NIV3 ["recHB1fCJgJXDXaO3"],
+   :ID_record_from_NIV2 ["[2]-353"],
+   :ID_record_from_NIV3 ["[3]-844"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec4anqNpiLqWWWY9"}
+ {:fields
+  {:NIV2 ["reclWipypYw8k345k"],
+   :Unique_ID 280,
+   :NIV3 ["recF4SyMobuelR3MN"],
+   :ID_record_from_NIV2 ["[2]-317"],
+   :ID_record_from_NIV3 ["[3]-695"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec4k4gSPC6NmidLd"}
+ {:fields
+  {:NIV2 ["rec0oBpCTxIoGyhKW"],
+   :Unique_ID 150,
+   :NIV3 ["recBOr77xIgefYORx"],
+   :ID_record_from_NIV2 ["[2]-185"],
+   :ID_record_from_NIV3 ["[3]-565"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec55ZGuKUdvjfjwc"}
+ {:fields
+  {:NIV2 ["recVXbboU0i4cCpGO"],
+   :Unique_ID 345,
+   :NIV3 ["recIb28Tqx02qOs9P"],
+   :ID_record_from_NIV2 ["[2]-382"],
+   :ID_record_from_NIV3 ["[3]-867"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec5JOMVQmTt0MbZd"}
+ {:fields
+  {:NIV2 ["recggIMEEePY3mRHt"],
+   :Unique_ID 139,
+   :NIV3 ["recMsd0x8vz9wdgBj"],
+   :ID_record_from_NIV2 ["[2]-179"],
+   :ID_record_from_NIV3 ["[3]-554"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec5bPrIMBvQrlSLp"}
+ {:fields
+  {:NIV2 ["reclWipypYw8k345k"],
+   :Unique_ID 279,
+   :NIV3 ["recvxxit8v2uQUYUM"],
+   :ID_record_from_NIV2 ["[2]-317"],
+   :ID_record_from_NIV3 ["[3]-694"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec5cIGcb5rWmKqEf"}
+ {:fields
+  {:NIV2 ["rec2lQboayCSG2w3N"],
+   :Unique_ID 290,
+   :NIV3 ["recaqJ29HqTckFeZH"],
+   :ID_record_from_NIV2 ["[2]-329"],
+   :ID_record_from_NIV3 ["[3]-705"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec5jg7QhPwOfb9VK"}
+ {:fields
+  {:NIV2 ["reclWipypYw8k345k"],
+   :Unique_ID 278,
+   :NIV3 ["recuzvZXtTDsIG0I9"],
+   :ID_record_from_NIV2 ["[2]-317"],
+   :ID_record_from_NIV3 ["[3]-693"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec5r47ZojNxk2XkB"}
+ {:fields
+  {:NIV2 ["recOFsRvc4NpyJUbn"],
+   :Unique_ID 335,
+   :NIV3 ["recVxx50TnFfKi1PS"],
+   :ID_record_from_NIV2 ["[2]-372"],
+   :ID_record_from_NIV3 ["[3]-865"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec66nqjMUAFdfEqj"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 86,
+   :NIV3 ["recXVDHAqtmwBVWaI"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-501"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec6QilKJbWp5Er2h"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 172,
+   :NIV3 ["recJCZnhqhlGQEtOd"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-587"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec6bGjCUxr1goYjC"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 22,
+   :NIV3 ["recZrMEu55hMQ24mX"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-437"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "rec6bbgPBtAQJdrzp"}
+ {:fields
+  {:NIV2 ["recNkK2ighswWV60M"],
+   :Unique_ID 339,
+   :NIV3 ["recQDBl91vmBQCdHK"],
+   :ID_record_from_NIV2 ["[2]-378"],
+   :ID_record_from_NIV3 ["[3]-754"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec6g9gG8jjthkB3b"}
+ {:fields
+  {:NIV2 ["recNrghX2t6O8c2ic"],
+   :Unique_ID 247,
+   :NIV3 ["rece90TJXZjxGBtZm"],
+   :ID_record_from_NIV2 ["[2]-287"],
+   :ID_record_from_NIV3 ["[3]-662"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec6omGKhYnASPFAc"}
+ {:fields
+  {:NIV2 ["recTEEEheLrrL8P3J"],
+   :Unique_ID 10,
+   :NIV3 ["recn8CwfeuRRcpRiH"],
+   :ID_record_from_NIV2 ["[2]-47"],
+   :ID_record_from_NIV3 ["[3]-425"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "rec6zjtoCXBe95t9T"}
+ {:fields
+  {:NIV2 ["recTEEEheLrrL8P3J"],
+   :Unique_ID 13,
+   :NIV3 ["recBOZlBMdxaMeHB3"],
+   :ID_record_from_NIV2 ["[2]-47"],
+   :ID_record_from_NIV3 ["[3]-428"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "rec7Lz3eP4EjvbgWG"}
+ {:fields
+  {:NIV2 ["recBJChW1TkQZIKPQ"],
+   :Unique_ID 294,
+   :NIV3 ["recWr7VVB0ePgTHYZ"],
+   :ID_record_from_NIV2 ["[2]-332"],
+   :ID_record_from_NIV3 ["[3]-709"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec7UJnQsnwC6dxAl"}
+ {:fields
+  {:NIV2 ["recFSTrntXbxWHdhF"],
+   :Unique_ID 189,
+   :NIV3 ["recbA3LCXYazMnAiJ"],
+   :ID_record_from_NIV2 ["[2]-228"],
+   :ID_record_from_NIV3 ["[3]-604"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec7X8NzrFPfdEIHL"}
+ {:fields
+  {:NIV2 ["recPZSklgJxNHrQJv"],
+   :Unique_ID 367,
+   :NIV3 ["recGeHoIwBlE6dCe8"],
+   :ID_record_from_NIV2 ["[2]-407"],
+   :ID_record_from_NIV3 ["[3]-782"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec7ZSiuS6a7Q1FFB"}
+ {:fields
+  {:NIV2 ["recpwlmqmAHqPMGfw"],
+   :Unique_ID 199,
+   :NIV3 ["recN70RbWwsaUMnjh"],
+   :ID_record_from_NIV2 ["[2]-238"],
+   :ID_record_from_NIV3 ["[3]-614"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec8J4acv4hW03De8"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 35,
+   :NIV3 ["recbKE1USZmveldCk"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-450"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "rec8SlHysuFxer0QU"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 163,
+   :NIV3 ["rec6SSyES6QrCOP0M"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-578"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec8TOLzymlWwP6Wl"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 253,
+   :NIV3 ["rechmCMPc1PPWFNfz"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-668"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec8mYPJTa4ehfWpt"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 75,
+   :NIV3 ["reciPLqtgu6iNp1Px"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-490"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec97baljodYdnvI2"}
+ {:fields
+  {:NIV2 ["recTEEEheLrrL8P3J"],
+   :Unique_ID 9,
+   :NIV3 ["recT7j6hwoAH4SLNz"],
+   :ID_record_from_NIV2 ["[2]-47"],
+   :ID_record_from_NIV3 ["[3]-424"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "rec9FedAkoxY9Rtkt"}
+ {:fields
+  {:NIV2 ["rec6qwOCR6QuPyAuZ"],
+   :Unique_ID 358,
+   :NIV3 ["recZudkSyKnf4X8LQ"],
+   :ID_record_from_NIV2 ["[2]-396"],
+   :ID_record_from_NIV3 ["[3]-773"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec9K8KXKeAroPCkq"}
+ {:fields
+  {:NIV2 ["recyVNyWulfRSAzdD"],
+   :Unique_ID 244,
+   :NIV3 ["recx7KWT0TDt3JuhC"],
+   :ID_record_from_NIV2 ["[2]-282"],
+   :ID_record_from_NIV3 ["[3]-832"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec9bXavKc7tzHTMF"}
+ {:fields
+  {:NIV2 ["recUUpzqH1KmTmGyW"],
+   :Unique_ID 187,
+   :NIV3 ["recuz9h5CMdxtK65U"],
+   :ID_record_from_NIV2 ["[2]-224"],
+   :ID_record_from_NIV3 ["[3]-559"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rec9iyR5VKztVpzXI"}
+ {:fields
+  {:NIV2 ["recBJChW1TkQZIKPQ"],
+   :Unique_ID 293,
+   :NIV3 ["rec7gi0UYGGxfNKuu"],
+   :ID_record_from_NIV2 ["[2]-332"],
+   :ID_record_from_NIV3 ["[3]-708"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rec9jP3qjqqybiJHK"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 81,
+   :NIV3 ["recRROTx3TWXvuHKA"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-496"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recA8ASpIfa6naEzS"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 275,
+   :NIV3 ["recasSH6vy2nuUvVL"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-690"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recAz1kGMHehXs4jT"}
+ {:fields
+  {:NIV2 ["reccoqtNmJR4bp0S2"],
+   :Unique_ID 136,
+   :NIV3 ["recMCLDOyUPXUnx7U"],
+   :ID_record_from_NIV2 ["[2]-176"],
+   :ID_record_from_NIV3 ["[3]-551"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recB0Rfr4keFCmS9t"}
+ {:fields
+  {:NIV2 ["recNKYAhIqh4OmO59"],
+   :Unique_ID 219,
+   :NIV3 ["recUjg0bFD3RZDb4r"],
+   :ID_record_from_NIV2 ["[2]-258"],
+   :ID_record_from_NIV3 ["[3]-634"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recBVSz3Pfu8fGWqS"}
+ {:fields
+  {:NIV2 ["recwlnfrSTwj5rOf1"],
+   :Unique_ID 363,
+   :NIV3 ["recguSskaej06N1PM"],
+   :ID_record_from_NIV2 ["[2]-402"],
+   :ID_record_from_NIV3 ["[3]-778"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recBdVSXqgoDAYoHh"}
+ {:fields
+  {:NIV2 ["recsqhAdpIH9ZMXyL"],
+   :Unique_ID 301,
+   :NIV3 ["recxpvXicnd6XOV23"],
+   :ID_record_from_NIV2 ["[2]-339"],
+   :ID_record_from_NIV3 ["[3]-716"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recCTCdbkP350hDrd"}
+ {:fields
+  {:NIV2 ["recj39Lgc43W8tMDg"],
+   :Unique_ID 373,
+   :NIV3 ["recTZrDWId60WauD9"],
+   :ID_record_from_NIV2 ["[2]-413"],
+   :ID_record_from_NIV3 ["[3]-876"],
+   :ID_record_from_NIV1 ["[1]-40"],
+   :NIV1 ["recInUreqrzUowcnc"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recCpte3OJrI5DPMD"}
+ {:fields
+  {:NIV2 ["recsJDRDyv3LaiB9H"],
+   :Unique_ID 327,
+   :NIV3 ["recR2HSOvWuuReHZ0"],
+   :ID_record_from_NIV2 ["[2]-363"],
+   :ID_record_from_NIV3 ["[3]-742"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recCs0iQaetUOY47r"}
+ {:fields
+  {:NIV2 ["recgdIWaxGAytJkcm"],
+   :Unique_ID 193,
+   :NIV3 ["recmogC8YIKG88rzc"],
+   :ID_record_from_NIV2 ["[2]-231"],
+   :ID_record_from_NIV3 ["[3]-608"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recCvNjBOEs92HZIy"}
+ {:fields
+  {:NIV2 ["recVXbboU0i4cCpGO"],
+   :Unique_ID 343,
+   :NIV3 ["recV2DZ6It0RfTeqX"],
+   :ID_record_from_NIV2 ["[2]-382"],
+   :ID_record_from_NIV3 ["[3]-758"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recDA9djxm5IX4Ya4"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 37,
+   :NIV3 ["recw7RZP4RXdKYMVR"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-452"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recDG0DK2vGIqAqs4"}
+ {:fields
+  {:NIV2 ["reciLiu4Zew922qbG"],
+   :Unique_ID 203,
+   :NIV3 ["recmCDghayQ4x8sXa"],
+   :ID_record_from_NIV2 ["[2]-243"],
+   :ID_record_from_NIV3 ["[3]-618"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recDU997BWjrclPUV"}
+ {:fields
+  {:NIV2 ["recfirGtotAz5h2ke"],
+   :Unique_ID 350,
+   :NIV3 ["recSxiOFCr4WZEW6Q"],
+   :ID_record_from_NIV2 ["[2]-388"],
+   :ID_record_from_NIV3 ["[3]-765"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recDXgAbAP07NdEFZ"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 67,
+   :NIV3 ["recy7hLEymEnaqXhb"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-482"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recDdRbGHDKwAxFOR"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 64,
+   :NIV3 ["rec3Cs0MXIidyObnT"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-479"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recDfHOe9P8cGRl2n"}
+ {:fields
+  {:NIV2 ["recCcSb2qQrvjnqt9"],
+   :Unique_ID 109,
+   :NIV3 ["recxCqhPUng0Yn93O"],
+   :ID_record_from_NIV2 ["[2]-146"],
+   :ID_record_from_NIV3 ["[3]-524"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recDiwJ1XAim4zegN"}
+ {:fields
+  {:NIV2 ["recc2CLuRPMz7GHUE"],
+   :Unique_ID 134,
+   :NIV3 ["recj9N2LVEcLB5RL3"],
+   :ID_record_from_NIV2 ["[2]-166"],
+   :ID_record_from_NIV3 ["[3]-549"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recDr8SCGUyiIPDJ0"}
+ {:fields
+  {:NIV2 ["rec8oCzNzMFoiByT6"],
+   :Unique_ID 125,
+   :NIV3 ["recHZMvlgqjHVjF89"],
+   :ID_record_from_NIV2 ["[2]-163"],
+   :ID_record_from_NIV3 ["[3]-540"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recE0n0WhmqHAsIdG"}
+ {:fields
+  {:NIV2 ["rec0oBpCTxIoGyhKW"],
+   :Unique_ID 145,
+   :NIV3 ["recJXAkK9uc8lgnIc"],
+   :ID_record_from_NIV2 ["[2]-185"],
+   :ID_record_from_NIV3 ["[3]-560"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recE7GKgTP7QanBOe"}
+ {:fields
+  {:NIV2 ["recEk82DLcMx6WUhf"],
+   :Unique_ID 314,
+   :NIV3 ["recvQYl9LsEog2dwt"],
+   :ID_record_from_NIV2 ["[2]-353"],
+   :ID_record_from_NIV3 ["[3]-846"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recEJokybV3nlHgIC"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 165,
+   :NIV3 ["recFzwRSOUOLahVKG"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-580"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recF2VI0nW97iyQAD"}
+ {:fields
+  {:NIV2 ["recwlnfrSTwj5rOf1"],
+   :Unique_ID 364,
+   :NIV3 ["recX74HXHcqOfZQ2g"],
+   :ID_record_from_NIV2 ["[2]-402"],
+   :ID_record_from_NIV3 ["[3]-779"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recFJLryoOLjTzByA"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 23,
+   :NIV3 ["recea5Ohc0VgXfJDq"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-438"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recFN3oc6MC4Gwmup"}
+ {:fields
+  {:NIV2 ["recgvhSQxLdMxxu2K"],
+   :Unique_ID 214,
+   :NIV3 ["recpfwHPmIgfcwN9N"],
+   :ID_record_from_NIV2 ["[2]-253"],
+   :ID_record_from_NIV3 ["[3]-817"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recFUwb84lSlkZNMx"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 52,
+   :NIV3 ["recyK27C2NtwqUcXC"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-467"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recFWhNY1lbDMfByZ"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 176,
+   :NIV3 ["rectbR3RoX8pKBgbi"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-591"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recFcvIBtpshkmDal"}
+ {:fields
+  {:NIV2 ["rec8RBMtctbQ0nukT"],
+   :Unique_ID 94,
+   :NIV3 ["receCwTGsq2P6A4Fy"],
+   :ID_record_from_NIV2 ["[2]-133"],
+   :ID_record_from_NIV3 ["[3]-509"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recFduDLTlzKrUFLu"}
+ {:fields
+  {:NIV2 ["recOWqacZGpo9eR8I"],
+   :Unique_ID 112,
+   :NIV3 ["recEaSWWCmxLAalea"],
+   :ID_record_from_NIV2 ["[2]-150"],
+   :ID_record_from_NIV3 ["[3]-527"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recFxxSPqKZ7TOvX7"}
+ {:fields
+  {:NIV2 ["recG7bqoP8StFVtAT"],
+   :Unique_ID 232,
+   :NIV3 ["rechWlObuDYE4LEiP"],
+   :ID_record_from_NIV2 ["[2]-272"],
+   :ID_record_from_NIV3 ["[3]-647"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recFzcFLZ4NFERghv"}
+ {:fields
+  {:NIV2 ["recgvhSQxLdMxxu2K"],
+   :Unique_ID 213,
+   :NIV3 ["recQSzxplOvuNupk9"],
+   :ID_record_from_NIV2 ["[2]-253"],
+   :ID_record_from_NIV3 ["[3]-815"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recG7u1veGRsK02bS"}
+ {:fields
+  {:NIV2 ["reccAfZCibKG7qZh8"],
+   :Unique_ID 44,
+   :NIV3 ["recNmkWG4FhoIPBSL"],
+   :ID_record_from_NIV2 ["[2]-82"],
+   :ID_record_from_NIV3 ["[3]-459"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recGC2RwIncAA8NeE"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 33,
+   :NIV3 ["recosZqLS32MOOXjU"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-448"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recGLnY2ZZbjVA96S"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 77,
+   :NIV3 ["recUvh4ojwNayM7xS"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-492"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recGqoQ4BRab8bSsK"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 180,
+   :NIV3 ["reckdDViGzzRXfWDp"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-803"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recGr9P86oslBmIP8"}
+ {:fields
+  {:NIV2 ["recNKYAhIqh4OmO59"],
+   :Unique_ID 218,
+   :NIV3 ["recWqM5YnHO2iRKLs"],
+   :ID_record_from_NIV2 ["[2]-258"],
+   :ID_record_from_NIV3 ["[3]-633"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recH0ndrxow1dTdn4"}
+ {:fields
+  {:NIV2 ["recDCHN5hTe0HZy8h"],
+   :Unique_ID 263,
+   :NIV3 ["recD0yUM7ZujjB8Es"],
+   :ID_record_from_NIV2 ["[2]-271"],
+   :ID_record_from_NIV3 ["[3]-678"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recH4joRswlzrZzlS"}
+ {:fields
+  {:NIV2 ["recc2CLuRPMz7GHUE"],
+   :Unique_ID 133,
+   :NIV3 ["recziCh097C1fuV9Z"],
+   :ID_record_from_NIV2 ["[2]-166"],
+   :ID_record_from_NIV3 ["[3]-548"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recHAzpDNyO9xPAFr"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 268,
+   :NIV3 ["rectXBVCwJU2vbbyJ"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-683"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recHFiVZWHMjINArm"}
+ {:fields
+  {:NIV2 ["recOFsRvc4NpyJUbn"],
+   :Unique_ID 333,
+   :NIV3 ["recRVFARBrTUskIUo"],
+   :ID_record_from_NIV2 ["[2]-372"],
+   :ID_record_from_NIV3 ["[3]-748"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recHOQJVv48J5zjAU"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 156,
+   :NIV3 ["recR63TfIdMwIHv2B"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-571"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recHQLzn1qxLP2DME"}
+ {:fields
+  {:NIV2 ["recvOiqoGL2iNwEYt"],
+   :Unique_ID 222,
+   :NIV3 ["recO82k9821WQ3uln"],
+   :ID_record_from_NIV2 ["[2]-261"],
+   :ID_record_from_NIV3 ["[3]-637"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recHSRGwHiP6Qxwle"}
+ {:fields
+  {:NIV2 ["recx939UsnKW50qVI"],
+   :Unique_ID 137,
+   :NIV3 ["recD6uLQbCNuVHm3g"],
+   :ID_record_from_NIV2 ["[2]-177"],
+   :ID_record_from_NIV3 ["[3]-552"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recHwN0MmGkmYmgDr"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 20,
+   :NIV3 ["recVzMIFEQmkt1qcx"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-435"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recI4XLb3CcIeL6bN"}
+ {:fields
+  {:NIV2 ["recDCHN5hTe0HZy8h"],
+   :Unique_ID 231,
+   :NIV3 ["recCD04eDU46MkCyA"],
+   :ID_record_from_NIV2 ["[2]-271"],
+   :ID_record_from_NIV3 ["[3]-646"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recIEWK5J2qet3h16"}
+ {:fields
+  {:NIV2 ["recpwlmqmAHqPMGfw"],
+   :Unique_ID 198,
+   :NIV3 ["recvx95lFZiyaD6a2"],
+   :ID_record_from_NIV2 ["[2]-238"],
+   :ID_record_from_NIV3 ["[3]-613"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recIKfymB2NA1RPQh"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 36,
+   :NIV3 ["rech8rPmav11FRg2d"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-451"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recIQ0Mq5J5UUoTWd"}
+ {:fields
+  {:NIV2 ["recWzm2CqRUYkXTNA"],
+   :Unique_ID 6,
+   :NIV3 ["recik2RHZnVsMbFTY"],
+   :ID_record_from_NIV2 ["[2]-44"],
+   :ID_record_from_NIV3 ["[3]-421"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recIdMwVHgCpilFbm"}
+ {:fields
+  {:NIV2 ["recop1KvSCCNQbkO8"],
+   :Unique_ID 309,
+   :NIV3 ["recFE7f9BnqXoeUqN"],
+   :ID_record_from_NIV2 ["[2]-345"],
+   :ID_record_from_NIV3 ["[3]-724"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recJLPHfNV4THaHTs"}
+ {:fields
+  {:NIV2 ["rec2KPleXKlSH1QP7"],
+   :Unique_ID 371,
+   :NIV3 ["recCx2yNCQoY8xknL"],
+   :ID_record_from_NIV2 ["[2]-410"],
+   :ID_record_from_NIV3 ["[3]-786"],
+   :ID_record_from_NIV1 ["[1]-40"],
+   :NIV1 ["recInUreqrzUowcnc"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recJMZWHafQNsOPa1"}
+ {:fields
+  {:NIV2 ["recx6aQuNOgwnz5fY"],
+   :Unique_ID 92,
+   :NIV3 ["rec1IzqAKwVEGGjRe"],
+   :ID_record_from_NIV2 ["[2]-130"],
+   :ID_record_from_NIV3 ["[3]-507"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recJOJl2Aph9baCPa"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 25,
+   :NIV3 ["recpVKEqp9P3ZpPv0"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-440"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recJTwhPaMzNZH7BT"}
+ {:fields
+  {:NIV2 ["recF6Ba33DCNTzoxP"],
+   :Unique_ID 51,
+   :NIV3 ["rechVYffo4ZbruUWq"],
+   :ID_record_from_NIV2 ["[2]-90"],
+   :ID_record_from_NIV3 ["[3]-466"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recK5Woi5pVHtfAdw"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 29,
+   :NIV3 ["recLDEb4Xnc2LRuu0"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-444"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recKFOUu43HNQQPSb"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 162,
+   :NIV3 ["recn9h07ppxEPP1t1"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-799"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recKNTms7DOfTLqvz"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 170,
+   :NIV3 ["recpkUe5TY7DUzRNe"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[1]-27"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recKaIWS84JhSIWT4"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 24,
+   :NIV3 ["recGGXXOjKuzoGN6c"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-439"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recKljoXVNkciegBs"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 69,
+   :NIV3 ["rectotMJ0oTYB3uF9"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-484"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recL1JlZ8MDKyTETs"}
+ {:fields
+  {:NIV2 ["recf4sQOkT4rlUtlF"],
+   :Unique_ID 320,
+   :NIV3 ["recF0g2M9hWQCMCfy"],
+   :ID_record_from_NIV2 ["[2]-358"],
+   :ID_record_from_NIV3 ["[3]-735"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recLAQzztYj8j7fSz"}
+ {:fields
+  {:NIV2 ["recmpRrnf9lj3TnSp"],
+   :Unique_ID 346,
+   :NIV3 ["recoayT25jPQ39t9w"],
+   :ID_record_from_NIV2 ["[2]-386"],
+   :ID_record_from_NIV3 ["[3]-761"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recLRUqDxWQMGP5Zn"}
+ {:fields
+  {:NIV2 ["recDGLJmhO3GYI2gK"],
+   :Unique_ID 224,
+   :NIV3 ["recmU4GZnk0lAFpyW"],
+   :ID_record_from_NIV2 ["[2]-264"],
+   :ID_record_from_NIV3 ["[3]-639"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recLWOjOxV9A3NAEU"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 252,
+   :NIV3 ["recgmtHeXq0EE2iiH"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-667"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recLfIiYL7fNQmfiT"}
+ {:fields
+  {:NIV2 ["rec1NBS9MQN111H4q"],
+   :Unique_ID 287,
+   :NIV3 ["reckgohBkrniAfcwC"],
+   :ID_record_from_NIV2 ["[2]-327"],
+   :ID_record_from_NIV3 ["[3]-702"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recLfLp1RamJ4vFyV"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 267,
+   :NIV3 ["rec1MukdCXjNEFpuP"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-682"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recLoGKleZPSdQWHj"}
+ {:fields
+  {:NIV2 ["recf4sQOkT4rlUtlF"],
+   :Unique_ID 321,
+   :NIV3 ["recx6h7oqyGP8WkNQ"],
+   :ID_record_from_NIV2 ["[2]-358"],
+   :ID_record_from_NIV3 ["[3]-852"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recLtFMnXdY4OV077"}
+ {:fields
+  {:NIV2 ["recmpRrnf9lj3TnSp"],
+   :Unique_ID 347,
+   :NIV3 ["reczTYCWyEp4MOkMq"],
+   :ID_record_from_NIV2 ["[2]-386"],
+   :ID_record_from_NIV3 ["[3]-869"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recLwKRdyo35UAJzv"}
+ {:fields
+  {:NIV2 ["recDGLJmhO3GYI2gK"],
+   :Unique_ID 225,
+   :NIV3 ["recaCTUUM8182cDcR"],
+   :ID_record_from_NIV2 ["[2]-264"],
+   :ID_record_from_NIV3 ["[3]-640"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recLxiGfVNToGTUgA"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 164,
+   :NIV3 ["recQUqKGK1R28BZvg"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-579"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recM3ZjzV6o1WGopU"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 80,
+   :NIV3 ["recB4hxmMr2ivCRFq"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-495"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recMGKR9XXU7Fxybt"}
+ {:fields
+  {:NIV2 ["rec5rjyJgtt3Mc5Cj"],
+   :Unique_ID 195,
+   :NIV3 ["recb1Rqs01pEOpEvi"],
+   :ID_record_from_NIV2 ["[2]-235"],
+   :ID_record_from_NIV3 ["[3]-610"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recMGwGKYJzsEa0RH"}
+ {:fields
+  {:NIV2 ["recTEEEheLrrL8P3J"],
+   :Unique_ID 11,
+   :NIV3 ["recmCeQILTmYntUKE"],
+   :ID_record_from_NIV2 ["[2]-47"],
+   :ID_record_from_NIV3 ["[3]-426"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recMagxhwTQBOqSdT"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 60,
+   :NIV3 ["recIRKjCtKC6D0BIl"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-475"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recMaoiMwiijltVur"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 79,
+   :NIV3 ["rec3Cs0MXIidyObnT"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-479"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recMiahsaPMgTRPDC"}
+ {:fields
+  {:NIV2 ["recppHqRD4E9btXLp"],
+   :Unique_ID 240,
+   :NIV3 ["recM81RDCzmPrKztq"],
+   :ID_record_from_NIV2 ["[2]-280"],
+   :ID_record_from_NIV3 ["[3]-655"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recMlzU4aLorvIKWe"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 273,
+   :NIV3 ["reckJG4qfzsmB6kwm"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-688"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recMm4e7izjGwzEc5"}
+ {:fields
+  {:NIV2 ["recoy7iwSuig7Wdtd"],
+   :Unique_ID 2,
+   :NIV3 ["recjl9seEJ9xJDTW2"],
+   :ID_record_from_NIV2 ["[2]-41"],
+   :ID_record_from_NIV3 ["[3]-417"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-04-10T15:34:47.000Z",
+  :id "recNN1yT4Uj3gqTDq"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 159,
+   :NIV3 ["recVXlWhr5OvwXuJM"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-574"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recNVTzBNgl8vDl4J"}
+ {:fields
+  {:NIV2 ["recsJDRDyv3LaiB9H"],
+   :Unique_ID 324,
+   :NIV3 ["rec9J9vHuvSipkuS0"],
+   :ID_record_from_NIV2 ["[2]-363"],
+   :ID_record_from_NIV3 ["[3]-739"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recNYsv6RQtvUOOsw"}
+ {:fields
+  {:NIV2 ["recsqhAdpIH9ZMXyL"],
+   :Unique_ID 303,
+   :NIV3 ["recRW5kbBaIls11LC"],
+   :ID_record_from_NIV2 ["[2]-339"],
+   :ID_record_from_NIV3 ["[3]-718"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recNxqwhiwjIlYK3o"}
+ {:fields
+  {:NIV2 ["rec2lQboayCSG2w3N"],
+   :Unique_ID 289,
+   :NIV3 ["recxuZbnUlg3sZs4d"],
+   :ID_record_from_NIV2 ["[2]-329"],
+   :ID_record_from_NIV3 ["[3]-704"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recO0guAR8e0C1lF5"}
+ {:fields
+  {:NIV2 ["recCcSb2qQrvjnqt9"],
+   :Unique_ID 108,
+   :NIV3 ["rec12pzB0fmFSvPrT"],
+   :ID_record_from_NIV2 ["[2]-146"],
+   :ID_record_from_NIV3 ["[3]-523"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recO5lFj6biNqaAtD"}
+ {:fields
+  {:NIV2 ["recBJChW1TkQZIKPQ"],
+   :Unique_ID 292,
+   :NIV3 ["recZP5hbSBduiK35P"],
+   :ID_record_from_NIV2 ["[2]-332"],
+   :ID_record_from_NIV3 ["[3]-707"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recO623pr5iX9j7wl"}
+ {:fields
+  {:NIV2 ["recUSRTdnFFPRltmM"],
+   :Unique_ID 101,
+   :NIV3 ["recmhZiZfQtRIrrLj"],
+   :ID_record_from_NIV2 ["[2]-141"],
+   :ID_record_from_NIV3 ["[1]-18"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recO6UtOdhWdjRTKO"}
+ {:fields
+  {:NIV2 ["recDZfzUIFvW5qx46"],
+   :Unique_ID 116,
+   :NIV3 ["recYqEhGidTShnjNy"],
+   :ID_record_from_NIV2 ["[2]-154"],
+   :ID_record_from_NIV3 ["[3]-531"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recO7aaSRES0qLHxH"}
+ {:fields
+  {:NIV2 ["rec0oBpCTxIoGyhKW"],
+   :Unique_ID 147,
+   :NIV3 ["recb5A6Q5k1tGuJ9X"],
+   :ID_record_from_NIV2 ["[2]-185"],
+   :ID_record_from_NIV3 ["[3]-562"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recO9M4hYPDjyUpTx"}
+ {:fields
+  {:NIV2 ["recuYAnhsXlACwvwX"],
+   :Unique_ID 207,
+   :NIV3 ["recdRsw0wMYryMjCR"],
+   :ID_record_from_NIV2 ["[2]-246"],
+   :ID_record_from_NIV3 ["[3]-622"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recOZ4ZJuKW18dsFS"}
+ {:fields
+  {:NIV2 ["recAAG6Gs7hncJThx"],
+   :Unique_ID 200,
+   :NIV3 ["rec8qZSz5s88mRskR"],
+   :ID_record_from_NIV2 ["[2]-240"],
+   :ID_record_from_NIV3 ["[3]-615"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recOoIvrUHNSEYddK"}
+ {:fields
+  {:NIV2 ["recsJDRDyv3LaiB9H"],
+   :Unique_ID 323,
+   :NIV3 ["recy1rnTzCzYxtIwe"],
+   :ID_record_from_NIV2 ["[2]-363"],
+   :ID_record_from_NIV3 ["[3]-738"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recOqnwPL2UPOnMRm"}
+ {:fields
+  {:NIV2 ["recvOiqoGL2iNwEYt"],
+   :Unique_ID 223,
+   :NIV3 ["recMl9TQbBOSctaea"],
+   :ID_record_from_NIV2 ["[2]-261"],
+   :ID_record_from_NIV3 ["[3]-638"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recOqsRgWFMlHHRx4"}
+ {:fields
+  {:NIV2 ["recF6Ba33DCNTzoxP"],
+   :Unique_ID 50,
+   :NIV3 ["recr8fQGGFilnppb8"],
+   :ID_record_from_NIV2 ["[2]-90"],
+   :ID_record_from_NIV3 ["[3]-429"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recPB4IO2Rl3zHhia"}
+ {:fields
+  {:NIV2 ["recx6aQuNOgwnz5fY"],
+   :Unique_ID 90,
+   :NIV3 ["recvtPKR1cIvoDRXY"],
+   :ID_record_from_NIV2 ["[2]-130"],
+   :ID_record_from_NIV3 ["[3]-505"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recPToUOZnLrlnxnM"}
+ {:fields
+  {:NIV2 ["recc2CLuRPMz7GHUE"],
+   :Unique_ID 131,
+   :NIV3 ["recR1U6XxjAqxCv3f"],
+   :ID_record_from_NIV2 ["[2]-166"],
+   :ID_record_from_NIV3 ["[3]-546"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recPkQV27untlB62b"}
+ {:fields
+  {:NIV2 ["recnCByf2rv7Ltbw9"],
+   :Unique_ID 99,
+   :NIV3 ["recIUEN5diEJMyBJO"],
+   :ID_record_from_NIV2 ["[2]-137"],
+   :ID_record_from_NIV3 ["[3]-514"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recPorQ3bSNuB0C0D"}
+ {:fields
+  {:NIV2 ["recvmjxr8vHoUc7OV"],
+   :Unique_ID 121,
+   :NIV3 ["recIUEN5diEJMyBJO"],
+   :ID_record_from_NIV2 ["[2]-161"],
+   :ID_record_from_NIV3 ["[3]-514"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recPqXCrJmtF5iRRK"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 251,
+   :NIV3 ["rec5RiyScRLND8hpB"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-836"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recPsHzNOyBDhYSCu"}
+ {:fields
+  {:NIV2 ["recf4sQOkT4rlUtlF"],
+   :Unique_ID 322,
+   :NIV3 ["recd3DWG9ImUgatkZ"],
+   :ID_record_from_NIV2 ["[2]-358"],
+   :ID_record_from_NIV3 ["[3]-855"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recPsjgK9dF16bW4E"}
+ {:fields
+  {:NIV2 ["reccAfZCibKG7qZh8"],
+   :Unique_ID 48,
+   :NIV3 ["recs27w2koXC2VcG4"],
+   :ID_record_from_NIV2 ["[2]-82"],
+   :ID_record_from_NIV3 ["[3]-463"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recPtsIwQqfiQCNe8"}
+ {:fields
+  {:NIV2 ["recgdIWaxGAytJkcm"],
+   :Unique_ID 194,
+   :NIV3 ["rech2TjyGsQzniw9d"],
+   :ID_record_from_NIV2 ["[2]-231"],
+   :ID_record_from_NIV3 ["[3]-609"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recPyT2t0BPhFzSYn"}
+ {:fields
+  {:NIV2 ["recQnBUgkGh7J82ut"],
+   :Unique_ID 229,
+   :NIV3 ["recjlo6hpgPYzA2el"],
+   :ID_record_from_NIV2 ["[2]-269"],
+   :ID_record_from_NIV3 ["[3]-644"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recQ75xD4gD7Mb0TP"}
+ {:fields
+  {:NIV2 ["recshYzXFmRRFe1ul"],
+   :Unique_ID 15,
+   :NIV3 ["recXFM4srD7XBIQbV"],
+   :ID_record_from_NIV2 ["[2]-54"],
+   :ID_record_from_NIV3 ["[3]-430"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recQGNCHAQRRbxLbN"}
+ {:fields
+  {:NIV2 ["recjezuPTH3wUoYSY"],
+   :Unique_ID 239,
+   :NIV3 ["recRcx7AnHvZs9XtQ"],
+   :ID_record_from_NIV2 ["[2]-277"],
+   :ID_record_from_NIV3 ["[3]-654"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recQWHO87HnB88CWo"}
+ {:fields
+  {:NIV2 ["recNkK2ighswWV60M"],
+   :Unique_ID 338,
+   :NIV3 ["recMYwb4dn7ptWb69"],
+   :ID_record_from_NIV2 ["[2]-378"],
+   :ID_record_from_NIV3 ["[3]-753"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recQbLwFffDv7tPwu"}
+ {:fields
+  {:NIV2 ["recyVNyWulfRSAzdD"],
+   :Unique_ID 243,
+   :NIV3 ["recKmkiauAtGdQa0H"],
+   :ID_record_from_NIV2 ["[2]-282"],
+   :ID_record_from_NIV3 ["[3]-658"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recQjwf9qNq9XGtZS"}
+ {:fields
+  {:NIV2 ["recUSRTdnFFPRltmM"],
+   :Unique_ID 105,
+   :NIV3 ["reciqE7yVb4CL4csp"],
+   :ID_record_from_NIV2 ["[2]-141"],
+   :ID_record_from_NIV3 ["[3]-520"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recQll5ine1psEWrF"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 58,
+   :NIV3 ["rectQVypODejRrSiU"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-473"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recQrAYEWWDhQytII"}
+ {:fields
+  {:NIV2 ["recc2CLuRPMz7GHUE"],
+   :Unique_ID 129,
+   :NIV3 ["recpcXdIwHcgPyTRJ"],
+   :ID_record_from_NIV2 ["[2]-166"],
+   :ID_record_from_NIV3 ["[3]-544"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recR9Yznr2XrA0Sx9"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 276,
+   :NIV3 ["recc4rtxMju0czstM"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-691"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recRN7CKH3EEipiKc"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 158,
+   :NIV3 ["reczxg7NyjdnBlTrU"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-798"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recRdDnarU352xUoq"}
+ {:fields
+  {:NIV2 ["recuYAnhsXlACwvwX"],
+   :Unique_ID 206,
+   :NIV3 ["recr23H1axUnpD1iS"],
+   :ID_record_from_NIV2 ["[2]-246"],
+   :ID_record_from_NIV3 ["[3]-621"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recRjpxMoESND2Nys"}
+ {:fields
+  {:NIV2 ["recfirGtotAz5h2ke"],
+   :Unique_ID 348,
+   :NIV3 ["recf2RQKBgYwdhsP9"],
+   :ID_record_from_NIV2 ["[2]-388"],
+   :ID_record_from_NIV3 ["[3]-763"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recS5zih9KMcz0YKH"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 26,
+   :NIV3 ["rec6BlulA4wzPbh4w"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[1]-8"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recS75iJAsrwCrW11"}
+ {:fields
+  {:NIV2 ["recsqhAdpIH9ZMXyL"],
+   :Unique_ID 299,
+   :NIV3 ["recu3bU6K0L81AfG1"],
+   :ID_record_from_NIV2 ["[2]-339"],
+   :ID_record_from_NIV3 ["[3]-842"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recS8k4Wdm3WfP9df"}
+ {:fields
+  {:NIV2 ["recjm8tnR3CTk6bzV"],
+   :Unique_ID 355,
+   :NIV3 ["recjg2iSxsD9kDAkZ"],
+   :ID_record_from_NIV2 ["[2]-793"],
+   :ID_record_from_NIV3 ["[3]-770"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recSTeF1MiJHm7zkc"}
+ {:fields
+  {:NIV2 ["recBC8Jf7WxWS5u0Y"],
+   :Unique_ID 297,
+   :NIV3 ["recLCDgyLwpHf9FbH"],
+   :ID_record_from_NIV2 ["[2]-336"],
+   :ID_record_from_NIV3 ["[3]-712"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recSd2JMTCsJjR4PH"}
+ {:fields
+  {:NIV2 ["recc2CLuRPMz7GHUE"],
+   :Unique_ID 132,
+   :NIV3 ["recuRg8N2fLiXv60O"],
+   :ID_record_from_NIV2 ["[2]-166"],
+   :ID_record_from_NIV3 ["[3]-547"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recSgSA1ZC4WYfu9u"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 168,
+   :NIV3 ["recfwrslHU13vjuIL"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-583"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recSkWzXZsqd1u52z"}
+ {:fields
+  {:NIV2 ["recoy7iwSuig7Wdtd"],
+   :Unique_ID 1,
+   :NIV3 ["recsoztdkt9kZFX9F"],
+   :ID_record_from_NIV2 ["[2]-41"],
+   :ID_record_from_NIV3 ["[3]-416"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-04-10T15:34:47.000Z",
+  :id "recT280DwW9qFxMwA"}
+ {:fields
+  {:NIV2 ["recqdNUBuSfejA09U"],
+   :Unique_ID 281,
+   :NIV3 ["recy8d98zjk2ZHgVw"],
+   :ID_record_from_NIV2 ["[2]-321"],
+   :ID_record_from_NIV3 ["[3]-696"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recT6yWyboMxEgtTk"}
+ {:fields
+  {:NIV2 ["recHenanZPr9sng22"],
+   :Unique_ID 331,
+   :NIV3 ["recd3DWG9ImUgatkZ"],
+   :ID_record_from_NIV2 ["[2]-369"],
+   :ID_record_from_NIV3 ["[3]-855"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recT7owDjTbp462Ss"}
+ {:fields
+  {:NIV2 ["recsqhAdpIH9ZMXyL"],
+   :Unique_ID 300,
+   :NIV3 ["recl0ayUFZe6Vj1nn"],
+   :ID_record_from_NIV2 ["[2]-339"],
+   :ID_record_from_NIV3 ["[3]-715"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recTMBE54dEmsZ6Gd"}
+ {:fields
+  {:NIV2 ["recG7bqoP8StFVtAT"],
+   :Unique_ID 235,
+   :NIV3 ["recEWlrSR66jZVcrt"],
+   :ID_record_from_NIV2 ["[2]-272"],
+   :ID_record_from_NIV3 ["[3]-829"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recTja08mtKV0AD26"}
+ {:fields
+  {:NIV2 ["rec8RBMtctbQ0nukT"],
+   :Unique_ID 95,
+   :NIV3 ["rec4xaRimpoKQaEnL"],
+   :ID_record_from_NIV2 ["[2]-133"],
+   :ID_record_from_NIV3 ["[3]-510"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recTuvswvWXXxLjFv"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 169,
+   :NIV3 ["recwWtnDyYjrx6BLH"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-584"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recTw71OwLnLjGc19"}
+ {:fields
+  {:NIV2 ["rec0oBpCTxIoGyhKW"],
+   :Unique_ID 146,
+   :NIV3 ["recyF2bKvUakBQUik"],
+   :ID_record_from_NIV2 ["[2]-185"],
+   :ID_record_from_NIV3 ["[3]-561"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recUQphznX3YP0OHE"}
+ {:fields
+  {:NIV2 ["recNKYAhIqh4OmO59"],
+   :Unique_ID 220,
+   :NIV3 ["recvZUHZvXf5HOLhN"],
+   :ID_record_from_NIV2 ["[2]-258"],
+   :ID_record_from_NIV3 ["[3]-821"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recUclJJbHO3hTZlO"}
+ {:fields
+  {:NIV2 ["rec8oCzNzMFoiByT6"],
+   :Unique_ID 124,
+   :NIV3 ["recZrfptMkwpIs1Nk"],
+   :ID_record_from_NIV2 ["[2]-163"],
+   :ID_record_from_NIV3 ["[3]-539"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recUyQ0URWUqPYdCa"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 56,
+   :NIV3 ["recqIcR28b6d5SUgO"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-471"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recV1N3NhTr3bjZjq"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 73,
+   :NIV3 ["recsWp06fgwjJxoxF"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-488"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recVSrWvA4lG4IGz6"}
+ {:fields
+  {:NIV2 ["rec39KTxmfRAkvoDb"],
+   :Unique_ID 311,
+   :NIV3 ["reciIMZSlildogQLY"],
+   :ID_record_from_NIV2 ["[2]-350"],
+   :ID_record_from_NIV3 ["[3]-726"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recVV46cBMjVGrO9J"}
+ {:fields
+  {:NIV2 ["recnCByf2rv7Ltbw9"],
+   :Unique_ID 100,
+   :NIV3 ["recg8oRWLDsDZV6wZ"],
+   :ID_record_from_NIV2 ["[2]-137"],
+   :ID_record_from_NIV3 ["[3]-515"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recVfFy8SHugJ6sCG"}
+ {:fields
+  {:NIV2 ["recUUpzqH1KmTmGyW"],
+   :Unique_ID 185,
+   :NIV3 ["rechWBTUPmI1ZQ0Y4"],
+   :ID_record_from_NIV2 ["[2]-224"],
+   :ID_record_from_NIV3 ["[3]-806"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recVgdUij4N0Zaa9E"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 177,
+   :NIV3 ["rec0bag8fAqjQczf3"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-592"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recVwKvnLDQhzENBo"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 258,
+   :NIV3 ["recxbv2UIFSJuyiIr"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-673"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recVzhezSRHr6Y93T"}
+ {:fields
+  {:NIV2 ["recWOtzjNiL8y8fjL"],
+   :Unique_ID 315,
+   :NIV3 ["recbzyyf0xOVtyak5"],
+   :ID_record_from_NIV2 ["[2]-355"],
+   :ID_record_from_NIV3 ["[3]-730"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recW0DhipKUk1BYOz"}
+ {:fields
+  {:NIV2 ["recgvhSQxLdMxxu2K"],
+   :Unique_ID 215,
+   :NIV3 ["recvtuL5Wa2iRBR95"],
+   :ID_record_from_NIV2 ["[2]-253"],
+   :ID_record_from_NIV3 ["[3]-630"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recW3NScU6uXcbzMk"}
+ {:fields
+  {:NIV2 ["recDGLJmhO3GYI2gK"],
+   :Unique_ID 228,
+   :NIV3 ["recDwc7gIBc0exOjo"],
+   :ID_record_from_NIV2 ["[2]-264"],
+   :ID_record_from_NIV3 ["[3]-825"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recW79NwMjTR7IjQT"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 55,
+   :NIV3 ["reccJOyKoDtF7A2FO"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-470"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recWPubh84WMKbFYc"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 269,
+   :NIV3 ["recLYrpnU7d5RRjcq"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-684"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recWbXoAl4KboMGCR"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 272,
+   :NIV3 ["rec9H8XDYuHiXLTTJ"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-687"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recWkmNrmVSpi605P"}
+ {:fields
+  {:NIV2 ["rec6qwOCR6QuPyAuZ"],
+   :Unique_ID 357,
+   :NIV3 ["recqiX6E3BBMd0FfO"],
+   :ID_record_from_NIV2 ["[2]-396"],
+   :ID_record_from_NIV3 ["[3]-772"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recWmyK0aZ8szN0Y2"}
+ {:fields
+  {:NIV2 ["recsJDRDyv3LaiB9H"],
+   :Unique_ID 326,
+   :NIV3 ["recCOBiBRgybQXq0e"],
+   :ID_record_from_NIV2 ["[2]-363"],
+   :ID_record_from_NIV3 ["[3]-858"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recX1ttD4Y7iUzaWM"}
+ {:fields
+  {:NIV2 ["recVXbboU0i4cCpGO"],
+   :Unique_ID 342,
+   :NIV3 ["reccAdpcwsMWUq8EW"],
+   :ID_record_from_NIV2 ["[2]-382"],
+   :ID_record_from_NIV3 ["[3]-757"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recX5vfTcNClfFdDb"}
+ {:fields
+  {:NIV2 ["rec1SGL81xTz5sL8y"],
+   :Unique_ID 284,
+   :NIV3 ["recB9D0aKz7aKZkGL"],
+   :ID_record_from_NIV2 ["[2]-323"],
+   :ID_record_from_NIV3 ["[3]-699"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recXFDc5NYKVfC5Ql"}
+ {:fields
+  {:NIV2 ["rec30pggMJP2dKC7c"],
+   :Unique_ID 138,
+   :NIV3 ["recU428lLX9x6veKs"],
+   :ID_record_from_NIV2 ["[2]-178"],
+   :ID_record_from_NIV3 ["[3]-553"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recXGMnBMS445IFcF"}
+ {:fields
+  {:NIV2 ["rec1SGL81xTz5sL8y"],
+   :Unique_ID 285,
+   :NIV3 ["recjcvDUbxD2UZrkT"],
+   :ID_record_from_NIV2 ["[2]-323"],
+   :ID_record_from_NIV3 ["[3]-700"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recXki51YPCKpNHg9"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 171,
+   :NIV3 ["recYWXlhtxF0I4g5t"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-586"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recXxrJlQcLprIWwm"}
+ {:fields
+  {:NIV2 ["recfirGtotAz5h2ke"],
+   :Unique_ID 349,
+   :NIV3 ["recCiGwJI5vuVtQ16"],
+   :ID_record_from_NIV2 ["[2]-388"],
+   :ID_record_from_NIV3 ["[3]-764"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recXyoksLHotGu6kE"}
+ {:fields
+  {:NIV2 ["rectBpuARg9Cc8qW1"],
+   :Unique_ID 142,
+   :NIV3 ["recU0kc6v9cRNJbGh"],
+   :ID_record_from_NIV2 ["[2]-180"],
+   :ID_record_from_NIV3 ["[3]-557"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recY2p6EavlQ8Zj2C"}
+ {:fields
+  {:NIV2 ["recNkK2ighswWV60M"],
+   :Unique_ID 340,
+   :NIV3 ["recMUrGRmGFrLu3zd"],
+   :ID_record_from_NIV2 ["[2]-378"],
+   :ID_record_from_NIV3 ["[3]-755"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recY9A5zJQaCB9085"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 66,
+   :NIV3 ["recnqJaaLSfrae9TS"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-481"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recY9ieYbFqPyk5eY"}
+ {:fields
+  {:NIV2 ["recf4sQOkT4rlUtlF"],
+   :Unique_ID 319,
+   :NIV3 ["rec8ql5a2nzzh0Vs8"],
+   :ID_record_from_NIV2 ["[2]-358"],
+   :ID_record_from_NIV3 ["[3]-847"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recYTu4nQZBv7hGxV"}
+ {:fields
+  {:NIV2 ["rec39KTxmfRAkvoDb"],
+   :Unique_ID 310,
+   :NIV3 ["rec57ELodfy9MIyaH"],
+   :ID_record_from_NIV2 ["[2]-350"],
+   :ID_record_from_NIV3 ["[3]-725"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recYWZuJDiDbIro1j"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 34,
+   :NIV3 ["recPmP0purrnIEyDS"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-449"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recYtHPi4zaNwdbMw"}
+ {:fields
+  {:NIV2 ["recDCHN5hTe0HZy8h"],
+   :Unique_ID 264,
+   :NIV3 ["recCD04eDU46MkCyA"],
+   :ID_record_from_NIV2 ["[2]-271"],
+   :ID_record_from_NIV3 ["[3]-646"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recZ3Tt3cQXye4csK"}
+ {:fields
+  {:NIV2 ["recAAG6Gs7hncJThx"],
+   :Unique_ID 201,
+   :NIV3 ["recLPoRmlFMtP21xR"],
+   :ID_record_from_NIV2 ["[2]-240"],
+   :ID_record_from_NIV3 ["[3]-807"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recZ8NAXXBkflnx7J"}
+ {:fields
+  {:NIV2 ["rec4dRp8StP4BW1DM"],
+   :Unique_ID 211,
+   :NIV3 ["recmvFvKLSJICEmyW"],
+   :ID_record_from_NIV2 ["[2]-251"],
+   :ID_record_from_NIV3 ["[3]-813"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recZJLGRzx5FpO5XV"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 260,
+   :NIV3 ["recjC1jE0Hp3MGPCK"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-675"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recZLrKIkRKrhpJjA"}
+ {:fields
+  {:NIV2 ["recOWqacZGpo9eR8I"],
+   :Unique_ID 111,
+   :NIV3 ["rec1VuDkWlFmuMAxV"],
+   :ID_record_from_NIV2 ["[2]-150"],
+   :ID_record_from_NIV3 ["[3]-526"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recZb0X4OgYaxuFI4"}
+ {:fields
+  {:NIV2 ["rec8RBMtctbQ0nukT"],
+   :Unique_ID 96,
+   :NIV3 ["reckLnuKfjGrb4dRC"],
+   :ID_record_from_NIV2 ["[2]-133"],
+   :ID_record_from_NIV3 ["[3]-511"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recZbAp3hWqq7nI3S"}
+ {:fields
+  {:NIV2 ["recgdIWaxGAytJkcm"],
+   :Unique_ID 191,
+   :NIV3 ["recHu63IivnKClbwn"],
+   :ID_record_from_NIV2 ["[2]-231"],
+   :ID_record_from_NIV3 ["[3]-606"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:35.000Z",
+  :id "recZotc5UesWVlD89"}
+ {:fields
+  {:NIV2 ["recyVNyWulfRSAzdD"],
+   :Unique_ID 242,
+   :NIV3 ["recupAflN9Ao0hcTE"],
+   :ID_record_from_NIV2 ["[2]-282"],
+   :ID_record_from_NIV3 ["[3]-636"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reca2dUZJREJq46ow"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 74,
+   :NIV3 ["recpmPEWG8w4UdwkS"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-489"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recaO4u1pF6Drb2EN"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 117,
+   :NIV3 ["recA7zuMGxD44LwqG"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-532"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recacHkfOd6NsoYyf"}
+ {:fields
+  {:NIV2 ["recG7bqoP8StFVtAT"],
+   :Unique_ID 233,
+   :NIV3 ["recluxb97j3IXSOj0"],
+   :ID_record_from_NIV2 ["[2]-272"],
+   :ID_record_from_NIV3 ["[3]-648"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recae8NQuALHoBlaW"}
+ {:fields
+  {:NIV2 ["recWzm2CqRUYkXTNA"],
+   :Unique_ID 5,
+   :NIV3 ["recAz4XgMaR93pcMk"],
+   :ID_record_from_NIV2 ["[2]-44"],
+   :ID_record_from_NIV3 ["[3]-420"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recaeypSkKMIHIob7"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 16,
+   :NIV3 ["recyYwfjTqPx4o2z4"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-431"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recahv9rnbcPCseis"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 83,
+   :NIV3 ["recXCkUZnzx3WUuwd"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-498"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recajKoWhIuuzvujc"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 31,
+   :NIV3 ["recCzzlDWGxoIwbp1"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-446"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recatQwsi4hpOOBvN"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 62,
+   :NIV3 ["recfqlXK5bXaMfOEL"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-477"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recbC2Go1ywf4SOqj"}
+ {:fields
+  {:NIV2 ["rec8oCzNzMFoiByT6"],
+   :Unique_ID 123,
+   :NIV3 ["rec1WC6uSV8cCv7fQ"],
+   :ID_record_from_NIV2 ["[2]-163"],
+   :ID_record_from_NIV3 ["[3]-538"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recbDoPNhSAOLcwHp"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 17,
+   :NIV3 ["recGNZYG934Pm2HT9"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-432"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recbJq9ltFl4Rp7W4"}
+ {:fields
+  {:NIV2 ["recrw3uP2dXRHNoJ6"],
+   :Unique_ID 216,
+   :NIV3 ["recjb8sk4o1ib7f12"],
+   :ID_record_from_NIV2 ["[2]-256"],
+   :ID_record_from_NIV3 ["[3]-631"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recbMGD6wmMTbV9Hu"}
+ {:fields
+  {:NIV2 ["recjezuPTH3wUoYSY"],
+   :Unique_ID 237,
+   :NIV3 ["rec0DWX50cOk58Ibg"],
+   :ID_record_from_NIV2 ["[2]-277"],
+   :ID_record_from_NIV3 ["[3]-652"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recbN2nbUZQ2Oy5n6"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 68,
+   :NIV3 ["recSrLBWwsS8KwyMe"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-483"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recbPE01ANLn6xQTJ"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 18,
+   :NIV3 ["recedl10vKRhw9HdJ"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-433"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recbczw4MNoe6admK"}
+ {:fields
+  {:NIV2 ["recjm8tnR3CTk6bzV"],
+   :Unique_ID 353,
+   :NIV3 ["recBiFrgCMWF22Onc"],
+   :ID_record_from_NIV2 ["[2]-793"],
+   :ID_record_from_NIV3 ["[3]-768"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recbiZMvTJQEXHFhi"}
+ {:fields
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
+   :Unique_ID 135,
+   :NIV3 ["reccVZFB0aHoALjut"],
+   :ID_record_from_NIV2 ["[2]-175"],
+   :ID_record_from_NIV3 ["[3]-550"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recc46dndldjbeuOn"}
+ {:fields
+  {:NIV2 ["recZovgTVh02Fyv2k"],
+   :Unique_ID 41,
+   :NIV3 ["recshKTelQUQkLd6y"],
+   :ID_record_from_NIV2 ["[2]-81"],
+   :ID_record_from_NIV3 ["[3]-456"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recc4iAIY0H8ArDxZ"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 84,
+   :NIV3 ["recsy3lVpwHbteinO"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-499"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recc8Z4iAfNDcHMA8"}
+ {:fields
+  {:NIV2 ["recPZSklgJxNHrQJv"],
+   :Unique_ID 369,
+   :NIV3 ["rec2fGQUL3ye3fR6b"],
+   :ID_record_from_NIV2 ["[2]-407"],
+   :ID_record_from_NIV3 ["[3]-784"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reccI05iAEEhMlnvs"}
+ {:fields
+  {:NIV2 ["rec6qwOCR6QuPyAuZ"],
+   :Unique_ID 360,
+   :NIV3 ["recV8eUs2BhiQ5IpX"],
+   :ID_record_from_NIV2 ["[2]-396"],
+   :ID_record_from_NIV3 ["[3]-775"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recccJQhRzTsWrruo"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 256,
+   :NIV3 ["recSc7dQfcCnuJIQP"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-671"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reccnKb3HNH3ON3hd"}
+ {:fields
+  {:NIV2 ["rectBpuARg9Cc8qW1"],
+   :Unique_ID 140,
+   :NIV3 ["recCfvH75Rw788E8u"],
+   :ID_record_from_NIV2 ["[2]-180"],
+   :ID_record_from_NIV3 ["[3]-555"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recd1SnV4r8JLwcoB"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 250,
+   :NIV3 ["recWDeiVQWKA4gyep"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-833"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recdDi75EfL43wTfo"}
+ {:fields
+  {:NIV2 ["recOFsRvc4NpyJUbn"],
+   :Unique_ID 336,
+   :NIV3 ["recrAILnOJhhBOgIg"],
+   :ID_record_from_NIV2 ["[2]-372"],
+   :ID_record_from_NIV3 ["[3]-751"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recdEEb86jtwqJICG"}
+ {:fields
+  {:NIV2 ["recVXbboU0i4cCpGO"],
+   :Unique_ID 344,
+   :NIV3 ["reclDnBr6uOocHelD"],
+   :ID_record_from_NIV2 ["[2]-382"],
+   :ID_record_from_NIV3 ["[3]-759"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recdZ0nwzl8eX2yRl"}
+ {:fields
+  {:NIV2 ["recWOtzjNiL8y8fjL"],
+   :Unique_ID 317,
+   :NIV3 ["recMjGmm3ZwPlnjUK"],
+   :ID_record_from_NIV2 ["[2]-355"],
+   :ID_record_from_NIV3 ["[3]-732"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recdatr9ax82fQr8G"}
+ {:fields
+  {:NIV2 ["recshYzXFmRRFe1ul"],
+   :Unique_ID 14,
+   :NIV3 ["recr8fQGGFilnppb8"],
+   :ID_record_from_NIV2 ["[2]-54"],
+   :ID_record_from_NIV3 ["[3]-429"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "rece4yLR0gAR0Z0y9"}
+ {:fields
+  {:NIV2 ["recNrghX2t6O8c2ic"],
+   :Unique_ID 248,
+   :NIV3 ["recdJceagAM3MIS6Q"],
+   :ID_record_from_NIV2 ["[2]-287"],
+   :ID_record_from_NIV3 ["[3]-663"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rece6QEhoDl3TSdOr"}
+ {:fields
+  {:NIV2 ["rec1SGL81xTz5sL8y"],
+   :Unique_ID 283,
+   :NIV3 ["recdSpgQLvqZQ2pCm"],
+   :ID_record_from_NIV2 ["[2]-323"],
+   :ID_record_from_NIV3 ["[3]-698"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "receIW0UKXfqyFLZn"}
+ {:fields
+  {:NIV2 ["reccAfZCibKG7qZh8"],
+   :Unique_ID 43,
+   :NIV3 ["recANgwxdqs6H6JB5"],
+   :ID_record_from_NIV2 ["[2]-82"],
+   :ID_record_from_NIV3 ["[3]-458"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "receK80KXBEDWLvPv"}
+ {:fields
+  {:NIV2 ["recuYAnhsXlACwvwX"],
+   :Unique_ID 208,
+   :NIV3 ["recpI5CPjaueQqfrw"],
+   :ID_record_from_NIV2 ["[2]-246"],
+   :ID_record_from_NIV3 ["[3]-623"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "receTzw389gGRMqG4"}
+ {:fields
+  {:NIV2 ["reccAfZCibKG7qZh8"],
+   :Unique_ID 42,
+   :NIV3 ["recigJ1wF6Gwwnj4P"],
+   :ID_record_from_NIV2 ["[2]-82"],
+   :ID_record_from_NIV3 ["[3]-457"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recemcYeLUpciTcUp"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 65,
+   :NIV3 ["recDm5vtLpSEIzV7v"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-480"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recevHuUVrIq8q2rQ"}
+ {:fields
+  {:NIV2 ["rec2KPleXKlSH1QP7"],
+   :Unique_ID 370,
+   :NIV3 ["recsH1bb2hUZ6rshC"],
+   :ID_record_from_NIV2 ["[2]-410"],
+   :ID_record_from_NIV3 ["[3]-785"],
+   :ID_record_from_NIV1 ["[1]-40"],
+   :NIV1 ["recInUreqrzUowcnc"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "receypZ6ACGCjcKvN"}
+ {:fields
+  {:NIV2 ["recsqhAdpIH9ZMXyL"],
+   :Unique_ID 302,
+   :NIV3 ["rec88csIT13UFHl9y"],
+   :ID_record_from_NIV2 ["[2]-339"],
+   :ID_record_from_NIV3 ["[3]-717"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recf2c4w1dzhulPlt"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 174,
+   :NIV3 ["recD5GX0MkNYVWYTn"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-801"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recfIuJGVIE1hGU3d"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 166,
+   :NIV3 ["recCRljmNg8N578oc"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-800"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recfOWJJQbkiELCCy"}
+ {:fields
+  {:NIV2 ["rec2lQboayCSG2w3N"],
+   :Unique_ID 291,
+   :NIV3 ["recuYSAPayM1YOBlP"],
+   :ID_record_from_NIV2 ["[2]-329"],
+   :ID_record_from_NIV3 ["[3]-706"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recfaAlakQVniQG4S"}
+ {:fields
+  {:NIV2 ["recxdyYRzZWPd2YFf"],
+   :Unique_ID 375,
+   :NIV3 ["recrQAj2PKwq6CiGZ"],
+   :ID_record_from_NIV2 ["[2]-414"],
+   :ID_record_from_NIV3 ["[3]-877"],
+   :ID_record_from_NIV1 ["[1]-40"],
+   :NIV1 ["recInUreqrzUowcnc"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recfmlKT5cUMH42vB"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 54,
+   :NIV3 ["recnq24DxppqzBVdQ"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-469"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recgbRqCMi1r8qGBf"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 70,
+   :NIV3 ["recCGO0rphAdiMzCk"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-485"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recgeRUgDTGz2lA8c"}
+ {:fields
+  {:NIV2 ["recUSRTdnFFPRltmM"],
+   :Unique_ID 104,
+   :NIV3 ["recGoY0cVE6a1Ujv3"],
+   :ID_record_from_NIV2 ["[2]-141"],
+   :ID_record_from_NIV3 ["[3]-519"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recgeankJkO3AIDQu"}
+ {:fields
+  {:NIV2 ["recc2CLuRPMz7GHUE"],
+   :Unique_ID 127,
+   :NIV3 ["recL4smvjNW3E14G3"],
+   :ID_record_from_NIV2 ["[2]-166"],
+   :ID_record_from_NIV3 ["[3]-542"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recghdjdBQaFJDFpd"}
+ {:fields
+  {:NIV2 ["recxdyYRzZWPd2YFf"],
+   :Unique_ID 374,
+   :NIV3 ["reclDNVRHIUaAFeYX"],
+   :ID_record_from_NIV2 ["[2]-414"],
+   :ID_record_from_NIV3 ["[3]-789"],
+   :ID_record_from_NIV1 ["[1]-40"],
+   :NIV1 ["recInUreqrzUowcnc"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recgmshAWol8C8179"}
+ {:fields
+  {:NIV2 ["recc2CLuRPMz7GHUE"],
+   :Unique_ID 126,
+   :NIV3 ["rechGRPJ0PuKdtJ2X"],
+   :ID_record_from_NIV2 ["[2]-166"],
+   :ID_record_from_NIV3 ["[3]-796"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recgtCngXS4Etf3jK"}
+ {:fields
+  {:NIV2 ["recG4b8TE3ZsIhIAq"],
+   :Unique_ID 120,
+   :NIV3 ["recM4U0Xx8UD0dPkl"],
+   :ID_record_from_NIV2 ["[2]-159"],
+   :ID_record_from_NIV3 ["[3]-535"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rechLzmLrIVly7FBk"}
+ {:fields
+  {:NIV2 ["rec8RBMtctbQ0nukT"],
+   :Unique_ID 93,
+   :NIV3 ["recfQOyo6csvsEmbI"],
+   :ID_record_from_NIV2 ["[2]-133"],
+   :ID_record_from_NIV3 ["[3]-508"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rechNWP4qfMCRRDiK"}
+ {:fields
+  {:NIV2 ["recyVNyWulfRSAzdD"],
+   :Unique_ID 245,
+   :NIV3 ["recnqeMzi4FyTiYpx"],
+   :ID_record_from_NIV2 ["[2]-282"],
+   :ID_record_from_NIV3 ["[3]-660"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rechXT90zkbQuXkG3"}
+ {:fields
+  {:NIV2 ["rec0oBpCTxIoGyhKW"],
+   :Unique_ID 148,
+   :NIV3 ["rech9106ldX7BnSaJ"],
+   :ID_record_from_NIV2 ["[2]-185"],
+   :ID_record_from_NIV3 ["[3]-563"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rechbsQLQ4dFjgqZ4"}
+ {:fields
+  {:NIV2 ["recf4sQOkT4rlUtlF"],
+   :Unique_ID 318,
+   :NIV3 ["recDwgDqJgBIF5Afy"],
+   :ID_record_from_NIV2 ["[2]-358"],
+   :ID_record_from_NIV3 ["[3]-733"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reci2RJne3O6xH353"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 161,
+   :NIV3 ["recy9Ji0SE1J9Ctyi"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-576"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "reciFsIE9iCtU2jq8"}
+ {:fields
+  {:NIV2 ["recBJChW1TkQZIKPQ"],
+   :Unique_ID 295,
+   :NIV3 ["recRUSSQgeFc90rTj"],
+   :ID_record_from_NIV2 ["[2]-332"],
+   :ID_record_from_NIV3 ["[3]-710"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reciLRnE6Zj4WGuil"}
+ {:fields
+  {:NIV2 ["recnCByf2rv7Ltbw9"],
+   :Unique_ID 97,
+   :NIV3 ["recH42WqsxUOBU62Y"],
+   :ID_record_from_NIV2 ["[2]-137"],
+   :ID_record_from_NIV3 ["[3]-512"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "reciOKSnRtXNaCVJ8"}
+ {:fields
+  {:NIV2 ["recUUpzqH1KmTmGyW"],
+   :Unique_ID 186,
+   :NIV3 ["recBsw2znWd2RoRGz"],
+   :ID_record_from_NIV2 ["[2]-224"],
+   :ID_record_from_NIV3 ["[3]-601"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "reciVNYlsRxVuRCWX"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 19,
+   :NIV3 ["recJw2ktrQn29vkTB"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-434"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "reciVVLkxAQjZXbtx"}
+ {:fields
+  {:NIV2 ["recsJDRDyv3LaiB9H"],
+   :Unique_ID 325,
+   :NIV3 ["recUjJqbA5iXDMpZu"],
+   :ID_record_from_NIV2 ["[2]-363"],
+   :ID_record_from_NIV3 ["[3]-740"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recid1I6rW4JxZJ8D"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 154,
+   :NIV3 ["recAnmbu6IC4UdqOz"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-797"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recifUuCl57Pzrrhr"}
+ {:fields
+  {:NIV2 ["recPZSklgJxNHrQJv"],
+   :Unique_ID 368,
+   :NIV3 ["rec7NJJGqgCuvX7qM"],
+   :ID_record_from_NIV2 ["[2]-407"],
+   :ID_record_from_NIV3 ["[3]-783"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recikc1D7gJW8VmJs"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 28,
+   :NIV3 ["recEPr1QF8W3sW2lE"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-443"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recj7JDb0eTkWIIKD"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 38,
+   :NIV3 ["recOsq3QM5iYAw8nj"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-453"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recjJeYz2gPvv4M5n"}
+ {:fields
+  {:NIV2 ["recgdIWaxGAytJkcm"],
+   :Unique_ID 192,
+   :NIV3 ["recnAJ64g2QtCDEnH"],
+   :ID_record_from_NIV2 ["[2]-231"],
+   :ID_record_from_NIV3 ["[3]-607"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recjYByXbglUNK3hu"}
+ {:fields
+  {:NIV2 ["rec39KTxmfRAkvoDb"],
+   :Unique_ID 312,
+   :NIV3 ["reckjXg9l5PM1mVYb"],
+   :ID_record_from_NIV2 ["[2]-350"],
+   :ID_record_from_NIV3 ["[3]-843"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recjeiHG9LABV3Nlf"}
+ {:fields
+  {:NIV2 ["reca1b3lsPT7wklSM"],
+   :Unique_ID 366,
+   :NIV3 ["rec8S7YnZqEsAH1m4"],
+   :ID_record_from_NIV2 ["[2]-406"],
+   :ID_record_from_NIV3 ["[3]-873"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recjpRdNDkoycPJ7U"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 82,
+   :NIV3 ["recVJErx2SQ26RlRS"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-497"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recjznsZfkQa2bkHk"}
+ {:fields
+  {:NIV2 ["recDGLJmhO3GYI2gK"],
+   :Unique_ID 227,
+   :NIV3 ["rectyUMGTLsXjewFq"],
+   :ID_record_from_NIV2 ["[2]-264"],
+   :ID_record_from_NIV3 ["[3]-642"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reck4YreIW5xP6BXX"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 59,
+   :NIV3 ["recNBVeEPHxLgSuSb"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-474"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "reckRTIU1ZuIvU1Yf"}
+ {:fields
+  {:NIV2 ["recG7bqoP8StFVtAT"],
+   :Unique_ID 236,
+   :NIV3 ["recLVe13wuVqcd7DV"],
+   :ID_record_from_NIV2 ["[2]-272"],
+   :ID_record_from_NIV3 ["[3]-651"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reckVPNVhIwYUTStn"}
+ {:fields
+  {:NIV2 ["recBC8Jf7WxWS5u0Y"],
+   :Unique_ID 296,
+   :NIV3 ["recxLk8tS0JW55ys3"],
+   :ID_record_from_NIV2 ["[2]-336"],
+   :ID_record_from_NIV3 ["[3]-711"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reckaO0xjuwjcSQpa"}
+ {:fields
+  {:NIV2 ["recuYAnhsXlACwvwX"],
+   :Unique_ID 209,
+   :NIV3 ["recvhOOk1CZRGSaCM"],
+   :ID_record_from_NIV2 ["[2]-246"],
+   :ID_record_from_NIV3 ["[3]-624"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reclHV8KAI9JUdMPU"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 255,
+   :NIV3 ["recovIteK8wj5B9ZT"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-670"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reclKNdmAQuYVKueC"}
+ {:fields
+  {:NIV2 ["reciLiu4Zew922qbG"],
+   :Unique_ID 204,
+   :NIV3 ["recRMVd7C3Wlvj6m4"],
+   :ID_record_from_NIV2 ["[2]-243"],
+   :ID_record_from_NIV3 ["[3]-619"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reclwlZxIoxrVEySe"}
+ {:fields
+  {:NIV2 ["recOFsRvc4NpyJUbn"],
+   :Unique_ID 337,
+   :NIV3 ["recWTnyRaBaVydicf"],
+   :ID_record_from_NIV2 ["[2]-372"],
+   :ID_record_from_NIV3 ["[3]-752"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recmDw73QE5mKgc7L"}
+ {:fields
+  {:NIV2 ["recDZfzUIFvW5qx46"],
+   :Unique_ID 114,
+   :NIV3 ["recnUgmpf9tMLj7X1"],
+   :ID_record_from_NIV2 ["[2]-154"],
+   :ID_record_from_NIV3 ["[3]-529"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recmOdjo3NwEiEWCa"}
+ {:fields
+  {:NIV2 ["recjm8tnR3CTk6bzV"],
+   :Unique_ID 354,
+   :NIV3 ["recVAoKrWZgCkE5pZ"],
+   :ID_record_from_NIV2 ["[2]-793"],
+   :ID_record_from_NIV3 ["[3]-769"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recmRrbOmqCnL8SP3"}
+ {:fields
+  {:NIV2 ["reccAfZCibKG7qZh8"],
+   :Unique_ID 47,
+   :NIV3 ["recWckAEXm7aHHYGp"],
+   :ID_record_from_NIV2 ["[2]-82"],
+   :ID_record_from_NIV3 ["[3]-462"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recmTcl3IMFdwCpar"}
+ {:fields
+  {:NIV2 ["recc2CLuRPMz7GHUE"],
+   :Unique_ID 130,
+   :NIV3 ["recDg7z9dmefGwhSV"],
+   :ID_record_from_NIV2 ["[2]-166"],
+   :ID_record_from_NIV3 ["[3]-545"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recml6lC249kov3Ec"}
+ {:fields
+  {:NIV2 ["recO1LBDuN1OEji7Z"],
+   :Unique_ID 328,
+   :NIV3 ["recA5P8aKufCQjX6u"],
+   :ID_record_from_NIV2 ["[2]-368"],
+   :ID_record_from_NIV3 ["[3]-743"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recmncyPSKB4SFEQc"}
+ {:fields
+  {:NIV2 ["recCcSb2qQrvjnqt9"],
+   :Unique_ID 106,
+   :NIV3 ["rec3xsfShdxSH2B4d"],
+   :ID_record_from_NIV2 ["[2]-146"],
+   :ID_record_from_NIV3 ["[3]-521"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recmnzrqgvQ8DMqtl"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 57,
+   :NIV3 ["recgBGe7xGzooZQQa"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-472"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recmpzjBCjmW164N1"}
+ {:fields
+  {:NIV2 ["recvmjxr8vHoUc7OV"],
+   :Unique_ID 122,
+   :NIV3 ["recJssBxGfw7HIAo4"],
+   :ID_record_from_NIV2 ["[2]-161"],
+   :ID_record_from_NIV3 ["[3]-537"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recmyMAjufydVdxnq"}
+ {:fields
+  {:NIV2 ["recYt9QKvLJHg9htr"],
+   :Unique_ID 144,
+   :NIV3 ["recuz9h5CMdxtK65U"],
+   :ID_record_from_NIV2 ["[2]-183"],
+   :ID_record_from_NIV3 ["[3]-559"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recn5IxGUrRz3qrwf"}
+ {:fields
+  {:NIV2 ["rec4dRp8StP4BW1DM"],
+   :Unique_ID 212,
+   :NIV3 ["recK56UidU3G7hwqi"],
+   :ID_record_from_NIV2 ["[2]-251"],
+   :ID_record_from_NIV3 ["[3]-627"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recnRT9ZkC3yWHseR"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 32,
+   :NIV3 ["recMlCEuE9YWI1u5o"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-447"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recnSR6ng7YcCvBse"}
+ {:fields
+  {:NIV2 ["recG7bqoP8StFVtAT"],
+   :Unique_ID 234,
+   :NIV3 ["recV1PgMwIWLzOQIb"],
+   :ID_record_from_NIV2 ["[2]-272"],
+   :ID_record_from_NIV3 ["[3]-649"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recnpuDgBtzRAZC6L"}
+ {:fields
+  {:NIV2 ["rec8JOwJV9TtwdI6p"],
+   :Unique_ID 261,
+   :NIV3 ["recMQjpUC9OgAdBe8"],
+   :ID_record_from_NIV2 ["[2]-301"],
+   :ID_record_from_NIV3 ["[3]-676"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recntIZEpBDWZKwZ1"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 157,
+   :NIV3 ["rec20e0SWO8Z0wwlz"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-572"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recnuwstMmF1ZVrXO"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 63,
+   :NIV3 ["recLqhuAkFJ2hgfTS"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-478"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "reco0tFaShyKpg0Pf"}
+ {:fields
+  {:NIV2 ["recop1KvSCCNQbkO8"],
+   :Unique_ID 305,
+   :NIV3 ["rec7AEhSX55NaaZZu"],
+   :ID_record_from_NIV2 ["[2]-345"],
+   :ID_record_from_NIV3 ["[3]-720"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reco2PoxJaigYTJHu"}
+ {:fields
+  {:NIV2 ["recwlnfrSTwj5rOf1"],
+   :Unique_ID 362,
+   :NIV3 ["recYBVrYgv1QT3qsR"],
+   :ID_record_from_NIV2 ["[2]-402"],
+   :ID_record_from_NIV3 ["[3]-777"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recoEpcfUxC7VrDt8"}
+ {:fields
+  {:NIV2 ["recDCHN5hTe0HZy8h"],
+   :Unique_ID 265,
+   :NIV3 ["rec4RYcEoit3YYDR7"],
+   :ID_record_from_NIV2 ["[2]-271"],
+   :ID_record_from_NIV3 ["[3]-680"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recodEC5RYxwmH2vC"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 30,
+   :NIV3 ["recpt92dBE85geL5f"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-445"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recojgYq9qbWkXIWc"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 21,
+   :NIV3 ["recpzqPYLXfkBQo6C"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-436"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recow51P4tiujVVDt"}
+ {:fields
+  {:NIV2 ["recUSRTdnFFPRltmM"],
+   :Unique_ID 103,
+   :NIV3 ["recsrwXKXlwNCHn05"],
+   :ID_record_from_NIV2 ["[2]-141"],
+   :ID_record_from_NIV3 ["[3]-518"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recpHztAhK2hbeG8B"}
+ {:fields
+  {:NIV2 ["recOFsRvc4NpyJUbn"],
+   :Unique_ID 334,
+   :NIV3 ["recPO6MqgwsJZ619e"],
+   :ID_record_from_NIV2 ["[2]-372"],
+   :ID_record_from_NIV3 ["[3]-864"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recpq8t8jhNvGE2LV"}
+ {:fields
+  {:NIV2 ["reclWipypYw8k345k"],
+   :Unique_ID 277,
+   :NIV3 ["rec6rOVVTk4NfIxE9"],
+   :ID_record_from_NIV2 ["[2]-317"],
+   :ID_record_from_NIV3 ["[3]-692"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recq6VNtz9mdUOISE"}
+ {:fields
+  {:NIV2 ["reccAfZCibKG7qZh8"],
+   :Unique_ID 45,
+   :NIV3 ["recGIFlaLlpMcOtCR"],
+   :ID_record_from_NIV2 ["[2]-82"],
+   :ID_record_from_NIV3 ["[3]-460"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recqGpPx16BEs1LTB"}
+ {:fields
+  {:NIV2 ["recRMqzsMJL7PLozs"],
+   :Unique_ID 27,
+   :NIV3 ["recU0NsOhGtRfu2sy"],
+   :ID_record_from_NIV2 ["[2]-56"],
+   :ID_record_from_NIV3 ["[3]-442"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recqQw40vhOWPpwQ7"}
+ {:fields
+  {:NIV2 ["recTEEEheLrrL8P3J"],
+   :Unique_ID 7,
+   :NIV3 ["reciZqeTZ4gF8QJS3"],
+   :ID_record_from_NIV2 ["[2]-47"],
+   :ID_record_from_NIV3 ["[3]-422"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recqQwdtr3BlU87Oq"}
+ {:fields
+  {:NIV2 ["recc2CLuRPMz7GHUE"],
+   :Unique_ID 128,
+   :NIV3 ["recnJ9HWoEmEBcvtV"],
+   :ID_record_from_NIV2 ["[2]-166"],
+   :ID_record_from_NIV3 ["[3]-543"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recqUEQHQUY4MZO2M"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 183,
+   :NIV3 ["recb3fu2iAYrHbYMF"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-805"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recqirWbwOlni8Ii9"}
+ {:fields
+  {:NIV2 ["recHenanZPr9sng22"],
+   :Unique_ID 330,
+   :NIV3 ["rec9R1BJkrlKxp54G"],
+   :ID_record_from_NIV2 ["[2]-369"],
+   :ID_record_from_NIV3 ["[3]-745"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recqlyrbqMFyiFQYI"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 173,
+   :NIV3 ["rec1TmQGMDvedc1Ku"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-588"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recqusuinEy2DvKPM"}
+ {:fields
+  {:NIV2 ["recDZfzUIFvW5qx46"],
+   :Unique_ID 115,
+   :NIV3 ["recPYmUmZOl4GOW5x"],
+   :ID_record_from_NIV2 ["[2]-154"],
+   :ID_record_from_NIV3 ["[3]-530"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recr2pIfxYJYCPS6u"}
+ {:fields
+  {:NIV2 ["recnCByf2rv7Ltbw9"],
+   :Unique_ID 98,
+   :NIV3 ["recEjhVnft9aJ45dk"],
+   :ID_record_from_NIV2 ["[2]-137"],
+   :ID_record_from_NIV3 ["[3]-513"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recrPmM6wS0yrFr6H"}
+ {:fields
+  {:NIV2 ["recWOtzjNiL8y8fjL"],
+   :Unique_ID 316,
+   :NIV3 ["recEuzdXGHYjGyjuA"],
+   :ID_record_from_NIV2 ["[2]-355"],
+   :ID_record_from_NIV3 ["[3]-731"],
+   :ID_record_from_NIV1 ["[1]-36"],
+   :NIV1 ["recDvfalr7ozyfX1W"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recra4CHQEyNat6gY"}
+ {:fields
+  {:NIV2 ["recyVNyWulfRSAzdD"],
+   :Unique_ID 246,
+   :NIV3 ["reclNqwiwRlhdl8a8"],
+   :ID_record_from_NIV2 ["[2]-282"],
+   :ID_record_from_NIV3 ["[3]-661"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recrdyGoPgAderyG3"}
+ {:fields
+  {:NIV2 ["rec2KPleXKlSH1QP7"],
+   :Unique_ID 372,
+   :NIV3 ["recOJwg9LNAzjB1RY"],
+   :ID_record_from_NIV2 ["[2]-410"],
+   :ID_record_from_NIV3 ["[3]-787"],
+   :ID_record_from_NIV1 ["[1]-40"],
+   :NIV1 ["recInUreqrzUowcnc"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recrqwmS0EaeS1Way"}
+ {:fields
+  {:NIV2 ["recUSRTdnFFPRltmM"],
+   :Unique_ID 102,
+   :NIV3 ["rec8CsoXTpf6GJM7i"],
+   :ID_record_from_NIV2 ["[2]-141"],
+   :ID_record_from_NIV3 ["[3]-517"],
+   :ID_record_from_NIV1 ["[1]-10"],
+   :NIV1 ["rechGf2dN6KDIGWvH"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recs86m277nLVh3fu"}
+ {:fields
+  {:NIV2 ["recNrghX2t6O8c2ic"],
+   :Unique_ID 249,
+   :NIV3 ["recOkZCJCPT95f8Tz"],
+   :ID_record_from_NIV2 ["[2]-287"],
+   :ID_record_from_NIV3 ["[3]-664"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recs8DxEsPrct5Tuu"}
+ {:fields
+  {:NIV2 ["reciLiu4Zew922qbG"],
+   :Unique_ID 205,
+   :NIV3 ["recpHDEqJmCdwKmtp"],
+   :ID_record_from_NIV2 ["[2]-243"],
+   :ID_record_from_NIV3 ["[3]-620"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recs9JijPeEoLUTmD"}
+ {:fields
+  {:NIV2 ["recop1KvSCCNQbkO8"],
+   :Unique_ID 308,
+   :NIV3 ["recclLqQdzLDDIAwB"],
+   :ID_record_from_NIV2 ["[2]-345"],
+   :ID_record_from_NIV3 ["[3]-723"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recsIwb71QFryNMR8"}
+ {:fields
+  {:NIV2 ["rec0oBpCTxIoGyhKW"],
+   :Unique_ID 149,
+   :NIV3 ["recRO4PIkn7q5ZP70"],
+   :ID_record_from_NIV2 ["[2]-185"],
+   :ID_record_from_NIV3 ["[3]-564"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recsMcCGSZBHnsEfQ"}
+ {:fields
+  {:NIV2 ["recWzm2CqRUYkXTNA"],
+   :Unique_ID 4,
+   :NIV3 ["recJK6vB2If1fysAM"],
+   :ID_record_from_NIV2 ["[2]-44"],
+   :ID_record_from_NIV3 ["[3]-419"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recshntEEylFKobVn"}
+ {:fields
+  {:NIV2 ["recsyZhSvijTjYNlT"],
+   :Unique_ID 257,
+   :NIV3 ["rec2huhvus3n4tXY7"],
+   :ID_record_from_NIV2 ["[2]-290"],
+   :ID_record_from_NIV3 ["[3]-672"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recsvxGD88A3hNplY"}
+ {:fields
+  {:NIV2 ["recsqhAdpIH9ZMXyL"],
+   :Unique_ID 304,
+   :NIV3 ["recYOep4DcFOg3htT"],
+   :ID_record_from_NIV2 ["[2]-339"],
+   :ID_record_from_NIV3 ["[3]-719"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rect0WN20FoxrmTrQ"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 39,
+   :NIV3 ["rece0thQdT5z3vsZm"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-454"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "rect4V3NdnlDcHwLf"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 53,
+   :NIV3 ["recwts04jlFACCLU8"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-468"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rect9Ft7Gto0saFRk"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 71,
+   :NIV3 ["recgRyvqwVHaAch5c"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-486"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rectFmCmB1iRJhjJA"}
+ {:fields
+  {:NIV2 ["recscwQwQknBl7Nkn"],
+   :Unique_ID 153,
+   :NIV3 ["recM4QvtZ0IICmd0T"],
+   :ID_record_from_NIV2 ["[2]-191"],
+   :ID_record_from_NIV3 ["[3]-568"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rectbOWswMrHnSDB6"}
+ {:fields
+  {:NIV2 ["recx6aQuNOgwnz5fY"],
+   :Unique_ID 91,
+   :NIV3 ["recnylGWyNphArrkK"],
+   :ID_record_from_NIV2 ["[2]-130"],
+   :ID_record_from_NIV3 ["[3]-506"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rectblIPhjzNMSiSu"}
+ {:fields
+  {:NIV2 ["recG4b8TE3ZsIhIAq"],
+   :Unique_ID 119,
+   :NIV3 ["rec5a6dyQv6WX2KLL"],
+   :ID_record_from_NIV2 ["[2]-159"],
+   :ID_record_from_NIV3 ["[3]-534"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recteWjJgl88WXFQO"}
+ {:fields
+  {:NIV2 ["recNL6CgcABg5EwiK"],
+   :Unique_ID 141,
+   :NIV3 ["recU5uMVgJiS3WpfU"],
+   :ID_record_from_NIV2 ["[2]-181"],
+   :ID_record_from_NIV3 ["[3]-556"],
+   :ID_record_from_NIV1 ["[1]-5"],
+   :NIV1 ["recqeTXJkRBI2g1SO"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rectfcDjaL9dz32zl"}
+ {:fields
+  {:NIV2 ["recop1KvSCCNQbkO8"],
+   :Unique_ID 306,
+   :NIV3 ["recMwzfQQvc9qKOPl"],
+   :ID_record_from_NIV2 ["[2]-345"],
+   :ID_record_from_NIV3 ["[3]-721"],
+   :ID_record_from_NIV1 ["[1]-35"],
+   :NIV1 ["recXPxFKQKHGIwX5r"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rectmTclNaIFbyHEw"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 266,
+   :NIV3 ["rec6oXGO35VkOmqx6"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-681"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "rectogypVwfiKrgv3"}
+ {:fields
+  {:NIV2 ["recytr77Wd0ALLLcj"],
+   :Unique_ID 61,
+   :NIV3 ["recbmwR82fwSRXNfs"],
+   :ID_record_from_NIV2 ["[2]-92"],
+   :ID_record_from_NIV3 ["[3]-476"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "rectvsBeUwX01E7LP"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 167,
+   :NIV3 ["recQI0a2jgsM5Mlnl"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-582"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recu61f8wxz5p7Kg7"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 181,
+   :NIV3 ["recBuxxrGIEzTN68Q"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-804"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recux0TcEsErkPS6F"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 85,
+   :NIV3 ["recUyuCg0otg1L85m"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-500"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recv6WBZX4RwuYbY1"}
+ {:fields
+  {:NIV2 ["reckdKLRPVqxoCZ6t"],
+   :Unique_ID 270,
+   :NIV3 ["recp8Y8QTSMWOLnHj"],
+   :ID_record_from_NIV2 ["[2]-306"],
+   :ID_record_from_NIV3 ["[3]-685"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recv90uqAjbP6osE6"}
+ {:fields
+  {:NIV2 ["recfirGtotAz5h2ke"],
+   :Unique_ID 351,
+   :NIV3 ["recDzC5hSZcT1CBA1"],
+   :ID_record_from_NIV2 ["[2]-388"],
+   :ID_record_from_NIV3 ["[3]-766"],
+   :ID_record_from_NIV1 ["[1]-38"],
+   :NIV1 ["recj79RERCaFlueOM"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recvYy6R4lHI5YQgr"}
+ {:fields
+  {:NIV2 ["recp7UYQTCDlakkV1"],
+   :Unique_ID 178,
+   :NIV3 ["recxG9a7t32ryn8Vf"],
+   :ID_record_from_NIV2 ["[2]-194"],
+   :ID_record_from_NIV3 ["[3]-593"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recvhwPgpFfl3nB1k"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 78,
+   :NIV3 ["recbd0mILAhZYlYlj"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-493"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recvtSsg54Y9kC7f5"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 88,
+   :NIV3 ["recBqfhx8lvkXtAGd"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-503"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recwuQc4m2a2fUEvs"}
+ {:fields
+  {:NIV2 ["recOWqacZGpo9eR8I"],
+   :Unique_ID 113,
+   :NIV3 ["rec1MeXyBdptSNIv1"],
+   :ID_record_from_NIV2 ["[2]-150"],
+   :ID_record_from_NIV3 ["[3]-528"],
+   :ID_record_from_NIV1 ["[1]-19"],
+   :NIV1 ["recxAoyP3MyMMRZib"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recxRJdsK3KfarmaS"}
+ {:fields
+  {:NIV2 ["rec0gYuu5yO5YyfUK"],
+   :Unique_ID 365,
+   :NIV3 ["recvggnNzwRh89zqc"],
+   :ID_record_from_NIV2 ["[2]-405"],
+   :ID_record_from_NIV3 ["[3]-780"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recxRjDyE8Ud8MtEB"}
+ {:fields
+  {:NIV2 ["recrw3uP2dXRHNoJ6"],
+   :Unique_ID 217,
+   :NIV3 ["recvDe0rgkkDsMsIy"],
+   :ID_record_from_NIV2 ["[2]-256"],
+   :ID_record_from_NIV3 ["[3]-632"],
+   :ID_record_from_NIV1 ["[1]-32"],
+   :NIV1 ["recjDPOIW8OmWjAk1"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recxh4aLgnO1MHHEt"}
+ {:fields
+  {:NIV2 ["recppHqRD4E9btXLp"],
+   :Unique_ID 241,
+   :NIV3 ["rec8GdMUETxycA0yS"],
+   :ID_record_from_NIV2 ["[2]-280"],
+   :ID_record_from_NIV3 ["[3]-656"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recxrBBi9uASN774Z"}
+ {:fields
+  {:NIV2 ["recazlXxAtuH5PGIY"],
+   :Unique_ID 72,
+   :NIV3 ["recyzWTrP8AuxyF5M"],
+   :ID_record_from_NIV2 ["[2]-104"],
+   :ID_record_from_NIV3 ["[3]-487"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recxrLNG3Xd8Tg32n"}
+ {:fields
+  {:NIV2 ["recCkmmB5csKGgeXY"],
+   :Unique_ID 196,
+   :NIV3 ["recveBGOoj5tQ4C85"],
+   :ID_record_from_NIV2 ["[2]-236"],
+   :ID_record_from_NIV3 ["[3]-611"],
+   :ID_record_from_NIV1 ["[1]-31"],
+   :NIV1 ["rec6swjVPgzMej4u8"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recyG9Miv19MDSLpq"}
+ {:fields
+  {:NIV2 ["recFSTrntXbxWHdhF"],
+   :Unique_ID 188,
+   :NIV3 ["recFXitUaMKZGVgvt"],
+   :ID_record_from_NIV2 ["[2]-228"],
+   :ID_record_from_NIV3 ["[3]-603"],
+   :ID_record_from_NIV1 ["[1]-22"],
+   :NIV1 ["recUkSc1Y1ELAJneL"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "recyTRK1w51FDnxNk"}
+ {:fields
+  {:NIV2 ["recqdNUBuSfejA09U"],
+   :Unique_ID 282,
+   :NIV3 ["recRWoxzJshuzY5yM"],
+   :ID_record_from_NIV2 ["[2]-321"],
+   :ID_record_from_NIV3 ["[3]-697"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recyUwix8DJ2kDxHC"}
+ {:fields
+  {:NIV2 ["recBWhGxNB80FMvwj"],
+   :Unique_ID 361,
+   :NIV3 ["recx8186aU3JU0JT0"],
+   :ID_record_from_NIV2 ["[2]-794"],
+   :ID_record_from_NIV3 ["[3]-776"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recyVUc959n9o0iSX"}
+ {:fields
+  {:NIV2 ["recTEEEheLrrL8P3J"],
+   :Unique_ID 12,
+   :NIV3 ["recexG4u6V3ZDPXoC"],
+   :ID_record_from_NIV2 ["[2]-47"],
+   :ID_record_from_NIV3 ["[3]-427"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recyXmy7qM2ZH7d26"}
+ {:fields
+  {:NIV2 ["rec8JOwJV9TtwdI6p"],
+   :Unique_ID 262,
+   :NIV3 ["recHLu5sRCPtt1b6T"],
+   :ID_record_from_NIV2 ["[2]-301"],
+   :ID_record_from_NIV3 ["[3]-677"],
+   :ID_record_from_NIV1 ["[1]-34"],
+   :NIV1 ["rechfjCn7nd6MMrLb"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recyqaO7GDW58rAAy"}
+ {:fields
+  {:NIV2 ["rec9PdcgC5rdDnwDW"],
+   :Unique_ID 40,
+   :NIV3 ["recVuWmsJhXkH8lMN"],
+   :ID_record_from_NIV2 ["[2]-68"],
+   :ID_record_from_NIV3 ["[3]-455"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "recyynXm17CNvucLO"}
+ {:fields
+  {:NIV2 ["recNkK2ighswWV60M"],
+   :Unique_ID 341,
+   :NIV3 ["recJbpbGLrM1W8nrt"],
+   :ID_record_from_NIV2 ["[2]-378"],
+   :ID_record_from_NIV3 ["[3]-756"],
+   :ID_record_from_NIV1 ["[1]-37"],
+   :NIV1 ["recXhEGAmMIT7j4g4"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "recz1n2sz8dtiXzL3"}
+ {:fields
+  {:NIV2 ["reccAfZCibKG7qZh8"],
+   :Unique_ID 49,
+   :NIV3 ["recawzR76RqiB8qNX"],
+   :ID_record_from_NIV2 ["[2]-82"],
+   :ID_record_from_NIV3 ["[3]-464"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "reczAnubItptIgOkN"}
+ {:fields
+  {:NIV2 ["recjm8tnR3CTk6bzV"],
+   :Unique_ID 352,
+   :NIV3 ["rec9aikrvQkpgnBKc"],
+   :ID_record_from_NIV2 ["[2]-793"],
+   :ID_record_from_NIV3 ["[3]-767"],
+   :ID_record_from_NIV1 ["[1]-39"],
+   :NIV1 ["recqhl1hs3lrIRzPZ"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reczWzICvAqTC177J"}
+ {:fields
+  {:NIV2 ["recoy7iwSuig7Wdtd"],
+   :Unique_ID 3,
+   :NIV3 ["recFLy6Ugmnagh8dH"],
+   :ID_record_from_NIV2 ["[2]-41"],
+   :ID_record_from_NIV3 ["[3]-418"],
+   :ID_record_from_NIV1 ["[1]-1"],
+   :NIV1 ["rec6UfjT6LZMWwKom"]},
+  :createdTime "2025-04-10T15:34:47.000Z",
+  :id "reczYXorIY5cNT90h"}
+ {:fields
+  {:NIV2 ["reccAfZCibKG7qZh8"],
+   :Unique_ID 46,
+   :NIV3 ["recPPnoc2cfL50BWM"],
+   :ID_record_from_NIV2 ["[2]-82"],
+   :ID_record_from_NIV3 ["[3]-461"],
+   :ID_record_from_NIV1 ["[1]-3"],
+   :NIV1 ["recoVgsqv8wIwjuKS"]},
+  :createdTime "2025-05-01T06:42:30.000Z",
+  :id "reczjEmI5mI4JeUGp"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 118,
+   :NIV3 ["recYHcEIx1gZ9W7z7"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-533"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "reczkKwcnJ3Lh5CHg"}
+ {:fields
+  {:NIV2 ["recjezuPTH3wUoYSY"],
+   :Unique_ID 238,
+   :NIV3 ["recJtZZBTlnLGYOS3"],
+   :ID_record_from_NIV2 ["[2]-277"],
+   :ID_record_from_NIV3 ["[3]-653"],
+   :ID_record_from_NIV1 ["[1]-33"],
+   :NIV1 ["recwizKZWEuwZMJk0"]},
+  :createdTime "2025-05-01T07:48:42.000Z",
+  :id "reczkrO6eoFno3QhS"}
+ {:fields
+  {:NIV2 ["recgtQbM642FRVBpy"],
+   :Unique_ID 89,
+   :NIV3 ["recGbqTDKoOVdm8nV"],
+   :ID_record_from_NIV2 ["[2]-120"],
+   :ID_record_from_NIV3 ["[3]-504"],
+   :ID_record_from_NIV1 ["[1]-2"],
+   :NIV1 ["recjmX1dBcT00wa1d"]},
+  :createdTime "2025-05-01T06:48:06.000Z",
+  :id "reczpdjDz48HZ3JMr"}]
