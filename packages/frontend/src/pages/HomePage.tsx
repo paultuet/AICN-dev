@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import api from '@/services/api';
-import { Entity, HierarchicalEntity } from '@/types/referential';
+import { Entity, Field } from '@/types/referential';
 // Composants
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorMessage from '@/components/ui/ErrorMessage';
@@ -17,7 +17,8 @@ import useConversation from '@/hooks/useConversation';
 import useReferentialFilters from '@/hooks/useReferentialFilters';
 import useFeatureFlag from '@/hooks/useFeatureFlag';
 
-// import useSelection from '../hooks/useSelection';
+// Flag pour activer le mode test avec les données d'exemple
+const USE_SAMPLE_DATA = false; // Set to true to use the sample data for testing
 
 import { getConversationsForField, getConversationsForGroup } from '../utils/referentialUtils';
 
@@ -28,8 +29,10 @@ import AdminActions from '@/components/AdminActions';
 const HomePage = () => {
   // État des données de référentiel
   const [referentials, setReferentials] = useState<Entity[]>([]);
-  const [hierarchicalData, setHierarchicalData] = useState<HierarchicalEntity[]>([]);
+  // View mode for the main referential display
   const [viewMode, setViewMode] = useState<'flat' | 'hierarchical'>('hierarchical');
+  // View mode for the sidebar conversation panel
+  const [sidebarViewMode, setSidebarViewMode] = useState<'selection' | 'conversation'>('selection');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -69,17 +72,27 @@ const HomePage = () => {
 
 
   // Vérifier si un champ est sélectionné
-  const isFieldSelected = useCallback((entityId: string, fieldId: number): boolean => {
+  const isFieldSelected = useCallback((entityId: string, fieldId: number | string): boolean => {
     return selectedItems.some(
       selection =>
         (selection.type === 'field' &&
           selection.entityId === entityId &&
-          selection.fieldIds?.includes(fieldId)) ||
+          selection.fieldIds?.some(id => 
+            id === fieldId || 
+            id === Number(fieldId) || 
+            String(id) === String(fieldId)
+          )) ||
         (selection.type === 'group' &&
           selection.entityId === entityId &&
           referentials.find(e => e['entity-id'] === entityId)?.fields
-            .filter(f => f['lib-group'] === selection.groupName)
-            .some(f => f['id-field'] === fieldId))
+            .filter(f => 'lib-group' in f && f['lib-group'] === selection.groupName)
+            .some(f => {
+              if (!('id-field' in f)) return false;
+              const idField = f['id-field'];
+              return idField === fieldId || 
+                     idField === Number(fieldId) || 
+                     String(idField) === String(fieldId);
+            }))
     );
   }, [selectedItems, referentials]);
 
@@ -93,7 +106,7 @@ const HomePage = () => {
   }, [selectedItems]);
 
   // Toggle la sélection d'un champ
-  const toggleFieldSelection = useCallback((entityId: string, fieldId: number) => {
+  const toggleFieldSelection = useCallback((entityId: string, fieldId: number | string) => {
     const fieldConversations = getConversationsForField(conversations, entityId, fieldId);
     const existingFieldIndex = selectedItems.findIndex(
       selection => selection.type === 'field' &&
@@ -105,8 +118,14 @@ const HomePage = () => {
     const entity = referentials.find(e => e['entity-id'] === entityId);
     if (!entity) return;
 
-    const field = entity.fields.find(f => f['id-field'] === fieldId);
-    if (!field) return;
+    const field = entity.fields.find(f => {
+      if (!('id-field' in f)) return false;
+      const idField = f['id-field'];
+      return idField === fieldId || 
+             idField === Number(fieldId) || 
+             String(idField) === String(fieldId);
+    });
+    if (!field || !('lib-group' in field)) return;
 
     const fieldGroupName = field['lib-group'];
 
@@ -131,20 +150,20 @@ const HomePage = () => {
       setSelectedItems([{
         type: 'field',
         entityId,
-        fieldIds: [fieldId]
+        fieldIds: [typeof fieldId === 'number' ? fieldId : Number(fieldId) || fieldId]
       }]);
 
       // Si le champ a des conversations, ouvrir la première
       if (fieldConversations.length > 0) {
         setSelectedConversationId(fieldConversations[0].id);
-        setViewMode('conversation');
+        setSidebarViewMode('conversation');
       } else {
-        setViewMode('selection');
+        setSidebarViewMode('selection');
       }
 
       setSidebarOpen(true);
     }
-  }, [setSelectedItems, referentials, selectedItems, conversations, getConversationsForField, setSelectedConversationId, setViewMode, setSidebarOpen]);
+  }, [setSelectedItems, referentials, selectedItems, conversations, getConversationsForField, setSelectedConversationId, setSidebarViewMode, setSidebarOpen]);
 
   // Toggle la sélection d'un groupe
   const toggleGroupSelection = useCallback((entityId: string, groupName: string) => {
@@ -170,35 +189,65 @@ const HomePage = () => {
       // Si le groupe a des conversations, ouvrir la première
       if (groupConversations.length > 0) {
         setSelectedConversationId(groupConversations[0].id);
-        setViewMode('conversation');
+        setSidebarViewMode('conversation');
       } else {
-        setViewMode('selection');
+        setSidebarViewMode('selection');
       }
 
       setSidebarOpen(true);
     }
-  }, [setSelectedItems, selectedItems, conversations, getConversationsForGroup, setSelectedConversationId, setViewMode, setSidebarOpen]);
+  }, [setSelectedItems, selectedItems, conversations, getConversationsForGroup, setSelectedConversationId, setSidebarViewMode, setSidebarOpen]);
+
+  // Function to handle mock data for testing
+  const useSampleData = (data: Entity[]) => {
+    // Transform the sample data to ensure it matches our Entity structure
+    const transformedData = data.map((entity: any) => {
+      // Ensure proper structure for top-level entity
+      const transformedEntity: Entity = {
+        'entity-id': entity['entity-id'],
+        'entity-name': entity['entity-name'],
+        'fields': entity.fields || [],
+        'niveau': entity.niveau || 1,
+        'id-record': entity['id-record'],
+        'type': entity.type,
+        'desc-fr': entity['desc-fr'],
+        'exemple': entity.exemple,
+        'var-type': entity['var-type'],
+        'link': entity.link
+      };
+      
+      return transformedEntity;
+    });
+    
+    return transformedData;
+  };
 
   // Récupérer les données initiales
   useEffect(() => {
     const fetchReferentials = async () => {
       try {
-        const response = await api.get('/referentiels');
-        
-        // La réponse est maintenant une liste de HierarchicalEntity
-        if (Array.isArray(response.data)) {
-          setHierarchicalData(response.data);
+        if (USE_SAMPLE_DATA) {
+          // Utiliser les données d'exemple pour le test
+          const sampleData = '[{"niveau":1,"fields":[{"niveau":2,"fields":[{"niveau":3,"desc":null,"lib-fonc":"Reportings par natures/domaines (trésorerie compta impayés ESG extra financier etc)","type":"NMR","entity-id":"recLPoRmlFMtP21xR","link-entity-id":null,"lib-group":"Niveau 3 - Reportings par natures/domaines (trésorerie compta impayés ESG extra financier etc)","exemple":null,"var-type":null,"id-field":"[3]-807","entity":{"id":"recLPoRmlFMtP21xR","name":"Reportings par natures/domaines (trésorerie compta impayés ESG extra financier etc)"}},{"niveau":3,"desc":null,"lib-fonc":"Reportings par périodicité","type":"NMR","entity-id":"rec8qZSz5s88mRskR","link-entity-id":null,"lib-group":"Niveau 3 - Reportings par périodicité","exemple":null,"var-type":null,"id-field":"[3]-615","entity":{"id":"rec8qZSz5s88mRskR","name":"Reportings par périodicité"}}],"type":"NMR","id-record":"[2]-240","entity-id":"recAAG6Gs7hncJThx","link":null,"entity-name":"Besoins et modalités de reporting portefeuille","exemple":null,"var-type":null,"desc-fr":null},{"niveau":2,"fields":[{"niveau":3,"desc":null,"lib-fonc":"Grilles et plans d\'actions ESG","type":"NMR","entity-id":"recveBGOoj5tQ4C85","link-entity-id":null,"lib-group":"Niveau 3 - Grilles et plans d\'actions ESG","exemple":null,"var-type":null,"id-field":"[3]-611","entity":{"id":"recveBGOoj5tQ4C85","name":"Grilles et plans d\'actions ESG"}},{"niveau":3,"desc":null,"lib-fonc":"Règlementations nationales applicables","type":"NMR","entity-id":"recnm4KGjQ4XEIg6X","link-entity-id":null,"lib-group":"Niveau 3 - Règlementations nationales applicables","exemple":null,"var-type":null,"id-field":"[3]-612","entity":{"id":"recnm4KGjQ4XEIg6X","name":"Règlementations nationales applicables"}}],"type":"NMR","id-record":"[2]-236","entity-id":"recCkmmB5csKGgeXY","link":null,"entity-name":"Contexte règlementaire Donneur d\'ordres","exemple":null,"var-type":null,"desc-fr":null},{"niveau":2,"fields":[{"niveau":3,"desc":null,"lib-fonc":"Périmètres de missions exclues","type":"NMR","entity-id":"recN70RbWwsaUMnjh","link-entity-id":null,"lib-group":"Niveau 3 - Périmètres de missions exclues","exemple":null,"var-type":null,"id-field":"[3]-614","entity":{"id":"recN70RbWwsaUMnjh","name":"Périmètres de missions exclues"}},{"niveau":3,"desc":null,"lib-fonc":"Périmètres de missions inclus","type":"NMR","entity-id":"recvx95lFZiyaD6a2","link-entity-id":null,"lib-group":"Niveau 3 - Périmètres de missions inclus","exemple":null,"var-type":null,"id-field":"[3]-613","entity":{"id":"recvx95lFZiyaD6a2","name":"Périmètres de missions inclus"}}],"type":"NMR","id-record":"[2]-238","entity-id":"recpwlmqmAHqPMGfw","link":null,"entity-name":"Prestataires et missions confiées à l\'échelle du portefeuille","exemple":null,"var-type":null,"desc-fr":null},{"niveau":2,"fields":[{"niveau":3,"desc":null,"lib-fonc":"Acteur Français","type":"NMR","entity-id":"recHu63IivnKClbwn","link-entity-id":null,"lib-group":"Niveau 3 - Acteur Français","exemple":null,"var-type":null,"id-field":"[3]-606","entity":{"id":"recHu63IivnKClbwn","name":"Acteur Français"}},{"niveau":3,"desc":null,"lib-fonc":"Acteur pan-Euro","type":"NMR","entity-id":"recnAJ64g2QtCDEnH","link-entity-id":null,"lib-group":"Niveau 3 - Acteur pan-Euro","exemple":null,"var-type":null,"id-field":"[3]-607","entity":{"id":"recnAJ64g2QtCDEnH","name":"Acteur pan-Euro"}},{"niveau":3,"desc":null,"lib-fonc":"Client direct (Foncière)","type":"NMR","entity-id":"recmogC8YIKG88rzc","link-entity-id":null,"lib-group":"Niveau 3 - Client direct (Foncière)","exemple":null,"var-type":null,"id-field":"[3]-608","entity":{"id":"recmogC8YIKG88rzc","name":"Client direct (Foncière)"}},{"niveau":3,"desc":null,"lib-fonc":"Client Indirect (AM)","type":"NMR","entity-id":"rech2TjyGsQzniw9d","link-entity-id":null,"lib-group":"Niveau 3 - Client Indirect (AM)","exemple":null,"var-type":null,"id-field":"[3]-609","entity":{"id":"rech2TjyGsQzniw9d","name":"Client Indirect (AM)"}}],"type":"NMR","id-record":"[2]-231","entity-id":"recgdIWaxGAytJkcm","link":null,"entity-name":"Qualification du Donneur d\'ordres","exemple":null,"var-type":null,"desc-fr":null},{"niveau":2,"fields":[{"niveau":3,"desc":null,"lib-fonc":"Description de la stratégie portefeuille","type":"NMR","entity-id":"recb1Rqs01pEOpEvi","link-entity-id":null,"lib-group":"Niveau 3 - Description de la stratégie portefeuille","exemple":null,"var-type":null,"id-field":"[3]-610","entity":{"id":"recb1Rqs01pEOpEvi","name":"Description de la stratégie portefeuille"}}],"type":"NMR","id-record":"[2]-235","entity-id":"rec5rjyJgtt3Mc5Cj","link":null,"entity-name":"Stratégie portefeuille du Donneur d\'ordres","exemple":null,"var-type":null,"desc-fr":null}],"type":"NMR","id-record":"[1]-31","entity-id":"rec6swjVPgzMej4u8","link":null,"entity-name":"A-ETABLIR LE CONTEXTE ET LES OBJECTIFS PORTEFEUILLE","exemple":null,"var-type":null,"desc-fr":null}]';
           
-          // Pour maintenir la compatibilité avec l'ancienne structure
-          // Convertir les données hiérarchiques en structure plate
-          const flatEntities = convertHierarchicalToFlat(response.data);
-          setReferentials(flatEntities);
+          setReferentials(useSampleData(JSON.parse(sampleData)));
+          setLoading(false);
+          console.log('Using sample data for testing');
         } else {
-          console.error('Unexpected data format from API:', response.data);
-          setError('Format de données inattendu du serveur');
+          // Récupérer les données depuis l'API
+          const response = await api.get('/referentiels');
+          
+          // Vérifier si la réponse est dans le format attendu
+          if (Array.isArray(response.data)) {
+            // Stocker directement car c'est déjà structuré avec des fields
+            setReferentials(response.data);
+            setLoading(false);
+          } else {
+            console.error('Unexpected data format from API:', response.data);
+            setError('Format de données inattendu du serveur');
+            setLoading(false);
+          }
         }
-        
-        setLoading(false);
       } catch (err) {
         console.error('Error fetching referentials:', err);
         setError('Une erreur est survenue lors du chargement des référentiels');
@@ -211,38 +260,6 @@ const HomePage = () => {
       setConversations(mockConversations);
     }
   }, [setConversations, isConversationsFeatureEnabled]);
-  
-  // Fonction pour convertir les données hiérarchiques en structure plate
-  const convertHierarchicalToFlat = (hierarchical: HierarchicalEntity[]): Entity[] => {
-    const flatEntities: Entity[] = [];
-    
-    // Fonction récursive pour extraire les entités et leurs champs
-    const extractEntities = (entity: HierarchicalEntity | HierarchicalField, parentEntity?: Entity) => {
-      // Si c'est une entité avec des champs, l'ajouter à la liste
-      if ('fields' in entity && entity.fields.length > 0) {
-        const newEntity: Entity = {
-          'entity-id': entity['entity-id'],
-          'entity-name': entity['entity-name'],
-          'fields': entity.fields
-        };
-        flatEntities.push(newEntity);
-      }
-      
-      // Si l'entité a des enfants, parcourir récursivement
-      if ('children' in entity) {
-        entity.children.forEach(child => {
-          extractEntities(child);
-        });
-      }
-    };
-    
-    // Parcourir toutes les entités de niveau 1
-    hierarchical.forEach(entity => {
-      extractEntities(entity);
-    });
-    
-    return flatEntities;
-  };
 
   // Filtrer les référentiels en fonction des critères
   const filteredReferentials = referentials.filter(entity => {
@@ -254,6 +271,9 @@ const HomePage = () => {
     if (showOnlyWithConversations) {
       // Vérifier si l'entité a des groupes ou des champs avec des conversations
       const hasConversations = entity.fields.some(field => {
+        // Vérifier si le champ a une propriété lib-group (pour assurer le typage)
+        if (!('lib-group' in field)) return false;
+        
         // Vérifier si le champ a des conversations directes
         const fieldHasConversations = getConversationsForField(conversations, entity['entity-id'], field['id-field']).length > 0;
 
@@ -279,9 +299,9 @@ const HomePage = () => {
 
       // Rechercher dans les champs
       return entity.fields.some(field =>
-        field['lib-fonc'].toLowerCase().includes(searchTermLower) ||
-        (field.desc && field.desc.toLowerCase().includes(searchTermLower)) ||
-        field['lib-group'].toLowerCase().includes(searchTermLower)
+        'lib-fonc' in field && field['lib-fonc']?.toLowerCase().includes(searchTermLower) ||
+        ('desc' in field && field.desc && field.desc.toLowerCase().includes(searchTermLower)) ||
+        ('lib-group' in field && field['lib-group']?.toLowerCase().includes(searchTermLower))
       );
     }
 
@@ -299,8 +319,8 @@ const HomePage = () => {
     setSelectedItems([]);
     setSidebarOpen(false);
     setSelectedConversationId(null);
-    setViewMode('selection');
-  }, [setSelectedItems, setSidebarOpen, setSelectedConversationId, setViewMode]);
+    setSidebarViewMode('selection');
+  }, [setSelectedItems, setSidebarOpen, setSelectedConversationId, setSidebarViewMode]);
 
   // Gérer la fermeture du panneau et la désélection complète
   const handleCloseSidebar = useCallback(() => {
@@ -340,13 +360,13 @@ const HomePage = () => {
       {isConversationsFeatureEnabled && <ConversationSidebar
         isOpen={sidebarOpen}
         selectedItems={selectedItems}
-        viewMode={viewMode}
+        viewMode={sidebarViewMode}
         selectedConversationId={selectedConversationId}
         conversations={conversations}
         referentials={referentials}
         onClose={handleCloseSidebar}
         onClearSelection={clearAllSelections}
-        onViewModeChange={setViewMode}
+        onViewModeChange={setSidebarViewMode}
         onSelectConversation={setSelectedConversationId}
         onCreateConversation={createConversation}
         onSendMessage={sendMessage}
@@ -363,7 +383,7 @@ const HomePage = () => {
 
       <AdminActions />
 
-      <div className="bg-white shadow-lg rounded-lg p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-gray-200">
+      <div className="hidden bg-white shadow-lg rounded-lg p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-gray-200">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col md:flex-row gap-6">
             <SearchBar
@@ -446,7 +466,7 @@ const HomePage = () => {
 
       {/* Affichage des référentiels selon le mode de vue */}
       {viewMode === 'hierarchical' ? (
-        <HierarchicalView data={hierarchicalData} searchTerm={searchTerm} />
+        <HierarchicalView data={referentials} searchTerm={searchTerm} />
       ) : (
         // Vue détaillée (ancienne vue)
         filteredReferentials.map((entity) => (
@@ -468,13 +488,13 @@ const HomePage = () => {
               getConversationsForField(conversations, entityId, fieldId)
             }
             fieldBelongsToGroupWithConversation={(entityId, fieldId) =>
-              fieldBelongsToGroupWithConversation(entityId, fieldId, entity.fields)
+              fieldBelongsToGroupWithConversation(entityId, fieldId, entity.fields.filter(f => 'lib-group' in f) as Field[])
             }
             shouldDisplayGroup={(entityId, groupName, fields) =>
               shouldDisplayGroup(entityId, groupName, fields)
             }
             shouldDisplayField={(entityId, fieldId) =>
-              shouldDisplayField(entityId, fieldId, entity.fields)
+              shouldDisplayField(entityId, fieldId, entity.fields.filter(f => 'lib-group' in f) as Field[])
             }
             clearSelection={clearAllSelections}
             referentialEntityMap={referentialEntityMap}

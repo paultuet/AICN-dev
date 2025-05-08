@@ -85,19 +85,28 @@ export function useConversation({ initialConversations = [] }: UseConversationPr
   }, [conversations]);
 
   // Obtenir les conversations pour un champ
-  const getConversationsForField = useCallback((entityId: string, fieldId: number): Conversation[] => {
+  const getConversationsForField = useCallback((entityId: string, fieldId: number | string): Conversation[] => {
     return conversations.filter(conversation => 
       conversation.linkedItems.some(item => 
         item.type === 'field' && 
         item.entityId === entityId && 
-        item.fieldIds?.includes(fieldId)
+        item.fieldIds?.some(id => 
+          id === fieldId || 
+          id === Number(fieldId) || 
+          String(id) === String(fieldId)
+        )
       )
     );
   }, [conversations]);
 
   // Vérifier si un champ appartient à un groupe avec des conversations
-  const fieldBelongsToGroupWithConversation = useCallback((entityId: string, fieldId: number, fields: { 'id-field': number, 'lib-group': string }[]): boolean => {
-    const field = fields.find(f => f['id-field'] === fieldId);
+  const fieldBelongsToGroupWithConversation = useCallback((entityId: string, fieldId: number | string, fields: { 'id-field': number | string, 'lib-group': string }[]): boolean => {
+    const field = fields.find(f => {
+      const idField = f['id-field'];
+      return idField === fieldId || 
+            idField === Number(fieldId) || 
+            String(idField) === String(fieldId);
+    });
     if (!field) return false;
     
     const groupName = field['lib-group'];

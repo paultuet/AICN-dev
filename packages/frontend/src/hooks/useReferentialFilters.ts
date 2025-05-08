@@ -34,9 +34,9 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
         
         // Rechercher dans les champs
         const hasMatchingField = entity.fields.some(field => 
-          field['lib-fonc'].toLowerCase().includes(searchTermLower) ||
-          (field.desc && field.desc.toLowerCase().includes(searchTermLower)) ||
-          field['lib-group'].toLowerCase().includes(searchTermLower)
+          'lib-fonc' in field && field['lib-fonc']?.toLowerCase().includes(searchTermLower) ||
+          ('desc' in field && field.desc && field.desc.toLowerCase().includes(searchTermLower)) ||
+          ('lib-group' in field && field['lib-group']?.toLowerCase().includes(searchTermLower))
         );
         
         if (!hasMatchingField) {
@@ -59,14 +59,17 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     // Vérifier si un champ du groupe a des conversations directes
     const hasFieldConversations = groupHasFieldsWithConversations(conversations, entityId, fields);
     return hasFieldConversations;
-  }, [showOnlyWithConversations, conversations]);
+  }, [showOnlyWithConversations, conversations, groupHasConversations, groupHasFieldsWithConversations]);
 
   // Vérifier si un champ doit être affiché quand le filtre est actif
-  const shouldDisplayField = useCallback((entityId: string, fieldId: number, fields: Field[]): boolean => {
+  const shouldDisplayField = useCallback((entityId: string, fieldId: number | string, fields: Field[]): boolean => {
     if (!showOnlyWithConversations) return true;
 
     // Trouver le champ dans les données
-    const field = fields.find(f => f['id-field'] === fieldId);
+    const field = fields.find(f => {
+      const idField = f['id-field'];
+      return idField === fieldId || idField === Number(fieldId) || String(idField) === String(fieldId);
+    });
     if (!field) return false;
     
     // Vérifier si le champ a des conversations directes

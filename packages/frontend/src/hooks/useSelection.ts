@@ -11,7 +11,7 @@ export function useSelection({ referentials, onSelectionChange }: UseSelectionPr
   const [selectedItems, setSelectedItems] = useState<Selection[]>([]);
 
   // Toggle la sélection d'un champ
-  const toggleFieldSelection = useCallback((entityId: string, fieldId: number) => {
+  const toggleFieldSelection = useCallback((entityId: string, fieldId: number | string) => {
     const existingFieldIndex = selectedItems.findIndex(
       selection => selection.type === 'field' && 
                   selection.entityId === entityId && 
@@ -22,8 +22,12 @@ export function useSelection({ referentials, onSelectionChange }: UseSelectionPr
     const entity = referentials.find(e => e['entity-id'] === entityId);
     if (!entity) return;
     
-    const field = entity.fields.find(f => f['id-field'] === fieldId);
-    if (!field) return;
+    const field = entity.fields.find(f => {
+      if (!('id-field' in f)) return false;
+      const idField = f['id-field'];
+      return idField === fieldId || idField === Number(fieldId) || String(idField) === String(fieldId);
+    });
+    if (!field || !('lib-group' in field)) return;
     
     const fieldGroupName = field['lib-group'];
       
@@ -48,7 +52,7 @@ export function useSelection({ referentials, onSelectionChange }: UseSelectionPr
       const newSelectedItems: Selection[] = [{
         type: 'field',
         entityId,
-        fieldIds: [fieldId]
+        fieldIds: [typeof fieldId === 'number' ? fieldId : Number(fieldId) || fieldId]
       }];
       setSelectedItems(newSelectedItems);
       if (onSelectionChange) onSelectionChange(newSelectedItems);
@@ -81,19 +85,29 @@ export function useSelection({ referentials, onSelectionChange }: UseSelectionPr
   }, [selectedItems, onSelectionChange]);
 
   // Vérifier si un champ est sélectionné
-  const isFieldSelected = useCallback((entityId: string, fieldId: number): boolean => {
+  const isFieldSelected = useCallback((entityId: string, fieldId: number | string): boolean => {
     // Un champ est sélectionné s'il est explicitement sélectionné
     // ou s'il fait partie d'un groupe sélectionné
     return selectedItems.some(
       selection => 
         (selection.type === 'field' && 
          selection.entityId === entityId && 
-         selection.fieldIds?.includes(fieldId)) ||
+         selection.fieldIds?.some(id => 
+           id === fieldId || 
+           id === Number(fieldId) || 
+           String(id) === String(fieldId)
+         )) ||
         (selection.type === 'group' && 
          selection.entityId === entityId &&
          referentials.find(e => e['entity-id'] === entityId)?.fields
-          .filter(f => f['lib-group'] === selection.groupName)
-          .some(f => f['id-field'] === fieldId))
+          .filter(f => 'lib-group' in f && f['lib-group'] === selection.groupName)
+          .some(f => {
+            if (!('id-field' in f)) return false;
+            const idField = f['id-field'];
+            return idField === fieldId || 
+                   idField === Number(fieldId) || 
+                   String(idField) === String(fieldId);
+          }))
     );
   }, [selectedItems, referentials]);
 

@@ -22,5 +22,5 @@ export type Selection = {
   type: 'field' | 'group'
   entityId: string
   groupName?: string
-  fieldIds?: number[]
+  fieldIds?: (number | string)[]
 }

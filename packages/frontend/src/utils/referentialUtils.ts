@@ -53,15 +53,20 @@ export const groupHasFieldsWithConversations = (
   entityId: string, 
   fields: Field[]
 ): boolean => {
-  return fields.some(field => 
-    conversations.some(conversation => 
+  return fields.some(field => {
+    const fieldId = field['id-field'];
+    return conversations.some(conversation => 
       conversation.linkedItems.some(item => 
         item.type === 'field' && 
         item.entityId === entityId && 
-        item.fieldIds?.includes(field['id-field'])
+        item.fieldIds?.some(id => 
+          id === fieldId || 
+          id === Number(fieldId) || 
+          String(id) === String(fieldId)
+        )
       )
-    )
-  );
+    );
+  });
 };
 
 /**
@@ -95,13 +100,17 @@ export const getConversationsForGroup = (
 export const getConversationsForField = (
   conversations: Conversation[],
   entityId: string, 
-  fieldId: number
+  fieldId: number | string
 ): Conversation[] => {
   return conversations.filter(conversation => 
     conversation.linkedItems.some(item => 
       item.type === 'field' && 
       item.entityId === entityId && 
-      item.fieldIds?.includes(fieldId)
+      item.fieldIds?.some(id => 
+        id === fieldId || 
+        id === Number(fieldId) || 
+        String(id) === String(fieldId)
+      )
     )
   );
 };

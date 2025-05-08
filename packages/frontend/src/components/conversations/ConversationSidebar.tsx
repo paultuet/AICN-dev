@@ -168,7 +168,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                                 <span className="text-xs font-medium text-blue-600">{entity?.['entity-name']}</span>
                                 <p className="text-sm font-medium">
                                   {item.fieldIds.map(fieldId => {
-                                    const field = entity?.fields.find(f => f['id-field'] === fieldId);
+                                    const field = entity?.fields.find(f => 'id-field' in f && f['id-field'] === fieldId);
                                     return field?.['lib-fonc'];
                                   }).join(', ')}
                                 </p>

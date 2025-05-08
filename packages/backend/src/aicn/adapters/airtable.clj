@@ -157,16 +157,15 @@
                                :niveau (get-in entity [:fields :Niveau_record])
                                :type (get-in entity [:fields :Type_record])
                                :id-record (get-in entity [:fields :ID_record])
-                               :exemple (get-in entity [:field :Exemple])
-                               :link (get-in entity [:field :link])
-                               :var-type (get-in entity [:field :Var_type])
-                               :desc-fr (get-in entity [:field :Desc_fr])}))
+                               :exemple (get-in entity [:fields :Exemple])
+                               :link (get-in entity [:fields :link])  ;; Fixed field path
+                               :var-type (get-in entity [:fields :Var_type])  ;; Fixed field path
+                               :desc-fr (get-in entity [:fields :Desc_fr])}))  ;; Fixed field path
                                
         
         ;; Get all NIV1 entities
         niveau1-entities (->> ref-list-data
-                              (filter #(and (= 1 (get-in % [:fields :Niveau_record]))
-                                           true #_(= "NMR" (get-in % [:fields :Type_record]))))
+                              (filter #(= 1 (get-in % [:fields :Niveau_record])))
                               (map :id)
                               (sort-by (fn [id] 
                                          (normalize-string 
@@ -191,38 +190,59 @@
                                              niv3-by-type (group-by (fn [id] 
                                                                      (get-in (get-entity-details id) [:type]))
                                                                     niv3-ids)
-                                             ;; Get RIO type NIV3s (your data structure)
+                                             ;; Get RIO type NIV3s (directly as fields)
                                              rio-niv3s (->> (get niv3-by-type "RIO" [])
                                                            (map (fn [niv3-id]
-                                                                 (let [niv3-details (get-entity-details niv3-id)
-                                                                       fields-data (->> data
-                                                                                        (filter #(= niv3-id (:entity-id %))))]
-                                                                   {:entity-id niv3-id
-                                                                    :entity-name (:name niv3-details)
+                                                                 (let [niv3-details (get-entity-details niv3-id)]
+                                                                   {:id-field (:id-record niv3-details)
+                                                                    :lib-fonc (:name niv3-details)
                                                                     :niveau 3
-                                                                    :id-record (:id-record niv3-details)
-                                                                    :type (:type niv3-details)
-                                                                    :desc-fr (:desc-fr niv3-details)
-                                                                    :link (:link niv3-details)
                                                                     :var-type (:var-type niv3-details)
+                                                                    :desc (:desc-fr niv3-details)
+                                                                    :entity-id niv3-id
+                                                                    :entity {:id niv3-id
+                                                                             :name (:name niv3-details)}
+                                                                    :link-entity-id (:link niv3-details)
+                                                                    :lib-group (format "Niveau 3 - %s" (:name niv3-details))
                                                                     :exemple (:exemple niv3-details)
-                                                                    :fields (vec fields-data)})))
-                                                           (sort-by #(normalize-string (:entity-name %))))
-                                             ;; Get NMR type NIV3s (structure entities)
+                                                                    :type "RIO"})))
+                                                           (sort-by #(normalize-string (:lib-fonc %))))
+                                             ;; Get NMR type NIV3s (also as fields)
                                              nmr-niv3s (->> (get niv3-by-type "NMR" [])
                                                            (map (fn [niv3-id]
                                                                  (let [niv3-details (get-entity-details niv3-id)]
-                                                                   {:entity-id niv3-id
-                                                                    :entity-name (:name niv3-details)
-                                                                    :type (:type niv3-details)
-                                                                    :desc-fr (:desc-fr niv3-details)
-                                                                    :var-type (:var-type niv3-details)
-                                                                    :link (:link niv3-details)
-                                                                    :exemple (:exemple niv3-details)
+                                                                   {:id-field (:id-record niv3-details)
+                                                                    :lib-fonc (:name niv3-details)
                                                                     :niveau 3
-                                                                    :id-record (:id-record niv3-details)
-                                                                    :children []})))
-                                                           (sort-by #(normalize-string (:entity-name %))))]
+                                                                    :var-type (:var-type niv3-details)
+                                                                    :desc (:desc-fr niv3-details)
+                                                                    :entity-id niv3-id
+                                                                    :entity {:id niv3-id
+                                                                             :name (:name niv3-details)}
+                                                                    :link-entity-id (:link niv3-details)
+                                                                    :lib-group (format "Niveau 3 - %s" (:name niv3-details))
+                                                                    :exemple (:exemple niv3-details)
+                                                                    :type "NMR"})))
+                                                           (sort-by #(normalize-string (:lib-fonc %))))
+                                             ;; Get all other NIV3s (with any type)
+                                             other-niv3s (->> (vals (dissoc niv3-by-type "RIO" "NMR"))
+                                                             (apply concat)
+                                                             (map (fn [niv3-id]
+                                                                  (let [niv3-details (get-entity-details niv3-id)
+                                                                        type-value (or (:type niv3-details) "UNKNOWN")]
+                                                                    {:id-field (:id-record niv3-details)
+                                                                     :lib-fonc (:name niv3-details)
+                                                                     :niveau 3
+                                                                     :var-type (:var-type niv3-details)
+                                                                     :desc (:desc-fr niv3-details)
+                                                                     :entity-id niv3-id
+                                                                     :entity {:id niv3-id
+                                                                              :name (:name niv3-details)}
+                                                                     :link-entity-id (:link niv3-details)
+                                                                     :lib-group (format "Niveau 3 - %s" (:name niv3-details))
+                                                                     :exemple (:exemple niv3-details)
+                                                                     :type type-value})))
+                                                             (sort-by #(normalize-string (:lib-fonc %))))]
                                          {:entity-id niv2-id
                                           :entity-name (:name niv2-details)
                                           :niveau 2
@@ -232,7 +252,7 @@
                                           :link (:link niv2-details)
                                           :var-type (:var-type niv2-details)
                                           :desc-fr (:desc-fr niv2-details)
-                                          :children (concat rio-niv3s nmr-niv3s)}))
+                                          :fields (concat rio-niv3s nmr-niv3s other-niv3s)}))
                                      sorted-niv2-ids)]
                 (conj acc 
                       {:entity-id niv1-id
@@ -244,7 +264,7 @@
                        :type (:type niv1-details)
                        :desc-fr (:desc-fr niv1-details)
                        :exemple (:exemple niv1-details)
-                       :children niv2-entries})))
+                       :fields niv2-entries})))
             []
             niveau1-entities)))
 

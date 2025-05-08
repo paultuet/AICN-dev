@@ -13,15 +13,15 @@ interface EntityCardProps {
   searchTerm: string;
   showOnlyWithConversations: boolean;
   isGroupSelected: (entityId: string, groupName: string) => boolean;
-  isFieldSelected: (entityId: string, fieldId: number) => boolean;
+  isFieldSelected: (entityId: string, fieldId: number | string) => boolean;
   toggleGroupSelection: (entityId: string, groupName: string) => void;
-  toggleFieldSelection: (entityId: string, fieldId: number) => void;
+  toggleFieldSelection: (entityId: string, fieldId: number | string) => void;
   openConversation: (conversationId: string) => void;
   getConversationsForGroup: (entityId: string, groupName: string) => Conversation[];
-  getConversationsForField: (entityId: string, fieldId: number) => Conversation[];
-  fieldBelongsToGroupWithConversation: (entityId: string, fieldId: number) => boolean;
+  getConversationsForField: (entityId: string, fieldId: number | string) => Conversation[];
+  fieldBelongsToGroupWithConversation: (entityId: string, fieldId: number | string) => boolean;
   shouldDisplayGroup: (entityId: string, groupName: string, fields: Field[]) => boolean;
-  shouldDisplayField: (entityId: string, fieldId: number) => boolean;
+  shouldDisplayField: (entityId: string, fieldId: number | string) => boolean;
   clearSelection: () => void; // Fonction pour désélectionner tous les éléments
   referentialEntityMap: Record<string, string>; // Map of entity IDs to entity names
 }
@@ -43,7 +43,9 @@ const EntityCard: React.FC<EntityCardProps> = ({
   clearSelection,
   referentialEntityMap
 }) => {
-  const groupedFields = groupFieldsByLibGroup(entity.fields);
+  // Cast the fields to Field[] for processing, this is safe because we check for 'lib-group' 
+  // property when using these fields later in the component
+  const groupedFields = groupFieldsByLibGroup(entity.fields.filter(f => 'lib-group' in f) as Field[]);
   const isFeatureConversationsEnabled = useFeatureFlag('conversations');
 
   return (

@@ -11,7 +11,7 @@ interface FieldRowProps {
   belongsToGroupWithConversation: boolean;
   fieldConversations: Conversation[];
   searchTerm: string;
-  onSelect: (entityId: string, fieldId: number) => void;
+  onSelect: (entityId: string, fieldId: number | string) => void;
   onOpenConversation: (conversationId: string) => void;
   onClearSelection?: () => void; // Optionnel - fonction pour désélectionner tous les éléments
   entityMap: Record<string, string>; // Map of entity IDs to entity names
