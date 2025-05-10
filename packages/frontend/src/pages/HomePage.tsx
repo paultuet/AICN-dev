@@ -236,6 +236,8 @@ const HomePage = () => {
         } else {
           // Récupérer les données depuis l'API
           const response = await api.get('/referentiels');
+
+
           
           // Vérifier si la réponse est dans le format attendu
           if (Array.isArray(response.data)) {

@@ -49,12 +49,12 @@ const authService = {
    * Register a new user
    */
   register: async (userData: RegisterCredentials): Promise<RegisterResponse> => {
-    console.log("Registering user with data:", userData);
+    // console.log("Registering user with data:", userData);
     
     try {
       // Utiliser l'endpoint correct du backend
       const response = await api.post<RegisterResponse>('/auth/register', userData);
-      console.log("Register response data:", response.data);
+      // console.log("Register response data:", response.data);
       return response.data;
     } catch (err) {
       console.error("Registration error:", err);
