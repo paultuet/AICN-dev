@@ -99,18 +99,51 @@ export const getConversationsForGroup = (
  */
 export const getConversationsForField = (
   conversations: Conversation[],
-  entityId: string, 
+  entityId: string,
   fieldId: number | string
 ): Conversation[] => {
-  return conversations.filter(conversation => 
-    conversation.linkedItems.some(item => 
-      item.type === 'field' && 
-      item.entityId === entityId && 
-      item.fieldIds?.some(id => 
-        id === fieldId || 
-        id === Number(fieldId) || 
-        String(id) === String(fieldId)
-      )
-    )
-  );
+  // Log pour debug
+  console.log("getConversationsForField - entityId:", entityId, "fieldId:", fieldId, "type:", typeof fieldId);
+
+  // Préparer différentes versions de l'ID pour la comparaison
+  const fieldIdAsNumber = typeof fieldId === 'string' ? Number(fieldId) : fieldId;
+  const fieldIdAsString = String(fieldId);
+  const fieldIdWithPrefix = typeof fieldId === 'string' && !fieldId.includes("[3]-") ? `[3]-${fieldId}` : fieldId;
+
+  // Log pour debug
+  console.log("Field ID conversions for matching:", {
+    original: fieldId,
+    asNumber: fieldIdAsNumber,
+    asString: fieldIdAsString,
+    withPrefix: fieldIdWithPrefix
+  });
+
+  return conversations.filter(conversation => {
+    // Vérifier les correspondances
+    const isMatched = conversation.linkedItems.some(item =>
+      item.type === 'field' &&
+      item.entityId === entityId &&
+      item.fieldIds?.some(id => {
+        // Log pour debug
+        console.log("Comparing field:", id, "type:", typeof id,
+                    "with target:", fieldId, "or number:", fieldIdAsNumber,
+                    "or string:", fieldIdAsString, "or prefix:", fieldIdWithPrefix);
+
+        // Plusieurs tentatives de correspondance
+        return id === fieldId ||
+               id === fieldIdAsNumber ||
+               String(id) === fieldIdAsString ||
+               String(id) === fieldIdWithPrefix ||
+               (typeof id === 'string' && id.includes("[3]-") && id.split("[3]-")[1] === fieldIdAsString) ||
+               (typeof fieldId === 'string' && fieldId.includes("[3]-") &&
+                fieldId.split("[3]-")[1] === String(id));
+      })
+    );
+
+    if (isMatched) {
+      console.log("Matched conversation:", conversation.id, conversation.title);
+    }
+
+    return isMatched;
+  });
 };

@@ -23,4 +23,6 @@ export type Selection = {
   entityId: string
   groupName?: string
   fieldIds?: (number | string)[]
+  // Champ optionnel pour stocker le nom du champ (pour l'affichage)
+  fieldName?: string
 }

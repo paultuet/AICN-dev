@@ -41,7 +41,7 @@ const ConversationForm: React.FC<ConversationFormProps> = ({
     >
       <div className="mb-4">
         <label htmlFor="conversation-title" className="block text-sm font-medium text-gray-700 mb-1">
-          Titre de la conversation
+          Titre de la nouvelle conversation
         </label>
         <input
           type="text"
@@ -58,14 +58,15 @@ const ConversationForm: React.FC<ConversationFormProps> = ({
         <button
           className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           onClick={handleCreateClick}
+          disabled={!localTitle.trim()}
         >
-          Créer une conversation
+          Créer une nouvelle conversation
         </button>
         <button
           className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           onClick={handleClearClick}
         >
-          Effacer
+          Annuler
         </button>
       </div>
     </div>

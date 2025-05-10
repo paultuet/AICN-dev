@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import { Entity, Field } from '@/types/referential';
+import { Conversation } from '@/types/conversation';
 import ChevronDown from '@/components/icons/ChevronDown';
 import ChevronRight from '@/components/icons/ChevronRight';
 import { Badge } from '../ui';
+import ChatBubbleIcon from '@/components/icons/ChatBubbleIcon';
+import useFeatureFlag from '@/hooks/useFeatureFlag';
 
 interface HierarchicalViewProps {
   data: Entity[];
   searchTerm?: string;
+  conversations?: Conversation[];
+  toggleFieldSelection?: (entityId: string, fieldId: number | string) => void;
+  toggleGroupSelection?: (entityId: string, groupName: string) => void;
+  isFieldSelected?: (entityId: string, fieldId: number | string) => boolean;
+  isGroupSelected?: (entityId: string, groupName: string) => boolean;
+  getConversationsForField?: (entityId: string, fieldId: number | string) => Conversation[];
+  getConversationsForGroup?: (entityId: string, groupName: string) => Conversation[];
 }
 
 const getVarTypeBadgeColor = (varType: String) => {
@@ -70,211 +80,333 @@ const HierarchicalNode: React.FC<{
   level: number;
   searchTerm?: string;
   forceExpanded?: boolean;
-}> = ({ node, level, searchTerm, forceExpanded = false }) => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(level < 2); // Auto-expand first 2 levels by default
-  const [showFields, setShowFields] = useState<boolean>(false);
+  conversations?: Conversation[];
+  toggleFieldSelection?: (entityId: string, fieldId: number | string, fieldName?: string) => void;
+  toggleGroupSelection?: (entityId: string, groupName: string) => void;
+  isFieldSelected?: (entityId: string, fieldId: number | string) => boolean;
+  isGroupSelected?: (entityId: string, groupName: string) => boolean;
+  getConversationsForField?: (entityId: string, fieldId: number | string) => Conversation[];
+  getConversationsForGroup?: (entityId: string, groupName: string) => Conversation[];
+}> = ({
+  node,
+  level,
+  searchTerm,
+  forceExpanded = false,
+  conversations = [],
+  toggleFieldSelection,
+  toggleGroupSelection,
+  isFieldSelected,
+  isGroupSelected,
+  getConversationsForField,
+  getConversationsForGroup
+}) => {
+    const [isExpanded, setIsExpanded] = useState<boolean>(level < 2); // Auto-expand first 2 levels by default
+    const [showFields, setShowFields] = useState<boolean>(false);
 
-  const hasFields = node.fields && node.fields.length > 0;
+    const isConversationFeatureEnabled = useFeatureFlag("conversations");
 
-  // Déterminer si ce sont des champs ou des entités
-  const isEntityArray = (items: any[]): items is Entity[] => {
-    return items.length > 0 && 'entity-name' in items[0];
-  };
+    const hasFields = node.fields && node.fields.length > 0;
 
-  // Vérifier si parmi les champs, il y a des entités (qui sont les "enfants" dans la hiérarchie)
-  const childFields = hasFields ? node.fields.filter(field =>
-    // Champs de niveau 2 pour entités niveau 1, ou niveau 3 pour entités niveau 2
-    'niveau' in field &&
-    field.niveau !== undefined &&
-    node.niveau !== undefined &&
-    ((node.niveau === 1 && field.niveau === 2) || (node.niveau === 2 && field.niveau === 3))
-  ) as (Field | Entity)[] : [];
+    // Déterminer si ce sont des champs ou des entités
+    const isEntityArray = (items: any[]): items is Entity[] => {
+      return items.length > 0 && 'entity-name' in items[0];
+    };
 
-  const hasChildren = childFields.length > 0;
+    // Vérifier si parmi les champs, il y a des entités (qui sont les "enfants" dans la hiérarchie)
+    const childFields = hasFields ? node.fields.filter(field =>
+      // Champs de niveau 2 pour entités niveau 1, ou niveau 3 pour entités niveau 2
+      'niveau' in field &&
+      field.niveau !== undefined &&
+      node.niveau !== undefined &&
+      ((node.niveau === 1 && field.niveau === 2) || (node.niveau === 2 && field.niveau === 3))
+    ) as (Field | Entity)[] : [];
 
-  // Vérifier si ce nœud ou ses enfants correspondent au terme de recherche
-  const matchesSearch = searchTerm ?
-    node['entity-name'].toLowerCase().includes(searchTerm.toLowerCase()) : false;
+    const hasChildren = childFields.length > 0;
 
-  // Vérifier si des champs correspondent à la recherche
-  const hasMatchingFields = searchTerm && hasFields ?
-    node.fields.some(field =>
-      'lib-fonc' in field && field['lib-fonc']?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      ('desc' in field && field.desc && field.desc.toLowerCase().includes(searchTerm.toLowerCase()))
-    ) : false;
+    // Vérifier si ce nœud ou ses enfants correspondent au terme de recherche
+    const matchesSearch = searchTerm ?
+      node['entity-name'].toLowerCase().includes(searchTerm.toLowerCase()) : false;
 
-  // Vérifier si des enfants correspondent à la recherche (pour les entités)
-  const hasMatchingChildren = searchTerm && hasChildren ? true : false; // On présume que oui par défaut, la vérification réelle se fait par récursion
+    // Vérifier si des champs correspondent à la recherche
+    const hasMatchingFields = searchTerm && hasFields ?
+      node.fields.some(field =>
+        'lib-fonc' in field && field['lib-fonc']?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ('desc' in field && field.desc && field.desc.toLowerCase().includes(searchTerm.toLowerCase()))
+      ) : false;
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
+    // Vérifier si des enfants correspondent à la recherche (pour les entités)
+    const hasMatchingChildren = searchTerm && hasChildren ? true : false; // On présume que oui par défaut, la vérification réelle se fait par récursion
 
-  const toggleFields = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setShowFields(!showFields);
-  };
+    const toggleExpand = () => {
+      setIsExpanded(!isExpanded);
+    };
 
-  // Calculer le padding en fonction du niveau
-  const getIndentClass = () => {
-    const paddingSize = level * 4;
-    return `pl-${paddingSize > 16 ? 16 : paddingSize}`;
-  };
+    const toggleFields = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      setShowFields(!showFields);
+    };
 
-  // Obtenir la couleur de fond en fonction du niveau
-  const getBackgroundColor = () => {
-    if (matchesSearch && searchTerm) return 'bg-yellow-50';
+    // Calculer le padding en fonction du niveau
+    const getIndentClass = () => {
+      const paddingSize = level * 4;
+      return `pl-${paddingSize > 16 ? 16 : paddingSize}`;
+    };
 
-    switch (level) {
-      case 0: return 'bg-violet-100';
-      case 1: return 'bg-amber-50';
-      case 2: return 'bg-emerald-50';
-      default: return 'bg-white';
+    // Obtenir la couleur de fond en fonction du niveau
+    const getBackgroundColor = () => {
+      if (matchesSearch && searchTerm) return 'bg-yellow-50';
+
+      switch (level) {
+        case 0: return 'bg-violet-100';
+        case 1: return 'bg-amber-50';
+        case 2: return 'bg-emerald-50';
+        default: return 'bg-white';
+      }
+    };
+
+    // Obtenir la couleur de bordure en fonction du niveau
+    const getBorderColor = () => {
+      switch (level) {
+        case 0: return 'border-violet-300';
+        case 1: return 'border-amber-300';
+        case 2: return 'border-emerald-300';
+        default: return 'border-gray-200';
+      }
+    };
+
+    // Obtenir la couleur du texte de niveau en fonction du niveau
+    const getLevelBadgeColor = () => {
+      switch (level) {
+        case 0: return 'bg-violet-200 text-violet-900';
+        case 1: return 'bg-amber-200 text-amber-900';
+        case 2: return 'bg-emerald-200 text-emerald-900';
+        default: return 'bg-gray-100 text-gray-800';
+      }
+    };
+
+    // Obtenir le style spécifique au niveau (style supplémentaire)
+    const getLevelSpecificStyle = () => {
+      switch (level) {
+        case 0: return 'font-bold text-lg border-l-4 border-l-violet-500';
+        case 1: return 'font-semibold text-base border-l-4 border-l-amber-500';
+        case 2: return 'font-medium border-l-4 border-l-emerald-500';
+        default: return '';
+      }
+    };
+
+    // Déterminer si le nœud doit être affiché ou non en fonction de la recherche
+    const shouldDisplay = !searchTerm || matchesSearch || hasMatchingFields || hasMatchingChildren;
+
+    // Déterminer si on doit développer le nœud
+    const shouldExpandNode = forceExpanded || isExpanded || (searchTerm && (hasMatchingFields || hasMatchingChildren));
+
+    // Si le nœud ne correspond pas à la recherche, ne pas l'afficher
+    if (!shouldDisplay) {
+      return null;
     }
-  };
 
-  // Obtenir la couleur de bordure en fonction du niveau
-  const getBorderColor = () => {
-    switch (level) {
-      case 0: return 'border-violet-300';
-      case 1: return 'border-amber-300';
-      case 2: return 'border-emerald-300';
-      default: return 'border-gray-200';
-    }
-  };
+    // if (node.niveau == 3) {
+    //   console.log(node['var-type']);
+    // }
 
-  // Obtenir la couleur du texte de niveau en fonction du niveau
-  const getLevelBadgeColor = () => {
-    switch (level) {
-      case 0: return 'bg-violet-200 text-violet-900';
-      case 1: return 'bg-amber-200 text-amber-900';
-      case 2: return 'bg-emerald-200 text-emerald-900';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  // Obtenir le style spécifique au niveau (style supplémentaire)
-  const getLevelSpecificStyle = () => {
-    switch (level) {
-      case 0: return 'font-bold text-lg border-l-4 border-l-violet-500';
-      case 1: return 'font-semibold text-base border-l-4 border-l-amber-500';
-      case 2: return 'font-medium border-l-4 border-l-emerald-500';
-      default: return '';
-    }
-  };
-
-  // Déterminer si le nœud doit être affiché ou non en fonction de la recherche
-  const shouldDisplay = !searchTerm || matchesSearch || hasMatchingFields || hasMatchingChildren;
-
-  // Déterminer si on doit développer le nœud
-  const shouldExpandNode = forceExpanded || isExpanded || (searchTerm && (hasMatchingFields || hasMatchingChildren));
-
-  // Si le nœud ne correspond pas à la recherche, ne pas l'afficher
-  if (!shouldDisplay) {
-    return null;
-  }
-
-  // if (node.niveau == 3) {
-  //   console.log(node['var-type']);
-  // }
-
-  return (
-    <div className={`border-b ${getBorderColor()} last:border-b-0 ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
-      <div
-        className={`py-3 px-4 flex items-center hover:bg-opacity-80 cursor-pointer ${getIndentClass()} transition-all duration-200 gap-4`}
-        onClick={toggleExpand}
-      >
-        {hasChildren ? (
-          shouldExpandNode ? (
-            <ChevronDown className="h-5 w-5 text-indigo-600 mr-2" />
+    return (
+      <div className={`border-b ${getBorderColor()} last:border-b-0 ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
+        <div
+          className={`py-3 px-4 flex items-center hover:bg-opacity-80 cursor-pointer ${getIndentClass()} transition-all duration-200 gap-4`}
+          onClick={toggleExpand}
+        >
+          {hasChildren ? (
+            shouldExpandNode ? (
+              <ChevronDown className="h-5 w-5 text-indigo-600 mr-2" />
+            ) : (
+              <ChevronRight className="h-5 w-5 text-indigo-600 mr-2" />
+            )
           ) : (
-            <ChevronRight className="h-5 w-5 text-indigo-600 mr-2" />
-          )
-        ) : (
-          <div className="h-5 w-5 mr-2" /> // Empty space for alignment
-        )}
+            <div className="h-5 w-5 mr-2" /> // Empty space for alignment
+          )}
 
-        <div className="flex-1">
-          <div className={`${matchesSearch && searchTerm ? 'text-indigo-600' : 'text-gray-900'}`}>
-            {node['entity-name']}
+          <div className="flex-1">
+            <div className={`${matchesSearch && searchTerm ? 'text-indigo-600' : 'text-gray-900'}`}>
+              {node['entity-name']}
+            </div>
+            <div className="text-xs text-gray-500">ID: {node['id-record']}</div>
           </div>
-          <div className="text-xs text-gray-500">ID: {node['id-record']}</div>
+
+          {/* Icône de conversation pour les niveaux 2 et 3 */}
+          {isConversationFeatureEnabled && node.niveau && node.niveau >= 2 && node.niveau <= 3 && (
+            <div
+              className="conversation-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                // Debug - Montrer les infos du nœud lors d'un clic
+                console.log("Clicked node:", node);
+                console.log("Node niveau:", node.niveau);
+                console.log("Node entity-id:", node['entity-id']);
+                console.log("Node id-record:", node['id-record']);
+
+                if (node.niveau === 2 && toggleGroupSelection) {
+                  // Pour niveau 2, utiliser l'ID d'entité et le nom comme nom de groupe
+                  toggleGroupSelection(node['entity-id'], node['entity-name']);
+                } else if (node.niveau === 3 && toggleFieldSelection) {
+                  // Pour les entités niveau 3, tenter plusieurs formats d'ID
+                  const fieldId = node['id-record'];
+                  console.log("Selecting field with ID:", fieldId);
+                  console.log("Field ID type:", typeof fieldId);
+                  console.log("Node properties:", Object.keys(node));
+
+                  // Si l'ID contient [3]-, le supprimer pour obtenir seulement la partie numérique
+                  let cleanId = fieldId;
+                  if (typeof fieldId === 'string' && fieldId.includes("[3]-")) {
+                    cleanId = fieldId.split("[3]-")[1];
+                    console.log("Cleaned ID:", cleanId);
+                  }
+
+                  // Forcer l'ouverture du panneau dans tous les cas, avec le nom du champ
+                  try {
+                    // Vérifier le nom réel à utiliser - plutôt lib-fonc que entity-name pour niveau 3
+                    const fieldName = node['lib-fonc'] || node['entity-name'];
+                    console.log("Sending field name:", fieldName);
+                    if (cleanId) {
+                      toggleFieldSelection(node['entity-id'], cleanId, fieldName);
+                    }
+                  } catch (error) {
+                    console.error("Error in toggleFieldSelection:", error);
+                  }
+                }
+              }}
+            >
+              {/* Si le groupe ou le champ a des conversations, utiliser une icône remplie, sinon une icône vide */}
+              {(() => {
+                // Obtenir une version "nettoyée" de l'id pour niveau 3
+                let cleanId = node['id-record'];
+                if (node.niveau === 3 && typeof cleanId === 'string' && cleanId.includes("[3]-")) {
+                  cleanId = cleanId.split("[3]-")[1];
+                }
+
+                if (node.niveau === 2 && getConversationsForGroup && getConversationsForGroup(node['entity-id'], node['entity-name']).length > 0) {
+                  return (
+                    <div className="flex items-center text-indigo-600">
+                      <ChatBubbleIcon filled className="h-5 w-5 mr-1" />
+                      <span className="text-xs font-medium">{getConversationsForGroup(node['entity-id'], node['entity-name']).length}</span>
+                    </div>
+                  );
+                } else if (node.niveau === 3 && getConversationsForField && cleanId) {
+                  // Pour niveau 3, essayer avec l'ID nettoyé
+                  const conversationCount = getConversationsForField(node['entity-id'], cleanId).length;
+                  if (conversationCount > 0) {
+                    return (
+                      <div className="flex items-center text-indigo-600">
+                        <ChatBubbleIcon filled className="h-5 w-5 mr-1" />
+                        <span className="text-xs font-medium">{conversationCount}</span>
+                      </div>
+                    );
+                  }
+                }
+
+                // Par défaut: une icône non remplie
+                return <ChatBubbleIcon className="h-5 w-5 text-gray-400 hover:text-indigo-600 transition-colors duration-200" />;
+              })()}
+            </div>
+          )}
+
+          {node['var-type'] != null &&
+            <Badge color={getVarTypeBadgeColor(node['var-type'])}>
+              {node['var-type']}
+            </Badge>
+          }
+
+          {node.exemple != null &&
+            <code>
+              {node.exemple}
+            </code>
+          }
+
+          <div className="flex items-center space-x-2">
+            <div className={`px-2 py-1 text-xs rounded-full font-medium ${getLevelBadgeColor()}`}>
+              {'type' in node ? `${node.type} - Niv ${node.niveau}` : `Niveau ${node.niveau}`}
+            </div>
+          </div>
         </div>
 
-        {node['var-type'] != null &&
-          <Badge color={getVarTypeBadgeColor(node['var-type'])}>
-            {node['var-type']}
-          </Badge>
-        }
+        {/* Afficher les entités enfants s'ils existent et sont demandés */}
+        {hasChildren && shouldExpandNode && (
+          <div className={`border-l-4 ${getBorderColor()} ml-6`}>
+            {childFields.map((childField, index) => {
+              // Si c'est déjà une entité, l'utiliser directement
+              if ('entity-name' in childField) {
+                return (
+                  <HierarchicalNode
+                    key={`${childField['entity-id']}-${index}`}
+                    node={childField as Entity}
+                    level={level + 1}
+                    searchTerm={searchTerm}
+                    forceExpanded={Boolean(forceExpanded || (searchTerm && (hasMatchingChildren || hasMatchingFields)))}
+                    conversations={conversations}
+                    toggleFieldSelection={toggleFieldSelection}
+                    toggleGroupSelection={toggleGroupSelection}
+                    isFieldSelected={isFieldSelected}
+                    isGroupSelected={isGroupSelected}
+                    getConversationsForField={getConversationsForField}
+                    getConversationsForGroup={getConversationsForGroup}
+                  />
+                );
+              }
 
-        {node.exemple != null &&
-          <code>
-            {node.exemple}
-          </code>
-        }
+              // Sinon, créer une entité pour chaque champ de niveau 2 ou 3
+              const childEntity: Entity = {
+                'entity-id': childField['entity-id'],
+                'entity-name': childField['lib-fonc'],
+                'niveau': childField.niveau,
+                'id-record': childField['id-field'] as string,
+                'type': childField.type,
+                'var-type': childField['var-type'],
+                'exemple': childField.exemple,
+                // Vérifier si le champ a déjà des "fields" définis
+                'fields': 'fields' in childField && childField.fields
+                  ? childField.fields
+                  : node.fields.filter(field =>
+                    'niveau' in field &&
+                    field.niveau === (childField.niveau as number + 1) &&
+                    'lib-group' in field &&
+                    field['lib-group'] &&
+                    field['lib-group'].includes(childField['lib-fonc'])
+                  )
+              };
 
-        <div className="flex items-center space-x-2">
-          <div className={`px-2 py-1 text-xs rounded-full font-medium ${getLevelBadgeColor()}`}>
-            {'type' in node ? `${node.type} - Niv ${node.niveau}` : `Niveau ${node.niveau}`}
-          </div>
-        </div>
-      </div>
-
-      {/* Afficher les entités enfants s'ils existent et sont demandés */}
-      {hasChildren && shouldExpandNode && (
-        <div className={`border-l-4 ${getBorderColor()} ml-6`}>
-          {childFields.map((childField, index) => {
-            // Si c'est déjà une entité, l'utiliser directement
-            if ('entity-name' in childField) {
               return (
                 <HierarchicalNode
-                  key={`${childField['entity-id']}-${index}`}
-                  node={childField as Entity}
+                  key={`${childEntity['entity-id']}-${index}`}
+                  node={childEntity}
                   level={level + 1}
                   searchTerm={searchTerm}
                   forceExpanded={Boolean(forceExpanded || (searchTerm && (hasMatchingChildren || hasMatchingFields)))}
+                  conversations={conversations}
+                  toggleFieldSelection={toggleFieldSelection}
+                  toggleGroupSelection={toggleGroupSelection}
+                  isFieldSelected={isFieldSelected}
+                  isGroupSelected={isGroupSelected}
+                  getConversationsForField={getConversationsForField}
+                  getConversationsForGroup={getConversationsForGroup}
                 />
               );
-            }
+            })}
+          </div>
+        )}
+      </div>
+    );
+  };
 
-            // Sinon, créer une entité pour chaque champ de niveau 2 ou 3
-            const childEntity: Entity = {
-              'entity-id': childField['entity-id'],
-              'entity-name': childField['lib-fonc'],
-              'niveau': childField.niveau,
-              'id-record': childField['id-field'] as string,
-              'type': childField.type,
-              'var-type': childField['var-type'],
-              'exemple': childField.exemple,
-              // Vérifier si le champ a déjà des "fields" définis
-              'fields': 'fields' in childField && childField.fields
-                ? childField.fields
-                : node.fields.filter(field =>
-                  'niveau' in field &&
-                  field.niveau === (childField.niveau as number + 1) &&
-                  'lib-group' in field &&
-                  field['lib-group'] &&
-                  field['lib-group'].includes(childField['lib-fonc'])
-                )
-            };
-
-            return (
-              <HierarchicalNode
-                key={`${childEntity['entity-id']}-${index}`}
-                node={childEntity}
-                level={level + 1}
-                searchTerm={searchTerm}
-                forceExpanded={Boolean(forceExpanded || (searchTerm && (hasMatchingChildren || hasMatchingFields)))}
-              />
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-};
-
-const HierarchicalView: React.FC<HierarchicalViewProps> = ({ data, searchTerm }) => {
+const HierarchicalView: React.FC<HierarchicalViewProps> = ({
+  data,
+  searchTerm,
+  conversations = [],
+  toggleFieldSelection,
+  toggleGroupSelection,
+  isFieldSelected,
+  isGroupSelected,
+  getConversationsForField,
+  getConversationsForGroup
+}) => {
   // Filtrer seulement les entités de niveau 1 pour l'affichage racine
   const niveau1Entities = data.filter(entity => entity.niveau === 1);
 
@@ -330,6 +462,13 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({ data, searchTerm })
             node={entity}
             level={0}
             searchTerm={searchTerm}
+            conversations={conversations}
+            toggleFieldSelection={toggleFieldSelection}
+            toggleGroupSelection={toggleGroupSelection}
+            isFieldSelected={isFieldSelected}
+            isGroupSelected={isGroupSelected}
+            getConversationsForField={getConversationsForField}
+            getConversationsForGroup={getConversationsForGroup}
           />
         ))}
       </div>

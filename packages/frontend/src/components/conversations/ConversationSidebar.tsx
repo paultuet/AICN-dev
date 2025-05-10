@@ -167,10 +167,50 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                               <div>
                                 <span className="text-xs font-medium text-blue-600">{entity?.['entity-name']}</span>
                                 <p className="text-sm font-medium">
-                                  {item.fieldIds.map(fieldId => {
-                                    const field = entity?.fields.find(f => 'id-field' in f && f['id-field'] === fieldId);
-                                    return field?.['lib-fonc'];
-                                  }).join(', ')}
+                                  {item.fieldName ? (
+                                    // Si le nom du champ a été défini lors de la sélection, l'utiliser directement
+                                    item.fieldName
+                                  ) : (
+                                    // Sinon, essayer de le trouver par ID comme avant
+                                    item.fieldIds.map(fieldId => {
+                                      // Chercher le champ avec plusieurs tentatives pour le format de l'ID
+                                      const field = entity?.fields.find(f => {
+                                        if (!('id-field' in f)) return false;
+
+                                        // Normaliser les IDs pour la comparaison
+                                        const fId = f['id-field'];
+                                        const targetId = fieldId;
+                                        const fIdStr = String(fId);
+                                        const targetIdStr = String(targetId);
+
+                                        console.log("Comparing field 'id-field':", fId, "with target ID:", targetId);
+
+                                        // Essayer plusieurs formats de correspondance
+                                        return fId === targetId ||
+                                              Number(fId) === Number(targetId) ||
+                                              fIdStr === targetIdStr ||
+                                              (fIdStr.includes("[3]-") && fIdStr.split("[3]-")[1] === targetIdStr) ||
+                                              (targetIdStr.includes("[3]-") && targetIdStr.split("[3]-")[1] === fIdStr) ||
+                                              `[3]-${fIdStr}` === targetIdStr ||
+                                              fIdStr === `[3]-${targetIdStr}`;
+                                      });
+
+                                      if (field && 'lib-fonc' in field) {
+                                        return field['lib-fonc'];
+                                      } else {
+                                        console.log("Field not found for ID:", fieldId, "in entity:", entity?.['entity-name']);
+                                        // Si l'entité a été trouvée par correspondance de champ dans toggleFieldSelection
+                                        // Chercher parmi tous les champs par entity-id
+                                        const matchingField = entity?.fields.find(f =>
+                                          'entity-id' in f && f['entity-id'] === item.entityId
+                                        );
+                                        if (matchingField && 'lib-fonc' in matchingField) {
+                                          return matchingField['lib-fonc'];
+                                        }
+                                        return "Champ sélectionné";
+                                      }
+                                    }).join(', ')
+                                  )}
                                 </p>
                                 <p className="text-xs text-gray-500">{item.fieldIds.length} champ(s)</p>
                               </div>
@@ -293,33 +333,130 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
           )}
         </div>
         
-        {/* Footer */}
+        {/* Footer - Conversations associées à l'élément sélectionné */}
         {viewMode === 'selection' && (
           <div className="border-t border-gray-200 p-4">
-            <h3 className="text-sm font-medium text-gray-700 mb-2">Conversations existantes</h3>
-            <ul className="space-y-2">
-              {conversations.map(conversation => (
-                <li key={conversation.id}>
-                  <button
-                    className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 flex justify-between items-center"
-                    onClick={() => {
-                      onSelectConversation(conversation.id);
-                      onViewModeChange('conversation');
-                    }}
-                  >
-                    <div>
-                      <p className="text-sm font-medium text-gray-900 truncate">{conversation.title}</p>
-                      <p className="text-xs text-gray-500">
-                        {formatDate(conversation.lastActivity)} · {conversation.messageCount} message{conversation.messageCount !== 1 ? 's' : ''}
-                      </p>
-                    </div>
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <h3 className="text-sm font-medium text-gray-700 mb-2 flex justify-between">
+              <span>Conversations associées</span>
+              <span className="text-xs bg-gray-100 px-2 py-0.5 rounded-full">
+                {/* Filtrer les conversations liées à l'élément sélectionné */}
+                {selectedItems.length > 0 &&
+                 ((selectedItems[0].type === 'field' && selectedItems[0].fieldIds?.length) ||
+                  (selectedItems[0].type === 'group' && selectedItems[0].groupName)) ?
+                  conversations.filter(conversation =>
+                    conversation.linkedItems.some(item => {
+                      // Match par groupe
+                      if (selectedItems[0].type === 'group' && item.type === 'group' &&
+                          item.entityId === selectedItems[0].entityId &&
+                          item.groupName === selectedItems[0].groupName) {
+                        return true;
+                      }
+
+                      // Match par champ
+                      if (selectedItems[0].type === 'field' && item.type === 'field' &&
+                          item.entityId === selectedItems[0].entityId &&
+                          item.fieldIds?.some(fid =>
+                            selectedItems[0].fieldIds?.some(sid =>
+                              fid === sid ||
+                              String(fid) === String(sid) ||
+                              Number(fid) === Number(sid)
+                            )
+                          )) {
+                        return true;
+                      }
+
+                      return false;
+                    })
+                  ).length : 0
+                } conversation(s)
+              </span>
+            </h3>
+
+            {selectedItems.length > 0 ? (
+              <div>
+                {/* Liste des conversations associées à l'élément sélectionné */}
+                <ul className="space-y-2 mb-4">
+                  {conversations
+                    .filter(conversation =>
+                      conversation.linkedItems.some(item => {
+                        // Match par groupe
+                        if (selectedItems[0].type === 'group' && item.type === 'group' &&
+                            item.entityId === selectedItems[0].entityId &&
+                            item.groupName === selectedItems[0].groupName) {
+                          return true;
+                        }
+
+                        // Match par champ
+                        if (selectedItems[0].type === 'field' && item.type === 'field' &&
+                            item.entityId === selectedItems[0].entityId &&
+                            item.fieldIds?.some(fid =>
+                              selectedItems[0].fieldIds?.some(sid =>
+                                fid === sid ||
+                                String(fid) === String(sid) ||
+                                Number(fid) === Number(sid)
+                              )
+                            )) {
+                          return true;
+                        }
+
+                        return false;
+                      })
+                    )
+                    .map(conversation => (
+                      <li key={conversation.id} className="border border-gray-200 rounded-md overflow-hidden shadow-sm">
+                        <button
+                          className="w-full text-left p-3 hover:bg-gray-50 transition-colors flex justify-between items-center"
+                          onClick={() => {
+                            onSelectConversation(conversation.id);
+                            onViewModeChange('conversation');
+                          }}
+                        >
+                          <div>
+                            <p className="text-sm font-semibold text-gray-900 truncate">{conversation.title}</p>
+                            <p className="text-xs text-gray-500">
+                              {formatDate(conversation.lastActivity)} · {conversation.messageCount} message{conversation.messageCount !== 1 ? 's' : ''}
+                            </p>
+                          </div>
+                          <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            ) : (
+              <p className="text-sm text-gray-500 mb-4">
+                Sélectionnez un élément pour voir les conversations associées.
+              </p>
+            )}
+
+            {/* Liste de toutes les conversations */}
+            {selectedItems.length === 0 && (
+              <ul className="space-y-2">
+                {conversations.map(conversation => (
+                  <li key={conversation.id}>
+                    <button
+                      className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 flex justify-between items-center"
+                      onClick={() => {
+                        onSelectConversation(conversation.id);
+                        onViewModeChange('conversation');
+                      }}
+                    >
+                      <div>
+                        <p className="text-sm font-medium text-gray-900 truncate">{conversation.title}</p>
+                        <p className="text-xs text-gray-500">
+                          {formatDate(conversation.lastActivity)} · {conversation.messageCount} message{conversation.messageCount !== 1 ? 's' : ''}
+                        </p>
+                      </div>
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
       </div>

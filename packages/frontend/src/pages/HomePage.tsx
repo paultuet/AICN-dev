@@ -29,8 +29,8 @@ import AdminActions from '@/components/AdminActions';
 const HomePage = () => {
   // État des données de référentiel
   const [referentials, setReferentials] = useState<Entity[]>([]);
-  // View mode for the main referential display
-  const [viewMode, setViewMode] = useState<'flat' | 'hierarchical'>('hierarchical');
+  // Toujours utiliser la vue hiérarchique
+  const [viewMode] = useState<'flat' | 'hierarchical'>('hierarchical');
   // View mode for the sidebar conversation panel
   const [sidebarViewMode, setSidebarViewMode] = useState<'selection' | 'conversation'>('selection');
   const [loading, setLoading] = useState(true);
@@ -106,28 +106,115 @@ const HomePage = () => {
   }, [selectedItems]);
 
   // Toggle la sélection d'un champ
-  const toggleFieldSelection = useCallback((entityId: string, fieldId: number | string) => {
-    const fieldConversations = getConversationsForField(conversations, entityId, fieldId);
+  const toggleFieldSelection = useCallback((entityId: string, fieldId: number | string, fieldName?: string) => {
+    // Forcer l'ouverture du panneau latéral même si le champ n'est pas trouvé
+    setSidebarViewMode('selection');
+    setSidebarOpen(true);
+    console.log("toggleFieldSelection called with entityId:", entityId, "fieldId:", fieldId, "fieldName:", fieldName);
+
+    // Convertir fieldId en différents formats pour la recherche
+    const fieldIdAsNumber = typeof fieldId === 'string' ? Number(fieldId) : fieldId;
+    const fieldIdAsString = String(fieldId);
+    const fieldIdWithPrefix = `[3]-${fieldIdAsString}`;
+
+    console.log("Field ID conversions:", {
+      original: fieldId,
+      asNumber: fieldIdAsNumber,
+      asString: fieldIdAsString,
+      withPrefix: fieldIdWithPrefix
+    });
+
+    // Chercher les conversations pour toutes les versions de l'ID
+    let fieldConversations = getConversationsForField(conversations, entityId, fieldId);
+    if (fieldConversations.length === 0 && typeof fieldId === 'string') {
+      // Essayer avec le nombre
+      fieldConversations = getConversationsForField(conversations, entityId, fieldIdAsNumber);
+    }
+
+    console.log("Found conversations:", fieldConversations);
+
+    // Vérifier si le champ est déjà sélectionné
     const existingFieldIndex = selectedItems.findIndex(
       selection => selection.type === 'field' &&
         selection.entityId === entityId &&
-        selection.fieldIds?.includes(fieldId)
+        (selection.fieldIds?.includes(fieldId) ||
+         selection.fieldIds?.includes(fieldIdAsNumber) ||
+         selection.fieldIds?.includes(fieldIdAsString) ||
+         selection.fieldIds?.includes(fieldIdWithPrefix))
     );
 
-    // Trouver le champ
-    const entity = referentials.find(e => e['entity-id'] === entityId);
-    if (!entity) return;
+    console.log("Existing field index:", existingFieldIndex);
 
+    // Trouver le champ dans les référentiels
+    console.log("Looking for entity with ID:", entityId);
+    console.log("Available entities:", referentials.map(e => ({ id: e['entity-id'], name: e['entity-name'] })));
+
+    const entity = referentials.find(e => {
+      // Vérifier plusieurs formats d'ID possibles
+      return e['entity-id'] === entityId ||
+             String(e['entity-id']) === String(entityId) ||
+             // Chercher l'entité par nom (pour les nœuds niveau 3 qui pourraient avoir une référence à l'entité)
+             e.fields.some(f =>
+               'entity-id' in f && f['entity-id'] === entityId
+             );
+    });
+
+    if (!entity) {
+      console.error("Entity not found:", entityId);
+
+      // Trouver l'entité par recherche de champ
+      const parentEntity = referentials.find(e =>
+        e.fields.some(f => 'entity-id' in f && f['entity-id'] === entityId)
+      );
+
+      if (parentEntity) {
+        console.log("Found parent entity containing the field's entity-id:", parentEntity['entity-id'], parentEntity['entity-name']);
+        return;
+      }
+
+      // Solution alternative: simplement ouvrir le panneau latéral de sélection
+      console.log("Opening selection sidebar instead, using fieldName:", fieldName);
+      setSelectedItems([{
+        type: 'field',
+        entityId,
+        fieldIds: [typeof fieldId === 'number' ? fieldId : Number(fieldId) || fieldId],
+        fieldName: fieldName || "Champ sélectionné" // Utiliser le nom fourni
+      }]);
+      setSidebarViewMode('selection');
+      setSidebarOpen(true);
+      return;
+    }
+
+    // Chercher le champ avec toutes les variantes d'ID possibles
     const field = entity.fields.find(f => {
       if (!('id-field' in f)) return false;
       const idField = f['id-field'];
-      return idField === fieldId || 
-             idField === Number(fieldId) || 
-             String(idField) === String(fieldId);
+      return idField === fieldId ||
+             idField === fieldIdAsNumber ||
+             String(idField) === fieldIdAsString ||
+             String(idField) === fieldIdWithPrefix;
     });
-    if (!field || !('lib-group' in field)) return;
+
+    if (!field) {
+      console.error("Field not found. Available fields:", entity.fields);
+
+      // Mode debug: chercher un champ correspondant manuellement
+      entity.fields.forEach(f => {
+        if ('id-field' in f) {
+          console.log("Field in entity:", f['id-field'], "type:", typeof f['id-field']);
+        }
+      });
+
+      return;
+    }
+
+    if (!('lib-group' in field)) {
+      console.error("Field has no lib-group:", field);
+      return;
+    }
 
     const fieldGroupName = field['lib-group'];
+    console.log("Found field:", field, "with group:", fieldGroupName);
 
     // Vérifier si un groupe contenant ce champ est déjà sélectionné
     const groupSelectedIndex = selectedItems.findIndex(
@@ -138,29 +225,30 @@ const HomePage = () => {
 
     // Si le groupe est déjà sélectionné, ne rien faire car le champ est déjà inclus
     if (groupSelectedIndex >= 0) {
+      console.log("Group already selected");
       return;
     }
 
     // Mettre à jour les sélections
     if (existingFieldIndex >= 0) {
       // Si déjà sélectionné, désélectionner
+      console.log("Clearing selection");
       setSelectedItems([]);
     } else {
       // Sinon, sélectionner ce champ
+      console.log("Setting new selection");
       setSelectedItems([{
         type: 'field',
         entityId,
-        fieldIds: [typeof fieldId === 'number' ? fieldId : Number(fieldId) || fieldId]
+        fieldIds: [fieldIdAsNumber || fieldId],
+        // Ajouter le nom du champ si disponible (pour l'affichage uniquement)
+        fieldName: fieldName || field?.['lib-fonc']
       }]);
 
-      // Si le champ a des conversations, ouvrir la première
-      if (fieldConversations.length > 0) {
-        setSelectedConversationId(fieldConversations[0].id);
-        setSidebarViewMode('conversation');
-      } else {
-        setSidebarViewMode('selection');
-      }
-
+      // Toujours afficher l'écran de sélection, même s'il y a des conversations
+      console.log("Opening selection panel");
+      setSidebarViewMode('selection');
+      console.log("Opening sidebar");
       setSidebarOpen(true);
     }
   }, [setSelectedItems, referentials, selectedItems, conversations, getConversationsForField, setSelectedConversationId, setSidebarViewMode, setSidebarOpen]);
@@ -186,14 +274,8 @@ const HomePage = () => {
         groupName
       }]);
 
-      // Si le groupe a des conversations, ouvrir la première
-      if (groupConversations.length > 0) {
-        setSelectedConversationId(groupConversations[0].id);
-        setSidebarViewMode('conversation');
-      } else {
-        setSidebarViewMode('selection');
-      }
-
+      // Toujours afficher l'écran de sélection, même s'il y a des conversations
+      setSidebarViewMode('selection');
       setSidebarOpen(true);
     }
   }, [setSelectedItems, selectedItems, conversations, getConversationsForGroup, setSelectedConversationId, setSidebarViewMode, setSidebarOpen]);
@@ -385,7 +467,7 @@ const HomePage = () => {
 
       <AdminActions />
 
-      <div className="hidden bg-white shadow-lg rounded-lg p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-gray-200">
+      <div className="bg-white shadow-lg rounded-lg p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-gray-200">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col md:flex-row gap-6">
             <SearchBar
@@ -411,98 +493,36 @@ const HomePage = () => {
               />
             )}
             
-            {/* Toggle pour basculer entre les vues */}
-            <div className="flex items-center space-x-2">
-              <span className="text-sm font-medium text-gray-700">Vue:</span>
-              <div className="inline-flex rounded-md shadow-sm">
-                <button
-                  type="button"
-                  className={`px-4 py-2 text-sm font-medium rounded-l-md ${
-                    viewMode === 'hierarchical'
-                      ? 'bg-indigo-600 text-white'
-                      : 'bg-white text-gray-700 hover:bg-gray-50'
-                  } border border-gray-300`}
-                  onClick={() => setViewMode('hierarchical')}
-                >
-                  Hiérarchique
-                </button>
-                <button
-                  type="button"
-                  className={`px-4 py-2 text-sm font-medium rounded-r-md ${
-                    viewMode === 'flat'
-                      ? 'bg-indigo-600 text-white'
-                      : 'bg-white text-gray-700 hover:bg-gray-50'
-                  } border border-l-0 border-gray-300`}
-                  onClick={() => setViewMode('flat')}
-                >
-                  Détaillée
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 
         <div className="mt-5 text-sm">
-          {viewMode === 'flat' ? (
-            <>
-              {filteredReferentials.length === 0 && searchTerm && (
-                <p className="text-red-500 font-medium">Aucun résultat trouvé pour "{searchTerm}"</p>
-              )}
-              {filteredReferentials.length > 0 && (
-                <p className="text-black font-medium">
-                  Affichage de {filteredReferentials.length} référentiel{filteredReferentials.length > 1 ? 's' : ''}
-                  {searchTerm && ` pour la recherche "${searchTerm}"`}
-                </p>
-              )}
-            </>
-          ) : (
-            <p className="text-black font-medium">
-              Affichage de la structure hiérarchique des référentiels
-            </p>
-          )}
+          <p className="text-black font-medium">
+            Affichage de la structure hiérarchique des référentiels
+            {searchTerm && ` pour la recherche "${searchTerm}"`}
+          </p>
         </div>
       </div>
 
       {/* Message pour indiquer comment sélectionner */}
-      {isConversationsFeatureEnabled && viewMode === 'flat' && <SelectionInfoBox />}
+      {isConversationsFeatureEnabled && <SelectionInfoBox />}
 
-      {/* Affichage des référentiels selon le mode de vue */}
-      {viewMode === 'hierarchical' ? (
-        <HierarchicalView data={referentials} searchTerm={searchTerm} />
-      ) : (
-        // Vue détaillée (ancienne vue)
-        filteredReferentials.map((entity) => (
-          <EntityCard
-            key={entity['entity-id']}
-            entity={entity}
-            conversations={conversations}
-            searchTerm={searchTerm}
-            showOnlyWithConversations={isConversationsFeatureEnabled && showOnlyWithConversations}
-            isGroupSelected={isGroupSelected}
-            isFieldSelected={isFieldSelected}
-            toggleGroupSelection={toggleGroupSelection}
-            toggleFieldSelection={toggleFieldSelection}
-            openConversation={openConversation}
-            getConversationsForGroup={(entityId, groupName) =>
-              getConversationsForGroup(conversations, entityId, groupName)
-            }
-            getConversationsForField={(entityId, fieldId) =>
-              getConversationsForField(conversations, entityId, fieldId)
-            }
-            fieldBelongsToGroupWithConversation={(entityId, fieldId) =>
-              fieldBelongsToGroupWithConversation(entityId, fieldId, entity.fields.filter(f => 'lib-group' in f) as Field[])
-            }
-            shouldDisplayGroup={(entityId, groupName, fields) =>
-              shouldDisplayGroup(entityId, groupName, fields)
-            }
-            shouldDisplayField={(entityId, fieldId) =>
-              shouldDisplayField(entityId, fieldId, entity.fields.filter(f => 'lib-group' in f) as Field[])
-            }
-            clearSelection={clearAllSelections}
-            referentialEntityMap={referentialEntityMap}
-          />
-        ))
-      )}
+      {/* Affichage des référentiels (vue hiérarchique uniquement) */}
+      <HierarchicalView
+        data={referentials}
+        searchTerm={searchTerm}
+        conversations={conversations}
+        toggleFieldSelection={toggleFieldSelection}
+        toggleGroupSelection={toggleGroupSelection}
+        isFieldSelected={isFieldSelected}
+        isGroupSelected={isGroupSelected}
+        getConversationsForField={(entityId, fieldId) =>
+          getConversationsForField(conversations, entityId, fieldId)
+        }
+        getConversationsForGroup={(entityId, groupName) =>
+          getConversationsForGroup(conversations, entityId, groupName)
+        }
+      />
     </div>
   );
 };
