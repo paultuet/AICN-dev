@@ -1,38 +1,87 @@
-import { useState, useCallback } from 'react';
-import { Entity, Field } from '../types/referential';
-import { Conversation } from '../types/conversation';
+import { useState, useCallback, useMemo } from 'react';
+import { 
+  Entity, 
+  Field, 
+  Conversation, 
+  EntityId, 
+  FilterPredicate 
+} from '@/types';
 import { 
   groupHasConversations, 
   groupHasFieldsWithConversations 
-} from '../utils/referentialUtils';
+} from '@/utils/referentialUtils';
+
+interface ReferentialFiltersState {
+  searchTerm: string;
+  selectedEntityId: EntityId | null;
+  showOnlyWithConversations: boolean;
+}
+
+interface ReferentialFiltersActions {
+  setSearchTerm: (term: string) => void;
+  setSelectedEntityId: (id: EntityId | null) => void;
+  setShowOnlyWithConversations: (show: boolean) => void;
+}
+
+interface ReferentialFilterPredicates {
+  shouldDisplayEntity: FilterPredicate<Entity>;
+  shouldDisplayGroup: (entityId: EntityId, groupName: string, fields: Field[]) => boolean;
+  shouldDisplayField: (entityId: EntityId, fieldId: number | string, fields: Field[]) => boolean;
+}
 
 interface UseReferentialFiltersProps {
   conversations: Conversation[];
 }
 
-export function useReferentialFilters({ conversations }: UseReferentialFiltersProps) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedEntityId, setSelectedEntityId] = useState<string | null>(null);
-  const [showOnlyWithConversations, setShowOnlyWithConversations] = useState(false);
+interface UseReferentialFiltersResult extends ReferentialFiltersState, ReferentialFiltersActions, ReferentialFilterPredicates {
+  filterReferentials: (referentials: Entity[]) => Entity[];
+}
 
-  // Filtrer les référentiels en fonction des critères
-  const filterReferentials = useCallback((referentials: Entity[]): Entity[] => {
-    return referentials.filter(entity => {
-      // Filtrer par entité sélectionnée s'il y en a une
+/**
+ * Hook pour gérer les filtres de référentiels
+ * Utilise une approche fonctionnelle avec des prédicats pour le filtrage
+ */
+export function useReferentialFilters({ conversations }: UseReferentialFiltersProps): UseReferentialFiltersResult {
+  // État local pour les filtres
+  const [filters, setFilters] = useState<ReferentialFiltersState>({
+    searchTerm: '',
+    selectedEntityId: null,
+    showOnlyWithConversations: false
+  });
+
+  // Actions pour mettre à jour les filtres
+  const setSearchTerm = useCallback((searchTerm: string) => {
+    setFilters(prev => ({ ...prev, searchTerm }));
+  }, []);
+
+  const setSelectedEntityId = useCallback((selectedEntityId: EntityId | null) => {
+    setFilters(prev => ({ ...prev, selectedEntityId }));
+  }, []);
+
+  const setShowOnlyWithConversations = useCallback((showOnlyWithConversations: boolean) => {
+    setFilters(prev => ({ ...prev, showOnlyWithConversations }));
+  }, []);
+
+  // Prédicat pour vérifier si une entité correspond aux filtres
+  const shouldDisplayEntity = useMemo<FilterPredicate<Entity>>(() => {
+    const { searchTerm, selectedEntityId, showOnlyWithConversations } = filters;
+    
+    return (entity: Entity): boolean => {
+      // Filtre par ID d'entité sélectionnée
       if (selectedEntityId && entity['entity-id'] !== selectedEntityId) {
         return false;
       }
       
-      // Filtrer par terme de recherche
+      // Filtre par terme de recherche
       if (searchTerm) {
         const searchTermLower = searchTerm.toLowerCase();
         
-        // Rechercher dans le nom de l'entité
+        // Recherche dans le nom de l'entité
         if (entity['entity-name'].toLowerCase().includes(searchTermLower)) {
           return true;
         }
         
-        // Rechercher dans les champs
+        // Recherche dans les champs
         const hasMatchingField = entity.fields.some(field => 
           'lib-fonc' in field && field['lib-fonc']?.toLowerCase().includes(searchTermLower) ||
           ('desc' in field && field.desc && field.desc.toLowerCase().includes(searchTermLower)) ||
@@ -44,12 +93,46 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
         }
       }
       
+      // Filtre par présence de conversations
+      if (showOnlyWithConversations) {
+        // Vérifier si l'entité a des groupes ou des champs avec des conversations
+        const hasConversations = entity.fields.some(field => {
+          // Vérifier si le champ a une propriété lib-group
+          if (!('lib-group' in field)) return false;
+          
+          // Vérifier si le champ a des conversations directes
+          const fieldHasConversations = conversations.some(conv => 
+            conv.linkedItems.some(item => 
+              item.type === 'field' && 
+              item.entityId === entity['entity-id'] && 
+              item.fieldIds?.some(id => id === field['id-field'] || String(id) === String(field['id-field']))
+            )
+          );
+          
+          // Vérifier si le groupe du champ a des conversations
+          const groupHasConvs = groupHasConversations(conversations, entity['entity-id'], field['lib-group']);
+          
+          return fieldHasConversations || groupHasConvs;
+        });
+        
+        if (!hasConversations) {
+          return false;
+        }
+      }
+      
       return true;
-    });
-  }, [selectedEntityId, searchTerm]);
+    };
+  }, [filters, conversations]);
 
-  // Vérifier si un groupe doit être affiché quand le filtre est actif
-  const shouldDisplayGroup = useCallback((entityId: string, groupName: string, fields: Field[]): boolean => {
+  // Prédicat pour filtrer les référentiels
+  const filterReferentials = useCallback((referentials: Entity[]): Entity[] => {
+    return referentials.filter(shouldDisplayEntity);
+  }, [shouldDisplayEntity]);
+
+  // Prédicat pour vérifier si un groupe doit être affiché quand le filtre est actif
+  const shouldDisplayGroup = useCallback((entityId: EntityId, groupName: string, fields: Field[]): boolean => {
+    const { showOnlyWithConversations } = filters;
+    
     if (!showOnlyWithConversations) return true;
     
     // Vérifier si le groupe a des conversations directes
@@ -59,10 +142,12 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     // Vérifier si un champ du groupe a des conversations directes
     const hasFieldConversations = groupHasFieldsWithConversations(conversations, entityId, fields);
     return hasFieldConversations;
-  }, [showOnlyWithConversations, conversations, groupHasConversations, groupHasFieldsWithConversations]);
+  }, [filters.showOnlyWithConversations, conversations]);
 
-  // Vérifier si un champ doit être affiché quand le filtre est actif
-  const shouldDisplayField = useCallback((entityId: string, fieldId: number | string, fields: Field[]): boolean => {
+  // Prédicat pour vérifier si un champ doit être affiché quand le filtre est actif
+  const shouldDisplayField = useCallback((entityId: EntityId, fieldId: number | string, fields: Field[]): boolean => {
+    const { showOnlyWithConversations } = filters;
+    
     if (!showOnlyWithConversations) return true;
 
     // Trouver le champ dans les données
@@ -70,6 +155,7 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
       const idField = f['id-field'];
       return idField === fieldId || idField === Number(fieldId) || String(idField) === String(fieldId);
     });
+    
     if (!field) return false;
     
     // Vérifier si le champ a des conversations directes
@@ -77,25 +163,35 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
       conversation.linkedItems.some(item => 
         item.type === 'field' && 
         item.entityId === entityId && 
-        item.fieldIds?.includes(fieldId)
+        item.fieldIds?.some(id => 
+          id === fieldId || id === Number(fieldId) || String(id) === String(fieldId)
+        )
       )
     );
+    
     if (hasDirectConversations) return true;
     
     // Vérifier si le champ appartient à un groupe avec des conversations
     const groupName = field['lib-group'];
     const belongsToGroupWithConversation = groupHasConversations(conversations, entityId, groupName);
+    
     return belongsToGroupWithConversation;
-  }, [showOnlyWithConversations, conversations]);
+  }, [filters.showOnlyWithConversations, conversations]);
 
   return {
-    searchTerm,
+    // État
+    searchTerm: filters.searchTerm,
+    selectedEntityId: filters.selectedEntityId,
+    showOnlyWithConversations: filters.showOnlyWithConversations,
+    
+    // Actions
     setSearchTerm,
-    selectedEntityId,
     setSelectedEntityId,
-    showOnlyWithConversations,
     setShowOnlyWithConversations,
+    
+    // Prédicats et filtres
     filterReferentials,
+    shouldDisplayEntity,
     shouldDisplayGroup,
     shouldDisplayField
   };

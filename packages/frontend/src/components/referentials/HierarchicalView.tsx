@@ -11,7 +11,7 @@ interface HierarchicalViewProps {
   data: Entity[];
   searchTerm?: string;
   conversations?: Conversation[];
-  toggleFieldSelection?: (entityId: string, fieldId: number | string) => void;
+  toggleFieldSelection?: (entityId: string, fieldId: number | string, fieldName?: string) => void;
   toggleGroupSelection?: (entityId: string, groupName: string) => void;
   isFieldSelected?: (entityId: string, fieldId: number | string) => boolean;
   isGroupSelected?: (entityId: string, groupName: string) => boolean;
@@ -244,34 +244,29 @@ const HierarchicalNode: React.FC<{
                 console.log("Node entity-id:", node['entity-id']);
                 console.log("Node id-record:", node['id-record']);
 
-                if (node.niveau === 2 && toggleGroupSelection) {
-                  // Pour niveau 2, utiliser l'ID d'entité et le nom comme nom de groupe
-                  toggleGroupSelection(node['entity-id'], node['entity-name']);
-                } else if (node.niveau === 3 && toggleFieldSelection) {
-                  // Pour les entités niveau 3, tenter plusieurs formats d'ID
-                  const fieldId = node['id-record'];
-                  console.log("Selecting field with ID:", fieldId);
-                  console.log("Field ID type:", typeof fieldId);
-                  console.log("Node properties:", Object.keys(node));
+                try {
+                  if (node.niveau === 2 && toggleGroupSelection) {
+                    // Pour niveau 2, utiliser l'ID d'entité et le nom comme nom de groupe
+                    toggleGroupSelection(node['entity-id'], node['entity-name']);
+                  } else if (node.niveau === 3 && toggleFieldSelection) {
+                    // Pour les entités niveau 3, tenter plusieurs formats d'ID
+                    const fieldId = node['id-record'];
 
-                  // Si l'ID contient [3]-, le supprimer pour obtenir seulement la partie numérique
-                  let cleanId = fieldId;
-                  if (typeof fieldId === 'string' && fieldId.includes("[3]-")) {
-                    cleanId = fieldId.split("[3]-")[1];
-                    console.log("Cleaned ID:", cleanId);
-                  }
+                    // Si l'ID contient [3]-, le supprimer pour obtenir seulement la partie numérique
+                    let cleanId = fieldId;
+                    if (typeof fieldId === 'string' && fieldId.includes("[3]-")) {
+                      cleanId = fieldId.split("[3]-")[1];
+                    }
 
-                  // Forcer l'ouverture du panneau dans tous les cas, avec le nom du champ
-                  try {
                     // Vérifier le nom réel à utiliser - plutôt lib-fonc que entity-name pour niveau 3
                     const fieldName = node['lib-fonc'] || node['entity-name'];
-                    console.log("Sending field name:", fieldName);
+
                     if (cleanId) {
                       toggleFieldSelection(node['entity-id'], cleanId, fieldName);
                     }
-                  } catch (error) {
-                    console.error("Error in toggleFieldSelection:", error);
                   }
+                } catch (error) {
+                  console.error("Error handling conversation click:", error);
                 }
               }}
             >
