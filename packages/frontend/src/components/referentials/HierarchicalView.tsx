@@ -232,6 +232,12 @@ const HierarchicalNode: React.FC<{
             <div className="text-xs text-gray-500">ID: {node['id-record']}</div>
           </div>
 
+          {node['var-type'] != null &&
+            <Badge color={getVarTypeBadgeColor(node['var-type'])}>
+              {node['var-type']}
+            </Badge>
+          }
+
           {/* Icône de conversation pour les niveaux 2 et 3 */}
           {isConversationFeatureEnabled && node.niveau && node.niveau >= 2 && node.niveau <= 3 && (
             <div
@@ -304,11 +310,6 @@ const HierarchicalNode: React.FC<{
             </div>
           )}
 
-          {node['var-type'] != null &&
-            <Badge color={getVarTypeBadgeColor(node['var-type'])}>
-              {node['var-type']}
-            </Badge>
-          }
 
           {node.exemple != null &&
             <code>
