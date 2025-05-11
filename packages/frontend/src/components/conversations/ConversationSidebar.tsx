@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Conversation, Selection } from '@/types/conversation';
+import { Conversation, FieldSelection, Selection } from '@/types/conversation';
 import { Entity } from '@/types/referential';
 import ConversationForm from './ConversationForm';
 import MessageForm from './MessageForm';
@@ -38,40 +38,39 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
   currentUserId = 'user1' // Valeur par défaut pour la démo
 }) => {
   // Trouver la conversation sélectionnée
-  const currentConversation = selectedConversationId 
-    ? conversations.find(c => c.id === selectedConversationId) 
+  const currentConversation = selectedConversationId
+    ? conversations.find(c => c.id === selectedConversationId)
     : null;
-  
+
   // Référence pour le scrolling automatique
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  
+
   // Scroll to bottom lorsque des messages sont ajoutés
   useEffect(() => {
     if (messagesEndRef.current && viewMode === 'conversation') {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [currentConversation?.messages?.length, viewMode]);
-  
+
   return (
-    <div 
-      className={`fixed right-0 top-0 h-full bg-white transform transition-all duration-300 ease-out z-20 overflow-hidden ${
-        isOpen ? 'translate-x-0 opacity-100 shadow-2xl' : 'translate-x-full opacity-0'
-      }`}
-      style={{ 
+    <div
+      className={`fixed right-0 top-0 h-full bg-white transform transition-all duration-300 ease-out z-20 overflow-hidden ${isOpen ? 'translate-x-0 opacity-100 shadow-2xl' : 'translate-x-full opacity-0'
+        }`}
+      style={{
         width: 'min(420px, 90vw)', /* Largeur soit de 420px, soit 90% de la largeur de la fenêtre, selon le plus petit */
         backdropFilter: 'blur(4px)'
       }}
     >
       <div className="flex flex-col h-full" onClick={(e) => e.stopPropagation()}>
         {/* Header - Gradient background */}
-        <div 
+        <div
           className="px-4 py-5 border-b border-gray-200 flex justify-between items-center text-white"
           style={{
             background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
           }}
         >
           <h2 className="text-xl font-semibold flex items-center">
-            {viewMode === 'selection' 
+            {viewMode === 'selection'
               ? (
                 <>
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -79,7 +78,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                   </svg>
                   Sélection
                 </>
-              ) 
+              )
               : (
                 <>
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +91,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
           </h2>
           <div className="flex items-center space-x-2">
             {viewMode === 'conversation' && (
-              <button 
+              <button
                 className="p-2 hover:bg-indigo-700 transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -104,7 +103,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                 </svg>
               </button>
             )}
-            <button 
+            <button
               className="p-2 hover:bg-indigo-700 transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
               onClick={(e) => {
                 e.stopPropagation();
@@ -118,7 +117,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
             </button>
           </div>
         </div>
-        
+
         {/* Content */}
         <div className="flex-1 overflow-y-auto">
           {viewMode === 'selection' ? (
@@ -139,7 +138,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                     <ul className="space-y-1">
                       {selectedItems.map((item, index) => {
                         const entity = referentials.find(e => e['entity-id'] === item.entityId);
-                        
+
                         if (item.type === 'group') {
                           return (
                             <li key={`${item.entityId}-${item.groupName}-${index}`} className="flex justify-between items-center p-2 bg-indigo-50 rounded-md">
@@ -148,7 +147,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                                 <p className="text-sm font-medium">{item.groupName}</p>
                                 <p className="text-xs text-gray-500">Groupe entier</p>
                               </div>
-                              <button 
+                              <button
                                 className="text-gray-400 hover:text-red-500"
                                 onClick={(e) => {
                                   e.stopPropagation(); // Empêcher la propagation
@@ -187,12 +186,12 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
 
                                         // Essayer plusieurs formats de correspondance
                                         return fId === targetId ||
-                                              Number(fId) === Number(targetId) ||
-                                              fIdStr === targetIdStr ||
-                                              (fIdStr.includes("[3]-") && fIdStr.split("[3]-")[1] === targetIdStr) ||
-                                              (targetIdStr.includes("[3]-") && targetIdStr.split("[3]-")[1] === fIdStr) ||
-                                              `[3]-${fIdStr}` === targetIdStr ||
-                                              fIdStr === `[3]-${targetIdStr}`;
+                                          Number(fId) === Number(targetId) ||
+                                          fIdStr === targetIdStr ||
+                                          (fIdStr.includes("[3]-") && fIdStr.split("[3]-")[1] === targetIdStr) ||
+                                          (targetIdStr.includes("[3]-") && targetIdStr.split("[3]-")[1] === fIdStr) ||
+                                          `[3]-${fIdStr}` === targetIdStr ||
+                                          fIdStr === `[3]-${targetIdStr}`;
                                       });
 
                                       if (field && 'lib-fonc' in field) {
@@ -214,7 +213,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                                 </p>
                                 <p className="text-xs text-gray-500">{item.fieldIds.length} champ(s)</p>
                               </div>
-                              <button 
+                              <button
                                 className="text-gray-400 hover:text-red-500"
                                 onClick={(e) => {
                                   e.stopPropagation(); // Empêcher la propagation
@@ -232,7 +231,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                       })}
                     </ul>
                   </div>
-                  
+
                   <ConversationForm
                     initialTitle=""
                     onCreateConversation={onCreateConversation}
@@ -262,14 +261,14 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                         </span>
                       </div>
                     </div>
-                    
+
                     {/* Affichage des éléments liés */}
                     <div className="mt-3">
                       <p className="text-xs font-medium text-gray-500 mb-1">Éléments liés:</p>
                       <div className="flex flex-wrap gap-1">
                         {currentConversation.linkedItems.map((item, idx) => {
                           const entity = referentials.find(e => e['entity-id'] === item.entityId);
-                          
+
                           if (item.type === 'group') {
                             return (
                               <span key={`link-${idx}`} className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">
@@ -294,15 +293,15 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Affichage des messages */}
                   <div className="flex-1 overflow-y-auto p-4">
                     {currentConversation.messages && currentConversation.messages.length > 0 ? (
                       <div className="space-y-4">
                         {currentConversation.messages.map(message => (
-                          <MessageItem 
-                            key={message.id} 
-                            message={message} 
+                          <MessageItem
+                            key={message.id}
+                            message={message}
                             currentUserId={currentUserId}
                           />
                         ))}
@@ -319,10 +318,10 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                       </div>
                     )}
                   </div>
-                  
+
                   {/* Zone de saisie du message */}
                   <div className="p-4 border-t border-gray-200 bg-gray-50">
-                    <MessageForm 
+                    <MessageForm
                       conversationId={currentConversation.id}
                       onSendMessage={onSendMessage}
                     />
@@ -332,7 +331,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
             </div>
           )}
         </div>
-        
+
         {/* Footer - Conversations associées à l'élément sélectionné */}
         {viewMode === 'selection' && (
           <div className="border-t border-gray-200 p-4">
@@ -341,27 +340,27 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
               <span className="text-xs bg-gray-100 px-2 py-0.5 rounded-full">
                 {/* Filtrer les conversations liées à l'élément sélectionné */}
                 {selectedItems.length > 0 &&
-                 ((selectedItems[0].type === 'field' && selectedItems[0].fieldIds?.length) ||
-                  (selectedItems[0].type === 'group' && selectedItems[0].groupName)) ?
+                  ((selectedItems[0].type === 'field' && selectedItems[0].fieldIds?.length) ||
+                    (selectedItems[0].type === 'group' && selectedItems[0].groupName)) ?
                   conversations.filter(conversation =>
                     conversation.linkedItems.some(item => {
                       // Match par groupe
                       if (selectedItems[0].type === 'group' && item.type === 'group' &&
-                          item.entityId === selectedItems[0].entityId &&
-                          item.groupName === selectedItems[0].groupName) {
+                        item.entityId === selectedItems[0].entityId &&
+                        item.groupName === selectedItems[0].groupName) {
                         return true;
                       }
 
                       // Match par champ
                       if (selectedItems[0].type === 'field' && item.type === 'field' &&
-                          item.entityId === selectedItems[0].entityId &&
-                          item.fieldIds?.some(fid =>
-                            selectedItems[0].fieldIds?.some(sid =>
-                              fid === sid ||
-                              String(fid) === String(sid) ||
-                              Number(fid) === Number(sid)
-                            )
-                          )) {
+                        item.entityId === selectedItems[0].entityId &&
+                        item.fieldIds?.some(fid =>
+                          (selectedItems[0] as FieldSelection).fieldIds?.some(sid =>
+                            fid === sid ||
+                            String(fid) === String(sid) ||
+                            Number(fid) === Number(sid)
+                          )
+                        )) {
                         return true;
                       }
 
@@ -381,21 +380,22 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                       conversation.linkedItems.some(item => {
                         // Match par groupe
                         if (selectedItems[0].type === 'group' && item.type === 'group' &&
-                            item.entityId === selectedItems[0].entityId &&
-                            item.groupName === selectedItems[0].groupName) {
+                          item.entityId === selectedItems[0].entityId &&
+                          item.groupName === selectedItems[0].groupName) {
                           return true;
                         }
 
                         // Match par champ
                         if (selectedItems[0].type === 'field' && item.type === 'field' &&
-                            item.entityId === selectedItems[0].entityId &&
-                            item.fieldIds?.some(fid =>
-                              selectedItems[0].fieldIds?.some(sid =>
-                                fid === sid ||
-                                String(fid) === String(sid) ||
-                                Number(fid) === Number(sid)
-                              )
-                            )) {
+                          item.entityId === selectedItems[0].entityId &&
+                          item.fieldIds?.some(fid =>
+                            (selectedItems[0] as FieldSelection).fieldIds?.some(sid =>
+                              fid === sid ||
+                              String(fid) === String(sid) ||
+                              Number(fid) === Number(sid)
+                            )
+                          )
+                        ) {
                           return true;
                         }
 
