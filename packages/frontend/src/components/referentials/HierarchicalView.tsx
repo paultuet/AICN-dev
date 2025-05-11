@@ -239,7 +239,7 @@ const HierarchicalNode: React.FC<{
           }
 
           {/* Icône de conversation pour les niveaux 2 et 3 */}
-          {isConversationFeatureEnabled && node.niveau && node.niveau >= 2 && node.niveau <= 3 && (
+          {isConversationFeatureEnabled && node.niveau && node.niveau <= 3 && (
             <div
               className="conversation-button"
               onClick={(e) => {
@@ -251,7 +251,7 @@ const HierarchicalNode: React.FC<{
                 console.log("Node id-record:", node['id-record']);
 
                 try {
-                  if (node.niveau === 2 && toggleGroupSelection) {
+                  if (node.niveau < 3 && toggleGroupSelection) {
                     // Pour niveau 2, utiliser l'ID d'entité et le nom comme nom de groupe
                     toggleGroupSelection(node['entity-id'], node['entity-name']);
                   } else if (node.niveau === 3 && toggleFieldSelection) {
@@ -284,7 +284,7 @@ const HierarchicalNode: React.FC<{
                   cleanId = cleanId.split("[3]-")[1];
                 }
 
-                if (node.niveau === 2 && getConversationsForGroup && getConversationsForGroup(node['entity-id'], node['entity-name']).length > 0) {
+                if (node.niveau < 3 && getConversationsForGroup && getConversationsForGroup(node['entity-id'], node['entity-name']).length > 0) {
                   return (
                     <div className="flex items-center text-indigo-600">
                       <ChatBubbleIcon filled className="h-5 w-5 mr-1" />
