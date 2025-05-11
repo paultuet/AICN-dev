@@ -251,7 +251,7 @@ const HierarchicalNode: React.FC<{
                 console.log("Node id-record:", node['id-record']);
 
                 try {
-                  if (node.niveau < 3 && toggleGroupSelection) {
+                  if (node.niveau && node.niveau < 3 && toggleGroupSelection) {
                     // Pour niveau 2, utiliser l'ID d'entité et le nom comme nom de groupe
                     toggleGroupSelection(node['entity-id'], node['entity-name']);
                   } else if (node.niveau === 3 && toggleFieldSelection) {
