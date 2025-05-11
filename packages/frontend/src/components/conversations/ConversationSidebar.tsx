@@ -344,18 +344,19 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                     (selectedItems[0].type === 'group' && selectedItems[0].groupName)) ?
                   conversations.filter(conversation =>
                     conversation.linkedItems.some(item => {
+                      const currentItem = selectedItems[0];
                       // Match par groupe
-                      if (selectedItems[0].type === 'group' && item.type === 'group' &&
-                        item.entityId === selectedItems[0].entityId &&
-                        item.groupName === selectedItems[0].groupName) {
+                      if (currentItem.type === 'group' && item.type === 'group' &&
+                        item.entityId === currentItem.entityId &&
+                        item.groupName === currentItem.groupName) {
                         return true;
                       }
 
                       // Match par champ
-                      if (selectedItems[0].type === 'field' && item.type === 'field' &&
-                        item.entityId === selectedItems[0].entityId &&
+                      if (currentItem.type === 'field' && item.type === 'field' &&
+                        item.entityId === currentItem.entityId &&
                         item.fieldIds?.some(fid =>
-                          (selectedItems[0] as FieldSelection).fieldIds?.some(sid =>
+                          currentItem.fieldIds?.some(sid =>
                             fid === sid ||
                             String(fid) === String(sid) ||
                             Number(fid) === Number(sid)
@@ -378,18 +379,20 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                   {conversations
                     .filter(conversation =>
                       conversation.linkedItems.some(item => {
+                        const currentItem = selectedItems[0];
+
                         // Match par groupe
-                        if (selectedItems[0].type === 'group' && item.type === 'group' &&
-                          item.entityId === selectedItems[0].entityId &&
-                          item.groupName === selectedItems[0].groupName) {
+                        if (currentItem.type === 'group' && item.type === 'group' &&
+                          item.entityId === currentItem.entityId &&
+                          item.groupName === currentItem.groupName) {
                           return true;
                         }
 
                         // Match par champ
-                        if (selectedItems[0].type === 'field' && item.type === 'field' &&
-                          item.entityId === selectedItems[0].entityId &&
+                        if (currentItem.type === 'field' && item.type === 'field' &&
+                          item.entityId === currentItem.entityId &&
                           item.fieldIds?.some(fid =>
-                            (selectedItems[0] as FieldSelection).fieldIds?.some(sid =>
+                            currentItem.fieldIds?.some(sid =>
                               fid === sid ||
                               String(fid) === String(sid) ||
                               Number(fid) === Number(sid)
