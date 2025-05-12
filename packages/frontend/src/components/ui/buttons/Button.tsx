@@ -29,10 +29,10 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const variantClasses = {
-    primary: 'bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500',
-    secondary: 'bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-500',
-    outline: 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-gray-500',
-    ghost: 'bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-400',
+    primary: 'bg-aicn-blue text-white hover:bg-aicn-blue-dark focus:ring-aicn-blue-light',
+    secondary: 'bg-aicn-orange text-white hover:bg-aicn-orange-dark focus:ring-aicn-orange-light',
+    outline: 'bg-white text-gray-700 border border-gray-400 hover:bg-gray-100 focus:ring-gray-700',
+    ghost: 'bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-700',
     danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500'
   };
 

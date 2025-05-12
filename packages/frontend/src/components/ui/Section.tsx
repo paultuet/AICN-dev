@@ -24,10 +24,10 @@ const Section: React.FC<SectionProps> = ({
         <div className="flex justify-between items-center mb-3">
           <div>
             {title && (
-              <h2 className="text-lg font-medium text-gray-900">{title}</h2>
+              <h2 className="text-lg font-medium text-primary">{title}</h2>
             )}
             {description && (
-              <p className="mt-1 text-sm text-gray-500">{description}</p>
+              <p className="mt-1 text-sm text-gray-700">{description}</p>
             )}
           </div>
           {actions && (

@@ -35,8 +35,8 @@ const ConversationForm: React.FC<ConversationFormProps> = ({
   };
   
   return (
-    <div 
-      className="border-t border-gray-200 pt-4" 
+    <div
+      className="border-t border-gray-400 pt-4"
       onClick={stopPropagation}
     >
       <div className="mb-4">
@@ -46,7 +46,7 @@ const ConversationForm: React.FC<ConversationFormProps> = ({
         <input
           type="text"
           id="conversation-title"
-          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
+          className="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-gray-400 rounded-md p-2 border"
           placeholder="Entrez un titre pour cette conversation"
           value={localTitle}
           onChange={handleTitleChange}
@@ -56,7 +56,7 @@ const ConversationForm: React.FC<ConversationFormProps> = ({
       
       <div className="flex space-x-3">
         <button
-          className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="flex-1 bg-secondary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-secondary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
           onClick={handleCreateClick}
           disabled={!localTitle.trim()}
         >

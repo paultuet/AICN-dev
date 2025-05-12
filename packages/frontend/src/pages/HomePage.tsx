@@ -244,7 +244,7 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="relative w-full sm:px-3 md:px-4 py-4 sm:py-6 bg-gray-50 min-h-screen">
+    <div className="relative w-full sm:px-3 md:px-4 py-4 sm:py-6 bg-gray-100 min-h-screen">
       {/* Panneau latéral de conversation avec Zustand */}
       {isConversationsFeatureEnabled && (
         <ConversationSidebarContainer
@@ -252,7 +252,7 @@ const HomePage: React.FC = () => {
         />
       )}
 
-      <h1 className="text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 text-black">
+      <h1 className="text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 text-primary">
         Référentiels AICN
       </h1>
 

@@ -15,15 +15,15 @@ const MessageItem: React.FC<MessageItemProps> = ({
   
   return (
     <div className={`flex mb-4 ${isCurrentUser ? 'justify-end' : 'justify-start'}`}>
-      <div 
+      <div
         className={`max-w-3/4 rounded-lg px-4 py-3 shadow-sm ${
-          isCurrentUser 
-            ? 'bg-indigo-100 text-indigo-900 rounded-tr-none' 
-            : 'bg-gray-100 text-gray-900 rounded-tl-none'
+          isCurrentUser
+            ? 'bg-secondary/10 text-primary rounded-tr-none'
+            : 'bg-primary/10 text-primary rounded-tl-none'
         }`}
       >
         <div className="flex items-center mb-1">
-          <span className={`text-xs font-medium ${isCurrentUser ? 'text-indigo-600' : 'text-gray-600'}`}>
+          <span className={`text-xs font-medium ${isCurrentUser ? 'text-secondary' : 'text-primary'}`}>
             {message.authorName}
           </span>
           <span className="text-xs text-gray-500 ml-2">

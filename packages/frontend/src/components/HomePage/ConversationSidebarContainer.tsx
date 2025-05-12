@@ -41,13 +41,12 @@ const ConversationSidebarContainer: React.FC<ConversationSidebarContainerProps> 
 
       {/* Bouton d'ouverture du panneau latéral */}
       <button
-        className={`fixed z-30 right-6 bottom-6 bg-indigo-600 text-white rounded-full p-4 shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 ease-out transform ${
+        className={`fixed z-30 right-6 bottom-6 bg-secondary text-white rounded-full p-4 shadow-lg hover:bg-secondary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all duration-300 ease-out transform ${
           sidebarOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100 hover:scale-110'
         }`}
         onClick={() => setSidebarOpen(true)}
         style={{
-          background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
-          boxShadow: '0 10px 25px -5px rgba(79, 70, 229, 0.5)'
+          boxShadow: '0 10px 25px -5px rgba(237, 125, 50, 0.5)'
         }}
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

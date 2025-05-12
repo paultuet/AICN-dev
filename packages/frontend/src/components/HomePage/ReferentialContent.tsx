@@ -34,7 +34,7 @@ const ReferentialContent: React.FC<ReferentialContentProps> = ({
   return (
     <>
       {/* Message pour indiquer comment sélectionner */}
-      {isConversationsEnabled && <SelectionInfoBox />}
+      {/* isConversationsEnabled && <SelectionInfoBox /> */}
 
       {/* Affichage des référentiels (vue hiérarchique uniquement) */}
       <HierarchicalView

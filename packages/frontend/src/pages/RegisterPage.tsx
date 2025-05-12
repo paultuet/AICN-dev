@@ -65,16 +65,16 @@ const RegisterPage = () => {
         {/* Card with contained decoration elements */}
         <div className="relative bg-white rounded-lg shadow-xl p-6 sm:p-8 border border-gray-100 overflow-hidden">
           {/* Decorative elements inside card */}
-          <div className="absolute -top-12 -left-12 w-24 h-24 bg-indigo-50 rounded-full opacity-70"></div>
-          <div className="absolute -bottom-12 -right-12 w-24 h-24 bg-purple-50 rounded-full opacity-70"></div>
+          <div className="absolute -top-12 -left-12 w-24 h-24 bg-primary/10 rounded-full opacity-70"></div>
+          <div className="absolute -bottom-12 -right-12 w-24 h-24 bg-secondary/10 rounded-full opacity-70"></div>
           <div className="relative z-10">
           <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-2xl font-extrabold text-white">A</span>
+            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg">
+              <span className="text-2xl font-extrabold text-secondary">A</span>
             </div>
           </div>
           
-          <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">Inscription</h1>
+          <h1 className="text-2xl font-bold text-center mb-6 text-primary">Inscription</h1>
           
           {error && (
             <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg flex items-start">
@@ -101,7 +101,7 @@ const RegisterPage = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-400 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   placeholder="nom@example.com"
                   required
                 />
@@ -123,7 +123,7 @@ const RegisterPage = () => {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-400 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   placeholder="Jean Dupont"
                   required
                 />
@@ -145,7 +145,7 @@ const RegisterPage = () => {
                   id="organization"
                   value={organization}
                   onChange={(e) => setOrganization(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-400 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   placeholder="Nom de votre organisation"
                   required
                 />
@@ -167,7 +167,7 @@ const RegisterPage = () => {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-400 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   placeholder="••••••••"
                   required
                 />
@@ -178,8 +178,7 @@ const RegisterPage = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center items-center py-2.5 px-4 rounded-lg text-white font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-60"
-                style={{ background: 'linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%)' }}
+                className="w-full flex justify-center items-center py-2.5 px-4 rounded-lg text-white font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary disabled:opacity-60 bg-secondary hover:bg-secondary-hover"
               >
                 {loading ? (
                   <>
@@ -196,7 +195,7 @@ const RegisterPage = () => {
             <div className="mt-4 text-center">
               <p className="text-sm text-gray-600">
                 Vous avez déjà un compte ?{' '}
-                <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+                <Link to="/login" className="font-medium text-secondary hover:text-secondary-hover">
                   Se connecter
                 </Link>
               </p>

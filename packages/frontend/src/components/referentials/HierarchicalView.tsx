@@ -154,12 +154,12 @@ const HierarchicalNode: React.FC<{
 
     // Obtenir la couleur de fond en fonction du niveau
     const getBackgroundColor = () => {
-      if (matchesSearch && searchTerm) return 'bg-yellow-50';
+      if (matchesSearch && searchTerm) return 'bg-yellow-100';
 
       switch (level) {
-        case 0: return 'bg-violet-100';
-        case 1: return 'bg-amber-50';
-        case 2: return 'bg-emerald-50';
+        case 0: return 'bg-blue-100'; // Adapté du bleu primaire
+        case 1: return 'bg-orange-100'; // Adapté de l'orange secondaire
+        case 2: return 'bg-emerald-100'; // Contraste distinct pour niveau 3
         default: return 'bg-white';
       }
     };
@@ -167,19 +167,19 @@ const HierarchicalNode: React.FC<{
     // Obtenir la couleur de bordure en fonction du niveau
     const getBorderColor = () => {
       switch (level) {
-        case 0: return 'border-violet-300';
-        case 1: return 'border-amber-300';
-        case 2: return 'border-emerald-300';
-        default: return 'border-gray-200';
+        case 0: return 'border-blue-300'; // Plus foncé pour meilleur contraste
+        case 1: return 'border-orange-300'; // Plus foncé pour meilleur contraste
+        case 2: return 'border-emerald-300'; // Plus foncé pour meilleur contraste
+        default: return 'border-gray-400';
       }
     };
 
     // Obtenir la couleur du texte de niveau en fonction du niveau
     const getLevelBadgeColor = () => {
       switch (level) {
-        case 0: return 'bg-violet-200 text-violet-900';
-        case 1: return 'bg-amber-200 text-amber-900';
-        case 2: return 'bg-emerald-200 text-emerald-900';
+        case 0: return 'bg-blue-200 text-blue-800'; // Meilleur contraste
+        case 1: return 'bg-orange-200 text-orange-800'; // Meilleur contraste
+        case 2: return 'bg-emerald-200 text-emerald-800'; // Meilleur contraste
         default: return 'bg-gray-100 text-gray-800';
       }
     };
@@ -187,9 +187,9 @@ const HierarchicalNode: React.FC<{
     // Obtenir le style spécifique au niveau (style supplémentaire)
     const getLevelSpecificStyle = () => {
       switch (level) {
-        case 0: return 'font-bold text-lg border-l-4 border-l-violet-500';
-        case 1: return 'font-semibold text-base border-l-4 border-l-amber-500';
-        case 2: return 'font-medium border-l-4 border-l-emerald-500';
+        case 0: return 'font-bold text-lg border-l-4 border-l-blue-500';
+        case 1: return 'font-semibold text-base border-l-4 border-l-orange-500';
+        case 2: return 'font-medium text-base border-l-4 border-l-emerald-500';
         default: return '';
       }
     };
@@ -217,16 +217,16 @@ const HierarchicalNode: React.FC<{
         >
           {hasChildren ? (
             shouldExpandNode ? (
-              <ChevronDown className="h-5 w-5 text-indigo-600 mr-2" />
+              <ChevronDown className="h-5 w-5 text-secondary mr-2" />
             ) : (
-              <ChevronRight className="h-5 w-5 text-indigo-600 mr-2" />
+              <ChevronRight className="h-5 w-5 text-secondary mr-2" />
             )
           ) : (
             <div className="h-5 w-5 mr-2" /> // Empty space for alignment
           )}
 
           <div className="flex-1">
-            <div className={`${matchesSearch && searchTerm ? 'text-indigo-600' : 'text-gray-900'}`}>
+            <div className={`${matchesSearch && searchTerm ? 'text-orange-600 font-bold' : level === 0 ? 'text-blue-800' : level === 1 ? 'text-orange-800' : 'text-emerald-800'}`}>
               {node['entity-name']}
             </div>
             <div className="text-xs text-gray-500">ID: {node['id-record']}</div>
@@ -286,7 +286,7 @@ const HierarchicalNode: React.FC<{
 
                 if (node.niveau < 3 && getConversationsForGroup && getConversationsForGroup(node['entity-id'], node['entity-name']).length > 0) {
                   return (
-                    <div className="flex items-center text-indigo-600">
+                    <div className="flex items-center text-secondary">
                       <ChatBubbleIcon filled className="h-5 w-5 mr-1" />
                       <span className="text-xs font-medium">{getConversationsForGroup(node['entity-id'], node['entity-name']).length}</span>
                     </div>
@@ -296,7 +296,7 @@ const HierarchicalNode: React.FC<{
                   const conversationCount = getConversationsForField(node['entity-id'], cleanId).length;
                   if (conversationCount > 0) {
                     return (
-                      <div className="flex items-center text-indigo-600">
+                      <div className="flex items-center text-secondary">
                         <ChatBubbleIcon filled className="h-5 w-5 mr-1" />
                         <span className="text-xs font-medium">{conversationCount}</span>
                       </div>
@@ -305,7 +305,7 @@ const HierarchicalNode: React.FC<{
                 }
 
                 // Par défaut: une icône non remplie
-                return <ChatBubbleIcon className="h-5 w-5 text-gray-400 hover:text-indigo-600 transition-colors duration-200" />;
+                return <ChatBubbleIcon className="h-5 w-5 text-gray-400 hover:text-secondary transition-colors duration-200" />;
               })()}
             </div>
           )}
@@ -419,12 +419,12 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
     : niveau1Entities.length;
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-5 py-4">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-400">
+      <div className="bg-primary text-white px-5 py-4">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-xl font-bold">Structure hiérarchique</h2>
-            <div className="text-sm text-indigo-100 mt-1 opacity-90">
+            <h2 className="text-xl font-bold text-gray-100">Structure hiérarchique</h2>
+            <div className="text-sm text-gray-300 mt-1 opacity-90">
               {data.length} entités de premier niveau
               {searchTerm && ` - Recherche : "${searchTerm}"`}
             </div>
@@ -437,13 +437,13 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
       </div>
 
       <div className="flex flex-wrap gap-2 mb-3 px-4 pt-3 text-xs">
-        <div className="px-3 py-1.5 rounded-md bg-violet-100 text-violet-900 border border-violet-300 font-bold">
+        <div className="px-3 py-1.5 rounded-md bg-blue-100 text-blue-800 border border-blue-300 font-bold">
           Niveau 1
         </div>
-        <div className="px-3 py-1.5 rounded-md bg-amber-50 text-amber-900 border border-amber-300 font-semibold">
+        <div className="px-3 py-1.5 rounded-md bg-orange-100 text-orange-800 border border-orange-300 font-semibold">
           Niveau 2
         </div>
-        <div className="px-3 py-1.5 rounded-md bg-emerald-50 text-emerald-900 border border-emerald-300">
+        <div className="px-3 py-1.5 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300 font-medium">
           Niveau 3
         </div>
         {/* <div className="px-3 py-1.5 rounded-md bg-green-50 text-green-800 border border-green-300"> */}

@@ -29,7 +29,7 @@ const ReferentialHeader: React.FC<ReferentialHeaderProps> = ({
   isConversationsEnabled
 }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-gray-200">
+    <div className="bg-white shadow-lg rounded-lg p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-gray-400">
       <div className="flex flex-col gap-6">
         <div className="flex flex-col md:flex-row gap-6">
           <SearchBar
@@ -55,13 +55,6 @@ const ReferentialHeader: React.FC<ReferentialHeaderProps> = ({
             />
           )}
         </div>
-      </div>
-
-      <div className="mt-5 text-sm">
-        <p className="text-black font-medium">
-          Affichage de la structure hiérarchique des référentiels
-          {searchTerm && ` pour la recherche "${searchTerm}"`}
-        </p>
       </div>
     </div>
   );

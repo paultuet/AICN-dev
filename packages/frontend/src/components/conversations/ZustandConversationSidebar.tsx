@@ -63,10 +63,7 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
       <div className="flex flex-col h-full" onClick={(e) => e.stopPropagation()}>
         {/* Header - Gradient background */}
         <div
-          className="px-4 py-5 border-b border-gray-200 flex justify-between items-center text-white"
-          style={{
-            background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
-          }}
+          className="px-4 py-5 border-b border-gray-400 flex justify-between items-center text-white bg-primary"
         >
           <h2 className="text-xl font-semibold flex items-center">
             {viewMode === 'selection'
@@ -91,7 +88,7 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
           <div className="flex items-center space-x-2">
             {viewMode === 'conversation' && (
               <button
-                className="p-2 hover:bg-indigo-700 transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
+                className="p-2 hover:bg-primary-hover transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
                 onClick={(e) => {
                   e.stopPropagation();
                   setViewMode('selection');
@@ -103,7 +100,7 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
               </button>
             )}
             <button
-              className="p-2 hover:bg-indigo-700 transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
+              className="p-2 hover:bg-primary-hover transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
               onClick={(e) => {
                 e.stopPropagation();
                 handleClose();
@@ -139,9 +136,9 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
 
                         if (item.type === 'group') {
                           return (
-                            <li key={`${item.entityId}-${item.groupName}-${index}`} className="flex justify-between items-center p-2 bg-indigo-50 rounded-md">
+                            <li key={`${item.entityId}-${item.groupName}-${index}`} className="flex justify-between items-center p-2 bg-primary/10 rounded-md">
                               <div>
-                                <span className="text-xs font-medium text-indigo-600">{entity?.['entity-name']}</span>
+                                <span className="text-xs font-medium text-primary">{entity?.['entity-name']}</span>
                                 <p className="text-sm font-medium">{item.groupName}</p>
                                 <p className="text-xs text-gray-500">Groupe entier</p>
                               </div>
@@ -160,9 +157,9 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
                           );
                         } else if (item.type === 'field' && item.fieldIds) {
                           return (
-                            <li key={`${item.entityId}-fields-${index}`} className="flex justify-between items-center p-2 bg-blue-50 rounded-md">
+                            <li key={`${item.entityId}-fields-${index}`} className="flex justify-between items-center p-2 bg-secondary/10 rounded-md">
                               <div>
-                                <span className="text-xs font-medium text-blue-600">{entity?.['entity-name']}</span>
+                                <span className="text-xs font-medium text-secondary">{entity?.['entity-name']}</span>
                                 <p className="text-sm font-medium">
                                   {item.fieldName ? (
                                     // Si le nom du champ a été défini lors de la sélection, l'utiliser directement

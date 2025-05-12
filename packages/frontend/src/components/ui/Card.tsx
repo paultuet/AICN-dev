@@ -17,9 +17,9 @@ const Card: React.FC<CardProps> = ({
   footer
 }) => {
   return (
-    <div className={`bg-white shadow-lg rounded-lg border border-gray-200 ${className}`}>
+    <div className={`bg-white shadow-lg rounded-lg border border-gray-400 ${className}`}>
       {header && (
-        <div className="border-b border-gray-200 px-4 py-3 sm:px-5">
+        <div className="border-b border-gray-400 px-4 py-3 sm:px-5">
           {header}
         </div>
       )}
@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({
         {children}
       </div>
       {footer && (
-        <div className="border-t border-gray-200 px-4 py-3 sm:px-5">
+        <div className="border-t border-gray-400 px-4 py-3 sm:px-5">
           {footer}
         </div>
       )}
