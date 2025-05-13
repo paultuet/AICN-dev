@@ -111,6 +111,7 @@
           (if (valid-password? password (:password-hash user))
             (if (:email-verified user)
               (let [claims {:email (:email user)
+                            :name (:name user)
                             :role (:role user)
                             :id (:id user)
                             :exp (time/plus (time/instant) (time/seconds 3600))}

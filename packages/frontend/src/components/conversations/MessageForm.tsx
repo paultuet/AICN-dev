@@ -1,26 +1,30 @@
+import { useAuth } from '@/contexts/AuthContext';
 import React, { useState } from 'react';
 
 interface MessageFormProps {
   conversationId: string;
-  onSendMessage: (conversationId: string, content: string) => void;
+  onSendMessage: (conversationId: string, content: string, userId: string, userFullName: string) => void;
   placeholder?: string;
 }
 
-const MessageForm: React.FC<MessageFormProps> = ({ 
+const MessageForm: React.FC<MessageFormProps> = ({
   conversationId,
   onSendMessage,
   placeholder = 'Écrivez votre message...'
 }) => {
+  const { user } = useAuth();
   const [messageContent, setMessageContent] = useState('');
-  
+
+  console.log(user);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (messageContent.trim()) {
-      onSendMessage(conversationId, messageContent);
+    if (messageContent.trim() && user?.id && user?.name) {
+      onSendMessage(conversationId, messageContent, user.id, user.name);
       setMessageContent('');
     }
   };
-  
+
   return (
     <form onSubmit={handleSubmit} className="mt-4">
       <div className="relative">

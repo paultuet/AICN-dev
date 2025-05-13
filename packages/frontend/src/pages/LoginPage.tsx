@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
+import { Logo } from "@/components/ui"
 
 const LoginPage = () => {
   const [email, setEmail] = useState('')
@@ -36,9 +37,10 @@ const LoginPage = () => {
           <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-secondary/10 rounded-full opacity-70"></div>
           <div className="relative z-10">
           <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-2xl font-extrabold text-secondary">A</span>
-            </div>
+            {/* <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg"> */}
+            {/*   <span className="text-2xl font-extrabold text-secondary">A</span> */}
+            {/* </div> */}
+              <Logo width={120} />
           </div>
           
           <h1 className="text-2xl font-bold text-center mb-6 text-primary">Connexion</h1>

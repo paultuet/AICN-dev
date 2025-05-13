@@ -27,7 +27,7 @@ interface ConversationState {
   setViewMode: (mode: SidebarViewMode) => void;
   setSidebarOpen: (open: boolean) => void;
   createConversation: (title: string) => void;
-  sendMessage: (conversationId: ID, content: string) => void;
+  sendMessage: (conversationId: ID, content: string, userId: string, userFullName: string) => void;
   clearSelection: () => void;
   openConversation: (conversationId: ID) => void;
 
@@ -88,7 +88,7 @@ export const useConversationStore = create<ConversationState>()(
         // await api.post('/conversations', newConversation);
       },
       
-      sendMessage: (conversationId, content) => {
+      sendMessage: (conversationId, content, userId, userFullName) => {
         const { conversations } = get();
         const currentConversation = conversations.find((c) => c.id === conversationId);
 
@@ -99,8 +99,8 @@ export const useConversationStore = create<ConversationState>()(
           conversationId,
           content,
           createdAt: new Date().toISOString(),
-          authorId: 'user1', // À remplacer par l'ID de l'utilisateur actuel
-          authorName: 'Julien Dupont', // À remplacer par le nom de l'utilisateur actuel
+          authorId: userId,
+          authorName: userFullName
         };
 
         const updatedConversation = {

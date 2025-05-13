@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
+import { Logo } from './ui'
 
 const Navbar = () => {
   const { isAuthenticated, logout, user } = useAuth()
@@ -16,10 +17,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-3">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center shadow-md">
-              <span className="text-secondary text-lg md:text-xl font-extrabold">A</span>
-            </div>
-            <span className="text-xl md:text-2xl font-bold tracking-tight hidden sm:block">AICN</span>
+            <Logo width={50} />
+            <span className="text-gray-300 text-xl md:text-2xl font-bold tracking-tight hidden sm:block">AICN</span>
           </Link>
 
           {/* Mobile menu button */}

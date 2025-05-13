@@ -31,3 +31,5 @@ export { default as Toast } from './Toast';
 // Other
 export { default as SearchBar } from './SearchBar';
 export { default as Dropdown } from './Dropdown';
+
+export { default as Logo } from './Logo';
