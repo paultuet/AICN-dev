@@ -80,6 +80,7 @@ const HierarchicalNode: React.FC<{
   level: number;
   searchTerm?: string;
   forceExpanded?: boolean;
+  expandedLevels?: {[key: number]: boolean}; // Ajout de la prop pour l'expansion par niveau
   conversations?: Conversation[];
   toggleFieldSelection?: (entityId: string, fieldId: number | string, fieldName?: string) => void;
   toggleGroupSelection?: (entityId: string, groupName: string) => void;
@@ -92,6 +93,7 @@ const HierarchicalNode: React.FC<{
   level,
   searchTerm,
   forceExpanded = false,
+  expandedLevels = {1: true, 2: true, 3: true}, // Valeur par défaut
   conversations = [],
   toggleFieldSelection,
   toggleGroupSelection,
@@ -198,7 +200,9 @@ const HierarchicalNode: React.FC<{
     const shouldDisplay = !searchTerm || matchesSearch || hasMatchingFields || hasMatchingChildren;
 
     // Déterminer si on doit développer le nœud
-    const shouldExpandNode = forceExpanded || isExpanded || (searchTerm && (hasMatchingFields || hasMatchingChildren));
+    // Vérifier si le niveau est déployé globalement (via expandedLevels)
+    const levelIsExpanded = node.niveau ? expandedLevels[node.niveau] !== false : true;
+    const shouldExpandNode = forceExpanded || (isExpanded && levelIsExpanded) || (searchTerm && (hasMatchingFields || hasMatchingChildren));
 
     // Si le nœud ne correspond pas à la recherche, ne pas l'afficher
     if (!shouldDisplay) {
@@ -336,6 +340,7 @@ const HierarchicalNode: React.FC<{
                     node={childField as Entity}
                     level={level + 1}
                     searchTerm={searchTerm}
+                    expandedLevels={expandedLevels}
                     forceExpanded={Boolean(forceExpanded || (searchTerm && (hasMatchingChildren || hasMatchingFields)))}
                     conversations={conversations}
                     toggleFieldSelection={toggleFieldSelection}
@@ -375,6 +380,7 @@ const HierarchicalNode: React.FC<{
                   node={childEntity}
                   level={level + 1}
                   searchTerm={searchTerm}
+                  expandedLevels={expandedLevels}
                   forceExpanded={Boolean(forceExpanded || (searchTerm && (hasMatchingChildren || hasMatchingFields)))}
                   conversations={conversations}
                   toggleFieldSelection={toggleFieldSelection}
@@ -403,6 +409,17 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
   getConversationsForField,
   getConversationsForGroup
 }) => {
+  // État pour contrôler l'expansion des niveaux
+  const [expandedLevels, setExpandedLevels] = useState<{[key: number]: boolean}>({1: true, 2: true, 3: true}); // Tous les niveaux sont ouverts par défaut
+
+  // Méthode pour basculer l'expansion d'un niveau spécifique
+  const toggleLevelExpansion = (level: number) => {
+    setExpandedLevels(prev => ({
+      ...prev,
+      [level]: !prev[level]
+    }));
+  };
+
   // Filtrer seulement les entités de niveau 1 pour l'affichage racine
   const niveau1Entities = data.filter(entity => entity.niveau === 1);
 
@@ -437,18 +454,25 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
       </div>
 
       <div className="flex flex-wrap gap-2 mb-3 px-4 pt-3 text-xs">
-        <div className="px-3 py-1.5 rounded-md bg-blue-100 text-blue-800 border border-blue-300 font-bold">
-          Niveau 1
-        </div>
-        <div className="px-3 py-1.5 rounded-md bg-orange-100 text-orange-800 border border-orange-300 font-semibold">
-          Niveau 2
-        </div>
-        <div className="px-3 py-1.5 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300 font-medium">
-          Niveau 3
-        </div>
-        {/* <div className="px-3 py-1.5 rounded-md bg-green-50 text-green-800 border border-green-300"> */}
-        {/*   Champs */}
-        {/* </div> */}
+        <button
+          onClick={() => toggleLevelExpansion(1)}
+          className={`px-3 py-1.5 rounded-md bg-blue-100 text-blue-800 border ${expandedLevels[1] ? 'border-blue-500' : 'border-blue-300'} font-bold cursor-pointer hover:bg-blue-200 transition-colors`}
+        >
+          {expandedLevels[1] ? 'Niveau 1 ▼' : 'Niveau 1 ▶'}
+        </button>
+        <button
+          onClick={() => toggleLevelExpansion(2)}
+          className={`px-3 py-1.5 rounded-md bg-orange-100 text-orange-800 border ${expandedLevels[2] ? 'border-orange-500' : 'border-orange-300'} font-semibold cursor-pointer hover:bg-orange-200 transition-colors`}
+        >
+          {expandedLevels[2] ? 'Niveau 2 ▼' : 'Niveau 2 ▶'}
+        </button>
+        <button
+          onClick={() => toggleLevelExpansion(3)}
+          disabled
+          className={`px-3 py-1.5 rounded-md bg-emerald-100 text-emerald-800 border ${expandedLevels[3] ? 'border-emerald-500' : 'border-emerald-300'} font-medium cursor-pointer hover:bg-emerald-200 transition-colors`}
+        >
+          {expandedLevels[3] ? 'Niveau 3 ▼' : 'Niveau 3 ▶'}
+        </button>
       </div>
 
       <div className="divide-y divide-gray-200">
@@ -458,6 +482,7 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
             node={entity}
             level={0}
             searchTerm={searchTerm}
+            expandedLevels={expandedLevels}
             conversations={conversations}
             toggleFieldSelection={toggleFieldSelection}
             toggleGroupSelection={toggleGroupSelection}
