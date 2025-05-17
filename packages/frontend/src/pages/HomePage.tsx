@@ -49,9 +49,11 @@ const HomePage: React.FC = () => {
   const {
     searchTerm,
     selectedEntityId,
+    selectedType,
     showOnlyWithConversations,
     setSearchTerm,
     setSelectedEntityId,
+    setSelectedType,
     setShowOnlyWithConversations,
     filterReferentials,
     shouldDisplayGroup,
@@ -65,15 +67,30 @@ const HomePage: React.FC = () => {
         // Récupérer les données depuis l'API
         const response = await api.get('/referentiels');
 
-        // Vérifier si la réponse est dans le format attendu
-        if (Array.isArray(response.data)) {
-          setReferentials(response.data);
+        // Vérifier si la réponse est dans le format attendu (nouveau format avec types)
+        const data = response.data;
+        if (data && typeof data === 'object') {
+          // Extraire et fusionner les référentiels par type (NMR, LoV, RIO)
+          const allReferentials = [];
+          const types = ['NMR', 'LoV', 'RIO'];
+          
+          for (const type of types) {
+            if (Array.isArray(data[type])) {
+              // Ajouter le type à chaque référentiel extrait
+              const referentialsWithType = data[type].map(ref => ({
+                ...ref,
+                type // S'assurer que chaque référentiel a son type
+              }));
+              allReferentials.push(...referentialsWithType);
+            }
+          }
+          
+          setReferentials(allReferentials);
           setLoading(false);
         } else {
           setError('Format de données inattendu du serveur');
           setLoading(false);
         }
-
       } catch (err) {
         console.error('Error fetching referentials:', err);
         setError('Une erreur est survenue lors du chargement des référentiels');
@@ -263,6 +280,8 @@ const HomePage: React.FC = () => {
         onSearchChange={setSearchTerm}
         selectedEntityId={selectedEntityId}
         onEntityChange={setSelectedEntityId}
+        selectedType={selectedType}
+        onTypeChange={setSelectedType}
         showOnlyWithConversations={showOnlyWithConversations}
         onToggleShowOnlyWithConversations={setShowOnlyWithConversations}
         entities={referentials}

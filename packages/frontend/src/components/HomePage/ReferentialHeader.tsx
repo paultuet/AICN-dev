@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from '@/components/ui/SearchBar';
 import EntityFilter from '@/components/referentials/EntityFilter';
+import ReferentialTypeFilter from '@/components/referentials/ReferentialTypeFilter';
 import ConversationFilterButton from '@/components/referentials/ConversationFilterButton';
 import { Entity } from '@/types';
 
@@ -9,6 +10,8 @@ interface ReferentialHeaderProps {
   onSearchChange: (term: string) => void;
   selectedEntityId: string | null;
   onEntityChange: (id: string | null) => void;
+  selectedType: string | null;
+  onTypeChange: (type: string | null) => void;
   showOnlyWithConversations: boolean;
   onToggleShowOnlyWithConversations: (show: boolean) => void;
   entities: Entity[];
@@ -23,6 +26,8 @@ const ReferentialHeader: React.FC<ReferentialHeaderProps> = ({
   onSearchChange,
   selectedEntityId,
   onEntityChange,
+  selectedType,
+  onTypeChange,
   showOnlyWithConversations,
   onToggleShowOnlyWithConversations,
   entities,
@@ -39,12 +44,20 @@ const ReferentialHeader: React.FC<ReferentialHeaderProps> = ({
             className="flex-1"
           />
 
-          <EntityFilter
-            entities={entities}
-            selectedEntity={selectedEntityId}
-            onChange={onEntityChange}
-            className="w-full md:w-80"
-          />
+          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+            <ReferentialTypeFilter
+              selectedType={selectedType}
+              onChange={onTypeChange}
+              className="w-full sm:w-56"
+            />
+            
+            <EntityFilter
+              entities={entities.filter(entity => !selectedType || entity.type === selectedType)}
+              selectedEntity={selectedEntityId}
+              onChange={onEntityChange}
+              className="w-full sm:w-56"
+            />
+          </div>
         </div>
 
         <div className="flex items-center justify-between">

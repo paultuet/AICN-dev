@@ -14,12 +14,14 @@ import {
 interface ReferentialFiltersState {
   searchTerm: string;
   selectedEntityId: EntityId | null;
+  selectedType: string | null;
   showOnlyWithConversations: boolean;
 }
 
 interface ReferentialFiltersActions {
   setSearchTerm: (term: string) => void;
   setSelectedEntityId: (id: EntityId | null) => void;
+  setSelectedType: (type: string | null) => void;
   setShowOnlyWithConversations: (show: boolean) => void;
 }
 
@@ -46,6 +48,7 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
   const [filters, setFilters] = useState<ReferentialFiltersState>({
     searchTerm: '',
     selectedEntityId: null,
+    selectedType: 'NMR', // Sélectionne 'NMR' par défaut
     showOnlyWithConversations: false
   });
 
@@ -58,17 +61,30 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     setFilters(prev => ({ ...prev, selectedEntityId }));
   }, []);
 
+  const setSelectedType = useCallback((selectedType: string | null) => {
+    setFilters(prev => ({
+      ...prev,
+      selectedType,
+      selectedEntityId: null // Réinitialiser l'entité sélectionnée quand le type change
+    }));
+  }, []);
+
   const setShowOnlyWithConversations = useCallback((showOnlyWithConversations: boolean) => {
     setFilters(prev => ({ ...prev, showOnlyWithConversations }));
   }, []);
 
   // Prédicat pour vérifier si une entité correspond aux filtres
   const shouldDisplayEntity = useMemo<FilterPredicate<Entity>>(() => {
-    const { searchTerm, selectedEntityId, showOnlyWithConversations } = filters;
+    const { searchTerm, selectedEntityId, selectedType, showOnlyWithConversations } = filters;
     
     return (entity: Entity): boolean => {
       // Filtre par ID d'entité sélectionnée
       if (selectedEntityId && entity['entity-id'] !== selectedEntityId) {
+        return false;
+      }
+
+      // Filtre par type de référentiel
+      if (selectedType && entity.type !== selectedType) {
         return false;
       }
       
@@ -182,11 +198,13 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     // État
     searchTerm: filters.searchTerm,
     selectedEntityId: filters.selectedEntityId,
+    selectedType: filters.selectedType,
     showOnlyWithConversations: filters.showOnlyWithConversations,
     
     // Actions
     setSearchTerm,
     setSelectedEntityId,
+    setSelectedType,
     setShowOnlyWithConversations,
     
     // Prédicats et filtres

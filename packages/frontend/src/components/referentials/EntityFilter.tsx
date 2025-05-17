@@ -23,6 +23,9 @@ const EntityFilter: React.FC<EntityFilterProps> = ({
     onChange(value === '' ? null : value);
   };
 
+  // Déterminer si le dropdown doit être désactivé
+  const isDisabled = entities.length === 0;
+
   return (
     <div className={className}>
       <label htmlFor="entity-filter" className="block text-sm font-semibold text-black mb-2">
@@ -33,8 +36,9 @@ const EntityFilter: React.FC<EntityFilterProps> = ({
         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-lg p-3 border bg-white"
         value={selectedEntity || ''}
         onChange={handleChange}
+        disabled={isDisabled}
       >
-        <option value="">{allEntitiesLabel}</option>
+        <option value="">{entities.length > 0 ? allEntitiesLabel : 'Aucun référentiel disponible'}</option>
         {entities.map(entity => (
           <option key={entity['entity-id']} value={entity['entity-id']}>
             {entity['entity-name']}
