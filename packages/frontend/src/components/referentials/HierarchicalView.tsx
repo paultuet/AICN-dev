@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Entity, Field } from '@/types/referential';
 import { Conversation } from '@/types/conversation';
 import ChevronDown from '@/components/icons/ChevronDown';
@@ -81,6 +81,7 @@ const HierarchicalNode: React.FC<{
   searchTerm?: string;
   forceExpanded?: boolean;
   expandedLevels?: {[key: number]: boolean}; // Ajout de la prop pour l'expansion par niveau
+  lastGlobalAction?: number; // Timestamp de la dernière action globale sur les badges
   conversations?: Conversation[];
   toggleFieldSelection?: (entityId: string, fieldId: number | string, fieldName?: string) => void;
   toggleGroupSelection?: (entityId: string, groupName: string) => void;
@@ -94,6 +95,7 @@ const HierarchicalNode: React.FC<{
   searchTerm,
   forceExpanded = false,
   expandedLevels = {1: true, 2: true, 3: true}, // Valeur par défaut
+  lastGlobalAction = 0, // Valeur par défaut
   conversations = [],
   toggleFieldSelection,
   toggleGroupSelection,
@@ -104,6 +106,19 @@ const HierarchicalNode: React.FC<{
 }) => {
     const [isExpanded, setIsExpanded] = useState<boolean>(level < 2); // Auto-expand first 2 levels by default
     const [showFields, setShowFields] = useState<boolean>(false);
+    const [lastNodeAction, setLastNodeAction] = useState<number>(0); // Timestamp de la dernière action sur ce noeud
+    
+    // Effet pour suivre les changements d'expandedLevels (actions globales)
+    useEffect(() => {
+      // Si une action globale est plus récente que la dernière action individuelle
+      // ou si aucune action individuelle n'a été effectuée, appliquer l'état global
+      if (lastGlobalAction > lastNodeAction) {
+        // Appliquer l'état global du niveau si applicable
+        if (node.niveau && expandedLevels[node.niveau] !== undefined) {
+          setIsExpanded(expandedLevels[node.niveau]);
+        }
+      }
+    }, [expandedLevels, lastGlobalAction, node.niveau]);
 
     const isConversationFeatureEnabled = useFeatureFlag("conversations");
 
@@ -139,8 +154,21 @@ const HierarchicalNode: React.FC<{
     // Vérifier si des enfants correspondent à la recherche (pour les entités)
     const hasMatchingChildren = searchTerm && hasChildren ? true : false; // On présume que oui par défaut, la vérification réelle se fait par récursion
 
-    const toggleExpand = () => {
-      setIsExpanded(!isExpanded);
+    const toggleExpand = (e: React.MouseEvent) => {
+      // Éviter la propagation de l'événement pour empêcher les clics multiples
+      e.stopPropagation();
+      
+      // Toggle the individual node's expanded state
+      setIsExpanded(prev => !prev);
+      
+      // Enregistrer le timestamp de cette action individuelle
+      // Il sera toujours plus récent que la dernière action globale
+      setLastNodeAction(Date.now());
+      
+      // Log pour déboguer (uniquement pour le niveau 2)
+      if (node.niveau === 2) {
+        console.log(`Click sur node niveau 2: ${node['entity-name']}, nouveau state: ${!isExpanded}, timestamp: ${Date.now()}`);
+      }
     };
 
     const toggleFields = (e: React.MouseEvent) => {
@@ -199,10 +227,18 @@ const HierarchicalNode: React.FC<{
     // Déterminer si le nœud doit être affiché ou non en fonction de la recherche
     const shouldDisplay = !searchTerm || matchesSearch || hasMatchingFields || hasMatchingChildren;
 
-    // Déterminer si on doit développer le nœud
-    // Vérifier si le niveau est déployé globalement (via expandedLevels)
-    const levelIsExpanded = node.niveau ? expandedLevels[node.niveau] !== false : true;
-    const shouldExpandNode = forceExpanded || (isExpanded && levelIsExpanded) || (searchTerm && (hasMatchingFields || hasMatchingChildren));
+    // Déterminer si le niveau est déployé globalement (via expandedLevels)
+    // Cette information n'est plus directement utilisée avec la nouvelle logique
+    // car l'état est maintenant géré via l'effet useEffect
+    
+    // Logique d'expansion simplifiée
+    // 1. Si la recherche correspond ou si l'expansion est forcée par un parent, toujours afficher
+    // 2. Sinon, utiliser l'état local du noeud qui a été mis à jour soit par une action individuelle,
+    //    soit par l'effet qui réagit aux actions globales
+    
+    const shouldExpandNode = forceExpanded || 
+                             (searchTerm && (hasMatchingFields || hasMatchingChildren)) ||
+                             isExpanded; // Utiliser l'état local qui est déjà synchronisé avec les actions globales
 
     // Si le nœud ne correspond pas à la recherche, ne pas l'afficher
     if (!shouldDisplay) {
@@ -218,6 +254,8 @@ const HierarchicalNode: React.FC<{
         <div
           className={`py-3 px-4 flex items-center hover:bg-opacity-80 cursor-pointer ${getIndentClass()} transition-all duration-200 gap-4`}
           onClick={toggleExpand}
+          data-level={level}
+          data-node-id={node['id-record']}
         >
           {hasChildren ? (
             shouldExpandNode ? (
@@ -341,6 +379,7 @@ const HierarchicalNode: React.FC<{
                     level={level + 1}
                     searchTerm={searchTerm}
                     expandedLevels={expandedLevels}
+                    lastGlobalAction={lastGlobalAction}
                     forceExpanded={Boolean(forceExpanded || (searchTerm && (hasMatchingChildren || hasMatchingFields)))}
                     conversations={conversations}
                     toggleFieldSelection={toggleFieldSelection}
@@ -381,6 +420,7 @@ const HierarchicalNode: React.FC<{
                   level={level + 1}
                   searchTerm={searchTerm}
                   expandedLevels={expandedLevels}
+                  lastGlobalAction={lastGlobalAction}
                   forceExpanded={Boolean(forceExpanded || (searchTerm && (hasMatchingChildren || hasMatchingFields)))}
                   conversations={conversations}
                   toggleFieldSelection={toggleFieldSelection}
@@ -411,13 +451,25 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
 }) => {
   // État pour contrôler l'expansion des niveaux
   const [expandedLevels, setExpandedLevels] = useState<{[key: number]: boolean}>({1: true, 2: true, 3: true}); // Tous les niveaux sont ouverts par défaut
+  // Timestamp de la dernière action globale (clic sur badge)
+  const [lastGlobalAction, setLastGlobalAction] = useState<number>(0);
 
   // Méthode pour basculer l'expansion d'un niveau spécifique
   const toggleLevelExpansion = (level: number) => {
+    // Toggle the expansion state for the specific level
+    const newExpansionState = !expandedLevels[level];
+    
+    // Mise à jour de l'état d'expansion du niveau
     setExpandedLevels(prev => ({
       ...prev,
-      [level]: !prev[level]
+      [level]: newExpansionState
     }));
+    
+    // Enregistrer le timestamp de cette action globale
+    // Cela permettra aux composants enfants de savoir qu'une action globale a eu lieu
+    setLastGlobalAction(Date.now());
+    
+    console.log(`Action globale niveau ${level}: ${newExpansionState ? 'ouvert' : 'fermé'}, timestamp: ${Date.now()}`);
   };
 
   // Filtrer seulement les entités de niveau 1 pour l'affichage racine
@@ -468,7 +520,6 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
         </button>
         <button
           onClick={() => toggleLevelExpansion(3)}
-          disabled
           className={`px-3 py-1.5 rounded-md bg-emerald-100 text-emerald-800 border ${expandedLevels[3] ? 'border-emerald-500' : 'border-emerald-300'} font-medium cursor-pointer hover:bg-emerald-200 transition-colors`}
         >
           {expandedLevels[3] ? 'Niveau 3 ▼' : 'Niveau 3 ▶'}
@@ -483,6 +534,7 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
             level={0}
             searchTerm={searchTerm}
             expandedLevels={expandedLevels}
+            lastGlobalAction={lastGlobalAction}
             conversations={conversations}
             toggleFieldSelection={toggleFieldSelection}
             toggleGroupSelection={toggleGroupSelection}
