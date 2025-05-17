@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const login = async (credentials: LoginCredentials) => {
     try {
-      console.log("Login with:", credentials);
+      // console.log("Login with:", credentials);
       const { token } = await authService.login(credentials)
 
       // Save token
@@ -105,7 +105,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const register = async (userData: RegisterCredentials) => {
     try {
-      console.log("Register with:", userData);
+      // console.log("Register with:", userData);
       const { user } = await authService.register(userData)
 
       if (!user) {

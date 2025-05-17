@@ -15,8 +15,6 @@ const MessageForm: React.FC<MessageFormProps> = ({
   const { user } = useAuth();
   const [messageContent, setMessageContent] = useState('');
 
-  console.log(user);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (messageContent.trim() && user?.id && user?.name) {

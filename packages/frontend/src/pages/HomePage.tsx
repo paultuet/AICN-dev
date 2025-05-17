@@ -148,7 +148,7 @@ const HomePage: React.FC = () => {
   // Toggle la sélection d'un champ avec Zustand
   const toggleFieldSelection = (entityId: string, fieldId: number | string, fieldName?: string) => {
     // Forcer l'ouverture du panneau latéral
-    console.log("toggleFieldSelection called with", entityId, fieldId, fieldName);
+    // console.log("toggleFieldSelection called with", entityId, fieldId, fieldName);
     setViewMode('selection');
     setSidebarOpen(true);
 
@@ -225,7 +225,7 @@ const HomePage: React.FC = () => {
 
   // Toggle la sélection d'un groupe avec Zustand
   const toggleGroupSelection = (entityId: string, groupName: string) => {
-    console.log("toggleGroupSelection called with", entityId, groupName);
+    // console.log("toggleGroupSelection called with", entityId, groupName);
     const existingIndex = selectedItems.findIndex(
       selection => selection.type === 'group' &&
         selection.entityId === entityId &&

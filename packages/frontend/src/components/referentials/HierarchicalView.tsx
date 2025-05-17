@@ -104,7 +104,7 @@ const HierarchicalNode: React.FC<{
   getConversationsForField,
   getConversationsForGroup
 }) => {
-    const [isExpanded, setIsExpanded] = useState<boolean>(level < 2); // Auto-expand first 2 levels by default
+    const [isExpanded, setIsExpanded] = useState<boolean>(true);
     const [showFields, setShowFields] = useState<boolean>(false);
     const [lastNodeAction, setLastNodeAction] = useState<number>(0); // Timestamp de la dernière action sur ce noeud
     
@@ -164,11 +164,6 @@ const HierarchicalNode: React.FC<{
       // Enregistrer le timestamp de cette action individuelle
       // Il sera toujours plus récent que la dernière action globale
       setLastNodeAction(Date.now());
-      
-      // Log pour déboguer (uniquement pour le niveau 2)
-      if (node.niveau === 2) {
-        console.log(`Click sur node niveau 2: ${node['entity-name']}, nouveau state: ${!isExpanded}, timestamp: ${Date.now()}`);
-      }
     };
 
     const toggleFields = (e: React.MouseEvent) => {
@@ -245,10 +240,6 @@ const HierarchicalNode: React.FC<{
       return null;
     }
 
-    // if (node.niveau == 3) {
-    //   console.log(node['var-type']);
-    // }
-
     return (
       <div className={`border-b ${getBorderColor()} last:border-b-0 ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
         <div
@@ -287,10 +278,10 @@ const HierarchicalNode: React.FC<{
               onClick={(e) => {
                 e.stopPropagation();
                 // Debug - Montrer les infos du nœud lors d'un clic
-                console.log("Clicked node:", node);
-                console.log("Node niveau:", node.niveau);
-                console.log("Node entity-id:", node['entity-id']);
-                console.log("Node id-record:", node['id-record']);
+                // console.log("Clicked node:", node);
+                // console.log("Node niveau:", node.niveau);
+                // console.log("Node entity-id:", node['entity-id']);
+                // console.log("Node id-record:", node['id-record']);
 
                 try {
                   if (node.niveau && node.niveau < 3 && toggleGroupSelection) {
@@ -469,7 +460,7 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
     // Cela permettra aux composants enfants de savoir qu'une action globale a eu lieu
     setLastGlobalAction(Date.now());
     
-    console.log(`Action globale niveau ${level}: ${newExpansionState ? 'ouvert' : 'fermé'}, timestamp: ${Date.now()}`);
+    // console.log(`Action globale niveau ${level}: ${newExpansionState ? 'ouvert' : 'fermé'}, timestamp: ${Date.now()}`);
   };
 
   // Filtrer seulement les entités de niveau 1 pour l'affichage racine

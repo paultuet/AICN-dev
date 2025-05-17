@@ -182,7 +182,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                                         const fIdStr = String(fId);
                                         const targetIdStr = String(targetId);
 
-                                        console.log("Comparing field 'id-field':", fId, "with target ID:", targetId);
+                                        // console.log("Comparing field 'id-field':", fId, "with target ID:", targetId);
 
                                         // Essayer plusieurs formats de correspondance
                                         return fId === targetId ||
@@ -197,7 +197,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                                       if (field && 'lib-fonc' in field) {
                                         return field['lib-fonc'];
                                       } else {
-                                        console.log("Field not found for ID:", fieldId, "in entity:", entity?.['entity-name']);
+                                        // console.log("Field not found for ID:", fieldId, "in entity:", entity?.['entity-name']);
                                         // Si l'entité a été trouvée par correspondance de champ dans toggleFieldSelection
                                         // Chercher parmi tous les champs par entity-id
                                         const matchingField = entity?.fields.find(f =>
