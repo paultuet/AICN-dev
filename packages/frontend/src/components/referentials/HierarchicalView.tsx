@@ -323,7 +323,7 @@ const HierarchicalNode: React.FC<{
 
           <div className="flex items-center space-x-2">
             <div className={`px-2 py-1 text-xs rounded-full font-medium ${getLevelBadgeColor()}`}>
-              {'type' in node ? `${node.type} - Niv ${node.niveau}` : `Niveau ${node.niveau}`}
+              {'type' in node && node.niveau !== undefined ? `${node.type} - Niv ${node.niveau}` : node.niveau !== undefined ? `Niveau ${node.niveau}` : 'Niveau N/A'}
             </div>
           </div>
         </div>
@@ -358,8 +358,8 @@ const HierarchicalNode: React.FC<{
                 'entity-id': childField['entity-id'],
                 'entity-name': childField['lib-fonc'],
                 'niveau': childField.niveau,
-                'id-record': childField['id-field'] as string,
-                'type': childField.type,
+                'id-record': String(childField['id-field']),
+                'type': childField.type || 'UNKNOWN',
                 'var-type': childField['var-type'],
                 'exemple': childField.exemple,
                 // Vérifier si le champ a déjà des "fields" définis
