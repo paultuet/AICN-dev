@@ -29,7 +29,7 @@ const Pagination: React.FC<PaginationProps> = ({
   const getPageNumbers = () => {
     const pages = [];
     let startPage = Math.max(1, currentPage - Math.floor(pageRangeDisplayed / 2));
-    let endPage = Math.min(totalPages, startPage + pageRangeDisplayed - 1);
+    const endPage = Math.min(totalPages, startPage + pageRangeDisplayed - 1);
     
     // Adjust startPage if endPage is maxed out
     if (endPage === totalPages) {

@@ -6,6 +6,15 @@ import ChevronRight from '@/components/icons/ChevronRight';
 import { Badge } from '../ui';
 import ChatBubbleIcon from '@/components/icons/ChatBubbleIcon';
 import useFeatureFlag from '@/hooks/useFeatureFlag';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 
 interface HierarchicalViewProps {
   data: Entity[];
@@ -19,7 +28,7 @@ interface HierarchicalViewProps {
   getConversationsForGroup?: (entityId: string, groupName: string) => Conversation[];
 }
 
-const getVarTypeBadgeColor = (varType: String) => {
+const getVarTypeBadgeColor = (varType: string) => {
   switch (varType) {
     case 'TEXT': return 'blue';
     case 'VARCHAR': return 'blue';
@@ -28,59 +37,48 @@ const getVarTypeBadgeColor = (varType: String) => {
     case 'DATE': return 'purple';
     case 'BOOL': return 'red';
     case 'BOOLEEN': return 'red';
-    case 'LINK': return 'emerald';
+    case 'LINK': return 'cyan';
     default: return 'gray';
   }
 };
 
-// Composant pour afficher le détail d'un champ
-const FieldDetail: React.FC<{ field: Field }> = ({ field }) => {
-  // Déterminer la couleur du badge en fonction du type de champ
-  const getTypeBadgeColor = () => {
-    switch (field['var-type']) {
-      case 'TEXT': return 'bg-blue-100 text-blue-800';
-      case 'NUMBER': return 'bg-amber-100 text-amber-800';
-      case 'DATE': return 'bg-purple-100 text-purple-800';
-      case 'BOOL': return 'bg-red-100 text-red-800';
-      case 'LINK': return 'bg-emerald-100 text-emerald-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
+const NodeVarType: React.FC<{ node: Field | Entity }> = ({ node }) => {
 
-  return (
-    <div className="border-b border-gray-100 py-3 px-4 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-150">
-      <div className="flex items-center">
-        <div className="flex-1">
-          <div className="font-medium text-gray-900">{field['lib-fonc']}</div>
-          {field.desc && <div className="text-xs text-gray-500 mt-1">{field.desc}</div>}
-        </div>
-        <div className={`text-xs px-2 py-1 rounded-full font-medium ${getTypeBadgeColor()}`}>
-          {field['var-type'] || 'N/A'}
-        </div>
-      </div>
-      <div className="flex justify-between items-center mt-1">
-        <div className="text-xs text-gray-500">
-          ID: {field['id-field']}
-        </div>
-        {field['link-entity-id'] && (
-          <div className="text-xs text-blue-600 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-3 h-3 mr-1">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-            </svg>
-            Lié
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
+  if (!node['var-type']) {
+    return null;
+  }
+
+  const badgeType = <Badge color={getVarTypeBadgeColor(node['var-type'])}>
+    {node['var-type']}
+  </Badge>
+
+
+  if (node['link-entity-id'] != null) {
+    return (
+      <Dialog>
+        <DialogTrigger><span className='cursor-pointer'>{badgeType}</span></DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Popup d'affichage des champs liés</DialogTitle>
+            <DialogDescription>
+              En cours de développement...
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
+    )
+  } else {
+    return badgeType;
+  }
+}
 
 const HierarchicalNode: React.FC<{
   node: Entity;
   level: number;
   searchTerm?: string;
   forceExpanded?: boolean;
-  expandedLevels?: {[key: number]: boolean}; // Ajout de la prop pour l'expansion par niveau
+  expandedLevels?: { [key: number]: boolean }; // Ajout de la prop pour l'expansion par niveau
   lastGlobalAction?: number; // Timestamp de la dernière action globale sur les badges
   conversations?: Conversation[];
   toggleFieldSelection?: (entityId: string, fieldId: number | string, fieldName?: string) => void;
@@ -94,7 +92,7 @@ const HierarchicalNode: React.FC<{
   level,
   searchTerm,
   forceExpanded = false,
-  expandedLevels = {1: true, 2: true, 3: true}, // Valeur par défaut
+  expandedLevels = { 1: true, 2: true, 3: true }, // Valeur par défaut
   lastGlobalAction = 0, // Valeur par défaut
   conversations = [],
   toggleFieldSelection,
@@ -107,7 +105,7 @@ const HierarchicalNode: React.FC<{
     const [isExpanded, setIsExpanded] = useState<boolean>(true);
     const [showFields, setShowFields] = useState<boolean>(false);
     const [lastNodeAction, setLastNodeAction] = useState<number>(0); // Timestamp de la dernière action sur ce noeud
-    
+
     // Effet pour suivre les changements d'expandedLevels (actions globales)
     useEffect(() => {
       // Si une action globale est plus récente que la dernière action individuelle
@@ -157,10 +155,10 @@ const HierarchicalNode: React.FC<{
     const toggleExpand = (e: React.MouseEvent) => {
       // Éviter la propagation de l'événement pour empêcher les clics multiples
       e.stopPropagation();
-      
+
       // Toggle the individual node's expanded state
       setIsExpanded(prev => !prev);
-      
+
       // Enregistrer le timestamp de cette action individuelle
       // Il sera toujours plus récent que la dernière action globale
       setLastNodeAction(Date.now());
@@ -225,51 +223,53 @@ const HierarchicalNode: React.FC<{
     // Déterminer si le niveau est déployé globalement (via expandedLevels)
     // Cette information n'est plus directement utilisée avec la nouvelle logique
     // car l'état est maintenant géré via l'effet useEffect
-    
+
     // Logique d'expansion simplifiée
     // 1. Si la recherche correspond ou si l'expansion est forcée par un parent, toujours afficher
     // 2. Sinon, utiliser l'état local du noeud qui a été mis à jour soit par une action individuelle,
     //    soit par l'effet qui réagit aux actions globales
-    
-    const shouldExpandNode = forceExpanded || 
-                             (searchTerm && (hasMatchingFields || hasMatchingChildren)) ||
-                             isExpanded; // Utiliser l'état local qui est déjà synchronisé avec les actions globales
+
+    const shouldExpandNode = forceExpanded ||
+      (searchTerm && (hasMatchingFields || hasMatchingChildren)) ||
+      isExpanded; // Utiliser l'état local qui est déjà synchronisé avec les actions globales
 
     // Si le nœud ne correspond pas à la recherche, ne pas l'afficher
     if (!shouldDisplay) {
       return null;
     }
 
+    if (node['entity-id'] === 'recEPr1QF8W3sW2lE') {
+      console.log(node);
+    }
+
     return (
       <div className={`border-b ${getBorderColor()} last:border-b-0 ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
         <div
-          className={`py-3 px-4 flex items-center hover:bg-opacity-80 cursor-pointer ${getIndentClass()} transition-all duration-200 gap-4`}
-          onClick={toggleExpand}
+          className={`py-3 px-4 flex items-center hover:bg-opacity-80 ${getIndentClass()} transition-all duration-200 gap-4`}
           data-level={level}
           data-node-id={node['id-record']}
         >
           {hasChildren ? (
-            shouldExpandNode ? (
-              <ChevronDown className="h-5 w-5 text-secondary mr-2" />
-            ) : (
-              <ChevronRight className="h-5 w-5 text-secondary mr-2" />
-            )
+            <button onClick={toggleExpand} className="cursor-pointer">
+              {shouldExpandNode ? (
+                <ChevronDown className="h-5 w-5 text-secondary mr-2" />
+              ) : (
+                <ChevronRight className="h-5 w-5 text-secondary mr-2" />
+              )}
+            </button>
           ) : (
             <div className="h-5 w-5 mr-2" /> // Empty space for alignment
           )}
 
           <div className="flex-1">
-            <div className={`${matchesSearch && searchTerm ? 'text-orange-600 font-bold' : level === 0 ? 'text-blue-800' : level === 1 ? 'text-orange-800' : 'text-emerald-800'}`}>
+            <div onClick={toggleExpand} className={`cursor-pointer ${matchesSearch && searchTerm ? 'text-orange-600 font-bold' : level === 0 ? 'text-blue-800' : level === 1 ? 'text-orange-800' : 'text-emerald-800'}`}>
               {node['entity-name']}
             </div>
             <div className="text-xs text-gray-500">ID: {node['id-record']}</div>
           </div>
 
-          {node['var-type'] != null &&
-            <Badge color={getVarTypeBadgeColor(node['var-type'])}>
-              {node['var-type']}
-            </Badge>
-          }
+          <NodeVarType node={node} />
+
 
           {/* Icône de conversation pour les niveaux 2 et 3 */}
           {isConversationFeatureEnabled && node.niveau && node.niveau <= 3 && (
@@ -392,6 +392,7 @@ const HierarchicalNode: React.FC<{
                 'type': childField.type || 'UNKNOWN',
                 'var-type': childField['var-type'],
                 'exemple': childField.exemple,
+                'link-entity-id': childField['link-entity-id'],
                 // Vérifier si le champ a déjà des "fields" définis
                 'fields': 'fields' in childField && childField.fields
                   ? childField.fields
@@ -441,7 +442,7 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
   getConversationsForGroup
 }) => {
   // État pour contrôler l'expansion des niveaux
-  const [expandedLevels, setExpandedLevels] = useState<{[key: number]: boolean}>({1: true, 2: true, 3: true}); // Tous les niveaux sont ouverts par défaut
+  const [expandedLevels, setExpandedLevels] = useState<{ [key: number]: boolean }>({ 1: true, 2: true, 3: true }); // Tous les niveaux sont ouverts par défaut
   // Timestamp de la dernière action globale (clic sur badge)
   const [lastGlobalAction, setLastGlobalAction] = useState<number>(0);
 
@@ -449,17 +450,17 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
   const toggleLevelExpansion = (level: number) => {
     // Toggle the expansion state for the specific level
     const newExpansionState = !expandedLevels[level];
-    
+
     // Mise à jour de l'état d'expansion du niveau
     setExpandedLevels(prev => ({
       ...prev,
       [level]: newExpansionState
     }));
-    
+
     // Enregistrer le timestamp de cette action globale
     // Cela permettra aux composants enfants de savoir qu'une action globale a eu lieu
     setLastGlobalAction(Date.now());
-    
+
     // console.log(`Action globale niveau ${level}: ${newExpansionState ? 'ouvert' : 'fermé'}, timestamp: ${Date.now()}`);
   };
 

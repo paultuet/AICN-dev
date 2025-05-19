@@ -1,6 +1,6 @@
 import React from 'react';
 
-type BadgeColor = 'blue' | 'indigo' | 'purple' | 'gray' | 'green' | 'red' | 'yellow' | 'emerald' | 'amber';
+type BadgeColor = 'blue' | 'indigo' | 'purple' | 'gray' | 'green' | 'red' | 'yellow' | 'emerald' | 'amber' | 'orange' | 'cyan' | 'teal';
 
 interface BadgeProps {
   color?: BadgeColor;
@@ -29,7 +29,10 @@ const Badge: React.FC<BadgeProps> = ({
     red: 'bg-red-100 text-red-800',
     yellow: 'bg-yellow-100 text-yellow-800',
     amber: 'bg-amber-100 text-amber-800',
-    emerald: 'bg-emerald-100 text-emerald-800'
+    emerald: 'bg-emerald-100 text-emerald-800',
+    orange: 'bg-orange-100 text-orange-800',
+    teal: 'bg-teal-100 text-teal-800',
+    cyan: 'bg-cyan-100 text-cyan-800',
   };
 
   const sizeClasses = {

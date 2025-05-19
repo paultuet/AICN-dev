@@ -13,7 +13,7 @@ export type FieldMetadata = {
   'lib-fonc': string
   'lib-group': string
   'entity-id': string
-  'link-entity-id'?: string | null
+  'link-entity-id'?: string | null | string[]
   'category'?: string | null
   'category-id'?: string
   'niveau'?: number
@@ -45,6 +45,7 @@ export type EntityMetadata = {
   'desc-fr'?: string | null
   'exemple'?: string | null
   'var-type'?: string | null
+  'link-entity-id'?: string[] | null | string
   'link'?: string | null
   'lib-fonc'?: string // Ajouté pour supporter les entités dérivées de champs
 }
