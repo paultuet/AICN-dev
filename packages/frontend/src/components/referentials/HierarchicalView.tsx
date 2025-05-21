@@ -180,9 +180,9 @@ const HierarchicalNode: React.FC<{
       if (matchesSearch && searchTerm) return 'bg-yellow-100';
 
       switch (level) {
-        case 0: return 'bg-blue-100'; // Adapté du bleu primaire
-        case 1: return 'bg-orange-100'; // Adapté de l'orange secondaire
-        case 2: return 'bg-emerald-100'; // Contraste distinct pour niveau 3
+        // case 0: return 'bg-blue-100'; // Adapté du bleu primaire
+        // case 1: return 'bg-orange-100'; // Adapté de l'orange secondaire
+        // case 2: return 'bg-emerald-100'; // Contraste distinct pour niveau 3
         default: return 'bg-white';
       }
     };
@@ -190,10 +190,10 @@ const HierarchicalNode: React.FC<{
     // Obtenir la couleur de bordure en fonction du niveau
     const getBorderColor = () => {
       switch (level) {
-        case 0: return 'border-blue-300'; // Plus foncé pour meilleur contraste
-        case 1: return 'border-orange-300'; // Plus foncé pour meilleur contraste
-        case 2: return 'border-emerald-300'; // Plus foncé pour meilleur contraste
-        default: return 'border-gray-400';
+        // case 0: return 'border-blue-300'; // Plus foncé pour meilleur contraste
+        // case 1: return 'border-orange-300'; // Plus foncé pour meilleur contraste
+        // case 2: return 'border-emerald-300'; // Plus foncé pour meilleur contraste
+        default: return 'border-gray-200';
       }
     };
 
@@ -216,6 +216,21 @@ const HierarchicalNode: React.FC<{
         default: return '';
       }
     };
+
+    const getLevelSpecificTextColor = () => {
+      switch (level) {
+        case 0:
+          return 'text-blue-800';
+        case 1:
+          return 'text-orange-800'
+        case 2:
+          return 'text-emerald-800'
+        default:
+          return '';
+      }
+    };
+
+
 
     // Déterminer si le nœud doit être affiché ou non en fonction de la recherche
     const shouldDisplay = !searchTerm || matchesSearch || hasMatchingFields || hasMatchingChildren;
@@ -243,7 +258,7 @@ const HierarchicalNode: React.FC<{
     }
 
     return (
-      <div className={`border-b ${getBorderColor()} last:border-b-0 ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
+      <div className={`border ${getBorderColor()} ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
         <div
           className={`py-3 px-4 flex items-center hover:bg-opacity-80 ${getIndentClass()} transition-all duration-200 gap-4`}
           data-level={level}
@@ -252,9 +267,9 @@ const HierarchicalNode: React.FC<{
           {hasChildren ? (
             <button onClick={toggleExpand} className="cursor-pointer">
               {shouldExpandNode ? (
-                <ChevronDown className="h-5 w-5 text-secondary mr-2" />
+                <ChevronDown className={`h-5 w-5 ${getLevelSpecificTextColor()} mr-2`} />
               ) : (
-                <ChevronRight className="h-5 w-5 text-secondary mr-2" />
+                <ChevronRight className={`h-5 w-5 ${getLevelSpecificTextColor()} mr-2`} />
               )}
             </button>
           ) : (
@@ -262,7 +277,7 @@ const HierarchicalNode: React.FC<{
           )}
 
           <div className="flex-1">
-            <div onClick={toggleExpand} className={`cursor-pointer ${matchesSearch && searchTerm ? 'text-orange-600 font-bold' : level === 0 ? 'text-blue-800' : level === 1 ? 'text-orange-800' : 'text-emerald-800'}`}>
+            <div onClick={toggleExpand} className={`cursor-pointer ${matchesSearch && searchTerm ? 'text-orange-600 font-bold' : getLevelSpecificTextColor()}`}>
               {node['entity-name']}
             </div>
             <div className="text-xs text-gray-500">ID: {node['id-record']}</div>
@@ -359,7 +374,7 @@ const HierarchicalNode: React.FC<{
 
         {/* Afficher les entités enfants s'ils existent et sont demandés */}
         {hasChildren && shouldExpandNode && (
-          <div className={`border-l-4 ${getBorderColor()} ml-6`}>
+          <div className={`ml-6`}>
             {childFields.map((childField, index) => {
               // Si c'est déjà une entité, l'utiliser directement
               if ('entity-name' in childField) {
@@ -481,11 +496,11 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
 
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-400">
-      <div className="bg-primary text-white px-5 py-4">
+      <div className="text-black px-5 py-4">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-xl font-bold text-gray-100">Structure hiérarchique</h2>
-            <div className="text-sm text-gray-300 mt-1 opacity-90">
+            <h2 className="text-xl font-bold">Structure hiérarchique</h2>
+            <div className="text-sm text-gray-800 mt-1 opacity-90">
               {data.length} entités de premier niveau
               {searchTerm && ` - Recherche : "${searchTerm}"`}
             </div>

@@ -1,0 +1,8 @@
+{
+  "name": "backend",
+  "private": true,
+  "scripts": {
+    "dev": "clj -M:nrepl:run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

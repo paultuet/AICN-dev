@@ -12,6 +12,8 @@ importers:
         specifier: ^8.0.0
         version: 8.0.3
 
+  packages/backend: {}
+
   packages/frontend:
     dependencies:
       '@radix-ui/react-dialog':
