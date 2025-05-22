@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import api from '@/services/api';
+import React, { useEffect } from 'react';
 import { Entity } from '@/types';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorMessage from '@/components/ui/ErrorMessage';
@@ -8,6 +7,7 @@ import useReferentialFilters from '@/hooks/useReferentialFilters';
 import { getConversationsForField, getConversationsForGroup } from '@/utils/referentialUtils';
 import { mockConversations } from '@/mock/conversationsMock';
 import { useConversationStore } from '@/store/conversation';
+import { useReferentialStore } from '@/store/referential';
 import {
   ReferentialHeader,
   ReferentialContent,
@@ -19,13 +19,16 @@ import {
  * Page d'accueil affichant les référentiels et les conversations
  */
 const HomePage: React.FC = () => {
-  // État pour les données
-  const [referentials, setReferentials] = useState<Entity[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
   // Feature flags
   const isConversationsFeatureEnabled = useFeatureFlag('conversations');
+
+  // Utiliser le store Zustand pour les référentiels
+  const {
+    referentials,
+    loading,
+    error,
+    fetchReferentials
+  } = useReferentialStore();
 
   // Utiliser le store Zustand pour les conversations
   const {
@@ -62,49 +65,14 @@ const HomePage: React.FC = () => {
 
   // Récupérer les données initiales
   useEffect(() => {
-    const fetchReferentials = async () => {
-      try {
-        // Récupérer les données depuis l'API
-        const response = await api.get('/referentiels');
-
-        // Vérifier si la réponse est dans le format attendu (nouveau format avec types)
-        const data = response.data;
-        if (data && typeof data === 'object') {
-          // Extraire et fusionner les référentiels par type (NMR, LoV, RIO)
-          const allReferentials = [];
-          const types = ['NMR', 'LoV', 'RIO'];
-          
-          for (const type of types) {
-            if (Array.isArray(data[type])) {
-              // Ajouter le type à chaque référentiel extrait
-              const referentialsWithType = data[type].map(ref => ({
-                ...ref,
-                type // S'assurer que chaque référentiel a son type
-              }));
-              allReferentials.push(...referentialsWithType);
-            }
-          }
-          
-          setReferentials(allReferentials);
-          setLoading(false);
-        } else {
-          setError('Format de données inattendu du serveur');
-          setLoading(false);
-        }
-      } catch (err) {
-        console.error('Error fetching referentials:', err);
-        setError('Une erreur est survenue lors du chargement des référentiels');
-        setLoading(false);
-      }
-    };
-
+    // Charger les données de référentiels depuis le store Zustand
     fetchReferentials();
 
     // Charger les données de conversations dans le store Zustand
     if (isConversationsFeatureEnabled) {
       setConversations(mockConversations);
     }
-  }, [setConversations, isConversationsFeatureEnabled]);
+  }, [fetchReferentials, setConversations, isConversationsFeatureEnabled]);
 
 
   // Filtrer les référentiels en fonction des critères
@@ -148,7 +116,6 @@ const HomePage: React.FC = () => {
   // Toggle la sélection d'un champ avec Zustand
   const toggleFieldSelection = (entityId: string, fieldId: number | string, fieldName?: string) => {
     // Forcer l'ouverture du panneau latéral
-    // console.log("toggleFieldSelection called with", entityId, fieldId, fieldName);
     setViewMode('selection');
     setSidebarOpen(true);
 
@@ -225,7 +192,6 @@ const HomePage: React.FC = () => {
 
   // Toggle la sélection d'un groupe avec Zustand
   const toggleGroupSelection = (entityId: string, groupName: string) => {
-    // console.log("toggleGroupSelection called with", entityId, groupName);
     const existingIndex = selectedItems.findIndex(
       selection => selection.type === 'group' &&
         selection.entityId === entityId &&

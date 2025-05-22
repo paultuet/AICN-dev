@@ -7,6 +7,8 @@ export type BaseField = {
 
 export type FieldIdentifier = {
   'id-field': number | string
+  'id-record'?: number | string | null
+  'entity-name'?: string | null
 }
 
 export type FieldMetadata = {

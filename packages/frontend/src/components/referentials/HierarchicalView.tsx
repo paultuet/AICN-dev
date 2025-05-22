@@ -6,6 +6,7 @@ import ChevronRight from '@/components/icons/ChevronRight';
 import { Badge } from '../ui';
 import ChatBubbleIcon from '@/components/icons/ChatBubbleIcon';
 import useFeatureFlag from '@/hooks/useFeatureFlag';
+import { useReferentialStore } from '@/store/referential';
 import {
   Dialog,
   DialogContent,
@@ -13,7 +14,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogFooter,
 } from "@/components/ui/dialog"
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import ErrorMessage from '@/components/ui/ErrorMessage';
 
 
 interface HierarchicalViewProps {
@@ -54,16 +58,20 @@ const NodeVarType: React.FC<{ node: Field | Entity }> = ({ node }) => {
 
 
   if (node['link-entity-id'] != null) {
+    // Show Dialog for linked entities
     return (
       <Dialog>
         <DialogTrigger><span className='cursor-pointer'>{badgeType}</span></DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Popup d'affichage des champs liés</DialogTitle>
+            <DialogTitle>Champs liés à : {node['lib-fonc'] || node['entity-name']}</DialogTitle>
             <DialogDescription>
-              En cours de développement...
+              Entité liée: {Array.isArray(node['link-entity-id']) ? node['link-entity-id'].join(', ') : node['link-entity-id']}
             </DialogDescription>
           </DialogHeader>
+          <h2>POPUP En cours de DEV</h2>
+
+          <LinkedFieldsContent linkEntityId={node['link-entity-id']} />
         </DialogContent>
       </Dialog>
 
@@ -253,9 +261,7 @@ const HierarchicalNode: React.FC<{
       return null;
     }
 
-    if (node['entity-id'] === 'recEPr1QF8W3sW2lE') {
-      console.log(node);
-    }
+    // Debug log removed for production
 
     return (
       <div className={`border ${getBorderColor()} ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
@@ -476,7 +482,7 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
     // Cela permettra aux composants enfants de savoir qu'une action globale a eu lieu
     setLastGlobalAction(Date.now());
 
-    // console.log(`Action globale niveau ${level}: ${newExpansionState ? 'ouvert' : 'fermé'}, timestamp: ${Date.now()}`);
+    // Action timestamp recorded for global level toggling
   };
 
   // Filtrer seulement les entités de niveau 1 pour l'affichage racine
@@ -560,6 +566,165 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
           <div className="font-medium">Aucun résultat trouvé pour "{searchTerm}"</div>
         </div>
       )}
+    </div>
+  );
+};
+
+// Composant pour afficher les champs liés
+interface LinkedFieldsContentProps {
+  linkEntityId: string | string[] | null;
+}
+
+const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId }) => {
+  const { referentials, loading, error } = useReferentialStore();
+  const [linkedFields, setLinkedFields] = useState<Array<Field | Entity>>([]);
+
+  useEffect(() => {
+    if (linkEntityId && referentials.length > 0) {
+      // Convertir en tableau si c'est une seule valeur
+      const entityIds = Array.isArray(linkEntityId) ? linkEntityId : [linkEntityId];
+      const linkedFieldsFound: Array<Field | Entity> = [];
+
+      // Parcourir toutes les entités pour trouver les champs liés
+      for (const entity of referentials) {
+        // Vérifier si l'entité elle-même correspond
+        if (entityIds.includes(entity['entity-id']) || entityIds.includes(entity['id-record'] || '')) {
+          linkedFieldsFound.push(entity);
+          continue;
+        }
+
+        // Rechercher dans les champs de l'entité
+        if (entity.fields?.length > 0) {
+          // Parcourir tous les champs et sous-champs
+          const findLinkedFields = (fields: Array<Field | Entity>, parentEntity: Entity) => {
+            for (const field of fields) {
+              // Vérifier si le champ correspond à un ID recherché
+              const fieldId = 'id-field' in field ? field['id-field'] :
+                'id-record' in field ? field['id-record'] : '';
+
+              if (entityIds.includes(String(fieldId))) {
+                // Ajouter des informations sur l'entité parente
+                const enrichedField = {
+                  ...field,
+                  _parentEntityName: parentEntity['entity-name'],
+                  _parentEntityId: parentEntity['entity-id']
+                };
+                linkedFieldsFound.push(enrichedField);
+              }
+
+              // Chercher récursivement dans les sous-champs si présents
+              if ('fields' in field && field.fields && field.fields.length > 0) {
+                findLinkedFields(field.fields, parentEntity);
+              }
+            }
+          };
+
+          findLinkedFields(entity.fields, entity);
+        }
+      }
+
+      setLinkedFields(linkedFieldsFound);
+    }
+  }, [linkEntityId, referentials]);
+
+  if (loading) {
+    return <LoadingSpinner size="md" />;
+  }
+
+  if (error) {
+    return <ErrorMessage message="Erreur lors du chargement des champs liés" />;
+  }
+
+  if (linkedFields.length === 0) {
+    return <div className="py-4 text-center text-gray-500">Aucun champ lié trouvé</div>;
+  }
+
+  return (
+    <div className="py-2">
+      {linkedFields.length > 0 ? (
+        linkedFields.map((item, index) => {
+          // Déterminer si c'est un champ ou une entité
+          const isEntityType = 'entity-name' in item && 'fields' in item;
+
+          // Informations de base pour l'affichage
+          const itemName = isEntityType
+            ? item['entity-name']
+            : 'lib-fonc' in item
+              ? item['lib-fonc']
+              : 'Champ sans nom';
+
+          const itemId = isEntityType
+            ? item['entity-id'] || item['id-record']
+            : 'id-field' in item
+              ? item['id-field']
+              : 'id-record' in item
+                ? item['id-record']
+                : 'ID inconnu';
+
+          const itemType = item['var-type'] || 'Type inconnu';
+
+          // Parent info (seulement pour les champs)
+          const hasParentInfo = '_parentEntityName' in item;
+
+          return (
+            <div key={index} className="mb-4 border border-gray-200 rounded-md p-3">
+              <div className="flex justify-between items-center mb-2">
+                <h3 className="font-bold text-lg">{itemName}</h3>
+                <Badge color={getVarTypeBadgeColor(itemType)}>
+                  {itemType}
+                </Badge>
+              </div>
+
+              {/* Informations de base */}
+              <div className="text-sm text-gray-700 mb-2">
+                <div>ID: <span className="font-mono">{itemId}</span></div>
+                {hasParentInfo && (
+                  <div className="text-xs text-gray-500 mt-1">
+                    Appartient à: {(item as any)._parentEntityName} (ID: {(item as any)._parentEntityId})
+                  </div>
+                )}
+              </div>
+
+              {/* Afficher les champs pour les entités */}
+              {isEntityType && 'fields' in item && item.fields && item.fields.length > 0 && (
+                <div className="mt-3 border-t pt-2">
+                  <h4 className="font-medium mb-2">Champs</h4>
+                  <div className="space-y-2 pl-2">
+                    {item.fields.map((field, fieldIndex) => {
+                      // Vérifier si c'est un champ ou une entité
+                      const fieldName = 'lib-fonc' in field ? field['lib-fonc'] :
+                        'entity-name' in field ? field['entity-name'] : 'Champ sans nom';
+                      const fieldId = 'id-field' in field ? field['id-field'] :
+                        'id-record' in field ? field['id-record'] : 'ID inconnu';
+                      const fieldType = field['var-type'] || 'Type inconnu';
+
+                      return (
+                        <div key={fieldIndex} className="flex justify-between items-center border-b border-gray-100 pb-1">
+                          <div>
+                            <span className="font-medium">{fieldName}</span>
+                            <span className="text-xs text-gray-500 ml-2">ID: {fieldId}</span>
+                          </div>
+                          <Badge color={getVarTypeBadgeColor(fieldType)}>
+                            {fieldType}
+                          </Badge>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })
+      ) : (
+        <div className="text-center text-gray-500 py-4">Aucun champ ou entité lié trouvé</div>
+      )}
+
+      <DialogFooter className="mt-4">
+        <div className="text-xs text-gray-500">
+          {linkedFields.length} élément(s) lié(s) trouvé(s)
+        </div>
+      </DialogFooter>
     </div>
   );
 };
