@@ -1,7 +1,7 @@
 import React from 'react';
+import { IconProps } from '.';
 
-interface ChatBubbleIconProps {
-  className?: string;
+type ChatBubbleIconProps = IconProps & {
   filled?: boolean;
 }
 

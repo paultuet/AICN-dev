@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Entity, Field } from '@/types/referential';
 import { Conversation } from '@/types/conversation';
-import ChevronDown from '@/components/icons/ChevronDown';
-import ChevronRight from '@/components/icons/ChevronRight';
+import { ChevronRight, ChevronDown, ExternalLink, ChatBubbleIcon } from '@/components/icons';
 import { Badge } from '../ui';
-import ChatBubbleIcon from '@/components/icons/ChatBubbleIcon';
-import useFeatureFlag from '@/hooks/useFeatureFlag';
+import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { useReferentialStore } from '@/store/referential';
 import {
   Dialog,
@@ -52,16 +50,19 @@ const NodeVarType: React.FC<{ node: Field | Entity }> = ({ node }) => {
     return null;
   }
 
-  const badgeType = <Badge color={getVarTypeBadgeColor(node['var-type'])}>
+  const hasLink = node['link-entity-id'] != null;
+
+  const badgeType = <Badge color={getVarTypeBadgeColor(node['var-type'])} className={`${hasLink ? 'cursor-pointer' : ''}`}>
     {node['var-type']}
+    {hasLink && <ExternalLink className="ml-1 w-4 h-4" />}
   </Badge>
 
 
-  if (node['link-entity-id'] != null) {
+  if (hasLink && node['link-entity-id']) {
     // Show Dialog for linked entities
     return (
       <Dialog>
-        <DialogTrigger><span className='cursor-pointer'>{badgeType}</span></DialogTrigger>
+        <DialogTrigger>{badgeType}</DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Champs liés à : {node['lib-fonc'] || node['entity-name']}</DialogTitle>
@@ -172,11 +173,6 @@ const HierarchicalNode: React.FC<{
       setLastNodeAction(Date.now());
     };
 
-    const toggleFields = (e: React.MouseEvent) => {
-      e.stopPropagation();
-      setShowFields(!showFields);
-    };
-
     // Calculer le padding en fonction du niveau
     const getIndentClass = () => {
       const paddingSize = level * 4;
@@ -261,8 +257,6 @@ const HierarchicalNode: React.FC<{
       return null;
     }
 
-    // Debug log removed for production
-
     return (
       <div className={`border ${getBorderColor()} ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
         <div
@@ -298,11 +292,6 @@ const HierarchicalNode: React.FC<{
               className="conversation-button"
               onClick={(e) => {
                 e.stopPropagation();
-                // Debug - Montrer les infos du nœud lors d'un clic
-                // console.log("Clicked node:", node);
-                // console.log("Node niveau:", node.niveau);
-                // console.log("Node entity-id:", node['entity-id']);
-                // console.log("Node id-record:", node['id-record']);
 
                 try {
                   if (node.niveau && node.niveau < 3 && toggleGroupSelection) {
@@ -572,7 +561,7 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
 
 // Composant pour afficher les champs liés
 interface LinkedFieldsContentProps {
-  linkEntityId: string | string[] | null;
+  linkEntityId: string | string[];
 }
 
 const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId }) => {

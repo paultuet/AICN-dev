@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface IconProps {
-  className?: string;
-}
+import { IconProps } from '.';
 
 const ChevronDown: React.FC<IconProps> = ({ className = "h-5 w-5" }) => {
   return (
