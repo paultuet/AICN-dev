@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import useFeatureFlag from '@/hooks/useFeatureFlag';
-import useReferentialFilters from '@/hooks/useReferentialFilters';
+import { useReferentialFilters } from '@/hooks/useReferentials';
 import { getConversationsForField, getConversationsForGroup } from '@/utils/referentialUtils';
 import { mockConversations } from '@/mock/conversationsMock';
 import { useConversationStore } from '@/store/conversation';
@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
     setConversations
   } = useConversationStore();
 
-  // Gestion des filtres
+  // Gestion des filtres avec react-query optimisé
   const {
     searchTerm,
     selectedEntityId,
@@ -55,7 +55,9 @@ const HomePage: React.FC = () => {
     setSelectedEntityId,
     setSelectedType,
     setShowOnlyWithConversations,
-    filterReferentials,
+    filteredReferentials,
+    isLoadingFiltered,
+    errorFiltered,
     shouldDisplayGroup,
     shouldDisplayField
   } = useReferentialFilters({ conversations });
@@ -66,10 +68,6 @@ const HomePage: React.FC = () => {
       setConversations(mockConversations);
     }
   }, [setConversations, isConversationsFeatureEnabled]);
-
-
-  // Filtrer les référentiels en fonction des critères
-  const filteredReferentials = filterReferentials(referentials);
 
 
   // Vérifier si un champ est sélectionné
@@ -210,13 +208,16 @@ const HomePage: React.FC = () => {
   };
 
   // Afficher le spinner de chargement
-  if (loading) {
+  if (loading || isLoadingFiltered) {
     return <LoadingSpinner size="lg" className="h-96" />;
   }
 
   // Afficher le message d'erreur
-  if (error) {
-    return <ErrorMessage message={error instanceof Error ? error.message : 'Une erreur est survenue'} />;
+  if (error || errorFiltered) {
+    const errorMessage = error instanceof Error ? error.message : 
+                        errorFiltered instanceof Error ? errorFiltered.message : 
+                        'Une erreur est survenue';
+    return <ErrorMessage message={errorMessage} />;
   }
 
   return (
