@@ -7,6 +7,6 @@ axios.defaults.paramsSerializer = {
 };
 
 // Create a helper for form data handling
-export const formUrlencoded = (data: Record<string, any>) => {
+export const formUrlencoded = (data: Record<string, unknown>) => {
   return qs.stringify(data);
 };

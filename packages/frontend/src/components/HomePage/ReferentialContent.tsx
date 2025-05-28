@@ -1,6 +1,5 @@
 import React from 'react';
 import HierarchicalView from '@/components/referentials/HierarchicalView';
-import SelectionInfoBox from '@/components/referentials/SelectionInfoBox';
 import { Entity, Conversation } from '@/types';
 
 interface ReferentialContentProps {
@@ -29,13 +28,9 @@ const ReferentialContent: React.FC<ReferentialContentProps> = ({
   isGroupSelected,
   getConversationsForField,
   getConversationsForGroup,
-  isConversationsEnabled
 }) => {
   return (
     <>
-      {/* Message pour indiquer comment sélectionner */}
-      {/* isConversationsEnabled && <SelectionInfoBox /> */}
-
       {/* Affichage des référentiels (vue hiérarchique uniquement) */}
       <HierarchicalView
         data={referentials}

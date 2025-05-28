@@ -26,6 +26,7 @@ const VerifyEmailPage = () => {
         setTimeout(() => {
           navigate('/login')
         }, 3000)
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
       } catch (error: any) {
         setStatus('error')
         setMessage(error.response?.data?.message || 'Une erreur est survenue lors de la vérification de votre email.')
@@ -33,7 +34,7 @@ const VerifyEmailPage = () => {
     }
 
     verifyEmail()
-  }, [token])
+  }, [token, navigate])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">

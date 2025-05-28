@@ -28,6 +28,7 @@ const HomePage: React.FC = () => {
   } = useReferentials();
 
   // Utiliser le store Zustand pour les conversations
+   
   const {
     conversations,
     selectedItems,
@@ -58,8 +59,6 @@ const HomePage: React.FC = () => {
     filteredReferentials,
     isLoadingFiltered,
     errorFiltered,
-    shouldDisplayGroup,
-    shouldDisplayField
   } = useReferentialFilters({ conversations });
 
   // Charger les données de conversations

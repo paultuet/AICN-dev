@@ -22,6 +22,7 @@ const ResendVerificationPage = () => {
       const response = await authService.resendVerification(email)
       setStatus('success')
       setMessage(response.message)
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setStatus('error')
       setMessage(error.response?.data?.message || 'Une erreur est survenue lors de l\'envoi de l\'email de vérification.')

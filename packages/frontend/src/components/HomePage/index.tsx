@@ -1,4 +1,3 @@
-import React from 'react';
 import ReferentialHeader from './ReferentialHeader';
 import ReferentialContent from './ReferentialContent';
 import ConversationSidebarContainer from './ConversationSidebarContainer';

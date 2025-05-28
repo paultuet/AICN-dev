@@ -91,7 +91,7 @@ function Table<T>({
                     >
                       {column.render 
                         ? column.render(item, rowIndex)
-                        // @ts-ignore - We're assuming the key exists on the item
+                        // @ts-expect-error - We're assuming the key exists on the item
                         : item[column.key]
                       }
                     </td>

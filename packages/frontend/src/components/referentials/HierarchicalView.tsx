@@ -112,7 +112,6 @@ const HierarchicalNode: React.FC<{
   getConversationsForGroup
 }) => {
     const [isExpanded, setIsExpanded] = useState<boolean>(true);
-    const [showFields, setShowFields] = useState<boolean>(false);
     const [lastNodeAction, setLastNodeAction] = useState<number>(0); // Timestamp de la dernière action sur ce noeud
 
     // Effet pour suivre les changements d'expandedLevels (actions globales)
@@ -125,16 +124,11 @@ const HierarchicalNode: React.FC<{
           setIsExpanded(expandedLevels[node.niveau]);
         }
       }
-    }, [expandedLevels, lastGlobalAction, node.niveau]);
+    }, [expandedLevels, lastGlobalAction, node.niveau, lastNodeAction]);
 
     const isConversationFeatureEnabled = useFeatureFlag("conversations");
 
     const hasFields = node.fields && node.fields.length > 0;
-
-    // Déterminer si ce sont des champs ou des entités
-    const isEntityArray = (items: any[]): items is Entity[] => {
-      return items.length > 0 && 'entity-name' in items[0];
-    };
 
     // Vérifier si parmi les champs, il y a des entités (qui sont les "enfants" dans la hiérarchie)
     const childFields = hasFields ? node.fields.filter(field =>
@@ -564,15 +558,20 @@ interface LinkedFieldsContentProps {
   linkEntityId: string | string[];
 }
 
+type EnrichedField = Field & {
+  _parentEntityId: string;
+  _parentEntityName: string;
+}
+
 const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId }) => {
   const { data: referentials = [], isLoading: loading, error } = useReferentials();
-  const [linkedFields, setLinkedFields] = useState<Array<Field | Entity>>([]);
+  const [linkedFields, setLinkedFields] = useState<Array<Field | Entity | EnrichedField>>([]);
 
   useEffect(() => {
     if (linkEntityId && referentials.length > 0) {
       // Convertir en tableau si c'est une seule valeur
       const entityIds = Array.isArray(linkEntityId) ? linkEntityId : [linkEntityId];
-      const linkedFieldsFound: Array<Field | Entity> = [];
+      const linkedFieldsFound: Array<Field | Entity | EnrichedField> = [];
 
       // Parcourir toutes les entités pour trouver les champs liés
       for (const entity of referentials) {
@@ -653,7 +652,7 @@ const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId 
           const itemType = item['var-type'] || 'Type inconnu';
 
           // Parent info (seulement pour les champs)
-          const hasParentInfo = '_parentEntityName' in item;
+          const hasParentInfo = '_parentEntityName' in item && '_parentEntityId' in item;
 
           return (
             <div key={index} className="mb-4 border border-gray-200 rounded-md p-3">
@@ -669,7 +668,7 @@ const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId 
                 <div>ID: <span className="font-mono">{itemId}</span></div>
                 {hasParentInfo && (
                   <div className="text-xs text-gray-500 mt-1">
-                    Appartient à: {(item as any)._parentEntityName} (ID: {(item as any)._parentEntityId})
+                    Appartient à: {item._parentEntityName} (ID: {item._parentEntityId})
                   </div>
                 )}
               </div>

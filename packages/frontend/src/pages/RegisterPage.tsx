@@ -32,6 +32,7 @@ const RegisterPage = () => {
       
       // Redirect to home page on success
       navigate('/')
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error('Registration error:', err)
       // Set error message, check both message formats

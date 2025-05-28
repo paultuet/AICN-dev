@@ -20,6 +20,7 @@ const LoginPage = () => {
       await login({ email, password })
       // Redirect to home
       navigate('/')
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.response?.data?.message || 'Une erreur est survenue lors de la connexion')
     } finally {

@@ -44,7 +44,10 @@ interface UseReferentialFiltersProps {
 }
 
 interface UseReferentialFiltersResult extends ReferentialFiltersState, ReferentialFiltersActions, ReferentialFilterPredicates {
-  filterReferentials: (referentials: Entity[]) => Entity[];
+  // filterReferentials: (referentials: Entity[]) => Entity[];
+  filteredReferentials: Entity[];
+  isLoadingFiltered: boolean;
+  errorFiltered: Error | null;
 }
 
 const fetchReferentials = async (): Promise<Entity[]> => {
@@ -207,11 +210,6 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     gcTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  // Prédicat pour filtrer les référentiels (version sans react-query pour compatibilité)
-  const filterReferentials = useCallback((referentials: Entity[]): Entity[] => {
-    return referentials.filter(shouldDisplayEntity);
-  }, [shouldDisplayEntity]);
-
   // Prédicat pour vérifier si un groupe doit être affiché quand le filtre est actif
   const shouldDisplayGroup = useCallback((entityId: EntityId, groupName: string, fields: Field[]): boolean => {
     const { showOnlyWithConversations } = filters;
@@ -225,7 +223,7 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     // Vérifier si un champ du groupe a des conversations directes
     const hasFieldConversations = groupHasFieldsWithConversations(conversations, entityId, fields);
     return hasFieldConversations;
-  }, [filters.showOnlyWithConversations, conversations]);
+  }, [conversations, filters]);
 
   // Prédicat pour vérifier si un champ doit être affiché quand le filtre est actif
   const shouldDisplayField = useCallback((entityId: EntityId, fieldId: number | string, fields: Field[]): boolean => {
@@ -259,7 +257,7 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     const belongsToGroupWithConversation = groupHasConversations(conversations, entityId, groupName);
     
     return belongsToGroupWithConversation;
-  }, [filters.showOnlyWithConversations, conversations]);
+  }, [conversations, filters]);
 
   return {
     // État
@@ -275,7 +273,7 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     setShowOnlyWithConversations,
     
     // Prédicats et filtres
-    filterReferentials,
+    // filterReferentials,
     shouldDisplayEntity,
     shouldDisplayGroup,
     shouldDisplayField,
