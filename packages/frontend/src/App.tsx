@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from '@/components/Layout'
 import HomePage from '@/pages/HomePage'
+import AdminPage from '@/pages/AdminPage'
 import LoginPage from '@/pages/LoginPage'
 import RegisterPage from '@/pages/RegisterPage'
 import NotFoundPage from '@/pages/NotFoundPage'
@@ -52,6 +53,7 @@ function Root() {
       <Route element={<ProtectedRoute />}>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path="admin" element={<AdminPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>

@@ -42,6 +42,11 @@ export const useAuth = () => {
   return context
 }
 
+export const useIsAdmin = (): boolean => {
+  const { user } = useAuth();
+  return user?.role == "ADMIN";
+}
+
 interface AuthProviderProps {
   children: ReactNode
 }

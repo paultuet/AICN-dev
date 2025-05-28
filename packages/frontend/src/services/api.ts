@@ -1,4 +1,5 @@
 import axios from 'axios'
+import useSWR from 'swr'
 
 const api = axios.create({
   baseURL: '/api',
@@ -38,5 +39,9 @@ api.interceptors.response.use(
     return Promise.reject(error)
   }
 )
+
+const fetcher = (url:string) => api.get(url).then(res => res.data)
+
+export const useApi = (url: string) => useSWR(url, fetcher); 
 
 export default api

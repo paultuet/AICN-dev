@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Entity } from '@/types';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import useFeatureFlag from '@/hooks/useFeatureFlag';
@@ -12,8 +11,8 @@ import {
   ReferentialHeader,
   ReferentialContent,
   ConversationSidebarContainer,
-  AdminActions
 } from '@/components/HomePage';
+import { useApi } from '@/services/api';
 
 /**
  * Page d'accueil affichant les référentiels et les conversations
@@ -29,6 +28,8 @@ const HomePage: React.FC = () => {
     error,
     fetchReferentials
   } = useReferentialStore();
+
+  // const {data: referentiels, isLoading: loading, error} useApi('/api/referentiels');
 
   // Utiliser le store Zustand pour les conversations
   const {
@@ -238,8 +239,6 @@ const HomePage: React.FC = () => {
       <h1 className="text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 text-primary">
         Référentiels AICN
       </h1>
-
-      <AdminActions />
 
       <ReferentialHeader
         searchTerm={searchTerm}

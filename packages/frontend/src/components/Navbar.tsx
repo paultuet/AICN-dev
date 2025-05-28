@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { useAuth } from '@/contexts/AuthContext'
+import { useAuth, useIsAdmin } from '@/contexts/AuthContext'
 import { Logo } from './ui'
 
 const Navbar = () => {
   const { isAuthenticated, logout, user } = useAuth()
+  const isAdmin = useIsAdmin();
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
@@ -23,7 +24,7 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button 
+            <button
               onClick={toggleMenu}
               className="p-2 rounded-md hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white focus:ring-offset-primary"
             >
@@ -42,7 +43,11 @@ const Navbar = () => {
             <Link to="/" className="hover:text-gray-300 transition-colors py-1 px-2 rounded-md font-medium">
               Référentiels
             </Link>
-            
+
+            {isAdmin && <Link to="/admin" className="hover:text-gray-300 transition-colors py-1 px-2 rounded-md font-medium">
+              Admin
+            </Link>}
+
             {isAuthenticated ? (
               <div className="flex items-center space-x-4">
                 {user && (
@@ -53,7 +58,7 @@ const Navbar = () => {
                     <span className="text-sm">{user.email}</span>
                   </span>
                 )}
-                <button 
+                <button
                   onClick={() => logout()}
                   className="bg-secondary hover:bg-secondary-hover py-1.5 px-3 rounded-md text-sm font-medium transition-colors"
                 >
@@ -61,7 +66,7 @@ const Navbar = () => {
                 </button>
               </div>
             ) : (
-              <Link 
+              <Link
                 to="/login"
                 className="bg-secondary hover:bg-secondary-hover py-1.5 px-3 rounded-md text-sm font-medium transition-colors"
               >
@@ -76,7 +81,7 @@ const Navbar = () => {
           <Link to="/" className="block py-2 hover:bg-primary-hover rounded-md px-3" onClick={() => setIsMenuOpen(false)}>
             Référentiels
           </Link>
-          
+
           {isAuthenticated ? (
             <div className="border-t border-gray-700/30 mt-2 pt-2">
               {user && (
@@ -87,7 +92,7 @@ const Navbar = () => {
                   <span className="truncate">{user.email}</span>
                 </div>
               )}
-              <button 
+              <button
                 onClick={() => {
                   logout()
                   setIsMenuOpen(false)
@@ -98,8 +103,8 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <Link 
-              to="/login" 
+            <Link
+              to="/login"
               className="block py-2 hover:bg-primary-hover rounded-md px-3 mt-1 border-t border-gray-700/30"
               onClick={() => setIsMenuOpen(false)}
             >
