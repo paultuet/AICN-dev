@@ -6,13 +6,12 @@ import useReferentialFilters from '@/hooks/useReferentialFilters';
 import { getConversationsForField, getConversationsForGroup } from '@/utils/referentialUtils';
 import { mockConversations } from '@/mock/conversationsMock';
 import { useConversationStore } from '@/store/conversation';
-import { useReferentialStore } from '@/store/referential';
+import { useReferentials } from '@/hooks/useReferentials';
 import {
   ReferentialHeader,
   ReferentialContent,
   ConversationSidebarContainer,
 } from '@/components/HomePage';
-import { useApi } from '@/services/api';
 
 /**
  * Page d'accueil affichant les référentiels et les conversations
@@ -21,15 +20,12 @@ const HomePage: React.FC = () => {
   // Feature flags
   const isConversationsFeatureEnabled = useFeatureFlag('conversations');
 
-  // Utiliser le store Zustand pour les référentiels
+  // Utiliser React Query pour les référentiels
   const {
-    referentials,
-    loading,
-    error,
-    fetchReferentials
-  } = useReferentialStore();
-
-  // const {data: referentiels, isLoading: loading, error} useApi('/api/referentiels');
+    data: referentials = [],
+    isLoading: loading,
+    error
+  } = useReferentials();
 
   // Utiliser le store Zustand pour les conversations
   const {
@@ -64,16 +60,12 @@ const HomePage: React.FC = () => {
     shouldDisplayField
   } = useReferentialFilters({ conversations });
 
-  // Récupérer les données initiales
+  // Charger les données de conversations
   useEffect(() => {
-    // Charger les données de référentiels depuis le store Zustand
-    fetchReferentials();
-
-    // Charger les données de conversations dans le store Zustand
     if (isConversationsFeatureEnabled) {
       setConversations(mockConversations);
     }
-  }, [fetchReferentials, setConversations, isConversationsFeatureEnabled]);
+  }, [setConversations, isConversationsFeatureEnabled]);
 
 
   // Filtrer les référentiels en fonction des critères
@@ -224,7 +216,7 @@ const HomePage: React.FC = () => {
 
   // Afficher le message d'erreur
   if (error) {
-    return <ErrorMessage message={error} />;
+    return <ErrorMessage message={error instanceof Error ? error.message : 'Une erreur est survenue'} />;
   }
 
   return (

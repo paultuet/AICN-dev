@@ -4,7 +4,7 @@ import { Conversation } from '@/types/conversation';
 import { ChevronRight, ChevronDown, ExternalLink, ChatBubbleIcon } from '@/components/icons';
 import { Badge } from '../ui';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
-import { useReferentialStore } from '@/store/referential';
+import { useReferentials } from '@/hooks/useReferentials';
 import {
   Dialog,
   DialogContent,
@@ -565,7 +565,7 @@ interface LinkedFieldsContentProps {
 }
 
 const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId }) => {
-  const { referentials, loading, error } = useReferentialStore();
+  const { data: referentials = [], isLoading: loading, error } = useReferentials();
   const [linkedFields, setLinkedFields] = useState<Array<Field | Entity>>([]);
 
   useEffect(() => {
@@ -621,7 +621,7 @@ const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId 
   }
 
   if (error) {
-    return <ErrorMessage message="Erreur lors du chargement des champs liés" />;
+    return <ErrorMessage message={error instanceof Error ? error.message : "Erreur lors du chargement des champs liés"} />;
   }
 
   if (linkedFields.length === 0) {
