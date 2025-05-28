@@ -8,7 +8,7 @@ import NotFoundPage from '@/pages/NotFoundPage'
 import VerifyEmailPage from '@/pages/VerifyEmailPage'
 import ResendVerificationPage from '@/pages/ResendVerificationPage'
 import ProtectedRoute from '@/components/ProtectedRoute'
-import { useAuth } from '@/contexts/AuthContext'
+import { useAuth, useIsAdmin } from '@/contexts/AuthContext'
 
 // Composant qui redirige les utilisateurs déjà authentifiés vers la page d'accueil
 const AuthRedirect = ({ children }: { children: JSX.Element }) => {
@@ -33,6 +33,7 @@ const AuthRedirect = ({ children }: { children: JSX.Element }) => {
 }
 
 function Root() {
+  const isAdmin = useIsAdmin();
   return (
     <Routes>
       {/* Routes d'authentification (accessibles uniquement aux utilisateurs non connectés) */}
@@ -53,7 +54,7 @@ function Root() {
       <Route element={<ProtectedRoute />}>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="admin" element={<AdminPage />} />
+          {isAdmin && <Route path="admin" element={<AdminPage />} />}
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>
