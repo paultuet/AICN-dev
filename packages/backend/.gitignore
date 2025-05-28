@@ -27,7 +27,8 @@
 /target
 *.DS_Store
 
-./node_modules/
+node_modules/*
+!node_modules/.keep
 .shadow-cljs/
 package-lock.json
 resources/public/js/cljs-runtime/

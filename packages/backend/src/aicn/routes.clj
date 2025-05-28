@@ -34,9 +34,11 @@
    ["" {:interceptors [auth/authentication-interceptor
                        auth/authorization-interceptor]}
     ["/sync" {:post {:summary "Sync from airtable"
-                     :interceptors [(auth/restrict-role-interceptor "ADMIN")
+                     :interceptors [(auth/restrict-role-interceptor :ADMIN)
                                     core/sync-referentiels-from-airtable-interceptor
                                     core/get-all-referentiels-interceptor]
+                     :responses {200 {:body :any}
+                                 401 {:body :any}}
                      :handler (fn [{:keys [aicn/all-referentiels]}]
                                 {:status 200
                                  :body all-referentiels})}}]

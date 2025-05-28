@@ -143,10 +143,10 @@
                 context)))})
 
 (defn restrict-role-interceptor 
-  [role]
+  [role-param]
   {:name ::restrict-role-interceptor
    :enter (fn [{{:keys [session/user db/ds]} :request :as context}]
-            (let [_ (println user)
+            (let [role (if (keyword? role-param) (name role-param) role-param)
                   user-db (repo/get-user-by-id ds (:id user))]
               (if (= (:role user-db) role)
                 context

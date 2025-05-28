@@ -10,7 +10,7 @@
 (def sync-referentiels-from-airtable-interceptor
   {:enter (fn [ctx]
             (try
-              (airtable/sync-tables (:adapter/airtable ctx) (airtable/get-tables-names))
+              (airtable/sync-tables (get-in ctx [:request :adapter/airtable]) (airtable/get-tables-names))
               ctx
               (catch Exception e
                 (let [error-details {:message (.getMessage e)
