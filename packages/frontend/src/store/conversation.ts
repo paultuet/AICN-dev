@@ -10,6 +10,7 @@ import {
   FieldId,
   GroupName,
 } from '@/types';
+import api from '@/services/api';
 
 // Interface pour l'état global des conversations
 interface ConversationState {
@@ -64,7 +65,7 @@ export const useConversationStore = create<ConversationState>()(
       
       setSidebarOpen: (open) => set({ sidebarOpen: open }),
       
-      createConversation: (title) => {
+      createConversation: async (title) => {
         const { selectedItems } = get();
         if (selectedItems.length === 0) return;
 
@@ -85,7 +86,7 @@ export const useConversationStore = create<ConversationState>()(
         }));
 
         // Ici, on pourrait ajouter un appel API pour enregistrer la conversation
-        // await api.post('/conversations', newConversation);
+        await api.post('/conversations', newConversation);
       },
       
       sendMessage: (conversationId, content, userId, userFullName) => {
