@@ -41,6 +41,7 @@ interface ReferentialFilterPredicates {
 
 interface UseReferentialFiltersProps {
   conversations: Conversation[];
+  isConversationsLoading?: boolean;
 }
 
 interface UseReferentialFiltersResult extends ReferentialFiltersState, ReferentialFiltersActions, ReferentialFilterPredicates {
@@ -99,7 +100,7 @@ export const useReferentialsByType = (type: 'NMR' | 'LoV' | 'RIO') => {
  * Hook pour gérer les filtres de référentiels avec react-query
  * Utilise une approche fonctionnelle avec des prédicats pour le filtrage
  */
-export function useReferentialFilters({ conversations }: UseReferentialFiltersProps): UseReferentialFiltersResult {
+export function useReferentialFilters({ conversations, isConversationsLoading = false }: UseReferentialFiltersProps): UseReferentialFiltersResult {
   // État local pour les filtres
   const [filters, setFilters] = useState<ReferentialFiltersState>({
     searchTerm: '',
@@ -167,25 +168,43 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
       
       // Filtre par présence de conversations
       if (showOnlyWithConversations) {
-        // Vérifier si l'entité a des groupes ou des champs avec des conversations
-        const hasConversations = entity.fields.some(field => {
-          // Vérifier si le champ a une propriété lib-group
-          if (!('lib-group' in field)) return false;
-          
-          // Vérifier si le champ a des conversations directes
-          const fieldHasConversations = conversations.some(conv => 
-            conv.linkedItems.some(item => 
-              item.type === 'field' && 
-              item.entityId === entity['entity-id'] && 
-              item.fieldIds?.some(id => id === field['id-field'] || String(id) === String(field['id-field']))
-            )
-          );
-          
-          // Vérifier si le groupe du champ a des conversations
-          const groupHasConvs = groupHasConversations(conversations, entity['entity-id'], field['lib-group']);
-          
-          return fieldHasConversations || groupHasConvs;
-        });
+        // Si les conversations sont en cours de chargement, ne pas filtrer pour éviter les résultats vides
+        if (isConversationsLoading) {
+          return true;
+        }
+        
+        
+        // Vérifier directement si l'entité a des conversations (sans dépendre des champs)
+        const hasDirectConversations = conversations.some(conv => 
+          conv.linkedItems.some(item => item.entityId === entity['entity-id'])
+        );
+        
+        // Si l'entité a des conversations directes, l'afficher
+        let hasConversations = hasDirectConversations;
+        
+        // Sinon, vérifier via les champs (logique existante)
+        if (!hasConversations && entity.fields && entity.fields.length > 0) {
+          hasConversations = entity.fields.some(field => {
+            // Vérifier si le champ a une propriété lib-group
+            if (!('lib-group' in field)) return false;
+            
+            // Vérifier si le champ a des conversations directes
+            const fieldHasConversations = conversations.some(conv => 
+              conv.linkedItems.some(item => 
+                item.type === 'field' && 
+                item.entityId === entity['entity-id'] && 
+                item.fieldIds?.some(id => id === field['id-field'] || String(id) === String(field['id-field']))
+              )
+            );
+            
+            // Vérifier si le groupe du champ a des conversations
+            const groupHasConvs = groupHasConversations(conversations, entity['entity-id'], field['lib-group']);
+            
+            
+            return fieldHasConversations || groupHasConvs;
+          });
+        }
+        
         
         if (!hasConversations) {
           return false;
@@ -194,13 +213,13 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
       
       return true;
     };
-  }, [filters, conversations]);
+  }, [filters, conversations, isConversationsLoading]);
 
   // Hook react-query pour les référentiels filtrés avec optimisation
   const referentialsQuery = useReferentials();
   
   const filteredReferentialsQuery = useQuery({
-    queryKey: ['referentials', 'filtered', filters, conversations.length],
+    queryKey: ['referentials', 'filtered', filters, conversations.length, isConversationsLoading],
     queryFn: () => {
       if (!referentialsQuery.data) return [];
       return referentialsQuery.data.filter(shouldDisplayEntity);
@@ -216,6 +235,9 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     
     if (!showOnlyWithConversations) return true;
     
+    // Si les conversations sont en cours de chargement, afficher tous les groupes
+    if (isConversationsLoading) return true;
+    
     // Vérifier si le groupe a des conversations directes
     const hasGroupConversations = groupHasConversations(conversations, entityId, groupName);
     if (hasGroupConversations) return true;
@@ -223,13 +245,16 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     // Vérifier si un champ du groupe a des conversations directes
     const hasFieldConversations = groupHasFieldsWithConversations(conversations, entityId, fields);
     return hasFieldConversations;
-  }, [conversations, filters]);
+  }, [conversations, filters, isConversationsLoading]);
 
   // Prédicat pour vérifier si un champ doit être affiché quand le filtre est actif
   const shouldDisplayField = useCallback((entityId: EntityId, fieldId: number | string, fields: Field[]): boolean => {
     const { showOnlyWithConversations } = filters;
     
     if (!showOnlyWithConversations) return true;
+
+    // Si les conversations sont en cours de chargement, afficher tous les champs
+    if (isConversationsLoading) return true;
 
     // Trouver le champ dans les données
     const field = fields.find(f => {
@@ -257,7 +282,7 @@ export function useReferentialFilters({ conversations }: UseReferentialFiltersPr
     const belongsToGroupWithConversation = groupHasConversations(conversations, entityId, groupName);
     
     return belongsToGroupWithConversation;
-  }, [conversations, filters]);
+  }, [conversations, filters, isConversationsLoading]);
 
   return {
     // État

@@ -48,4 +48,61 @@
                             :interceptors [core/get-all-referentiels-interceptor]
                             :handler (fn [{:keys [aicn/all-referentiels]}]
                                        {:status 200
-                                        :body all-referentiels})}}]]])
+                                        :body all-referentiels})}}]
+
+    ;; Conversations endpoints
+    ["/conversations" {:get {:summary "Get all conversations"
+                             :responses {200 {:body :any}}
+                             :handler (fn [{:keys [db/ds]}]
+                                        (let [conversations (db/get-conversations-with-messages ds)]
+                                          {:status 200
+                                           :body {:conversations (map (fn [conv]
+                                                                        {:id (:id conv)
+                                                                         :title (:title conv)
+                                                                         :createdAt (:created_at conv)
+                                                                         :lastActivity (:last_activity conv)
+                                                                         :messageCount (:message_count conv)
+                                                                         :linkedItems (:linked_items conv)
+                                                                         :messages (:messages conv)})
+                                                                      conversations)}}))}
+                       :post {:summary "Create a new conversation"
+                              :responses {200 {:body :any}
+                                          400 {:body :any}}
+                              :handler (fn [{:keys [body-params db/ds auth/user]}]
+                                         (let [{:keys [title linkedItems]} body-params
+                                               conversation-id (str (java.util.UUID/randomUUID))
+                                               user-id (:id user)
+                                               created-conv (db/create-conversation ds {:id conversation-id
+                                                                                         :title title
+                                                                                         :linked-items linkedItems
+                                                                                         :created-by user-id})
+                                               new-conversation {:id (:id created-conv)
+                                                                 :title (:title created-conv)
+                                                                 :createdAt (:created_at created-conv)
+                                                                 :lastActivity (:last_activity created-conv)
+                                                                 :messageCount (:message_count created-conv)
+                                                                 :linkedItems (:linked_items created-conv)
+                                                                 :messages []}]
+                                           {:status 200
+                                            :body new-conversation}))}}]
+
+    ["/conversations/:conversation-id/messages" {:post {:summary "Send a message to a conversation"
+                                                        :responses {200 {:body :any}
+                                                                    404 {:body :any}}
+                                                        :handler (fn [{:keys [path-params body-params db/ds]}]
+                                                                   (let [{:keys [conversation-id]} path-params
+                                                                         {:keys [content userId userFullName]} body-params
+                                                                         message-id (str "m" (System/currentTimeMillis))
+                                                                         created-msg (db/create-message ds {:id message-id
+                                                                                                             :conversation-id conversation-id
+                                                                                                             :content content
+                                                                                                             :author-id userId
+                                                                                                             :author-name userFullName})
+                                                                         new-message {:id (:id created-msg)
+                                                                                      :conversationId (:conversation_id created-msg)
+                                                                                      :content (:content created-msg)
+                                                                                      :createdAt (:created_at created-msg)
+                                                                                      :authorId (:author_id created-msg)
+                                                                                      :authorName (:author_name created-msg)}]
+                                                                     {:status 200
+                                                                      :body new-message}))}}]]])

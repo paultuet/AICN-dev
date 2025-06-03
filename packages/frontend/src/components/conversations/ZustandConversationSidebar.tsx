@@ -5,7 +5,7 @@ import ConversationForm from './ConversationForm';
 import MessageForm from './MessageForm';
 import MessageItem from './MessageItem';
 import { formatDate } from '@/utils/dateUtils';
-import { useConversationStore } from '@/store/conversation';
+import { useConversations } from '@/hooks/useConversations';
 
 interface ConversationSidebarProps {
   referentials: Entity[];
@@ -16,7 +16,7 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
   referentials,
   currentUserId = 'user1' // Valeur par défaut pour la démo
 }) => {
-  // Utiliser le store Zustand au lieu des props
+  // Utiliser le hook useConversations avec react-query
   const { 
     conversations,
     selectedItems,
@@ -25,11 +25,12 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
     sidebarOpen,
     clearSelection,
     setViewMode,
+    setSelectedConversationId,
     setSidebarOpen,
     openConversation,
     createConversation,
     sendMessage
-  } = useConversationStore();
+  } = useConversations();
 
   // Trouver la conversation sélectionnée
   const currentConversation = selectedConversationId
@@ -53,23 +54,23 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
 
   return (
     <div
-      className={`fixed right-0 top-0 h-full bg-white transform transition-all duration-300 ease-out z-20 overflow-hidden ${sidebarOpen ? 'translate-x-0 opacity-100 shadow-2xl' : 'translate-x-full opacity-0'
+      className={`fixed right-0 bg-white transform transition-all duration-300 ease-out z-40 overflow-hidden ${sidebarOpen ? 'translate-x-0 opacity-100 shadow-2xl' : 'translate-x-full opacity-0'
         }`}
       style={{
         width: 'min(420px, 90vw)', /* Largeur soit de 420px, soit 90% de la largeur de la fenêtre, selon le plus petit */
+        top: '64px', /* Commence en dessous de la navbar */
+        height: 'calc(100vh - 64px)', /* Hauteur = hauteur de l'écran - hauteur de la navbar */
         backdropFilter: 'blur(4px)'
       }}
     >
       <div className="flex flex-col h-full" onClick={(e) => e.stopPropagation()}>
-        {/* Header - Gradient background */}
-        <div
-          className="px-4 py-5 border-b border-gray-400 flex justify-between items-center text-white bg-primary"
-        >
-          <h2 className="text-xl font-semibold flex items-center">
+        {/* Header compact */}
+        <div className="px-4 py-2 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+          <h2 className="text-sm font-medium text-gray-700 flex items-center">
             {viewMode === 'selection'
               ? (
                 <>
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                   </svg>
                   Sélection
@@ -77,7 +78,7 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
               )
               : (
                 <>
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                   Conversation
@@ -85,28 +86,29 @@ const ZustandConversationSidebar: React.FC<ConversationSidebarProps> = ({
               )
             }
           </h2>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1">
             {viewMode === 'conversation' && (
               <button
-                className="p-2 hover:bg-primary-hover transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
+                className="p-1.5 hover:bg-gray-200 transition-colors duration-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300"
                 onClick={(e) => {
                   e.stopPropagation();
+                  setSelectedConversationId(null);
                   setViewMode('selection');
                 }}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
             )}
             <button
-              className="p-2 hover:bg-primary-hover transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
+              className="p-1.5 hover:bg-gray-200 transition-colors duration-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300"
               onClick={(e) => {
                 e.stopPropagation();
                 handleClose();
               }}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>

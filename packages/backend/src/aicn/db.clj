@@ -155,96 +155,64 @@
                       {:builder-fn rs/as-unqualified-maps})
        (decode [:vector model/User])))
 
-;; Conversation functions
-(defn create-conversation [datasource {:keys [table-id item-id]}]
+;; New Conversation functions for updated schema
+(defn create-conversation [datasource {:keys [id title linked-items created-by]}]
   (->> (jdbc/execute-one! datasource
-                          ["INSERT INTO conversations (table_id, item_id, status) 
-                            VALUES (?::uuid, ?::text, 'OPEN') 
+                          ["INSERT INTO conversations (id, title, linked_items, created_by) 
+                            VALUES (?::text, ?::text, ?::jsonb, ?::uuid) 
                             RETURNING *"
-                           table-id item-id]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/Conversation)))
+                           id title linked-items created-by]
+                          {:builder-fn rs/as-unqualified-maps})))
 
 (defn get-conversation [datasource id]
   (->> (jdbc/execute-one! datasource
-                          ["SELECT * FROM conversations WHERE id = ?::uuid" id]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/Conversation)))
-
-(defn get-conversation-by-table-and-item [datasource table-id item-id]
-  (->> (jdbc/execute-one! datasource
-                          ["SELECT * FROM conversations 
-                            WHERE table_id = ?::uuid AND item_id = ?::text"
-                           table-id item-id]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/Conversation)))
-
-(defn get-conversations-by-table [datasource table-id]
-  (->> (jdbc/execute! datasource
-                      ["SELECT c.*, 
-                        (SELECT COUNT(*) FROM messages WHERE conversation_id = c.id) as message_count
-                        FROM conversations c
-                        WHERE c.table_id = ?::uuid 
-                        ORDER BY c.updated_at DESC"
-                       table-id]
-                      {:builder-fn rs/as-unqualified-maps})
-       (decode [:vector (mu/assoc model/Conversation :message-count :int)])))
+                          ["SELECT * FROM conversations WHERE id = ?::text" id]
+                          {:builder-fn rs/as-unqualified-maps})))
 
 (defn get-all-conversations [datasource]
   (->> (jdbc/execute! datasource
-                      ["SELECT c.*, 
-                        t.name as table_name,
-                        (SELECT COUNT(*) FROM messages WHERE conversation_id = c.id) as message_count
+                      ["SELECT * FROM conversations ORDER BY last_activity DESC"]
+                      {:builder-fn rs/as-unqualified-maps})))
+
+(defn get-conversations-with-messages [datasource]
+  (->> (jdbc/execute! datasource
+                      ["SELECT 
+                          c.*,
+                          COALESCE(
+                            json_agg(
+                              json_build_object(
+                                'id', m.id,
+                                'conversationId', m.conversation_id,
+                                'content', m.content,
+                                'createdAt', m.created_at,
+                                'authorId', m.author_id,
+                                'authorName', m.author_name
+                              ) ORDER BY m.created_at
+                            ) FILTER (WHERE m.id IS NOT NULL),
+                            '[]'::json
+                          ) as messages
                         FROM conversations c
-                        JOIN tables t ON c.table_id = t.id
-                        ORDER BY c.updated_at DESC"]
-                      {:builder-fn rs/as-unqualified-maps})
-       (decode [:vector (-> model/Conversation
-                            (mu/assoc :table-name :string)
-                            (mu/assoc :message-count :int))])))
+                        LEFT JOIN messages m ON c.id = m.conversation_id
+                        GROUP BY c.id, c.title, c.created_at, c.last_activity, c.message_count, c.linked_items, c.created_by, c.updated_at
+                        ORDER BY c.last_activity DESC"]
+                      {:builder-fn rs/as-unqualified-maps})))
 
-(defn update-conversation-status [datasource {:keys [id status]}]
-  (let [now (java.time.Instant/now)
-        closed-at (when (= status "CLOSED") now)
-        archived-at (when (= status "ARCHIVED") now)]
-    (->> (jdbc/execute-one! datasource
-                            ["UPDATE conversations SET 
-                              status = ?::text,
-                              closed_at = CASE WHEN ?::text = 'CLOSED' THEN NOW() ELSE closed_at END,
-                              archived_at = CASE WHEN ?::text = 'ARCHIVED' THEN NOW() ELSE archived_at END,
-                              updated_at = NOW()
-                              WHERE id = ?::uuid
-                              RETURNING *"
-                             status status status id]
-                            {:builder-fn rs/as-unqualified-maps})
-         (decode model/Conversation))))
-
-;; Message functions
-(defn create-message [datasource {:keys [conversation-id user-id content]}]
+;; New Message functions for updated schema
+(defn create-message [datasource {:keys [id conversation-id content author-id author-name]}]
   (->> (jdbc/execute-one! datasource
-                          ["WITH msg AS (
-                            INSERT INTO messages (conversation_id, user_id, content) 
-                            VALUES (?::uuid, ?::uuid, ?::text) 
-                            RETURNING *
-                          )
-                          UPDATE conversations
-                          SET updated_at = NOW()
-                          WHERE id = ?::uuid;
-                          SELECT * FROM msg"
-                           conversation-id user-id content conversation-id]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/Message)))
+                          ["INSERT INTO messages (id, conversation_id, content, author_id, author_name) 
+                            VALUES (?::text, ?::text, ?::text, ?::text, ?::text) 
+                            RETURNING *"
+                           id conversation-id content author-id author-name]
+                          {:builder-fn rs/as-unqualified-maps})))
 
 (defn get-messages-by-conversation [datasource conversation-id]
   (->> (jdbc/execute! datasource
-                      ["SELECT m.*, u.name as user_name 
-                        FROM messages m
-                        JOIN users u ON m.user_id = u.id
-                        WHERE m.conversation_id = ?::uuid 
-                        ORDER BY m.created_at"
+                      ["SELECT * FROM messages 
+                        WHERE conversation_id = ?::text 
+                        ORDER BY created_at"
                        conversation-id]
-                      {:builder-fn rs/as-unqualified-maps})
-       (decode [:vector (mu/assoc model/Message :user-name :string)])))
+                      {:builder-fn rs/as-unqualified-maps})))
 
 ;; Feature Flag functions
 (defn get-all-feature-flags [datasource]

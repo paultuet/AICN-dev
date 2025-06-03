@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { FeatureFlagsProvider } from '@/contexts/FeatureFlagsContext'
+import { ConversationProvider } from '@/contexts/ConversationContext'
 import App from './App.tsx'
 import '@/index.css'
 
@@ -20,7 +21,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <FeatureFlagsProvider>
-          <App />
+          <ConversationProvider>
+            <App />
+          </ConversationProvider>
         </FeatureFlagsProvider>
       </AuthProvider>
     </QueryClientProvider>

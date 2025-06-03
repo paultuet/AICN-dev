@@ -1,6 +1,6 @@
 import React from 'react';
 import ZustandConversationSidebar from '@/components/conversations/ZustandConversationSidebar';
-import { useConversationStore } from '@/store/conversation';
+import { useConversations } from '@/hooks/useConversations';
 import { Entity } from '@/types';
 
 interface ConversationSidebarContainerProps {
@@ -17,7 +17,7 @@ const ConversationSidebarContainer: React.FC<ConversationSidebarContainerProps> 
     sidebarOpen,
     setSidebarOpen,
     clearSelection
-  } = useConversationStore();
+  } = useConversations();
 
   const handleClose = () => {
     clearSelection();
@@ -33,15 +33,19 @@ const ConversationSidebarContainer: React.FC<ConversationSidebarContainerProps> 
 
       {/* Overlay semi-transparent avec animation quand le panneau est ouvert */}
       <div
-        className={`fixed inset-0 bg-black transition-opacity duration-300 ease-out z-10 ${
+        className={`fixed left-0 right-0 bg-black transition-opacity duration-300 ease-out z-30 ${
           sidebarOpen ? 'opacity-25' : 'opacity-0 pointer-events-none'
         }`}
+        style={{
+          top: '64px', /* Commence en dessous de la navbar */
+          height: 'calc(100vh - 64px)' /* Hauteur = hauteur de l'écran - hauteur de la navbar */
+        }}
         onClick={handleClose}
       />
 
       {/* Bouton d'ouverture du panneau latéral */}
       <button
-        className={`fixed z-30 right-6 bottom-6 bg-secondary text-white rounded-full p-4 shadow-lg hover:bg-secondary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all duration-300 ease-out transform ${
+        className={`fixed z-60 right-6 bottom-6 bg-secondary text-white rounded-full p-4 shadow-lg hover:bg-secondary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all duration-300 ease-out transform ${
           sidebarOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100 hover:scale-110'
         }`}
         onClick={() => setSidebarOpen(true)}

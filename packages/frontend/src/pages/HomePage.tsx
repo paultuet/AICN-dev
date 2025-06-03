@@ -5,7 +5,7 @@ import useFeatureFlag from '@/hooks/useFeatureFlag';
 import { useReferentialFilters } from '@/hooks/useReferentials';
 import { getConversationsForField, getConversationsForGroup } from '@/utils/referentialUtils';
 import { mockConversations } from '@/mock/conversationsMock';
-import { useConversationStore } from '@/store/conversation';
+import { useConversations } from '@/hooks/useConversations';
 import { useReferentials } from '@/hooks/useReferentials';
 import {
   ReferentialHeader,
@@ -27,8 +27,7 @@ const HomePage: React.FC = () => {
     error
   } = useReferentials();
 
-  // Utiliser le store Zustand pour les conversations
-   
+  // Utiliser le hook useConversations avec react-query
   const {
     conversations,
     selectedItems,
@@ -43,8 +42,8 @@ const HomePage: React.FC = () => {
     openConversation,
     setSelectedConversationId,
     setViewMode,
-    setConversations
-  } = useConversationStore();
+    isLoading: conversationsLoading
+  } = useConversations();
 
   // Gestion des filtres avec react-query optimisé
   const {
@@ -59,14 +58,10 @@ const HomePage: React.FC = () => {
     filteredReferentials,
     isLoadingFiltered,
     errorFiltered,
-  } = useReferentialFilters({ conversations });
+  } = useReferentialFilters({ conversations, isConversationsLoading: conversationsLoading });
 
-  // Charger les données de conversations
-  useEffect(() => {
-    if (isConversationsFeatureEnabled) {
-      setConversations(mockConversations);
-    }
-  }, [setConversations, isConversationsFeatureEnabled]);
+  // Note: Les conversations sont maintenant chargées via react-query dans useConversations
+  // Plus besoin de useEffect pour charger les conversations mocké
 
 
   // Vérifier si un champ est sélectionné
@@ -207,7 +202,7 @@ const HomePage: React.FC = () => {
   };
 
   // Afficher le spinner de chargement
-  if (loading || isLoadingFiltered) {
+  if (loading || isLoadingFiltered || conversationsLoading) {
     return <LoadingSpinner size="lg" className="h-96" />;
   }
 

@@ -10,7 +10,7 @@ export const mockConversations: Conversation[] = [
     linkedItems: [
       {
         type: 'group',
-        entityId: 'rec6UfjT6LZMWwKom',
+        entityId: 'rec6swjVPgzMej4u8',
         groupName: 'Identification de l\'équipement'
       }
     ],
@@ -66,7 +66,7 @@ export const mockConversations: Conversation[] = [
     linkedItems: [
       {
         type: 'field',
-        entityId: 'rec6UfjT6LZMWwKom',
+        entityId: 'recjDPOIW8OmWjAk1',
         fieldIds: [17]
       }
     ],
