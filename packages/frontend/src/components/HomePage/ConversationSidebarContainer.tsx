@@ -1,5 +1,5 @@
 import React from 'react';
-import ZustandConversationSidebar from '@/components/conversations/ZustandConversationSidebar';
+import ConversationSidebar from '@/components/conversations/ConversationSidebar';
 import { useConversations } from '@/hooks/useConversations';
 import { Entity } from '@/types';
 
@@ -8,7 +8,7 @@ interface ConversationSidebarContainerProps {
 }
 
 /**
- * Conteneur pour la barre latérale des conversations avec Zustand
+ * Conteneur pour la barre latérale des conversations
  */
 const ConversationSidebarContainer: React.FC<ConversationSidebarContainerProps> = ({
   referentials
@@ -25,8 +25,7 @@ const ConversationSidebarContainer: React.FC<ConversationSidebarContainerProps> 
 
   return (
     <>
-      {/* Panneau latéral de conversation utilisant Zustand */}
-      <ZustandConversationSidebar
+      <ConversationSidebar
         referentials={referentials}
         currentUserId="user1"
       />

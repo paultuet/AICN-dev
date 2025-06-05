@@ -63,16 +63,17 @@ const NodeVarType: React.FC<{ node: Field | Entity }> = ({ node }) => {
     return (
       <Dialog>
         <DialogTrigger>{badgeType}</DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
+        <DialogContent className="max-w-6xl max-h-[80vh] overflow-hidden flex flex-col">
+          <DialogHeader className="flex-shrink-0">
             <DialogTitle>Champs liés à : {node['lib-fonc'] || node['entity-name']}</DialogTitle>
             <DialogDescription>
               Entité liée: {Array.isArray(node['link-entity-id']) ? node['link-entity-id'].join(', ') : node['link-entity-id']}
             </DialogDescription>
           </DialogHeader>
-          <h2>POPUP En cours de DEV</h2>
 
-          <LinkedFieldsContent linkEntityId={node['link-entity-id']} />
+          <div className="flex-1 overflow-y-auto">
+            <LinkedFieldsContent linkEntityId={node['link-entity-id']} />
+          </div>
         </DialogContent>
       </Dialog>
 
@@ -553,7 +554,7 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
   );
 };
 
-// Composant pour afficher les champs liés
+// Composant pour afficher les champs liés avec vue hiérarchique
 interface LinkedFieldsContentProps {
   linkEntityId: string | string[];
 }
@@ -563,21 +564,176 @@ type EnrichedField = Field & {
   _parentEntityName: string;
 }
 
+// Composant pour les nœuds hiérarchiques dans la vue des entités liées
+const LinkedHierarchicalNode: React.FC<{
+  node: Entity | Field | EnrichedField;
+  level: number;
+  children?: (Entity | Field | EnrichedField)[];
+}> = ({ node, level, children = [] }) => {
+  const [isExpanded, setIsExpanded] = useState<boolean>(true);
+  
+  const isEntityType = 'entity-name' in node && 'fields' in node;
+  const hasChildren = children.length > 0 || (isEntityType && 'fields' in node && node.fields?.length && node.fields.length > 0);
+  
+  const toggleExpand = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsExpanded(prev => !prev);
+  };
+
+  // Calculer le padding en fonction du niveau
+  const getIndentClass = () => {
+    const paddingSize = level * 4;
+    return `pl-${paddingSize > 16 ? 16 : paddingSize}`;
+  };
+
+  // Obtenir la couleur de fond en fonction du niveau
+  const getBackgroundColor = () => {
+    switch (level) {
+      case 0: return 'bg-blue-50';
+      case 1: return 'bg-orange-50';
+      case 2: return 'bg-emerald-50';
+      default: return 'bg-gray-50';
+    }
+  };
+
+  // Obtenir la couleur de bordure en fonction du niveau
+  const getBorderColor = () => {
+    switch (level) {
+      case 0: return 'border-blue-200';
+      case 1: return 'border-orange-200';
+      case 2: return 'border-emerald-200';
+      default: return 'border-gray-200';
+    }
+  };
+
+  // Obtenir le style spécifique au niveau
+  const getLevelSpecificStyle = () => {
+    switch (level) {
+      case 0: return 'font-bold text-lg border-l-4 border-l-blue-500';
+      case 1: return 'font-semibold text-base border-l-4 border-l-orange-500';
+      case 2: return 'font-medium text-base border-l-4 border-l-emerald-500';
+      default: return '';
+    }
+  };
+
+  const getLevelSpecificTextColor = () => {
+    switch (level) {
+      case 0: return 'text-blue-800';
+      case 1: return 'text-orange-800';
+      case 2: return 'text-emerald-800';
+      default: return 'text-gray-800';
+    }
+  };
+
+  // Obtenir la couleur du badge de niveau (similaire à HierarchicalNode)
+  const getLevelBadgeColor = () => {
+    switch (level) {
+      case 0: return 'bg-blue-200 text-blue-800';
+      case 1: return 'bg-orange-200 text-orange-800';
+      case 2: return 'bg-emerald-200 text-emerald-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  // Informations de base pour l'affichage
+  const itemName = isEntityType
+    ? node['entity-name']
+    : 'lib-fonc' in node
+      ? node['lib-fonc']
+      : 'Champ sans nom';
+
+  const itemId = isEntityType
+    ? node['entity-id'] || node['id-record']
+    : 'id-field' in node
+      ? node['id-field']
+      : 'id-record' in node
+        ? node['id-record']
+        : 'ID inconnu';
+
+  const itemType = node['var-type'] || 'Type inconnu';
+
+  // Parent info (seulement pour les champs enrichis)
+  const hasParentInfo = '_parentEntityName' in node && '_parentEntityId' in node;
+
+  // Préparer les enfants à afficher
+  const childrenToDisplay = children.length > 0 ? children : 
+    (isEntityType && 'fields' in node && node.fields ? node.fields : []);
+
+  return (
+    <div className={`border ${getBorderColor()} ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
+      <div
+        className={`py-3 px-4 flex items-center hover:bg-opacity-80 ${getIndentClass()} transition-all duration-200 gap-4`}
+      >
+        {hasChildren ? (
+          <button onClick={toggleExpand} className="cursor-pointer">
+            {isExpanded ? (
+              <ChevronDown className={`h-5 w-5 ${getLevelSpecificTextColor()} mr-2`} />
+            ) : (
+              <ChevronRight className={`h-5 w-5 ${getLevelSpecificTextColor()} mr-2`} />
+            )}
+          </button>
+        ) : (
+          <div className="h-5 w-5 mr-2" />
+        )}
+
+        <div className="flex-1">
+          <div onClick={toggleExpand} className={`cursor-pointer ${getLevelSpecificTextColor()}`}>
+            {itemName}
+          </div>
+          <div className="text-xs text-gray-500">ID: {itemId}</div>
+          {hasParentInfo && (
+            <div className="text-xs text-gray-400 mt-1">
+              Appartient à: {node._parentEntityName} (ID: {node._parentEntityId})
+            </div>
+          )}
+        </div>
+
+        <NodeVarType node={node} />
+
+        {node.exemple && (
+          <code className="text-xs bg-gray-100 px-2 py-1 rounded">
+            {node.exemple}
+          </code>
+        )}
+
+        <div className="flex items-center space-x-2">
+          <div className={`px-2 py-1 text-xs rounded-full font-medium ${getLevelBadgeColor()}`}>
+            {'type' in node && node.niveau !== undefined ? `${node.type} - Niv ${node.niveau}` : node.niveau !== undefined ? `Niveau ${node.niveau}` : 'Niveau N/A'}
+          </div>
+        </div>
+      </div>
+
+      {/* Afficher les enfants s'ils existent et si le nœud est déployé */}
+      {hasChildren && isExpanded && (
+        <div className="ml-6">
+          {childrenToDisplay.map((child, index) => (
+            <LinkedHierarchicalNode
+              key={index}
+              node={child}
+              level={level + 1}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId }) => {
   const { data: referentials = [], isLoading: loading, error } = useReferentials();
-  const [linkedFields, setLinkedFields] = useState<Array<Field | Entity | EnrichedField>>([]);
+  const [linkedEntities, setLinkedEntities] = useState<Array<Entity | EnrichedField>>([]);
 
   useEffect(() => {
     if (linkEntityId && referentials.length > 0) {
       // Convertir en tableau si c'est une seule valeur
       const entityIds = Array.isArray(linkEntityId) ? linkEntityId : [linkEntityId];
-      const linkedFieldsFound: Array<Field | Entity | EnrichedField> = [];
+      const linkedEntitiesFound: Array<Entity | EnrichedField> = [];
 
-      // Parcourir toutes les entités pour trouver les champs liés
+      // Parcourir toutes les entités pour trouver les entités liées
       for (const entity of referentials) {
         // Vérifier si l'entité elle-même correspond
         if (entityIds.includes(entity['entity-id']) || entityIds.includes(entity['id-record'] || '')) {
-          linkedFieldsFound.push(entity);
+          linkedEntitiesFound.push(entity);
           continue;
         }
 
@@ -597,7 +753,7 @@ const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId 
                   _parentEntityName: parentEntity['entity-name'],
                   _parentEntityId: parentEntity['entity-id']
                 };
-                linkedFieldsFound.push(enrichedField);
+                linkedEntitiesFound.push(enrichedField);
               }
 
               // Chercher récursivement dans les sous-champs si présents
@@ -611,7 +767,7 @@ const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId 
         }
       }
 
-      setLinkedFields(linkedFieldsFound);
+      setLinkedEntities(linkedEntitiesFound);
     }
   }, [linkEntityId, referentials]);
 
@@ -623,94 +779,34 @@ const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId 
     return <ErrorMessage message={error instanceof Error ? error.message : "Erreur lors du chargement des champs liés"} />;
   }
 
-  if (linkedFields.length === 0) {
-    return <div className="py-4 text-center text-gray-500">Aucun champ lié trouvé</div>;
+  if (linkedEntities.length === 0) {
+    return <div className="py-4 text-center text-gray-500">Aucune entité liée trouvée</div>;
   }
 
   return (
     <div className="py-2">
-      {linkedFields.length > 0 ? (
-        linkedFields.map((item, index) => {
-          // Déterminer si c'est un champ ou une entité
-          const isEntityType = 'entity-name' in item && 'fields' in item;
-
-          // Informations de base pour l'affichage
-          const itemName = isEntityType
-            ? item['entity-name']
-            : 'lib-fonc' in item
-              ? item['lib-fonc']
-              : 'Champ sans nom';
-
-          const itemId = isEntityType
-            ? item['entity-id'] || item['id-record']
-            : 'id-field' in item
-              ? item['id-field']
-              : 'id-record' in item
-                ? item['id-record']
-                : 'ID inconnu';
-
-          const itemType = item['var-type'] || 'Type inconnu';
-
-          // Parent info (seulement pour les champs)
-          const hasParentInfo = '_parentEntityName' in item && '_parentEntityId' in item;
-
-          return (
-            <div key={index} className="mb-4 border border-gray-200 rounded-md p-3">
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="font-bold text-lg">{itemName}</h3>
-                <Badge color={getVarTypeBadgeColor(itemType)}>
-                  {itemType}
-                </Badge>
-              </div>
-
-              {/* Informations de base */}
-              <div className="text-sm text-gray-700 mb-2">
-                <div>ID: <span className="font-mono">{itemId}</span></div>
-                {hasParentInfo && (
-                  <div className="text-xs text-gray-500 mt-1">
-                    Appartient à: {item._parentEntityName} (ID: {item._parentEntityId})
-                  </div>
-                )}
-              </div>
-
-              {/* Afficher les champs pour les entités */}
-              {isEntityType && 'fields' in item && item.fields && item.fields.length > 0 && (
-                <div className="mt-3 border-t pt-2">
-                  <h4 className="font-medium mb-2">Champs</h4>
-                  <div className="space-y-2 pl-2">
-                    {item.fields.map((field, fieldIndex) => {
-                      // Vérifier si c'est un champ ou une entité
-                      const fieldName = 'lib-fonc' in field ? field['lib-fonc'] :
-                        'entity-name' in field ? field['entity-name'] : 'Champ sans nom';
-                      const fieldId = 'id-field' in field ? field['id-field'] :
-                        'id-record' in field ? field['id-record'] : 'ID inconnu';
-                      const fieldType = field['var-type'] || 'Type inconnu';
-
-                      return (
-                        <div key={fieldIndex} className="flex justify-between items-center border-b border-gray-100 pb-1">
-                          <div>
-                            <span className="font-medium">{fieldName}</span>
-                            <span className="text-xs text-gray-500 ml-2">ID: {fieldId}</span>
-                          </div>
-                          <Badge color={getVarTypeBadgeColor(fieldType)}>
-                            {fieldType}
-                          </Badge>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })
-      ) : (
-        <div className="text-center text-gray-500 py-4">Aucun champ ou entité lié trouvé</div>
-      )}
+      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <div className="px-4 py-3 bg-gray-50 border-b">
+          <h3 className="text-lg font-semibold text-gray-800">Structure hiérarchique des entités liées</h3>
+          <div className="text-sm text-gray-600 mt-1">
+            {linkedEntities.length} entité(s) liée(s) trouvée(s)
+          </div>
+        </div>
+        
+        <div className="divide-y divide-gray-200">
+          {linkedEntities.map((entity, index) => (
+            <LinkedHierarchicalNode
+              key={index}
+              node={entity}
+              level={0}
+            />
+          ))}
+        </div>
+      </div>
 
       <DialogFooter className="mt-4">
         <div className="text-xs text-gray-500">
-          {linkedFields.length} élément(s) lié(s) trouvé(s)
+          {linkedEntities.length} élément(s) lié(s) trouvé(s)
         </div>
       </DialogFooter>
     </div>

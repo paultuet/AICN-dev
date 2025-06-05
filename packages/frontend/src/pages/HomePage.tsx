@@ -98,7 +98,6 @@ const HomePage: React.FC = () => {
     );
   };
 
-  // Toggle la sélection d'un champ avec Zustand
   const toggleFieldSelection = (entityId: string, fieldId: number | string, fieldName?: string) => {
     // Forcer l'ouverture du panneau latéral
     setViewMode('selection');
@@ -175,7 +174,6 @@ const HomePage: React.FC = () => {
     }
   };
 
-  // Toggle la sélection d'un groupe avec Zustand
   const toggleGroupSelection = (entityId: string, groupName: string) => {
     const existingIndex = selectedItems.findIndex(
       selection => selection.type === 'group' &&
@@ -216,7 +214,6 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="relative w-full sm:px-3 md:px-4 py-4 sm:py-6 bg-gray-100 min-h-screen">
-      {/* Panneau latéral de conversation avec Zustand */}
       {isConversationsFeatureEnabled && (
         <ConversationSidebarContainer
           referentials={referentials}
