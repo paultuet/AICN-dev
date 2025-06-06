@@ -407,7 +407,6 @@
   {:Niveau_record 2,
    :Type_record "RIO",
    :record_name "texte décrivant l'observation",
-   :Niveaux-liés ["recXGMnBMS445IFcF"],
    :ID_record "[2]-178",
    :Numauto 178},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -2395,7 +2394,6 @@
     "recJMZWHafQNsOPa1"
     "recrqwmS0EaeS1Way"
     "recCpte3OJrI5DPMD"
-    "recgmshAWol8C8179"
     "recfmlKT5cUMH42vB"],
    :Type_record "NMR",
    :record_name
@@ -2994,7 +2992,6 @@
   {:Niveau_record 2,
    :Type_record "RIO",
    :record_name "Date",
-   :Niveaux-liés ["rectfcDjaL9dz32zl"],
    :ID_record "[2]-181",
    :Numauto 181},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -3832,7 +3829,6 @@
     "rectbOWswMrHnSDB6"
     "recifUuCl57Pzrrhr"
     "rec1whWma2rTPkoYq"
-    "recHQLzn1qxLP2DME"
     "recnuwstMmF1ZVrXO"
     "recRdDnarU352xUoq"
     "recNVTzBNgl8vDl4J"
@@ -3866,7 +3862,8 @@
     "rec9iyR5VKztVpzXI"
     "recyTRK1w51FDnxNk"
     "rec7X8NzrFPfdEIHL"
-    "rec015qQqvnUQfVlu"],
+    "rec015qQqvnUQfVlu"
+    "recHQLzn1qxLP2DME"],
    :Type_record "RIO",
    :Base
    ["recL5B9IWV9g14URM"
@@ -4452,7 +4449,6 @@
   {:Niveau_record 2,
    :Type_record "RIO",
    :record_name "Texte libres",
-   :Niveaux-liés ["rec4Xlke8dqd3QDWY" "recn5IxGUrRz3qrwf"],
    :ID_record "[2]-183",
    :Numauto 183},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -4988,7 +4984,6 @@
    :Type_record "RIO",
    :record_name
    "à remplir par le prestataire (identifiant unique de l'observation)",
-   :Niveaux-liés ["recB0Rfr4keFCmS9t"],
    :ID_record "[2]-176",
    :Numauto 176},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -5445,7 +5440,6 @@
   {:Niveau_record 2,
    :Type_record "RIO",
    :record_name "Explication de la limite d'intervention",
-   :Niveaux-liés ["rec5bPrIMBvQrlSLp"],
    :ID_record "[2]-179",
    :Numauto 179},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -5777,7 +5771,17 @@
   {:Niveau_record 2,
    :Type_record "RIO",
    :record_name "Description de l'observation",
-   :Niveaux-liés ["recc46dndldjbeuOn"],
+   :Niveaux-liés
+   ["recc46dndldjbeuOn"
+    "recB0Rfr4keFCmS9t"
+    "recHwN0MmGkmYmgDr"
+    "recXGMnBMS445IFcF"
+    "rec5bPrIMBvQrlSLp"
+    "recd1SnV4r8JLwcoB"
+    "rectfcDjaL9dz32zl"
+    "recY2p6EavlQ8Zj2C"
+    "rec4Xlke8dqd3QDWY"
+    "recn5IxGUrRz3qrwf"],
    :ID_record "[2]-175",
    :Numauto 175},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -6308,8 +6312,7 @@
    :record_name
    "Restituer les données exhaustives et conformes sur l'actif",
    :ID_record "[3]-789",
-   :Numauto 789,
-   :Liens-Niveaux ["recgmshAWol8C8179"]},
+   :Numauto 789},
   :createdTime "2025-05-04T06:44:55.000Z",
   :id "reclDNVRHIUaAFeYX"}
  {:fields
@@ -6891,7 +6894,6 @@
    :Niveaux-liés
    ["recifUuCl57Pzrrhr"
     "rec1whWma2rTPkoYq"
-    "recHQLzn1qxLP2DME"
     "recnuwstMmF1ZVrXO"
     "recRdDnarU352xUoq"
     "recNVTzBNgl8vDl4J"
@@ -6918,7 +6920,8 @@
     "recGr9P86oslBmIP8"
     "recux0TcEsErkPS6F"
     "rec0jGPnKJAuycCTS"
-    "recqirWbwOlni8Ii9"],
+    "recqirWbwOlni8Ii9"
+    "recHQLzn1qxLP2DME"],
    :ID_record "[2]-194",
    :Numauto 194},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -7640,7 +7643,6 @@
   {:Niveau_record 2,
    :Type_record "RIO",
    :record_name "Oui/Non",
-   :Niveaux-liés ["recd1SnV4r8JLwcoB" "recY2p6EavlQ8Zj2C"],
    :ID_record "[2]-180",
    :Numauto 180},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -8177,7 +8179,6 @@
   {:Niveau_record 2,
    :Type_record "RIO",
    :record_name "à remplir par le prestataire",
-   :Niveaux-liés ["recHwN0MmGkmYmgDr"],
    :ID_record "[2]-177",
    :Numauto 177},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -8286,7 +8287,7 @@
    :Type_record "NMR",
    :record_name
    "Gérer la réversibilité des données en cas de changement d'acteur/système",
-   :Niveaux-liés ["recgmshAWol8C8179" "recfmlKT5cUMH42vB"],
+   :Niveaux-liés ["recfmlKT5cUMH42vB"],
    :ID_record "[2]-414",
    :Numauto 414},
   :createdTime "2025-05-04T06:43:38.000Z",

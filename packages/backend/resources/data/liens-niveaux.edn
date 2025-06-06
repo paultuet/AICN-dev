@@ -5,6 +5,8 @@
    :ID_record_from_NIV2 ["[2]-228"],
    :ID_record_from_NIV3 ["[3]-605"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 5,
+   :rank_niv3 3,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec015qQqvnUQfVlu"}
@@ -15,6 +17,8 @@
    :ID_record_from_NIV2 ["[2]-242"],
    :ID_record_from_NIV3 ["[3]-617"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec0UkzLdTr4k5yR7"}
@@ -25,6 +29,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-674"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 10,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec0YPMa0YrIPrNoR"}
@@ -35,6 +41,8 @@
    :ID_record_from_NIV2 ["[2]-191"],
    :ID_record_from_NIV3 ["[3]-566"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec0fL58gHZDJvsUJ"}
@@ -45,6 +53,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-597"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 29,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec0jGPnKJAuycCTS"}
@@ -55,6 +65,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-802"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 26,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec0speAc332XTG0K"}
@@ -65,6 +77,8 @@
    :ID_record_from_NIV2 ["[2]-246"],
    :ID_record_from_NIV3 ["[3]-625"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 3,
+   :rank_niv3 5,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec0tqxiokW1Cb4Ww"}
@@ -75,6 +89,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-686"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 6,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec0uod8xOOt9bpdT"}
@@ -85,6 +101,8 @@
    :ID_record_from_NIV2 ["[2]-327"],
    :ID_record_from_NIV3 ["[3]-703"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 11,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec11IWkm1Mw3bbGF"}
@@ -95,6 +113,8 @@
    :ID_record_from_NIV2 ["[2]-261"],
    :ID_record_from_NIV3 ["[3]-636"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec131zXBbNiuYt9Z"}
@@ -105,6 +125,8 @@
    :ID_record_from_NIV2 ["[2]-264"],
    :ID_record_from_NIV3 ["[3]-641"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec19BZpMSpAsA4UW"}
@@ -115,6 +137,8 @@
    :ID_record_from_NIV2 ["[2]-236"],
    :ID_record_from_NIV3 ["[3]-612"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec1Hw3K2IkkH0gZS"}
@@ -125,6 +149,8 @@
    :ID_record_from_NIV2 ["[2]-47"],
    :ID_record_from_NIV3 ["[3]-423"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "rec1MoEg6s9KPc0Ds"}
@@ -135,6 +161,8 @@
    :ID_record_from_NIV2 ["[2]-345"],
    :ID_record_from_NIV3 ["[3]-722"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 4,
+   :rank_niv3 3,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec1VYLVG7fR1cBGo"}
@@ -145,6 +173,8 @@
    :ID_record_from_NIV2 ["[2]-323"],
    :ID_record_from_NIV3 ["[3]-661"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 10,
+   :rank_niv3 4,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec1jG8VSqLwU1YGf"}
@@ -155,6 +185,8 @@
    :ID_record_from_NIV2 ["[2]-270"],
    :ID_record_from_NIV3 ["[3]-645"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec1lzdkPxaPx17M4"}
@@ -165,6 +197,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-590"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 22,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec1qLSw9XgyyLz0O"}
@@ -175,6 +209,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-570"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec1whWma2rTPkoYq"}
@@ -185,6 +221,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-575"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 7,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec25Twfu1gZ7EtBf"}
@@ -195,6 +233,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-837"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 5,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec25YLLFYx2VO1xl"}
@@ -205,6 +245,8 @@
    :ID_record_from_NIV2 ["[2]-396"],
    :ID_record_from_NIV3 ["[3]-871"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 2,
+   :rank_niv3 4,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec2FLSxQRTiaSYw8"}
@@ -215,6 +257,8 @@
    :ID_record_from_NIV2 ["[2]-224"],
    :ID_record_from_NIV3 ["[3]-599"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec2IhF5nLQiKEPs1"}
@@ -225,6 +269,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-502"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 8,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec2f1BG81mnZ5cjA"}
@@ -235,6 +281,8 @@
    :ID_record_from_NIV2 ["[2]-150"],
    :ID_record_from_NIV3 ["[3]-795"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec2xz5tZBmDAjOaX"}
@@ -245,6 +293,8 @@
    :ID_record_from_NIV2 ["[2]-146"],
    :ID_record_from_NIV3 ["[3]-522"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec30tM6IUkuOdV29"}
@@ -255,6 +305,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-491"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 13,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec342LMxEWNeOBUB"}
@@ -265,6 +317,8 @@
    :ID_record_from_NIV2 ["[2]-191"],
    :ID_record_from_NIV3 ["[3]-567"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec4CCTKbY3mO9fnL"}
@@ -275,6 +329,8 @@
    :ID_record_from_NIV2 ["[2]-369"],
    :ID_record_from_NIV3 ["[3]-861"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec4Eh67Z2exA3e9g"}
@@ -285,6 +341,8 @@
    :ID_record_from_NIV2 ["[2]-396"],
    :ID_record_from_NIV3 ["[3]-771"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec4G0N1BPp4vYCFh"}
@@ -295,6 +353,8 @@
    :ID_record_from_NIV2 ["[2]-372"],
    :ID_record_from_NIV3 ["[3]-747"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec4NnQ2QfM4nVzNx"}
@@ -305,16 +365,20 @@
    :ID_record_from_NIV2 ["[2]-336"],
    :ID_record_from_NIV3 ["[3]-713"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec4WC2RMyW6CRPZv"}
  {:fields
-  {:NIV2 ["recYt9QKvLJHg9htr"],
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
    :Unique_ID 143,
    :NIV3 ["recflkuwlYohJuuAw"],
-   :ID_record_from_NIV2 ["[2]-183"],
+   :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-558"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 9,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec4Xlke8dqd3QDWY"}
@@ -325,6 +389,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-689"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 9,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec4Zmh1qaqJudPIg"}
@@ -335,6 +401,8 @@
    :ID_record_from_NIV2 ["[2]-353"],
    :ID_record_from_NIV3 ["[3]-844"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 6,
+   :rank_niv3 1,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec4anqNpiLqWWWY9"}
@@ -345,6 +413,8 @@
    :ID_record_from_NIV2 ["[2]-317"],
    :ID_record_from_NIV3 ["[3]-695"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 8,
+   :rank_niv3 4,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec4k4gSPC6NmidLd"}
@@ -355,6 +425,8 @@
    :ID_record_from_NIV2 ["[2]-185"],
    :ID_record_from_NIV3 ["[3]-565"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 1,
+   :rank_niv3 6,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec55ZGuKUdvjfjwc"}
@@ -365,16 +437,20 @@
    :ID_record_from_NIV2 ["[2]-382"],
    :ID_record_from_NIV3 ["[3]-867"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 4,
+   :rank_niv3 4,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec5JOMVQmTt0MbZd"}
  {:fields
-  {:NIV2 ["recggIMEEePY3mRHt"],
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
    :Unique_ID 139,
    :NIV3 ["recMsd0x8vz9wdgBj"],
-   :ID_record_from_NIV2 ["[2]-179"],
+   :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-554"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 5,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec5bPrIMBvQrlSLp"}
@@ -385,6 +461,8 @@
    :ID_record_from_NIV2 ["[2]-317"],
    :ID_record_from_NIV3 ["[3]-694"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 8,
+   :rank_niv3 3,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec5cIGcb5rWmKqEf"}
@@ -395,6 +473,8 @@
    :ID_record_from_NIV2 ["[2]-329"],
    :ID_record_from_NIV3 ["[3]-705"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec5jg7QhPwOfb9VK"}
@@ -405,6 +485,8 @@
    :ID_record_from_NIV2 ["[2]-317"],
    :ID_record_from_NIV3 ["[3]-693"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 8,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec5r47ZojNxk2XkB"}
@@ -415,6 +497,8 @@
    :ID_record_from_NIV2 ["[2]-372"],
    :ID_record_from_NIV3 ["[3]-865"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 2,
+   :rank_niv3 4,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec66nqjMUAFdfEqj"}
@@ -425,6 +509,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-501"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 7,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec6QilKJbWp5Er2h"}
@@ -435,6 +521,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-587"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 19,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec6bGjCUxr1goYjC"}
@@ -445,6 +533,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-437"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 7,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "rec6bbgPBtAQJdrzp"}
@@ -455,6 +545,8 @@
    :ID_record_from_NIV2 ["[2]-378"],
    :ID_record_from_NIV3 ["[3]-754"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec6g9gG8jjthkB3b"}
@@ -465,6 +557,8 @@
    :ID_record_from_NIV2 ["[2]-287"],
    :ID_record_from_NIV3 ["[3]-662"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec6omGKhYnASPFAc"}
@@ -475,6 +569,8 @@
    :ID_record_from_NIV2 ["[2]-47"],
    :ID_record_from_NIV3 ["[3]-425"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "rec6zjtoCXBe95t9T"}
@@ -485,6 +581,8 @@
    :ID_record_from_NIV2 ["[2]-47"],
    :ID_record_from_NIV3 ["[3]-428"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 3,
+   :rank_niv3 7,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "rec7Lz3eP4EjvbgWG"}
@@ -495,6 +593,8 @@
    :ID_record_from_NIV2 ["[2]-332"],
    :ID_record_from_NIV3 ["[3]-709"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 1,
+   :rank_niv3 6,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec7UJnQsnwC6dxAl"}
@@ -505,6 +605,8 @@
    :ID_record_from_NIV2 ["[2]-228"],
    :ID_record_from_NIV3 ["[3]-604"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 5,
+   :rank_niv3 2,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec7X8NzrFPfdEIHL"}
@@ -515,6 +617,8 @@
    :ID_record_from_NIV2 ["[2]-407"],
    :ID_record_from_NIV3 ["[3]-782"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 6,
+   :rank_niv3 1,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec7ZSiuS6a7Q1FFB"}
@@ -525,6 +629,8 @@
    :ID_record_from_NIV2 ["[2]-238"],
    :ID_record_from_NIV3 ["[3]-614"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec8J4acv4hW03De8"}
@@ -535,6 +641,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-450"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 8,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "rec8SlHysuFxer0QU"}
@@ -545,6 +653,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-578"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 10,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec8TOLzymlWwP6Wl"}
@@ -555,6 +665,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-668"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 4,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec8mYPJTa4ehfWpt"}
@@ -565,6 +677,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-490"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 12,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec97baljodYdnvI2"}
@@ -575,6 +689,8 @@
    :ID_record_from_NIV2 ["[2]-47"],
    :ID_record_from_NIV3 ["[3]-424"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "rec9FedAkoxY9Rtkt"}
@@ -585,6 +701,8 @@
    :ID_record_from_NIV2 ["[2]-396"],
    :ID_record_from_NIV3 ["[3]-773"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec9K8KXKeAroPCkq"}
@@ -595,6 +713,8 @@
    :ID_record_from_NIV2 ["[2]-282"],
    :ID_record_from_NIV3 ["[3]-832"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec9bXavKc7tzHTMF"}
@@ -605,6 +725,8 @@
    :ID_record_from_NIV2 ["[2]-224"],
    :ID_record_from_NIV3 ["[3]-559"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 4,
+   :rank_niv3 4,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rec9iyR5VKztVpzXI"}
@@ -615,6 +737,8 @@
    :ID_record_from_NIV2 ["[2]-332"],
    :ID_record_from_NIV3 ["[3]-708"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 1,
+   :rank_niv3 5,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rec9jP3qjqqybiJHK"}
@@ -625,6 +749,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-496"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recA8ASpIfa6naEzS"}
@@ -635,16 +761,20 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-690"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 10,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recAz1kGMHehXs4jT"}
  {:fields
-  {:NIV2 ["reccoqtNmJR4bp0S2"],
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
    :Unique_ID 136,
    :NIV3 ["recMCLDOyUPXUnx7U"],
-   :ID_record_from_NIV2 ["[2]-176"],
+   :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-551"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recB0Rfr4keFCmS9t"}
@@ -655,6 +785,8 @@
    :ID_record_from_NIV2 ["[2]-258"],
    :ID_record_from_NIV3 ["[3]-634"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 6,
+   :rank_niv3 4,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recBVSz3Pfu8fGWqS"}
@@ -665,6 +797,8 @@
    :ID_record_from_NIV2 ["[2]-402"],
    :ID_record_from_NIV3 ["[3]-778"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recBdVSXqgoDAYoHh"}
@@ -675,6 +809,8 @@
    :ID_record_from_NIV2 ["[2]-339"],
    :ID_record_from_NIV3 ["[3]-716"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recCTCdbkP350hDrd"}
@@ -685,6 +821,8 @@
    :ID_record_from_NIV2 ["[2]-413"],
    :ID_record_from_NIV3 ["[3]-876"],
    :ID_record_from_NIV1 ["[1]-40"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recInUreqrzUowcnc"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recCpte3OJrI5DPMD"}
@@ -695,6 +833,8 @@
    :ID_record_from_NIV2 ["[2]-363"],
    :ID_record_from_NIV3 ["[3]-742"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 3,
+   :rank_niv3 5,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recCs0iQaetUOY47r"}
@@ -705,6 +845,8 @@
    :ID_record_from_NIV2 ["[2]-231"],
    :ID_record_from_NIV3 ["[3]-608"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recCvNjBOEs92HZIy"}
@@ -715,6 +857,8 @@
    :ID_record_from_NIV2 ["[2]-382"],
    :ID_record_from_NIV3 ["[3]-758"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recDA9djxm5IX4Ya4"}
@@ -725,6 +869,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-452"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 10,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recDG0DK2vGIqAqs4"}
@@ -735,6 +881,8 @@
    :ID_record_from_NIV2 ["[2]-243"],
    :ID_record_from_NIV3 ["[3]-618"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recDU997BWjrclPUV"}
@@ -745,6 +893,8 @@
    :ID_record_from_NIV2 ["[2]-388"],
    :ID_record_from_NIV3 ["[3]-765"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 5,
+   :rank_niv3 3,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recDXgAbAP07NdEFZ"}
@@ -755,6 +905,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-482"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 4,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recDdRbGHDKwAxFOR"}
@@ -765,6 +917,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-479"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recDfHOe9P8cGRl2n"}
@@ -775,6 +929,8 @@
    :ID_record_from_NIV2 ["[2]-146"],
    :ID_record_from_NIV3 ["[3]-524"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 1,
+   :rank_niv3 4,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recDiwJ1XAim4zegN"}
@@ -785,6 +941,8 @@
    :ID_record_from_NIV2 ["[2]-166"],
    :ID_record_from_NIV3 ["[3]-549"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 3,
+   :rank_niv3 9,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recDr8SCGUyiIPDJ0"}
@@ -795,6 +953,8 @@
    :ID_record_from_NIV2 ["[2]-163"],
    :ID_record_from_NIV3 ["[3]-540"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recE0n0WhmqHAsIdG"}
@@ -805,6 +965,8 @@
    :ID_record_from_NIV2 ["[2]-185"],
    :ID_record_from_NIV3 ["[3]-560"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recE7GKgTP7QanBOe"}
@@ -815,6 +977,8 @@
    :ID_record_from_NIV2 ["[2]-353"],
    :ID_record_from_NIV3 ["[3]-846"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 6,
+   :rank_niv3 2,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recEJokybV3nlHgIC"}
@@ -825,6 +989,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-580"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 12,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recF2VI0nW97iyQAD"}
@@ -835,6 +1001,8 @@
    :ID_record_from_NIV2 ["[2]-402"],
    :ID_record_from_NIV3 ["[3]-779"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recFJLryoOLjTzByA"}
@@ -845,6 +1013,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-438"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 8,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recFN3oc6MC4Gwmup"}
@@ -855,6 +1025,8 @@
    :ID_record_from_NIV2 ["[2]-253"],
    :ID_record_from_NIV3 ["[3]-817"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 5,
+   :rank_niv3 2,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recFUwb84lSlkZNMx"}
@@ -865,6 +1037,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-467"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recFWhNY1lbDMfByZ"}
@@ -875,6 +1049,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-591"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 23,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recFcvIBtpshkmDal"}
@@ -885,6 +1061,8 @@
    :ID_record_from_NIV2 ["[2]-133"],
    :ID_record_from_NIV3 ["[3]-509"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recFduDLTlzKrUFLu"}
@@ -895,6 +1073,8 @@
    :ID_record_from_NIV2 ["[2]-150"],
    :ID_record_from_NIV3 ["[3]-527"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recFxxSPqKZ7TOvX7"}
@@ -905,6 +1085,8 @@
    :ID_record_from_NIV2 ["[2]-272"],
    :ID_record_from_NIV3 ["[3]-647"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 5,
+   :rank_niv3 1,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recFzcFLZ4NFERghv"}
@@ -915,6 +1097,8 @@
    :ID_record_from_NIV2 ["[2]-253"],
    :ID_record_from_NIV3 ["[3]-815"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 5,
+   :rank_niv3 1,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recG7u1veGRsK02bS"}
@@ -925,6 +1109,8 @@
    :ID_record_from_NIV2 ["[2]-82"],
    :ID_record_from_NIV3 ["[3]-459"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recGC2RwIncAA8NeE"}
@@ -935,6 +1121,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-448"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 6,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recGLnY2ZZbjVA96S"}
@@ -945,6 +1133,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-492"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 14,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recGqoQ4BRab8bSsK"}
@@ -955,6 +1145,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-803"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 27,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recGr9P86oslBmIP8"}
@@ -965,6 +1157,8 @@
    :ID_record_from_NIV2 ["[2]-258"],
    :ID_record_from_NIV3 ["[3]-633"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 6,
+   :rank_niv3 3,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recH0ndrxow1dTdn4"}
@@ -975,6 +1169,8 @@
    :ID_record_from_NIV2 ["[2]-271"],
    :ID_record_from_NIV3 ["[3]-678"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 6,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recH4joRswlzrZzlS"}
@@ -985,6 +1181,8 @@
    :ID_record_from_NIV2 ["[2]-166"],
    :ID_record_from_NIV3 ["[3]-548"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 3,
+   :rank_niv3 8,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recHAzpDNyO9xPAFr"}
@@ -995,6 +1193,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-683"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 3,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recHFiVZWHMjINArm"}
@@ -1005,6 +1205,8 @@
    :ID_record_from_NIV2 ["[2]-372"],
    :ID_record_from_NIV3 ["[3]-748"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recHOQJVv48J5zjAU"}
@@ -1015,6 +1217,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-571"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recHQLzn1qxLP2DME"}
@@ -1025,16 +1229,20 @@
    :ID_record_from_NIV2 ["[2]-261"],
    :ID_record_from_NIV3 ["[3]-637"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recHSRGwHiP6Qxwle"}
  {:fields
-  {:NIV2 ["recx939UsnKW50qVI"],
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
    :Unique_ID 137,
    :NIV3 ["recD6uLQbCNuVHm3g"],
-   :ID_record_from_NIV2 ["[2]-177"],
+   :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-552"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 3,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recHwN0MmGkmYmgDr"}
@@ -1045,6 +1253,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-435"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 5,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recI4XLb3CcIeL6bN"}
@@ -1055,6 +1265,8 @@
    :ID_record_from_NIV2 ["[2]-271"],
    :ID_record_from_NIV3 ["[3]-646"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recIEWK5J2qet3h16"}
@@ -1065,6 +1277,8 @@
    :ID_record_from_NIV2 ["[2]-238"],
    :ID_record_from_NIV3 ["[3]-613"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recIKfymB2NA1RPQh"}
@@ -1075,6 +1289,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-451"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 9,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recIQ0Mq5J5UUoTWd"}
@@ -1085,6 +1301,8 @@
    :ID_record_from_NIV2 ["[2]-44"],
    :ID_record_from_NIV3 ["[3]-421"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recIdMwVHgCpilFbm"}
@@ -1095,6 +1313,8 @@
    :ID_record_from_NIV2 ["[2]-345"],
    :ID_record_from_NIV3 ["[3]-724"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 4,
+   :rank_niv3 5,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recJLPHfNV4THaHTs"}
@@ -1105,6 +1325,8 @@
    :ID_record_from_NIV2 ["[2]-410"],
    :ID_record_from_NIV3 ["[3]-786"],
    :ID_record_from_NIV1 ["[1]-40"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recInUreqrzUowcnc"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recJMZWHafQNsOPa1"}
@@ -1115,6 +1337,8 @@
    :ID_record_from_NIV2 ["[2]-130"],
    :ID_record_from_NIV3 ["[3]-507"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recJOJl2Aph9baCPa"}
@@ -1125,6 +1349,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-440"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 10,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recJTwhPaMzNZH7BT"}
@@ -1135,6 +1361,8 @@
    :ID_record_from_NIV2 ["[2]-90"],
    :ID_record_from_NIV3 ["[3]-466"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recK5Woi5pVHtfAdw"}
@@ -1145,6 +1373,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-444"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 2,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recKFOUu43HNQQPSb"}
@@ -1155,6 +1385,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-799"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 9,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recKNTms7DOfTLqvz"}
@@ -1165,6 +1397,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[1]-27"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 17,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recKaIWS84JhSIWT4"}
@@ -1175,6 +1409,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-439"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 9,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recKljoXVNkciegBs"}
@@ -1185,6 +1421,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-484"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 6,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recL1JlZ8MDKyTETs"}
@@ -1195,6 +1433,8 @@
    :ID_record_from_NIV2 ["[2]-358"],
    :ID_record_from_NIV3 ["[3]-735"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recLAQzztYj8j7fSz"}
@@ -1205,6 +1445,8 @@
    :ID_record_from_NIV2 ["[2]-386"],
    :ID_record_from_NIV3 ["[3]-761"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 4,
+   :rank_niv3 5,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recLRUqDxWQMGP5Zn"}
@@ -1215,6 +1457,8 @@
    :ID_record_from_NIV2 ["[2]-264"],
    :ID_record_from_NIV3 ["[3]-639"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recLWOjOxV9A3NAEU"}
@@ -1225,6 +1469,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-667"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 3,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recLfIiYL7fNQmfiT"}
@@ -1235,6 +1481,8 @@
    :ID_record_from_NIV2 ["[2]-327"],
    :ID_record_from_NIV3 ["[3]-702"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 11,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recLfLp1RamJ4vFyV"}
@@ -1245,6 +1493,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-682"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recLoGKleZPSdQWHj"}
@@ -1255,6 +1505,8 @@
    :ID_record_from_NIV2 ["[2]-358"],
    :ID_record_from_NIV3 ["[3]-852"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 2,
+   :rank_niv3 4,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recLtFMnXdY4OV077"}
@@ -1265,6 +1517,8 @@
    :ID_record_from_NIV2 ["[2]-386"],
    :ID_record_from_NIV3 ["[3]-869"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 4,
+   :rank_niv3 6,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recLwKRdyo35UAJzv"}
@@ -1275,6 +1529,8 @@
    :ID_record_from_NIV2 ["[2]-264"],
    :ID_record_from_NIV3 ["[3]-640"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recLxiGfVNToGTUgA"}
@@ -1285,6 +1541,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-579"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 11,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recM3ZjzV6o1WGopU"}
@@ -1295,6 +1553,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-495"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recMGKR9XXU7Fxybt"}
@@ -1305,6 +1565,8 @@
    :ID_record_from_NIV2 ["[2]-235"],
    :ID_record_from_NIV3 ["[3]-610"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recMGwGKYJzsEa0RH"}
@@ -1315,6 +1577,8 @@
    :ID_record_from_NIV2 ["[2]-47"],
    :ID_record_from_NIV3 ["[3]-426"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 3,
+   :rank_niv3 5,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recMagxhwTQBOqSdT"}
@@ -1325,6 +1589,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-475"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 10,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recMaoiMwiijltVur"}
@@ -1335,6 +1601,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-479"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 16,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recMiahsaPMgTRPDC"}
@@ -1345,6 +1613,8 @@
    :ID_record_from_NIV2 ["[2]-280"],
    :ID_record_from_NIV3 ["[3]-655"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recMlzU4aLorvIKWe"}
@@ -1355,6 +1625,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-688"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 8,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recMm4e7izjGwzEc5"}
@@ -1365,6 +1637,8 @@
    :ID_record_from_NIV2 ["[2]-41"],
    :ID_record_from_NIV3 ["[3]-417"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-04-10T15:34:47.000Z",
   :id "recNN1yT4Uj3gqTDq"}
@@ -1375,6 +1649,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-574"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 6,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recNVTzBNgl8vDl4J"}
@@ -1385,6 +1661,8 @@
    :ID_record_from_NIV2 ["[2]-363"],
    :ID_record_from_NIV3 ["[3]-739"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recNYsv6RQtvUOOsw"}
@@ -1395,6 +1673,8 @@
    :ID_record_from_NIV2 ["[2]-339"],
    :ID_record_from_NIV3 ["[3]-718"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 3,
+   :rank_niv3 5,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recNxqwhiwjIlYK3o"}
@@ -1405,6 +1685,8 @@
    :ID_record_from_NIV2 ["[2]-329"],
    :ID_record_from_NIV3 ["[3]-704"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recO0guAR8e0C1lF5"}
@@ -1415,6 +1697,8 @@
    :ID_record_from_NIV2 ["[2]-146"],
    :ID_record_from_NIV3 ["[3]-523"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recO5lFj6biNqaAtD"}
@@ -1425,6 +1709,8 @@
    :ID_record_from_NIV2 ["[2]-332"],
    :ID_record_from_NIV3 ["[3]-707"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 1,
+   :rank_niv3 4,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recO623pr5iX9j7wl"}
@@ -1435,6 +1721,8 @@
    :ID_record_from_NIV2 ["[2]-141"],
    :ID_record_from_NIV3 ["[1]-18"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recO6UtOdhWdjRTKO"}
@@ -1445,6 +1733,8 @@
    :ID_record_from_NIV2 ["[2]-154"],
    :ID_record_from_NIV3 ["[3]-531"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recO7aaSRES0qLHxH"}
@@ -1455,6 +1745,8 @@
    :ID_record_from_NIV2 ["[2]-185"],
    :ID_record_from_NIV3 ["[3]-562"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recO9M4hYPDjyUpTx"}
@@ -1465,6 +1757,8 @@
    :ID_record_from_NIV2 ["[2]-246"],
    :ID_record_from_NIV3 ["[3]-622"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recOZ4ZJuKW18dsFS"}
@@ -1475,6 +1769,8 @@
    :ID_record_from_NIV2 ["[2]-240"],
    :ID_record_from_NIV3 ["[3]-615"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 5,
+   :rank_niv3 1,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recOoIvrUHNSEYddK"}
@@ -1485,6 +1781,8 @@
    :ID_record_from_NIV2 ["[2]-363"],
    :ID_record_from_NIV3 ["[3]-738"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recOqnwPL2UPOnMRm"}
@@ -1495,6 +1793,8 @@
    :ID_record_from_NIV2 ["[2]-261"],
    :ID_record_from_NIV3 ["[3]-638"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recOqsRgWFMlHHRx4"}
@@ -1505,6 +1805,8 @@
    :ID_record_from_NIV2 ["[2]-90"],
    :ID_record_from_NIV3 ["[3]-429"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recPB4IO2Rl3zHhia"}
@@ -1515,6 +1817,8 @@
    :ID_record_from_NIV2 ["[2]-130"],
    :ID_record_from_NIV3 ["[3]-505"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recPToUOZnLrlnxnM"}
@@ -1525,6 +1829,8 @@
    :ID_record_from_NIV2 ["[2]-166"],
    :ID_record_from_NIV3 ["[3]-546"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 3,
+   :rank_niv3 6,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recPkQV27untlB62b"}
@@ -1535,6 +1841,8 @@
    :ID_record_from_NIV2 ["[2]-137"],
    :ID_record_from_NIV3 ["[3]-514"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recPorQ3bSNuB0C0D"}
@@ -1545,6 +1853,8 @@
    :ID_record_from_NIV2 ["[2]-161"],
    :ID_record_from_NIV3 ["[3]-514"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recPqXCrJmtF5iRRK"}
@@ -1555,6 +1865,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-836"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recPsHzNOyBDhYSCu"}
@@ -1565,6 +1877,8 @@
    :ID_record_from_NIV2 ["[2]-358"],
    :ID_record_from_NIV3 ["[3]-855"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 2,
+   :rank_niv3 5,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recPsjgK9dF16bW4E"}
@@ -1575,6 +1889,8 @@
    :ID_record_from_NIV2 ["[2]-82"],
    :ID_record_from_NIV3 ["[3]-463"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 1,
+   :rank_niv3 7,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recPtsIwQqfiQCNe8"}
@@ -1585,6 +1901,8 @@
    :ID_record_from_NIV2 ["[2]-231"],
    :ID_record_from_NIV3 ["[3]-609"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 1,
+   :rank_niv3 4,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recPyT2t0BPhFzSYn"}
@@ -1595,6 +1913,8 @@
    :ID_record_from_NIV2 ["[2]-269"],
    :ID_record_from_NIV3 ["[3]-644"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recQ75xD4gD7Mb0TP"}
@@ -1605,6 +1925,8 @@
    :ID_record_from_NIV2 ["[2]-54"],
    :ID_record_from_NIV3 ["[3]-430"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recQGNCHAQRRbxLbN"}
@@ -1615,6 +1937,8 @@
    :ID_record_from_NIV2 ["[2]-277"],
    :ID_record_from_NIV3 ["[3]-654"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 5,
+   :rank_niv3 8,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recQWHO87HnB88CWo"}
@@ -1625,6 +1949,8 @@
    :ID_record_from_NIV2 ["[2]-378"],
    :ID_record_from_NIV3 ["[3]-753"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recQbLwFffDv7tPwu"}
@@ -1635,6 +1961,8 @@
    :ID_record_from_NIV2 ["[2]-282"],
    :ID_record_from_NIV3 ["[3]-658"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recQjwf9qNq9XGtZS"}
@@ -1645,6 +1973,8 @@
    :ID_record_from_NIV2 ["[2]-141"],
    :ID_record_from_NIV3 ["[3]-520"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 1,
+   :rank_niv3 5,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recQll5ine1psEWrF"}
@@ -1655,6 +1985,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-473"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 7,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recQrAYEWWDhQytII"}
@@ -1665,6 +1997,8 @@
    :ID_record_from_NIV2 ["[2]-166"],
    :ID_record_from_NIV3 ["[3]-544"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recR9Yznr2XrA0Sx9"}
@@ -1675,6 +2009,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-691"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 11,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recRN7CKH3EEipiKc"}
@@ -1685,6 +2021,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-798"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 5,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recRdDnarU352xUoq"}
@@ -1695,6 +2033,8 @@
    :ID_record_from_NIV2 ["[2]-246"],
    :ID_record_from_NIV3 ["[3]-621"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recRjpxMoESND2Nys"}
@@ -1705,6 +2045,8 @@
    :ID_record_from_NIV2 ["[2]-388"],
    :ID_record_from_NIV3 ["[3]-763"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 5,
+   :rank_niv3 1,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recS5zih9KMcz0YKH"}
@@ -1715,6 +2057,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[1]-8"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 11,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recS75iJAsrwCrW11"}
@@ -1725,6 +2069,8 @@
    :ID_record_from_NIV2 ["[2]-339"],
    :ID_record_from_NIV3 ["[3]-842"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recS8k4Wdm3WfP9df"}
@@ -1735,6 +2081,8 @@
    :ID_record_from_NIV2 ["[2]-793"],
    :ID_record_from_NIV3 ["[3]-770"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 1,
+   :rank_niv3 4,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recSTeF1MiJHm7zkc"}
@@ -1745,6 +2093,8 @@
    :ID_record_from_NIV2 ["[2]-336"],
    :ID_record_from_NIV3 ["[3]-712"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recSd2JMTCsJjR4PH"}
@@ -1755,6 +2105,8 @@
    :ID_record_from_NIV2 ["[2]-166"],
    :ID_record_from_NIV3 ["[3]-547"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 3,
+   :rank_niv3 7,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recSgSA1ZC4WYfu9u"}
@@ -1765,6 +2117,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-583"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 15,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recSkWzXZsqd1u52z"}
@@ -1775,6 +2129,8 @@
    :ID_record_from_NIV2 ["[2]-41"],
    :ID_record_from_NIV3 ["[3]-416"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-04-10T15:34:47.000Z",
   :id "recT280DwW9qFxMwA"}
@@ -1785,6 +2141,8 @@
    :ID_record_from_NIV2 ["[2]-321"],
    :ID_record_from_NIV3 ["[3]-696"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 9,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recT6yWyboMxEgtTk"}
@@ -1795,6 +2153,8 @@
    :ID_record_from_NIV2 ["[2]-369"],
    :ID_record_from_NIV3 ["[3]-855"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recT7owDjTbp462Ss"}
@@ -1805,6 +2165,8 @@
    :ID_record_from_NIV2 ["[2]-339"],
    :ID_record_from_NIV3 ["[3]-715"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recTMBE54dEmsZ6Gd"}
@@ -1815,6 +2177,8 @@
    :ID_record_from_NIV2 ["[2]-272"],
    :ID_record_from_NIV3 ["[3]-829"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 5,
+   :rank_niv3 4,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recTja08mtKV0AD26"}
@@ -1825,6 +2189,8 @@
    :ID_record_from_NIV2 ["[2]-133"],
    :ID_record_from_NIV3 ["[3]-510"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recTuvswvWXXxLjFv"}
@@ -1835,6 +2201,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-584"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 16,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recTw71OwLnLjGc19"}
@@ -1845,6 +2213,8 @@
    :ID_record_from_NIV2 ["[2]-185"],
    :ID_record_from_NIV3 ["[3]-561"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recUQphznX3YP0OHE"}
@@ -1855,6 +2225,8 @@
    :ID_record_from_NIV2 ["[2]-258"],
    :ID_record_from_NIV3 ["[3]-821"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 6,
+   :rank_niv3 5,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recUclJJbHO3hTZlO"}
@@ -1865,6 +2237,8 @@
    :ID_record_from_NIV2 ["[2]-163"],
    :ID_record_from_NIV3 ["[3]-539"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recUyQ0URWUqPYdCa"}
@@ -1875,6 +2249,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-471"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 5,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recV1N3NhTr3bjZjq"}
@@ -1885,6 +2261,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-488"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 10,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recVSrWvA4lG4IGz6"}
@@ -1895,6 +2273,8 @@
    :ID_record_from_NIV2 ["[2]-350"],
    :ID_record_from_NIV3 ["[3]-726"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 5,
+   :rank_niv3 2,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recVV46cBMjVGrO9J"}
@@ -1905,6 +2285,8 @@
    :ID_record_from_NIV2 ["[2]-137"],
    :ID_record_from_NIV3 ["[3]-515"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 2,
+   :rank_niv3 4,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recVfFy8SHugJ6sCG"}
@@ -1915,6 +2297,8 @@
    :ID_record_from_NIV2 ["[2]-224"],
    :ID_record_from_NIV3 ["[3]-806"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recVgdUij4N0Zaa9E"}
@@ -1925,6 +2309,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-592"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 24,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recVwKvnLDQhzENBo"}
@@ -1935,6 +2321,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-673"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 9,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recVzhezSRHr6Y93T"}
@@ -1945,6 +2333,8 @@
    :ID_record_from_NIV2 ["[2]-355"],
    :ID_record_from_NIV3 ["[3]-730"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recW0DhipKUk1BYOz"}
@@ -1955,6 +2345,8 @@
    :ID_record_from_NIV2 ["[2]-253"],
    :ID_record_from_NIV3 ["[3]-630"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 5,
+   :rank_niv3 3,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recW3NScU6uXcbzMk"}
@@ -1965,6 +2357,8 @@
    :ID_record_from_NIV2 ["[2]-264"],
    :ID_record_from_NIV3 ["[3]-825"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 2,
+   :rank_niv3 5,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recW79NwMjTR7IjQT"}
@@ -1975,6 +2369,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-470"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recWPubh84WMKbFYc"}
@@ -1985,6 +2381,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-684"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 4,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recWbXoAl4KboMGCR"}
@@ -1995,6 +2393,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-687"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 7,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recWkmNrmVSpi605P"}
@@ -2005,6 +2405,8 @@
    :ID_record_from_NIV2 ["[2]-396"],
    :ID_record_from_NIV3 ["[3]-772"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recWmyK0aZ8szN0Y2"}
@@ -2015,6 +2417,8 @@
    :ID_record_from_NIV2 ["[2]-363"],
    :ID_record_from_NIV3 ["[3]-858"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recX1ttD4Y7iUzaWM"}
@@ -2025,6 +2429,8 @@
    :ID_record_from_NIV2 ["[2]-382"],
    :ID_record_from_NIV3 ["[3]-757"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recX5vfTcNClfFdDb"}
@@ -2035,16 +2441,20 @@
    :ID_record_from_NIV2 ["[2]-323"],
    :ID_record_from_NIV3 ["[3]-699"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 10,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recXFDc5NYKVfC5Ql"}
  {:fields
-  {:NIV2 ["rec30pggMJP2dKC7c"],
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
    :Unique_ID 138,
    :NIV3 ["recU428lLX9x6veKs"],
-   :ID_record_from_NIV2 ["[2]-178"],
+   :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-553"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 4,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recXGMnBMS445IFcF"}
@@ -2055,6 +2465,8 @@
    :ID_record_from_NIV2 ["[2]-323"],
    :ID_record_from_NIV3 ["[3]-700"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 10,
+   :rank_niv3 3,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recXki51YPCKpNHg9"}
@@ -2065,6 +2477,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-586"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 18,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recXxrJlQcLprIWwm"}
@@ -2075,16 +2489,20 @@
    :ID_record_from_NIV2 ["[2]-388"],
    :ID_record_from_NIV3 ["[3]-764"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 5,
+   :rank_niv3 2,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recXyoksLHotGu6kE"}
  {:fields
-  {:NIV2 ["rectBpuARg9Cc8qW1"],
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
    :Unique_ID 142,
    :NIV3 ["recU0kc6v9cRNJbGh"],
-   :ID_record_from_NIV2 ["[2]-180"],
+   :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-557"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 8,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recY2p6EavlQ8Zj2C"}
@@ -2095,6 +2513,8 @@
    :ID_record_from_NIV2 ["[2]-378"],
    :ID_record_from_NIV3 ["[3]-755"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recY9A5zJQaCB9085"}
@@ -2105,6 +2525,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-481"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 3,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recY9ieYbFqPyk5eY"}
@@ -2115,6 +2537,8 @@
    :ID_record_from_NIV2 ["[2]-358"],
    :ID_record_from_NIV3 ["[3]-847"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recYTu4nQZBv7hGxV"}
@@ -2125,6 +2549,8 @@
    :ID_record_from_NIV2 ["[2]-350"],
    :ID_record_from_NIV3 ["[3]-725"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 5,
+   :rank_niv3 1,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recYWZuJDiDbIro1j"}
@@ -2135,6 +2561,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-449"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 7,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recYtHPi4zaNwdbMw"}
@@ -2145,6 +2573,8 @@
    :ID_record_from_NIV2 ["[2]-271"],
    :ID_record_from_NIV3 ["[3]-646"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 6,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recZ3Tt3cQXye4csK"}
@@ -2155,6 +2585,8 @@
    :ID_record_from_NIV2 ["[2]-240"],
    :ID_record_from_NIV3 ["[3]-807"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 5,
+   :rank_niv3 2,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recZ8NAXXBkflnx7J"}
@@ -2165,6 +2597,8 @@
    :ID_record_from_NIV2 ["[2]-251"],
    :ID_record_from_NIV3 ["[3]-813"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recZJLGRzx5FpO5XV"}
@@ -2175,6 +2609,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-675"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 11,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recZLrKIkRKrhpJjA"}
@@ -2185,6 +2621,8 @@
    :ID_record_from_NIV2 ["[2]-150"],
    :ID_record_from_NIV3 ["[3]-526"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recZb0X4OgYaxuFI4"}
@@ -2195,6 +2633,8 @@
    :ID_record_from_NIV2 ["[2]-133"],
    :ID_record_from_NIV3 ["[3]-511"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recZbAp3hWqq7nI3S"}
@@ -2205,6 +2645,8 @@
    :ID_record_from_NIV2 ["[2]-231"],
    :ID_record_from_NIV3 ["[3]-606"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:35.000Z",
   :id "recZotc5UesWVlD89"}
@@ -2215,6 +2657,8 @@
    :ID_record_from_NIV2 ["[2]-282"],
    :ID_record_from_NIV3 ["[3]-636"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reca2dUZJREJq46ow"}
@@ -2225,6 +2669,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-489"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 11,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recaO4u1pF6Drb2EN"}
@@ -2235,6 +2681,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-532"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recacHkfOd6NsoYyf"}
@@ -2245,6 +2693,8 @@
    :ID_record_from_NIV2 ["[2]-272"],
    :ID_record_from_NIV3 ["[3]-648"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 5,
+   :rank_niv3 2,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recae8NQuALHoBlaW"}
@@ -2255,6 +2705,8 @@
    :ID_record_from_NIV2 ["[2]-44"],
    :ID_record_from_NIV3 ["[3]-420"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recaeypSkKMIHIob7"}
@@ -2265,6 +2717,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-431"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 1,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recahv9rnbcPCseis"}
@@ -2275,6 +2729,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-498"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 4,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recajKoWhIuuzvujc"}
@@ -2285,6 +2741,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-446"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 4,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recatQwsi4hpOOBvN"}
@@ -2295,6 +2753,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-477"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 12,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recbC2Go1ywf4SOqj"}
@@ -2305,6 +2765,8 @@
    :ID_record_from_NIV2 ["[2]-163"],
    :ID_record_from_NIV3 ["[3]-538"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recbDoPNhSAOLcwHp"}
@@ -2315,6 +2777,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-432"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 2,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recbJq9ltFl4Rp7W4"}
@@ -2325,6 +2789,8 @@
    :ID_record_from_NIV2 ["[2]-256"],
    :ID_record_from_NIV3 ["[3]-631"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 6,
+   :rank_niv3 1,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recbMGD6wmMTbV9Hu"}
@@ -2335,6 +2801,8 @@
    :ID_record_from_NIV2 ["[2]-277"],
    :ID_record_from_NIV3 ["[3]-652"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 5,
+   :rank_niv3 6,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recbN2nbUZQ2Oy5n6"}
@@ -2345,6 +2813,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-483"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 5,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recbPE01ANLn6xQTJ"}
@@ -2355,6 +2825,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-433"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 3,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recbczw4MNoe6admK"}
@@ -2365,6 +2837,8 @@
    :ID_record_from_NIV2 ["[2]-793"],
    :ID_record_from_NIV3 ["[3]-768"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recbiZMvTJQEXHFhi"}
@@ -2375,6 +2849,8 @@
    :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-550"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recc46dndldjbeuOn"}
@@ -2385,6 +2861,8 @@
    :ID_record_from_NIV2 ["[2]-81"],
    :ID_record_from_NIV3 ["[3]-456"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recc4iAIY0H8ArDxZ"}
@@ -2395,6 +2873,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-499"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 5,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recc8Z4iAfNDcHMA8"}
@@ -2405,6 +2885,8 @@
    :ID_record_from_NIV2 ["[2]-407"],
    :ID_record_from_NIV3 ["[3]-784"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 6,
+   :rank_niv3 3,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reccI05iAEEhMlnvs"}
@@ -2415,6 +2897,8 @@
    :ID_record_from_NIV2 ["[2]-396"],
    :ID_record_from_NIV3 ["[3]-775"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 2,
+   :rank_niv3 5,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recccJQhRzTsWrruo"}
@@ -2425,16 +2909,20 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-671"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 7,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reccnKb3HNH3ON3hd"}
  {:fields
-  {:NIV2 ["rectBpuARg9Cc8qW1"],
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
    :Unique_ID 140,
    :NIV3 ["recCfvH75Rw788E8u"],
-   :ID_record_from_NIV2 ["[2]-180"],
+   :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-555"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 6,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recd1SnV4r8JLwcoB"}
@@ -2445,6 +2933,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-833"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recdDi75EfL43wTfo"}
@@ -2455,6 +2945,8 @@
    :ID_record_from_NIV2 ["[2]-372"],
    :ID_record_from_NIV3 ["[3]-751"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 2,
+   :rank_niv3 5,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recdEEb86jtwqJICG"}
@@ -2465,6 +2957,8 @@
    :ID_record_from_NIV2 ["[2]-382"],
    :ID_record_from_NIV3 ["[3]-759"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 4,
+   :rank_niv3 3,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recdZ0nwzl8eX2yRl"}
@@ -2475,6 +2969,8 @@
    :ID_record_from_NIV2 ["[2]-355"],
    :ID_record_from_NIV3 ["[3]-732"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recdatr9ax82fQr8G"}
@@ -2485,6 +2981,8 @@
    :ID_record_from_NIV2 ["[2]-54"],
    :ID_record_from_NIV3 ["[3]-429"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "rece4yLR0gAR0Z0y9"}
@@ -2495,6 +2993,8 @@
    :ID_record_from_NIV2 ["[2]-287"],
    :ID_record_from_NIV3 ["[3]-663"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rece6QEhoDl3TSdOr"}
@@ -2505,6 +3005,8 @@
    :ID_record_from_NIV2 ["[2]-323"],
    :ID_record_from_NIV3 ["[3]-698"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 10,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "receIW0UKXfqyFLZn"}
@@ -2515,6 +3017,8 @@
    :ID_record_from_NIV2 ["[2]-82"],
    :ID_record_from_NIV3 ["[3]-458"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "receK80KXBEDWLvPv"}
@@ -2525,6 +3029,8 @@
    :ID_record_from_NIV2 ["[2]-246"],
    :ID_record_from_NIV3 ["[3]-623"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "receTzw389gGRMqG4"}
@@ -2535,6 +3041,8 @@
    :ID_record_from_NIV2 ["[2]-82"],
    :ID_record_from_NIV3 ["[3]-457"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recemcYeLUpciTcUp"}
@@ -2545,6 +3053,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-480"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recevHuUVrIq8q2rQ"}
@@ -2555,6 +3065,8 @@
    :ID_record_from_NIV2 ["[2]-410"],
    :ID_record_from_NIV3 ["[3]-785"],
    :ID_record_from_NIV1 ["[1]-40"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recInUreqrzUowcnc"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "receypZ6ACGCjcKvN"}
@@ -2565,6 +3077,8 @@
    :ID_record_from_NIV2 ["[2]-339"],
    :ID_record_from_NIV3 ["[3]-717"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recf2c4w1dzhulPlt"}
@@ -2575,6 +3089,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-801"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 21,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recfIuJGVIE1hGU3d"}
@@ -2585,6 +3101,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-800"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 13,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recfOWJJQbkiELCCy"}
@@ -2595,6 +3113,8 @@
    :ID_record_from_NIV2 ["[2]-329"],
    :ID_record_from_NIV3 ["[3]-706"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recfaAlakQVniQG4S"}
@@ -2605,6 +3125,8 @@
    :ID_record_from_NIV2 ["[2]-414"],
    :ID_record_from_NIV3 ["[3]-877"],
    :ID_record_from_NIV1 ["[1]-40"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recInUreqrzUowcnc"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recfmlKT5cUMH42vB"}
@@ -2615,6 +3137,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-469"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recgbRqCMi1r8qGBf"}
@@ -2625,6 +3149,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-485"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 7,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recgeRUgDTGz2lA8c"}
@@ -2635,6 +3161,8 @@
    :ID_record_from_NIV2 ["[2]-141"],
    :ID_record_from_NIV3 ["[3]-519"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 1,
+   :rank_niv3 4,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recgeankJkO3AIDQu"}
@@ -2645,19 +3173,11 @@
    :ID_record_from_NIV2 ["[2]-166"],
    :ID_record_from_NIV3 ["[3]-542"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recghdjdBQaFJDFpd"}
- {:fields
-  {:NIV2 ["recxdyYRzZWPd2YFf"],
-   :Unique_ID 374,
-   :NIV3 ["reclDNVRHIUaAFeYX"],
-   :ID_record_from_NIV2 ["[2]-414"],
-   :ID_record_from_NIV3 ["[3]-789"],
-   :ID_record_from_NIV1 ["[1]-40"],
-   :NIV1 ["recInUreqrzUowcnc"]},
-  :createdTime "2025-05-01T07:48:42.000Z",
-  :id "recgmshAWol8C8179"}
  {:fields
   {:NIV2 ["recc2CLuRPMz7GHUE"],
    :Unique_ID 126,
@@ -2665,6 +3185,8 @@
    :ID_record_from_NIV2 ["[2]-166"],
    :ID_record_from_NIV3 ["[3]-796"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recgtCngXS4Etf3jK"}
@@ -2675,6 +3197,8 @@
    :ID_record_from_NIV2 ["[2]-159"],
    :ID_record_from_NIV3 ["[3]-535"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rechLzmLrIVly7FBk"}
@@ -2685,6 +3209,8 @@
    :ID_record_from_NIV2 ["[2]-133"],
    :ID_record_from_NIV3 ["[3]-508"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rechNWP4qfMCRRDiK"}
@@ -2695,6 +3221,8 @@
    :ID_record_from_NIV2 ["[2]-282"],
    :ID_record_from_NIV3 ["[3]-660"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 2,
+   :rank_niv3 4,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rechXT90zkbQuXkG3"}
@@ -2705,6 +3233,8 @@
    :ID_record_from_NIV2 ["[2]-185"],
    :ID_record_from_NIV3 ["[3]-563"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 1,
+   :rank_niv3 4,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rechbsQLQ4dFjgqZ4"}
@@ -2715,6 +3245,8 @@
    :ID_record_from_NIV2 ["[2]-358"],
    :ID_record_from_NIV3 ["[3]-733"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reci2RJne3O6xH353"}
@@ -2725,6 +3257,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-576"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 8,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "reciFsIE9iCtU2jq8"}
@@ -2735,6 +3269,8 @@
    :ID_record_from_NIV2 ["[2]-332"],
    :ID_record_from_NIV3 ["[3]-710"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 1,
+   :rank_niv3 7,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reciLRnE6Zj4WGuil"}
@@ -2745,6 +3281,8 @@
    :ID_record_from_NIV2 ["[2]-137"],
    :ID_record_from_NIV3 ["[3]-512"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "reciOKSnRtXNaCVJ8"}
@@ -2755,6 +3293,8 @@
    :ID_record_from_NIV2 ["[2]-224"],
    :ID_record_from_NIV3 ["[3]-601"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 4,
+   :rank_niv3 3,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "reciVNYlsRxVuRCWX"}
@@ -2765,6 +3305,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-434"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 4,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "reciVVLkxAQjZXbtx"}
@@ -2775,6 +3317,8 @@
    :ID_record_from_NIV2 ["[2]-363"],
    :ID_record_from_NIV3 ["[3]-740"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recid1I6rW4JxZJ8D"}
@@ -2785,6 +3329,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-797"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recifUuCl57Pzrrhr"}
@@ -2795,6 +3341,8 @@
    :ID_record_from_NIV2 ["[2]-407"],
    :ID_record_from_NIV3 ["[3]-783"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 6,
+   :rank_niv3 2,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recikc1D7gJW8VmJs"}
@@ -2805,6 +3353,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-443"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 1,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recj7JDb0eTkWIIKD"}
@@ -2815,6 +3365,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-453"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 11,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recjJeYz2gPvv4M5n"}
@@ -2825,6 +3377,8 @@
    :ID_record_from_NIV2 ["[2]-231"],
    :ID_record_from_NIV3 ["[3]-607"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recjYByXbglUNK3hu"}
@@ -2835,6 +3389,8 @@
    :ID_record_from_NIV2 ["[2]-350"],
    :ID_record_from_NIV3 ["[3]-843"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 5,
+   :rank_niv3 3,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recjeiHG9LABV3Nlf"}
@@ -2845,6 +3401,8 @@
    :ID_record_from_NIV2 ["[2]-406"],
    :ID_record_from_NIV3 ["[3]-873"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 5,
+   :rank_niv3 1,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recjpRdNDkoycPJ7U"}
@@ -2855,6 +3413,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-497"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recjznsZfkQa2bkHk"}
@@ -2865,6 +3425,8 @@
    :ID_record_from_NIV2 ["[2]-264"],
    :ID_record_from_NIV3 ["[3]-642"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 2,
+   :rank_niv3 4,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reck4YreIW5xP6BXX"}
@@ -2875,6 +3437,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-474"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 8,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "reckRTIU1ZuIvU1Yf"}
@@ -2885,6 +3449,8 @@
    :ID_record_from_NIV2 ["[2]-272"],
    :ID_record_from_NIV3 ["[3]-651"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 5,
+   :rank_niv3 5,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reckVPNVhIwYUTStn"}
@@ -2895,6 +3461,8 @@
    :ID_record_from_NIV2 ["[2]-336"],
    :ID_record_from_NIV3 ["[3]-711"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reckaO0xjuwjcSQpa"}
@@ -2905,6 +3473,8 @@
    :ID_record_from_NIV2 ["[2]-246"],
    :ID_record_from_NIV3 ["[3]-624"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reclHV8KAI9JUdMPU"}
@@ -2915,6 +3485,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-670"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 6,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reclKNdmAQuYVKueC"}
@@ -2925,6 +3497,8 @@
    :ID_record_from_NIV2 ["[2]-243"],
    :ID_record_from_NIV3 ["[3]-619"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reclwlZxIoxrVEySe"}
@@ -2935,6 +3509,8 @@
    :ID_record_from_NIV2 ["[2]-372"],
    :ID_record_from_NIV3 ["[3]-752"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 2,
+   :rank_niv3 6,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recmDw73QE5mKgc7L"}
@@ -2945,6 +3521,8 @@
    :ID_record_from_NIV2 ["[2]-154"],
    :ID_record_from_NIV3 ["[3]-529"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recmOdjo3NwEiEWCa"}
@@ -2955,6 +3533,8 @@
    :ID_record_from_NIV2 ["[2]-793"],
    :ID_record_from_NIV3 ["[3]-769"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recmRrbOmqCnL8SP3"}
@@ -2965,6 +3545,8 @@
    :ID_record_from_NIV2 ["[2]-82"],
    :ID_record_from_NIV3 ["[3]-462"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 1,
+   :rank_niv3 6,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recmTcl3IMFdwCpar"}
@@ -2975,6 +3557,8 @@
    :ID_record_from_NIV2 ["[2]-166"],
    :ID_record_from_NIV3 ["[3]-545"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 3,
+   :rank_niv3 5,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recml6lC249kov3Ec"}
@@ -2985,6 +3569,8 @@
    :ID_record_from_NIV2 ["[2]-368"],
    :ID_record_from_NIV3 ["[3]-743"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recmncyPSKB4SFEQc"}
@@ -2995,6 +3581,8 @@
    :ID_record_from_NIV2 ["[2]-146"],
    :ID_record_from_NIV3 ["[3]-521"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recmnzrqgvQ8DMqtl"}
@@ -3005,6 +3593,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-472"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 6,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recmpzjBCjmW164N1"}
@@ -3015,16 +3605,20 @@
    :ID_record_from_NIV2 ["[2]-161"],
    :ID_record_from_NIV3 ["[3]-537"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recmyMAjufydVdxnq"}
  {:fields
-  {:NIV2 ["recYt9QKvLJHg9htr"],
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
    :Unique_ID 144,
    :NIV3 ["recuz9h5CMdxtK65U"],
-   :ID_record_from_NIV2 ["[2]-183"],
+   :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-559"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 10,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recn5IxGUrRz3qrwf"}
@@ -3035,6 +3629,8 @@
    :ID_record_from_NIV2 ["[2]-251"],
    :ID_record_from_NIV3 ["[3]-627"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recnRT9ZkC3yWHseR"}
@@ -3045,6 +3641,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-447"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 5,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recnSR6ng7YcCvBse"}
@@ -3055,6 +3653,8 @@
    :ID_record_from_NIV2 ["[2]-272"],
    :ID_record_from_NIV3 ["[3]-649"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 5,
+   :rank_niv3 3,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recnpuDgBtzRAZC6L"}
@@ -3065,6 +3665,8 @@
    :ID_record_from_NIV2 ["[2]-301"],
    :ID_record_from_NIV3 ["[3]-676"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 5,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recntIZEpBDWZKwZ1"}
@@ -3075,6 +3677,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-572"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recnuwstMmF1ZVrXO"}
@@ -3085,6 +3689,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-478"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 13,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "reco0tFaShyKpg0Pf"}
@@ -3095,6 +3701,8 @@
    :ID_record_from_NIV2 ["[2]-345"],
    :ID_record_from_NIV3 ["[3]-720"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reco2PoxJaigYTJHu"}
@@ -3105,6 +3713,8 @@
    :ID_record_from_NIV2 ["[2]-402"],
    :ID_record_from_NIV3 ["[3]-777"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recoEpcfUxC7VrDt8"}
@@ -3115,6 +3725,8 @@
    :ID_record_from_NIV2 ["[2]-271"],
    :ID_record_from_NIV3 ["[3]-680"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 6,
+   :rank_niv3 3,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recodEC5RYxwmH2vC"}
@@ -3125,6 +3737,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-445"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 3,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recojgYq9qbWkXIWc"}
@@ -3135,6 +3749,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-436"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 6,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recow51P4tiujVVDt"}
@@ -3145,6 +3761,8 @@
    :ID_record_from_NIV2 ["[2]-141"],
    :ID_record_from_NIV3 ["[3]-518"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recpHztAhK2hbeG8B"}
@@ -3155,6 +3773,8 @@
    :ID_record_from_NIV2 ["[2]-372"],
    :ID_record_from_NIV3 ["[3]-864"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recpq8t8jhNvGE2LV"}
@@ -3165,6 +3785,8 @@
    :ID_record_from_NIV2 ["[2]-317"],
    :ID_record_from_NIV3 ["[3]-692"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 8,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recq6VNtz9mdUOISE"}
@@ -3175,6 +3797,8 @@
    :ID_record_from_NIV2 ["[2]-82"],
    :ID_record_from_NIV3 ["[3]-460"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 1,
+   :rank_niv3 4,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recqGpPx16BEs1LTB"}
@@ -3185,6 +3809,8 @@
    :ID_record_from_NIV2 ["[2]-56"],
    :ID_record_from_NIV3 ["[3]-442"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 5,
+   :rank_niv3 12,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recqQw40vhOWPpwQ7"}
@@ -3195,6 +3821,8 @@
    :ID_record_from_NIV2 ["[2]-47"],
    :ID_record_from_NIV3 ["[3]-422"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recqQwdtr3BlU87Oq"}
@@ -3205,6 +3833,8 @@
    :ID_record_from_NIV2 ["[2]-166"],
    :ID_record_from_NIV3 ["[3]-543"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recqUEQHQUY4MZO2M"}
@@ -3215,6 +3845,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-805"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 30,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recqirWbwOlni8Ii9"}
@@ -3225,6 +3857,8 @@
    :ID_record_from_NIV2 ["[2]-369"],
    :ID_record_from_NIV3 ["[3]-745"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recqlyrbqMFyiFQYI"}
@@ -3235,6 +3869,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-588"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 20,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recqusuinEy2DvKPM"}
@@ -3245,6 +3881,8 @@
    :ID_record_from_NIV2 ["[2]-154"],
    :ID_record_from_NIV3 ["[3]-530"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recr2pIfxYJYCPS6u"}
@@ -3255,6 +3893,8 @@
    :ID_record_from_NIV2 ["[2]-137"],
    :ID_record_from_NIV3 ["[3]-513"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recrPmM6wS0yrFr6H"}
@@ -3265,6 +3905,8 @@
    :ID_record_from_NIV2 ["[2]-355"],
    :ID_record_from_NIV3 ["[3]-731"],
    :ID_record_from_NIV1 ["[1]-36"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recDvfalr7ozyfX1W"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recra4CHQEyNat6gY"}
@@ -3275,6 +3917,8 @@
    :ID_record_from_NIV2 ["[2]-282"],
    :ID_record_from_NIV3 ["[3]-661"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 2,
+   :rank_niv3 5,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recrdyGoPgAderyG3"}
@@ -3285,6 +3929,8 @@
    :ID_record_from_NIV2 ["[2]-410"],
    :ID_record_from_NIV3 ["[3]-787"],
    :ID_record_from_NIV1 ["[1]-40"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["recInUreqrzUowcnc"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recrqwmS0EaeS1Way"}
@@ -3295,6 +3941,8 @@
    :ID_record_from_NIV2 ["[2]-141"],
    :ID_record_from_NIV3 ["[3]-517"],
    :ID_record_from_NIV1 ["[1]-10"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["rechGf2dN6KDIGWvH"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recs86m277nLVh3fu"}
@@ -3305,6 +3953,8 @@
    :ID_record_from_NIV2 ["[2]-287"],
    :ID_record_from_NIV3 ["[3]-664"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 3,
+   :rank_niv3 3,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recs8DxEsPrct5Tuu"}
@@ -3315,6 +3965,8 @@
    :ID_record_from_NIV2 ["[2]-243"],
    :ID_record_from_NIV3 ["[3]-620"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 2,
+   :rank_niv3 3,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recs9JijPeEoLUTmD"}
@@ -3325,6 +3977,8 @@
    :ID_record_from_NIV2 ["[2]-345"],
    :ID_record_from_NIV3 ["[3]-723"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 4,
+   :rank_niv3 4,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recsIwb71QFryNMR8"}
@@ -3335,6 +3989,8 @@
    :ID_record_from_NIV2 ["[2]-185"],
    :ID_record_from_NIV3 ["[3]-564"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 1,
+   :rank_niv3 5,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recsMcCGSZBHnsEfQ"}
@@ -3345,6 +4001,8 @@
    :ID_record_from_NIV2 ["[2]-44"],
    :ID_record_from_NIV3 ["[3]-419"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 2,
+   :rank_niv3 1,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recshntEEylFKobVn"}
@@ -3355,6 +4013,8 @@
    :ID_record_from_NIV2 ["[2]-290"],
    :ID_record_from_NIV3 ["[3]-672"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 4,
+   :rank_niv3 8,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recsvxGD88A3hNplY"}
@@ -3365,6 +4025,8 @@
    :ID_record_from_NIV2 ["[2]-339"],
    :ID_record_from_NIV3 ["[3]-719"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 3,
+   :rank_niv3 6,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rect0WN20FoxrmTrQ"}
@@ -3375,6 +4037,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-454"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 12,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "rect4V3NdnlDcHwLf"}
@@ -3385,6 +4049,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-468"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 2,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rect9Ft7Gto0saFRk"}
@@ -3395,6 +4061,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-486"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 8,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rectFmCmB1iRJhjJA"}
@@ -3405,6 +4073,8 @@
    :ID_record_from_NIV2 ["[2]-191"],
    :ID_record_from_NIV3 ["[3]-568"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rectbOWswMrHnSDB6"}
@@ -3415,6 +4085,8 @@
    :ID_record_from_NIV2 ["[2]-130"],
    :ID_record_from_NIV3 ["[3]-506"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 2,
+   :rank_niv3 2,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rectblIPhjzNMSiSu"}
@@ -3425,16 +4097,20 @@
    :ID_record_from_NIV2 ["[2]-159"],
    :ID_record_from_NIV3 ["[3]-534"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recteWjJgl88WXFQO"}
  {:fields
-  {:NIV2 ["recNL6CgcABg5EwiK"],
+  {:NIV2 ["reci8Dmdk3f2KYkY3"],
    :Unique_ID 141,
    :NIV3 ["recU5uMVgJiS3WpfU"],
-   :ID_record_from_NIV2 ["[2]-181"],
+   :ID_record_from_NIV2 ["[2]-175"],
    :ID_record_from_NIV3 ["[3]-556"],
    :ID_record_from_NIV1 ["[1]-5"],
+   :rank_niv2 4,
+   :rank_niv3 7,
    :NIV1 ["recqeTXJkRBI2g1SO"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rectfcDjaL9dz32zl"}
@@ -3445,6 +4121,8 @@
    :ID_record_from_NIV2 ["[2]-345"],
    :ID_record_from_NIV3 ["[3]-721"],
    :ID_record_from_NIV1 ["[1]-35"],
+   :rank_niv2 4,
+   :rank_niv3 2,
    :NIV1 ["recXPxFKQKHGIwX5r"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rectmTclNaIFbyHEw"}
@@ -3455,6 +4133,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-681"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 1,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "rectogypVwfiKrgv3"}
@@ -3465,6 +4145,8 @@
    :ID_record_from_NIV2 ["[2]-92"],
    :ID_record_from_NIV3 ["[3]-476"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 3,
+   :rank_niv3 11,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "rectvsBeUwX01E7LP"}
@@ -3475,6 +4157,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-582"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 14,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recu61f8wxz5p7Kg7"}
@@ -3485,6 +4169,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-804"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 28,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recux0TcEsErkPS6F"}
@@ -3495,6 +4181,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-500"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 6,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recv6WBZX4RwuYbY1"}
@@ -3505,6 +4193,8 @@
    :ID_record_from_NIV2 ["[2]-306"],
    :ID_record_from_NIV3 ["[3]-685"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 7,
+   :rank_niv3 5,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recv90uqAjbP6osE6"}
@@ -3515,6 +4205,8 @@
    :ID_record_from_NIV2 ["[2]-388"],
    :ID_record_from_NIV3 ["[3]-766"],
    :ID_record_from_NIV1 ["[1]-38"],
+   :rank_niv2 5,
+   :rank_niv3 4,
    :NIV1 ["recj79RERCaFlueOM"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recvYy6R4lHI5YQgr"}
@@ -3525,6 +4217,8 @@
    :ID_record_from_NIV2 ["[2]-194"],
    :ID_record_from_NIV3 ["[3]-593"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 3,
+   :rank_niv3 25,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recvhwPgpFfl3nB1k"}
@@ -3535,6 +4229,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-493"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 15,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recvtSsg54Y9kC7f5"}
@@ -3545,6 +4241,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-503"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 9,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recwuQc4m2a2fUEvs"}
@@ -3555,6 +4253,8 @@
    :ID_record_from_NIV2 ["[2]-150"],
    :ID_record_from_NIV3 ["[3]-528"],
    :ID_record_from_NIV1 ["[1]-19"],
+   :rank_niv2 2,
+   :rank_niv3 4,
    :NIV1 ["recxAoyP3MyMMRZib"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recxRJdsK3KfarmaS"}
@@ -3565,6 +4265,8 @@
    :ID_record_from_NIV2 ["[2]-405"],
    :ID_record_from_NIV3 ["[3]-780"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 4,
+   :rank_niv3 1,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recxRjDyE8Ud8MtEB"}
@@ -3575,6 +4277,8 @@
    :ID_record_from_NIV2 ["[2]-256"],
    :ID_record_from_NIV3 ["[3]-632"],
    :ID_record_from_NIV1 ["[1]-32"],
+   :rank_niv2 6,
+   :rank_niv3 2,
    :NIV1 ["recjDPOIW8OmWjAk1"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recxh4aLgnO1MHHEt"}
@@ -3585,6 +4289,8 @@
    :ID_record_from_NIV2 ["[2]-280"],
    :ID_record_from_NIV3 ["[3]-656"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recxrBBi9uASN774Z"}
@@ -3595,6 +4301,8 @@
    :ID_record_from_NIV2 ["[2]-104"],
    :ID_record_from_NIV3 ["[3]-487"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 4,
+   :rank_niv3 9,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recxrLNG3Xd8Tg32n"}
@@ -3605,6 +4313,8 @@
    :ID_record_from_NIV2 ["[2]-236"],
    :ID_record_from_NIV3 ["[3]-611"],
    :ID_record_from_NIV1 ["[1]-31"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["rec6swjVPgzMej4u8"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recyG9Miv19MDSLpq"}
@@ -3615,6 +4325,8 @@
    :ID_record_from_NIV2 ["[2]-228"],
    :ID_record_from_NIV3 ["[3]-603"],
    :ID_record_from_NIV1 ["[1]-22"],
+   :rank_niv2 5,
+   :rank_niv3 1,
    :NIV1 ["recUkSc1Y1ELAJneL"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "recyTRK1w51FDnxNk"}
@@ -3625,6 +4337,8 @@
    :ID_record_from_NIV2 ["[2]-321"],
    :ID_record_from_NIV3 ["[3]-697"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 9,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recyUwix8DJ2kDxHC"}
@@ -3635,6 +4349,8 @@
    :ID_record_from_NIV2 ["[2]-794"],
    :ID_record_from_NIV3 ["[3]-776"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 3,
+   :rank_niv3 1,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recyVUc959n9o0iSX"}
@@ -3645,6 +4361,8 @@
    :ID_record_from_NIV2 ["[2]-47"],
    :ID_record_from_NIV3 ["[3]-427"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 3,
+   :rank_niv3 6,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recyXmy7qM2ZH7d26"}
@@ -3655,6 +4373,8 @@
    :ID_record_from_NIV2 ["[2]-301"],
    :ID_record_from_NIV3 ["[3]-677"],
    :ID_record_from_NIV1 ["[1]-34"],
+   :rank_niv2 5,
+   :rank_niv3 2,
    :NIV1 ["rechfjCn7nd6MMrLb"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recyqaO7GDW58rAAy"}
@@ -3665,6 +4385,8 @@
    :ID_record_from_NIV2 ["[2]-68"],
    :ID_record_from_NIV3 ["[3]-455"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 6,
+   :rank_niv3 13,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "recyynXm17CNvucLO"}
@@ -3675,6 +4397,8 @@
    :ID_record_from_NIV2 ["[2]-378"],
    :ID_record_from_NIV3 ["[3]-756"],
    :ID_record_from_NIV1 ["[1]-37"],
+   :rank_niv2 3,
+   :rank_niv3 4,
    :NIV1 ["recXhEGAmMIT7j4g4"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "recz1n2sz8dtiXzL3"}
@@ -3685,6 +4409,8 @@
    :ID_record_from_NIV2 ["[2]-82"],
    :ID_record_from_NIV3 ["[3]-464"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 1,
+   :rank_niv3 8,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "reczAnubItptIgOkN"}
@@ -3695,6 +4421,8 @@
    :ID_record_from_NIV2 ["[2]-793"],
    :ID_record_from_NIV3 ["[3]-767"],
    :ID_record_from_NIV1 ["[1]-39"],
+   :rank_niv2 1,
+   :rank_niv3 1,
    :NIV1 ["recqhl1hs3lrIRzPZ"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reczWzICvAqTC177J"}
@@ -3705,6 +4433,8 @@
    :ID_record_from_NIV2 ["[2]-41"],
    :ID_record_from_NIV3 ["[3]-418"],
    :ID_record_from_NIV1 ["[1]-1"],
+   :rank_niv2 1,
+   :rank_niv3 3,
    :NIV1 ["rec6UfjT6LZMWwKom"]},
   :createdTime "2025-04-10T15:34:47.000Z",
   :id "reczYXorIY5cNT90h"}
@@ -3715,6 +4445,8 @@
    :ID_record_from_NIV2 ["[2]-82"],
    :ID_record_from_NIV3 ["[3]-461"],
    :ID_record_from_NIV1 ["[1]-3"],
+   :rank_niv2 1,
+   :rank_niv3 5,
    :NIV1 ["recoVgsqv8wIwjuKS"]},
   :createdTime "2025-05-01T06:42:30.000Z",
   :id "reczjEmI5mI4JeUGp"}
@@ -3725,6 +4457,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-533"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 2,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "reczkKwcnJ3Lh5CHg"}
@@ -3735,6 +4469,8 @@
    :ID_record_from_NIV2 ["[2]-277"],
    :ID_record_from_NIV3 ["[3]-653"],
    :ID_record_from_NIV1 ["[1]-33"],
+   :rank_niv2 5,
+   :rank_niv3 7,
    :NIV1 ["recwizKZWEuwZMJk0"]},
   :createdTime "2025-05-01T07:48:42.000Z",
   :id "reczkrO6eoFno3QhS"}
@@ -3745,6 +4481,8 @@
    :ID_record_from_NIV2 ["[2]-120"],
    :ID_record_from_NIV3 ["[3]-504"],
    :ID_record_from_NIV1 ["[1]-2"],
+   :rank_niv2 1,
+   :rank_niv3 10,
    :NIV1 ["recjmX1dBcT00wa1d"]},
   :createdTime "2025-05-01T06:48:06.000Z",
   :id "reczpdjDz48HZ3JMr"}]

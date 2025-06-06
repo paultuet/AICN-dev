@@ -27,3 +27,8 @@
             (let [referentiels (airtable/get-all-referentiels)]
               (assoc-in ctx [:request :aicn/all-referentiels] referentiels)))})
 
+
+#_(def get-all-lov-interceptor
+    {:enter (fn [ctx]
+              (let [referentiels (airtable/get-all-referentiels)]
+                (assoc-in ctx [:request :aicn/all-referentiels] referentiels)))})

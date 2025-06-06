@@ -45,6 +45,7 @@ export type BaseEntity = {
 export type EntityMetadata = {
   'type': string // Type de référentiel (NMR, LoV, RIO)
   'desc-fr'?: string | null
+  desc?: string | null
   'exemple'?: string | null
   'var-type'?: string | null
   'link-entity-id'?: string[] | null | string

@@ -42,14 +42,19 @@
                      :handler (fn [{:keys [aicn/all-referentiels]}]
                                 {:status 200
                                  :body all-referentiels})}}]
-              
+
     ["/referentiels" {:get {:summary "Get all referentiels"
                             :responses {200 {:body :any}}
                             :interceptors [core/get-all-referentiels-interceptor]
                             :handler (fn [{:keys [aicn/all-referentiels]}]
                                        {:status 200
                                         :body all-referentiels})}}]
-
+    #_["/lov" {:get {:summary "Get all lov"
+                     :responses {200 {:body :any}}
+                     :interceptors [core/get-all-referentiels-interceptor]
+                     :handler (fn [{:keys [aicn/all-referentiels]}]
+                                {:status 200
+                                 :body all-referentiels})}}]
     ;; Conversations endpoints
     ["/conversations" {:get {:summary "Get all conversations"
                              :responses {200 {:body :any}}
@@ -73,9 +78,9 @@
                                                conversation-id (str (java.util.UUID/randomUUID))
                                                user-id (:id user)
                                                created-conv (db/create-conversation ds {:id conversation-id
-                                                                                         :title title
-                                                                                         :linked-items linkedItems
-                                                                                         :created-by user-id})
+                                                                                        :title title
+                                                                                        :linked-items linkedItems
+                                                                                        :created-by user-id})
                                                new-conversation {:id (:id created-conv)
                                                                  :title (:title created-conv)
                                                                  :createdAt (:created_at created-conv)
@@ -94,10 +99,10 @@
                                                                          {:keys [content userId userFullName]} body-params
                                                                          message-id (str "m" (System/currentTimeMillis))
                                                                          created-msg (db/create-message ds {:id message-id
-                                                                                                             :conversation-id conversation-id
-                                                                                                             :content content
-                                                                                                             :author-id userId
-                                                                                                             :author-name userFullName})
+                                                                                                            :conversation-id conversation-id
+                                                                                                            :content content
+                                                                                                            :author-id userId
+                                                                                                            :author-name userFullName})
                                                                          new-message {:id (:id created-msg)
                                                                                       :conversationId (:conversation_id created-msg)
                                                                                       :content (:content created-msg)

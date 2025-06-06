@@ -252,6 +252,8 @@ const HierarchicalNode: React.FC<{
       return null;
     }
 
+    console.log(node);
+
     return (
       <div className={`border ${getBorderColor()} ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}>
         <div
@@ -275,7 +277,10 @@ const HierarchicalNode: React.FC<{
             <div onClick={toggleExpand} className={`cursor-pointer ${matchesSearch && searchTerm ? 'text-orange-600 font-bold' : getLevelSpecificTextColor()}`}>
               {node['entity-name']}
             </div>
-            <div className="text-xs text-gray-500">ID: {node['id-record']}</div>
+            <div className="flex gap-2">
+              <div className="text-xs text-gray-500">ID: {node['id-record']}</div>
+              <div className="text-xs text-gray-800">{node.desc || node['desc-fr']}</div>
+            </div>
           </div>
 
           <NodeVarType node={node} />
@@ -396,6 +401,8 @@ const HierarchicalNode: React.FC<{
                 'id-record': String(childField['id-field']),
                 'type': childField.type || 'UNKNOWN',
                 'var-type': childField['var-type'],
+                /* 'desc-fr': childField['desc-fr'], */
+                'desc': childField['desc'],
                 'exemple': childField.exemple,
                 'link-entity-id': childField['link-entity-id'],
                 // Vérifier si le champ a déjà des "fields" définis
@@ -571,10 +578,10 @@ const LinkedHierarchicalNode: React.FC<{
   children?: (Entity | Field | EnrichedField)[];
 }> = ({ node, level, children = [] }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(true);
-  
+
   const isEntityType = 'entity-name' in node && 'fields' in node;
   const hasChildren = children.length > 0 || (isEntityType && 'fields' in node && node.fields?.length && node.fields.length > 0);
-  
+
   const toggleExpand = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsExpanded(prev => !prev);
@@ -656,7 +663,7 @@ const LinkedHierarchicalNode: React.FC<{
   const hasParentInfo = '_parentEntityName' in node && '_parentEntityId' in node;
 
   // Préparer les enfants à afficher
-  const childrenToDisplay = children.length > 0 ? children : 
+  const childrenToDisplay = children.length > 0 ? children :
     (isEntityType && 'fields' in node && node.fields ? node.fields : []);
 
   return (
@@ -680,7 +687,11 @@ const LinkedHierarchicalNode: React.FC<{
           <div onClick={toggleExpand} className={`cursor-pointer ${getLevelSpecificTextColor()}`}>
             {itemName}
           </div>
-          <div className="text-xs text-gray-500">ID: {itemId}</div>
+          <div className="flex gap-2">
+            <div className="text-xs text-gray-500">ID: {itemId}</div>
+            <div className="text-xs text-gray-800">{node.desc}</div>
+          </div>
+
           {hasParentInfo && (
             <div className="text-xs text-gray-400 mt-1">
               Appartient à: {node._parentEntityName} (ID: {node._parentEntityId})
@@ -792,7 +803,7 @@ const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({ linkEntityId 
             {linkedEntities.length} entité(s) liée(s) trouvée(s)
           </div>
         </div>
-        
+
         <div className="divide-y divide-gray-200">
           {linkedEntities.map((entity, index) => (
             <LinkedHierarchicalNode
