@@ -109,7 +109,7 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
     showOnlyWithConversations: false
   });
 
-  // Actions pour mettre à jour les filtres
+  // Actions pour mettre à jour les filtres - stables avec useCallback
   const setSearchTerm = useCallback((searchTerm: string) => {
     setFilters(prev => ({ ...prev, searchTerm }));
   }, []);
@@ -215,19 +215,14 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
     };
   }, [filters, conversations, isConversationsLoading]);
 
-  // Hook react-query pour les référentiels filtrés avec optimisation
+  // Hook react-query pour les référentiels de base
   const referentialsQuery = useReferentials();
   
-  const filteredReferentialsQuery = useQuery({
-    queryKey: ['referentials', 'filtered', filters, conversations.length, isConversationsLoading],
-    queryFn: () => {
-      if (!referentialsQuery.data) return [];
-      return referentialsQuery.data.filter(shouldDisplayEntity);
-    },
-    enabled: !!referentialsQuery.data,
-    staleTime: 1 * 60 * 1000, // 1 minute - les filtres peuvent changer souvent
-    gcTime: 5 * 60 * 1000, // 5 minutes
-  });
+  // Filtrage optimisé avec useMemo au lieu de react-query pour éviter les re-renders
+  const filteredReferentials = useMemo(() => {
+    if (!referentialsQuery.data) return [];
+    return referentialsQuery.data.filter(shouldDisplayEntity);
+  }, [referentialsQuery.data, shouldDisplayEntity]);
 
   // Prédicat pour vérifier si un groupe doit être affiché quand le filtre est actif
   const shouldDisplayGroup = useCallback((entityId: EntityId, groupName: string, fields: Field[]): boolean => {
@@ -303,9 +298,9 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
     shouldDisplayGroup,
     shouldDisplayField,
     
-    // Données filtrées via react-query
-    filteredReferentials: filteredReferentialsQuery.data || [],
-    isLoadingFiltered: filteredReferentialsQuery.isLoading,
-    errorFiltered: filteredReferentialsQuery.error
+    // Données filtrées via useMemo (optimisé pour la recherche en temps réel)
+    filteredReferentials,
+    isLoadingFiltered: referentialsQuery.isLoading,
+    errorFiltered: referentialsQuery.error
   };
 }

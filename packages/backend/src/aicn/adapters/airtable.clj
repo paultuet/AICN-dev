@@ -143,6 +143,7 @@
      :var-type (get-in entity [:fields :Var_type])
      :desc-fr (get-in entity [:fields :Desc_fr])}))
 
+
 (defn- build-fields-for-lov
   "Build a standardized field entry for NIV3 entities"
   [all-lov lov-name]
@@ -152,24 +153,26 @@
                        (map (fn [lov]
                               (assoc lov
                                      :lib (:lib_fr lov)
-                                     :order (try (Integer/parseInt (:Ordre lov))
+                                     :order (try (Double/parseDouble (str/replace (:Ordre lov) #"," "."))
                                                  (catch Exception e
                                                    nil)))))
-                       (sort-by :order)
-                       (map :lib))]
-   (mapv (fn [lib]
-          {:id-field "" #_(:id-record niv3-details)
-           :lib-fonc lib 
-           :niveau 2
-           :var-type ""
-           #_#_:desc lib
-           ; :entity-id niv3-id
-           ; :entity {:id niv3-id :name (:name niv3-details)}
-           ; :link-entity-id (:link niv3-details)
-           ; :lib-group (format "Niveau 3 - %s" (:name niv3-details))
-           ; :exemple (:exemple niv3-details)
-           :type "LoV"})
-         lov-libs)))
+                       (sort-by :order))]
+                       
+   (->> (mapv (fn [{:keys [lib order]}]
+               {:id-field "" #_(:id-record niv3-details)
+                :lib-fonc lib 
+                :niveau 2
+                :var-type ""
+                :order order
+                #_#_:desc lib
+                ; :entity-id niv3-id
+                ; :entity {:id niv3-id :name (:name niv3-details)}
+                ; :link-entity-id (:link niv3-details)
+                ; :lib-group (format "Niveau 3 - %s" (:name niv3-details))
+                ; :exemple (:exemple niv3-details)
+                :type "LoV"})
+              lov-libs)
+        (sort-by :order))))
 
 (defn- build-field-entry
   "Build a standardized field entry for NIV3 entities"
@@ -219,7 +222,7 @@
                             :desc-fr (:desc-fr entity-details)}]
            (case niveau
              1 (if (= (:type entity-details) "LoV")
-                 (assoc base-entity :fields (build-fields-for-lov (get child-mappings :all-lov) (:name entity-details)))
+                 (assoc base-entity :fields (sort-by :order (build-fields-for-lov (get child-mappings :all-lov) (:name entity-details))))
                  (let [niv2-ids (find-children-ids entity-id (get child-mappings :niv2-to-niv1))
                        sorted-niv2-ids (sort-by (fn [id]
                                                   (normalize-string
