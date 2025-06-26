@@ -140,9 +140,26 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
         return false;
       }
 
-      // Filtre par type de référentiel
-      if (selectedType && entity.type !== selectedType) {
-        return false;
+      // Si le filtre de conversations est actif, vérifier d'abord si l'entité a des conversations
+      // Dans ce cas, on peut ignorer le filtre de type pour inclure les entités avec conversations
+      if (showOnlyWithConversations && !isConversationsLoading) {
+        const hasAnyConversations = conversations.some(conv => 
+          conv.linkedItems.some(item => item.entityId === entity['entity-id'])
+        );
+        
+        if (hasAnyConversations) {
+          // L'entité a des conversations, on l'affiche même si elle ne correspond pas au filtre de type
+        } else {
+          // L'entité n'a pas de conversations, on applique le filtre de type normal
+          if (selectedType && entity.type !== selectedType) {
+            return false;
+          }
+        }
+      } else {
+        // Filtre par type de référentiel normal quand le filtre de conversations n'est pas actif
+        if (selectedType && entity.type !== selectedType) {
+          return false;
+        }
       }
       
       // Filtre par terme de recherche
@@ -173,8 +190,7 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
           return true;
         }
         
-        
-        // Vérifier directement si l'entité a des conversations (sans dépendre des champs)
+        // Vérifier directement si l'entité a des conversations (tous types confondus)
         const hasDirectConversations = conversations.some(conv => 
           conv.linkedItems.some(item => item.entityId === entity['entity-id'])
         );
@@ -200,11 +216,9 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
             // Vérifier si le groupe du champ a des conversations
             const groupHasConvs = groupHasConversations(conversations, entity['entity-id'], field['lib-group']);
             
-            
             return fieldHasConversations || groupHasConvs;
           });
         }
-        
         
         if (!hasConversations) {
           return false;
@@ -221,8 +235,95 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
   // Filtrage optimisé avec useMemo au lieu de react-query pour éviter les re-renders
   const filteredReferentials = useMemo(() => {
     if (!referentialsQuery.data) return [];
+    
+    // Fonction récursive pour collecter toutes les entités de tous niveaux
+    const getAllEntities = (data: any[]): any[] => {
+      let allEntities: any[] = [];
+      
+      const collectEntities = (items: any[]) => {
+        items.forEach(item => {
+          if (item['entity-id']) {
+            allEntities.push(item);
+          }
+          if (item.fields && Array.isArray(item.fields)) {
+            collectEntities(item.fields);
+          }
+        });
+      };
+      
+      collectEntities(data);
+      return allEntities;
+    };
+
+    // Si le filtre de conversations est actif, on doit inclure les entités de tous niveaux
+    if (filters.showOnlyWithConversations && conversations.length > 0) {
+      
+      // Créer une liste filtrée qui inclut les entités de niveau 1 avec conversations
+      // ET leurs parents/enfants dans la hiérarchie
+      const entitiesWithConversations = new Set();
+      conversations.forEach(conv => {
+        conv.linkedItems.forEach(item => {
+          entitiesWithConversations.add(item.entityId);
+        });
+      });
+      
+      // Filtrer pour inclure les entités de niveau 1 qui ont des descendants avec conversations
+      const hasDescendantWithConversation = (entity: any): boolean => {
+        if (entitiesWithConversations.has(entity['entity-id'])) {
+          return true;
+        }
+        
+        if (entity.fields && Array.isArray(entity.fields)) {
+          return entity.fields.some((field: any) => hasDescendantWithConversation(field));
+        }
+        
+        return false;
+      };
+      
+      // Filtrer les entités de niveau 1 qui ont des descendants avec conversations
+      return referentialsQuery.data
+        .filter(entity => !filters.showOnlyWithConversations || hasDescendantWithConversation(entity))
+        .map(entity => {
+          // Si le filtre de conversations n'est pas actif, retourner l'entité telle quelle
+          if (!filters.showOnlyWithConversations) {
+            return entity;
+          }
+          
+          // Filtrer récursivement les champs pour ne garder que ceux avec conversations
+          const filterFieldsRecursively = (fields: any[]): any[] => {
+            return fields.filter(field => {
+              // Vérifier si ce champ a des conversations directes
+              const hasDirectConversations = entitiesWithConversations.has(field['entity-id']);
+              
+              // Si le champ a des conversations, le garder
+              if (hasDirectConversations) {
+                return true;
+              }
+              
+              // Sinon, vérifier si ses enfants ont des conversations
+              if (field.fields && Array.isArray(field.fields)) {
+                const filteredChildren = filterFieldsRecursively(field.fields);
+                if (filteredChildren.length > 0) {
+                  // Mettre à jour le champ avec les enfants filtrés
+                  field.fields = filteredChildren;
+                  return true;
+                }
+              }
+              
+              return false;
+            });
+          };
+          
+          // Appliquer le filtrage récursif aux champs de l'entité
+          return {
+            ...entity,
+            fields: filterFieldsRecursively(entity.fields || [])
+          };
+        });
+    }
+    
     return referentialsQuery.data.filter(shouldDisplayEntity);
-  }, [referentialsQuery.data, shouldDisplayEntity]);
+  }, [referentialsQuery.data, shouldDisplayEntity, filters.showOnlyWithConversations, conversations]);
 
   // Prédicat pour vérifier si un groupe doit être affiché quand le filtre est actif
   const shouldDisplayGroup = useCallback((entityId: EntityId, groupName: string, fields: Field[]): boolean => {

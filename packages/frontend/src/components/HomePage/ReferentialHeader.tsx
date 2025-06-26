@@ -61,7 +61,7 @@ const ReferentialHeader: React.FC<ReferentialHeaderProps> = ({
         </div>
 
         <div className="flex items-center justify-between">
-          {false && isConversationsEnabled && (
+          {isConversationsEnabled && (
             <ConversationFilterButton
               active={showOnlyWithConversations}
               onChange={onToggleShowOnlyWithConversations}

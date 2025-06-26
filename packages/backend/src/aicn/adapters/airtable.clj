@@ -159,18 +159,20 @@
                        (sort-by :order))]
                        
    (->> (mapv (fn [{:keys [lib order]}]
-               {:id-field "" #_(:id-record niv3-details)
-                :lib-fonc lib 
-                :niveau 2
-                :var-type ""
-                :order order
-                #_#_:desc lib
-                ; :entity-id niv3-id
-                ; :entity {:id niv3-id :name (:name niv3-details)}
-                ; :link-entity-id (:link niv3-details)
-                ; :lib-group (format "Niveau 3 - %s" (:name niv3-details))
-                ; :exemple (:exemple niv3-details)
-                :type "LoV"})
+                (let [id (str lib "-" order)]
+                 {:id-field id #_(:id-record niv3-details)
+                  :entity-id id
+                  :lib-fonc lib 
+                  :niveau 2
+                  :var-type ""
+                  :order order
+                  #_#_:desc lib
+                  ; :entity-id niv3-id
+                  ; :entity {:id niv3-id :name (:name niv3-details)}
+                  ; :link-entity-id (:link niv3-details)
+                  ; :lib-group (format "Niveau 3 - %s" (:name niv3-details))
+                  ; :exemple (:exemple niv3-details)
+                  :type "LoV"}))
               lov-libs)
         (sort-by :order))))
 
