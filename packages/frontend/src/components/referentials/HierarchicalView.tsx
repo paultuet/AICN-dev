@@ -350,7 +350,7 @@ const HierarchicalNode: React.FC<{
             {node["entity-name"]}
           </div>
           <div className="flex gap-2">
-            {!(node.type == "LoV" && node.niveau > 1) && (
+            {!(node.type == "LoV" && node.niveau && node.niveau > 1) && (
               <div className="text-xs text-gray-500">
                 ID: {node["id-record"]}
               </div>
