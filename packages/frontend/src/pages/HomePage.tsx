@@ -42,7 +42,9 @@ const HomePage: React.FC = () => {
     openConversation,
     setSelectedConversationId,
     setViewMode,
-    isLoading: conversationsLoading
+    isLoading: conversationsLoading,
+    hasUnreadConversationsForField,
+    hasUnreadConversationsForGroup
   } = useConversations();
 
   // Gestion des filtres avec react-query optimisé
@@ -51,14 +53,21 @@ const HomePage: React.FC = () => {
     selectedEntityId,
     selectedType,
     showOnlyWithConversations,
+    showOnlyUnreadConversations,
     setSearchTerm,
     setSelectedEntityId,
     setSelectedType,
     setShowOnlyWithConversations,
+    setShowOnlyUnreadConversations,
     filteredReferentials,
     isLoadingFiltered,
     errorFiltered,
   } = useReferentialFilters({ conversations, isConversationsLoading: conversationsLoading });
+  
+  // Compter le nombre de conversations non lues
+  const unreadConversationsCount = conversations.filter(conv => 
+    conv.readStatus && !conv.readStatus.isRead
+  ).length;
 
   // Note: Les conversations sont maintenant chargées via react-query dans useConversations
   // Plus besoin de useEffect pour charger les conversations mocké
@@ -233,6 +242,9 @@ const HomePage: React.FC = () => {
         onTypeChange={setSelectedType}
         showOnlyWithConversations={showOnlyWithConversations}
         onToggleShowOnlyWithConversations={setShowOnlyWithConversations}
+        showOnlyUnreadConversations={showOnlyUnreadConversations}
+        onToggleShowOnlyUnreadConversations={setShowOnlyUnreadConversations}
+        unreadConversationsCount={unreadConversationsCount}
         entities={referentials}
         isConversationsEnabled={isConversationsFeatureEnabled}
       />
@@ -247,6 +259,8 @@ const HomePage: React.FC = () => {
         isGroupSelected={isGroupSelected}
         getConversationsForField={(entityId, fieldId) => getConversationsForField(conversations, entityId, fieldId)}
         getConversationsForGroup={(entityId, groupName) => getConversationsForGroup(conversations, entityId, groupName)}
+        hasUnreadConversationsForField={hasUnreadConversationsForField}
+        hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
         isConversationsEnabled={isConversationsFeatureEnabled}
       />
     </div>

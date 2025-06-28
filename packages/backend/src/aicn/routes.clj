@@ -58,8 +58,10 @@
     ;; Conversations endpoints
     ["/conversations" {:get {:summary "Get all conversations"
                              :responses {200 {:body :any}}
-                             :handler (fn [{:keys [db/ds]}]
-                                        (let [conversations (db/get-conversations-with-messages ds)]
+                             :handler (fn [{:keys [db/ds session/user]}]
+                                        (let [user-id (:id user)
+                                              conversations (db/get-conversations-with-messages ds user-id)]
+
                                           {:status 200
                                            :body {:conversations (map (fn [conv]
                                                                         {:id (:id conv)
@@ -68,12 +70,14 @@
                                                                          :lastActivity (:last_activity conv)
                                                                          :messageCount (:message_count conv)
                                                                          :linkedItems (:linked_items conv)
-                                                                         :messages (:messages conv)})
+                                                                         :messages (:messages conv)
+                                                                         :readStatus {:isRead (boolean (:is_read conv))
+                                                                                      :lastReadAt (:last_read_at conv)}})
                                                                       conversations)}}))}
                        :post {:summary "Create a new conversation"
                               :responses {200 {:body :any}
                                           400 {:body :any}}
-                              :handler (fn [{:keys [body-params db/ds auth/user]}]
+                              :handler (fn [{:keys [body-params db/ds session/user]}]
                                          (let [{:keys [title linkedItems]} body-params
                                                conversation-id (str (java.util.UUID/randomUUID))
                                                user-id (:id user)
@@ -110,4 +114,34 @@
                                                                                       :authorId (:author_id created-msg)
                                                                                       :authorName (:author_name created-msg)}]
                                                                      {:status 200
-                                                                      :body new-message}))}}]]])
+                                                                      :body new-message}))}}]
+
+    ;; Read status endpoints
+    ["/conversations/:conversation-id/read" {:put {:summary "Mark conversation as read"
+                                                   :responses {200 {:body :any}
+                                                               404 {:body :any}}
+                                                   :handler (fn [{:keys [path-params db/ds session/user]}]
+                                                              (let [{:keys [conversation-id]} path-params
+                                                                    user-id (:id user)
+                                                                    read-status (db/mark-conversation-as-read ds conversation-id user-id)]
+                                                                {:status 200
+                                                                 :body {:readStatus {:isRead (:is-read read-status)
+                                                                                     :lastReadAt (:last-read-at read-status)}}}))}
+                                             :delete {:summary "Mark conversation as unread"
+                                                      :responses {200 {:body :any}
+                                                                  404 {:body :any}}
+                                                      :handler (fn [{:keys [path-params db/ds session/user]}]
+                                                                 (let [{:keys [conversation-id]} path-params
+                                                                       user-id (:id user)
+                                                                       read-status (db/mark-conversation-as-unread ds conversation-id user-id)]
+                                                                   {:status 200
+                                                                    :body {:readStatus {:isRead (:is-read read-status)
+                                                                                        :lastReadAt (:last-read-at read-status)}}}))}}]
+
+    ["/conversations/unread-count" {:get {:summary "Get count of unread conversations"
+                                          :responses {200 {:body :any}}
+                                          :handler (fn [{:keys [db/ds session/user]}]
+                                                     (let [user-id (:id user)
+                                                           count (db/get-unread-conversations-count ds user-id)]
+                                                       {:status 200
+                                                        :body {:unreadCount count}}))}}]]])

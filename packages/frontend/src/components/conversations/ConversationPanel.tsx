@@ -12,6 +12,8 @@ interface ConversationPanelProps {
   onBackToSelection: () => void;
   onSendMessage: (conversationId: string, content: string) => void;
   currentUserId?: string;
+  onMarkAsRead?: (conversationId: string) => void;
+  isMarkingAsRead?: boolean;
 }
 
 /**
@@ -23,7 +25,9 @@ const ConversationPanel: React.FC<ConversationPanelProps> = ({
   viewMode,
   onBackToSelection,
   onSendMessage,
-  currentUserId = 'user1'
+  currentUserId = 'user1',
+  onMarkAsRead,
+  isMarkingAsRead
 }) => {
   return (
     <div className="flex flex-col h-full">
@@ -32,6 +36,8 @@ const ConversationPanel: React.FC<ConversationPanelProps> = ({
         conversation={conversation}
         viewMode={viewMode}
         onBackToSelection={onBackToSelection}
+        onMarkAsRead={onMarkAsRead}
+        isMarkingAsRead={isMarkingAsRead}
       />
       
       {/* Liste des éléments liés */}

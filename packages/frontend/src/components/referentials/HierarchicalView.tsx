@@ -42,6 +42,14 @@ interface HierarchicalViewProps {
     entityId: string,
     groupName: string,
   ) => Conversation[];
+  hasUnreadConversationsForField?: (
+    entityId: string,
+    fieldId: number | string,
+  ) => boolean;
+  hasUnreadConversationsForGroup?: (
+    entityId: string,
+    groupName: string,
+  ) => boolean;
 }
 
 const getVarTypeBadgeColor = (varType: string) => {
@@ -137,6 +145,14 @@ const HierarchicalNode: React.FC<{
     entityId: string,
     groupName: string,
   ) => Conversation[];
+  hasUnreadConversationsForField?: (
+    entityId: string,
+    fieldId: number | string,
+  ) => boolean;
+  hasUnreadConversationsForGroup?: (
+    entityId: string,
+    groupName: string,
+  ) => boolean;
 }> = ({
   node,
   level,
@@ -151,6 +167,8 @@ const HierarchicalNode: React.FC<{
   isGroupSelected,
   getConversationsForField,
   getConversationsForGroup,
+  hasUnreadConversationsForField,
+  hasUnreadConversationsForGroup,
 }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(true);
   const [lastNodeAction, setLastNodeAction] = useState<number>(0); // Timestamp de la dernière action sur ce noeud
@@ -414,9 +432,16 @@ const HierarchicalNode: React.FC<{
                 getConversationsForGroup(node["entity-id"], node["entity-name"])
                   .length > 0
               ) {
+                const hasUnread = hasUnreadConversationsForGroup 
+                  ? hasUnreadConversationsForGroup(node["entity-id"], node["entity-name"])
+                  : false;
                 return (
                   <div className="flex items-center text-secondary">
-                    <ChatBubbleIcon filled className="h-5 w-5 mr-1" />
+                    <ChatBubbleIcon 
+                      filled 
+                      className="h-5 w-5 mr-1" 
+                      hasUnread={hasUnread}
+                    />
                     <span className="text-xs font-medium">
                       {
                         getConversationsForGroup(
@@ -438,9 +463,16 @@ const HierarchicalNode: React.FC<{
                   cleanId,
                 ).length;
                 if (conversationCount > 0) {
+                  const hasUnread = hasUnreadConversationsForField 
+                    ? hasUnreadConversationsForField(node["entity-id"], cleanId)
+                    : false;
                   return (
                     <div className="flex items-center text-secondary">
-                      <ChatBubbleIcon filled className="h-5 w-5 mr-1" />
+                      <ChatBubbleIcon 
+                        filled 
+                        className="h-5 w-5 mr-1" 
+                        hasUnread={hasUnread}
+                      />
                       <span className="text-xs font-medium">
                         {conversationCount}
                       </span>
@@ -451,7 +483,10 @@ const HierarchicalNode: React.FC<{
 
               // Par défaut: une icône non remplie
               return (
-                <ChatBubbleIcon className="h-5 w-5 text-gray-400 hover:text-secondary transition-colors duration-200" />
+                <ChatBubbleIcon 
+                  className="h-5 w-5 text-gray-400 hover:text-secondary transition-colors duration-200" 
+                  hasUnread={false}
+                />
               );
             })()}
           </div>
@@ -498,6 +533,8 @@ const HierarchicalNode: React.FC<{
                   isGroupSelected={isGroupSelected}
                   getConversationsForField={getConversationsForField}
                   getConversationsForGroup={getConversationsForGroup}
+                  hasUnreadConversationsForField={hasUnreadConversationsForField}
+                  hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
                 />
               );
             }
@@ -547,6 +584,8 @@ const HierarchicalNode: React.FC<{
                 isGroupSelected={isGroupSelected}
                 getConversationsForField={getConversationsForField}
                 getConversationsForGroup={getConversationsForGroup}
+                hasUnreadConversationsForField={hasUnreadConversationsForField}
+                hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
               />
             );
           })}
@@ -566,6 +605,8 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
   isGroupSelected,
   getConversationsForField,
   getConversationsForGroup,
+  hasUnreadConversationsForField,
+  hasUnreadConversationsForGroup,
 }) => {
   // État pour contrôler l'expansion des niveaux
   const [expandedLevels, setExpandedLevels] = useState<{
@@ -671,6 +712,8 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
             isGroupSelected={isGroupSelected}
             getConversationsForField={getConversationsForField}
             getConversationsForGroup={getConversationsForGroup}
+            hasUnreadConversationsForField={hasUnreadConversationsForField}
+            hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
           />
         ))}
       </div>

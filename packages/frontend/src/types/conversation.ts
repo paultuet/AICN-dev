@@ -31,6 +31,12 @@ export type GroupSelection = {
 // Type union pour les sélections
 export type Selection = FieldSelection | GroupSelection
 
+// Type pour le statut de lecture d'une conversation
+export type ConversationReadStatus = {
+  isRead: boolean
+  lastReadAt?: string
+}
+
 // Type pour une conversation
 export type Conversation = {
   id: ID
@@ -40,6 +46,7 @@ export type Conversation = {
   messageCount: number
   linkedItems: Selection[]
   messages?: Message[]
+  readStatus?: ConversationReadStatus
 }
 
 // Types de filtres pour les conversations

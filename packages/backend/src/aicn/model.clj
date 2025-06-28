@@ -35,6 +35,16 @@
    [:content :string]
    [:created-at inst?]])
 
+(def ConversationReadStatus
+  [:map
+   [:id :uuid]
+   [:conversation-id :string]
+   [:user-id :uuid]
+   [:is-read :boolean]
+   [:last-read-at {:optional true} [:maybe inst?]]
+   [:created-at inst?]
+   [:updated-at inst?]])
+
 (def FeatureFlag
   [:map
    [:id :int]

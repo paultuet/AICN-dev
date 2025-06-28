@@ -3,4 +3,5 @@
 export { default as EntityFilter } from './EntityFilter';
 export { default as HierarchicalView } from './HierarchicalView';
 export { default as ConversationFilterButton } from './ConversationFilterButton';
+export { default as UnreadConversationFilterButton } from './UnreadConversationFilterButton';
 export { default as SelectionInfoBox } from './SelectionInfoBox';

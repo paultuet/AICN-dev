@@ -28,7 +28,9 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
     setSidebarOpen,
     openConversation,
     createConversation,
-    sendMessage
+    sendMessage,
+    markConversationAsRead,
+    isMarkingAsRead
   } = useConversations();
 
   // Trouver la conversation sélectionnée
@@ -299,6 +301,35 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                             currentUserId={currentUserId}
                           />
                         ))}
+                        
+                        {/* Bouton Marquer comme lu - après le dernier message */}
+                        {currentConversation.readStatus && !currentConversation.readStatus.isRead && (
+                          <div className="flex justify-center pt-4">
+                            <button
+                              onClick={() => markConversationAsRead(currentConversation.id)}
+                              disabled={isMarkingAsRead}
+                              className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                              {isMarkingAsRead ? (
+                                <>
+                                  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                  </svg>
+                                  Marquage en cours...
+                                </>
+                              ) : (
+                                <>
+                                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                  </svg>
+                                  Marquer comme lu
+                                </>
+                              )}
+                            </button>
+                          </div>
+                        )}
+                        
                         <div ref={messagesEndRef} />
                       </div>
                     ) : (
@@ -331,12 +362,15 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
           <div className="border-t border-gray-200 p-4">
             <h3 className="text-sm font-medium text-gray-700 mb-2 flex justify-between">
               <span>Conversations associées</span>
-              <span className="text-xs bg-gray-100 px-2 py-0.5 rounded-full">
-                {/* Filtrer les conversations liées à l'élément sélectionné */}
-                {selectedItems.length > 0 &&
-                  ((selectedItems[0].type === 'field' && selectedItems[0].fieldIds?.length) ||
-                    (selectedItems[0].type === 'group' && selectedItems[0].groupName)) ?
-                  conversations.filter(conversation =>
+              <div className="flex items-center gap-2">
+                {(() => {
+                  if (selectedItems.length === 0 || 
+                      (!((selectedItems[0].type === 'field' && selectedItems[0].fieldIds?.length) ||
+                        (selectedItems[0].type === 'group' && selectedItems[0].groupName)))) {
+                    return <span className="text-xs bg-gray-100 px-2 py-0.5 rounded-full">0 conversation(s)</span>;
+                  }
+
+                  const filteredConversations = conversations.filter(conversation =>
                     conversation.linkedItems.some(item => {
                       const currentItem = selectedItems[0];
                       // Match par groupe
@@ -361,9 +395,27 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
 
                       return false;
                     })
-                  ).length : 0
-                } conversation(s)
-              </span>
+                  );
+
+                  const totalCount = filteredConversations.length;
+                  const unreadCount = filteredConversations.filter(conv => 
+                    conv.readStatus && !conv.readStatus.isRead
+                  ).length;
+
+                  return (
+                    <>
+                      <span className="text-xs bg-gray-100 px-2 py-0.5 rounded-full">
+                        {totalCount} conversation(s)
+                      </span>
+                      {unreadCount > 0 && (
+                        <span className="text-xs bg-blue-500 text-white px-2 py-0.5 rounded-full">
+                          {unreadCount} non lue(s)
+                        </span>
+                      )}
+                    </>
+                  );
+                })()}
+              </div>
             </h3>
 
             {selectedItems.length > 0 ? (
@@ -399,26 +451,45 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                         return false;
                       })
                     )
-                    .map(conversation => (
-                      <li key={conversation.id} className="border border-gray-200 rounded-md overflow-hidden shadow-sm">
-                        <button
-                          className="w-full text-left p-3 hover:bg-gray-50 transition-colors flex justify-between items-center"
-                          onClick={() => {
-                            openConversation(conversation.id);
-                          }}
-                        >
-                          <div>
-                            <p className="text-sm font-semibold text-gray-900 truncate">{conversation.title}</p>
-                            <p className="text-xs text-gray-500">
-                              {formatDate(conversation.lastActivity)} · {conversation.messageCount} message{conversation.messageCount !== 1 ? 's' : ''}
-                            </p>
-                          </div>
-                          <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </button>
-                      </li>
-                    ))}
+                    .map(conversation => {
+                      const isUnread = conversation.readStatus && !conversation.readStatus.isRead;
+                      return (
+                        <li key={conversation.id} 
+                            className={`border rounded-md overflow-hidden shadow-sm ${
+                              isUnread 
+                                ? 'border-blue-300 bg-blue-50' 
+                                : 'border-gray-200'
+                            }`}>
+                          <button
+                            className="w-full text-left p-3 hover:bg-gray-50 transition-colors flex justify-between items-center"
+                            onClick={() => {
+                              openConversation(conversation.id);
+                            }}
+                          >
+                            <div className="flex-1">
+                              <div className="flex items-center justify-between">
+                                <p className={`text-sm truncate ${
+                                  isUnread ? 'font-bold text-gray-900' : 'font-semibold text-gray-900'
+                                }`}>
+                                  {conversation.title}
+                                </p>
+                                {isUnread && (
+                                  <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-500 text-white">
+                                    Non lu
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-gray-500 mt-1">
+                                {formatDate(conversation.lastActivity)} · {conversation.messageCount} message{conversation.messageCount !== 1 ? 's' : ''}
+                              </p>
+                            </div>
+                            <svg className="w-4 h-4 text-indigo-500 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </button>
+                        </li>
+                      );
+                    })}
                 </ul>
               </div>
             ) : (

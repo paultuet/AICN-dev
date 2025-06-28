@@ -3,6 +3,7 @@ import SearchBar from '@/components/ui/SearchBar';
 import EntityFilter from '@/components/referentials/EntityFilter';
 import ReferentialTypeFilter from '@/components/referentials/ReferentialTypeFilter';
 import ConversationFilterButton from '@/components/referentials/ConversationFilterButton';
+import UnreadConversationFilterButton from '@/components/referentials/UnreadConversationFilterButton';
 import { Entity } from '@/types';
 
 interface ReferentialHeaderProps {
@@ -14,6 +15,9 @@ interface ReferentialHeaderProps {
   onTypeChange: (type: string | null) => void;
   showOnlyWithConversations: boolean;
   onToggleShowOnlyWithConversations: (show: boolean) => void;
+  showOnlyUnreadConversations: boolean;
+  onToggleShowOnlyUnreadConversations: (show: boolean) => void;
+  unreadConversationsCount: number;
   entities: Entity[];
   isConversationsEnabled: boolean;
 }
@@ -30,6 +34,9 @@ const ReferentialHeader: React.FC<ReferentialHeaderProps> = ({
   onTypeChange,
   showOnlyWithConversations,
   onToggleShowOnlyWithConversations,
+  showOnlyUnreadConversations,
+  onToggleShowOnlyUnreadConversations,
+  unreadConversationsCount,
   entities,
   isConversationsEnabled
 }) => {
@@ -62,10 +69,17 @@ const ReferentialHeader: React.FC<ReferentialHeaderProps> = ({
 
         <div className="flex items-center justify-between">
           {isConversationsEnabled && (
-            <ConversationFilterButton
-              active={showOnlyWithConversations}
-              onChange={onToggleShowOnlyWithConversations}
-            />
+            <div className="flex items-center gap-4">
+              <ConversationFilterButton
+                active={showOnlyWithConversations}
+                onChange={onToggleShowOnlyWithConversations}
+              />
+              <UnreadConversationFilterButton
+                active={showOnlyUnreadConversations}
+                onChange={onToggleShowOnlyUnreadConversations}
+                unreadCount={unreadConversationsCount}
+              />
+            </div>
           )}
         </div>
       </div>

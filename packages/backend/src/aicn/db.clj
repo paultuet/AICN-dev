@@ -174,10 +174,13 @@
                       ["SELECT * FROM conversations ORDER BY last_activity DESC"]
                       {:builder-fn rs/as-unqualified-maps})))
 
-(defn get-conversations-with-messages [datasource]
+(defn get-conversations-with-read-status [datasource user-id]
+  "Récupère toutes les conversations avec leur statut lu/non-lu pour l'utilisateur"
   (->> (jdbc/execute! datasource
                       ["SELECT 
                           c.*,
+                          COALESCE(crs.is_read, FALSE) as is_read,
+                          crs.last_read_at,
                           COALESCE(
                             json_agg(
                               json_build_object(
@@ -192,10 +195,41 @@
                             '[]'::json
                           ) as messages
                         FROM conversations c
+                        LEFT JOIN conversation_read_status crs ON c.id = crs.conversation_id AND crs.user_id = ?::uuid
                         LEFT JOIN messages m ON c.id = m.conversation_id
-                        GROUP BY c.id, c.title, c.created_at, c.last_activity, c.message_count, c.linked_items, c.created_by, c.updated_at
-                        ORDER BY c.last_activity DESC"]
+                        GROUP BY c.id, c.title, c.created_at, c.last_activity, c.message_count, c.linked_items, c.created_by, c.updated_at, crs.is_read, crs.last_read_at
+                        ORDER BY c.last_activity DESC"
+                       user-id]
                       {:builder-fn rs/as-unqualified-maps})))
+
+(defn get-conversations-with-messages 
+  "Récupère toutes les conversations avec messages. Si user-id est fourni, inclut le statut lu/non-lu"
+  ([datasource]
+   (get-conversations-with-messages datasource nil))
+  ([datasource user-id]
+   (if user-id
+     (get-conversations-with-read-status datasource user-id)
+     (->> (jdbc/execute! datasource
+                         ["SELECT 
+                             c.*,
+                             COALESCE(
+                               json_agg(
+                                 json_build_object(
+                                   'id', m.id,
+                                   'conversationId', m.conversation_id,
+                                   'content', m.content,
+                                   'createdAt', m.created_at,
+                                   'authorId', m.author_id,
+                                   'authorName', m.author_name
+                                 ) ORDER BY m.created_at
+                               ) FILTER (WHERE m.id IS NOT NULL),
+                               '[]'::json
+                             ) as messages
+                           FROM conversations c
+                           LEFT JOIN messages m ON c.id = m.conversation_id
+                           GROUP BY c.id, c.title, c.created_at, c.last_activity, c.message_count, c.linked_items, c.created_by, c.updated_at
+                           ORDER BY c.last_activity DESC"]
+                         {:builder-fn rs/as-unqualified-maps})))))
 
 ;; New Message functions for updated schema
 (defn create-message [datasource {:keys [id conversation-id content author-id author-name]}]
@@ -213,6 +247,57 @@
                         ORDER BY created_at"
                        conversation-id]
                       {:builder-fn rs/as-unqualified-maps})))
+
+;; Conversation Read Status functions
+(defn get-conversation-read-status [datasource conversation-id user-id]
+  "Récupère le statut lu/non-lu d'une conversation pour un utilisateur"
+  (->> (jdbc/execute-one! datasource
+                          ["SELECT * FROM conversation_read_status 
+                            WHERE conversation_id = ?::text AND user_id = ?::uuid"
+                           conversation-id user-id]
+                          {:builder-fn rs/as-unqualified-maps})
+       (decode model/ConversationReadStatus)))
+
+(defn mark-conversation-as-read [datasource conversation-id user-id]
+  "Marque une conversation comme lue (UPSERT)"
+  (jdbc/execute-one! datasource
+                     ["INSERT INTO conversation_read_status (conversation_id, user_id, is_read, last_read_at, updated_at)
+                       VALUES (?::text, ?::uuid, TRUE, NOW(), NOW())
+                       ON CONFLICT (conversation_id, user_id)
+                       DO UPDATE SET 
+                         is_read = TRUE,
+                         last_read_at = NOW(),
+                         updated_at = NOW()
+                       RETURNING *"
+                      conversation-id user-id]
+                     {:builder-fn rs/as-unqualified-maps}))
+
+(defn mark-conversation-as-unread [datasource conversation-id user-id]
+  "Marque une conversation comme non-lue"
+  (->> (jdbc/execute-one! datasource
+                          ["INSERT INTO conversation_read_status (conversation_id, user_id, is_read, updated_at)
+                            VALUES (?::text, ?::uuid, FALSE, NOW())
+                            ON CONFLICT (conversation_id, user_id)
+                            DO UPDATE SET 
+                              is_read = FALSE,
+                              updated_at = NOW()
+                            RETURNING *"
+                           conversation-id user-id]
+                          {:builder-fn rs/as-unqualified-maps})
+       (decode model/ConversationReadStatus)))
+
+
+
+(defn get-unread-conversations-count [datasource user-id]
+  "Compte le nombre de conversations non-lues pour un utilisateur"
+  (->> (jdbc/execute-one! datasource
+                          ["SELECT COUNT(DISTINCT c.id) as unread_count
+                            FROM conversations c
+                            LEFT JOIN conversation_read_status crs ON c.id = crs.conversation_id AND crs.user_id = ?::uuid
+                            WHERE COALESCE(crs.is_read, FALSE) = FALSE"
+                           user-id]
+                          {:builder-fn rs/as-unqualified-maps})
+       :unread_count))
 
 ;; Feature Flag functions
 (defn get-all-feature-flags [datasource]

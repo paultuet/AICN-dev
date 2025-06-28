@@ -24,6 +24,7 @@ interface ReferentialFiltersState {
   selectedEntityId: EntityId | null;
   selectedType: string | null;
   showOnlyWithConversations: boolean;
+  showOnlyUnreadConversations: boolean;
 }
 
 interface ReferentialFiltersActions {
@@ -31,6 +32,7 @@ interface ReferentialFiltersActions {
   setSelectedEntityId: (id: EntityId | null) => void;
   setSelectedType: (type: string | null) => void;
   setShowOnlyWithConversations: (show: boolean) => void;
+  setShowOnlyUnreadConversations: (show: boolean) => void;
 }
 
 interface ReferentialFilterPredicates {
@@ -106,7 +108,8 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
     searchTerm: '',
     selectedEntityId: null,
     selectedType: 'NMR', // Sélectionne 'NMR' par défaut
-    showOnlyWithConversations: false
+    showOnlyWithConversations: false,
+    showOnlyUnreadConversations: false
   });
 
   // Actions pour mettre à jour les filtres - stables avec useCallback
@@ -130,9 +133,13 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
     setFilters(prev => ({ ...prev, showOnlyWithConversations }));
   }, []);
 
+  const setShowOnlyUnreadConversations = useCallback((showOnlyUnreadConversations: boolean) => {
+    setFilters(prev => ({ ...prev, showOnlyUnreadConversations }));
+  }, []);
+
   // Prédicat pour vérifier si une entité correspond aux filtres
   const shouldDisplayEntity = useMemo<FilterPredicate<Entity>>(() => {
-    const { searchTerm, selectedEntityId, selectedType, showOnlyWithConversations } = filters;
+    const { searchTerm, selectedEntityId, selectedType, showOnlyWithConversations, showOnlyUnreadConversations } = filters;
     
     return (entity: Entity): boolean => {
       // Filtre par ID d'entité sélectionnée
@@ -225,6 +232,24 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
         }
       }
       
+      // Filtre par conversations non lues
+      if (showOnlyUnreadConversations) {
+        // Si les conversations sont en cours de chargement, ne pas filtrer pour éviter les résultats vides
+        if (isConversationsLoading) {
+          return true;
+        }
+        
+        // Vérifier si l'entité a des conversations non lues
+        const hasUnreadConversations = conversations.some(conv => 
+          conv.linkedItems.some(item => item.entityId === entity['entity-id']) &&
+          conv.readStatus && !conv.readStatus.isRead
+        );
+        
+        if (!hasUnreadConversations) {
+          return false;
+        }
+      }
+      
       return true;
     };
   }, [filters, conversations, isConversationsLoading]);
@@ -255,16 +280,26 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
       return allEntities;
     };
 
-    // Si le filtre de conversations est actif, on doit inclure les entités de tous niveaux
-    if (filters.showOnlyWithConversations && conversations.length > 0) {
+    // Si le filtre de conversations ou conversations non lues est actif, on doit inclure les entités de tous niveaux
+    if ((filters.showOnlyWithConversations || filters.showOnlyUnreadConversations) && conversations.length > 0) {
       
       // Créer une liste filtrée qui inclut les entités de niveau 1 avec conversations
       // ET leurs parents/enfants dans la hiérarchie
       const entitiesWithConversations = new Set();
       conversations.forEach(conv => {
-        conv.linkedItems.forEach(item => {
-          entitiesWithConversations.add(item.entityId);
-        });
+        // Si le filtre "non lues" est actif, ne considérer que les conversations non lues
+        if (filters.showOnlyUnreadConversations) {
+          if (conv.readStatus && !conv.readStatus.isRead) {
+            conv.linkedItems.forEach(item => {
+              entitiesWithConversations.add(item.entityId);
+            });
+          }
+        } else {
+          // Sinon, considérer toutes les conversations
+          conv.linkedItems.forEach(item => {
+            entitiesWithConversations.add(item.entityId);
+          });
+        }
       });
       
       // Filtrer pour inclure les entités de niveau 1 qui ont des descendants avec conversations
@@ -282,10 +317,10 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
       
       // Filtrer les entités de niveau 1 qui ont des descendants avec conversations
       return referentialsQuery.data
-        .filter(entity => !filters.showOnlyWithConversations || hasDescendantWithConversation(entity))
+        .filter(entity => !(filters.showOnlyWithConversations || filters.showOnlyUnreadConversations) || hasDescendantWithConversation(entity))
         .map(entity => {
-          // Si le filtre de conversations n'est pas actif, retourner l'entité telle quelle
-          if (!filters.showOnlyWithConversations) {
+          // Si aucun filtre de conversations n'est actif, retourner l'entité telle quelle
+          if (!filters.showOnlyWithConversations && !filters.showOnlyUnreadConversations) {
             return entity;
           }
           
@@ -323,16 +358,51 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
     }
     
     return referentialsQuery.data.filter(shouldDisplayEntity);
-  }, [referentialsQuery.data, shouldDisplayEntity, filters.showOnlyWithConversations, conversations]);
+  }, [referentialsQuery.data, shouldDisplayEntity, filters.showOnlyWithConversations, filters.showOnlyUnreadConversations, conversations]);
 
   // Prédicat pour vérifier si un groupe doit être affiché quand le filtre est actif
   const shouldDisplayGroup = useCallback((entityId: EntityId, groupName: string, fields: Field[]): boolean => {
-    const { showOnlyWithConversations } = filters;
+    const { showOnlyWithConversations, showOnlyUnreadConversations } = filters;
     
-    if (!showOnlyWithConversations) return true;
+    if (!showOnlyWithConversations && !showOnlyUnreadConversations) return true;
     
     // Si les conversations sont en cours de chargement, afficher tous les groupes
     if (isConversationsLoading) return true;
+    
+    // Si filtre conversations non lues actif, vérifier qu'il y a des conversations non lues
+    if (showOnlyUnreadConversations) {
+      // Vérifier si le groupe a des conversations non lues directes
+      const groupConversations = conversations.filter(conv => 
+        conv.linkedItems.some(item => 
+          item.type === 'group' && 
+          item.entityId === entityId && 
+          item.groupName === groupName
+        )
+      );
+      
+      const hasUnreadGroupConversations = groupConversations.some(conv => 
+        conv.readStatus && !conv.readStatus.isRead
+      );
+      
+      if (hasUnreadGroupConversations) return true;
+      
+      // Vérifier si un champ du groupe a des conversations non lues
+      const hasUnreadFieldConversations = fields.some(field => {
+        if (field['lib-group'] !== groupName) return false;
+        
+        const fieldConversations = conversations.filter(conv => 
+          conv.linkedItems.some(item => 
+            item.type === 'field' && 
+            item.entityId === entityId && 
+            item.fieldIds?.some(id => id === field['id-field'] || String(id) === String(field['id-field']))
+          )
+        );
+        
+        return fieldConversations.some(conv => conv.readStatus && !conv.readStatus.isRead);
+      });
+      
+      return hasUnreadFieldConversations;
+    }
     
     // Vérifier si le groupe a des conversations directes
     const hasGroupConversations = groupHasConversations(conversations, entityId, groupName);
@@ -345,9 +415,9 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
 
   // Prédicat pour vérifier si un champ doit être affiché quand le filtre est actif
   const shouldDisplayField = useCallback((entityId: EntityId, fieldId: number | string, fields: Field[]): boolean => {
-    const { showOnlyWithConversations } = filters;
+    const { showOnlyWithConversations, showOnlyUnreadConversations } = filters;
     
-    if (!showOnlyWithConversations) return true;
+    if (!showOnlyWithConversations && !showOnlyUnreadConversations) return true;
 
     // Si les conversations sont en cours de chargement, afficher tous les champs
     if (isConversationsLoading) return true;
@@ -361,7 +431,7 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
     if (!field) return false;
     
     // Vérifier si le champ a des conversations directes
-    const hasDirectConversations = conversations.some(conversation => 
+    const relevantConversations = conversations.filter(conversation => 
       conversation.linkedItems.some(item => 
         item.type === 'field' && 
         item.entityId === entityId && 
@@ -371,7 +441,16 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
       )
     );
     
-    if (hasDirectConversations) return true;
+    // Si filtre conversations non lues actif, vérifier qu'il y a des conversations non lues
+    if (showOnlyUnreadConversations) {
+      const hasUnreadConversations = relevantConversations.some(conv => 
+        conv.readStatus && !conv.readStatus.isRead
+      );
+      if (hasUnreadConversations) return true;
+    } else if (showOnlyWithConversations) {
+      // Sinon, vérifier s'il y a des conversations (peu importe le statut)
+      if (relevantConversations.length > 0) return true;
+    }
     
     // Vérifier si le champ appartient à un groupe avec des conversations
     const groupName = field['lib-group'];
@@ -386,12 +465,14 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
     selectedEntityId: filters.selectedEntityId,
     selectedType: filters.selectedType,
     showOnlyWithConversations: filters.showOnlyWithConversations,
+    showOnlyUnreadConversations: filters.showOnlyUnreadConversations,
     
     // Actions
     setSearchTerm,
     setSelectedEntityId,
     setSelectedType,
     setShowOnlyWithConversations,
+    setShowOnlyUnreadConversations,
     
     // Prédicats et filtres
     // filterReferentials,

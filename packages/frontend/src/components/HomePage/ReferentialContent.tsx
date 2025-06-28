@@ -12,6 +12,8 @@ interface ReferentialContentProps {
   isGroupSelected: (entityId: string, groupName: string) => boolean;
   getConversationsForField: (entityId: string, fieldId: number | string) => Conversation[];
   getConversationsForGroup: (entityId: string, groupName: string) => Conversation[];
+  hasUnreadConversationsForField: (entityId: string, fieldId: number | string) => boolean;
+  hasUnreadConversationsForGroup: (entityId: string, groupName: string) => boolean;
   isConversationsEnabled: boolean;
 }
 
@@ -28,6 +30,8 @@ const ReferentialContent: React.FC<ReferentialContentProps> = ({
   isGroupSelected,
   getConversationsForField,
   getConversationsForGroup,
+  hasUnreadConversationsForField,
+  hasUnreadConversationsForGroup,
 }) => {
   return (
     <>
@@ -42,6 +46,8 @@ const ReferentialContent: React.FC<ReferentialContentProps> = ({
         isGroupSelected={isGroupSelected}
         getConversationsForField={getConversationsForField}
         getConversationsForGroup={getConversationsForGroup}
+        hasUnreadConversationsForField={hasUnreadConversationsForField}
+        hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
       />
     </>
   );

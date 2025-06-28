@@ -111,8 +111,8 @@ export const useConversations = (): UseConversationsResult => {
   const conversationsQuery = useQuery({
     queryKey: ['conversations'],
     queryFn: fetchConversations,
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    gcTime: 30 * 60 * 1000, // 30 minutes
+    // staleTime: 5 * 60 * 1000, // 5 minutes
+    // gcTime: 30 * 60 * 1000, // 30 minutes
   });
 
   // Mutation pour créer une conversation
@@ -151,6 +151,63 @@ export const useConversations = (): UseConversationsResult => {
     },
   });
 
+  // Mutation pour marquer une conversation comme lue
+  const markAsReadMutation = useMutation({
+    mutationFn: (conversationId: ID) =>
+      api.put(`/conversations/${conversationId}/read`),
+    onSuccess: (_, conversationId) => {
+      // Mettre à jour le cache des conversations
+      queryClient.setQueryData(['conversations'], (old: Conversation[] = []) =>
+        old.map(conversation => {
+          if (conversation.id === conversationId) {
+            return {
+              ...conversation,
+              readStatus: {
+                isRead: true,
+                lastReadAt: new Date().toISOString(),
+              },
+            };
+          }
+          return conversation;
+        })
+      );
+      // Invalider le cache du compteur
+      queryClient.invalidateQueries({ queryKey: ['conversations', 'unread-count'] });
+    },
+  });
+
+  // Mutation pour marquer une conversation comme non-lue
+  const markAsUnreadMutation = useMutation({
+    mutationFn: (conversationId: ID) =>
+      api.delete(`/conversations/${conversationId}/read`),
+    onSuccess: (_, conversationId) => {
+      // Mettre à jour le cache des conversations
+      queryClient.setQueryData(['conversations'], (old: Conversation[] = []) =>
+        old.map(conversation => {
+          if (conversation.id === conversationId) {
+            return {
+              ...conversation,
+              readStatus: {
+                isRead: false,
+                lastReadAt: undefined,
+              },
+            };
+          }
+          return conversation;
+        })
+      );
+      // Invalider le cache du compteur
+      queryClient.invalidateQueries({ queryKey: ['conversations', 'unread-count'] });
+    },
+  });
+
+  // Query pour récupérer le compteur de conversations non-lues
+  const unreadCountQuery = useQuery({
+    queryKey: ['conversations', 'unread-count'],
+    queryFn: () => api.get('/conversations/unread-count').then(res => res.data.unreadCount),
+    refetchInterval: 30000, // Rafraîchit toutes les 30s
+  });
+
   // Actions spécifiques aux mutations
   const createConversation = useCallback(async (title: string) => {
     if (selectedItems.length === 0) return;
@@ -172,6 +229,15 @@ export const useConversations = (): UseConversationsResult => {
       data: { content, userId, userFullName },
     });
   }, [sendMessageMutation]);
+
+  // Actions pour la gestion du statut lu/non-lu
+  const markConversationAsRead = useCallback(async (conversationId: ID) => {
+    await markAsReadMutation.mutateAsync(conversationId);
+  }, [markAsReadMutation]);
+
+  const markConversationAsUnread = useCallback(async (conversationId: ID) => {
+    await markAsUnreadMutation.mutateAsync(conversationId);
+  }, [markAsUnreadMutation]);
 
   // Filtres - utilisation de useMemo pour éviter les recalculs
   const conversations = conversationsQuery.data || [];
@@ -226,6 +292,23 @@ export const useConversations = (): UseConversationsResult => {
     );
   }, [conversations]);
 
+  // Nouvelles fonctions pour vérifier les conversations non-lues
+  const hasUnreadConversationsForGroup = useCallback((entityId: EntityId, groupName: GroupName) => {
+    return conversations.some(conversation =>
+      conversation.linkedItems.some(item =>
+        item.type === 'group' && item.entityId === entityId && item.groupName === groupName
+      ) && conversation.readStatus && !conversation.readStatus.isRead
+    );
+  }, [conversations]);
+
+  const hasUnreadConversationsForField = useCallback((entityId: EntityId, fieldId: FieldId) => {
+    return conversations.some(conversation =>
+      conversation.linkedItems.some(item =>
+        item.type === 'field' && item.entityId === entityId && item.fieldIds?.includes(fieldId)
+      ) && conversation.readStatus && !conversation.readStatus.isRead
+    );
+  }, [conversations]);
+
   return {
     // État partagé (du context)
     selectedItems,
@@ -250,10 +333,21 @@ export const useConversations = (): UseConversationsResult => {
     createConversation,
     sendMessage,
 
+    // Actions pour la gestion du statut lu/non-lu
+    markConversationAsRead,
+    markConversationAsUnread,
+    unreadCount: unreadCountQuery.data || 0,
+    isMarkingAsRead: markAsReadMutation.isPending,
+    isMarkingAsUnread: markAsUnreadMutation.isPending,
+
     // Filtres
     getConversationsForGroup,
     getConversationsForField,
     fieldBelongsToGroupWithConversation,
+    
+    // Fonctions pour les conversations non-lues
+    hasUnreadConversationsForGroup,
+    hasUnreadConversationsForField,
   };
 };
 
