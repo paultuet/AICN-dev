@@ -65,6 +65,17 @@ interface UseConversationsResult extends ConversationMutationActions, Conversati
   error: Error | null;
   isCreating: boolean;
   isSending: boolean;
+
+  // Actions pour la gestion du statut lu/non-lu
+  markConversationAsRead: (conversationId: ID) => Promise<void>;
+  markConversationAsUnread: (conversationId: ID) => Promise<void>;
+  unreadCount: number;
+  isMarkingAsRead: boolean;
+  isMarkingAsUnread: boolean;
+
+  // Fonctions pour les conversations non-lues
+  hasUnreadConversationsForGroup: (entityId: EntityId, groupName: GroupName) => boolean;
+  hasUnreadConversationsForField: (entityId: EntityId, fieldId: FieldId) => boolean;
 }
 
 // Fonctions API
