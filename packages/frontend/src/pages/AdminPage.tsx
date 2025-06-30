@@ -2,6 +2,7 @@ import React from 'react';
 import {
   AdminActions
 } from '@/components/HomePage';
+import { UsersList } from '../components/admin/UsersList';
 
 /**
  * Page d'admin
@@ -14,7 +15,11 @@ const AdminPage: React.FC = () => {
         Admin
       </h1>
 
-      <AdminActions />
+      {/* <AdminActions /> */}
+
+      <div className="mt-8">
+        <UsersList />
+      </div>
 
     </div>
   );

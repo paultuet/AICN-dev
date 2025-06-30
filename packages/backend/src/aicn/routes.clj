@@ -4,6 +4,7 @@
    [aicn.core :as core]
    [aicn.db :as db]
    [aicn.model :as model]
+   [clojure.set]
    [malli.util :as mu]
    [ring.util.response :as response]))
 
@@ -42,6 +43,16 @@
                      :handler (fn [{:keys [aicn/all-referentiels]}]
                                 {:status 200
                                  :body all-referentiels})}}]
+
+    ["/admin/users" {:get {:summary "Get all users (admin only)"
+                           :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+                           :responses {200 {:body :any}
+                                       401 {:body :any}}
+                           :handler (fn [{:keys [db/ds]}]
+                                      (let [users (db/get-all-users ds)]
+                                        {:status 200
+                                         :body (map #(-> %
+                                                         (select-keys [:id :email :name :organization :role :created-at :email-verified])) users)}))}}]
 
     ["/referentiels" {:get {:summary "Get all referentiels"
                             :responses {200 {:body :any}}

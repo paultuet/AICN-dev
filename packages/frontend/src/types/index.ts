@@ -3,9 +3,12 @@
 // Types de base définis ici
 export interface User {
   id: string
-  username: string
+  name: string
   email: string
-  created_at: string
+  organization: string
+  role: string
+  'created-at': string
+  'email-verified': boolean
 }
 
 // Types pour les référentiels
