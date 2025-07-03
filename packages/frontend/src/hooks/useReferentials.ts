@@ -107,7 +107,7 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
   const [filters, setFilters] = useState<ReferentialFiltersState>({
     searchTerm: '',
     selectedEntityId: null,
-    selectedType: 'NMR', // Sélectionne 'NMR' par défaut
+    selectedType: 'RIO',
     showOnlyWithConversations: false,
     showOnlyUnreadConversations: false
   });

@@ -9,9 +9,9 @@ interface ReferentialTypeFilterProps {
 }
 
 const REFERENCE_TYPES = [
-  { id: 'RIO', name: 'RIO' },
-  { id: 'NMR', name: 'NMR' },
-  { id: 'LoV', name: 'LoV' }
+  { id: 'RIO', name: 'Référentiels d\'interopérabilité' },
+  { id: 'NMR', name: 'Nomenclatures des missions et responsabilités' },
+  { id: 'LoV', name: 'Listes de valeurs' }
 ];
 
 const ReferentialTypeFilter: React.FC<ReferentialTypeFilterProps> = ({

@@ -55,14 +55,14 @@ const ReferentialHeader: React.FC<ReferentialHeaderProps> = ({
             <ReferentialTypeFilter
               selectedType={selectedType}
               onChange={onTypeChange}
-              className="w-full sm:w-56"
+              className="w-full"
             />
             
             <EntityFilter
               entities={entities.filter(entity => !selectedType || entity.type === selectedType)}
               selectedEntity={selectedEntityId}
               onChange={onEntityChange}
-              className="w-full sm:w-56"
+              className="w-full"
             />
           </div>
         </div>
