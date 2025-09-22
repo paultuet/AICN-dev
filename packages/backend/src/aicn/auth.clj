@@ -4,6 +4,7 @@
    [buddy.sign.jwt :as jwt]
    [clojure.string :as str]
    [java-time.api :as time]
+   [aicn.activity-logs :as activity]
    [aicn.core :as core]
    [aicn.db :as repo]
    [aicn.email :as email]
@@ -120,22 +121,46 @@
                               " - Name: " (:name user)
                               " - Organization: " (:organization user)
                               " - Time: " (time/instant)))
+                (activity/add-activity-log! {:type :login-success
+                                             :user-email (:email user)
+                                             :user-name (:name user)
+                                             :user-id (:id user)
+                                             :message "User logged in successfully"
+                                             :details {:organization (:organization user)}})
                 {:status 200
                  :body {:token token}})
               (do
                 (log/warn (str "Login failed - Email not verified - Email: " (:email user)
                               " - Time: " (time/instant)))
+                (activity/add-activity-log! {:type :login-failed
+                                             :user-email (:email user)
+                                             :user-name (:name user)
+                                             :user-id (:id user)
+                                             :message "Login failed - Email not verified"
+                                             :details {:reason "email-not-verified"}})
                 (send-verification-email (assoc-in opts [:parameters :body :email] email))
                 {:status 403
                  :body {:message "Email not verified. Please check your email to verify your account."}}))
             (do
               (log/warn (str "Login failed - Invalid password - Email: " email
                             " - Time: " (time/instant)))
+              (activity/add-activity-log! {:type :login-failed
+                                           :user-email email
+                                           :user-name nil
+                                           :user-id nil
+                                           :message "Login failed - Invalid password"
+                                           :details {:reason "invalid-password"}})
               {:status 400
                :body {:message "wrong auth data"}}))
           (do
             (log/warn (str "Login failed - User not found - Email: " email
                           " - Time: " (time/instant)))
+            (activity/add-activity-log! {:type :login-failed
+                                         :user-email email
+                                         :user-name nil
+                                         :user-id nil
+                                         :message "Login failed - User not found"
+                                         :details {:reason "user-not-found"}})
             {:status 400
              :body {:message "wrong auth data"}}))))))
 
