@@ -3,8 +3,10 @@
    [aicn.auth :as auth]
    [aicn.core :as core]
    [aicn.db :as db]
+   [aicn.logger :as log]
    [aicn.model :as model]
    [clojure.set]
+   [java-time.api :as time]
    [malli.util :as mu]
    [ring.util.response :as response]))
 
@@ -92,6 +94,8 @@
                                          (let [{:keys [title linkedItems]} body-params
                                                conversation-id (str (java.util.UUID/randomUUID))
                                                user-id (:id user)
+                                               user-email (:email user)
+                                               user-name (:name user)
                                                created-conv (db/create-conversation ds {:id conversation-id
                                                                                         :title title
                                                                                         :linked-items linkedItems
@@ -103,6 +107,11 @@
                                                                  :messageCount (:message_count created-conv)
                                                                  :linkedItems (:linked_items created-conv)
                                                                  :messages []}]
+                                           (log/info (str "Conversation created - User: " user-email
+                                                         " - Name: " user-name
+                                                         " - Conversation ID: " conversation-id
+                                                         " - Title: " title
+                                                         " - Time: " (time/instant)))
                                            {:status 200
                                             :body new-conversation}))}}]
 
@@ -124,6 +133,11 @@
                                                                                       :createdAt (:created_at created-msg)
                                                                                       :authorId (:author_id created-msg)
                                                                                       :authorName (:author_name created-msg)}]
+                                                                     (log/info (str "Message added to conversation - User ID: " userId
+                                                                                   " - User Name: " userFullName
+                                                                                   " - Conversation ID: " conversation-id
+                                                                                   " - Message ID: " message-id
+                                                                                   " - Time: " (time/instant)))
                                                                      {:status 200
                                                                       :body new-message}))}}]
 
