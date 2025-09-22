@@ -365,6 +365,60 @@
   (println "Shutting down database connection pool...")
   (.close ds))
 
+;; File management functions
+(defn create-file [datasource {:keys [id file-name file-path version upload-date file-size content-type uploaded-by]}]
+  (jdbc/execute-one! datasource
+                    ["INSERT INTO uploaded_files (
+                      id,
+                      file_name,
+                      file_path,
+                      version,
+                      upload_date,
+                      file_size,
+                      content_type,
+                      uploaded_by
+                    )
+                    VALUES (
+                      ?::uuid,
+                      ?::text,
+                      ?::text,
+                      ?::text,
+                      ?::date,
+                      ?::bigint,
+                      ?::text,
+                      ?::uuid
+                    )
+                    RETURNING *"
+                     id
+                     file-name
+                     file-path
+                     version
+                     upload-date
+                     file-size
+                     content-type
+                     uploaded-by]
+                    {:builder-fn rs/as-unqualified-maps}))
+
+(defn get-current-file [datasource]
+  (jdbc/execute-one! datasource
+                    ["SELECT * FROM uploaded_files
+                      ORDER BY created_at DESC
+                      LIMIT 1"]
+                    {:builder-fn rs/as-unqualified-maps}))
+
+(defn get-file-by-id [datasource file-id]
+  (jdbc/execute-one! datasource
+                    ["SELECT * FROM uploaded_files
+                      WHERE id = ?::uuid"
+                     file-id]
+                    {:builder-fn rs/as-unqualified-maps}))
+
+(defn delete-file [datasource file-id]
+  (jdbc/execute-one! datasource
+                    ["DELETE FROM uploaded_files
+                      WHERE id = ?::uuid"
+                     file-id]))
+
 (comment
   (def conf (aicn.system/get-config :local))
   (jdbc->hk-config (get-in conf [:db/pg :jdbc]))

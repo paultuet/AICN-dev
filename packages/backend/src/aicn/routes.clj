@@ -4,6 +4,7 @@
    [aicn.auth :as auth]
    [aicn.core :as core]
    [aicn.db :as db]
+   [aicn.files :as files]
    [aicn.logger :as log]
    [aicn.model :as model]
    [clojure.set]
@@ -60,19 +61,19 @@
     ["/admin/activity-logs" {:get {:summary "Get activity logs (admin only)"
                                    :interceptors [(auth/restrict-role-interceptor :ADMIN)]
                                    :parameters {:query [:map
-                                                       [:limit {:optional true} :int]
-                                                       [:type {:optional true} :string]
-                                                       [:user-email {:optional true} :string]
-                                                       [:from {:optional true} :string]
-                                                       [:to {:optional true} :string]]}
+                                                        [:limit {:optional true} :int]
+                                                        [:type {:optional true} :string]
+                                                        [:user-email {:optional true} :string]
+                                                        [:from {:optional true} :string]
+                                                        [:to {:optional true} :string]]}
                                    :responses {200 {:body :any}
-                                              401 {:body :any}}
+                                               401 {:body :any}}
                                    :handler (fn [{:keys [parameters]}]
                                              (let [query-params (:query parameters)
                                                    logs (activity/get-activity-logs query-params)]
                                                {:status 200
                                                 :body {:logs logs
-                                                      :stats (activity/get-stats)}}))}}]
+                                                       :stats (activity/get-stats)}}))}}]
 
     ["/referentiels" {:get {:summary "Get all referentiels"
                             :responses {200 {:body :any}}
@@ -131,13 +132,13 @@
                                                          " - Title: " title
                                                          " - Time: " (time/instant)))
                                            (activity/add-activity-log! {:type :conversation-created
-                                                                       :user-email user-email
-                                                                       :user-name user-name
-                                                                       :user-id user-id
-                                                                       :message "Conversation created"
-                                                                       :details {:conversation-id conversation-id
-                                                                                :title title
-                                                                                :linked-items linkedItems}})
+                                                                        :user-email user-email
+                                                                        :user-name user-name
+                                                                        :user-id user-id
+                                                                        :message "Conversation created"
+                                                                        :details {:conversation-id conversation-id
+                                                                                  :title title
+                                                                                  :linked-items linkedItems}})
                                            {:status 200
                                             :body new-conversation}))}}]
 
@@ -165,13 +166,13 @@
                                                                                    " - Message ID: " message-id
                                                                                    " - Time: " (time/instant)))
                                                                      (activity/add-activity-log! {:type :message-sent
-                                                                                                 :user-email nil
-                                                                                                 :user-name userFullName
-                                                                                                 :user-id userId
-                                                                                                 :message "Message sent to conversation"
-                                                                                                 :details {:conversation-id conversation-id
-                                                                                                          :message-id message-id
-                                                                                                          :content-preview (subs content 0 (min 50 (count content)))}})
+                                                                                                  :user-email nil
+                                                                                                  :user-name userFullName
+                                                                                                  :user-id userId
+                                                                                                  :message "Message sent to conversation"
+                                                                                                  :details {:conversation-id conversation-id
+                                                                                                            :message-id message-id
+                                                                                                            :content-preview (subs content 0 (min 50 (count content)))}})
                                                                      {:status 200
                                                                       :body new-message}))}}]
 
@@ -203,4 +204,22 @@
                                                      (let [user-id (:id user)
                                                            count (db/get-unread-conversations-count ds user-id)]
                                                        {:status 200
-                                                        :body {:unreadCount count}}))}}]]])
+                                                        :body {:unreadCount count}}))}}]
+
+    ;; File management endpoints
+    ["/file/upload" {:post {:summary "Upload a file (admin only)"
+                            :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+                            :parameters {:multipart :any}
+                            :responses {200 {:body :any}
+                                        401 {:body :any}}
+                            :handler files/upload-file-handler}}]
+
+    ["/file/current" {:get {:summary "Get current uploaded file"
+                            :responses {200 {:body :any}
+                                        404 {:body :any}}
+                            :handler files/get-current-file-handler}}]
+
+    ["/file/download/:file-id" {:get {:summary "Download a file"
+                                      :responses {200 {:body :any}
+                                                  404 {:body :any}}
+                                      :handler files/download-file-handler}}]]])

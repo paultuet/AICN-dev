@@ -44,6 +44,10 @@ const Navbar = () => {
               Référentiels
             </Link>
 
+            <Link to="/files" className="hover:text-gray-300 transition-colors py-1 px-2 rounded-md font-medium">
+              Fichiers
+            </Link>
+
             {isAdmin && <Link to="/admin" className="hover:text-gray-300 transition-colors py-1 px-2 rounded-md font-medium">
               Admin
             </Link>}
@@ -81,6 +85,14 @@ const Navbar = () => {
           <Link to="/" className="block py-2 hover:bg-primary-hover rounded-md px-3" onClick={() => setIsMenuOpen(false)}>
             Référentiels
           </Link>
+
+          <Link to="/files" className="block py-2 hover:bg-primary-hover rounded-md px-3" onClick={() => setIsMenuOpen(false)}>
+            Fichiers
+          </Link>
+
+          {isAdmin && <Link to="/admin" className="block py-2 hover:bg-primary-hover rounded-md px-3" onClick={() => setIsMenuOpen(false)}>
+            Admin
+          </Link>}
 
           {isAuthenticated ? (
             <div className="border-t border-gray-700/30 mt-2 pt-2">

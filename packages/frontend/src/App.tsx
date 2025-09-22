@@ -16,6 +16,7 @@ import VerifyEmailPage from "@/pages/VerifyEmailPage";
 import ResendVerificationPage from "@/pages/ResendVerificationPage";
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
 import ResetPasswordPage from "@/pages/ResetPasswordPage";
+import FileDownloadPage from "@/pages/FileDownloadPage";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useAuth, useIsAdmin } from "@/contexts/AuthContext";
 
@@ -79,6 +80,7 @@ function Root() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           {isAdmin && <Route path="admin" element={<AdminPage />} />}
+          <Route path="files" element={<FileDownloadPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>
