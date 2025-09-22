@@ -135,7 +135,6 @@
                             RETURNING *"
                                 name organization role access-rights email-verified verification-token verification-token-expires-at id]
                                {:builder-fn rs/as-unqualified-maps})]
-    (println res)
     (decode model/User res)))
 
 (defn update-user-password [datasource {:keys [id password-hash]}]

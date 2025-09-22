@@ -116,16 +116,28 @@
                             :id (:id user)
                             :exp (time/plus (time/instant) (time/seconds 3600))}
                     token (jwt/sign claims secret {:alg :hs512})]
+                (log/info (str "User login successful - Email: " (:email user)
+                              " - Name: " (:name user)
+                              " - Organization: " (:organization user)
+                              " - Time: " (time/instant)))
                 {:status 200
                  :body {:token token}})
               (do
+                (log/warn (str "Login failed - Email not verified - Email: " (:email user)
+                              " - Time: " (time/instant)))
                 (send-verification-email (assoc-in opts [:parameters :body :email] email))
                 {:status 403
                  :body {:message "Email not verified. Please check your email to verify your account."}}))
+            (do
+              (log/warn (str "Login failed - Invalid password - Email: " email
+                            " - Time: " (time/instant)))
+              {:status 400
+               :body {:message "wrong auth data"}}))
+          (do
+            (log/warn (str "Login failed - User not found - Email: " email
+                          " - Time: " (time/instant)))
             {:status 400
-             :body {:message "wrong auth data"}})
-          {:status 400
-           :body {:message "wrong auth data"}})))))
+             :body {:message "wrong auth data"}}))))))
 
 (def authentication-interceptor
   {:name ::authentication
