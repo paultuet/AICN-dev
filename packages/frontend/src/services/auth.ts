@@ -129,6 +129,22 @@ const authService = {
   getProfile: async () => {
     const response = await api.get('/auth/me')
     return response.data
+  },
+
+  /**
+   * Request password reset
+   */
+  forgotPassword: async (email: string): Promise<{ message: string }> => {
+    const response = await api.post('/auth/forgot-password', { email })
+    return response.data
+  },
+
+  /**
+   * Reset password with token
+   */
+  resetPassword: async (token: string, password: string): Promise<{ message: string }> => {
+    const response = await api.post('/auth/reset-password', { token, password })
+    return response.data
   }
 }
 

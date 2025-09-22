@@ -92,9 +92,9 @@ const LoginPage = () => {
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                   Mot de passe
                 </label>
-                <span className="text-xs text-secondary hover:text-secondary-hover cursor-pointer">
+                <Link to="/forgot-password" className="text-xs text-secondary hover:text-secondary-hover">
                   Mot de passe oublié ?
-                </span>
+                </Link>
               </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

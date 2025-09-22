@@ -62,6 +62,12 @@
 (defn- generate-token-expiry []
   (time/plus (time/instant) (time/hours 24)))
 
+(defn- generate-reset-token []
+  (java.util.UUID/randomUUID))
+
+(defn- generate-reset-token-expiry []
+  (time/plus (time/instant) (time/hours 1)))
+
 (defn send-welcome-email [user frontend-url]
   (let [welcome-email (email/build-welcome-email frontend-url user)]
     (email/send-email! welcome-email)))
@@ -275,7 +281,59 @@
 
         {:status 404 :body {:message "Invalid verification token"}}))))
 
+(defn forgot-password
+  [{:keys [db/ds parameters config]}]
+  (let [email (get-in parameters [:body :email])
+        frontend-url (get-frontend-url config)]
+    (if (nil? email)
+      {:status 400 :body {:message "Email is required"}}
+      
+      (if-let [user (repo/get-user-by-email ds (str/lower-case email))]
+        (if-not (:email-verified user)
+          {:status 400 :body {:message "Email not verified. Please verify your email first."}}
+          
+          (let [reset-token (generate-reset-token)
+                token-expires-at (generate-reset-token-expiry)
+                updated-user (try
+                               (repo/update-user ds {:id (:id user)
+                                                     :reset-token reset-token
+                                                     :reset-token-expires-at token-expires-at})
+                               (catch Exception e (log/error e)))]
+            
+            ;; Send password reset email
+            (let [reset-email (email/build-password-reset-email frontend-url 
+                                                                (assoc updated-user :reset-token reset-token))]
+              (email/send-email! reset-email))
+            
+            {:status 200 :body {:message "Password reset email sent. Please check your inbox."}}))
+        
+        ;; Don't reveal if email exists or not for security
+        {:status 200 :body {:message "Password reset email sent. Please check your inbox."}}))))
 
+(defn reset-password
+  [{:keys [db/ds parameters]}]
+  (let [token (get-in parameters [:body :token])
+        new-password (get-in parameters [:body :password])]
+    (if (or (nil? token) (nil? new-password))
+      {:status 400 :body {:message "Token and new password are required"}}
+      
+      (if-let [user (repo/get-user-by-reset-token ds token)]
+        (let [now (time/instant)
+              token-expired? (time/after? now (time/instant (:reset-token-expires-at user)))]
+          
+          (if token-expired?
+            {:status 400 :body {:message "Reset token has expired. Please request a new one."}}
+            
+            ;; Update password and clear reset token
+            (do
+              (repo/update-user ds {:id (:id user)
+                                    :password-hash (hash-password new-password)
+                                    :reset-token nil
+                                    :reset-token-expires-at nil})
+              
+              {:status 200 :body {:message "Password reset successfully. You can now log in with your new password."}})))
+        
+        {:status 404 :body {:message "Invalid or expired reset token"}}))))
 
 (defn routes [opts]
   ["/auth" {:openapi {:tags ["auth"]}
@@ -314,6 +372,22 @@
                                                404 {:body :any}}
                                    :handler (fn [request]
                                               (send-verification-email request {:resend? true}))}}]
+   ["/forgot-password" {:post {:summary "Request password reset"
+                                   :parameters {:body [:map
+                                                       [:email :string]]}
+                                   :responses {200 {:body :any}
+                                               400 {:body :any}}
+                                   :handler (fn [request]
+                                              (forgot-password request))}}]
+   ["/reset-password" {:post {:summary "Reset password with token"
+                              :parameters {:body [:map
+                                                  [:token :string]
+                                                  [:password :string]]}
+                              :responses {200 {:body :any}
+                                          400 {:body :any}
+                                          404 {:body :any}}
+                              :handler (fn [request]
+                                         (reset-password request))}}]
    ["/me" {:openapi {:tags ["auth"]}
            :interceptors [authentication-interceptor
                           authorization-interceptor]

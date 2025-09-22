@@ -99,6 +99,17 @@
      :subject "Bienvenue chez AICN !"
      :body email-body}))
 
+;; Password reset email
+(defn build-password-reset-email [base-url {:keys [email name reset-token]}]
+  (let [reset-url (str base-url "/reset-password/" reset-token)
+        template-data {:name name
+                       :reset-url reset-url
+                       :year (current-year)}
+        email-body (selmer/render-file "password-reset.html" template-data)]
+    {:to email
+     :subject "Réinitialisation de votre mot de passe AICN"
+     :body email-body}))
+
 ;; Integrant initialization
 (defmethod ig/init-key :email/sender [_ config]
   (let [session (create-session config)]

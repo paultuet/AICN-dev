@@ -14,6 +14,8 @@ import RegisterPage from "@/pages/RegisterPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import VerifyEmailPage from "@/pages/VerifyEmailPage";
 import ResendVerificationPage from "@/pages/ResendVerificationPage";
+import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
+import ResetPasswordPage from "@/pages/ResetPasswordPage";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useAuth, useIsAdmin } from "@/contexts/AuthContext";
 
@@ -62,6 +64,15 @@ function Root() {
       />
       <Route path="/verify-email" element={<VerifyEmailPage />} />
       <Route path="/resend-verification" element={<ResendVerificationPage />} />
+      <Route
+        path="/forgot-password"
+        element={
+          <AuthRedirect>
+            <ForgotPasswordPage />
+          </AuthRedirect>
+        }
+      />
+      <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
 
       {/* Routes protégées (accessibles uniquement aux utilisateurs connectés) */}
       <Route element={<ProtectedRoute />}>
