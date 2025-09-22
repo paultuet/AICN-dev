@@ -124,10 +124,7 @@
        (decode model/User)))
 
 (defn update-user [datasource {:keys [id name organization role access-rights email-verified verification-token verification-token-expires-at reset-token reset-token-expires-at password-hash]}]
-  (let [log-ds (jdbc/with-logging datasource (fn [sym sql-params]
-                                               (prn sym sql-params)))
-
-        res (jdbc/execute-one! log-ds
+  (let [res (jdbc/execute-one! datasource
                                ["UPDATE users SET 
                             name = COALESCE(?::text, name),
                             organization = COALESCE(?::text, organization),
@@ -210,7 +207,7 @@
                        user-id]
                       {:builder-fn rs/as-unqualified-maps})))
 
-(defn get-conversations-with-messages 
+(defn get-conversations-with-messages
   "Récupère toutes les conversations avec messages. Si user-id est fourni, inclut le statut lu/non-lu"
   ([datasource]
    (get-conversations-with-messages datasource nil))
@@ -294,8 +291,6 @@
                           {:builder-fn rs/as-unqualified-maps})
        (decode model/ConversationReadStatus)))
 
-
-
 (defn get-unread-conversations-count [datasource user-id]
   "Compte le nombre de conversations non-lues pour un utilisateur"
   (->> (jdbc/execute-one! datasource
@@ -310,8 +305,8 @@
 ;; Feature Flag functions
 (defn get-all-feature-flags [datasource]
   (->> (jdbc/execute! datasource
-                     ["SELECT * FROM feature_flags ORDER BY name ASC"]
-                     {:builder-fn rs/as-unqualified-maps})
+                      ["SELECT * FROM feature_flags ORDER BY name ASC"]
+                      {:builder-fn rs/as-unqualified-maps})
        (decode [:vector model/FeatureFlag])))
 
 (defn create-datasource [db-spec]
