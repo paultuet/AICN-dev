@@ -225,6 +225,7 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
     }
 
     if (
+      node.niveau !== undefined &&
       node.niveau < 3 &&
       getConversationsForGroup &&
       getConversationsForGroup(node["entity-id"], node["entity-name"])
@@ -388,9 +389,9 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
 
             const childEntity: Entity = {
               "entity-id": childField["entity-id"],
-              "entity-name": childField["entity-name"],
-              niveau: childField.niveau,
-              "id-record": childField["id-record"],
+              "entity-name": childField["entity-name"] || "",
+              niveau: childField.niveau ?? 0,
+              "id-record": childField["id-record"] ? String(childField["id-record"]) : undefined,
               type: childField.type || "UNKNOWN",
               "var-type": childField["var-type"],
               desc: childField["desc"],
@@ -405,7 +406,7 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
                         field.niveau === (childField.niveau as number) + 1 &&
                         "lib-group" in field &&
                         field["lib-group"] &&
-                        field["lib-group"].includes(childField["entity-name"]),
+                        field["lib-group"].includes(childField["entity-name"] || ""),
                     ),
             };
 
