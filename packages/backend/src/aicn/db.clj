@@ -62,6 +62,69 @@
   (read-column-by-index [^org.postgresql.util.PGobject v _2 _3]
     (<-pgobject v)))
 
+;; Generic DB query functions with error handling
+(defn safe-execute-one!
+  "Execute a single query with error handling and optional schema decoding"
+  ([datasource query-vec]
+   (safe-execute-one! datasource query-vec nil))
+  ([datasource query-vec schema]
+   (try
+     (let [result (jdbc/execute-one! datasource
+                                     query-vec
+                                     {:builder-fn rs/as-unqualified-maps})]
+       (if schema
+         (decode schema result)
+         result))
+     (catch java.sql.SQLException e
+       (log/error "Database query error" {:query (first query-vec)
+                                          :error (.getMessage e)
+                                          :sql-state (.getSQLState e)})
+       (throw (ex-info "Database query failed"
+                       {:type :db/query-error
+                        :query (first query-vec)
+                        :sql-state (.getSQLState e)
+                        :message (.getMessage e)}
+                       e)))
+     (catch Exception e
+       (log/error "Unexpected error during database query" {:query (first query-vec)
+                                                            :error (.getMessage e)})
+       (throw (ex-info "Unexpected database error"
+                       {:type :db/unexpected-error
+                        :query (first query-vec)
+                        :message (.getMessage e)}
+                       e))))))
+
+(defn safe-execute!
+  "Execute a query returning multiple results with error handling and optional schema decoding"
+  ([datasource query-vec]
+   (safe-execute! datasource query-vec nil))
+  ([datasource query-vec schema]
+   (try
+     (let [results (jdbc/execute! datasource
+                                  query-vec
+                                  {:builder-fn rs/as-unqualified-maps})]
+       (if schema
+         (decode schema results)
+         results))
+     (catch java.sql.SQLException e
+       (log/error "Database query error" {:query (first query-vec)
+                                          :error (.getMessage e)
+                                          :sql-state (.getSQLState e)})
+       (throw (ex-info "Database query failed"
+                       {:type :db/query-error
+                        :query (first query-vec)
+                        :sql-state (.getSQLState e)
+                        :message (.getMessage e)}
+                       e)))
+     (catch Exception e
+       (log/error "Unexpected error during database query" {:query (first query-vec)
+                                                            :error (.getMessage e)})
+       (throw (ex-info "Unexpected database error"
+                       {:type :db/unexpected-error
+                        :query (first query-vec)
+                        :message (.getMessage e)}
+                       e))))))
+
 ;; User functions
 (defn create-user [datasource {:keys [email password-hash name organization role access-rights verification-token verification-token-expires-at]}]
   (->> (jdbc/execute-one! datasource
@@ -100,28 +163,24 @@
        (decode model/User)))
 
 (defn get-user-by-email [datasource email]
-  (->> (jdbc/execute-one! datasource
-                          ["SELECT * FROM users WHERE email = ?::text" email]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/User)))
+  (safe-execute-one! datasource
+                     ["SELECT * FROM users WHERE email = ?::text" email]
+                     model/User))
 
 (defn get-user-by-verification-token [datasource token]
-  (->> (jdbc/execute-one! datasource
-                          ["SELECT * FROM users WHERE verification_token = ?::uuid" token]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/User)))
+  (safe-execute-one! datasource
+                     ["SELECT * FROM users WHERE verification_token = ?::uuid" token]
+                     model/User))
 
 (defn get-user-by-reset-token [datasource token]
-  (->> (jdbc/execute-one! datasource
-                          ["SELECT * FROM users WHERE reset_token = ?::uuid" token]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/User)))
+  (safe-execute-one! datasource
+                     ["SELECT * FROM users WHERE reset_token = ?::uuid" token]
+                     model/User))
 
 (defn get-user-by-id [datasource id]
-  (->> (jdbc/execute-one! datasource
-                          ["SELECT * FROM users WHERE id = ?::uuid" id]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/User)))
+  (safe-execute-one! datasource
+                     ["SELECT * FROM users WHERE id = ?::uuid" id]
+                     model/User))
 
 (defn update-user [datasource {:keys [id name organization role access-rights email-verified verification-token verification-token-expires-at reset-token reset-token-expires-at password-hash]}]
   (let [res (jdbc/execute-one! datasource
@@ -144,21 +203,19 @@
     (decode model/User res)))
 
 (defn update-user-password [datasource {:keys [id password-hash]}]
-  (->> (jdbc/execute-one! datasource
-                          ["UPDATE users SET 
+  (safe-execute-one! datasource
+                     ["UPDATE users SET
                             password_hash = ?::text,
                             updated_at = NOW()
                             WHERE id = ?::uuid
                             RETURNING *"
-                           password-hash id]
-                          {:builder-fn rs/as-unqualified-maps})
-       (decode model/User)))
+                      password-hash id]
+                     model/User))
 
 (defn get-all-users [datasource]
-  (->> (jdbc/execute! datasource
-                      ["SELECT * FROM users ORDER BY created_at DESC"]
-                      {:builder-fn rs/as-unqualified-maps})
-       (decode [:vector model/User])))
+  (safe-execute! datasource
+                 ["SELECT * FROM users ORDER BY created_at DESC"]
+                 [:vector model/User]))
 
 ;; New Conversation functions for updated schema
 (defn create-conversation [datasource {:keys [id title linked-items created-by]}]
@@ -304,10 +361,9 @@
 
 ;; Feature Flag functions
 (defn get-all-feature-flags [datasource]
-  (->> (jdbc/execute! datasource
-                      ["SELECT * FROM feature_flags ORDER BY name ASC"]
-                      {:builder-fn rs/as-unqualified-maps})
-       (decode [:vector model/FeatureFlag])))
+  (safe-execute! datasource
+                 ["SELECT * FROM feature_flags ORDER BY name ASC"]
+                 [:vector model/FeatureFlag]))
 
 (defn create-datasource [db-spec]
   (let [config (doto (HikariConfig.)
