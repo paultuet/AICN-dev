@@ -23,21 +23,22 @@
     (response/response feature-flags)))
 
 (defn get-api-routes [opts]
-  ["" {:interceptors [(core/init-system-interceptor opts)]}
+  (let [jwt-config (:auth/jwt opts)]
+    ["" {:interceptors [(core/init-system-interceptor opts)]}
 
-   ;; Public endpoint that doesn't require authentication
-   ["/health" {:get {:summary "Health check endpoint"
-                     :responses {200 {:body :any}}
-                     :handler health-check-handler}}]
+     ;; Public endpoint that doesn't require authentication
+     ["/health" {:get {:summary "Health check endpoint"
+                       :responses {200 {:body :any}}
+                       :handler health-check-handler}}]
 
-   ;; Feature flags public endpoint
-   ["/feature-flags" {:get {:summary "Get all feature flags"
-                            :responses {200 {:body :any}}
-                            :handler get-feature-flags-handler}}]
+     ;; Feature flags public endpoint
+     ["/feature-flags" {:get {:summary "Get all feature flags"
+                              :responses {200 {:body :any}}
+                              :handler get-feature-flags-handler}}]
 
-   ;; Protected routes requiring authentication
-   ["" {:interceptors [auth/authentication-interceptor
-                       auth/authorization-interceptor]}
+     ;; Protected routes requiring authentication
+     ["" {:interceptors [(auth/authentication-interceptor jwt-config)
+                         auth/authorization-interceptor]}
     ["/sync" {:post {:summary "Sync from airtable"
                      :interceptors [(auth/restrict-role-interceptor :ADMIN)
                                     core/sync-referentiels-from-airtable-interceptor
@@ -233,4 +234,4 @@
                                        :responses {200 {:body :any}
                                                    401 {:body :any}
                                                    404 {:body :any}}
-                                       :handler files/delete-file-handler}}]]])
+                                       :handler files/delete-file-handler}}]]]))

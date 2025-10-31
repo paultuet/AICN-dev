@@ -10,7 +10,10 @@
    [aicn.email :as email]
    [aicn.logger :as log]))
 
-(def secret "votre-clé-secrète-très-longue")
+(defn get-jwt-secret [auth-jwt-config]
+  (or (:secret auth-jwt-config)
+      (throw (ex-info "JWT secret is required but not set in :auth/jwt configuration"
+                      {:config-key :auth/jwt}))))
 
 (defn get-frontend-url [config]
   (get-in config [:frontend :url] "http://localhost:3000"))
@@ -104,7 +107,7 @@
          {:status 404 :body {:message "User not found"}})))))
 
 (defn login
-  [{:keys [db/ds parameters config] :as opts}]
+  [{:keys [db/ds parameters config auth/jwt] :as opts}]
   (if (nil? parameters)
     {:status 400 :body {:message "No parameters received"}}
 
@@ -122,7 +125,7 @@
                             :role (:role user)
                             :id (:id user)
                             :exp (time/plus (time/instant) (time/seconds 3600))}
-                    token (jwt/sign claims secret {:alg :hs512})]
+                    token (jwt/sign claims (get-jwt-secret jwt) {:alg :hs512})]
                 (log/info (str "User login successful - Email: " (:email user)
                               " - Name: " (:name user)
                               " - Organization: " (:organization user)
@@ -170,7 +173,7 @@
             {:status 400
              :body {:message "wrong auth data"}}))))))
 
-(def authentication-interceptor
+(defn authentication-interceptor [jwt-config]
   {:name ::authentication
    :enter (fn [context]
             (let [request (:request context)
@@ -178,7 +181,7 @@
                   token (when token (second (re-find #"^Bearer (.+)$" token)))
                   ident (when token
                           (try
-                            (jwt/unsign token secret {:alg :hs512})
+                            (jwt/unsign token (get-jwt-secret jwt-config) {:alg :hs512})
                             (catch Exception _
                               nil)))]
               (if ident

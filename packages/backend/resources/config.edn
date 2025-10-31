@@ -24,5 +24,6 @@
                :dev-mode? false
                :adapter/airtable #ig/ref :adapter/airtable
                :db/ds #ig/ref :db/pg
+               :auth/jwt {:secret #env JWT_SECRET}
                :config {:frontend {:url #or [#env FRONTEND_URL "http://localhost:3000"]}}}}
 
