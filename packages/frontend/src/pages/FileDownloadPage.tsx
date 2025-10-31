@@ -7,37 +7,43 @@ import { fr } from 'date-fns/locale';
 interface FileInfo {
   id: string;
   fileName: string;
+  title?: string;
   version: string;
   uploadDate: string;
   fileSize: number;
 }
 
+interface FileUpload {
+  file: File;
+  title: string;
+}
+
 const FileDownloadPage: React.FC = () => {
   const isAdmin = useIsAdmin();
-  const [file, setFile] = useState<File | null>(null);
+  const [fileUploads, setFileUploads] = useState<FileUpload[]>([]);
   const [version, setVersion] = useState('');
   const [uploadDate, setUploadDate] = useState('');
-  const [currentFile, setCurrentFile] = useState<FileInfo | null>(null);
+  const [allFiles, setAllFiles] = useState<FileInfo[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploadLoading, setUploadLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchCurrentFile();
+    fetchAllFiles();
   }, []);
 
-  const fetchCurrentFile = async () => {
+  const fetchAllFiles = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await api.get('/file/current');
-      if (response.data) {
-        setCurrentFile(response.data);
+      const response = await api.get('/files');
+      if (response.data && response.data.files) {
+        setAllFiles(response.data.files);
       }
     } catch (err: any) {
       if (err.response?.status !== 404) {
-        setError('Erreur lors de la récupération du fichier');
+        setError('Erreur lors de la récupération des fichiers');
         console.error(err);
       }
     } finally {
@@ -45,17 +51,39 @@ const FileDownloadPage: React.FC = () => {
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+  const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const newFiles = Array.from(e.target.files).map(file => ({
+        file,
+        title: ''
+      }));
+      setFileUploads([...fileUploads, ...newFiles]);
     }
+  };
+
+  const handleTitleChange = (index: number, title: string) => {
+    const updatedUploads = [...fileUploads];
+    updatedUploads[index].title = title;
+    setFileUploads(updatedUploads);
+  };
+
+  const handleRemoveFile = (index: number) => {
+    const updatedUploads = fileUploads.filter((_, i) => i !== index);
+    setFileUploads(updatedUploads);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!file || !version || !uploadDate) {
-      setError('Veuillez remplir tous les champs');
+    if (fileUploads.length === 0 || !version || !uploadDate) {
+      setError('Veuillez remplir tous les champs et ajouter au moins un fichier');
+      return;
+    }
+
+    // Vérifier que tous les fichiers ont un titre
+    const missingTitles = fileUploads.some(fu => !fu.title.trim());
+    if (missingTitles) {
+      setError('Veuillez ajouter un titre pour chaque fichier');
       return;
     }
 
@@ -64,7 +92,13 @@ const FileDownloadPage: React.FC = () => {
     setSuccess(null);
 
     const formData = new FormData();
-    formData.append('file', file);
+
+    // Ajouter tous les fichiers et titres
+    fileUploads.forEach((fu) => {
+      formData.append('files', fu.file);
+      formData.append('titles', fu.title);
+    });
+
     formData.append('version', version);
     formData.append('uploadDate', uploadDate);
 
@@ -75,11 +109,13 @@ const FileDownloadPage: React.FC = () => {
         },
       });
 
-      setSuccess('Fichier uploadé avec succès');
-      setCurrentFile(response.data);
+      setSuccess(`${fileUploads.length} fichier(s) uploadé(s) avec succès`);
+
+      // Rafraîchir la liste des fichiers
+      await fetchAllFiles();
 
       // Reset form
-      setFile(null);
+      setFileUploads([]);
       setVersion('');
       setUploadDate('');
 
@@ -89,18 +125,16 @@ const FileDownloadPage: React.FC = () => {
         fileInput.value = '';
       }
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Erreur lors de l\'upload du fichier');
+      setError(err.response?.data?.message || 'Erreur lors de l\'upload des fichiers');
       console.error(err);
     } finally {
       setUploadLoading(false);
     }
   };
 
-  const handleDownload = async () => {
-    if (!currentFile) return;
-
+  const handleDownload = async (file: FileInfo) => {
     try {
-      const response = await api.get(`/file/download/${currentFile.id}`, {
+      const response = await api.get(`/file/download/${file.id}`, {
         responseType: 'blob',
       });
 
@@ -108,13 +142,30 @@ const FileDownloadPage: React.FC = () => {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', currentFile.fileName);
+      link.setAttribute('download', file.fileName);
       document.body.appendChild(link);
       link.click();
       link.remove();
       window.URL.revokeObjectURL(url);
     } catch (err: any) {
       setError('Erreur lors du téléchargement du fichier');
+      console.error(err);
+    }
+  };
+
+  const handleDelete = async (file: FileInfo) => {
+    if (!window.confirm(`Êtes-vous sûr de vouloir supprimer le fichier "${file.title || file.fileName}" ?`)) {
+      return;
+    }
+
+    try {
+      await api.delete(`/file/delete/${file.id}`);
+      setSuccess('Fichier supprimé avec succès');
+
+      // Rafraîchir la liste des fichiers
+      await fetchAllFiles();
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Erreur lors de la suppression du fichier');
       console.error(err);
     }
   };
@@ -142,21 +193,54 @@ const FileDownloadPage: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="file-input" className="block text-sm font-medium text-gray-700 mb-2">
-                  Fichier
+                  Fichiers
                 </label>
                 <input
                   id="file-input"
                   type="file"
-                  onChange={handleFileChange}
+                  multiple
+                  onChange={handleFilesChange}
                   className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                   disabled={uploadLoading}
                 />
-                {file && (
-                  <p className="mt-1 text-sm text-gray-500">
-                    Fichier sélectionné: {file.name}
-                  </p>
-                )}
+                <p className="mt-1 text-xs text-gray-500">
+                  Vous pouvez sélectionner plusieurs fichiers
+                </p>
               </div>
+
+              {/* Liste des fichiers sélectionnés avec leurs titres */}
+              {fileUploads.length > 0 && (
+                <div className="space-y-3">
+                  <h3 className="text-sm font-medium text-gray-700">
+                    Fichiers à uploader ({fileUploads.length})
+                  </h3>
+                  {fileUploads.map((fileUpload, index) => (
+                    <div key={index} className="flex gap-2 items-start p-3 bg-gray-50 rounded-lg">
+                      <div className="flex-1 space-y-2">
+                        <p className="text-sm font-medium text-gray-900">{fileUpload.file.name}</p>
+                        <input
+                          type="text"
+                          placeholder="Titre du fichier"
+                          value={fileUpload.title}
+                          onChange={(e) => handleTitleChange(index, e.target.value)}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          disabled={uploadLoading}
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveFile(index)}
+                        className="mt-1 text-red-600 hover:text-red-800"
+                        disabled={uploadLoading}
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <div>
                 <label htmlFor="version" className="block text-sm font-medium text-gray-700 mb-2">
@@ -201,57 +285,64 @@ const FileDownloadPage: React.FC = () => {
 
               <button
                 type="submit"
-                disabled={uploadLoading || !file}
+                disabled={uploadLoading || fileUploads.length === 0}
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {uploadLoading ? 'Upload en cours...' : 'Uploader le fichier'}
+                {uploadLoading ? 'Upload en cours...' : `Uploader ${fileUploads.length > 0 ? `(${fileUploads.length})` : ''}`}
               </button>
             </form>
-
-            {currentFile && (
-              <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded">
-                <p className="text-sm text-yellow-800">
-                  ⚠️ Attention: L'upload d'un nouveau fichier remplacera le fichier actuel
-                </p>
-              </div>
-            )}
           </div>
         )}
 
-        {/* Current File Display */}
+        {/* Files List Display */}
         <div className="bg-white shadow rounded-lg p-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Fichier disponible au téléchargement
+            Fichiers disponibles au téléchargement
           </h2>
 
           {loading ? (
             <div className="flex justify-center py-8">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
             </div>
-          ) : currentFile ? (
-            <div className="space-y-4">
-              <div className="border rounded-lg p-4 bg-gray-50">
-                <div className="flex justify-between items-start">
-                  <div className="space-y-2">
-                    <p className="font-medium text-gray-900">{currentFile.fileName}</p>
-                    <div className="text-sm text-gray-600 space-y-1">
-                      <p>Version: {currentFile.version}</p>
-                      <p>
-                        Date d'upload:{' '}
-                        {format(new Date(currentFile.uploadDate), 'dd MMMM yyyy', { locale: fr })}
-                      </p>
-                      <p>Taille: {formatFileSize(currentFile.fileSize)}</p>
+          ) : allFiles.length > 0 ? (
+            <div className="space-y-3">
+              {allFiles.map((file) => (
+                <div key={file.id} className="border rounded-lg p-4 bg-gray-50">
+                  <div className="flex justify-between items-start">
+                    <div className="space-y-2 flex-1">
+                      {file.title && (
+                        <h3 className="text-lg font-semibold text-gray-900">{file.title}</h3>
+                      )}
+                      <p className="font-medium text-gray-700">{file.fileName}</p>
+                      <div className="text-sm text-gray-600 space-y-1">
+                        <p>Version: {file.version}</p>
+                        <p>
+                          Date d'upload:{' '}
+                          {format(new Date(file.uploadDate), 'dd MMMM yyyy', { locale: fr })}
+                        </p>
+                        <p>Taille: {formatFileSize(file.fileSize)}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleDownload(file)}
+                        className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      >
+                        Télécharger
+                      </button>
+                      {isAdmin && (
+                        <button
+                          onClick={() => handleDelete(file)}
+                          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                        >
+                          Supprimer
+                        </button>
+                      )}
                     </div>
                   </div>
-
-                  <button
-                    onClick={handleDownload}
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Télécharger
-                  </button>
                 </div>
-              </div>
+              ))}
             </div>
           ) : (
             <p className="text-gray-500 text-center py-8">

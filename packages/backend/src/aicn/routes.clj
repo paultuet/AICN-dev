@@ -219,7 +219,18 @@
                                         404 {:body :any}}
                             :handler files/get-current-file-handler}}]
 
+    ["/files" {:get {:summary "Get all uploaded files"
+                     :responses {200 {:body :any}}
+                     :handler files/get-all-files-handler}}]
+
     ["/file/download/:file-id" {:get {:summary "Download a file"
                                       :responses {200 {:body :any}
                                                   404 {:body :any}}
-                                      :handler files/download-file-handler}}]]])
+                                      :handler files/download-file-handler}}]
+
+    ["/file/delete/:file-id" {:delete {:summary "Delete a file (admin only)"
+                                       :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+                                       :responses {200 {:body :any}
+                                                   401 {:body :any}
+                                                   404 {:body :any}}
+                                       :handler files/delete-file-handler}}]]])

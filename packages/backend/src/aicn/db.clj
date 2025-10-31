@@ -366,7 +366,7 @@
   (.close ds))
 
 ;; File management functions
-(defn create-file [datasource {:keys [id file-name file-path version upload-date file-size content-type uploaded-by]}]
+(defn create-file [datasource {:keys [id file-name file-path version upload-date file-size content-type uploaded-by title]}]
   (jdbc/execute-one! datasource
                     ["INSERT INTO uploaded_files (
                       id,
@@ -376,7 +376,8 @@
                       upload_date,
                       file_size,
                       content_type,
-                      uploaded_by
+                      uploaded_by,
+                      title
                     )
                     VALUES (
                       ?::uuid,
@@ -386,7 +387,8 @@
                       ?::date,
                       ?::bigint,
                       ?::text,
-                      ?::uuid
+                      ?::uuid,
+                      ?::text
                     )
                     RETURNING *"
                      id
@@ -396,7 +398,8 @@
                      upload-date
                      file-size
                      content-type
-                     uploaded-by]
+                     uploaded-by
+                     title]
                     {:builder-fn rs/as-unqualified-maps}))
 
 (defn get-current-file [datasource]
@@ -405,6 +408,12 @@
                       ORDER BY created_at DESC
                       LIMIT 1"]
                     {:builder-fn rs/as-unqualified-maps}))
+
+(defn get-all-files [datasource]
+  (jdbc/execute! datasource
+                ["SELECT * FROM uploaded_files
+                  ORDER BY created_at DESC"]
+                {:builder-fn rs/as-unqualified-maps}))
 
 (defn get-file-by-id [datasource file-id]
   (jdbc/execute-one! datasource
