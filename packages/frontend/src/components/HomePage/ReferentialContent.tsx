@@ -6,7 +6,7 @@ interface ReferentialContentProps {
   referentials: Entity[];
   searchTerm: string;
   conversations: Conversation[];
-  selectedType: string;
+  selectedType: string | null;
   toggleFieldSelection: (entityId: string, fieldId: number | string, fieldName?: string) => void;
   toggleGroupSelection: (entityId: string, groupName: string) => void;
   isFieldSelected: (entityId: string, fieldId: number | string) => boolean;

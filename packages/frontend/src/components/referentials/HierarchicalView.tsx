@@ -25,7 +25,7 @@ import ErrorMessage from "@/components/ui/ErrorMessage";
 interface HierarchicalViewProps {
   data: Entity[];
   searchTerm?: string;
-  selectedType?: string;
+  selectedType?: string | null;
   conversations?: Conversation[];
   toggleFieldSelection?: (
     entityId: string,
