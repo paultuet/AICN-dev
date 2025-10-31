@@ -48,11 +48,9 @@ export const LinkedFieldsContent: React.FC<LinkedFieldsContentProps> = ({
           ) => {
             for (const field of fields) {
               const fieldId =
-                "id-field" in field
-                  ? field["id-field"]
-                  : "id-record" in field
-                    ? field["id-record"]
-                    : "";
+                "id-record" in field
+                  ? field["id-record"]
+                  : "";
 
               if (entityIds.includes(String(fieldId))) {
                 const enrichedField = {

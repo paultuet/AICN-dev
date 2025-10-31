@@ -9,23 +9,64 @@
    [meander.epsilon :as m]
    [medley.core :as md]))
 
+;; Constants
+(def ^:private entity-types
+  {:rio "RIO"
+   :nmr "NMR"
+   :lov "LoV"
+   :unknown "UNKNOWN"})
+
+(def ^:private table-names
+  {:liens-niveaux "liens-niveaux"
+   :ref-list "ref_list"
+   :cat-ref "cat_ref"
+   :lov "lov"})
+
+(def ^:private niveau-keys
+  {:niv1 :NIV1
+   :niv2 :NIV2
+   :niv3 :NIV3
+   :niv4 :NIV4})
+
 (defn- ->url [{:keys [app-id]} table-name]
   (str "https://api.airtable.com/v0/" app-id "/" table-name))
 
 (defn- request [{:keys [token] :as auth} {:keys [method table-name offset]}]
-  (-> (hc/request (cond-> {:url (->url auth table-name)
-                           :method method
-                           :headers {"Authorization" (str "Bearer " token)}}
-                    offset (assoc-in [:query-params :offset] offset)))
-      :body
-      u/from-json))
+  (try
+    (let [response (hc/request (cond-> {:url (->url auth table-name)
+                                        :method method
+                                        :headers {"Authorization" (str "Bearer " token)}
+                                        :throw-exceptions false}
+                                 offset (assoc-in [:query-params :offset] offset)))]
+      (when (>= (:status response) 400)
+        (throw (ex-info "Airtable API request failed"
+                        {:type :airtable/api-error
+                         :status (:status response)
+                         :table table-name
+                         :body (:body response)})))
+      (-> response :body u/from-json))
+    (catch Exception e
+      (if (= :airtable/api-error (-> e ex-data :type))
+        (throw e)
+        (throw (ex-info "Failed to communicate with Airtable"
+                        {:type :airtable/request-error
+                         :table table-name
+                         :message (.getMessage e)}
+                        e))))))
 
 (defn- spit-pretty [file-path data]
-  (with-open [w (io/writer file-path)]
-    (binding [*out* w
-              *print-length* nil
-              *print-level* nil]
-      (pprint/pprint data))))
+  (try
+    (with-open [w (io/writer file-path)]
+      (binding [*out* w
+                *print-length* nil
+                *print-level* nil]
+        (pprint/pprint data)))
+    (catch Exception e
+      (throw (ex-info "Failed to write data to file"
+                      {:type :file/write-error
+                       :file-path file-path
+                       :message (.getMessage e)}
+                      e)))))
 
 (defn- fetch-all [auth table-name]
   (loop [all-records []
@@ -44,13 +85,27 @@
     (let [data (fetch-all auth table)]
       (spit-pretty (io/resource (format "data/%s.edn" (str/replace table #" " "-"))) data))))
 
-(def tables ["liens niveaux" "lov" "cat_ref" "ref_list"])
+(def tables ["liens niveaux" (:lov table-names) (:cat-ref table-names) (:ref-list table-names)])
 
 (defn get-tables-names []
   tables)
 
 (defn- read-file-table [table]
-  (read-string (slurp (io/resource (format "data/%s.edn" table)))))
+  (try
+    (let [file-path (format "data/%s.edn" table)
+          resource (io/resource file-path)]
+      (when-not resource
+        (throw (ex-info "Table file not found"
+                        {:type :file/not-found
+                         :table table
+                         :path file-path})))
+      (read-string (slurp resource)))
+    (catch Exception e
+      (throw (ex-info "Failed to read table file"
+                      {:type :file/read-error
+                       :table table
+                       :message (.getMessage e)}
+                      e)))))
 
 (defn- get-category [cat-ref-table category-id]
   (let [category-data (first (filter #(= (:id %) category-id) cat-ref-table))
@@ -92,25 +147,24 @@
                    :link-entity-id link-entity-id})))
          (into []))))
 
-(defn- normalize-string [s]
-  (-> s
-      (str/lower-case)
-      ;; Remplacer les caractères accentués par leurs équivalents sans accent
-      (str/replace "é" "e")
-      (str/replace "è" "e")
-      (str/replace "ê" "e")
-      (str/replace "ë" "e")
-      (str/replace "à" "a")
-      (str/replace "â" "a")
-      (str/replace "ä" "a")
-      (str/replace "î" "i")
-      (str/replace "ï" "i")
-      (str/replace "ô" "o")
-      (str/replace "ö" "o")
-      (str/replace "ù" "u")
-      (str/replace "û" "u")
-      (str/replace "ü" "u")
-      (str/replace "ç" "c")))
+(def ^:private accent-map
+  "Map of accented characters to their non-accented equivalents"
+  {"é" "e" "è" "e" "ê" "e" "ë" "e"
+   "à" "a" "â" "a" "ä" "a"
+   "î" "i" "ï" "i"
+   "ô" "o" "ö" "o"
+   "ù" "u" "û" "u" "ü" "u"
+   "ç" "c"})
+
+(defn- normalize-string
+  "Normalize string by converting to lowercase and removing accents"
+  [s]
+  (let [lowercased (str/lower-case s)]
+    (reduce-kv
+     (fn [result accented unaccented]
+       (str/replace result accented unaccented))
+     lowercased
+     accent-map)))
 
 (defn get-lov-details [all-lov lov-name])
 
@@ -180,71 +234,46 @@
                        
    (->> (mapv (fn [{:keys [lib order]}]
                 (let [id (str lib "-" order)]
-                 {:id-field id #_(:id-record niv3-details)
+                 {:id-record id
                   :entity-id id
-                  :lib-fonc lib 
+                  :entity-name lib
                   :niveau 2
                   :var-type ""
+                  :desc lib
+                  :desc-fr lib
                   :order order
-                  #_#_:desc lib
-                  ; :entity-id niv3-id
-                  ; :entity {:id niv3-id :name (:name niv3-details)}
-                  ; :link-entity-id (:link niv3-details)
-                  ; :lib-group (format "Niveau 3 - %s" (:name niv3-details))
-                  ; :exemple (:exemple niv3-details)
-                  :type "LoV"}))
+                  :entity {:id id :name lib}
+                  :link-entity-id nil
+                  :exemple nil
+                  :type (:lov entity-types)}))
               lov-libs)
         (sort-by :order))))
 
-(defn- build-field-entry
-  "Build a standardized field entry for NIV3 entities"
-  [niv3-id niv3-details]
-  {:id-field (:id-record niv3-details)
-   :lib-fonc (:name niv3-details)
-   :niveau 3
-   :var-type (:var-type niv3-details)
-   :desc (:desc-fr niv3-details)
-   :entity-id niv3-id
-   :entity {:id niv3-id :name (:name niv3-details)}
-   :link-entity-id (:link niv3-details)
-   :lib-group (format "Niveau 3 - %s" (:name niv3-details))
-   :exemple (:exemple niv3-details)
-   :type (or (:type niv3-details) "UNKNOWN")})
+(defn- build-entity-entry
+  "Build a standardized entity entry for any niveau level"
+  [entity-id entity-details niveau]
+  {:id-record (:id-record entity-details)
+   :entity-name (:name entity-details)
+   :niveau niveau
+   :var-type (:var-type entity-details)
+   :desc (:desc-fr entity-details)
+   :desc-fr (:desc-fr entity-details)
+   :entity-id entity-id
+   :entity {:id entity-id :name (:name entity-details)}
+   :link-entity-id (:link entity-details)
+   :lib-group (format "Niveau %d - %s" niveau (or (:name entity-details) ""))
+   :exemple (:exemple entity-details)
+   :type (or (:type entity-details) (:unknown entity-types))})
 
-(defn- build-level4-entry
-  "Build a standardized field entry for NIV4 entities"
-  [niv4-id niv4-details]
-  {:id-field (:id-record niv4-details)
-   :lib-fonc (:name niv4-details)
-   :niveau 4
-   :var-type (:var-type niv4-details)
-   :desc (:desc-fr niv4-details)
-   :entity-id niv4-id
-   :entity {:id niv4-id :name (:name niv4-details)}
-   :link-entity-id (:link niv4-details)
-   :lib-group (format "Niveau 4 - %s" (:name niv4-details))
-   :exemple (:exemple niv4-details)
-   :type (or (:type niv4-details) "UNKNOWN")})
-
-(defn- process-niv3-entities
-  "Process NIV3 entities by type and convert to field entries"
-  [niv3-ids get-entity-details-fn]
-  (->> niv3-ids
-       (map (fn [niv3-id]
-              (when-let [niv3-details (get-entity-details-fn niv3-id)]
-                (build-field-entry niv3-id niv3-details))))
+(defn- process-niveau-entities
+  "Process entities at any niveau level and convert to field entries"
+  [entity-ids get-entity-details-fn niveau]
+  (->> entity-ids
+       (map (fn [entity-id]
+              (when-let [entity-details (get-entity-details-fn entity-id)]
+                (build-entity-entry entity-id entity-details niveau))))
        (filter some?)
-       (sort-by #(normalize-string (:lib-fonc %)))))
-
-(defn- process-niv4-entities
-  "Process NIV4 entities and convert to field entries"
-  [niv4-ids get-entity-details-fn]
-  (->> niv4-ids
-       (map (fn [niv4-id]
-              (when-let [niv4-details (get-entity-details-fn niv4-id)]
-                (build-level4-entry niv4-id niv4-details))))
-       (filter some?)
-       (sort-by #(normalize-string (:lib-fonc %)))))
+       (sort-by #(normalize-string (or (:entity-name %) "")))))
 
 (defn- find-children-ids
   "Find all child IDs for a given parent ID in a mapping"
@@ -253,81 +282,125 @@
        (filter #(= parent-id (second %)))
        (map first)))
 
-(defn- build-hierarchical-level
-  "Recursively build hierarchical structure for a given level"
-  [entity-ids niveau get-entity-details-fn child-mappings]
-  (map (fn [entity-id]
-         (let [entity-details (get-entity-details-fn entity-id)
-               base-entity {:entity-id entity-id
-                            :entity-name (:name entity-details)
-                            :niveau niveau
-                            :id-record (:id-record entity-details)
-                            :type (:type entity-details)
-                            :exemple (:exemple entity-details)
-                            :link (:link entity-details)
-                            :var-type (:var-type entity-details)
-                            :desc-fr (:desc-fr entity-details)}]
-           (case niveau
-             1 (if (= (:type entity-details) "LoV")
-                 (assoc base-entity :fields (sort-by :order (build-fields-for-lov (get child-mappings :all-lov) (:name entity-details))))
-                 (let [niv2-ids (find-children-ids entity-id (get child-mappings :niv2-to-niv1))
-                       sorted-niv2-ids (sort-by (fn [id]
-                                                  (normalize-string
-                                                   (or (:name (get-entity-details-fn id)) "")))
-                                                niv2-ids)
-                       niv2-entries (build-hierarchical-level sorted-niv2-ids 2 get-entity-details-fn child-mappings)]
-                   (assoc base-entity :fields niv2-entries)))
+(defn- make-base-entity
+  "Create base entity structure from entity details"
+  [entity-id entity-details niveau]
+  {:entity-id entity-id
+   :entity-name (:name entity-details)
+   :niveau niveau
+   :id-record (:id-record entity-details)
+   :type (:type entity-details)
+   :exemple (:exemple entity-details)
+   :link (:link entity-details)
+   :var-type (:var-type entity-details)
+   :desc-fr (:desc-fr entity-details)})
 
-             2 (let [niv3-ids (find-children-ids entity-id (get child-mappings :niv3-to-niv2))
-                     niv3-by-type (group-by (fn [id] (:type (get-entity-details-fn id))) niv3-ids)
-                     rio-fields (process-niv3-entities (get niv3-by-type "RIO" []) get-entity-details-fn)
-                     ;; Pour les NMR, on construit des entités de niveau 3 qui peuvent avoir des enfants niveau 4
-                     nmr-fields (build-hierarchical-level (get niv3-by-type "NMR" []) 3 get-entity-details-fn child-mappings)
-                     other-fields (process-niv3-entities
-                                   (->> (dissoc niv3-by-type "RIO" "NMR")
-                                        vals
-                                        (apply concat))
-                                   get-entity-details-fn)]
-                 (assoc base-entity :fields (concat rio-fields nmr-fields other-fields)))
+(defn- sort-entities-by-name
+  "Sort entity IDs by normalized entity name"
+  [entity-ids get-entity-details-fn]
+  (sort-by (fn [id]
+             (normalize-string
+              (or (:name (get-entity-details-fn id)) "")))
+           entity-ids))
 
-             3 (let [niv4-ids (find-children-ids entity-id (get child-mappings :niv4-to-niv3))
-                     niv4-fields (when (seq niv4-ids)
-                                   (process-niv4-entities niv4-ids get-entity-details-fn))]
-                 (if (seq niv4-fields)
-                   ;; Si l'entité niveau 3 a des enfants niveau 4, on la transforme en entité hiérarchique
-                   (assoc base-entity :fields niv4-fields)
-                   ;; Sinon, on retourne juste l'entité de base (comme un field terminal)
-                   base-entity))
+;; Forward declarations for mutual recursion
+(declare build-niveau2-entities build-niveau3-entities)
 
-             base-entity)))
-       entity-ids))
+(defn- build-niveau3-entity
+  "Build niveau 3 entity (with optional niveau 4 children for NMR types)"
+  [entity-id get-entity-details-fn child-mappings]
+  (let [entity-details (get-entity-details-fn entity-id)
+        base-entity (make-base-entity entity-id entity-details 3)
+        niv4-ids (find-children-ids entity-id (get child-mappings :niv4-to-niv3))
+        niv4-fields (when (seq niv4-ids)
+                      (process-niveau-entities niv4-ids get-entity-details-fn 4))]
+    (if (seq niv4-fields)
+      (assoc base-entity :fields niv4-fields)
+      base-entity)))
 
-(defn- group-and-sort-by-entity []
-  (let [liens-niveaux (read-file-table "liens-niveaux")
-        ref-list-data (read-file-table "ref_list")
-        all-lov (->> (read-file-table "lov")
+(defn- build-niveau3-entities
+  "Build all niveau 3 entities"
+  [entity-ids get-entity-details-fn child-mappings]
+  (map #(build-niveau3-entity % get-entity-details-fn child-mappings) entity-ids))
+
+(defn- build-niveau2-entity
+  "Build niveau 2 entity with niveau 3 children"
+  [entity-id get-entity-details-fn child-mappings]
+  (let [entity-details (get-entity-details-fn entity-id)
+        base-entity (make-base-entity entity-id entity-details 2)
+        niv3-ids (find-children-ids entity-id (get child-mappings :niv3-to-niv2))
+        niv3-by-type (group-by (fn [id] (:type (get-entity-details-fn id))) niv3-ids)
+        rio-fields (process-niveau-entities (get niv3-by-type (:rio entity-types) []) get-entity-details-fn 3)
+        nmr-fields (build-niveau3-entities (get niv3-by-type (:nmr entity-types) []) get-entity-details-fn child-mappings)
+        other-fields (process-niveau-entities
+                      (->> (dissoc niv3-by-type (:rio entity-types) (:nmr entity-types))
+                           vals
+                           (apply concat))
+                      get-entity-details-fn
+                      3)]
+    (assoc base-entity :fields (concat rio-fields nmr-fields other-fields))))
+
+(defn- build-niveau2-entities
+  "Build all niveau 2 entities"
+  [entity-ids get-entity-details-fn child-mappings]
+  (map #(build-niveau2-entity % get-entity-details-fn child-mappings) entity-ids))
+
+(defn- build-niveau1-entity
+  "Build niveau 1 entity (LoV or standard with niveau 2 children)"
+  [entity-id get-entity-details-fn child-mappings]
+  (let [entity-details (get-entity-details-fn entity-id)
+        base-entity (make-base-entity entity-id entity-details 1)]
+    (if (= (:type entity-details) (:lov entity-types))
+      (assoc base-entity :fields (sort-by :order (build-fields-for-lov (get child-mappings :all-lov) (:name entity-details))))
+      (let [niv2-ids (find-children-ids entity-id (get child-mappings :niv2-to-niv1))
+            sorted-niv2-ids (sort-entities-by-name niv2-ids get-entity-details-fn)
+            niv2-entries (build-niveau2-entities sorted-niv2-ids get-entity-details-fn child-mappings)]
+        (assoc base-entity :fields niv2-entries)))))
+
+(defn- build-niveau1-entities
+  "Build all niveau 1 entities"
+  [entity-ids get-entity-details-fn child-mappings]
+  (map #(build-niveau1-entity % get-entity-details-fn child-mappings) entity-ids))
+
+(defn- load-table-data
+  "Load all required table data from files"
+  []
+  (let [liens-niveaux (read-file-table (:liens-niveaux table-names))
+        ref-list-data (read-file-table (:ref-list table-names))
+        all-lov (->> (read-file-table (:lov table-names))
                      (map :fields))
-        ref-list-map (md/index-by :id ref-list-data)
+        ref-list-map (md/index-by :id ref-list-data)]
+    {:liens-niveaux liens-niveaux
+     :ref-list-data ref-list-data
+     :ref-list-map ref-list-map
+     :all-lov all-lov}))
 
-        niv3-to-niv2 (build-level-mapping liens-niveaux :NIV3 :NIV2)
-        niv2-to-niv1 (build-level-mapping liens-niveaux :NIV2 :NIV1)
-        niv4-to-niv3 (build-niv4-mapping liens-niveaux ref-list-map)
+(defn- build-child-mappings
+  "Build mappings between child and parent levels"
+  [liens-niveaux ref-list-map all-lov]
+  {:niv2-to-niv1 (build-level-mapping liens-niveaux (:niv2 niveau-keys) (:niv1 niveau-keys))
+   :niv3-to-niv2 (build-level-mapping liens-niveaux (:niv3 niveau-keys) (:niv2 niveau-keys))
+   :niv4-to-niv3 (build-niv4-mapping liens-niveaux ref-list-map)
+   :all-lov all-lov})
 
+(defn- extract-niveau1-entity-ids
+  "Extract and sort niveau 1 entity IDs"
+  [ref-list-data get-entity-details-fn]
+  (->> ref-list-data
+       (filter #(= 1 (get-in % [:fields :Niveau_record])))
+       (map :id)
+       (sort-by (fn [id]
+                  (normalize-string
+                   (or (:name (get-entity-details-fn id)) ""))))))
+
+(defn- group-and-sort-by-entity
+  "Build complete hierarchical structure from table data"
+  []
+  (let [{:keys [liens-niveaux ref-list-data ref-list-map all-lov]} (load-table-data)
+        child-mappings (build-child-mappings liens-niveaux ref-list-map all-lov)
         get-entity-details-fn (partial extract-entity-details ref-list-map)
-
-        niveau1-entities (->> ref-list-data
-                              (filter #(= 1 (get-in % [:fields :Niveau_record])))
-                              (map :id)
-                              (sort-by (fn [id]
-                                         (normalize-string
-                                          (or (:name (get-entity-details-fn id)) "")))))
-
-        child-mappings {:niv2-to-niv1 niv2-to-niv1
-                        :niv3-to-niv2 niv3-to-niv2
-                        :niv4-to-niv3 niv4-to-niv3
-                        :all-lov all-lov}]
-
-    (build-hierarchical-level niveau1-entities 1 get-entity-details-fn child-mappings)))
+        niveau1-entities (extract-niveau1-entity-ids ref-list-data get-entity-details-fn)]
+    (build-niveau1-entities niveau1-entities get-entity-details-fn child-mappings)))
 
 (defn get-all-referentiels []
   (->> (group-and-sort-by-entity)

@@ -78,8 +78,8 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
             .includes(searchTerm.toLowerCase()) ||
           entity.fields.some(
             (field) =>
-              ("lib-fonc" in field &&
-                field["lib-fonc"]
+              ("entity-name" in field &&
+                field["entity-name"]
                   ?.toLowerCase()
                   .includes(searchTerm.toLowerCase())) ||
               ("desc" in field &&

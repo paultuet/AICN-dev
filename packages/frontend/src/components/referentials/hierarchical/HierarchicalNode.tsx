@@ -96,8 +96,8 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
     searchTerm && hasFields
       ? node.fields.some(
           (field) =>
-            ("lib-fonc" in field &&
-              field["lib-fonc"]
+            ("entity-name" in field &&
+              field["entity-name"]
                 ?.toLowerCase()
                 .includes(searchTerm.toLowerCase())) ||
             ("desc" in field &&
@@ -203,7 +203,7 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
           }
         }
 
-        const fieldName = node["lib-fonc"] || node["entity-name"];
+        const fieldName = node["entity-name"];
 
         if (cleanId) {
           toggleFieldSelection(node["entity-id"], cleanId, fieldName);
@@ -388,9 +388,9 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
 
             const childEntity: Entity = {
               "entity-id": childField["entity-id"],
-              "entity-name": childField["lib-fonc"],
+              "entity-name": childField["entity-name"],
               niveau: childField.niveau,
-              "id-record": String(childField["id-field"]),
+              "id-record": childField["id-record"],
               type: childField.type || "UNKNOWN",
               "var-type": childField["var-type"],
               desc: childField["desc"],
@@ -405,7 +405,7 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
                         field.niveau === (childField.niveau as number) + 1 &&
                         "lib-group" in field &&
                         field["lib-group"] &&
-                        field["lib-group"].includes(childField["lib-fonc"]),
+                        field["lib-group"].includes(childField["entity-name"]),
                     ),
             };
 

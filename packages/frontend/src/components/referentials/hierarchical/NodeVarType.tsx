@@ -44,7 +44,7 @@ export const NodeVarType: React.FC<NodeVarTypeProps> = ({ node }) => {
         <DialogContent className="max-w-6xl max-h-[80vh] overflow-hidden flex flex-col">
           <DialogHeader className="flex-shrink-0">
             <DialogTitle>
-              Champs liés à : {node["lib-fonc"] || node["entity-name"]}
+              Champs liés à : {node["entity-name"]}
             </DialogTitle>
             <DialogDescription>
               Entité liée:{" "}

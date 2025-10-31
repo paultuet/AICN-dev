@@ -109,17 +109,15 @@ export const LinkedHierarchicalNode: React.FC<LinkedHierarchicalNodeProps> = ({
 
   const itemName = isEntityType
     ? node["entity-name"]
-    : "lib-fonc" in node
-      ? node["lib-fonc"]
+    : "entity-name" in node
+      ? node["entity-name"]
       : "Champ sans nom";
 
   const itemId = isEntityType
     ? node["entity-id"] || node["id-record"]
-    : "id-field" in node
-      ? node["id-field"]
-      : "id-record" in node
-        ? node["id-record"]
-        : "ID inconnu";
+    : "id-record" in node
+      ? node["id-record"]
+      : "ID inconnu";
 
   const hasParentInfo =
     "_parentEntityName" in node && "_parentEntityId" in node;
