@@ -129,6 +129,26 @@
           {}
           liens-niveaux))
 
+(defn- build-niv4-mapping
+  "Build NIV4 to NIV3 mapping by matching record names.
+   NIV4 is stored as a string name in liens-niveaux, not as an array of IDs like other levels."
+  [liens-niveaux ref-list-map]
+  (reduce (fn [acc link]
+            (let [niv4-name (get-in link [:fields :NIV4])
+                  niv3-ids (get-in link [:fields :NIV3])]
+              (if (and niv4-name niv3-ids)
+                ;; Find the NIV4 record by matching the name
+                (if-let [niv4-record (->> ref-list-map
+                                          vals
+                                          (filter #(and (= 4 (get-in % [:fields :Niveau_record]))
+                                                       (= niv4-name (get-in % [:fields :record_name]))))
+                                          first)]
+                  (assoc acc (:id niv4-record) (first niv3-ids))
+                  acc)
+                acc)))
+          {}
+          liens-niveaux))
+
 (defn- extract-entity-details
   "Extract entity details from ref-list"
   [ref-list-map entity-id]
@@ -191,6 +211,21 @@
    :exemple (:exemple niv3-details)
    :type (or (:type niv3-details) "UNKNOWN")})
 
+(defn- build-level4-entry
+  "Build a standardized field entry for NIV4 entities"
+  [niv4-id niv4-details]
+  {:id-field (:id-record niv4-details)
+   :lib-fonc (:name niv4-details)
+   :niveau 4
+   :var-type (:var-type niv4-details)
+   :desc (:desc-fr niv4-details)
+   :entity-id niv4-id
+   :entity {:id niv4-id :name (:name niv4-details)}
+   :link-entity-id (:link niv4-details)
+   :lib-group (format "Niveau 4 - %s" (:name niv4-details))
+   :exemple (:exemple niv4-details)
+   :type (or (:type niv4-details) "UNKNOWN")})
+
 (defn- process-niv3-entities
   "Process NIV3 entities by type and convert to field entries"
   [niv3-ids get-entity-details-fn]
@@ -198,6 +233,16 @@
        (map (fn [niv3-id]
               (when-let [niv3-details (get-entity-details-fn niv3-id)]
                 (build-field-entry niv3-id niv3-details))))
+       (filter some?)
+       (sort-by #(normalize-string (:lib-fonc %)))))
+
+(defn- process-niv4-entities
+  "Process NIV4 entities and convert to field entries"
+  [niv4-ids get-entity-details-fn]
+  (->> niv4-ids
+       (map (fn [niv4-id]
+              (when-let [niv4-details (get-entity-details-fn niv4-id)]
+                (build-level4-entry niv4-id niv4-details))))
        (filter some?)
        (sort-by #(normalize-string (:lib-fonc %)))))
 
@@ -236,13 +281,23 @@
              2 (let [niv3-ids (find-children-ids entity-id (get child-mappings :niv3-to-niv2))
                      niv3-by-type (group-by (fn [id] (:type (get-entity-details-fn id))) niv3-ids)
                      rio-fields (process-niv3-entities (get niv3-by-type "RIO" []) get-entity-details-fn)
-                     nmr-fields (process-niv3-entities (get niv3-by-type "NMR" []) get-entity-details-fn)
+                     ;; Pour les NMR, on construit des entités de niveau 3 qui peuvent avoir des enfants niveau 4
+                     nmr-fields (build-hierarchical-level (get niv3-by-type "NMR" []) 3 get-entity-details-fn child-mappings)
                      other-fields (process-niv3-entities
                                    (->> (dissoc niv3-by-type "RIO" "NMR")
                                         vals
                                         (apply concat))
                                    get-entity-details-fn)]
                  (assoc base-entity :fields (concat rio-fields nmr-fields other-fields)))
+
+             3 (let [niv4-ids (find-children-ids entity-id (get child-mappings :niv4-to-niv3))
+                     niv4-fields (when (seq niv4-ids)
+                                   (process-niv4-entities niv4-ids get-entity-details-fn))]
+                 (if (seq niv4-fields)
+                   ;; Si l'entité niveau 3 a des enfants niveau 4, on la transforme en entité hiérarchique
+                   (assoc base-entity :fields niv4-fields)
+                   ;; Sinon, on retourne juste l'entité de base (comme un field terminal)
+                   base-entity))
 
              base-entity)))
        entity-ids))
@@ -256,6 +311,7 @@
 
         niv3-to-niv2 (build-level-mapping liens-niveaux :NIV3 :NIV2)
         niv2-to-niv1 (build-level-mapping liens-niveaux :NIV2 :NIV1)
+        niv4-to-niv3 (build-niv4-mapping liens-niveaux ref-list-map)
 
         get-entity-details-fn (partial extract-entity-details ref-list-map)
 
@@ -268,6 +324,7 @@
 
         child-mappings {:niv2-to-niv1 niv2-to-niv1
                         :niv3-to-niv2 niv3-to-niv2
+                        :niv4-to-niv3 niv4-to-niv3
                         :all-lov all-lov}]
 
     (build-hierarchical-level niveau1-entities 1 get-entity-details-fn child-mappings)))

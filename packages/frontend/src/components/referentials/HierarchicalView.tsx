@@ -25,6 +25,7 @@ import ErrorMessage from "@/components/ui/ErrorMessage";
 interface HierarchicalViewProps {
   data: Entity[];
   searchTerm?: string;
+  selectedType?: string;
   conversations?: Conversation[];
   toggleFieldSelection?: (
     entityId: string,
@@ -158,7 +159,7 @@ const HierarchicalNode: React.FC<{
   level,
   searchTerm,
   forceExpanded = false,
-  expandedLevels = { 1: true, 2: true, 3: true }, // Valeur par défaut
+  expandedLevels = { 1: true, 2: true, 3: true, 4: true }, // Valeur par défaut
   lastGlobalAction = 0, // Valeur par défaut
   conversations = [],
   toggleFieldSelection,
@@ -193,12 +194,13 @@ const HierarchicalNode: React.FC<{
   const childFields = hasFields
     ? (node.fields.filter(
         (field) =>
-          // Champs de niveau 2 pour entités niveau 1, ou niveau 3 pour entités niveau 2
+          // Champs de niveau 2 pour entités niveau 1, niveau 3 pour entités niveau 2, ou niveau 4 pour entités niveau 3
           "niveau" in field &&
           field.niveau !== undefined &&
           node.niveau !== undefined &&
           ((node.niveau === 1 && field.niveau === 2) ||
-            (node.niveau === 2 && field.niveau === 3)),
+            (node.niveau === 2 && field.niveau === 3) ||
+            (node.niveau === 3 && field.niveau === 4)),
       ) as (Field | Entity)[])
     : [];
 
@@ -273,11 +275,13 @@ const HierarchicalNode: React.FC<{
   const getLevelBadgeColor = () => {
     switch (level) {
       case 0:
-        return "bg-blue-200 text-blue-800"; // Meilleur contraste
+        return "bg-blue-200 text-blue-800"; // Niveau 1
       case 1:
-        return "bg-orange-200 text-orange-800"; // Meilleur contraste
+        return "bg-orange-200 text-orange-800"; // Niveau 2
       case 2:
-        return "bg-emerald-200 text-emerald-800"; // Meilleur contraste
+        return "bg-emerald-200 text-emerald-800"; // Niveau 3
+      case 3:
+        return "bg-purple-200 text-purple-800"; // Niveau 4
       default:
         return "bg-gray-100 text-gray-800";
     }
@@ -287,11 +291,13 @@ const HierarchicalNode: React.FC<{
   const getLevelSpecificStyle = () => {
     switch (level) {
       case 0:
-        return "font-bold text-lg border-l-4 border-l-blue-500";
+        return "font-bold text-lg border-l-4 border-l-blue-500"; // Niveau 1
       case 1:
-        return "font-semibold text-base border-l-4 border-l-orange-500";
+        return "font-semibold text-base border-l-4 border-l-orange-500"; // Niveau 2
       case 2:
-        return "font-medium text-base border-l-4 border-l-emerald-500";
+        return "font-medium text-base border-l-4 border-l-emerald-500"; // Niveau 3
+      case 3:
+        return "font-normal text-sm border-l-4 border-l-purple-500"; // Niveau 4
       default:
         return "";
     }
@@ -300,11 +306,13 @@ const HierarchicalNode: React.FC<{
   const getLevelSpecificTextColor = () => {
     switch (level) {
       case 0:
-        return "text-blue-800";
+        return "text-blue-800"; // Niveau 1
       case 1:
-        return "text-orange-800";
+        return "text-orange-800"; // Niveau 2
       case 2:
-        return "text-emerald-800";
+        return "text-emerald-800"; // Niveau 3
+      case 3:
+        return "text-purple-800"; // Niveau 4
       default:
         return "";
     }
@@ -381,8 +389,8 @@ const HierarchicalNode: React.FC<{
 
         <NodeVarType node={node} />
 
-        {/* Icône de conversation pour les niveaux 2 et 3 */}
-        {isConversationFeatureEnabled && node.niveau && node.niveau <= 3 && (
+        {/* Icône de conversation pour les niveaux 2, 3 et 4 */}
+        {isConversationFeatureEnabled && node.niveau && node.niveau <= 4 && (
           <div
             className="conversation-button"
             onClick={(e) => {
@@ -392,17 +400,21 @@ const HierarchicalNode: React.FC<{
                 if (node.niveau && node.niveau < 3 && toggleGroupSelection) {
                   // Pour niveau 2, utiliser l'ID d'entité et le nom comme nom de groupe
                   toggleGroupSelection(node["entity-id"], node["entity-name"]);
-                } else if (node.niveau === 3 && toggleFieldSelection) {
-                  // Pour les entités niveau 3, tenter plusieurs formats d'ID
+                } else if ((node.niveau === 3 || node.niveau === 4) && toggleFieldSelection) {
+                  // Pour les entités niveau 3 et 4, tenter plusieurs formats d'ID
                   const fieldId = node["id-record"];
 
-                  // Si l'ID contient [3]-, le supprimer pour obtenir seulement la partie numérique
+                  // Si l'ID contient [3]- ou [4]-, le supprimer pour obtenir seulement la partie numérique
                   let cleanId = fieldId;
-                  if (typeof fieldId === "string" && fieldId.includes("[3]-")) {
-                    cleanId = fieldId.split("[3]-")[1];
+                  if (typeof fieldId === "string") {
+                    if (fieldId.includes("[3]-")) {
+                      cleanId = fieldId.split("[3]-")[1];
+                    } else if (fieldId.includes("[4]-")) {
+                      cleanId = fieldId.split("[4]-")[1];
+                    }
                   }
 
-                  // Vérifier le nom réel à utiliser - plutôt lib-fonc que entity-name pour niveau 3
+                  // Vérifier le nom réel à utiliser - plutôt lib-fonc que entity-name pour niveau 3 et 4
                   const fieldName = node["lib-fonc"] || node["entity-name"];
 
                   if (cleanId) {
@@ -416,14 +428,14 @@ const HierarchicalNode: React.FC<{
           >
             {/* Si le groupe ou le champ a des conversations, utiliser une icône remplie, sinon une icône vide */}
             {(() => {
-              // Obtenir une version "nettoyée" de l'id pour niveau 3
+              // Obtenir une version "nettoyée" de l'id pour niveau 3 et 4
               let cleanId = node["id-record"];
-              if (
-                node.niveau === 3 &&
-                typeof cleanId === "string" &&
-                cleanId.includes("[3]-")
-              ) {
-                cleanId = cleanId.split("[3]-")[1];
+              if (typeof cleanId === "string") {
+                if (node.niveau === 3 && cleanId.includes("[3]-")) {
+                  cleanId = cleanId.split("[3]-")[1];
+                } else if (node.niveau === 4 && cleanId.includes("[4]-")) {
+                  cleanId = cleanId.split("[4]-")[1];
+                }
               }
 
               if (
@@ -432,14 +444,14 @@ const HierarchicalNode: React.FC<{
                 getConversationsForGroup(node["entity-id"], node["entity-name"])
                   .length > 0
               ) {
-                const hasUnread = hasUnreadConversationsForGroup 
+                const hasUnread = hasUnreadConversationsForGroup
                   ? hasUnreadConversationsForGroup(node["entity-id"], node["entity-name"])
                   : false;
                 return (
                   <div className="flex items-center text-secondary">
-                    <ChatBubbleIcon 
-                      filled 
-                      className="h-5 w-5 mr-1" 
+                    <ChatBubbleIcon
+                      filled
+                      className="h-5 w-5 mr-1"
                       hasUnread={hasUnread}
                     />
                     <span className="text-xs font-medium">
@@ -453,24 +465,24 @@ const HierarchicalNode: React.FC<{
                   </div>
                 );
               } else if (
-                node.niveau === 3 &&
+                (node.niveau === 3 || node.niveau === 4) &&
                 getConversationsForField &&
                 cleanId
               ) {
-                // Pour niveau 3, essayer avec l'ID nettoyé
+                // Pour niveau 3 et 4, essayer avec l'ID nettoyé
                 const conversationCount = getConversationsForField(
                   node["entity-id"],
                   cleanId,
                 ).length;
                 if (conversationCount > 0) {
-                  const hasUnread = hasUnreadConversationsForField 
+                  const hasUnread = hasUnreadConversationsForField
                     ? hasUnreadConversationsForField(node["entity-id"], cleanId)
                     : false;
                   return (
                     <div className="flex items-center text-secondary">
-                      <ChatBubbleIcon 
-                        filled 
-                        className="h-5 w-5 mr-1" 
+                      <ChatBubbleIcon
+                        filled
+                        className="h-5 w-5 mr-1"
                         hasUnread={hasUnread}
                       />
                       <span className="text-xs font-medium">
@@ -483,8 +495,8 @@ const HierarchicalNode: React.FC<{
 
               // Par défaut: une icône non remplie
               return (
-                <ChatBubbleIcon 
-                  className="h-5 w-5 text-gray-400 hover:text-secondary transition-colors duration-200" 
+                <ChatBubbleIcon
+                  className="h-5 w-5 text-gray-400 hover:text-secondary transition-colors duration-200"
                   hasUnread={false}
                 />
               );
@@ -598,6 +610,7 @@ const HierarchicalNode: React.FC<{
 const HierarchicalView: React.FC<HierarchicalViewProps> = ({
   data,
   searchTerm,
+  selectedType,
   conversations = [],
   toggleFieldSelection,
   toggleGroupSelection,
@@ -611,7 +624,7 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
   // État pour contrôler l'expansion des niveaux
   const [expandedLevels, setExpandedLevels] = useState<{
     [key: number]: boolean;
-  }>({ 1: true, 2: true, 3: true }); // Tous les niveaux sont ouverts par défaut
+  }>({ 1: true, 2: true, 3: true, 4: true }); // Tous les niveaux sont ouverts par défaut
   // Timestamp de la dernière action globale (clic sur badge)
   const [lastGlobalAction, setLastGlobalAction] = useState<number>(0);
 
@@ -694,6 +707,15 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
         >
           {expandedLevels[3] ? "Niveau 3 ▼" : "Niveau 3 ▶"}
         </button>
+        {/* Afficher le bouton Niveau 4 uniquement pour les référentiels NMR */}
+        {selectedType === "NMR" && (
+          <button
+            onClick={() => toggleLevelExpansion(4)}
+            className={`px-3 py-1.5 rounded-md bg-purple-100 text-purple-800 border ${expandedLevels[4] ? "border-purple-500" : "border-purple-300"} font-normal cursor-pointer hover:bg-purple-200 transition-colors`}
+          >
+            {expandedLevels[4] ? "Niveau 4 ▼" : "Niveau 4 ▶"}
+          </button>
+        )}
       </div>
 
       <div className="divide-y divide-gray-200">

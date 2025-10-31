@@ -253,6 +253,7 @@ const HomePage: React.FC = () => {
         referentials={filteredReferentials}
         searchTerm={searchTerm}
         conversations={conversations}
+        selectedType={selectedType}
         toggleFieldSelection={toggleFieldSelection}
         toggleGroupSelection={toggleGroupSelection}
         isFieldSelected={isFieldSelected}

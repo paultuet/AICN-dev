@@ -315,7 +315,11 @@ export const useConversations = (): UseConversationsResult => {
   const hasUnreadConversationsForField = useCallback((entityId: EntityId, fieldId: FieldId) => {
     return conversations.some(conversation =>
       conversation.linkedItems.some(item =>
-        item.type === 'field' && item.entityId === entityId && item.fieldIds?.includes(fieldId)
+        item.type === 'field' &&
+        item.entityId === entityId &&
+        item.fieldIds?.some(
+          (id) => id === fieldId || id === Number(fieldId) || String(id) === String(fieldId)
+        )
       ) && conversation.readStatus && !conversation.readStatus.isRead
     );
   }, [conversations]);

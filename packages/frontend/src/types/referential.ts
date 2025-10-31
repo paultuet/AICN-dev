@@ -18,7 +18,7 @@ export type FieldMetadata = {
   'link-entity-id'?: string | null | string[]
   'category'?: string | null
   'category-id'?: string
-  'niveau'?: number
+  'niveau'?: number // 1, 2, 3, ou 4 (niveau 4 uniquement pour NMR)
   'type'?: string
 }
 
@@ -38,7 +38,7 @@ export type Field = BaseField & FieldIdentifier & FieldMetadata & FieldEntityRef
 export type BaseEntity = {
   'entity-id': string
   'entity-name': string
-  'niveau'?: number
+  'niveau'?: number // 1, 2, 3, ou 4 (niveau 4 uniquement pour NMR)
   'id-record'?: string
 }
 

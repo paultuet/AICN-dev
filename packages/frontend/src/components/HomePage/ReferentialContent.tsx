@@ -6,6 +6,7 @@ interface ReferentialContentProps {
   referentials: Entity[];
   searchTerm: string;
   conversations: Conversation[];
+  selectedType: string;
   toggleFieldSelection: (entityId: string, fieldId: number | string, fieldName?: string) => void;
   toggleGroupSelection: (entityId: string, groupName: string) => void;
   isFieldSelected: (entityId: string, fieldId: number | string) => boolean;
@@ -24,6 +25,7 @@ const ReferentialContent: React.FC<ReferentialContentProps> = ({
   referentials,
   searchTerm,
   conversations,
+  selectedType,
   toggleFieldSelection,
   toggleGroupSelection,
   isFieldSelected,
@@ -40,6 +42,7 @@ const ReferentialContent: React.FC<ReferentialContentProps> = ({
         data={referentials}
         searchTerm={searchTerm}
         conversations={conversations}
+        selectedType={selectedType}
         toggleFieldSelection={toggleFieldSelection}
         toggleGroupSelection={toggleGroupSelection}
         isFieldSelected={isFieldSelected}
