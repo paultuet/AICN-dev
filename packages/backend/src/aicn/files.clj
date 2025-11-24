@@ -68,16 +68,16 @@
                                       " - Version: " version
                                       " - Time: " (time/instant)))
 
-                        (activity/add-activity-log! {:type :file-uploaded
-                                                     :user-email user-email
-                                                     :user-name (:name user)
-                                                     :user-id user-id
-                                                     :message "File uploaded"
-                                                     :details {:file-id file-id
-                                                             :file-name (:filename file)
-                                                             :title title
-                                                             :version version
-                                                             :size file-size}})
+                        (activity/add-activity-log! ds {:type :file-uploaded
+                                                        :user-email user-email
+                                                        :user-name (:name user)
+                                                        :user-id user-id
+                                                        :message "File uploaded"
+                                                        :details {:file-id file-id
+                                                                :file-name (:filename file)
+                                                                :title title
+                                                                :version version
+                                                                :size file-size}})
 
                         {:id file-id
                          :fileName (:file_name file-record)
@@ -153,14 +153,14 @@
                         " - File ID: " file-id
                         " - File name: " (:file_name file)))
 
-          (activity/add-activity-log! {:type :file-deleted
-                                       :user-email (:email user)
-                                       :user-name (:name user)
-                                       :user-id (:id user)
-                                       :message "File deleted"
-                                       :details {:file-id file-id
-                                               :file-name (:file_name file)
-                                               :title (:title file)}})
+          (activity/add-activity-log! datasource {:type :file-deleted
+                                                    :user-email (:email user)
+                                                    :user-name (:name user)
+                                                    :user-id (:id user)
+                                                    :message "File deleted"
+                                                    :details {:file-id file-id
+                                                            :file-name (:file_name file)
+                                                            :title (:title file)}})
 
           (response/response {:success true
                               :message "File deleted successfully"}))

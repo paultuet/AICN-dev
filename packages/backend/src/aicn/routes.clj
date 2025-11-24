@@ -63,18 +63,21 @@
                                    :interceptors [(auth/restrict-role-interceptor :ADMIN)]
                                    :parameters {:query [:map
                                                         [:limit {:optional true} :int]
+                                                        [:offset {:optional true} :int]
                                                         [:type {:optional true} :string]
                                                         [:user-email {:optional true} :string]
                                                         [:from {:optional true} :string]
                                                         [:to {:optional true} :string]]}
                                    :responses {200 {:body :any}
                                                401 {:body :any}}
-                                   :handler (fn [{:keys [parameters]}]
+                                   :handler (fn [{:keys [parameters db/ds]}]
                                              (let [query-params (:query parameters)
-                                                   logs (activity/get-activity-logs query-params)]
+                                                   logs (activity/get-activity-logs ds query-params)
+                                                   total (activity/count-activity-logs ds query-params)]
                                                {:status 200
                                                 :body {:logs logs
-                                                       :stats (activity/get-stats)}}))}}]
+                                                       :total total
+                                                       :stats (activity/get-stats ds)}}))}}]
 
     ["/referentiels" {:get {:summary "Get all referentiels"
                             :responses {200 {:body :any}}
@@ -132,14 +135,14 @@
                                                          " - Conversation ID: " conversation-id
                                                          " - Title: " title
                                                          " - Time: " (time/instant)))
-                                           (activity/add-activity-log! {:type :conversation-created
-                                                                        :user-email user-email
-                                                                        :user-name user-name
-                                                                        :user-id user-id
-                                                                        :message "Conversation created"
-                                                                        :details {:conversation-id conversation-id
-                                                                                  :title title
-                                                                                  :linked-items linkedItems}})
+                                           (activity/add-activity-log! ds {:type :conversation-created
+                                                                           :user-email user-email
+                                                                           :user-name user-name
+                                                                           :user-id user-id
+                                                                           :message "Conversation created"
+                                                                           :details {:conversation-id conversation-id
+                                                                                     :title title
+                                                                                     :linked-items linkedItems}})
                                            {:status 200
                                             :body new-conversation}))}}]
 
@@ -166,14 +169,14 @@
                                                                                    " - Conversation ID: " conversation-id
                                                                                    " - Message ID: " message-id
                                                                                    " - Time: " (time/instant)))
-                                                                     (activity/add-activity-log! {:type :message-sent
-                                                                                                  :user-email nil
-                                                                                                  :user-name userFullName
-                                                                                                  :user-id userId
-                                                                                                  :message "Message sent to conversation"
-                                                                                                  :details {:conversation-id conversation-id
-                                                                                                            :message-id message-id
-                                                                                                            :content-preview (subs content 0 (min 50 (count content)))}})
+                                                                     (activity/add-activity-log! ds {:type :message-sent
+                                                                                                     :user-email nil
+                                                                                                     :user-name userFullName
+                                                                                                     :user-id userId
+                                                                                                     :message "Message sent to conversation"
+                                                                                                     :details {:conversation-id conversation-id
+                                                                                                               :message-id message-id
+                                                                                                               :content-preview (subs content 0 (min 50 (count content)))}})
                                                                      {:status 200
                                                                       :body new-message}))}}]
 
