@@ -8,7 +8,10 @@
    [ring.util.response :as response])
   (:import [java.util UUID]))
 
-(def upload-dir "uploads")
+(def upload-dir
+  "Upload directory path. Defaults to 'uploads' for local development.
+   Can be overridden with UPLOAD_DIR environment variable for production."
+  (or (System/getenv "UPLOAD_DIR") "uploads"))
 
 (defn ensure-upload-dir []
   (let [dir (io/file upload-dir)]

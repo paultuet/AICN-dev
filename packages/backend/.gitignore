@@ -39,3 +39,4 @@ node_modules/
 .env
 resources/config.local.edn
 resources/config.local.edn.bak
+uploads/

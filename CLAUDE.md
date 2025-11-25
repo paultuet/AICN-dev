@@ -27,3 +27,16 @@
 - Rollback last migration: `cd packages/backend && clojure -M:rollback`
 - Create new migration: `cd packages/backend && clojure -M:cli create my-migration-name`
 - Migration files are stored in `packages/backend/resources/migrations/`
+
+## File Storage & Uploads
+- **Local development**: Files are stored in `packages/backend/uploads/` directory
+- **Production (Fly.io)**: Files are stored in a persistent volume mounted at `/data/uploads`
+- **Environment variable**: `UPLOAD_DIR` controls the upload directory path
+- **Volume setup**: Before deploying to Fly.io for the first time with file uploads:
+  1. Create a volume: `fly volumes create aicn_uploads --region cdg --size 10`
+  2. Deploy the app: `fly deploy`
+  3. The volume is automatically mounted at `/data` as configured in `fly.toml`
+- **Volume management**:
+  - List volumes: `fly volumes list`
+  - Show volume details: `fly volumes show <volume-id>`
+  - **Important**: Volumes are persistent across deployments but are region-specific
