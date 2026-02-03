@@ -96,7 +96,7 @@
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
-   :record_name "En-tête meta-donées",
+   :record_name "En-tête meta-données",
    :Niveaux-liés
    ["recE7GKgTP7QanBOe"
     "recUQphznX3YP0OHE"
@@ -682,7 +682,8 @@
     "recc4iAIY0H8ArDxZ"
     "recJbmFXj0EAWy5lL"
     "recT1v9mdobcDRzbG"
-    "recAmoLxEHQld6Nbi"],
+    "recAmoLxEHQld6Nbi"
+    "recn1hXwvm7FUuIog"],
    :Base-2 ["recbVlYzyd7zHZ7SZ"],
    :Type_record "RIO",
    :Base
@@ -727,9 +728,23 @@
     "recK1laR48cjeJYyf"
     "recwc7y8HqQF7LhPW"
     "recCD7TNRv0HP7oQA"],
+   :Copie-de-Suivi_messages "3, 4, 5, 1, 7",
    :record_name "Inventaire d'équipements",
+   :Copie-de-Copie-de-Suivi_messages-4 "1, 3, 4, 5, 7",
    :ID_record "[1]-1",
-   :Numauto 1},
+   :Numauto 1,
+   :Commentaires ["rec3Jt7D4jVdS5rgx" "recf1N0EsAX15PAFg"],
+   :Suivi_messages
+   ["recoLKP6d18hzteIM"
+    "rec3Jt7D4jVdS5rgx"
+    "recf1N0EsAX15PAFg"
+    "recwPFFpLYStkXAYh"
+    "rec37eRUpf7N1NTI7"
+    "rec7yaJbT3SwjbGGk"
+    "recma8yhK3YL6oerR"
+    "rece2veVZKcsnheT4"
+    "recF91VPualD8m7JD"
+    "rec286GqhURTFDQhf"]},
   :createdTime "2025-03-29T10:51:43.000Z",
   :id "rec6UfjT6LZMWwKom"}
  {:fields
@@ -1018,6 +1033,7 @@
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
+   :Copie-de-Suivi_messages "1",
    :record_name "Classification",
    :Niveaux-liés
    ["recj7JDb0eTkWIIKD"
@@ -1033,9 +1049,16 @@
     "recjJeYz2gPvv4M5n"
     "rect4V3NdnlDcHwLf"
     "recyynXm17CNvucLO"
-    "recJbmFXj0EAWy5lL"],
+    "recJbmFXj0EAWy5lL"
+    "recn1hXwvm7FUuIog"],
    :ID_record "[2]-68",
-   :Numauto 68},
+   :Numauto 68,
+   :Suivi_messages-2
+   ["recoLKP6d18hzteIM"
+    "rece2veVZKcsnheT4"
+    "recF91VPualD8m7JD"
+    "rec286GqhURTFDQhf"],
+   :Commentaires ["recoLKP6d18hzteIM"]},
   :createdTime "2025-05-04T06:43:38.000Z",
   :id "rec9PdcgC5rdDnwDW"}
  {:fields
@@ -1421,7 +1444,9 @@
  {:fields
   {:Niveau_record 3,
    :Desc_fr "Lien vers l'entité d'inventaire des équipements",
+   :Suivi_messages-3 ["recjNPhyPmBjEeSqM"],
    :Type_record "RIO",
+   :Copie-de-Suivi_messages "9",
    :record_name
    "Identification des usages (équipements) dans l'inventaire d'équipements",
    :ID_record "[3]-485",
@@ -1678,7 +1703,10 @@
   :id "recEPAbYH9lulRXjq"}
  {:fields
   {:Niveau_record 3,
-   :Desc_fr "Code équipement dans la classification omniclass",
+   :Desc_fr
+   "Code équipement dans la classification omniclass. Résumé du choix d'Omniclass par la communauté : classification qui permet de qualifier par système et par type d'équipement l'ensemble des objets constitutifs de d'un ouvrage, que ce soit pour la partie servicelle que pour la partie multi-technique.",
+   :Suivi_messages-3
+   ["rece2veVZKcsnheT4" "recF91VPualD8m7JD" "rec286GqhURTFDQhf"],
    :Type_record "RIO",
    :record_name "Classification omniclass de l'équipement",
    :ID_record "[3]-443",
@@ -1778,9 +1806,6 @@
    :Numauto 220},
   :createdTime "2025-05-04T06:43:38.000Z",
   :id "recFFSX7CvbMiKnWm"}
- {:fields {:ID_record "[]-1195", :Numauto 1195},
-  :createdTime "2025-10-13T05:15:43.000Z",
-  :id "recFHwCis0mW9DR7e"}
  {:fields
   {:Niveau_record 3,
    :Desc_fr
@@ -1798,12 +1823,10 @@
    :Type_record "RIO",
    :record_name "Priorités",
    :Niveaux-liés
-   ["recyTRK1w51FDnxNk"
-    "rec7X8NzrFPfdEIHL"
-    "rec015qQqvnUQfVlu"
-    "recWKySQDyPW6JcXP"],
+   ["recyTRK1w51FDnxNk" "rec7X8NzrFPfdEIHL" "rec015qQqvnUQfVlu"],
    :ID_record "[2]-228",
-   :Numauto 228},
+   :Numauto 228,
+   :Suivi_messages-2 ["recIfCAlmTrNy8U3v"]},
   :createdTime "2025-05-04T06:43:38.000Z",
   :id "recFSTrntXbxWHdhF"}
  {:fields
@@ -2273,6 +2296,7 @@
   {:Niveau_record 3,
    :Desc_fr
    "Coût de remplacement de l'équipement Incluant une estimation de la MO.",
+   :Suivi_messages-3 ["rec7yaJbT3SwjbGGk"],
    :Type_record "RIO",
    :record_name "Coût global de remplacement (CGR)",
    :ID_record "[3]-434",
@@ -2831,7 +2855,7 @@
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
-   :record_name "En-tête meta-donées",
+   :record_name "En-tête meta-données",
    :ID_record "[2]-186",
    :Numauto 186},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -3095,6 +3119,7 @@
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
+   :Copie-de-Suivi_messages "4, 5, 7",
    :record_name "Données du cycle de vie",
    :Niveaux-liés
    ["recahv9rnbcPCseis"
@@ -3110,7 +3135,12 @@
     "recS75iJAsrwCrW11"
     "recqQw40vhOWPpwQ7"],
    :ID_record "[2]-56",
-   :Numauto 56},
+   :Numauto 56,
+   :Suivi_messages-2
+   ["recf1N0EsAX15PAFg"
+    "recwPFFpLYStkXAYh"
+    "rec37eRUpf7N1NTI7"
+    "rec7yaJbT3SwjbGGk"]},
   :createdTime "2025-05-04T06:43:38.000Z",
   :id "recRMqzsMJL7PLozs"}
  {:fields
@@ -3522,8 +3552,8 @@
     "recyTRK1w51FDnxNk"
     "rec7X8NzrFPfdEIHL"
     "rec015qQqvnUQfVlu"
-    "recHQLzn1qxLP2DME"
-    "recWKySQDyPW6JcXP"],
+    "recHQLzn1qxLP2DME"],
+   :SUIVI_MSG "21",
    :Type_record "RIO",
    :Base
    ["recL5B9IWV9g14URM"
@@ -3572,9 +3602,25 @@
     "rec4c3ml35iVsMK7i"
     "recX7mLUpwB8dWuoI"
     "recWchu3X19y8SQnj"],
+   :Copie-de-Suivi_messages
+   "19, 10, 11, 12, 13, 14, 15, 16, 17, 18, 21",
    :record_name "PPAT",
+   :Copie-de-Copie-de-Suivi_messages-4
+   "10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21",
    :ID_record "[1]-22",
-   :Numauto 22},
+   :Numauto 22,
+   :Suivi_messages
+   ["recq733Be7E3ScquQ"
+    "recOkLbas7uj1XBse"
+    "recAE1OReNR9ZrArT"
+    "recO3xG5MDS1J1ceH"
+    "recPk15Zv9B7iZ0vY"
+    "recYdDdyFKoYZnufB"
+    "recda5ltw6GsyS847"
+    "rec8SpiPx7K5ziIKu"
+    "recBVyDKAmEUp7BIE"
+    "recuYVeN4YezBBsho"
+    "recIfCAlmTrNy8U3v"]},
   :createdTime "2025-04-08T08:11:52.000Z",
   :id "recUkSc1Y1ELAJneL"}
  {:fields
@@ -3849,6 +3895,7 @@
   :id "recXCkUZnzx3WUuwd"}
  {:fields
   {:Niveau_record 3,
+   :Suivi_messages-3 ["recma8yhK3YL6oerR"],
    :Type_record "RIO",
    :record_name "Position dans le local",
    :ID_record "[3]-430",
@@ -4080,9 +4127,11 @@
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
+   :Copie-de-Suivi_messages "3",
    :record_name "Données du cycle de vie",
    :ID_record "[2]-57",
-   :Numauto 57},
+   :Numauto 57,
+   :Suivi_messages-2 ["rec3Jt7D4jVdS5rgx"]},
   :createdTime "2025-05-04T06:43:38.000Z",
   :id "recZCMHOaPF9jMAzM"}
  {:fields
@@ -4254,6 +4303,7 @@
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
+   :Copie-de-Suivi_messages "9",
    :record_name "Affectations du compteur électrique",
    :Niveaux-liés
    ["recDfHOe9P8cGRl2n"
@@ -4272,13 +4322,14 @@
     "recGqoQ4BRab8bSsK"
     "recvtSsg54Y9kC7f5"],
    :ID_record "[2]-104",
-   :Numauto 104},
+   :Numauto 104,
+   :Suivi_messages-2 ["recjNPhyPmBjEeSqM"]},
   :createdTime "2025-05-04T06:43:38.000Z",
   :id "recazlXxAtuH5PGIY"}
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
-   :record_name "En-tête meta-donées",
+   :record_name "En-tête meta-données",
    :ID_record "[2]-189",
    :Numauto 189},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -4848,7 +4899,7 @@
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
-   :record_name "En-tête meta-donées",
+   :record_name "En-tête meta-données",
    :ID_record "[2]-187",
    :Numauto 187},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -4904,6 +4955,12 @@
    :Numauto 1093},
   :createdTime "2025-09-01T03:40:24.000Z",
   :id "receSu9q6Dv8wJ87b"}
+ {:fields
+  {:record_name "Coût global de remplacement (CGR)",
+   :ID_record "[]-1236",
+   :Numauto 1236},
+  :createdTime "2025-11-14T12:20:53.000Z",
+  :id "receYS0ISPEaKZxwa"}
  {:fields
   {:Niveau_record 3,
    :Desc_fr "Pourcentage de 0 à 100.",
@@ -5201,7 +5258,7 @@
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
-   :record_name "En-tête meta-donées",
+   :record_name "En-tête meta-données",
    :ID_record "[2]-188",
    :Numauto 188},
   :createdTime "2025-05-04T06:43:38.000Z",
@@ -5299,9 +5356,12 @@
     "recVoXBJwMkrcZf5m"
     "recc8oxLOD84k4dnX"
     "recrJ8N9dCpqDiD36"],
+   :Copie-de-Suivi_messages "6",
    :record_name "Inventaire de contrats",
+   :Copie-de-Copie-de-Suivi_messages-4 "6",
    :ID_record "[1]-10",
-   :Numauto 10},
+   :Numauto 10,
+   :Suivi_messages ["recgi4d3ZlJQSIjJ4"]},
   :createdTime "2025-03-29T14:55:37.000Z",
   :id "rechGf2dN6KDIGWvH"}
  {:fields
@@ -5731,9 +5791,12 @@
     "recF3KR1TK71wwRqe"
     "recYrY37IaL2LRa9v"
     "rec8SUP4gBNVFzZ2y"],
+   :Copie-de-Suivi_messages "8",
    :record_name "Inventaire d'espaces",
+   :Copie-de-Copie-de-Suivi_messages-4 "8",
    :ID_record "[1]-2",
-   :Numauto 2},
+   :Numauto 2,
+   :Suivi_messages ["recLVZDacLlSVSpnT"]},
   :createdTime "2025-03-29T10:51:43.000Z",
   :id "recjmX1dBcT00wa1d"}
  {:fields
@@ -6066,6 +6129,9 @@
    :Liens-Niveaux ["recOxSyyyqxhBw9QN"]},
   :createdTime "2025-09-01T03:40:24.000Z",
   :id "recmYCp7lj5CFsPHp"}
+ {:fields {:record_name "485", :ID_record "[]-1235", :Numauto 1235},
+  :createdTime "2025-11-11T10:11:45.000Z",
+  :id "recmfI3aWGFR6033Q"}
  {:fields
   {:Niveau_record 1,
    :Base-2 ["recHLjgSfPFBzpc57"],
@@ -6444,9 +6510,12 @@
     "recQiNFYdSHLornic"
     "rec4bKpYhobyVqfvF"
     "recHzEj1JR0sFYxoZ"],
+   :Copie-de-Suivi_messages "9",
    :record_name "Plans de comptage électriques",
+   :Copie-de-Copie-de-Suivi_messages-4 "9",
    :ID_record "[1]-3",
-   :Numauto 3},
+   :Numauto 3,
+   :Suivi_messages ["recjNPhyPmBjEeSqM"]},
   :createdTime "2025-03-29T10:52:46.000Z",
   :id "recoVgsqv8wIwjuKS"}
  {:fields
@@ -7064,7 +7133,8 @@
    :record_name "Localisation de l'équipement",
    :Niveaux-liés ["rece4yLR0gAR0Z0y9" "recQGNCHAQRRbxLbN"],
    :ID_record "[2]-54",
-   :Numauto 54},
+   :Numauto 54,
+   :Suivi_messages-2 ["recma8yhK3YL6oerR"]},
   :createdTime "2025-05-04T06:43:38.000Z",
   :id "recshYzXFmRRFe1ul"}
  {:fields
@@ -7129,7 +7199,7 @@
  {:fields
   {:Niveau_record 2,
    :Type_record "RIO",
-   :record_name "En-tête meta-donées",
+   :record_name "En-tête meta-données",
    :ID_record "[2]-190",
    :Numauto 190},
   :createdTime "2025-05-04T06:43:38.000Z",

@@ -4,10 +4,14 @@ import api from '@/services/api';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
+const FILE_CATEGORIES = ['RIO', 'NMR', 'LoV', 'Documentation'] as const;
+type FileCategory = typeof FILE_CATEGORIES[number];
+
 interface FileInfo {
   id: string;
   fileName: string;
   title?: string;
+  category?: string;
   version: string;
   uploadDate: string;
   fileSize: number;
@@ -23,6 +27,7 @@ const FileDownloadPage: React.FC = () => {
   const [fileUploads, setFileUploads] = useState<FileUpload[]>([]);
   const [version, setVersion] = useState('');
   const [uploadDate, setUploadDate] = useState('');
+  const [category, setCategory] = useState<FileCategory | ''>('');
   const [allFiles, setAllFiles] = useState<FileInfo[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploadLoading, setUploadLoading] = useState(false);
@@ -75,7 +80,7 @@ const FileDownloadPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (fileUploads.length === 0 || !version || !uploadDate) {
+    if (fileUploads.length === 0 || !version || !uploadDate || !category) {
       setError('Veuillez remplir tous les champs et ajouter au moins un fichier');
       return;
     }
@@ -101,6 +106,7 @@ const FileDownloadPage: React.FC = () => {
 
     formData.append('version', version);
     formData.append('uploadDate', uploadDate);
+    formData.append('category', category);
 
     try {
       const response = await api.post('/file/upload', formData, {
@@ -118,6 +124,7 @@ const FileDownloadPage: React.FC = () => {
       setFileUploads([]);
       setVersion('');
       setUploadDate('');
+      setCategory('');
 
       // Reset file input
       const fileInput = document.getElementById('file-input') as HTMLInputElement;
@@ -243,6 +250,24 @@ const FileDownloadPage: React.FC = () => {
               )}
 
               <div>
+                <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+                  Catégorie
+                </label>
+                <select
+                  id="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value as FileCategory)}
+                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  disabled={uploadLoading}
+                >
+                  <option value="">Sélectionner une catégorie</option>
+                  {FILE_CATEGORIES.map((cat) => (
+                    <option key={cat} value={cat}>{cat}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
                 <label htmlFor="version" className="block text-sm font-medium text-gray-700 mb-2">
                   Version
                 </label>
@@ -305,44 +330,62 @@ const FileDownloadPage: React.FC = () => {
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
             </div>
           ) : allFiles.length > 0 ? (
-            <div className="space-y-3">
-              {allFiles.map((file) => (
-                <div key={file.id} className="border rounded-lg p-4 bg-gray-50">
-                  <div className="flex justify-between items-start">
-                    <div className="space-y-2 flex-1">
-                      {file.title && (
-                        <h3 className="text-lg font-semibold text-gray-900">{file.title}</h3>
-                      )}
-                      <p className="font-medium text-gray-700">{file.fileName}</p>
-                      <div className="text-sm text-gray-600 space-y-1">
-                        <p>Version: {file.version}</p>
-                        <p>
-                          Date d'upload:{' '}
-                          {format(new Date(file.uploadDate), 'dd MMMM yyyy', { locale: fr })}
-                        </p>
-                        <p>Taille: {formatFileSize(file.fileSize)}</p>
-                      </div>
-                    </div>
+            <div className="space-y-6">
+              {/* Grouper les fichiers par catégorie */}
+              {[...FILE_CATEGORIES, 'Sans catégorie'].map((cat) => {
+                const categoryFiles = allFiles.filter((file) =>
+                  cat === 'Sans catégorie'
+                    ? !file.category
+                    : file.category === cat
+                );
 
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => handleDownload(file)}
-                        className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      >
-                        Télécharger
-                      </button>
-                      {isAdmin && (
-                        <button
-                          onClick={() => handleDelete(file)}
-                          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                        >
-                          Supprimer
-                        </button>
-                      )}
-                    </div>
+                if (categoryFiles.length === 0) return null;
+
+                return (
+                  <div key={cat} className="space-y-3">
+                    <h3 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                      {cat} ({categoryFiles.length})
+                    </h3>
+                    {categoryFiles.map((file) => (
+                      <div key={file.id} className="border rounded-lg p-4 bg-gray-50">
+                        <div className="flex justify-between items-start">
+                          <div className="space-y-2 flex-1">
+                            {file.title && (
+                              <h4 className="text-base font-semibold text-gray-900">{file.title}</h4>
+                            )}
+                            <p className="font-medium text-gray-700">{file.fileName}</p>
+                            <div className="text-sm text-gray-600 space-y-1">
+                              <p>Version: {file.version}</p>
+                              <p>
+                                Date d'upload:{' '}
+                                {format(new Date(file.uploadDate), 'dd MMMM yyyy', { locale: fr })}
+                              </p>
+                              <p>Taille: {formatFileSize(file.fileSize)}</p>
+                            </div>
+                          </div>
+
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => handleDownload(file)}
+                              className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                              Télécharger
+                            </button>
+                            {isAdmin && (
+                              <button
+                                onClick={() => handleDelete(file)}
+                                className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                              >
+                                Supprimer
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <p className="text-gray-500 text-center py-8">

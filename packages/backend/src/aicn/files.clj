@@ -36,7 +36,8 @@
           files (:files multipart-data)
           titles (:titles multipart-data)
           version (:version multipart-data)
-          upload-date (:uploadDate multipart-data)]
+          upload-date (:uploadDate multipart-data)
+          category (:category multipart-data)]
 
       ;; Validate inputs
       (when (or (nil? files) (nil? version) (nil? upload-date))
@@ -62,12 +63,14 @@
                                                             :file-size file-size
                                                             :content-type (:content-type file)
                                                             :uploaded-by user-id
-                                                            :title title})]
+                                                            :title title
+                                                            :category category})]
 
                         (log/info (str "File uploaded - User: " user-email
                                       " - File ID: " file-id
                                       " - File name: " (:filename file)
                                       " - Title: " title
+                                      " - Category: " category
                                       " - Version: " version
                                       " - Time: " (time/instant)))
 
@@ -79,12 +82,14 @@
                                                         :details {:file-id file-id
                                                                 :file-name (:filename file)
                                                                 :title title
+                                                                :category category
                                                                 :version version
                                                                 :size file-size}})
 
                         {:id file-id
                          :fileName (:file_name file-record)
                          :title (:title file-record)
+                         :category (:category file-record)
                          :version (:version file-record)
                          :uploadDate (:upload_date file-record)
                          :fileSize (:file_size file-record)}))
@@ -104,6 +109,7 @@
       (response/response {:id (str (:id file))
                          :fileName (:file_name file)
                          :title (:title file)
+                         :category (:category file)
                          :version (:version file)
                          :uploadDate (:upload_date file)
                          :fileSize (:file_size file)})
@@ -116,6 +122,7 @@
                                        {:id (str (:id file))
                                         :fileName (:file_name file)
                                         :title (:title file)
+                                        :category (:category file)
                                         :version (:version file)
                                         :uploadDate (:upload_date file)
                                         :fileSize (:file_size file)})

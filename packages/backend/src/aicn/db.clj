@@ -422,7 +422,7 @@
   (.close ds))
 
 ;; File management functions
-(defn create-file [datasource {:keys [id file-name file-path version upload-date file-size content-type uploaded-by title]}]
+(defn create-file [datasource {:keys [id file-name file-path version upload-date file-size content-type uploaded-by title category]}]
   (jdbc/execute-one! datasource
                     ["INSERT INTO uploaded_files (
                       id,
@@ -433,7 +433,8 @@
                       file_size,
                       content_type,
                       uploaded_by,
-                      title
+                      title,
+                      category
                     )
                     VALUES (
                       ?::uuid,
@@ -444,6 +445,7 @@
                       ?::bigint,
                       ?::text,
                       ?::uuid,
+                      ?::text,
                       ?::text
                     )
                     RETURNING *"
@@ -455,7 +457,8 @@
                      file-size
                      content-type
                      uploaded-by
-                     title]
+                     title
+                     category]
                     {:builder-fn rs/as-unqualified-maps}))
 
 (defn get-current-file [datasource]
