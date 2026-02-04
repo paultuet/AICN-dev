@@ -42,7 +42,9 @@ Vous pouvez modifier Airtable à votre rythme. Lancez la synchronisation quand v
 
 ## Comment lancer une synchronisation ?
 
-La synchronisation se fait via l'API :
+Depuis l'administration un bouton pour synchroniser est accessible.
+
+Techniquement la synchronisation se fait via l'API :
 
 ```
 POST /api/sync
