@@ -168,6 +168,44 @@
 
 (defn get-lov-details [all-lov lov-name])
 
+(defn- build-rank-map
+  "Build a map of entity-id to rank for a given level from liens-niveaux data"
+  [liens-niveaux level-key rank-key]
+  (reduce (fn [acc link]
+            (let [entity-ids (get-in link [:fields level-key])
+                  rank (get-in link [:fields rank-key])]
+              (if (and entity-ids rank)
+                (reduce (fn [a entity-id]
+                          (if (contains? a entity-id)
+                            a
+                            (assoc a entity-id rank)))
+                        acc
+                        entity-ids)
+                acc)))
+          {}
+          liens-niveaux))
+
+(defn- build-niv4-rank-map
+  "Build a map of NIV4 record-id to rank_niv4 by matching NIV4 names to ref-list records"
+  [liens-niveaux ref-list-map]
+  (reduce (fn [acc link]
+            (let [niv4-name (get-in link [:fields :NIV4])
+                  rank (get-in link [:fields :rank_niv4])]
+              (if (and niv4-name rank)
+                (if-let [niv4-record (->> ref-list-map
+                                          vals
+                                          (filter #(and (= 4 (get-in % [:fields :Niveau_record]))
+                                                       (= niv4-name (get-in % [:fields :record_name]))))
+                                          first)]
+                  (let [record-id (:id niv4-record)]
+                    (if (contains? acc record-id)
+                      acc
+                      (assoc acc record-id rank)))
+                  acc)
+                acc)))
+          {}
+          liens-niveaux))
+
 (defn- build-level-mapping
   "Build parent-child mapping for a specific level relationship"
   [liens-niveaux child-key parent-key]
@@ -266,14 +304,20 @@
    :type (or (:type entity-details) (:unknown entity-types))})
 
 (defn- process-niveau-entities
-  "Process entities at any niveau level and convert to field entries"
-  [entity-ids get-entity-details-fn niveau]
+  "Process entities at any niveau level and convert to field entries.
+   Sorts by rank-map when provided, falling back to alphabetical order."
+  [entity-ids get-entity-details-fn niveau rank-map]
   (->> entity-ids
        (map (fn [entity-id]
               (when-let [entity-details (get-entity-details-fn entity-id)]
-                (build-entity-entry entity-id entity-details niveau))))
+                (let [entry (build-entity-entry entity-id entity-details niveau)]
+                  (if-let [rank (get rank-map entity-id)]
+                    (assoc entry :rank rank)
+                    entry)))))
        (filter some?)
-       (sort-by #(normalize-string (or (:entity-name %) "")))))
+       (sort-by (fn [{:keys [entity-id entity-name]}]
+                  [(get rank-map entity-id Integer/MAX_VALUE)
+                   (normalize-string (or entity-name ""))]))))
 
 (defn- find-children-ids
   "Find all child IDs for a given parent ID in a mapping"
@@ -284,23 +328,24 @@
 
 (defn- make-base-entity
   "Create base entity structure from entity details"
-  [entity-id entity-details niveau]
-  {:entity-id entity-id
-   :entity-name (:name entity-details)
-   :niveau niveau
-   :id-record (:id-record entity-details)
-   :type (:type entity-details)
-   :exemple (:exemple entity-details)
-   :link (:link entity-details)
-   :var-type (:var-type entity-details)
-   :desc-fr (:desc-fr entity-details)})
+  [entity-id entity-details niveau rank]
+  (cond-> {:entity-id entity-id
+           :entity-name (:name entity-details)
+           :niveau niveau
+           :id-record (:id-record entity-details)
+           :type (:type entity-details)
+           :exemple (:exemple entity-details)
+           :link (:link entity-details)
+           :var-type (:var-type entity-details)
+           :desc-fr (:desc-fr entity-details)}
+    rank (assoc :rank rank)))
 
-(defn- sort-entities-by-name
-  "Sort entity IDs by normalized entity name"
-  [entity-ids get-entity-details-fn]
+(defn- sort-entities-by-rank
+  "Sort entity IDs by rank from rank-map, falling back to alphabetical order for unranked entities"
+  [entity-ids get-entity-details-fn rank-map]
   (sort-by (fn [id]
-             (normalize-string
-              (or (:name (get-entity-details-fn id)) "")))
+             [(get rank-map id Integer/MAX_VALUE)
+              (normalize-string (or (:name (get-entity-details-fn id)) ""))])
            entity-ids))
 
 ;; Forward declarations for mutual recursion
@@ -310,10 +355,10 @@
   "Build niveau 3 entity (with optional niveau 4 children for NMR types)"
   [entity-id get-entity-details-fn child-mappings]
   (let [entity-details (get-entity-details-fn entity-id)
-        base-entity (make-base-entity entity-id entity-details 3)
+        base-entity (make-base-entity entity-id entity-details 3 (get (:niv3-ranks child-mappings) entity-id))
         niv4-ids (find-children-ids entity-id (get child-mappings :niv4-to-niv3))
         niv4-fields (when (seq niv4-ids)
-                      (process-niveau-entities niv4-ids get-entity-details-fn 4))]
+                      (process-niveau-entities niv4-ids get-entity-details-fn 4 (:niv4-ranks child-mappings)))]
     (if (seq niv4-fields)
       (assoc base-entity :fields niv4-fields)
       base-entity)))
@@ -327,17 +372,19 @@
   "Build niveau 2 entity with niveau 3 children"
   [entity-id get-entity-details-fn child-mappings]
   (let [entity-details (get-entity-details-fn entity-id)
-        base-entity (make-base-entity entity-id entity-details 2)
+        base-entity (make-base-entity entity-id entity-details 2 (get (:niv2-ranks child-mappings) entity-id))
         niv3-ids (find-children-ids entity-id (get child-mappings :niv3-to-niv2))
+        niv3-ranks (:niv3-ranks child-mappings)
         niv3-by-type (group-by (fn [id] (:type (get-entity-details-fn id))) niv3-ids)
-        rio-fields (process-niveau-entities (get niv3-by-type (:rio entity-types) []) get-entity-details-fn 3)
-        nmr-fields (build-niveau3-entities (get niv3-by-type (:nmr entity-types) []) get-entity-details-fn child-mappings)
+        rio-fields (process-niveau-entities (get niv3-by-type (:rio entity-types) []) get-entity-details-fn 3 niv3-ranks)
+        nmr-fields (build-niveau3-entities (sort-entities-by-rank (get niv3-by-type (:nmr entity-types) []) get-entity-details-fn niv3-ranks) get-entity-details-fn child-mappings)
         other-fields (process-niveau-entities
                       (->> (dissoc niv3-by-type (:rio entity-types) (:nmr entity-types))
                            vals
                            (apply concat))
                       get-entity-details-fn
-                      3)]
+                      3
+                      niv3-ranks)]
     (assoc base-entity :fields (concat rio-fields nmr-fields other-fields))))
 
 (defn- build-niveau2-entities
@@ -349,11 +396,11 @@
   "Build niveau 1 entity (LoV or standard with niveau 2 children)"
   [entity-id get-entity-details-fn child-mappings]
   (let [entity-details (get-entity-details-fn entity-id)
-        base-entity (make-base-entity entity-id entity-details 1)]
+        base-entity (make-base-entity entity-id entity-details 1 nil)]
     (if (= (:type entity-details) (:lov entity-types))
       (assoc base-entity :fields (sort-by :order (build-fields-for-lov (get child-mappings :all-lov) (:name entity-details))))
       (let [niv2-ids (find-children-ids entity-id (get child-mappings :niv2-to-niv1))
-            sorted-niv2-ids (sort-entities-by-name niv2-ids get-entity-details-fn)
+            sorted-niv2-ids (sort-entities-by-rank niv2-ids get-entity-details-fn (:niv2-ranks child-mappings))
             niv2-entries (build-niveau2-entities sorted-niv2-ids get-entity-details-fn child-mappings)]
         (assoc base-entity :fields niv2-entries)))))
 
@@ -381,6 +428,9 @@
   {:niv2-to-niv1 (build-level-mapping liens-niveaux (:niv2 niveau-keys) (:niv1 niveau-keys))
    :niv3-to-niv2 (build-level-mapping liens-niveaux (:niv3 niveau-keys) (:niv2 niveau-keys))
    :niv4-to-niv3 (build-niv4-mapping liens-niveaux ref-list-map)
+   :niv2-ranks (build-rank-map liens-niveaux :NIV2 :rank_niv2)
+   :niv3-ranks (build-rank-map liens-niveaux :NIV3 :rank_niv3)
+   :niv4-ranks (build-niv4-rank-map liens-niveaux ref-list-map)
    :all-lov all-lov})
 
 (defn- extract-niveau1-entity-ids
