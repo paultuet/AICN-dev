@@ -26,6 +26,15 @@ export default defineConfig({
     commonjsOptions: {
       transformMixedEsModules: true
     },
-    outDir: 'dist'
+    outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-query': ['@tanstack/react-query'],
+          'vendor-ui': ['lucide-react', '@radix-ui/react-dialog', 'date-fns'],
+        }
+      }
+    }
   }
 })
