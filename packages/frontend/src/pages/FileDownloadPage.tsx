@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useIsAdmin } from '@/contexts/AuthContext';
-import api from '@/services/api';
-import { format } from 'date-fns';
-import { fr } from 'date-fns/locale';
+import React, { useState, useEffect } from "react";
+import { useIsAdmin } from "@/contexts/AuthContext";
+import api from "@/services/api";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 
-const FILE_CATEGORIES = ['RIO', 'NMR', 'LoV', 'Documentation'] as const;
-type FileCategory = typeof FILE_CATEGORIES[number];
+const FILE_CATEGORIES = [
+  "Documentation Générale",
+  "Nomenclature des missions et responsabilités AM<>PM",
+  "RIO - Inventaires d’équipements",
+  "RIO - Inventaires d’espaces",
+  "RIO - Inventaires de contrats",
+  "RIO - Inventaires de tiers",
+  "RIO - Inventaires de systèmes",
+  "RIO - Plans de comptage électriques",
+  "RIO - PPAT",
+  "RIO - Rapports d’observations de bureaux de contrôle",
+  "RIO - Historiques de consommation énergétique",
+] as const;
+type FileCategory = (typeof FILE_CATEGORIES)[number];
 
 interface FileInfo {
   id: string;
@@ -25,9 +37,9 @@ interface FileUpload {
 const FileDownloadPage: React.FC = () => {
   const isAdmin = useIsAdmin();
   const [fileUploads, setFileUploads] = useState<FileUpload[]>([]);
-  const [version, setVersion] = useState('');
-  const [uploadDate, setUploadDate] = useState('');
-  const [category, setCategory] = useState<FileCategory | ''>('');
+  const [version, setVersion] = useState("");
+  const [uploadDate, setUploadDate] = useState("");
+  const [category, setCategory] = useState<FileCategory | "">("");
   const [allFiles, setAllFiles] = useState<FileInfo[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploadLoading, setUploadLoading] = useState(false);
@@ -42,13 +54,13 @@ const FileDownloadPage: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await api.get('/files');
+      const response = await api.get("/files");
       if (response.data && response.data.files) {
         setAllFiles(response.data.files);
       }
     } catch (err: any) {
       if (err.response?.status !== 404) {
-        setError('Erreur lors de la récupération des fichiers');
+        setError("Erreur lors de la récupération des fichiers");
         console.error(err);
       }
     } finally {
@@ -58,9 +70,9 @@ const FileDownloadPage: React.FC = () => {
 
   const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      const newFiles = Array.from(e.target.files).map(file => ({
+      const newFiles = Array.from(e.target.files).map((file) => ({
         file,
-        title: ''
+        title: "",
       }));
       setFileUploads([...fileUploads, ...newFiles]);
     }
@@ -81,14 +93,16 @@ const FileDownloadPage: React.FC = () => {
     e.preventDefault();
 
     if (fileUploads.length === 0 || !version || !uploadDate || !category) {
-      setError('Veuillez remplir tous les champs et ajouter au moins un fichier');
+      setError(
+        "Veuillez remplir tous les champs et ajouter au moins un fichier",
+      );
       return;
     }
 
     // Vérifier que tous les fichiers ont un titre
-    const missingTitles = fileUploads.some(fu => !fu.title.trim());
+    const missingTitles = fileUploads.some((fu) => !fu.title.trim());
     if (missingTitles) {
-      setError('Veuillez ajouter un titre pour chaque fichier');
+      setError("Veuillez ajouter un titre pour chaque fichier");
       return;
     }
 
@@ -100,18 +114,18 @@ const FileDownloadPage: React.FC = () => {
 
     // Ajouter tous les fichiers et titres
     fileUploads.forEach((fu) => {
-      formData.append('files', fu.file);
-      formData.append('titles', fu.title);
+      formData.append("files", fu.file);
+      formData.append("titles", fu.title);
     });
 
-    formData.append('version', version);
-    formData.append('uploadDate', uploadDate);
-    formData.append('category', category);
+    formData.append("version", version);
+    formData.append("uploadDate", uploadDate);
+    formData.append("category", category);
 
     try {
-      const response = await api.post('/file/upload', formData, {
+      const response = await api.post("/file/upload", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
 
@@ -122,17 +136,21 @@ const FileDownloadPage: React.FC = () => {
 
       // Reset form
       setFileUploads([]);
-      setVersion('');
-      setUploadDate('');
-      setCategory('');
+      setVersion("");
+      setUploadDate("");
+      setCategory("");
 
       // Reset file input
-      const fileInput = document.getElementById('file-input') as HTMLInputElement;
+      const fileInput = document.getElementById(
+        "file-input",
+      ) as HTMLInputElement;
       if (fileInput) {
-        fileInput.value = '';
+        fileInput.value = "";
       }
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Erreur lors de l\'upload des fichiers');
+      setError(
+        err.response?.data?.message || "Erreur lors de l'upload des fichiers",
+      );
       console.error(err);
     } finally {
       setUploadLoading(false);
@@ -142,53 +160,62 @@ const FileDownloadPage: React.FC = () => {
   const handleDownload = async (file: FileInfo) => {
     try {
       const response = await api.get(`/file/download/${file.id}`, {
-        responseType: 'blob',
+        responseType: "blob",
       });
 
       // Create a blob link to download
       const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
-      link.setAttribute('download', file.fileName);
+      link.setAttribute("download", file.fileName);
       document.body.appendChild(link);
       link.click();
       link.remove();
       window.URL.revokeObjectURL(url);
     } catch (err: any) {
-      setError('Erreur lors du téléchargement du fichier');
+      setError("Erreur lors du téléchargement du fichier");
       console.error(err);
     }
   };
 
   const handleDelete = async (file: FileInfo) => {
-    if (!window.confirm(`Êtes-vous sûr de vouloir supprimer le fichier "${file.title || file.fileName}" ?`)) {
+    if (
+      !window.confirm(
+        `Êtes-vous sûr de vouloir supprimer le fichier "${file.title || file.fileName}" ?`,
+      )
+    ) {
       return;
     }
 
     try {
       await api.delete(`/file/delete/${file.id}`);
-      setSuccess('Fichier supprimé avec succès');
+      setSuccess("Fichier supprimé avec succès");
 
       // Rafraîchir la liste des fichiers
       await fetchAllFiles();
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Erreur lors de la suppression du fichier');
+      setError(
+        err.response?.data?.message ||
+          "Erreur lors de la suppression du fichier",
+      );
       console.error(err);
     }
   };
 
   const formatFileSize = (bytes: number): string => {
-    if (bytes === 0) return '0 Bytes';
+    if (bytes === 0) return "0 Bytes";
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const sizes = ["Bytes", "KB", "MB", "GB"];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
   };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Gestion des fichiers</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">
+          Gestion des fichiers
+        </h1>
 
         {/* Admin Upload Form */}
         {isAdmin && (
@@ -199,7 +226,10 @@ const FileDownloadPage: React.FC = () => {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="file-input" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="file-input"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Fichiers
                 </label>
                 <input
@@ -222,14 +252,21 @@ const FileDownloadPage: React.FC = () => {
                     Fichiers à uploader ({fileUploads.length})
                   </h3>
                   {fileUploads.map((fileUpload, index) => (
-                    <div key={index} className="flex gap-2 items-start p-3 bg-gray-50 rounded-lg">
+                    <div
+                      key={index}
+                      className="flex gap-2 items-start p-3 bg-gray-50 rounded-lg"
+                    >
                       <div className="flex-1 space-y-2">
-                        <p className="text-sm font-medium text-gray-900">{fileUpload.file.name}</p>
+                        <p className="text-sm font-medium text-gray-900">
+                          {fileUpload.file.name}
+                        </p>
                         <input
                           type="text"
                           placeholder="Titre du fichier"
                           value={fileUpload.title}
-                          onChange={(e) => handleTitleChange(index, e.target.value)}
+                          onChange={(e) =>
+                            handleTitleChange(index, e.target.value)
+                          }
                           className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                           disabled={uploadLoading}
                         />
@@ -240,8 +277,18 @@ const FileDownloadPage: React.FC = () => {
                         className="mt-1 text-red-600 hover:text-red-800"
                         disabled={uploadLoading}
                       >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                          />
                         </svg>
                       </button>
                     </div>
@@ -250,7 +297,10 @@ const FileDownloadPage: React.FC = () => {
               )}
 
               <div>
-                <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="category"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Catégorie
                 </label>
                 <select
@@ -262,13 +312,18 @@ const FileDownloadPage: React.FC = () => {
                 >
                   <option value="">Sélectionner une catégorie</option>
                   {FILE_CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>{cat}</option>
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label htmlFor="version" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="version"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Version
                 </label>
                 <input
@@ -283,7 +338,10 @@ const FileDownloadPage: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="upload-date" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="upload-date"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Date d'upload
                 </label>
                 <input
@@ -313,7 +371,9 @@ const FileDownloadPage: React.FC = () => {
                 disabled={uploadLoading || fileUploads.length === 0}
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {uploadLoading ? 'Upload en cours...' : `Uploader ${fileUploads.length > 0 ? `(${fileUploads.length})` : ''}`}
+                {uploadLoading
+                  ? "Upload en cours..."
+                  : `Uploader ${fileUploads.length > 0 ? `(${fileUploads.length})` : ""}`}
               </button>
             </form>
           </div>
@@ -332,11 +392,11 @@ const FileDownloadPage: React.FC = () => {
           ) : allFiles.length > 0 ? (
             <div className="space-y-6">
               {/* Grouper les fichiers par catégorie */}
-              {[...FILE_CATEGORIES, 'Sans catégorie'].map((cat) => {
+              {[...FILE_CATEGORIES, "Sans catégorie"].map((cat) => {
                 const categoryFiles = allFiles.filter((file) =>
-                  cat === 'Sans catégorie'
+                  cat === "Sans catégorie"
                     ? !file.category
-                    : file.category === cat
+                    : file.category === cat,
                 );
 
                 if (categoryFiles.length === 0) return null;
@@ -347,18 +407,29 @@ const FileDownloadPage: React.FC = () => {
                       {cat} ({categoryFiles.length})
                     </h3>
                     {categoryFiles.map((file) => (
-                      <div key={file.id} className="border rounded-lg p-4 bg-gray-50">
+                      <div
+                        key={file.id}
+                        className="border rounded-lg p-4 bg-gray-50"
+                      >
                         <div className="flex justify-between items-start">
                           <div className="space-y-2 flex-1">
                             {file.title && (
-                              <h4 className="text-base font-semibold text-gray-900">{file.title}</h4>
+                              <h4 className="text-base font-semibold text-gray-900">
+                                {file.title}
+                              </h4>
                             )}
-                            <p className="font-medium text-gray-700">{file.fileName}</p>
+                            <p className="font-medium text-gray-700">
+                              {file.fileName}
+                            </p>
                             <div className="text-sm text-gray-600 space-y-1">
                               <p>Version: {file.version}</p>
                               <p>
-                                Date d'upload:{' '}
-                                {format(new Date(file.uploadDate), 'dd MMMM yyyy', { locale: fr })}
+                                Date d'upload:{" "}
+                                {format(
+                                  new Date(file.uploadDate),
+                                  "dd MMMM yyyy",
+                                  { locale: fr },
+                                )}
                               </p>
                               <p>Taille: {formatFileSize(file.fileSize)}</p>
                             </div>
