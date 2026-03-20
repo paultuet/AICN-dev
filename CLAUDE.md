@@ -32,11 +32,8 @@
 - **Local development**: Files are stored in `packages/backend/uploads/` directory
 - **Production (Fly.io)**: Files are stored in a persistent volume mounted at `/data/uploads`
 - **Environment variable**: `UPLOAD_DIR` controls the upload directory path
-- **Volume setup**: Before deploying to Fly.io for the first time with file uploads:
-  1. Create a volume: `fly volumes create aicn_uploads --region cdg --size 10`
-  2. Deploy the app: `fly deploy`
-  3. The volume is automatically mounted at `/data` as configured in `fly.toml`
-- **Volume management**:
-  - List volumes: `fly volumes list`
-  - Show volume details: `fly volumes show <volume-id>`
-  - **Important**: Volumes are persistent across deployments but are region-specific
+- See `docs/deploiement.md` for volume setup and deployment details
+
+## Documentation
+- Project docs are in `docs/` (deployment, Airtable sync, specs)
+- See `.env.example` for all environment variables
