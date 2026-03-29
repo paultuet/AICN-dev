@@ -6,7 +6,6 @@ interface ReferentialContentProps {
   referentials: Entity[];
   searchTerm: string;
   conversations: Conversation[];
-  selectedType: string | null;
   toggleFieldSelection: (entityId: string, fieldId: number | string, fieldName?: string) => void;
   toggleGroupSelection: (entityId: string, groupName: string) => void;
   isFieldSelected: (entityId: string, fieldId: number | string) => boolean;
@@ -25,7 +24,6 @@ const ReferentialContent: React.FC<ReferentialContentProps> = ({
   referentials,
   searchTerm,
   conversations,
-  selectedType,
   toggleFieldSelection,
   toggleGroupSelection,
   isFieldSelected,
@@ -37,12 +35,10 @@ const ReferentialContent: React.FC<ReferentialContentProps> = ({
 }) => {
   return (
     <>
-      {/* Affichage des référentiels (vue hiérarchique uniquement) */}
       <HierarchicalView
         data={referentials}
         searchTerm={searchTerm}
         conversations={conversations}
-        selectedType={selectedType}
         toggleFieldSelection={toggleFieldSelection}
         toggleGroupSelection={toggleGroupSelection}
         isFieldSelected={isFieldSelected}

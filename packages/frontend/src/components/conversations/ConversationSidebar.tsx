@@ -171,37 +171,30 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                                     // Sinon, essayer de le trouver par ID comme avant
                                     item.fieldIds.map(fieldId => {
                                       // Chercher le champ avec plusieurs tentatives pour le format de l'ID
+                                      // Try to find field by various ID formats
                                       const field = entity?.fields.find(f => {
-                                        if (!('id-field' in f)) return false;
-
-                                        // Normaliser les IDs pour la comparaison
-                                        const fId = f['id-field'];
-                                        const targetId = fieldId;
-                                        const fIdStr = String(fId);
-                                        const targetIdStr = String(targetId);
-
-                                        // Essayer plusieurs formats de correspondance
-                                        return fId === targetId ||
-                                          Number(fId) === Number(targetId) ||
-                                          fIdStr === targetIdStr ||
-                                          (fIdStr.includes("[3]-") && fIdStr.split("[3]-")[1] === targetIdStr) ||
-                                          (targetIdStr.includes("[3]-") && targetIdStr.split("[3]-")[1] === fIdStr) ||
-                                          `[3]-${fIdStr}` === targetIdStr ||
-                                          fIdStr === `[3]-${targetIdStr}`;
+                                        // SourceField: match by code-champ or entity-id
+                                        if ('code-champ' in f) {
+                                          const sf = f as { 'code-champ': string; 'entity-id': string };
+                                          return sf['code-champ'] === String(fieldId) ||
+                                            sf['entity-id'] === String(fieldId);
+                                        }
+                                        // Legacy Field: match by id-field
+                                        if ('id-field' in f) {
+                                          const fId = (f as { 'id-field': number | string })['id-field'];
+                                          return fId === fieldId ||
+                                            String(fId) === String(fieldId);
+                                        }
+                                        return false;
                                       });
 
-                                      if (field && 'lib-fonc' in field) {
-                                        return field['lib-fonc'];
+                                      if (field && 'libelle' in field) {
+                                        return (field as { libelle: string }).libelle;
+                                      } else if (field && 'lib-fonc' in field) {
+                                        return (field as { 'lib-fonc': string })['lib-fonc'];
+                                      } else if (field && 'entity-name' in field) {
+                                        return (field as { 'entity-name': string })['entity-name'];
                                       } else {
-                                        // Field not found for ID
-                                        // Si l'entité a été trouvée par correspondance de champ dans toggleFieldSelection
-                                        // Chercher parmi tous les champs par entity-id
-                                        const matchingField = entity?.fields.find(f =>
-                                          'entity-id' in f && f['entity-id'] === item.entityId
-                                        );
-                                        if (matchingField && 'lib-fonc' in matchingField) {
-                                          return matchingField['lib-fonc'];
-                                        }
                                         return "Champ sélectionné";
                                       }
                                     }).join(', ')

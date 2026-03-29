@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Entity, Field } from "@/types/referential";
+import { Entity, SourceField, isSourceField } from "@/types/referential";
 import { Conversation } from "@/types/conversation";
 import { ChevronRight, ChevronDown, ChatBubbleIcon } from "@/components/icons";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
-import { NodeVarType } from "./NodeVarType";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface HierarchicalNodeProps {
   node: Entity;
@@ -40,14 +47,16 @@ interface HierarchicalNodeProps {
 }
 
 /**
- * Hierarchical node component for displaying entities in a tree structure
+ * Hierarchical node component for displaying entities in a 2-level tree structure.
+ * Level 0 = Niveau 1 (categories), Level 1 = Niveau 2 (subcategories).
+ * Leaf fields (SourceField) are rendered as a data table inside Niveau 2 nodes.
  */
 export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
   node,
   level,
   searchTerm,
   forceExpanded = false,
-  expandedLevels = { 1: true, 2: true, 3: true, 4: true },
+  expandedLevels = { 1: true, 2: true },
   lastGlobalAction = 0,
   conversations = [],
   toggleFieldSelection,
@@ -74,22 +83,38 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
 
   const hasFields = node.fields && node.fields.length > 0;
 
-  const childFields = hasFields
+  // Child entities (NIV1 → NIV2 only)
+  const childEntities = hasFields
     ? (node.fields.filter(
         (field) =>
           "niveau" in field &&
           field.niveau !== undefined &&
           node.niveau !== undefined &&
-          ((node.niveau === 1 && field.niveau === 2) ||
-            (node.niveau === 2 && field.niveau === 3) ||
-            (node.niveau === 3 && field.niveau === 4)),
-      ) as (Field | Entity)[])
+          node.niveau === 1 &&
+          field.niveau === 2,
+      ) as Entity[])
     : [];
 
-  const hasChildren = childFields.length > 0;
+  // Leaf fields (NIV2 → SourceField with niveau=3)
+  const leafFields = hasFields
+    ? (node.fields.filter(
+        (field) =>
+          isSourceField(field) ||
+          ("niveau" in field &&
+            field.niveau === 3 &&
+            node.niveau === 2),
+      ) as SourceField[])
+    : [];
+
+  // For LoV entities: children are niveau 2 entries (legacy format)
+  const lovChildren = hasFields && node.type === "LoV"
+    ? node.fields.filter(f => "entity-name" in f && "niveau" in f && (f as Entity).niveau === 2)
+    : [];
+
+  const hasChildren = childEntities.length > 0 || leafFields.length > 0 || lovChildren.length > 0;
 
   const matchesSearch = searchTerm
-    ? node["entity-name"].toLowerCase().includes(searchTerm.toLowerCase())
+    ? node["entity-name"]?.toLowerCase().includes(searchTerm.toLowerCase())
     : false;
 
   const hasMatchingFields =
@@ -97,12 +122,17 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
       ? node.fields.some(
           (field) =>
             ("entity-name" in field &&
-              field["entity-name"]
+              (field as Entity)["entity-name"]
                 ?.toLowerCase()
                 .includes(searchTerm.toLowerCase())) ||
-            ("desc" in field &&
-              field.desc &&
-              field.desc.toLowerCase().includes(searchTerm.toLowerCase())),
+            ("libelle" in field &&
+              (field as SourceField).libelle
+                ?.toLowerCase()
+                .includes(searchTerm.toLowerCase())) ||
+            ("commentaire" in field &&
+              (field as SourceField).commentaire
+                ?.toLowerCase()
+                .includes(searchTerm.toLowerCase())),
         )
       : false;
 
@@ -124,20 +154,12 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
     return "bg-white";
   };
 
-  const getBorderColor = () => {
-    return "border-gray-200";
-  };
-
   const getLevelBadgeColor = () => {
     switch (level) {
       case 0:
         return "bg-blue-200 text-blue-800";
       case 1:
         return "bg-orange-200 text-orange-800";
-      case 2:
-        return "bg-emerald-200 text-emerald-800";
-      case 3:
-        return "bg-purple-200 text-purple-800";
       default:
         return "bg-gray-100 text-gray-800";
     }
@@ -149,10 +171,6 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
         return "font-bold text-lg border-l-4 border-l-blue-500";
       case 1:
         return "font-semibold text-base border-l-4 border-l-orange-500";
-      case 2:
-        return "font-medium text-base border-l-4 border-l-emerald-500";
-      case 3:
-        return "font-normal text-sm border-l-4 border-l-purple-500";
       default:
         return "";
     }
@@ -164,10 +182,6 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
         return "text-blue-800";
       case 1:
         return "text-orange-800";
-      case 2:
-        return "text-emerald-800";
-      case 3:
-        return "text-purple-800";
       default:
         return "";
     }
@@ -187,49 +201,15 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
 
   const handleConversationClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-
-    try {
-      if (node.niveau && node.niveau < 3 && toggleGroupSelection) {
-        toggleGroupSelection(node["entity-id"], node["entity-name"]);
-      } else if ((node.niveau === 3 || node.niveau === 4) && toggleFieldSelection) {
-        const fieldId = node["id-record"];
-
-        let cleanId = fieldId;
-        if (typeof fieldId === "string") {
-          if (fieldId.includes("[3]-")) {
-            cleanId = fieldId.split("[3]-")[1];
-          } else if (fieldId.includes("[4]-")) {
-            cleanId = fieldId.split("[4]-")[1];
-          }
-        }
-
-        const fieldName = node["entity-name"];
-
-        if (cleanId) {
-          toggleFieldSelection(node["entity-id"], cleanId, fieldName);
-        }
-      }
-    } catch (error) {
-      console.error("Error handling conversation click:", error);
+    if (toggleGroupSelection) {
+      toggleGroupSelection(node["entity-id"], node["entity-name"]);
     }
   };
 
   const renderConversationIcon = () => {
-    let cleanId = node["id-record"];
-    if (typeof cleanId === "string") {
-      if (node.niveau === 3 && cleanId.includes("[3]-")) {
-        cleanId = cleanId.split("[3]-")[1];
-      } else if (node.niveau === 4 && cleanId.includes("[4]-")) {
-        cleanId = cleanId.split("[4]-")[1];
-      }
-    }
-
     if (
-      node.niveau !== undefined &&
-      node.niveau < 3 &&
       getConversationsForGroup &&
-      getConversationsForGroup(node["entity-id"], node["entity-name"])
-        .length > 0
+      getConversationsForGroup(node["entity-id"], node["entity-name"]).length > 0
     ) {
       const hasUnread = hasUnreadConversationsForGroup
         ? hasUnreadConversationsForGroup(node["entity-id"], node["entity-name"])
@@ -251,32 +231,6 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
           </span>
         </div>
       );
-    } else if (
-      (node.niveau === 3 || node.niveau === 4) &&
-      getConversationsForField &&
-      cleanId
-    ) {
-      const conversationCount = getConversationsForField(
-        node["entity-id"],
-        cleanId,
-      ).length;
-      if (conversationCount > 0) {
-        const hasUnread = hasUnreadConversationsForField
-          ? hasUnreadConversationsForField(node["entity-id"], cleanId)
-          : false;
-        return (
-          <div className="flex items-center text-secondary">
-            <ChatBubbleIcon
-              filled
-              className="h-5 w-5 mr-1"
-              hasUnread={hasUnread}
-            />
-            <span className="text-xs font-medium">
-              {conversationCount}
-            </span>
-          </div>
-        );
-      }
     }
 
     return (
@@ -289,12 +243,12 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
 
   return (
     <div
-      className={`border ${getBorderColor()} ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}
+      className={`border border-gray-200 ${getBackgroundColor()} transition-all duration-200 ${getLevelSpecificStyle()}`}
     >
       <div
         className={`py-3 px-4 flex items-center hover:bg-opacity-80 ${getIndentClass()} transition-all duration-200 gap-4`}
         data-level={level}
-        data-node-id={node["id-record"]}
+        data-node-id={node["entity-id"]}
       >
         {hasChildren ? (
           <button onClick={toggleExpand} className="cursor-pointer">
@@ -319,21 +273,14 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
           >
             {node["entity-name"]}
           </div>
-          <div className="flex gap-2">
-            {!(node.type == "LoV" && node.niveau && node.niveau > 1) && (
-              <div className="text-xs text-gray-500">
-                ID: {node["id-record"]}
-              </div>
-            )}
+          {node.desc && (
             <div className="text-xs text-gray-800">
-              {node.desc || node["desc-fr"]}
+              {node.desc}
             </div>
-          </div>
+          )}
         </div>
 
-        <NodeVarType node={node} />
-
-        {isConversationFeatureEnabled && node.niveau && node.niveau <= 4 && (
+        {isConversationFeatureEnabled && node.niveau && node.niveau <= 2 && (
           <div
             className="conversation-button"
             onClick={handleConversationClick}
@@ -342,100 +289,302 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
           </div>
         )}
 
-        {node.exemple != null && <code>{node.exemple}</code>}
-
         <div className="flex items-center space-x-2">
           <div
             className={`px-2 py-1 text-xs rounded-full font-medium ${getLevelBadgeColor()}`}
           >
-            {"type" in node && node.niveau !== undefined
-              ? `${node.type} - Niv ${node.niveau}`
-              : node.niveau !== undefined
-                ? `Niveau ${node.niveau}`
-                : "Niveau N/A"}
+            {node.type === "LoV"
+              ? "LoV"
+              : `Niveau ${node.niveau ?? "N/A"}`}
           </div>
         </div>
       </div>
 
       {hasChildren && shouldExpandNode && (
-        <div className={`ml-6`}>
-          {childFields.map((childField, index) => {
-            if ("entity-name" in childField) {
-              return (
-                <HierarchicalNode
-                  key={`${childField["entity-id"]}-${index}`}
-                  node={childField as Entity}
-                  level={level + 1}
-                  searchTerm={searchTerm}
-                  expandedLevels={expandedLevels}
-                  lastGlobalAction={lastGlobalAction}
-                  forceExpanded={Boolean(
-                    forceExpanded ||
-                      (searchTerm &&
-                        (hasMatchingChildren || hasMatchingFields)),
-                  )}
-                  conversations={conversations}
-                  toggleFieldSelection={toggleFieldSelection}
-                  toggleGroupSelection={toggleGroupSelection}
-                  isFieldSelected={isFieldSelected}
-                  isGroupSelected={isGroupSelected}
-                  getConversationsForField={getConversationsForField}
-                  getConversationsForGroup={getConversationsForGroup}
-                  hasUnreadConversationsForField={hasUnreadConversationsForField}
-                  hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
-                />
-              );
-            }
+        <div className="ml-6">
+          {/* Render child entities (NIV2 under NIV1) */}
+          {childEntities.map((childEntity, index) => (
+            <HierarchicalNode
+              key={`${childEntity["entity-id"]}-${index}`}
+              node={childEntity}
+              level={level + 1}
+              searchTerm={searchTerm}
+              expandedLevels={expandedLevels}
+              lastGlobalAction={lastGlobalAction}
+              forceExpanded={Boolean(
+                forceExpanded ||
+                  (searchTerm && (hasMatchingChildren || hasMatchingFields)),
+              )}
+              conversations={conversations}
+              toggleFieldSelection={toggleFieldSelection}
+              toggleGroupSelection={toggleGroupSelection}
+              isFieldSelected={isFieldSelected}
+              isGroupSelected={isGroupSelected}
+              getConversationsForField={getConversationsForField}
+              getConversationsForGroup={getConversationsForGroup}
+              hasUnreadConversationsForField={hasUnreadConversationsForField}
+              hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
+            />
+          ))}
 
-            const childEntity: Entity = {
-              "entity-id": childField["entity-id"],
-              "entity-name": childField["entity-name"] || "",
-              niveau: childField.niveau ?? 0,
-              "id-record": childField["id-record"] ? String(childField["id-record"]) : undefined,
-              type: childField.type || "UNKNOWN",
-              "var-type": childField["var-type"],
-              desc: childField["desc"],
-              exemple: childField.exemple,
-              "link-entity-id": childField["link-entity-id"],
-              fields:
-                "fields" in childField && childField.fields
-                  ? childField.fields
-                  : node.fields.filter(
-                      (field) =>
-                        "niveau" in field &&
-                        field.niveau === (childField.niveau as number) + 1 &&
-                        "lib-group" in field &&
-                        field["lib-group"] &&
-                        field["lib-group"].includes(childField["entity-name"] || ""),
-                    ),
-            };
-
+          {/* Render LoV children (legacy format) */}
+          {lovChildren.map((child, index) => {
+            const childEntity = child as Entity;
             return (
-              <HierarchicalNode
-                key={`${childEntity["entity-id"]}-${index}`}
-                node={childEntity}
-                level={level + 1}
-                searchTerm={searchTerm}
-                expandedLevels={expandedLevels}
-                lastGlobalAction={lastGlobalAction}
-                forceExpanded={Boolean(
-                  forceExpanded ||
-                    (searchTerm && (hasMatchingChildren || hasMatchingFields)),
+              <div
+                key={`lov-${childEntity["entity-id"] || index}`}
+                className="border border-gray-200 bg-white py-2 px-4 pl-8 text-sm"
+              >
+                <span className="text-gray-800">{childEntity["entity-name"]}</span>
+                {childEntity.desc && (
+                  <span className="text-xs text-gray-500 ml-2">{childEntity.desc}</span>
                 )}
-                conversations={conversations}
-                toggleFieldSelection={toggleFieldSelection}
-                toggleGroupSelection={toggleGroupSelection}
-                isFieldSelected={isFieldSelected}
-                isGroupSelected={isGroupSelected}
-                getConversationsForField={getConversationsForField}
-                getConversationsForGroup={getConversationsForGroup}
-                hasUnreadConversationsForField={hasUnreadConversationsForField}
-                hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
-              />
+              </div>
             );
           })}
+
+          {/* Render leaf fields as a data table */}
+          {leafFields.length > 0 && (
+            <FieldsTable
+              fields={leafFields}
+              searchTerm={searchTerm}
+              conversations={conversations}
+              toggleFieldSelection={toggleFieldSelection}
+              isFieldSelected={isFieldSelected}
+              getConversationsForField={getConversationsForField}
+              hasUnreadConversationsForField={hasUnreadConversationsForField}
+              isConversationFeatureEnabled={isConversationFeatureEnabled}
+            />
+          )}
         </div>
       )}
     </div>
+  );
+};
+
+// ---------------------------------------------------------------------------
+// FieldsTable: renders SourceField[] as a compact data table
+// ---------------------------------------------------------------------------
+
+interface FieldsTableProps {
+  fields: SourceField[];
+  searchTerm?: string;
+  conversations?: Conversation[];
+  toggleFieldSelection?: (
+    entityId: string,
+    fieldId: number | string,
+    fieldName?: string,
+  ) => void;
+  isFieldSelected?: (entityId: string, fieldId: number | string) => boolean;
+  getConversationsForField?: (
+    entityId: string,
+    fieldId: number | string,
+  ) => Conversation[];
+  hasUnreadConversationsForField?: (
+    entityId: string,
+    fieldId: number | string,
+  ) => boolean;
+  isConversationFeatureEnabled: boolean;
+}
+
+const FieldsTable: React.FC<FieldsTableProps> = ({
+  fields,
+  searchTerm,
+  conversations = [],
+  toggleFieldSelection,
+  isFieldSelected,
+  getConversationsForField,
+  hasUnreadConversationsForField,
+  isConversationFeatureEnabled,
+}) => {
+  return (
+    <div className="overflow-x-auto border-t border-gray-200">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-3 py-2">Code champ</th>
+            <th className="px-3 py-2">Libellé du champ</th>
+            <th className="px-3 py-2">Commentaire</th>
+            <th className="px-3 py-2">Nom du champ codé</th>
+            <th className="px-3 py-2">Type de donnée</th>
+            <th className="px-3 py-2">PK</th>
+            <th className="px-3 py-2">FK</th>
+            <th className="px-3 py-2 text-center">Exemple</th>
+            {isConversationFeatureEnabled && (
+              <th className="px-3 py-2 text-center">Conv.</th>
+            )}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-100">
+          {fields.map((field) => (
+            <FieldRow
+              key={field.id}
+              field={field}
+              searchTerm={searchTerm}
+              toggleFieldSelection={toggleFieldSelection}
+              isFieldSelected={isFieldSelected}
+              getConversationsForField={getConversationsForField}
+              hasUnreadConversationsForField={hasUnreadConversationsForField}
+              isConversationFeatureEnabled={isConversationFeatureEnabled}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+// ---------------------------------------------------------------------------
+// FieldRow: single row in the fields table
+// ---------------------------------------------------------------------------
+
+interface FieldRowProps {
+  field: SourceField;
+  searchTerm?: string;
+  toggleFieldSelection?: (
+    entityId: string,
+    fieldId: number | string,
+    fieldName?: string,
+  ) => void;
+  isFieldSelected?: (entityId: string, fieldId: number | string) => boolean;
+  getConversationsForField?: (
+    entityId: string,
+    fieldId: number | string,
+  ) => Conversation[];
+  hasUnreadConversationsForField?: (
+    entityId: string,
+    fieldId: number | string,
+  ) => boolean;
+  isConversationFeatureEnabled: boolean;
+}
+
+const FieldRow: React.FC<FieldRowProps> = ({
+  field,
+  searchTerm,
+  toggleFieldSelection,
+  isFieldSelected,
+  getConversationsForField,
+  hasUnreadConversationsForField,
+  isConversationFeatureEnabled,
+}) => {
+  const selected = isFieldSelected
+    ? isFieldSelected(field["entity-id"], field["code-champ"])
+    : false;
+
+  const matchesSearch =
+    searchTerm &&
+    (field.libelle?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      field["code-champ"]?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      field.commentaire?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      field["nom-champ-code"]?.toLowerCase().includes(searchTerm.toLowerCase()));
+
+  const handleConversationClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (toggleFieldSelection) {
+      toggleFieldSelection(field["entity-id"], field["code-champ"], field.libelle);
+    }
+  };
+
+  const conversationCount =
+    getConversationsForField
+      ? getConversationsForField(field["entity-id"], field["code-champ"]).length
+      : 0;
+
+  const hasUnread = hasUnreadConversationsForField
+    ? hasUnreadConversationsForField(field["entity-id"], field["code-champ"])
+    : false;
+
+  return (
+    <tr
+      className={`hover:bg-gray-50 transition-colors ${
+        selected ? "bg-orange-50 border-l-2 border-l-orange-500" : ""
+      } ${matchesSearch ? "bg-yellow-50" : ""}`}
+    >
+      {/* 1. Code champ */}
+      <td className="px-3 py-2 font-mono text-xs text-gray-600 whitespace-nowrap">
+        {field["code-champ"]}
+      </td>
+      {/* 2. Libellé du champ */}
+      <td className="px-3 py-2 font-medium text-gray-900">
+        {field.libelle}
+      </td>
+      {/* 5. Commentaire */}
+      <td className="px-3 py-2 text-gray-600 text-xs max-w-xs truncate" title={field.commentaire ?? undefined}>
+        {field.commentaire}
+      </td>
+      {/* 6. Nom du champ codé */}
+      <td className="px-3 py-2 font-mono text-xs text-gray-500 whitespace-nowrap">
+        {field["nom-champ-code"]}
+      </td>
+      {/* 7. Type de donnée */}
+      <td className="px-3 py-2 text-xs whitespace-nowrap">
+        <span className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-700">
+          {field["type-donnee"]}
+        </span>
+      </td>
+      {/* 8. Clé primaire (PK) */}
+      <td className="px-3 py-2 text-xs text-center">
+        {field["cle-primaire"] && (
+          <span className="px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded font-medium">
+            PK
+          </span>
+        )}
+      </td>
+      {/* 9. Clé étrangère (FK) */}
+      <td className="px-3 py-2 text-xs text-gray-500 max-w-xs truncate" title={field["cle-etrangere"] ?? undefined}>
+        {field["cle-etrangere"]}
+      </td>
+      <td className="px-3 py-2 text-center">
+        {field.exemple && (
+          <Dialog>
+            <DialogTrigger asChild>
+              <button
+                className="text-xs px-2 py-1 bg-purple-50 text-purple-700 rounded hover:bg-purple-100 transition-colors cursor-pointer"
+                title="Voir l'exemple"
+              >
+                📋
+              </button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>
+                  Exemple — {field.libelle}
+                </DialogTitle>
+                <DialogDescription>
+                  {field["code-champ"]} · {field["nom-champ-code"]}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="p-4 bg-gray-50 rounded text-sm whitespace-pre-wrap">
+                {field.exemple}
+              </div>
+            </DialogContent>
+          </Dialog>
+        )}
+      </td>
+      {isConversationFeatureEnabled && (
+        <td className="px-3 py-2 text-center">
+          <div
+            className="cursor-pointer inline-flex items-center"
+            onClick={handleConversationClick}
+          >
+            {conversationCount > 0 ? (
+              <div className="flex items-center text-secondary">
+                <ChatBubbleIcon
+                  filled
+                  className="h-4 w-4 mr-0.5"
+                  hasUnread={hasUnread}
+                />
+                <span className="text-xs font-medium">{conversationCount}</span>
+              </div>
+            ) : (
+              <ChatBubbleIcon
+                className="h-4 w-4 text-gray-400 hover:text-secondary transition-colors duration-200"
+                hasUnread={false}
+              />
+            )}
+          </div>
+        </td>
+      )}
+    </tr>
   );
 };

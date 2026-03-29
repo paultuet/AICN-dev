@@ -16,8 +16,12 @@
                 (let [error-details {:message (.getMessage e)
                                      :class (str (.getClass e))
                                      :cause (when-let [cause (.getCause e)]
-                                              (.getMessage cause))}]
-                  (logger/error e)
+                                              (.getMessage cause))
+                                     :data (ex-data e)}]
+                  (logger/error (str "Sync error: " (.getMessage e)
+                                     (when-let [c (.getCause e)]
+                                       (str " | Cause: " (.getMessage c)))))
+                  (.printStackTrace e)
                   (-> ctx
                       (assoc :response {:status 500 :body {:error error-details}})
                       (assoc :queue nil))))))})

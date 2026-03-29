@@ -6,7 +6,6 @@ import { HierarchicalNode } from "./hierarchical";
 interface HierarchicalViewProps {
   data: Entity[];
   searchTerm?: string;
-  selectedType?: string | null;
   conversations?: Conversation[];
   toggleFieldSelection?: (
     entityId: string,
@@ -36,12 +35,11 @@ interface HierarchicalViewProps {
 
 /**
  * Main hierarchical view container component
- * Displays entities in a tree structure with level-based expansion controls
+ * Displays entities in a 2-level tree structure (Niveau 1 > Niveau 2 > fields)
  */
 const HierarchicalView: React.FC<HierarchicalViewProps> = ({
   data,
   searchTerm,
-  selectedType,
   conversations = [],
   toggleFieldSelection,
   toggleGroupSelection,
@@ -54,7 +52,7 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
 }) => {
   const [expandedLevels, setExpandedLevels] = useState<{
     [key: number]: boolean;
-  }>({ 1: true, 2: true, 3: true, 4: true });
+  }>({ 1: true, 2: true });
   const [lastGlobalAction, setLastGlobalAction] = useState<number>(0);
 
   const toggleLevelExpansion = (level: number) => {
@@ -82,9 +80,14 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
                 field["entity-name"]
                   ?.toLowerCase()
                   .includes(searchTerm.toLowerCase())) ||
-              ("desc" in field &&
-                field.desc &&
-                field.desc.toLowerCase().includes(searchTerm.toLowerCase())),
+              ("libelle" in field &&
+                (field as { libelle?: string }).libelle
+                  ?.toLowerCase()
+                  .includes(searchTerm.toLowerCase())) ||
+              ("commentaire" in field &&
+                (field as { commentaire?: string }).commentaire
+                  ?.toLowerCase()
+                  .includes(searchTerm.toLowerCase())),
           ),
       ).length
     : niveau1Entities.length;
@@ -116,20 +119,6 @@ const HierarchicalView: React.FC<HierarchicalViewProps> = ({
         >
           {expandedLevels[2] ? "Niveau 2 ▼" : "Niveau 2 ▶"}
         </button>
-        <button
-          onClick={() => toggleLevelExpansion(3)}
-          className={`px-3 py-1.5 rounded-md bg-emerald-100 text-emerald-800 border ${expandedLevels[3] ? "border-emerald-500" : "border-emerald-300"} font-medium cursor-pointer hover:bg-emerald-200 transition-colors`}
-        >
-          {expandedLevels[3] ? "Niveau 3 ▼" : "Niveau 3 ▶"}
-        </button>
-        {selectedType === "NMR" && (
-          <button
-            onClick={() => toggleLevelExpansion(4)}
-            className={`px-3 py-1.5 rounded-md bg-purple-100 text-purple-800 border ${expandedLevels[4] ? "border-purple-500" : "border-purple-300"} font-normal cursor-pointer hover:bg-purple-200 transition-colors`}
-          >
-            {expandedLevels[4] ? "Niveau 4 ▼" : "Niveau 4 ▶"}
-          </button>
-        )}
       </div>
 
       <div className="divide-y divide-gray-200">

@@ -42,7 +42,7 @@ interface ConversationFilters {
   fieldBelongsToGroupWithConversation: (
     entityId: EntityId,
     fieldId: FieldId,
-    fields: { 'id-field': FieldId; 'lib-group': string }[]
+    fields: { 'id'?: string; 'code-champ'?: string; 'id-field'?: FieldId; 'lib-group'?: string }[]
   ) => boolean;
 }
 
@@ -278,14 +278,18 @@ export const useConversations = (): UseConversationsResult => {
   const fieldBelongsToGroupWithConversation = useCallback((
     entityId: EntityId,
     fieldId: FieldId,
-    fields: { 'id-field': FieldId; 'lib-group': string }[]
+    fields: { 'id'?: string; 'code-champ'?: string; 'id-field'?: FieldId; 'lib-group'?: string }[]
   ) => {
     // Trouver le champ correspondant
     const field = fields.find((f) => {
+      // SourceField match by code-champ or id
+      if (f['code-champ']) {
+        return f['code-champ'] === String(fieldId) || f['id'] === String(fieldId);
+      }
+      // Legacy Field match
       const idField = f['id-field'];
       return (
         idField === fieldId ||
-        idField === Number(fieldId) ||
         String(idField) === String(fieldId)
       );
     });
@@ -293,7 +297,7 @@ export const useConversations = (): UseConversationsResult => {
     if (!field) return false;
 
     // Vérifier si le groupe du champ a des conversations
-    const groupName = field['lib-group'];
+    const groupName = field['lib-group'] || '';
     
     return conversations.some((conversation) =>
       conversation.linkedItems.some(

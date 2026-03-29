@@ -14,10 +14,11 @@ export interface User {
 // Types pour les référentiels
 export type {
   BaseField,
-  FieldIdentifier, 
+  FieldIdentifier,
   FieldMetadata,
   FieldEntityRef,
   Field,
+  SourceField,
   BaseEntity,
   EntityMetadata,
   Entity,
@@ -27,7 +28,7 @@ export type {
 } from './referential';
 
 // Fonctions utilitaires pour les types
-export { isField, isEntity } from './referential';
+export { isField, isEntity, isSourceField } from './referential';
 
 // Types pour les conversations
 export type {
