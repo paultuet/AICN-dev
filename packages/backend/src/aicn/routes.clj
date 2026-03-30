@@ -57,7 +57,17 @@
                                       (let [users (db/get-all-users ds)]
                                         {:status 200
                                          :body (map #(-> %
-                                                         (select-keys [:id :email :name :organization :role :created-at :email-verified])) users)}))}}]
+                                                         (select-keys [:id :email :name :organization :role :created-at :email-verified :approved])) users)}))}}]
+
+    ["/admin/users/:id/approve" {:post {:summary "Approve a user (admin only)"
+                                        :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+                                        :parameters {:path [:map [:id :string]]}
+                                        :responses {200 {:body :any}
+                                                    400 {:body :any}
+                                                    401 {:body :any}
+                                                    404 {:body :any}}
+                                        :handler (fn [request]
+                                                   (auth/approve-user request))}}]
 
     ["/admin/activity-logs" {:get {:summary "Get activity logs (admin only)"
                                    :interceptors [(auth/restrict-role-interceptor :ADMIN)]
@@ -209,6 +219,67 @@
                                                            count (db/get-unread-conversations-count ds user-id)]
                                                        {:status 200
                                                         :body {:unreadCount count}}))}}]
+
+    ;; Comments endpoints
+    ["/comments/counts" {:get {:summary "Get comment counts for all targets"
+                               :responses {200 {:body :any}}
+                               :handler (fn [{:keys [db/ds]}]
+                                          (let [counts (db/get-comment-counts ds)]
+                                            {:status 200
+                                             :body {:counts (map (fn [c]
+                                                                   {:targetType (:target_type c)
+                                                                    :targetId (:target_id c)
+                                                                    :count (:count c)})
+                                                                 counts)}}))}}]
+
+    ["/comments/:target-type/:target-id" {:get {:summary "Get comments for a specific target"
+                                                 :responses {200 {:body :any}}
+                                                 :handler (fn [{:keys [path-params db/ds]}]
+                                                            (let [{:keys [target-type target-id]} path-params
+                                                                  comments (db/get-comments-for-target ds target-type target-id)]
+                                                              {:status 200
+                                                               :body {:comments (map (fn [c]
+                                                                                       {:id (:id c)
+                                                                                        :targetType (:target_type c)
+                                                                                        :targetId (:target_id c)
+                                                                                        :content (:content c)
+                                                                                        :authorId (:author_id c)
+                                                                                        :authorName (:author_name c)
+                                                                                        :createdAt (:created_at c)})
+                                                                                     comments)}}))}}]
+
+    ["/comments" {:post {:summary "Add a comment to a target"
+                         :responses {200 {:body :any}
+                                     400 {:body :any}}
+                         :handler (fn [{:keys [body-params db/ds session/user]}]
+                                    (let [{:keys [targetType targetId content]} body-params
+                                          user-id (:id user)
+                                          user-name (:name user)
+                                          user-email (:email user)]
+                                      (if (or (empty? content) (empty? targetType) (empty? targetId))
+                                        {:status 400
+                                         :body {:error "targetType, targetId and content are required"}}
+                                        (let [comment (db/create-comment ds {:target-type targetType
+                                                                             :target-id targetId
+                                                                             :content content
+                                                                             :author-id user-id
+                                                                             :author-name user-name})]
+                                          (activity/add-activity-log! ds {:type :comment-added
+                                                                          :user-email user-email
+                                                                          :user-name user-name
+                                                                          :user-id user-id
+                                                                          :message "Comment added"
+                                                                          :details {:target-type targetType
+                                                                                    :target-id targetId
+                                                                                    :content-preview (subs content 0 (min 50 (count content)))}})
+                                          {:status 200
+                                           :body {:id (:id comment)
+                                                  :targetType (:target-type comment)
+                                                  :targetId (:target-id comment)
+                                                  :content (:content comment)
+                                                  :authorId (:author-id comment)
+                                                  :authorName (:author-name comment)
+                                                  :createdAt (:created-at comment)}}))))}}]
 
     ;; File management endpoints
     ["/file/upload" {:post {:summary "Upload a file (admin only)"

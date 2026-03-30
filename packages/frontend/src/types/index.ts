@@ -9,6 +9,7 @@ export interface User {
   role: string
   'created-at': string
   'email-verified': boolean
+  approved: boolean
 }
 
 // Types pour les référentiels
@@ -45,6 +46,9 @@ export type {
   SidebarViewMode,
   ConversationAction
 } from './conversation';
+
+// Types pour les commentaires
+export type { Comment, CommentCount } from './comment';
 
 // Type générique pour les requêtes API (repris de l'existant)
 export interface ApiResponse<T> {

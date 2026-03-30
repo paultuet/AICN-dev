@@ -11,6 +11,7 @@
    [:role [:enum "ADMIN" "USER"]]
    [:access-rights :map]
    [:email-verified {:optional true} [:maybe :boolean]]
+   [:approved {:optional true} [:maybe :boolean]]
    [:verification-token {:optional true} [:maybe :uuid]]
    [:verification-token-expires-at {:optional true} [:maybe inst?]]
    [:created-at inst?]
@@ -54,4 +55,14 @@
    [:percentage {:optional true} [:maybe :int]]
    [:created-at inst?]
    [:updated-at inst?]])
+
+(def Comment
+  [:map
+   [:id :uuid]
+   [:target-type :string]
+   [:target-id :string]
+   [:content :string]
+   [:author-id :uuid]
+   [:author-name :string]
+   [:created-at inst?]])
 

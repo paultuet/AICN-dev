@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import CommentPopover from "@/components/comments/CommentPopover";
 
 interface HierarchicalNodeProps {
   node: Entity;
@@ -280,6 +281,10 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
           )}
         </div>
 
+        {node.niveau && node.niveau <= 2 && (
+          <CommentPopover targetType="entity" targetId={node["entity-id"]} />
+        )}
+
         {isConversationFeatureEnabled && node.niveau && node.niveau <= 2 && (
           <div
             className="conversation-button"
@@ -410,6 +415,7 @@ const FieldsTable: React.FC<FieldsTableProps> = ({
             <th className="px-3 py-2">PK</th>
             <th className="px-3 py-2">FK</th>
             <th className="px-3 py-2 text-center">Exemple</th>
+            <th className="px-3 py-2 text-center">Notes</th>
             {isConversationFeatureEnabled && (
               <th className="px-3 py-2 text-center">Conv.</th>
             )}
@@ -560,6 +566,9 @@ const FieldRow: React.FC<FieldRowProps> = ({
             </DialogContent>
           </Dialog>
         )}
+      </td>
+      <td className="px-3 py-2 text-center">
+        <CommentPopover targetType="field" targetId={field["code-champ"]} />
       </td>
       {isConversationFeatureEnabled && (
         <td className="px-3 py-2 text-center">

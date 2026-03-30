@@ -182,9 +182,9 @@
                      ["SELECT * FROM users WHERE id = ?::uuid" id]
                      model/User))
 
-(defn update-user [datasource {:keys [id name organization role access-rights email-verified verification-token verification-token-expires-at reset-token reset-token-expires-at password-hash]}]
+(defn update-user [datasource {:keys [id name organization role access-rights email-verified verification-token verification-token-expires-at reset-token reset-token-expires-at password-hash approved]}]
   (let [res (jdbc/execute-one! datasource
-                               ["UPDATE users SET 
+                               ["UPDATE users SET
                             name = COALESCE(?::text, name),
                             organization = COALESCE(?::text, organization),
                             role = COALESCE(?::text, role),
@@ -195,10 +195,11 @@
                             reset_token = ?::uuid,
                             reset_token_expires_at = ?::timestamptz,
                             password_hash = COALESCE(?::text, password_hash),
+                            approved = COALESCE(?::boolean, approved),
                             updated_at = NOW()
                             WHERE id = ?::uuid
                             RETURNING *"
-                                name organization role access-rights email-verified verification-token verification-token-expires-at reset-token reset-token-expires-at password-hash id]
+                                name organization role access-rights email-verified verification-token verification-token-expires-at reset-token reset-token-expires-at password-hash approved id]
                                {:builder-fn rs/as-unqualified-maps})]
     (decode model/User res)))
 
@@ -486,6 +487,28 @@
                     ["DELETE FROM uploaded_files
                       WHERE id = ?::uuid"
                      file-id]))
+
+;; Comment functions
+(defn create-comment [datasource {:keys [target-type target-id content author-id author-name]}]
+  (safe-execute-one! datasource
+                     ["INSERT INTO comments (target_type, target_id, content, author_id, author_name)
+                       VALUES (?::text, ?::text, ?::text, ?::uuid, ?::text)
+                       RETURNING *"
+                      target-type target-id content author-id author-name]
+                     model/Comment))
+
+(defn get-comments-for-target [datasource target-type target-id]
+  (safe-execute! datasource
+                 ["SELECT * FROM comments
+                   WHERE target_type = ?::text AND target_id = ?::text
+                   ORDER BY created_at ASC"
+                  target-type target-id]))
+
+(defn get-comment-counts [datasource]
+  (safe-execute! datasource
+                 ["SELECT target_type, target_id, COUNT(*)::int as count
+                   FROM comments
+                   GROUP BY target_type, target_id"]))
 
 (comment
   (def conf (aicn.system/get-config :local))
