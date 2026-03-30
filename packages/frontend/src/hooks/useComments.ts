@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useCallback, useMemo } from 'react';
-import { fetchCommentCounts, fetchCommentsForTarget, addComment as addCommentApi } from '@/services/commentApi';
+import { fetchCommentCounts, fetchCommentsForTarget, addComment as addCommentApi, deleteComment as deleteCommentApi } from '@/services/commentApi';
 import type { Comment, CommentCount } from '@/types/comment';
 
 export const useCommentCounts = () => {
@@ -43,6 +43,19 @@ export const useAddComment = () => {
   return useMutation({
     mutationFn: ({ targetType, targetId, content }: { targetType: string; targetId: string; content: string }) =>
       addCommentApi(targetType, targetId, content),
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({ queryKey: ['comments', variables.targetType, variables.targetId] });
+      queryClient.invalidateQueries({ queryKey: ['comment-counts'] });
+    },
+  });
+};
+
+export const useDeleteComment = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ commentId }: { commentId: string; targetType: string; targetId: string }) =>
+      deleteCommentApi(commentId),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: ['comments', variables.targetType, variables.targetId] });
       queryClient.invalidateQueries({ queryKey: ['comment-counts'] });

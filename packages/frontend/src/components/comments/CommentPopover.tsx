@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { MessageSquareText } from "lucide-react";
+import { MessageSquareText, Trash2 } from "lucide-react";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-import { useCommentCounts, useCommentsForTarget, useAddComment } from "@/hooks/useComments";
+import { useCommentCounts, useCommentsForTarget, useAddComment, useDeleteComment } from "@/hooks/useComments";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface CommentPopoverProps {
   targetType: "entity" | "field";
@@ -29,6 +30,8 @@ const CommentPopover: React.FC<CommentPopoverProps> = ({ targetType, targetId })
   const { getCommentCount } = useCommentCounts();
   const { data: comments = [], isLoading } = useCommentsForTarget(targetType, targetId, open);
   const { mutate: addComment, isPending: isAdding } = useAddComment();
+  const { mutate: deleteComment, isPending: isDeleting } = useDeleteComment();
+  const { user } = useAuth();
 
   const count = getCommentCount(targetType, targetId);
 
@@ -83,21 +86,36 @@ const CommentPopover: React.FC<CommentPopoverProps> = ({ targetType, targetId })
             <div className="p-4 text-center text-sm text-gray-400">Aucun commentaire</div>
           ) : (
             <div className="divide-y divide-gray-50">
-              {comments.map((comment) => (
-                <div key={comment.id} className="px-3 py-2">
-                  <div className="flex items-center justify-between mb-0.5">
-                    <span className="text-xs font-medium text-gray-700">
-                      {comment.authorName}
-                    </span>
-                    <span className="text-xs text-gray-400">
-                      {formatRelativeDate(comment.createdAt)}
-                    </span>
+              {comments.map((comment) => {
+                const isOwn = user?.id === comment.authorId;
+                return (
+                  <div key={comment.id} className="px-3 py-2 group/comment">
+                    <div className="flex items-center justify-between mb-0.5">
+                      <span className="text-xs font-medium text-gray-700">
+                        {comment.authorName}
+                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs text-gray-400">
+                          {formatRelativeDate(comment.createdAt)}
+                        </span>
+                        {isOwn && (
+                          <button
+                            onClick={() => deleteComment({ commentId: comment.id, targetType, targetId })}
+                            disabled={isDeleting}
+                            className="opacity-0 group-hover/comment:opacity-100 text-gray-400 hover:text-red-500 transition-all disabled:opacity-50"
+                            title="Supprimer"
+                          >
+                            <Trash2 className="h-3 w-3" />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-600 whitespace-pre-wrap break-words">
+                      {comment.content}
+                    </p>
                   </div>
-                  <p className="text-sm text-gray-600 whitespace-pre-wrap break-words">
-                    {comment.content}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>

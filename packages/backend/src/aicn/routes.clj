@@ -281,6 +281,19 @@
                                                   :authorName (:author-name comment)
                                                   :createdAt (:created-at comment)}}))))}}]
 
+    ["/comments/:comment-id" {:delete {:summary "Delete own comment"
+                                        :responses {200 {:body :any}
+                                                    404 {:body :any}}
+                                        :handler (fn [{:keys [path-params db/ds session/user]}]
+                                                   (let [comment-id (:comment-id path-params)
+                                                         user-id (:id user)
+                                                         deleted (db/delete-comment ds comment-id user-id)]
+                                                     (if deleted
+                                                       {:status 200
+                                                        :body {:deleted true}}
+                                                       {:status 404
+                                                        :body {:error "Comment not found or not owned by you"}})))}}]
+
     ;; File management endpoints
     ["/file/upload" {:post {:summary "Upload a file (admin only)"
                             :interceptors [(auth/restrict-role-interceptor :ADMIN)]

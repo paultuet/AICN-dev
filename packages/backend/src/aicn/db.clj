@@ -510,6 +510,13 @@
                    FROM comments
                    GROUP BY target_type, target_id"]))
 
+(defn delete-comment [datasource comment-id author-id]
+  (safe-execute-one! datasource
+                     ["DELETE FROM comments
+                       WHERE id = ?::uuid AND author_id = ?::uuid
+                       RETURNING *"
+                      comment-id author-id]))
+
 (comment
   (def conf (aicn.system/get-config :local))
   (jdbc->hk-config (get-in conf [:db/pg :jdbc]))
