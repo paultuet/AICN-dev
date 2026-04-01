@@ -1,0 +1,59 @@
+<mjml>
+  <mj-head>
+    <mj-title>Nouvel utilisateur en attente d'approbation</mj-title>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text font-family="Helvetica" color="#333">
+          <h1 style="color: #111; font-size: 24px; font-weight: bold">
+            Nouvel utilisateur en attente d'approbation
+          </h1>
+
+          <p>Un nouvel utilisateur a verifie son adresse email et attend votre approbation pour acceder a la plateforme AICN.</p>
+
+          <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+            <tr>
+              <td style="padding: 8px; font-weight: bold; color: #555;">Nom</td>
+              <td style="padding: 8px;">{{name}}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; font-weight: bold; color: #555;">Email</td>
+              <td style="padding: 8px;">{{email}}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; font-weight: bold; color: #555;">Organisation</td>
+              <td style="padding: 8px;">{{organization}}</td>
+            </tr>
+          </table>
+        </mj-text>
+        <mj-button
+          font-family="Helvetica"
+          background-color="#16a34a"
+          color="white"
+          href="{{approve-url}}"
+          font-size="16px"
+          padding="20px 0"
+        >
+          Approuver cet utilisateur
+        </mj-button>
+
+        <mj-text font-family="Helvetica" color="#666" font-size="13px" align="center">
+          <p>Ou <a href="{{admin-url}}" style="color: #4f46e5;">gerez les utilisateurs</a> depuis le panel admin.</p>
+        </mj-text>
+
+        <mj-divider
+          border-width="1px"
+          border-style="solid"
+          border-color="lightgrey"
+        />
+
+        <mj-text color="lightgray">
+          <div class="footer">
+            <p>&copy; {{year}} AICN. Tous droits reserves.</p>
+          </div>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

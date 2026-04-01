@@ -1,0 +1,52 @@
+<mjml>
+  <mj-head>
+    <mj-title>Votre compte AICN a ete approuve</mj-title>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text font-family="Helvetica" color="#333">
+          <h1 style="color: #111; font-size: 24px; font-weight: bold">
+            Felicitations, {{name}} !
+          </h1>
+
+          <p>Votre compte AICN a ete approuve par un administrateur.</p>
+
+          <p>
+            Vous pouvez maintenant vous connecter a votre compte et commencer a
+            utiliser notre plateforme.
+          </p>
+        </mj-text>
+        <mj-button
+          font-family="Helvetica"
+          background-color="#4f46e5"
+          color="white"
+          href="{{login-url}}"
+        >
+          Se connecter
+        </mj-button>
+
+        <mj-text>
+          <p>
+            Nous vous remercions de votre confiance et sommes ravis de vous
+            compter parmi nos utilisateurs.
+          </p>
+        </mj-text>
+        <mj-divider
+          border-width="1px"
+          border-style="solid"
+          border-color="lightgrey"
+        />
+
+        <mj-text color="lightgray">
+          <div class="footer">
+            <p>&copy; {{year}} AICN. Tous droits reserves.</p>
+            <p>
+              Pour tout probleme ou question, n'hesitez pas a nous contacter.
+            </p>
+          </div>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

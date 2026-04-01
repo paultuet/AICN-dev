@@ -13,27 +13,63 @@ export const UsersList: React.FC<UsersListProps> = ({ className = '' }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [approvingId, setApprovingId] = useState<string | null>(null);
+
+  const fetchUsers = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await api.get('/admin/users');
+      const sortedUsers = response.data.sort((a: User, b: User) =>
+        new Date(b['created-at']).getTime() - new Date(a['created-at']).getTime()
+      );
+      setUsers(sortedUsers);
+    } catch (err) {
+      setError('Erreur lors du chargement des utilisateurs');
+      console.error('Error fetching users:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const response = await api.get('/admin/users');
-        const sortedUsers = response.data.sort((a: User, b: User) => 
-          new Date(b['created-at']).getTime() - new Date(a['created-at']).getTime()
-        );
-        setUsers(sortedUsers);
-      } catch (err) {
-        setError('Erreur lors du chargement des utilisateurs');
-        console.error('Error fetching users:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchUsers();
   }, []);
+
+  const handleApprove = async (userId: string) => {
+    try {
+      setApprovingId(userId);
+      await api.post(`/admin/users/${userId}/approve`);
+      await fetchUsers();
+    } catch (err) {
+      console.error('Error approving user:', err);
+      setError("Erreur lors de l'approbation de l'utilisateur");
+    } finally {
+      setApprovingId(null);
+    }
+  };
+
+  const getStatusBadge = (user: User) => {
+    if (!user['email-verified']) {
+      return (
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+          Email non vérifié
+        </span>
+      );
+    }
+    if (!user.approved) {
+      return (
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+          En attente
+        </span>
+      );
+    }
+    return (
+      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+        Approuvé
+      </span>
+    );
+  };
 
   const columns = [
     {
@@ -53,19 +89,9 @@ export const UsersList: React.FC<UsersListProps> = ({ className = '' }) => {
       header: 'Rôle',
     },
     {
-      key: 'email-verified',
-      header: 'Email vérifié',
-      render: (user: User) => (
-        <span
-          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-            user['email-verified']
-              ? 'bg-green-100 text-green-800'
-              : 'bg-red-100 text-red-800'
-          }`}
-        >
-          {user['email-verified'] ? 'Vérifié' : 'Non vérifié'}
-        </span>
-      ),
+      key: 'status',
+      header: 'Statut',
+      render: (user: User) => getStatusBadge(user),
     },
     {
       key: 'created-at',
@@ -78,9 +104,25 @@ export const UsersList: React.FC<UsersListProps> = ({ className = '' }) => {
         }
       },
     },
+    {
+      key: 'actions',
+      header: 'Actions',
+      render: (user: User) => {
+        if (user['email-verified'] && !user.approved) {
+          return (
+            <button
+              onClick={() => handleApprove(user.id)}
+              disabled={approvingId === user.id}
+              className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-md disabled:opacity-50 transition-colors"
+            >
+              {approvingId === user.id ? 'Approbation...' : 'Approuver'}
+            </button>
+          );
+        }
+        return null;
+      },
+    },
   ];
-
-  console.log(users);
 
   if (loading) {
     return (
@@ -108,7 +150,7 @@ export const UsersList: React.FC<UsersListProps> = ({ className = '' }) => {
           Liste de tous les utilisateurs enregistrés
         </p>
       </div>
-      
+
       <Table
         data={users}
         columns={columns}

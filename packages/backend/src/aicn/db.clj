@@ -182,7 +182,7 @@
                      ["SELECT * FROM users WHERE id = ?::uuid" id]
                      model/User))
 
-(defn update-user [datasource {:keys [id name organization role access-rights email-verified verification-token verification-token-expires-at reset-token reset-token-expires-at password-hash approved]}]
+(defn update-user [datasource {:keys [id name organization role access-rights email-verified password-hash approved]}]
   (let [res (jdbc/execute-one! datasource
                                ["UPDATE users SET
                             name = COALESCE(?::text, name),
@@ -190,16 +190,60 @@
                             role = COALESCE(?::text, role),
                             access_rights = COALESCE(?::jsonb, access_rights),
                             email_verified = COALESCE(?::boolean, email_verified),
-                            verification_token = ?::uuid,
-                            verification_token_expires_at = ?::timestamptz,
-                            reset_token = ?::uuid,
-                            reset_token_expires_at = ?::timestamptz,
                             password_hash = COALESCE(?::text, password_hash),
                             approved = COALESCE(?::boolean, approved),
                             updated_at = NOW()
                             WHERE id = ?::uuid
                             RETURNING *"
-                                name organization role access-rights email-verified verification-token verification-token-expires-at reset-token reset-token-expires-at password-hash approved id]
+                                name organization role access-rights email-verified password-hash approved id]
+                               {:builder-fn rs/as-unqualified-maps})]
+    (decode model/User res)))
+
+(defn clear-verification-token [datasource user-id]
+  (let [res (jdbc/execute-one! datasource
+                               ["UPDATE users SET
+                            verification_token = NULL,
+                            verification_token_expires_at = NULL,
+                            updated_at = NOW()
+                            WHERE id = ?::uuid
+                            RETURNING *"
+                                user-id]
+                               {:builder-fn rs/as-unqualified-maps})]
+    (decode model/User res)))
+
+(defn set-verification-token [datasource {:keys [id verification-token verification-token-expires-at]}]
+  (let [res (jdbc/execute-one! datasource
+                               ["UPDATE users SET
+                            verification_token = ?::uuid,
+                            verification_token_expires_at = ?::timestamptz,
+                            updated_at = NOW()
+                            WHERE id = ?::uuid
+                            RETURNING *"
+                                verification-token verification-token-expires-at id]
+                               {:builder-fn rs/as-unqualified-maps})]
+    (decode model/User res)))
+
+(defn clear-reset-token [datasource user-id]
+  (let [res (jdbc/execute-one! datasource
+                               ["UPDATE users SET
+                            reset_token = NULL,
+                            reset_token_expires_at = NULL,
+                            updated_at = NOW()
+                            WHERE id = ?::uuid
+                            RETURNING *"
+                                user-id]
+                               {:builder-fn rs/as-unqualified-maps})]
+    (decode model/User res)))
+
+(defn set-reset-token [datasource {:keys [id reset-token reset-token-expires-at]}]
+  (let [res (jdbc/execute-one! datasource
+                               ["UPDATE users SET
+                            reset_token = ?::uuid,
+                            reset_token_expires_at = ?::timestamptz,
+                            updated_at = NOW()
+                            WHERE id = ?::uuid
+                            RETURNING *"
+                                reset-token reset-token-expires-at id]
                                {:builder-fn rs/as-unqualified-maps})]
     (decode model/User res)))
 

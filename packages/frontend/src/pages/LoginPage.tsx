@@ -22,7 +22,12 @@ const LoginPage = () => {
       navigate('/')
       // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Une erreur est survenue lors de la connexion')
+      const reason = err.response?.data?.reason;
+      if (reason === 'pending-approval') {
+        setError('Votre compte est en attente d\'approbation par un administrateur. Vous recevrez un email lorsque votre accès sera activé.');
+      } else {
+        setError(err.response?.data?.message || 'Une erreur est survenue lors de la connexion');
+      }
     } finally {
       setLoading(false)
     }

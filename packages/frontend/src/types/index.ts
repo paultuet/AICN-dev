@@ -25,7 +25,8 @@ export type {
   Entity,
   FilterPredicate,
   EntityMapper,
-  FieldGroup
+  FieldGroup,
+  LovNewEntry
 } from './referential';
 
 // Fonctions utilitaires pour les types

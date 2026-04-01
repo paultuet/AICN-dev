@@ -69,9 +69,10 @@ const RegisterPage = () => {
               Inscription{success ? " réussie" : ""}
             </h1>
 
-            {success && 
-              <div>
+            {success &&
+              <div className="text-center text-gray-700 space-y-3">
                 <p>Veuillez activer votre compte en cliquant sur le lien d'activation qui vous a été envoyé par email.</p>
+                <p className="text-sm text-gray-500">Une fois votre email vérifié, un administrateur devra approuver votre accès. Vous recevrez un email de confirmation.</p>
               </div>
             }
 

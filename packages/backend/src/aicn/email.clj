@@ -110,6 +110,31 @@
      :subject "Réinitialisation de votre mot de passe AICN"
      :body email-body}))
 
+;; Admin approval request email
+(defn build-admin-approval-request-email [base-url admin-email {:keys [email name organization]} approve-url]
+  (let [admin-url (str base-url "/admin")
+        template-data {:name name
+                       :email email
+                       :organization organization
+                       :admin-url admin-url
+                       :approve-url approve-url
+                       :year (current-year)}
+        email-body (selmer/render-file "admin-approval-request.html" template-data)]
+    {:to admin-email
+     :subject (str "AICN — Nouvel utilisateur en attente d'approbation : " name)
+     :body email-body}))
+
+;; Account approved email
+(defn build-account-approved-email [base-url {:keys [email name]}]
+  (let [login-url (str base-url "/login")
+        template-data {:name name
+                       :login-url login-url
+                       :year (current-year)}
+        email-body (selmer/render-file "account-approved.html" template-data)]
+    {:to email
+     :subject "Votre compte AICN a été approuvé !"
+     :body email-body}))
+
 ;; Integrant initialization
 (defmethod ig/init-key :email/sender [_ config]
   (let [session (create-session config)]

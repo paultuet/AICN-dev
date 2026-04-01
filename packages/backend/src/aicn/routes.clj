@@ -89,6 +89,13 @@
                                                        :total total
                                                        :stats (activity/get-stats ds)}}))}}]
 
+    ["/lov-new" {:get {:summary "Get all lov_new entries"
+                       :responses {200 {:body :any}}
+                       :interceptors [core/get-all-lov-new-interceptor]
+                       :handler (fn [{:keys [aicn/all-lov-new]}]
+                                  {:status 200
+                                   :body all-lov-new})}}]
+
     ["/referentiels" {:get {:summary "Get all referentiels"
                             :responses {200 {:body :any}}
                             :interceptors [core/get-all-referentiels-interceptor]
@@ -221,7 +228,8 @@
                                                         :body {:unreadCount count}}))}}]
 
     ;; Comments endpoints
-    ["/comments/counts" {:get {:summary "Get comment counts for all targets"
+    ["/comments/counts" {:conflicting true
+                         :get {:summary "Get comment counts for all targets"
                                :responses {200 {:body :any}}
                                :handler (fn [{:keys [db/ds]}]
                                           (let [counts (db/get-comment-counts ds)]
@@ -281,7 +289,8 @@
                                                   :authorName (:author-name comment)
                                                   :createdAt (:created-at comment)}}))))}}]
 
-    ["/comments/:comment-id" {:delete {:summary "Delete own comment"
+    ["/comments/:comment-id" {:conflicting true
+                              :delete {:summary "Delete own comment"
                                         :responses {200 {:body :any}
                                                     404 {:body :any}}
                                         :handler (fn [{:keys [path-params db/ds session/user]}]

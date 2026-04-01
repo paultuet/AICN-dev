@@ -91,9 +91,9 @@
            (let [verification-token (generate-verification-token)
                  token-expires-at (generate-token-expiry)
                  updated-user (try
-                                (repo/update-user ds {:id (:id user)
-                                                      :verification-token verification-token
-                                                      :verification-token-expires-at token-expires-at})
+                                (repo/set-verification-token ds {:id (:id user)
+                                                                 :verification-token verification-token
+                                                                 :verification-token-expires-at token-expires-at})
                                 (catch Exception e (log/error e)))]
 
              ;; Send verification email
@@ -120,24 +120,37 @@
         (if-let [user (repo/get-user-by-email ds (str/lower-case email))]
           (if (valid-password? password (:password-hash user))
             (if (:email-verified user)
-              (let [claims {:email (:email user)
-                            :name (:name user)
-                            :role (:role user)
-                            :id (:id user)
-                            :exp (time/plus (time/instant) (time/seconds 3600))}
-                    token (jwt/sign claims (get-jwt-secret jwt) {:alg :hs512})]
-                (log/info (str "User login successful - Email: " (:email user)
-                              " - Name: " (:name user)
-                              " - Organization: " (:organization user)
-                              " - Time: " (time/instant)))
-                (activity/add-activity-log! ds {:type :login-success
-                                                :user-email (:email user)
-                                                :user-name (:name user)
-                                                :user-id (:id user)
-                                                :message "User logged in successfully"
-                                                :details {:organization (:organization user)}})
-                {:status 200
-                 :body {:token token}})
+              (if (:approved user)
+                (let [claims {:email (:email user)
+                              :name (:name user)
+                              :role (:role user)
+                              :id (:id user)
+                              :exp (time/plus (time/instant) (time/seconds 3600))}
+                      token (jwt/sign claims (get-jwt-secret jwt) {:alg :hs512})]
+                  (log/info (str "User login successful - Email: " (:email user)
+                                " - Name: " (:name user)
+                                " - Organization: " (:organization user)
+                                " - Time: " (time/instant)))
+                  (activity/add-activity-log! ds {:type :login-success
+                                                  :user-email (:email user)
+                                                  :user-name (:name user)
+                                                  :user-id (:id user)
+                                                  :message "User logged in successfully"
+                                                  :details {:organization (:organization user)}})
+                  {:status 200
+                   :body {:token token}})
+                (do
+                  (log/warn (str "Login failed - Account pending approval - Email: " (:email user)
+                                " - Time: " (time/instant)))
+                  (activity/add-activity-log! ds {:type :login-failed
+                                                  :user-email (:email user)
+                                                  :user-name (:name user)
+                                                  :user-id (:id user)
+                                                  :message "Login failed - Account pending approval"
+                                                  :details {:reason "pending-approval"}})
+                  {:status 403
+                   :body {:message "Votre compte est en attente d'approbation par un administrateur."
+                          :reason "pending-approval"}}))
               (do
                 (log/warn (str "Login failed - Email not verified - Email: " (:email user)
                               " - Time: " (time/instant)))
@@ -258,10 +271,18 @@
                  :body {:error "Failed to register user"
                         :details error-details}}))))))))
 
+(defn- generate-approval-token [user-id jwt-secret]
+  (let [claims {:user-id (str user-id)
+                :action "approve"
+                :exp (time/plus (time/instant) (time/hours 48))}]
+    (jwt/sign claims jwt-secret {:alg :hs512})))
+
 (defn verify-email
-  [{:keys [db/ds parameters config]}]
+  [{:keys [db/ds parameters config auth/jwt]}]
   (let [token (get-in parameters [:query :token])
-        frontend-url (get-in config [:frontend :url] "http://localhost:3000")]
+        frontend-url (get-in config [:frontend :url] "http://localhost:3000")
+        admin-email (get-in config [:admin :email])
+        jwt-secret (get-jwt-secret jwt)]
     (if (nil? token)
       {:status 400 :body {:message "Missing verification token"}}
 
@@ -275,14 +296,95 @@
             ;; Mark email as verified and clear token
             (do
               (repo/update-user ds {:id (:id user)
-                                    :email-verified true
-                                    :verification-token nil
-                                    :verification-token-expires-at nil})
-              (send-welcome-email user frontend-url)
+                                    :email-verified true})
+              (repo/clear-verification-token ds (:id user))
 
-              {:status 200 :body {:message "Email verified successfully. You can now log in."}})))
+              ;; Send approval request email to admin with one-click approve link
+              (when admin-email
+                (let [approval-token (generate-approval-token (:id user) jwt-secret)
+                      approve-url (str frontend-url "/admin/approve?token=" approval-token)
+                      approval-email (email/build-admin-approval-request-email frontend-url admin-email user approve-url)]
+                  (email/send-email! approval-email)))
+
+              {:status 200 :body {:message "Email vérifié avec succès. Votre compte est en attente d'approbation par un administrateur."}})))
 
         {:status 404 :body {:message "Invalid verification token"}}))))
+
+(defn approve-user
+  [{:keys [db/ds parameters config]}]
+  (let [user-id (get-in parameters [:path :id])
+        frontend-url (get-frontend-url config)]
+    (if (nil? user-id)
+      {:status 400 :body {:message "Missing user ID"}}
+
+      (if-let [user (repo/get-user-by-id ds user-id)]
+        (if (:approved user)
+          {:status 400 :body {:message "User is already approved"}}
+
+          (do
+            (repo/update-user ds {:id (:id user)
+                                  :approved true})
+
+            ;; Send account approved email to user
+            (let [approved-email (email/build-account-approved-email frontend-url user)]
+              (email/send-email! approved-email))
+
+            ;; Log the activity
+            (activity/add-activity-log! ds {:type :user-approved
+                                            :user-email (:email user)
+                                            :user-name (:name user)
+                                            :user-id (:id user)
+                                            :message "User account approved by admin"
+                                            :details {:organization (:organization user)}})
+
+            (log/info (str "User approved - Email: " (:email user)
+                          " - Name: " (:name user)
+                          " - Time: " (time/instant)))
+
+            {:status 200 :body {:message "User approved successfully"}}))
+
+        {:status 404 :body {:message "User not found"}}))))
+
+(defn approve-user-by-token
+  [{:keys [db/ds parameters config auth/jwt]}]
+  (let [token (get-in parameters [:query :token])
+        frontend-url (get-frontend-url config)
+        jwt-secret (get-jwt-secret jwt)]
+    (if (nil? token)
+      {:status 400 :body {:message "Missing approval token"}}
+
+      (let [claims (try
+                     (jwt/unsign token jwt-secret {:alg :hs512})
+                     (catch Exception _ nil))]
+        (if (or (nil? claims) (not= (:action claims) "approve"))
+          {:status 400 :body {:message "Invalid or expired approval token"}}
+
+          (let [user-id (:user-id claims)]
+            (if-let [user (repo/get-user-by-id ds user-id)]
+              (if (:approved user)
+                {:status 200 :body {:message "Ce compte a déjà été approuvé."}}
+
+                (do
+                  (repo/update-user ds {:id (:id user)
+                                        :approved true})
+
+                  (let [approved-email (email/build-account-approved-email frontend-url user)]
+                    (email/send-email! approved-email))
+
+                  (activity/add-activity-log! ds {:type :user-approved
+                                                  :user-email (:email user)
+                                                  :user-name (:name user)
+                                                  :user-id (:id user)
+                                                  :message "User account approved via email link"
+                                                  :details {:organization (:organization user)}})
+
+                  (log/info (str "User approved via email link - Email: " (:email user)
+                                " - Name: " (:name user)
+                                " - Time: " (time/instant)))
+
+                  {:status 200 :body {:message "Utilisateur approuvé avec succès."}}))
+
+              {:status 404 :body {:message "User not found"}})))))))
 
 (defn forgot-password
   [{:keys [db/ds parameters config]}]
@@ -293,14 +395,15 @@
       
       (if-let [user (repo/get-user-by-email ds (str/lower-case email))]
         (if-not (:email-verified user)
-          {:status 400 :body {:message "Email not verified. Please verify your email first."}}
-          
+          ;; Don't reveal that the email exists but is unverified
+          {:status 200 :body {:message "Password reset email sent. Please check your inbox."}}
+
           (let [reset-token (generate-reset-token)
                 token-expires-at (generate-reset-token-expiry)
                 updated-user (try
-                               (repo/update-user ds {:id (:id user)
-                                                     :reset-token reset-token
-                                                     :reset-token-expires-at token-expires-at})
+                               (repo/set-reset-token ds {:id (:id user)
+                                                         :reset-token reset-token
+                                                         :reset-token-expires-at token-expires-at})
                                (catch Exception e (log/error e)))]
             
             ;; Send password reset email
@@ -330,9 +433,8 @@
             ;; Update password and clear reset token
             (do
               (repo/update-user ds {:id (:id user)
-                                    :password-hash (hash-password new-password)
-                                    :reset-token nil
-                                    :reset-token-expires-at nil})
+                                    :password-hash (hash-password new-password)})
+              (repo/clear-reset-token ds (:id user))
               
               {:status 200 :body {:message "Password reset successfully. You can now log in with your new password."}})))
         
@@ -344,7 +446,7 @@
    ["/register" {:post {:summary "Register a new user"
                         :parameters {:body [:map
                                             [:email :string]
-                                            [:password :string]
+                                            [:password [:string {:min 8}]]
                                             [:name :string]
                                             [:organization :string]]}
                         :responses {201 {:body :any}
@@ -375,6 +477,14 @@
                                                404 {:body :any}}
                                    :handler (fn [request]
                                               (send-verification-email request {:resend? true}))}}]
+   ["/approve-user" {:get {:summary "Approve user via email link"
+                          :parameters {:query [:map
+                                               [:token :string]]}
+                          :responses {200 {:body :any}
+                                      400 {:body :any}
+                                      404 {:body :any}}
+                          :handler (fn [request]
+                                     (approve-user-by-token request))}}]
    ["/forgot-password" {:post {:summary "Request password reset"
                                    :parameters {:body [:map
                                                        [:email :string]]}

@@ -14,6 +14,8 @@
    [:approved {:optional true} [:maybe :boolean]]
    [:verification-token {:optional true} [:maybe :uuid]]
    [:verification-token-expires-at {:optional true} [:maybe inst?]]
+   [:reset-token {:optional true} [:maybe :uuid]]
+   [:reset-token-expires-at {:optional true} [:maybe inst?]]
    [:created-at inst?]
    [:updated-at inst?]])
 

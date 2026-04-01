@@ -31,7 +31,7 @@ const VerifyEmailPage = () => {
         await authService.verifyEmail(token);
         setStatus("success");
         setMessage(
-          "Email vérifié, vous pouvez maintenant vous connecter avec vos identifiants",
+          "Email vérifié avec succès. Votre compte est maintenant en attente d'approbation par un administrateur. Vous recevrez un email lorsque votre accès sera activé.",
         );
       } catch (error: any) {
         setStatus("error");

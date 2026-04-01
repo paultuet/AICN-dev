@@ -16,6 +16,7 @@ import VerifyEmailPage from "@/pages/VerifyEmailPage";
 import ResendVerificationPage from "@/pages/ResendVerificationPage";
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
 import ResetPasswordPage from "@/pages/ResetPasswordPage";
+import AdminApprovePage from "@/pages/AdminApprovePage";
 import FileDownloadPage from "@/pages/FileDownloadPage";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useAuth, useIsAdmin } from "@/contexts/AuthContext";
@@ -74,6 +75,7 @@ function Root() {
         }
       />
       <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+      <Route path="/admin/approve" element={<AdminApprovePage />} />
 
       {/* Routes protégées (accessibles uniquement aux utilisateurs connectés) */}
       <Route element={<ProtectedRoute />}>
