@@ -14,9 +14,9 @@ COPY pnpm-lock.yaml ./
 COPY packages/backend/resources/templates/emails-mjml packages/backend/resources/templates/emails-mjml/
 RUN mkdir -p packages/backend/resources/templates/emails-html
 
-# Install frontend dependencies
+# Install frontend dependencies (--force ensures native bindings match build platform)
 WORKDIR /app/packages/frontend
-RUN pnpm install --no-frozen-lockfile
+RUN pnpm install --no-frozen-lockfile --force
 
 # Copy frontend source code
 COPY packages/frontend/public ./public
