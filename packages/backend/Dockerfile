@@ -10,12 +10,13 @@ RUN npm install -g pnpm
 COPY packages/frontend/package.json packages/frontend/
 COPY packages/frontend/tsconfig.json packages/frontend/tsconfig.node.json packages/frontend/vite.config.mts packages/frontend/
 COPY packages/frontend/tailwind.config.js packages/frontend/index.html packages/frontend/
+COPY pnpm-lock.yaml ./
 COPY packages/backend/resources/templates/emails-mjml packages/backend/resources/templates/emails-mjml/
 RUN mkdir -p packages/backend/resources/templates/emails-html
 
 # Install frontend dependencies
 WORKDIR /app/packages/frontend
-RUN pnpm install
+RUN pnpm install --no-frozen-lockfile
 
 # Copy frontend source code
 COPY packages/frontend/public ./public
