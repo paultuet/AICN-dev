@@ -33,13 +33,17 @@ fly secrets set \
   JWT_SECRET=your-jwt-secret \
   AIRTABLE_TOKEN=your-airtable-token \
   AIRTABLE_APP_ID=your-airtable-app-id \
-  EMAIL_HOST=your-smtp-host \
+  EMAIL_HOST=smtp.gmail.com \
   EMAIL_PORT=587 \
   EMAIL_USERNAME=your-email \
-  EMAIL_PASSWORD=your-email-password \
+  EMAIL_PASSWORD=your-app-password \
   EMAIL_FROM=noreply@example.com \
+  ADMIN_EMAIL=admin@example.com \
   FRONTEND_URL=https://your-app.fly.dev
 ```
+
+> **ADMIN_EMAIL** : adresse qui recoit les notifications de demande d'approbation des nouveaux utilisateurs.
+> **FRONTEND_URL** : doit correspondre au domaine de production pour que les liens dans les emails fonctionnent (verification, approbation).
 
 ## Volume persistant (fichiers uploades)
 

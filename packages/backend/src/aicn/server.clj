@@ -39,14 +39,28 @@
        ((f) request respond raise)))))
 
 (defn wrap-cors
-  "Middleware for adding CORS headers to responses"
+  "Middleware for adding CORS headers to responses.
+   In production, frontend is served from the same origin so CORS is not needed.
+   In dev, allows localhost:3000."
+  [handler]
+  (let [allowed-origin (or (System/getenv "FRONTEND_URL") "http://localhost:3000")]
+    (fn [request]
+      (let [response (handler request)]
+        (-> response
+            (assoc-in [:headers "Access-Control-Allow-Origin"] allowed-origin)
+            (assoc-in [:headers "Access-Control-Allow-Methods"] "GET, POST, PUT, DELETE, OPTIONS")
+            (assoc-in [:headers "Access-Control-Allow-Headers"] "Origin, Content-Type, Accept, Authorization"))))))
+
+(defn wrap-security-headers
+  "Middleware for adding security headers to responses"
   [handler]
   (fn [request]
     (let [response (handler request)]
       (-> response
-          (assoc-in [:headers "Access-Control-Allow-Origin"] "*")
-          (assoc-in [:headers "Access-Control-Allow-Methods"] "GET, POST, PUT, DELETE, OPTIONS")
-          (assoc-in [:headers "Access-Control-Allow-Headers"] "Origin, Content-Type, Accept, Authorization")))))
+          (assoc-in [:headers "X-Frame-Options"] "DENY")
+          (assoc-in [:headers "X-Content-Type-Options"] "nosniff")
+          (assoc-in [:headers "Referrer-Policy"] "strict-origin-when-cross-origin")
+          (assoc-in [:headers "Strict-Transport-Security"] "max-age=31536000; includeSubDomains")))))
 
 (defn app [{:keys [dev-mode?] :as opts}]
   (-> (http/ring-handler
@@ -68,7 +82,8 @@
                     :handler (openapi/create-openapi-handler)}}])
           (get-api-routes opts)
           (auth/routes opts)]]
-        {;;:reitit.middleware/transform dev/print-request-diffs ;; pretty diffs
+        {:conflicts nil
+         ;;:reitit.middleware/transform dev/print-request-diffs ;; pretty diffs
          :exception pretty/exception
          :data {:coercion (malli-coercion/create
                            {:error-keys #{#_:type #_:coercion :in :schema #_:value :errors #_:humanized}
@@ -118,6 +133,7 @@
      ; (wrap-buddy-auth)
      ; (wrap-error-handling)
       wrap-cors
+      wrap-security-headers
       (wrap-resource "public")
       wrap-content-type
       wrap-not-modified))

@@ -62,13 +62,12 @@
    (get-activity-logs datasource {}))
   ([datasource {:keys [limit offset] :as filters}]
    (let [[where-clause params] (build-where-clause filters)
-         limit-val (or limit 100)
-         offset-val (or offset 0)
+         limit-val (int (or limit 100))
+         offset-val (int (or offset 0))
          query (str "SELECT * FROM activity_logs" where-clause
-                    " ORDER BY timestamp DESC LIMIT " limit-val
-                    " OFFSET " offset-val)]
+                    " ORDER BY timestamp DESC LIMIT ? OFFSET ?")]
      (jdbc/execute! datasource
-                    (into [query] params)
+                    (into [query] (conj (vec params) limit-val offset-val))
                     {:builder-fn rs/as-unqualified-maps}))))
 
 (defn clear-logs!
