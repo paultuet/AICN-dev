@@ -32,7 +32,7 @@
               (assoc-in ctx [:request :aicn/all-referentiels] referentiels)))})
 
 
-#_(def get-all-lov-interceptor
-    {:enter (fn [ctx]
-              (let [referentiels (airtable/get-all-referentiels)]
-                (assoc-in ctx [:request :aicn/all-referentiels] referentiels)))})
+(def get-all-lov-new-interceptor
+  {:enter (fn [ctx]
+            (let [lov-new (airtable/get-all-lov-new)]
+              (assoc-in ctx [:request :aicn/all-lov-new] lov-new)))})

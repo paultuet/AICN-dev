@@ -20,6 +20,18 @@ export type SourceField = {
   'niveau': number                   // always 3 for leaf fields
   'niveau-1'?: string | null         // parent Niveau 1 name
   'niveau-2'?: string | null         // parent Niveau 2 name
+  'champ-multivalue'?: string | null // "Oui" if multi-valued field
+}
+
+// ---------------------------------------------------------------------------
+// LovNewEntry: entry from lov_new Airtable table
+// ---------------------------------------------------------------------------
+
+export type LovNewEntry = {
+  NumeroAuto?: number
+  id_code: string
+  Value: string
+  complement_value?: string | null
 }
 
 // ---------------------------------------------------------------------------

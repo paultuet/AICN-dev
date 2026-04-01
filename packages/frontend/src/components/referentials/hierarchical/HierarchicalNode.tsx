@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Entity, SourceField, isSourceField } from "@/types/referential";
+import { Entity, SourceField, LovNewEntry, isSourceField } from "@/types/referential";
 import { Conversation } from "@/types/conversation";
 import { ChevronRight, ChevronDown, ChatBubbleIcon } from "@/components/icons";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { useLovNew } from "@/hooks/useLovNew";
 import {
   Dialog,
   DialogContent,
@@ -12,6 +13,23 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import CommentPopover from "@/components/comments/CommentPopover";
+
+// ---------------------------------------------------------------------------
+// lov_new matching logic
+// ---------------------------------------------------------------------------
+
+function findLovNewEntries(fkValue: string, lovNewData: LovNewEntry[]): LovNewEntry[] {
+  // "lov_etat_visuel_eqpmt.id_etat_visuel_eqpmt" → "etat_visuel_eqpmt"
+  const tablePart = fkValue.split('.')[0].replace(/^lov_/, '');
+  const segments = tablePart.split('_');
+  // Try progressively shorter prefixes
+  for (let len = segments.length; len >= 2; len--) {
+    const prefix = segments.slice(0, len).join('_');
+    const matches = lovNewData.filter(e => e.id_code.startsWith(prefix));
+    if (matches.length > 0) return matches;
+  }
+  return [];
+}
 
 interface HierarchicalNodeProps {
   node: Entity;
@@ -402,6 +420,8 @@ const FieldsTable: React.FC<FieldsTableProps> = ({
   hasUnreadConversationsForField,
   isConversationFeatureEnabled,
 }) => {
+  const { data: lovNewData } = useLovNew();
+
   return (
     <div className="overflow-x-auto border-t border-gray-200">
       <table className="min-w-full text-sm">
@@ -414,6 +434,7 @@ const FieldsTable: React.FC<FieldsTableProps> = ({
             <th className="px-3 py-2">Type de donnée</th>
             <th className="px-3 py-2">PK</th>
             <th className="px-3 py-2">FK</th>
+            <th className="px-3 py-2 text-center">Multivalué</th>
             <th className="px-3 py-2 text-center">Exemple</th>
             <th className="px-3 py-2 text-center">Notes</th>
             {isConversationFeatureEnabled && (
@@ -427,6 +448,7 @@ const FieldsTable: React.FC<FieldsTableProps> = ({
               key={field.id}
               field={field}
               searchTerm={searchTerm}
+              lovNewData={lovNewData}
               toggleFieldSelection={toggleFieldSelection}
               isFieldSelected={isFieldSelected}
               getConversationsForField={getConversationsForField}
@@ -447,6 +469,7 @@ const FieldsTable: React.FC<FieldsTableProps> = ({
 interface FieldRowProps {
   field: SourceField;
   searchTerm?: string;
+  lovNewData?: LovNewEntry[];
   toggleFieldSelection?: (
     entityId: string,
     fieldId: number | string,
@@ -467,6 +490,7 @@ interface FieldRowProps {
 const FieldRow: React.FC<FieldRowProps> = ({
   field,
   searchTerm,
+  lovNewData,
   toggleFieldSelection,
   isFieldSelected,
   getConversationsForField,
@@ -536,9 +560,65 @@ const FieldRow: React.FC<FieldRowProps> = ({
           </span>
         )}
       </td>
-      {/* 9. Clé étrangère (FK) */}
-      <td className="px-3 py-2 text-xs text-gray-500 max-w-xs truncate" title={field["cle-etrangere"] ?? undefined}>
-        {field["cle-etrangere"]}
+      {/* 9. Clé étrangère (FK) + popup lov_new */}
+      <td className="px-3 py-2 text-xs text-gray-500 max-w-xs" title={field["cle-etrangere"] ?? undefined}>
+        <div className="flex items-center gap-1">
+          <span className="truncate">{field["cle-etrangere"]}</span>
+          {field["cle-etrangere"] && field["cle-etrangere"].startsWith("lov") && lovNewData && (() => {
+            const entries = findLovNewEntries(field["cle-etrangere"], lovNewData);
+            if (entries.length === 0) return null;
+            return (
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    className="shrink-0 text-xs px-1 py-0.5 bg-blue-50 text-blue-700 rounded hover:bg-blue-100 cursor-pointer"
+                    title="Voir les valeurs LOV"
+                  >
+                    🔗
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl max-h-[70vh] overflow-hidden flex flex-col">
+                  <DialogHeader>
+                    <DialogTitle>
+                      Valeurs LOV — {field["cle-etrangere"]?.split(".")[0]}
+                    </DialogTitle>
+                    <DialogDescription>
+                      {entries.length} valeur{entries.length > 1 ? "s" : ""} disponible{entries.length > 1 ? "s" : ""}
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="flex-1 overflow-y-auto">
+                    <table className="min-w-full text-sm">
+                      <thead>
+                        <tr className="bg-gray-50 text-left text-xs font-medium text-gray-500">
+                          <th className="px-3 py-2">Code</th>
+                          <th className="px-3 py-2">Valeur</th>
+                          <th className="px-3 py-2">Complément</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-100">
+                        {entries.map((entry, i) => (
+                          <tr key={i}>
+                            <td className="px-3 py-2 font-mono text-xs">{entry.id_code}</td>
+                            <td className="px-3 py-2">{entry.Value}</td>
+                            <td className="px-3 py-2 text-xs text-gray-500">{entry.complement_value}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            );
+          })()}
+        </div>
+      </td>
+      {/* 10. Champ multivalué */}
+      <td className="px-3 py-2 text-xs text-center">
+        {field["champ-multivalue"] && (
+          <span className="px-1.5 py-0.5 bg-green-100 text-green-700 rounded font-medium">
+            {field["champ-multivalue"]}
+          </span>
+        )}
       </td>
       <td className="px-3 py-2 text-center">
         {field.exemple && (

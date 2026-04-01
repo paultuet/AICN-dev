@@ -13,7 +13,8 @@
 
 (def ^:private table-names
   {:tables-sources "Tables Sources"
-   :lov "lov"})
+   :lov "lov"
+   :lov-new "lov_new"})
 
 (def ^:private niv1-rank-config
   "Ordering for Niveau 1 categories (from Classement NIVEAU 1 spec sheet)"
@@ -96,7 +97,7 @@
 ;; Sync
 ;; ---------------------------------------------------------------------------
 
-(def tables [(:tables-sources table-names) (:lov table-names)])
+(def tables [(:tables-sources table-names) (:lov table-names) (:lov-new table-names)])
 
 (defn get-tables-names []
   tables)
@@ -112,9 +113,12 @@
 
 (defn sync-tables [auth tables]
   (doseq [table tables]
-    (let [data (fetch-all auth table)
-          filename (str (str/replace table #" " "-") ".json")]
-      (spit-json (resolve-data-file filename) data))))
+    (try
+      (let [data (fetch-all auth table)
+            filename (str (str/replace table #" " "-") ".json")]
+        (spit-json (resolve-data-file filename) data))
+      (catch Exception e
+        (println (str "Warning: Failed to sync table '" table "': " (.getMessage e)))))))
 
 ;; ---------------------------------------------------------------------------
 ;; File reading
@@ -193,6 +197,7 @@
 (def ^:private k-exemple             (keyword "Exemple-(from-Tables-REF)"))
 (def ^:private k-rank                (keyword "rank-(from-Tables-REF)"))
 (def ^:private k-rank-niv2           (keyword "rank_niv2-(from-Tables-REF)"))
+(def ^:private k-champ-multivalue    (keyword "Champ-multivalué-(from-Tables-REF)"))
 
 (defn- map-tables-sources-record
   "Map a raw Airtable record from 'Tables Sources' into internal representation."
@@ -211,7 +216,8 @@
      :libelle       (unwrap-lookup (get fields k-libelle))
      :exemple       (unwrap-lookup (get fields k-exemple))
      :rank          (unwrap-lookup (get fields k-rank))
-     :rank-niv2     (unwrap-lookup (get fields k-rank-niv2))}))
+     :rank-niv2     (unwrap-lookup (get fields k-rank-niv2))
+     :champ-multivalue (unwrap-lookup (get fields k-champ-multivalue))}))
 
 ;; ---------------------------------------------------------------------------
 ;; Tables Sources: hierarchy builder
@@ -234,13 +240,23 @@
    :rank           (:rank record)
    :niveau         3
    :niveau-1       (:niveau-1 record)
-   :niveau-2       (:niveau-2 record)})
+   :niveau-2       (:niveau-2 record)
+   :champ-multivalue (:champ-multivalue record)})
+
+(defn- parse-rank
+  "Parse a rank value to a number. Handles strings, numbers, and nil."
+  [v]
+  (cond
+    (number? v) (double v)
+    (string? v) (try (Double/parseDouble (str/replace v #"," "."))
+                     (catch Exception _ Double/MAX_VALUE))
+    :else Double/MAX_VALUE))
 
 (defn- sort-fields
   "Sort fields by rank (numeric), falling back to alphabetical by libelle"
   [fields]
   (sort-by (fn [f]
-             [(or (:rank f) Integer/MAX_VALUE)
+             [(parse-rank (:rank f))
               (normalize-string (or (:libelle f) (:entity-name f) ""))])
            fields))
 
@@ -249,7 +265,7 @@
   [niv2-groups]
   (sort-by (fn [[niv2-name records]]
              (let [rank (some :rank-niv2 records)]
-               [(or rank Integer/MAX_VALUE)
+               [(parse-rank rank)
                 (normalize-string (or niv2-name ""))]))
            niv2-groups))
 
@@ -342,6 +358,14 @@
   (let [tables-sources (build-tables-sources-hierarchy)
         lov-entries    (build-lov-hierarchy)]
     (into [] (concat tables-sources lov-entries))))
+
+(defn get-all-lov-new
+  "Read all lov_new entries from the cached JSON file."
+  []
+  (try
+    (->> (read-file-table "lov_new")
+         (map :fields))
+    (catch Exception _e [])))
 
 (comment
   (def s (aicn.system/get-system))
