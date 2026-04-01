@@ -81,7 +81,6 @@ EXPOSE ${PORT}
 # Make sure we're listening on the correct address
 CMD echo "Starting application on 0.0.0.0:${PORT}" && \
     java -Djava.awt.headless=true \
-         -Djava.net.preferIPv4Stack=true \
          -Djetty.host=0.0.0.0 \
          -Djetty.http.host=0.0.0.0 \
          -Djetty.port=${PORT} \
