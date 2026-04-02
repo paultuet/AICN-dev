@@ -125,12 +125,7 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
       ) as SourceField[])
     : [];
 
-  // For LoV entities: children are niveau 2 entries (legacy format)
-  const lovChildren = hasFields && node.type === "LoV"
-    ? node.fields.filter(f => "entity-name" in f && "niveau" in f && (f as Entity).niveau === 2)
-    : [];
-
-  const hasChildren = childEntities.length > 0 || leafFields.length > 0 || lovChildren.length > 0;
+  const hasChildren = childEntities.length > 0 || leafFields.length > 0;
 
   const matchesSearch = searchTerm
     ? node["entity-name"]?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -316,9 +311,7 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
           <div
             className={`px-2 py-1 text-xs rounded-full font-medium ${getLevelBadgeColor()}`}
           >
-            {node.type === "LoV"
-              ? "LoV"
-              : `Niveau ${node.niveau ?? "N/A"}`}
+            {`Niveau ${node.niveau ?? "N/A"}`}
           </div>
         </div>
       </div>
@@ -349,22 +342,6 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
               hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
             />
           ))}
-
-          {/* Render LoV children (legacy format) */}
-          {lovChildren.map((child, index) => {
-            const childEntity = child as Entity;
-            return (
-              <div
-                key={`lov-${childEntity["entity-id"] || index}`}
-                className="border border-gray-200 bg-white py-2 px-4 pl-8 text-sm"
-              >
-                <span className="text-gray-800">{childEntity["entity-name"]}</span>
-                {childEntity.desc && (
-                  <span className="text-xs text-gray-500 ml-2">{childEntity.desc}</span>
-                )}
-              </div>
-            );
-          })}
 
           {/* Render leaf fields as a data table */}
           {leafFields.length > 0 && (

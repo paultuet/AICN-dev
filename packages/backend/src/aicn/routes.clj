@@ -102,12 +102,6 @@
                             :handler (fn [{:keys [aicn/all-referentiels]}]
                                        {:status 200
                                         :body all-referentiels})}}]
-    #_["/lov" {:get {:summary "Get all lov"
-                     :responses {200 {:body :any}}
-                     :interceptors [core/get-all-referentiels-interceptor]
-                     :handler (fn [{:keys [aicn/all-referentiels]}]
-                                {:status 200
-                                 :body all-referentiels})}}]
     ;; Conversations endpoints
     ["/conversations" {:get {:summary "Get all conversations"
                              :responses {200 {:body :any}}

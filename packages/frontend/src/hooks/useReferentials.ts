@@ -131,10 +131,6 @@ export function useReferentialFilters({ conversations, isConversationsLoading = 
               return false;
             }) ?? false;
           }
-          // Legacy Field (LoV)
-          if ('entity-name' in field) {
-            return field['entity-name']?.toLowerCase().includes(searchTermLower);
-          }
           return false;
         });
 

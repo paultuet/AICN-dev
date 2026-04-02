@@ -13,7 +13,6 @@
 
 (def ^:private table-names
   {:tables-sources "Tables Sources"
-   :lov "lov"
    :lov-new "lov_new"})
 
 (def ^:private niv1-rank-config
@@ -97,7 +96,7 @@
 ;; Sync
 ;; ---------------------------------------------------------------------------
 
-(def tables [(:tables-sources table-names) (:lov table-names) (:lov-new table-names)])
+(def tables [(:tables-sources table-names) (:lov-new table-names)])
 
 (defn get-tables-names []
   tables)
@@ -305,59 +304,14 @@
          (into []))))
 
 ;; ---------------------------------------------------------------------------
-;; LoV integration (kept from previous version, adapted)
-;; ---------------------------------------------------------------------------
-
-(defn get-all-lov []
-  (->> (read-file-table "lov")
-       (map :fields)))
-
-(defn- build-lov-hierarchy
-  "Build LoV entries as Niveau 1 entities.
-   Each distinct LoV category becomes a NIV1 entity, with its values as NIV2 children."
-  []
-  (let [all-lov    (get-all-lov)
-        by-lov-name (group-by :lov all-lov)]
-    (->> by-lov-name
-         (map (fn [[lov-name lov-entries]]
-                (let [niv1-id (name->entity-id "lov" lov-name)
-                      sorted-entries
-                      (->> lov-entries
-                           (map (fn [lov]
-                                  (let [order (try (Double/parseDouble
-                                                    (str/replace (str (:Ordre lov)) #"," "."))
-                                                   (catch Exception _e nil))
-                                        lib   (:lib_fr lov)
-                                        id    (str lib "-" order)]
-                                    {:id          id
-                                     :entity-id   id
-                                     :entity-name lib
-                                     :niveau      2
-                                     :rank        order
-                                     :desc        lib
-                                     :desc-fr     lib})))
-                           (sort-by (fn [e] [(or (:rank e) Integer/MAX_VALUE)
-                                             (normalize-string (or (:entity-name e) ""))])))]
-                  {:entity-id   niv1-id
-                   :entity-name lov-name
-                   :niveau      1
-                   :type        "LoV"
-                   :rank        Integer/MAX_VALUE
-                   :fields      (into [] sorted-entries)})))
-         (sort-by (fn [e] (normalize-string (or (:entity-name e) ""))))
-         (into []))))
-
-;; ---------------------------------------------------------------------------
 ;; Public API
 ;; ---------------------------------------------------------------------------
 
 (defn get-all-referentiels
   "Build the complete referential hierarchy.
-   Returns a flat vector of Niveau 1 entities (Tables Sources + LoV)."
+   Returns a flat vector of Niveau 1 entities from Tables Sources."
   []
-  (let [tables-sources (build-tables-sources-hierarchy)
-        lov-entries    (build-lov-hierarchy)]
-    (into [] (concat tables-sources lov-entries))))
+  (build-tables-sources-hierarchy))
 
 (defn get-all-lov-new
   "Read all lov_new entries from the cached JSON file."
@@ -371,5 +325,4 @@
   (def s (aicn.system/get-system))
   (def auth (get s :adapter/airtable))
   (sync-tables auth (get-tables-names))
-  (get-all-referentiels)
-  (get-all-lov))
+  (get-all-referentiels))
