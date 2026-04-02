@@ -75,27 +75,33 @@ export const UsersList: React.FC<UsersListProps> = ({ className = '' }) => {
     {
       key: 'name',
       header: 'Nom',
+      width: '[18%]',
     },
     {
       key: 'email',
       header: 'Email',
+      width: '[22%]',
     },
     {
       key: 'organization',
       header: 'Organisation',
+      width: '[18%]',
     },
     {
       key: 'role',
       header: 'Rôle',
+      width: '[10%]',
     },
     {
       key: 'status',
       header: 'Statut',
+      width: '[10%]',
       render: (user: User) => getStatusBadge(user),
     },
     {
       key: 'created-at',
       header: 'Date de création',
+      width: '[12%]',
       render: (user: User) => {
         try {
           return new Date(user['created-at']).toLocaleDateString('fr-FR');
@@ -107,6 +113,7 @@ export const UsersList: React.FC<UsersListProps> = ({ className = '' }) => {
     {
       key: 'actions',
       header: 'Actions',
+      width: '[10%]',
       render: (user: User) => {
         if (user['email-verified'] && !user.approved) {
           return (

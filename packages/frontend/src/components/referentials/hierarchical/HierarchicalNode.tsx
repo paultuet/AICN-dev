@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 import { Entity, SourceField, LovNewEntry, isSourceField } from "@/types/referential";
 import { Conversation } from "@/types/conversation";
 import { ChevronRight, ChevronDown, ChatBubbleIcon } from "@/components/icons";
@@ -317,33 +318,35 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
       </div>
 
       {hasChildren && shouldExpandNode && (
-        <div className="ml-6">
-          {/* Render child entities (NIV2 under NIV1) */}
-          {childEntities.map((childEntity, index) => (
-            <HierarchicalNode
-              key={`${childEntity["entity-id"]}-${index}`}
-              node={childEntity}
-              level={level + 1}
-              searchTerm={searchTerm}
-              expandedLevels={expandedLevels}
-              lastGlobalAction={lastGlobalAction}
-              forceExpanded={Boolean(
-                forceExpanded ||
-                  (searchTerm && (hasMatchingChildren || hasMatchingFields)),
-              )}
-              conversations={conversations}
-              toggleFieldSelection={toggleFieldSelection}
-              toggleGroupSelection={toggleGroupSelection}
-              isFieldSelected={isFieldSelected}
-              isGroupSelected={isGroupSelected}
-              getConversationsForField={getConversationsForField}
-              getConversationsForGroup={getConversationsForGroup}
-              hasUnreadConversationsForField={hasUnreadConversationsForField}
-              hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
-            />
-          ))}
+        <>
+          <div className="ml-6">
+            {/* Render child entities (NIV2 under NIV1) */}
+            {childEntities.map((childEntity, index) => (
+              <HierarchicalNode
+                key={`${childEntity["entity-id"]}-${index}`}
+                node={childEntity}
+                level={level + 1}
+                searchTerm={searchTerm}
+                expandedLevels={expandedLevels}
+                lastGlobalAction={lastGlobalAction}
+                forceExpanded={Boolean(
+                  forceExpanded ||
+                    (searchTerm && (hasMatchingChildren || hasMatchingFields)),
+                )}
+                conversations={conversations}
+                toggleFieldSelection={toggleFieldSelection}
+                toggleGroupSelection={toggleGroupSelection}
+                isFieldSelected={isFieldSelected}
+                isGroupSelected={isGroupSelected}
+                getConversationsForField={getConversationsForField}
+                getConversationsForGroup={getConversationsForGroup}
+                hasUnreadConversationsForField={hasUnreadConversationsForField}
+                hasUnreadConversationsForGroup={hasUnreadConversationsForGroup}
+              />
+            ))}
+          </div>
 
-          {/* Render leaf fields as a data table */}
+          {/* Render leaf fields as a data table — full width, no indentation */}
           {leafFields.length > 0 && (
             <FieldsTable
               fields={leafFields}
@@ -356,7 +359,7 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
               isConversationFeatureEnabled={isConversationFeatureEnabled}
             />
           )}
-        </div>
+        </>
       )}
     </div>
   );
@@ -387,6 +390,40 @@ interface FieldsTableProps {
   isConversationFeatureEnabled: boolean;
 }
 
+const TruncatedCell: React.FC<{ text?: string | null }> = ({ text }) => {
+  if (!text) return null;
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [pos, setPos] = React.useState<{ top: number; left: number } | null>(null);
+
+  const handleEnter = () => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      setPos({ top: rect.top - 8, left: rect.left });
+    }
+  };
+
+  return (
+    <div
+      ref={ref}
+      className="truncate"
+      onMouseEnter={handleEnter}
+      onMouseLeave={() => setPos(null)}
+    >
+      {text}
+      {pos &&
+        ReactDOM.createPortal(
+          <div
+            className="fixed z-[9999] max-w-sm px-3 py-2 text-xs text-white bg-gray-900 rounded-lg shadow-lg whitespace-normal break-words pointer-events-none"
+            style={{ top: pos.top, left: pos.left, transform: 'translateY(-100%)' }}
+          >
+            {text}
+          </div>,
+          document.body,
+        )}
+    </div>
+  );
+};
+
 const FieldsTable: React.FC<FieldsTableProps> = ({
   fields,
   searchTerm,
@@ -401,7 +438,20 @@ const FieldsTable: React.FC<FieldsTableProps> = ({
 
   return (
     <div className="overflow-x-auto border-t border-gray-200">
-      <table className="min-w-full text-sm">
+      <table className="w-full text-sm table-fixed">
+        <colgroup>
+          <col style={{ width: '7%' }} />
+          <col style={{ width: '14%' }} />
+          <col style={{ width: '19%' }} />
+          <col style={{ width: '12%' }} />
+          <col style={{ width: '9%' }} />
+          <col style={{ width: '4%' }} />
+          <col style={{ width: '9%' }} />
+          <col style={{ width: '6%' }} />
+          <col style={{ width: '6%' }} />
+          <col style={{ width: '6%' }} />
+          {isConversationFeatureEnabled && <col style={{ width: '6%' }} />}
+        </colgroup>
         <thead>
           <tr className="bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
             <th className="px-3 py-2">Code champ</th>
@@ -508,23 +558,23 @@ const FieldRow: React.FC<FieldRowProps> = ({
       } ${matchesSearch ? "bg-yellow-50" : ""}`}
     >
       {/* 1. Code champ */}
-      <td className="px-3 py-2 font-mono text-xs text-gray-600 whitespace-nowrap">
+      <td className="px-3 py-2 font-mono text-xs text-gray-600 overflow-hidden truncate">
         {field["code-champ"]}
       </td>
       {/* 2. Libellé du champ */}
-      <td className="px-3 py-2 font-medium text-gray-900">
+      <td className="px-3 py-2 font-medium text-gray-900 overflow-hidden truncate">
         {field.libelle}
       </td>
       {/* 5. Commentaire */}
-      <td className="px-3 py-2 text-gray-600 text-xs max-w-xs truncate" title={field.commentaire ?? undefined}>
-        {field.commentaire}
+      <td className="px-3 py-2 text-gray-600 text-xs overflow-hidden">
+        <TruncatedCell text={field.commentaire} />
       </td>
       {/* 6. Nom du champ codé */}
-      <td className="px-3 py-2 font-mono text-xs text-gray-500 whitespace-nowrap">
+      <td className="px-3 py-2 font-mono text-xs text-gray-500 overflow-hidden truncate">
         {field["nom-champ-code"]}
       </td>
       {/* 7. Type de donnée */}
-      <td className="px-3 py-2 text-xs whitespace-nowrap">
+      <td className="px-3 py-2 text-xs overflow-hidden truncate">
         <span className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-700">
           {field["type-donnee"]}
         </span>
@@ -538,9 +588,9 @@ const FieldRow: React.FC<FieldRowProps> = ({
         )}
       </td>
       {/* 9. Clé étrangère (FK) + popup lov_new */}
-      <td className="px-3 py-2 text-xs text-gray-500 max-w-xs" title={field["cle-etrangere"] ?? undefined}>
-        <div className="flex items-center gap-1">
-          <span className="truncate">{field["cle-etrangere"]}</span>
+      <td className="px-3 py-2 text-xs text-gray-500 overflow-hidden">
+        <div className="flex items-center gap-1 overflow-hidden">
+          <TruncatedCell text={field["cle-etrangere"]} />
           {field["cle-etrangere"] && field["cle-etrangere"].startsWith("lov") && lovNewData && (() => {
             const entries = findLovNewEntries(field["cle-etrangere"], lovNewData);
             if (entries.length === 0) return null;

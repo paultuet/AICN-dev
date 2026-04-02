@@ -47,7 +47,7 @@ function Table<T>({
   return (
     <div className={`overflow-hidden rounded-lg bg-white shadow ${className}`}>
       <div className="overflow-x-auto">
-        <table className={`min-w-full divide-y divide-gray-200 ${bordered ? 'border border-gray-200' : ''}`}>
+        <table className={`min-w-full divide-y divide-gray-200 table-fixed ${bordered ? 'border border-gray-200' : ''}`}>
           {showHeader && (
             <thead className="bg-gray-50">
               <tr>
