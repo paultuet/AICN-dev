@@ -286,7 +286,7 @@ export const HierarchicalNode: React.FC<HierarchicalNodeProps> = ({
             onClick={toggleExpand}
             className={`cursor-pointer ${matchesSearch && searchTerm ? "text-orange-600 font-bold" : getLevelSpecificTextColor()}`}
           >
-            {node["entity-name"]}
+            {node.niveau === 1 ? `AICN - FIDJI - ${node["entity-name"]}` : node["entity-name"]}
           </div>
           {node.desc && (
             <div className="text-xs text-gray-800">
