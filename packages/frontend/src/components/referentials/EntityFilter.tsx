@@ -41,7 +41,7 @@ const EntityFilter: React.FC<EntityFilterProps> = ({
         <option value="">{entities.length > 0 ? allEntitiesLabel : 'Aucun référentiel disponible'}</option>
         {entities.map(entity => (
           <option key={entity['entity-id']} value={entity['entity-id']}>
-            {entity.niveau === 1 ? `AICN - FIDJI - ${entity['entity-name']}` : entity['entity-name']}
+            {entity.niveau === 1 ? `AICN - ${entity['entity-name']}` : entity['entity-name']}
           </option>
         ))}
       </select>
