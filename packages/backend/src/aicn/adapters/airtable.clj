@@ -101,38 +101,43 @@
 (defn get-tables-names []
   tables)
 
-(defn- resolve-data-file
-  "Resolve path for a data file. Uses io/resource if available,
-   falls back to resources/data/ relative path for new files."
+(def ^:private data-dir
+  "Writable directory for cached Airtable data. Configurable via DATA_DIR env var.
+   Defaults to 'resources/data' for local dev. In production set to a path on a
+   persistent volume (e.g., '/data/cache' on Fly.io) so syncs survive restarts."
+  (or (System/getenv "DATA_DIR") "resources/data"))
+
+(defn- write-data-file
+  "Resolve and create the parent directory for a writable cache file."
   [filename]
-  (or (io/resource (str "data/" filename))
-      (let [f (io/file "resources" "data" filename)]
-        (io/make-parents f)
-        f)))
+  (let [f (io/file data-dir filename)]
+    (io/make-parents f)
+    f))
 
 (defn sync-tables [auth tables]
   (doseq [table tables]
-    (try
-      (let [data (fetch-all auth table)
-            filename (str (str/replace table #" " "-") ".json")]
-        (spit-json (resolve-data-file filename) data))
-      (catch Exception e
-        (println (str "Warning: Failed to sync table '" table "': " (.getMessage e)))))))
+    (let [data (fetch-all auth table)
+          filename (str (str/replace table #" " "-") ".json")]
+      (spit-json (write-data-file filename) data))))
 
 ;; ---------------------------------------------------------------------------
 ;; File reading
 ;; ---------------------------------------------------------------------------
 
-(defn- read-file-table [table]
+(defn- read-file-table
+  "Read a cached table file. Prefers the writable data-dir (filled by /sync);
+   falls back to the JAR-bundled seed when no sync has run yet."
+  [table]
   (try
-    (let [file-path (format "data/%s.json" table)
-          resource (io/resource file-path)]
-      (when-not resource
-        (throw (ex-info "Table file not found"
-                        {:type :file/not-found
-                         :table table
-                         :path file-path})))
-      (u/from-json (slurp resource)))
+    (let [filename (str table ".json")
+          cached   (io/file data-dir filename)
+          source   (if (.exists cached)
+                     cached
+                     (or (io/resource (str "data/" filename))
+                         (throw (ex-info "Table file not found"
+                                         {:type :file/not-found
+                                          :table table}))))]
+      (u/from-json (slurp source)))
     (catch Exception e
       (throw (ex-info "Failed to read table file"
                       {:type :file/read-error

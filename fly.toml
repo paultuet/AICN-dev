@@ -13,6 +13,7 @@ primary_region = 'cdg'
   PORT = '1337'
   HOST = '0.0.0.0'
   UPLOAD_DIR = '/data/uploads'
+  DATA_DIR = '/data/cache'
 
 [mounts]
   source = 'aicn_uploads'
