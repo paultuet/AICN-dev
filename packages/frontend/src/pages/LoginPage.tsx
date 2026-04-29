@@ -7,6 +7,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [errorKind, setErrorKind] = useState<'credentials' | 'pending-approval' | 'email-not-verified' | 'other' | null>(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { login } = useAuth()
@@ -14,6 +15,7 @@ const LoginPage = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError('')
+    setErrorKind(null)
     setLoading(true)
 
     try {
@@ -23,10 +25,21 @@ const LoginPage = () => {
       // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     } catch (err: any) {
       const reason = err.response?.data?.reason;
+      const message = err.response?.data?.message;
       if (reason === 'pending-approval') {
         setError('Votre compte est en attente d\'approbation par un administrateur. Vous recevrez un email lorsque votre accès sera activé.');
+        setErrorKind('pending-approval');
+      } else if (message === 'wrong auth data') {
+        // Generic credential failure — could be unknown email or wrong password.
+        // We don't differentiate to avoid email enumeration, but we surface a signup CTA.
+        setError('Email ou mot de passe incorrect. Si vous n\'avez pas encore de compte, vous pouvez en créer un ci-dessous.');
+        setErrorKind('credentials');
+      } else if (message && message.toLowerCase().includes('email not verified')) {
+        setError(message);
+        setErrorKind('email-not-verified');
       } else {
-        setError(err.response?.data?.message || 'Une erreur est survenue lors de la connexion');
+        setError(message || 'Une erreur est survenue lors de la connexion');
+        setErrorKind('other');
       }
     } finally {
       setLoading(false)
@@ -56,12 +69,22 @@ const LoginPage = () => {
               <svg className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <div>
+              <div className="flex-1">
                 <span>{error}</span>
-                {error.includes("Email not verified") && (
+                {errorKind === 'email-not-verified' && (
                   <div className="mt-2">
                     <Link to="/resend-verification" className="text-secondary underline">
                       Renvoyer l'email de vérification
+                    </Link>
+                  </div>
+                )}
+                {errorKind === 'credentials' && (
+                  <div className="mt-3">
+                    <Link
+                      to={`/register${email ? `?email=${encodeURIComponent(email)}` : ''}`}
+                      className="inline-flex items-center px-3 py-1.5 bg-secondary text-white text-sm font-medium rounded-md hover:bg-secondary-hover transition-colors"
+                    >
+                      Créer un compte
                     </Link>
                   </div>
                 )}
