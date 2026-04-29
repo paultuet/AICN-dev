@@ -84,7 +84,7 @@
      (if (nil? email)
        {:status 400 :body {:message "Email is required"}}
 
-       (if-let [user (repo/get-user-by-email ds email)]
+       (if-let [user (repo/get-user-by-email ds (str/lower-case email))]
          (if (:email-verified user)
            {:status 400 :body {:message "Email is already verified"}}
 
@@ -225,7 +225,9 @@
 (defn register
   [{:keys [db/ds parameters config] :as opts}]
   (if (nil? parameters)
-    {:status 400 :body {:message "No parameters received"}}
+    (do
+      (log/warn (str "Registration failed - No parameters - Time: " (time/instant)))
+      {:status 400 :body {:message "No parameters received"}})
 
     ;; Try to get params from either form or body
     (let [params (or (:form parameters)
@@ -235,16 +237,46 @@
           frontend-url (get-frontend-url config)]
 
       (if (or (nil? email) (nil? password) (nil? name) (nil? organization))
-        {:status 400 :body {:message "Missing required fields"}}
+        (do
+          (log/warn (str "Registration failed - Missing fields - Email: " email
+                         " - Name: " name
+                         " - Organization: " organization
+                         " - Password provided: " (some? password)
+                         " - Time: " (time/instant)))
+          (activity/add-activity-log! ds {:type :register-failed
+                                          :user-email email
+                                          :user-name name
+                                          :user-id nil
+                                          :message "Registration failed - Missing required fields"
+                                          :details {:reason "missing-fields"
+                                                    :missing (vec (remove nil?
+                                                                          [(when (nil? email) "email")
+                                                                           (when (nil? password) "password")
+                                                                           (when (nil? name) "name")
+                                                                           (when (nil? organization) "organization")]))}})
+          {:status 400 :body {:message "Missing required fields"}})
 
         (if (repo/get-user-by-email ds (str/lower-case email))
           ;; User already exists with this email
-          {:status 400
-           :body {:message "Email already in use"}}
+          (do
+            (log/warn (str "Registration failed - Email already in use - Email: " email
+                           " - Time: " (time/instant)))
+            (activity/add-activity-log! ds {:type :register-failed
+                                            :user-email email
+                                            :user-name name
+                                            :user-id nil
+                                            :message "Registration failed - Email already in use"
+                                            :details {:reason "email-already-in-use"
+                                                      :organization organization}})
+            {:status 400
+             :body {:message "Email already in use"}})
 
           ;; Create new user
           (try
-            (log/debug "Attempting to create user...")
+            (log/info (str "Registration attempt - Email: " email
+                           " - Name: " name
+                           " - Organization: " organization
+                           " - Time: " (time/instant)))
             (let [verification-token (generate-verification-token)
                   token-expires-at (generate-token-expiry)
                   user-data {:email email
@@ -255,13 +287,53 @@
                              :verification-token-expires-at token-expires-at}
                   user (create-user-with-password ds user-data)]
 
-              ;; Send verification email
-              (send-verification-email (assoc-in opts [:parameters :body :email] email))
+              (log/info (str "User registered successfully - Email: " (:email user)
+                             " - Name: " (:name user)
+                             " - Organization: " (:organization user)
+                             " - ID: " (:id user)
+                             " - Time: " (time/instant)))
+              (activity/add-activity-log! ds {:type :register-success
+                                              :user-email (:email user)
+                                              :user-name (:name user)
+                                              :user-id (:id user)
+                                              :message "User registered successfully"
+                                              :details {:organization (:organization user)}})
+
+              ;; Send verification email — isolated so a mail failure doesn't roll back the user
+              ;; (without this, the DB insert succeeds but the frontend gets a 500, and the user
+              ;; is then blocked by "Email already in use" on retry).
+              (try
+                (send-verification-email (assoc-in opts [:parameters :body :email] email))
+                (catch Exception e
+                  (log/error (str "Verification email failed - Email: " (:email user)
+                                  " - Error: " (.getMessage e)
+                                  " - Time: " (time/instant)))
+                  (activity/add-activity-log! ds {:type :register-email-failed
+                                                  :user-email (:email user)
+                                                  :user-name (:name user)
+                                                  :user-id (:id user)
+                                                  :message "Verification email failed to send"
+                                                  :details {:error (.getMessage e)
+                                                            :class (str (.getClass e))}})))
 
               {:status 201
                :body {:message "User registered successfully. Please check your email to verify your account."
                       :user (select-keys user [:id :email :name :organization :role])}})
             (catch Exception e
+              (log/error (str "Registration failed - Exception - Email: " email
+                              " - Error: " (.getMessage e)
+                              " - Class: " (.getClass e)
+                              " - Time: " (time/instant)))
+              (activity/add-activity-log! ds {:type :register-failed
+                                              :user-email email
+                                              :user-name name
+                                              :user-id nil
+                                              :message "Registration failed - Exception"
+                                              :details {:reason "exception"
+                                                        :error (.getMessage e)
+                                                        :class (str (.getClass e))
+                                                        :cause (when-let [cause (.getCause e)]
+                                                                 (.getMessage cause))}})
               ;; Formatez l'erreur pour inclure autant d'informations que possible
               (let [error-details {:message (.getMessage e)
                                    :class (str (.getClass e))
