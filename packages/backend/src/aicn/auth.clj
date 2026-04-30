@@ -461,32 +461,53 @@
 (defn forgot-password
   [{:keys [db/ds parameters config]}]
   (let [email (get-in parameters [:body :email])
-        frontend-url (get-frontend-url config)]
+        frontend-url (get-frontend-url config)
+        generic-response {:status 200 :body {:message "Password reset email sent. Please check your inbox."}}]
     (if (nil? email)
-      {:status 400 :body {:message "Email is required"}}
-      
-      (if-let [user (repo/get-user-by-email ds (str/lower-case email))]
-        (if-not (:email-verified user)
-          ;; Don't reveal that the email exists but is unverified
-          {:status 200 :body {:message "Password reset email sent. Please check your inbox."}}
+      (do
+        (log/warn (str "Forgot-password failed - Missing email - Time: " (time/instant)))
+        {:status 400 :body {:message "Email is required"}})
 
+      (let [normalized (str/lower-case email)
+            user (repo/get-user-by-email ds normalized)
+            user-state (cond
+                         (nil? user)                  "user-not-found"
+                         (not (:email-verified user)) "user-not-verified"
+                         :else                        "user-ok")]
+        ;; Always log internally (we never leak this distinction to the client).
+        (log/info (str "Forgot-password requested - Email: " email
+                       " - State: " user-state
+                       " - Time: " (time/instant)))
+        (activity/add-activity-log!
+         ds {:type :forgot-password-requested
+             :user-email normalized
+             :user-name (:name user)
+             :user-id (:id user)
+             :message (str "Password reset requested - " user-state)
+             :details {:user-state user-state}})
+
+        (case user-state
+          "user-not-found"     generic-response
+          "user-not-verified"  generic-response
+          "user-ok"
           (let [reset-token (generate-reset-token)
                 token-expires-at (generate-reset-token-expiry)
                 updated-user (try
                                (repo/set-reset-token ds {:id (:id user)
                                                          :reset-token reset-token
                                                          :reset-token-expires-at token-expires-at})
-                               (catch Exception e (log/error e)))]
-            
-            ;; Send password reset email
-            (let [reset-email (email/build-password-reset-email frontend-url 
-                                                                (assoc updated-user :reset-token reset-token))]
-              (email/send-email! reset-email))
-            
-            {:status 200 :body {:message "Password reset email sent. Please check your inbox."}}))
-        
-        ;; Don't reveal if email exists or not for security
-        {:status 200 :body {:message "Password reset email sent. Please check your inbox."}}))))
+                               (catch Exception e
+                                 (log/error (str "Forgot-password - set-reset-token failed - Email: " email
+                                                 " - Error: " (.getMessage e)))
+                                 nil))]
+            (try
+              (let [reset-email (email/build-password-reset-email frontend-url
+                                                                  (assoc updated-user :reset-token reset-token))]
+                (email/send-email! reset-email))
+              (catch Exception e
+                (log/error (str "Forgot-password - email send failed - Email: " email
+                                " - Error: " (.getMessage e)))))
+            generic-response))))))
 
 (defn reset-password
   [{:keys [db/ds parameters]}]

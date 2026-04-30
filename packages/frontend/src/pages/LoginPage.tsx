@@ -1,7 +1,8 @@
-import { useState, FormEvent } from 'react'
+import { useState, useEffect, FormEvent } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
 import { Logo } from "@/components/ui"
+import { track } from '@/services/telemetry'
 
 const LoginPage = () => {
   const [email, setEmail] = useState('')
@@ -12,35 +13,53 @@ const LoginPage = () => {
   const navigate = useNavigate()
   const { login } = useAuth()
 
+  useEffect(() => {
+    track('login-page-viewed')
+  }, [])
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+    track('login-submit-clicked', { email: email.trim() })
     setError('')
     setErrorKind(null)
+
+    if (!email.trim() || !password) {
+      setError('Veuillez renseigner votre adresse email et votre mot de passe.')
+      return
+    }
+
     setLoading(true)
+    track('login-request-sent', { email: email.trim() })
 
     try {
-      await login({ email, password })
-      // Redirect to home
+      await login({ email: email.trim(), password })
+      track('login-request-success', { email: email.trim() })
       navigate('/')
       // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     } catch (err: any) {
       const reason = err.response?.data?.reason;
       const message = err.response?.data?.message;
+      const status = err.response?.status;
+      let kind: typeof errorKind = 'other'
       if (reason === 'pending-approval') {
         setError('Votre compte est en attente d\'approbation par un administrateur. Vous recevrez un email lorsque votre accès sera activé.');
-        setErrorKind('pending-approval');
+        kind = 'pending-approval'
       } else if (message === 'wrong auth data') {
-        // Generic credential failure — could be unknown email or wrong password.
-        // We don't differentiate to avoid email enumeration, but we surface a signup CTA.
         setError('Email ou mot de passe incorrect. Si vous n\'avez pas encore de compte, vous pouvez en créer un ci-dessous.');
-        setErrorKind('credentials');
+        kind = 'credentials'
       } else if (message && message.toLowerCase().includes('email not verified')) {
         setError(message);
-        setErrorKind('email-not-verified');
+        kind = 'email-not-verified'
       } else {
         setError(message || 'Une erreur est survenue lors de la connexion');
-        setErrorKind('other');
       }
+      setErrorKind(kind)
+      track('login-request-error', {
+        email: email.trim(),
+        status: status ?? 'network-error',
+        kind,
+        message: message ?? null,
+      })
     } finally {
       setLoading(false)
     }
@@ -92,7 +111,7 @@ const LoginPage = () => {
             </div>
           )}
           
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} noValidate className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                 Adresse email

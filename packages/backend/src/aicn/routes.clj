@@ -16,6 +16,62 @@
   (response/response {:status "ok"
                       :timestamp (str (java.time.Instant/now))}))
 
+(def ^:private telemetry-event-allowlist
+  "Whitelist of frontend telemetry events. New events must be added here explicitly
+   to prevent abuse / log noise. Names: lowercase-kebab."
+  #{"register-page-viewed"
+    "register-submit-clicked"
+    "register-validation-failed"
+    "register-request-sent"
+    "register-request-success"
+    "register-request-error"
+    "login-page-viewed"
+    "login-submit-clicked"
+    "login-request-sent"
+    "login-request-success"
+    "login-request-error"
+    "forgot-password-page-viewed"
+    "forgot-password-submit-clicked"
+    "forgot-password-request-sent"
+    "forgot-password-request-success"
+    "forgot-password-request-error"})
+
+(defn telemetry-handler
+  "Public endpoint that records frontend telemetry events into activity_logs.
+   Best-effort: a write failure must never surface to the user."
+  [request]
+  (let [ds (get-in request [:db/ds])
+        body (get-in request [:parameters :body])
+        event (:event body)
+        details (:details body)
+        user-agent (get-in request [:headers "user-agent"])
+        ip (or (get-in request [:headers "x-forwarded-for"])
+               (get-in request [:headers "fly-client-ip"])
+               (str (:remote-addr request)))]
+    (cond
+      (or (nil? event) (not (string? event)))
+      {:status 400 :body {:error "Invalid event"}}
+
+      (not (contains? telemetry-event-allowlist event))
+      {:status 400 :body {:error "Unknown event"}}
+
+      :else
+      (do
+        (try
+          (activity/add-activity-log!
+           ds {:type (str "telemetry/" event)
+               :user-email (when (map? details) (:email details))
+               :user-name nil
+               :user-id nil
+               :message (str "Frontend telemetry: " event)
+               :details (merge {:user-agent user-agent
+                                :ip ip}
+                               (when (map? details) details))})
+          (catch Exception e
+            (log/error (str "Telemetry write failed - event: " event
+                            " - error: " (.getMessage e)))))
+        {:status 204 :body nil}))))
+
 ;; Feature Flags handler
 (defn get-feature-flags-handler [request]
   (let [datasource (get-in request [:db/ds])
@@ -35,6 +91,15 @@
      ["/feature-flags" {:get {:summary "Get all feature flags"
                               :responses {200 {:body :any}}
                               :handler get-feature-flags-handler}}]
+
+     ;; Public frontend telemetry endpoint
+     ["/telemetry" {:post {:summary "Record a frontend telemetry event"
+                           :parameters {:body [:map
+                                               [:event :string]
+                                               [:details {:optional true} :any]]}
+                           :responses {204 {:body :any}
+                                       400 {:body :any}}
+                           :handler telemetry-handler}}]
 
      ;; Protected routes requiring authentication
      ["" {:interceptors [(auth/authentication-interceptor jwt-config)

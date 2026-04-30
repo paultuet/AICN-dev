@@ -1,7 +1,8 @@
-import { useState, FormEvent } from 'react'
+import { useState, useEffect, FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Logo } from "@/components/ui"
 import authService from '@/services/auth'
+import { track } from '@/services/telemetry'
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('')
@@ -9,18 +10,39 @@ const ForgotPasswordPage = () => {
   const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
 
+  useEffect(() => {
+    track('forgot-password-page-viewed')
+  }, [])
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+    track('forgot-password-submit-clicked', { email: email.trim() })
     setError('')
     setSuccess('')
+
+    if (!email.trim()) {
+      setError('Veuillez renseigner votre adresse email.')
+      return
+    }
+
     setLoading(true)
+    track('forgot-password-request-sent', { email: email.trim() })
 
     try {
-      const response = await authService.forgotPassword(email)
+      const response = await authService.forgotPassword(email.trim())
+      track('forgot-password-request-success', { email: email.trim() })
       setSuccess(response.message)
       setEmail('')
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Une erreur est survenue lors de la demande de réinitialisation')
+      const status = err.response?.status
+      const message = err.response?.data?.message
+      track('forgot-password-request-error', {
+        email: email.trim(),
+        status: status ?? 'network-error',
+        message: message ?? null,
+      })
+      setError(message || 'Une erreur est survenue lors de la demande de réinitialisation')
     } finally {
       setLoading(false)
     }
@@ -66,7 +88,7 @@ const ForgotPasswordPage = () => {
             )}
             
             {!success && (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} noValidate className="space-y-6">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                     Adresse email

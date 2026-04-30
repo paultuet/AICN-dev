@@ -1,7 +1,12 @@
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Logo } from "@/components/ui";
+import { track } from "@/services/telemetry";
+
+// Loose email regex — same shape as the HTML5 spec. Catches obvious typos without
+// being so strict it rejects valid edge-case addresses.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const RegisterPage = () => {
   const [searchParams] = useSearchParams();
@@ -14,39 +19,66 @@ const RegisterPage = () => {
   const { register } = useAuth();
   const [success, setSuccess] = useState(false);
 
+  useEffect(() => {
+    track("register-page-viewed");
+  }, []);
+
+  const validate = (): string | null => {
+    const trimmedEmail = email.trim();
+    const trimmedName = name.trim();
+    const trimmedOrg = organization.trim();
+    if (!trimmedEmail) return "Veuillez renseigner votre adresse email.";
+    if (!EMAIL_RE.test(trimmedEmail)) return "L'adresse email semble incorrecte. Vérifiez le format (ex : nom@example.com).";
+    if (!trimmedName) return "Veuillez renseigner votre nom complet.";
+    if (!trimmedOrg) return "Veuillez renseigner votre organisation.";
+    if (!password) return "Veuillez choisir un mot de passe.";
+    if (password.length < 8) return "Le mot de passe doit contenir au moins 8 caractères.";
+    return null;
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    track("register-submit-clicked", { email: email.trim() });
     setError("");
+
+    const validationError = validate();
+    if (validationError) {
+      setError(validationError);
+      track("register-validation-failed", { reason: validationError, email: email.trim() });
+      return;
+    }
+
     setLoading(true);
+    track("register-request-sent", { email: email.trim() });
 
     try {
-      // Register the user using our auth context
       await register({
-        email,
+        email: email.trim(),
         password,
-        name,
-        organization,
+        name: name.trim(),
+        organization: organization.trim(),
       });
-
-      // Redirect to home page on success
-      // navigate("/");
+      track("register-request-success", { email: email.trim() });
       setSuccess(true);
       // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error("Registration error:", err);
-      // Set error message, check both message formats
+      const status = err.response?.status;
       const errorMessage =
-        err.response?.data?.message || // Old format
-        err.response?.data?.error || // New format main error
-        "Une erreur est survenue lors de l'inscription";
+        err.response?.data?.message ||
+        err.response?.data?.error ||
+        "Une erreur est survenue lors de l'inscription. Si le problème persiste, vérifiez votre connexion internet ou contactez l'administrateur.";
 
-      // Add details if available
       const details = err.response?.data?.details;
       if (details) {
         console.error("Error details:", details);
       }
 
+      track("register-request-error", {
+        email: email.trim(),
+        status: status ?? "network-error",
+        message: errorMessage,
+      });
       setError(errorMessage);
     } finally {
       setLoading(false);
@@ -97,7 +129,7 @@ const RegisterPage = () => {
               </div>
             )}
 
-            {!success && <form onSubmit={handleSubmit} className="space-y-4">
+            {!success && <form onSubmit={handleSubmit} noValidate className="space-y-4">
               <div>
                 <label
                   htmlFor="email"
