@@ -356,31 +356,97 @@
         admin-email (get-in config [:admin :email])
         jwt-secret (get-jwt-secret jwt)]
     (if (nil? token)
-      {:status 400 :body {:message "Missing verification token"}}
+      (do
+        (log/warn (str "Verify-email failed - Missing token - Time: " (time/instant)))
+        {:status 400 :body {:message "Missing verification token"}})
 
       (if-let [user (repo/get-user-by-verification-token ds token)]
         (let [now (time/instant)
               token-expired? (time/after? now (time/instant (:verification-token-expires-at user)))]
 
           (if token-expired?
-            {:status 400 :body {:message "Verification token has expired. Please request a new one."}}
+            (do
+              (log/warn (str "Verify-email failed - Token expired - Email: " (:email user)
+                             " - Time: " (time/instant)))
+              {:status 400 :body {:message "Verification token has expired. Please request a new one."}})
 
             ;; Mark email as verified and clear token
             (do
               (repo/update-user ds {:id (:id user)
                                     :email-verified true})
               (repo/clear-verification-token ds (:id user))
+              (log/info (str "Email verified - Email: " (:email user)
+                             " - Name: " (:name user)
+                             " - ID: " (:id user)
+                             " - Time: " (time/instant)))
+              (activity/add-activity-log! ds {:type :email-verified
+                                              :user-email (:email user)
+                                              :user-name (:name user)
+                                              :user-id (:id user)
+                                              :message "User email verified"
+                                              :details {:organization (:organization user)}})
 
-              ;; Send approval request email to admin with one-click approve link
-              (when admin-email
-                (let [approval-token (generate-approval-token (:id user) jwt-secret)
-                      approve-url (str frontend-url "/admin/approve?token=" approval-token)
-                      approval-email (email/build-admin-approval-request-email frontend-url admin-email user approve-url)]
-                  (email/send-email! approval-email)))
+              ;; Send approval request email to admin with one-click approve link.
+              ;; Critical observability point: this is where the admin learns a new user exists.
+              ;; If this silently fails, users get stuck "pending approval" forever.
+              (if (nil? admin-email)
+                (do
+                  (log/error (str "Admin approval notification SKIPPED - ADMIN_EMAIL not configured"
+                                  " - User: " (:email user)
+                                  " - User will be stuck pending approval"
+                                  " - Time: " (time/instant)))
+                  (activity/add-activity-log! ds {:type :admin-approval-notification-skipped
+                                                  :user-email (:email user)
+                                                  :user-name (:name user)
+                                                  :user-id (:id user)
+                                                  :message "Admin approval notification skipped (ADMIN_EMAIL not configured)"
+                                                  :details {:reason "admin-email-not-configured"}}))
+                (try
+                  (let [approval-token (generate-approval-token (:id user) jwt-secret)
+                        approve-url (str frontend-url "/admin/approve?token=" approval-token)
+                        approval-email (email/build-admin-approval-request-email frontend-url admin-email user approve-url)
+                        result (email/send-email! approval-email)]
+                    (if (:success result)
+                      (do
+                        (log/info (str "Admin approval notification sent - Admin: " admin-email
+                                       " - User: " (:email user)
+                                       " - Time: " (time/instant)))
+                        (activity/add-activity-log! ds {:type :admin-approval-notification-sent
+                                                        :user-email (:email user)
+                                                        :user-name (:name user)
+                                                        :user-id (:id user)
+                                                        :message "Admin approval notification sent"
+                                                        :details {:admin-email admin-email}}))
+                      (do
+                        (log/error (str "Admin approval notification FAILED - Admin: " admin-email
+                                        " - User: " (:email user)
+                                        " - Error: " (:error result)
+                                        " - Time: " (time/instant)))
+                        (activity/add-activity-log! ds {:type :admin-approval-notification-failed
+                                                        :user-email (:email user)
+                                                        :user-name (:name user)
+                                                        :user-id (:id user)
+                                                        :message "Admin approval notification email failed"
+                                                        :details {:admin-email admin-email
+                                                                  :error (:error result)}}))))
+                  (catch Exception e
+                    (log/error (str "Admin approval notification EXCEPTION - Admin: " admin-email
+                                    " - User: " (:email user)
+                                    " - Error: " (.getMessage e)
+                                    " - Time: " (time/instant)))
+                    (activity/add-activity-log! ds {:type :admin-approval-notification-failed
+                                                    :user-email (:email user)
+                                                    :user-name (:name user)
+                                                    :user-id (:id user)
+                                                    :message "Admin approval notification threw"
+                                                    :details {:admin-email admin-email
+                                                              :error (.getMessage e)}}))))
 
               {:status 200 :body {:message "Email vérifié avec succès. Votre compte est en attente d'approbation par un administrateur."}})))
 
-        {:status 404 :body {:message "Invalid verification token"}}))))
+        (do
+          (log/warn (str "Verify-email failed - Invalid token - Time: " (time/instant)))
+          {:status 404 :body {:message "Invalid verification token"}})))))
 
 (defn approve-user
   [{:keys [db/ds parameters config]}]

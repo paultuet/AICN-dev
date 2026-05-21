@@ -124,6 +124,15 @@
                                          :body (map #(-> %
                                                          (select-keys [:id :email :name :organization :role :created-at :email-verified :approved])) users)}))}}]
 
+    ["/admin/users/pending" {:get {:summary "Get users awaiting admin approval (admin only)"
+                                   :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+                                   :responses {200 {:body :any}
+                                               401 {:body :any}}
+                                   :handler (fn [{:keys [db/ds]}]
+                                              (let [users (db/get-pending-users ds)]
+                                                {:status 200
+                                                 :body (map #(select-keys % [:id :email :name :organization :created-at]) users)}))}}]
+
     ["/admin/users/:id/approve" {:post {:summary "Approve a user (admin only)"
                                         :interceptors [(auth/restrict-role-interceptor :ADMIN)]
                                         :parameters {:path [:map [:id :string]]}

@@ -151,9 +151,19 @@
                    (create-handler-fn))]
     (jetty/run-jetty handler* server-options)))
 
+(defn- check-critical-config!
+  "Log a loud warning at boot if ADMIN_EMAIL is missing — without it, new user
+   approval notifications go nowhere and users get stuck pending forever."
+  [opts]
+  (let [admin-email (get-in opts [:config :admin :email])]
+    (if (nil? admin-email)
+      (logger/error "ADMIN_EMAIL is not configured. New user approval notifications will NOT be sent. Users will be stuck pending approval forever. Set the ADMIN_EMAIL secret on Fly.")
+      (logger/info (str "Admin notifications will be sent to: " admin-email)))))
+
 (defn start [{:keys [dev-mode? port] :as opts}]
   (let [s (atom nil)]
     (logger/info "Starting server" {:port port :env-port (System/getenv "PORT") :host "0.0.0.0"})
+    (check-critical-config! opts)
     ;; Utilisation explicite de l'adresse 0.0.0.0 et configuration des connecteurs
     (System/setProperty "jetty.host" "0.0.0.0")
     (reset! s (run-server {:dev-mode? dev-mode?

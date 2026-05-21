@@ -262,6 +262,15 @@
                  ["SELECT * FROM users ORDER BY created_at DESC"]
                  [:vector model/User]))
 
+(defn get-pending-users
+  "Users who verified their email but are still awaiting admin approval."
+  [datasource]
+  (safe-execute! datasource
+                 ["SELECT * FROM users
+                   WHERE email_verified = true AND approved = false
+                   ORDER BY created_at ASC"]
+                 [:vector model/User]))
+
 ;; New Conversation functions for updated schema
 (defn create-conversation [datasource {:keys [id title linked-items created-by]}]
   (->> (jdbc/execute-one! datasource
