@@ -13,7 +13,7 @@
     Session
     Transport)
    (jakarta.mail.internet InternetAddress MimeMessage)
-   (java.util Calendar Properties)))
+   (java.util Calendar Date Properties)))
 
 ;; Email configuration
 (def email-config (atom {}))
@@ -49,16 +49,24 @@
   (let [{:keys [from session]} (get-config)]
     (try
       (let [message (MimeMessage. session)]
-        (doto message
-          (.setFrom (InternetAddress. from))
-          (.addRecipient Message$RecipientType/TO (InternetAddress. to))
-          (.setSubject subject)
-          (.setContent body "text/html; charset=utf-8"))
+        (.setFrom message (InternetAddress. from))
+        (.addRecipient message Message$RecipientType/TO (InternetAddress. to))
+        ;; RFC 2047 encode the subject so non-ASCII characters (em-dashes, accents,
+        ;; etc.) survive transport and don't get flagged by spam filters.
+        (.setSubject message subject "UTF-8")
+        (.setContent message body "text/html; charset=utf-8")
+        ;; Set a Date header explicitly. Without it many MTAs and spam filters
+        ;; penalize the message.
+        (.setSentDate message (Date.))
+        ;; Force MimeMessage to compute headers including a Message-ID. Spam
+        ;; filters mark messages without one as suspicious.
+        (.saveChanges message)
         (Transport/send message)
         {:success true})
       (catch Exception e
-        (println "Failed to send email:" (.getMessage e))
-        (log/error e)
+        (log/error (str "Failed to send email - To: " to
+                        " - Subject: " subject
+                        " - Error: " (.getMessage e)))
         {:success false
          :error (.getMessage e)}))))
 
