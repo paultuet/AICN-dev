@@ -34,7 +34,8 @@
     "forgot-password-submit-clicked"
     "forgot-password-request-sent"
     "forgot-password-request-success"
-    "forgot-password-request-error"})
+    "forgot-password-request-error"
+    "frontend-crash"})
 
 (defn telemetry-handler
   "Public endpoint that records frontend telemetry events into activity_logs.
