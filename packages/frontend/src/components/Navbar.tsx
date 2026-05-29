@@ -19,6 +19,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <Logo width={50} />
+            <img src="fidji-logo.png" alt="FIDJI logo" className="h-9 md:h-10 w-auto" />
             <span className="text-gray-300 text-xl md:text-2xl font-bold tracking-tight hidden sm:block">AICN</span>
           </Link>
 
