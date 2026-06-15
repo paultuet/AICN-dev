@@ -5,6 +5,8 @@ interface CardProps {
   className?: string;
   header?: React.ReactNode;
   footer?: React.ReactNode;
+  /** Adds the technical corner ticks (accent L-marks) of the redesign. */
+  ticks?: boolean;
 }
 
 /**
@@ -14,12 +16,13 @@ const Card: React.FC<CardProps> = ({
   children,
   className = '',
   header,
-  footer
+  footer,
+  ticks = false
 }) => {
   return (
-    <div className={`bg-white shadow-lg rounded-lg border border-gray-400 ${className}`}>
+    <div className={`bg-panel shadow-panel rounded-xl border border-hair ${ticks ? 'ticks' : ''} ${className}`}>
       {header && (
-        <div className="border-b border-gray-400 px-4 py-3 sm:px-5">
+        <div className="border-b border-hair px-4 py-3 sm:px-5">
           {header}
         </div>
       )}
@@ -27,7 +30,7 @@ const Card: React.FC<CardProps> = ({
         {children}
       </div>
       {footer && (
-        <div className="border-t border-gray-400 px-4 py-3 sm:px-5">
+        <div className="border-t border-hair px-4 py-3 sm:px-5">
           {footer}
         </div>
       )}

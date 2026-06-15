@@ -28,12 +28,14 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
+  // Single-accent design system: filled CTAs are brand orange; secondary
+  // actions are subtle panel buttons; destructive is ghost-danger.
   const variantClasses = {
-    primary: 'bg-aicn-blue text-white hover:bg-aicn-blue-dark focus:ring-aicn-blue-light',
-    secondary: 'bg-aicn-orange text-white focus:ring-aicn-orange-light',
-    outline: 'bg-white text-gray-700 border border-gray-400 hover:bg-gray-100 focus:ring-gray-700',
-    ghost: 'bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-700',
-    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500'
+    primary: 'bg-brand text-white shadow-[0_6px_16px_-8px_var(--orange)] hover:brightness-105 active:translate-y-px focus:ring-brand',
+    secondary: 'bg-brand text-white shadow-[0_6px_16px_-8px_var(--orange)] hover:brightness-105 active:translate-y-px focus:ring-brand',
+    outline: 'bg-panel-2 text-ink border border-hair hover:border-accent-line hover:bg-accent-soft hover:text-accent-ink focus:ring-accent-line',
+    ghost: 'bg-transparent text-ink-2 hover:bg-accent-soft hover:text-accent-ink focus:ring-accent-line',
+    danger: 'bg-transparent text-danger border border-hair hover:border-danger hover:bg-danger-soft focus:ring-danger'
   };
 
   const sizeClasses = {

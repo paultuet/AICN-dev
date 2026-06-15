@@ -15,6 +15,12 @@ export { default as SelectInput } from './forms/SelectInput';
 
 // Layout & Structure
 export { default as Card } from './Card';
+export { default as Panel } from './Panel';
+export { default as PageHead } from './PageHead';
+export type { PageStat } from './PageHead';
+export { default as Eyebrow } from './Eyebrow';
+export { default as SectionRule } from './SectionRule';
+export { default as Pill } from './Pill';
 export { default as Section } from './Section';
 export { default as Modal } from './Modal';
 export { default as Tabs } from './Tabs';
