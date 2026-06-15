@@ -9,6 +9,8 @@ import {
   Card,
   ErrorMessage,
   LoadingSpinner,
+  PageHead,
+  Panel,
   SearchBar,
 } from "@/components/ui";
 import {
@@ -113,19 +115,23 @@ const JournalPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="view min-h-screen py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-3xl font-bold text-gray-900">Journal</h1>
-          {isAdmin && (
-            <Button variant="secondary" onClick={openNew}>
-              Nouveau post
-            </Button>
-          )}
-        </div>
+        <PageHead
+          eyebrow="Publications"
+          title="Journal"
+          sub="Actualités, notes de version et communications de l'équipe FIDJI · AICN."
+          actions={
+            isAdmin ? (
+              <Button variant="primary" onClick={openNew}>
+                Nouveau post
+              </Button>
+            ) : undefined
+          }
+        />
 
         {/* Filters */}
-        <div className="bg-white shadow rounded-lg p-4 mb-6 space-y-4">
+        <Panel padded className="mb-6 space-y-4">
           <SearchBar
             value={search}
             onChange={setSearch}
@@ -147,7 +153,7 @@ const JournalPage: React.FC = () => {
               ))}
             </div>
           )}
-        </div>
+        </Panel>
 
         {/* List */}
         {isLoading ? (
@@ -155,7 +161,7 @@ const JournalPage: React.FC = () => {
         ) : error ? (
           <ErrorMessage message="Erreur lors du chargement des posts." />
         ) : filteredPosts.length === 0 ? (
-          <p className="text-gray-500 text-center py-12">
+          <p className="text-ink-3 text-center py-12">
             {posts.length === 0
               ? "Aucune publication pour le moment."
               : "Aucun post ne correspond à votre recherche."}
@@ -167,12 +173,12 @@ const JournalPage: React.FC = () => {
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
                     <div className="flex items-center gap-3 flex-wrap mb-1">
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-ink-3 font-mono">
                         {formatDate(post.postDate)}
                       </span>
-                      {post.tag && <Badge color="indigo" pill>{post.tag}</Badge>}
+                      {post.tag && <Badge color="orange" pill>{post.tag}</Badge>}
                     </div>
-                    <h2 className="text-xl font-semibold text-gray-900 break-words">
+                    <h2 className="text-xl font-semibold text-ink break-words">
                       {post.title}
                     </h2>
                   </div>
@@ -189,13 +195,13 @@ const JournalPage: React.FC = () => {
                 </div>
 
                 <div
-                  className="journal-content mt-4 text-gray-800"
+                  className="journal-content mt-4 text-ink-2"
                   dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}
                 />
 
                 {post.attachments.length > 0 && (
-                  <div className="mt-4 border-t border-gray-200 pt-3 space-y-2">
-                    <h3 className="text-sm font-medium text-gray-700">
+                  <div className="mt-4 border-t border-hair pt-3 space-y-2">
+                    <h3 className="text-sm font-medium text-ink-2">
                       Pièces jointes
                     </h3>
                     {post.attachments.map((att) => (
@@ -206,10 +212,10 @@ const JournalPage: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => handleDownload(att)}
-                          className="text-indigo-600 hover:text-indigo-800 hover:underline truncate text-left"
+                          className="text-accent-ink hover:underline truncate text-left font-mono"
                         >
                           {att.fileName}{" "}
-                          <span className="text-gray-400">
+                          <span className="text-ink-4">
                             ({formatFileSize(att.fileSize)})
                           </span>
                         </button>
@@ -217,7 +223,7 @@ const JournalPage: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => handleDeleteAttachment(att)}
-                            className="text-red-600 hover:text-red-800 shrink-0"
+                            className="text-danger hover:underline shrink-0"
                           >
                             Supprimer
                           </button>
