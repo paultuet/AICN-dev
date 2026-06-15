@@ -5,6 +5,7 @@
    [aicn.core :as core]
    [aicn.db :as db]
    [aicn.files :as files]
+   [aicn.journal :as journal]
    [aicn.logger :as log]
    [aicn.model :as model]
    [clojure.set]
@@ -399,4 +400,50 @@
                                        :responses {200 {:body :any}
                                                    401 {:body :any}
                                                    404 {:body :any}}
-                                       :handler files/delete-file-handler}}]]]))
+                                       :handler files/delete-file-handler}}]
+
+    ;; Journal endpoints
+    ["/journal/tags" {:get {:summary "Journal tags (impact_post single-select options)"
+                            :responses {200 {:body :any}}
+                            :interceptors [core/get-impact-post-options-interceptor]
+                            :handler (fn [{:keys [aicn/impact-post-options]}]
+                                       {:status 200 :body impact-post-options})}}]
+
+    ["/journal/posts" {:get {:summary "List journal posts (all authenticated users)"
+                             :responses {200 {:body :any}}
+                             :handler journal/get-posts-handler}
+                       :post {:summary "Create a journal post (admin only)"
+                              :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+                              :responses {200 {:body :any} 400 {:body :any} 401 {:body :any}}
+                              :handler journal/create-post-handler}}]
+
+    ["/journal/posts/:post-id" {:get {:summary "Get a journal post"
+                                      :responses {200 {:body :any} 404 {:body :any}}
+                                      :handler journal/get-post-handler}
+                                :put {:summary "Update a journal post (admin only)"
+                                      :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+                                      :responses {200 {:body :any} 400 {:body :any}
+                                                  401 {:body :any} 404 {:body :any}}
+                                      :handler journal/update-post-handler}
+                                :delete {:summary "Delete a journal post (admin only)"
+                                         :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+                                         :responses {200 {:body :any} 401 {:body :any} 404 {:body :any}}
+                                         :handler journal/delete-post-handler}}]
+
+    ["/journal/posts/:post-id/attachments"
+     {:post {:summary "Upload attachments to a journal post (admin only)"
+             :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+             :parameters {:multipart :any}
+             :responses {200 {:body :any} 401 {:body :any} 404 {:body :any}}
+             :handler journal/upload-attachments-handler}}]
+
+    ["/journal/attachments/:attachment-id/download"
+     {:get {:summary "Download a journal attachment"
+            :responses {200 {:body :any} 404 {:body :any}}
+            :handler journal/download-attachment-handler}}]
+
+    ["/journal/attachments/:attachment-id"
+     {:delete {:summary "Delete a journal attachment (admin only)"
+               :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+               :responses {200 {:body :any} 401 {:body :any} 404 {:body :any}}
+               :handler journal/delete-attachment-handler}}]]]))

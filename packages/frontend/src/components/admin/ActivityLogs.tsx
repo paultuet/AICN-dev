@@ -86,7 +86,15 @@ export const ActivityLogs: React.FC = () => {
       'conversation-created': 'Conversation créée',
       'message-sent': 'Message envoyé',
       'file-uploaded': 'Fichier uploadé',
-      'file-deleted': 'Fichier supprimé'
+      'file-deleted': 'Fichier supprimé',
+      'register-success': 'Inscription réussie',
+      'register-failed': 'Échec inscription',
+      'email-verified': 'Email vérifié',
+      'verification-email-sent': 'Email de vérif. envoyé',
+      'verification-email-failed': 'Échec envoi email de vérif.',
+      'admin-approval-notification-sent': 'Notif. admin envoyée',
+      'admin-approval-notification-failed': 'Échec notif. admin',
+      'admin-approval-notification-skipped': 'Notif. admin ignorée'
     };
     return labels[type] || type;
   };
@@ -98,7 +106,15 @@ export const ActivityLogs: React.FC = () => {
       'conversation-created': 'text-blue-600 bg-blue-50',
       'message-sent': 'text-purple-600 bg-purple-50',
       'file-uploaded': 'text-teal-600 bg-teal-50',
-      'file-deleted': 'text-orange-600 bg-orange-50'
+      'file-deleted': 'text-orange-600 bg-orange-50',
+      'register-success': 'text-green-600 bg-green-50',
+      'register-failed': 'text-red-600 bg-red-50',
+      'email-verified': 'text-green-600 bg-green-50',
+      'verification-email-sent': 'text-teal-600 bg-teal-50',
+      'verification-email-failed': 'text-red-700 bg-red-100 font-semibold',
+      'admin-approval-notification-sent': 'text-blue-600 bg-blue-50',
+      'admin-approval-notification-failed': 'text-red-700 bg-red-100 font-semibold',
+      'admin-approval-notification-skipped': 'text-orange-600 bg-orange-50'
     };
     return colors[type] || 'text-gray-600 bg-gray-50';
   };
@@ -191,6 +207,13 @@ export const ActivityLogs: React.FC = () => {
             <option value="">Tous les types</option>
             <option value="login-success">Connexions réussies</option>
             <option value="login-failed">Échecs de connexion</option>
+            <option value="register-success">Inscriptions réussies</option>
+            <option value="register-failed">Échecs d'inscription</option>
+            <option value="email-verified">Emails vérifiés</option>
+            <option value="verification-email-sent">Emails de vérif. envoyés</option>
+            <option value="verification-email-failed">Échecs envoi email de vérif.</option>
+            <option value="admin-approval-notification-sent">Notifs admin envoyées</option>
+            <option value="admin-approval-notification-failed">Échecs notif admin</option>
             <option value="conversation-created">Conversations créées</option>
             <option value="message-sent">Messages envoyés</option>
             <option value="file-uploaded">Fichiers uploadés</option>

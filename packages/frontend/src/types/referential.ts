@@ -32,6 +32,7 @@ export type LovNewEntry = {
   id_code: string
   Value: string
   complement_value?: string | null
+  lov_table?: string | null         // FK table this entry belongs to, e.g. "lov_types_mesures_surfaces"
 }
 
 // ---------------------------------------------------------------------------

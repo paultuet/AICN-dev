@@ -20,16 +20,10 @@ import CommentPopover from "@/components/comments/CommentPopover";
 // ---------------------------------------------------------------------------
 
 function findLovNewEntries(fkValue: string, lovNewData: LovNewEntry[]): LovNewEntry[] {
-  // "lov_etat_visuel_eqpmt.id_etat_visuel_eqpmt" → "etat_visuel_eqpmt"
-  const tablePart = fkValue.split('.')[0].replace(/^lov_/, '');
-  const segments = tablePart.split('_');
-  // Try progressively shorter prefixes
-  for (let len = segments.length; len >= 2; len--) {
-    const prefix = segments.slice(0, len).join('_');
-    const matches = lovNewData.filter(e => e.id_code.startsWith(prefix));
-    if (matches.length > 0) return matches;
-  }
-  return [];
+  // Match on the `lov_table` column of lov_new, populated in Airtable.
+  // FK example: "lov_types_mesures_surfaces.id_type_mesure_surface" → table = "lov_types_mesures_surfaces"
+  const fkTable = fkValue.split('.')[0];
+  return lovNewData.filter(e => e.lov_table === fkTable);
 }
 
 interface HierarchicalNodeProps {
@@ -589,31 +583,37 @@ const FieldRow: React.FC<FieldRowProps> = ({
       </td>
       {/* 9. Clé étrangère (FK) + popup lov_new */}
       <td className="px-3 py-2 text-xs text-gray-500 overflow-hidden">
-        <div className="flex items-center gap-1 overflow-hidden">
-          <TruncatedCell text={field["cle-etrangere"]} />
-          {field["cle-etrangere"] && field["cle-etrangere"].startsWith("lov") && lovNewData && (() => {
-            const entries = findLovNewEntries(field["cle-etrangere"], lovNewData);
-            if (entries.length === 0) return null;
-            return (
-              <Dialog>
-                <DialogTrigger asChild>
-                  <button
-                    className="shrink-0 text-xs px-1 py-0.5 bg-blue-50 text-blue-700 rounded hover:bg-blue-100 cursor-pointer"
-                    title="Voir les valeurs LOV"
-                  >
-                    🔗
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="max-w-2xl max-h-[70vh] overflow-hidden flex flex-col">
-                  <DialogHeader>
-                    <DialogTitle>
-                      Valeurs LOV — {field["cle-etrangere"]?.split(".")[0]}
-                    </DialogTitle>
-                    <DialogDescription>
-                      {entries.length} valeur{entries.length > 1 ? "s" : ""} disponible{entries.length > 1 ? "s" : ""}
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="flex-1 overflow-y-auto">
+        {field["cle-etrangere"] && field["cle-etrangere"].startsWith("lov") ? (() => {
+          const fk = field["cle-etrangere"];
+          const entries = lovNewData ? findLovNewEntries(fk, lovNewData) : [];
+          return (
+            <Dialog>
+              <DialogTrigger asChild>
+                <button
+                  type="button"
+                  className="block w-full text-left text-xs font-mono text-blue-700 hover:text-blue-900 hover:underline cursor-pointer truncate"
+                  title={`Voir les valeurs LOV — ${fk}`}
+                >
+                  {fk}
+                </button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl max-h-[70vh] overflow-hidden flex flex-col">
+                <DialogHeader>
+                  <DialogTitle>
+                    Valeurs LOV — {fk.split(".")[0]}
+                  </DialogTitle>
+                  <DialogDescription>
+                    {entries.length > 0
+                      ? `${entries.length} valeur${entries.length > 1 ? "s" : ""} disponible${entries.length > 1 ? "s" : ""}`
+                      : "Aucune valeur disponible dans lov_new"}
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="flex-1 overflow-y-auto">
+                  {entries.length === 0 ? (
+                    <div className="p-6 text-sm text-gray-500 text-center">
+                      Aucune entrée correspondante n'a été trouvée pour <span className="font-mono">{fk}</span>.
+                    </div>
+                  ) : (
                     <table className="min-w-full text-sm">
                       <thead>
                         <tr className="bg-gray-50 text-left text-xs font-medium text-gray-500">
@@ -632,12 +632,14 @@ const FieldRow: React.FC<FieldRowProps> = ({
                         ))}
                       </tbody>
                     </table>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            );
-          })()}
-        </div>
+                  )}
+                </div>
+              </DialogContent>
+            </Dialog>
+          );
+        })() : (
+          <TruncatedCell text={field["cle-etrangere"]} />
+        )}
       </td>
       {/* 10. Champ multivalué */}
       <td className="px-3 py-2 text-xs text-center">

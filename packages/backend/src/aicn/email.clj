@@ -62,13 +62,20 @@
         ;; filters mark messages without one as suspicious.
         (.saveChanges message)
         (Transport/send message)
+        (log/info (str "Email sent - To: " to " - Subject: " subject))
         {:success true})
       (catch Exception e
+        ;; Surface the exception class as well as the message: it distinguishes SMTP auth
+        ;; failures (AuthenticationFailedException) from connection problems
+        ;; (MessagingException) from rejected recipients (SendFailedException), which is the
+        ;; first thing you need to know when a verification email silently fails to go out.
         (log/error (str "Failed to send email - To: " to
                         " - Subject: " subject
+                        " - Class: " (.getName (class e))
                         " - Error: " (.getMessage e)))
         {:success false
-         :error (.getMessage e)}))))
+         :error (.getMessage e)
+         :class (.getName (class e))}))))
 
 ;; Get current year for email templates
 (defn current-year []

@@ -1,6 +1,7 @@
 (ns aicn.adapters.airtable
   (:require
    [aicn.utils :as u]
+   [aicn.logger :as logger]
    [clojure.java.io :as io]
    [clojure.pprint :as pprint]
    [clojure.string :as str]
@@ -325,6 +326,79 @@
     (->> (read-file-table "lov_new")
          (map :fields))
     (catch Exception _e [])))
+
+;; ---------------------------------------------------------------------------
+;; Journal tags: impact_post single-select options (via Metadata API)
+;; ---------------------------------------------------------------------------
+
+(def ^:private impact-post-options-file "impact_post_options.json")
+
+(defn- ->meta-url [{:keys [app-id]}]
+  (str "https://api.airtable.com/v0/meta/bases/" app-id "/tables"))
+
+(defn fetch-base-schema
+  "Fetch the base schema via the Airtable Metadata API. Requires the token to
+   carry the `schema.bases:read` scope (a 403 otherwise). Throws ex-info on >=400."
+  [{:keys [token] :as auth}]
+  (let [response (hc/request {:url (->meta-url auth)
+                              :method :get
+                              :headers {"Authorization" (str "Bearer " token)}
+                              :throw-exceptions false})]
+    (when (>= (:status response) 400)
+      (throw (ex-info "Airtable metadata request failed"
+                      {:type :airtable/api-error
+                       :status (:status response)
+                       :body (:body response)})))
+    (-> response :body u/from-json)))
+
+(defn extract-impact-post-options
+  "Pure: given a base schema, return the ordered option names of the single-select
+   field named \"impact_post\" (wherever it lives in the base). Returns [] when the
+   field is absent or not a single-select."
+  [schema]
+  (let [fields (->> (:tables schema)
+                    (mapcat :fields)
+                    (filter #(= "impact_post" (:name %))))
+        single-selects (filter #(= "singleSelect" (:type %)) fields)]
+    (cond
+      (empty? fields)
+      (do (logger/error "impact_post field not found in Airtable base schema") [])
+
+      (empty? single-selects)
+      (do (logger/error "impact_post field found but is not a singleSelect") [])
+
+      :else
+      (do
+        (when (> (count single-selects) 1)
+          (logger/error "Multiple impact_post singleSelect fields found; using the first"))
+        (->> (get-in (first single-selects) [:options :choices])
+             (mapv :name))))))
+
+(defn sync-impact-post-options
+  "Fetch the impact_post single-select options via the Metadata API and cache them
+   to DATA_DIR/impact_post_options.json. Returns the options vector. Throws on API
+   failure (the caller decides how to surface it)."
+  [auth]
+  (let [schema  (fetch-base-schema auth)
+        options (extract-impact-post-options schema)]
+    (spit-json (write-data-file impact-post-options-file) options)
+    options))
+
+(defn read-impact-post-options
+  "Read the cached journal tag vocabulary. Prefers the writable data-dir (filled by
+   /sync), falls back to the JAR-bundled seed, then to an empty list. Never throws."
+  []
+  (try
+    (let [cached (io/file data-dir impact-post-options-file)
+          source (if (.exists cached)
+                   cached
+                   (io/resource (str "data/" impact-post-options-file)))]
+      (if source
+        (vec (u/from-json (slurp source)))
+        []))
+    (catch Exception e
+      (logger/error (str "Failed to read impact_post options: " (.getMessage e)))
+      [])))
 
 (comment
   (def s (aicn.system/get-system))

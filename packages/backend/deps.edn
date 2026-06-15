@@ -25,6 +25,7 @@
         software.amazon.awssdk/polly {:mvn/version "2.31.6"}
         software.amazon.awssdk/s3 {:mvn/version "2.31.6"}
         markdown-clj/markdown-clj {:mvn/version "1.12.3"}
+        com.googlecode.owasp-java-html-sanitizer/owasp-java-html-sanitizer {:mvn/version "20240325.1"}
         metosin/malli {:mvn/version "0.17.0"}
         buddy/buddy-hashers {:mvn/version "2.0.167"}
         metosin/reitit {:mvn/version "0.8.0-alpha1"}

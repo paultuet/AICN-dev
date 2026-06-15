@@ -25,6 +25,17 @@
     (io/copy (:tempfile file) dest-file)
     file-path))
 
+(defn save-file-to
+  "Like save-file but writes into a subdirectory of the upload dir (e.g. \"journal\").
+   Keeps journal attachments physically separate from document uploads."
+  [subdir file file-id]
+  (let [dir (io/file upload-dir subdir)]
+    (when-not (.exists dir) (.mkdirs dir))
+    (let [file-path (str upload-dir "/" subdir "/" file-id "_" (:filename file))
+          dest-file (io/file file-path)]
+      (io/copy (:tempfile file) dest-file)
+      file-path)))
+
 (defn upload-file-handler [request]
   (try
     (let [ds (:db/ds request)

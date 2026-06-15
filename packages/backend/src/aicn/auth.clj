@@ -94,13 +94,50 @@
                                 (repo/set-verification-token ds {:id (:id user)
                                                                  :verification-token verification-token
                                                                  :verification-token-expires-at token-expires-at})
-                                (catch Exception e (log/error e)))]
+                                (catch Exception e (log/error e)))
+                 ;; Send the verification email and INSPECT the result. send-email! swallows its
+                 ;; own exceptions and returns {:success false :error ...} instead of throwing, so
+                 ;; without checking this a delivery failure is completely invisible — no activity
+                 ;; log, no alert, and the user is silently stuck unable to verify (and the admin is
+                 ;; never notified, since the approval mail only fires after verification).
+                 result (try
+                          (send-verification-email-template!
+                           (assoc updated-user :verification-token verification-token)
+                           frontend-url
+                           resend?)
+                          (catch Exception e
+                            {:success false
+                             :error (.getMessage e)
+                             :class (str (.getClass e))}))]
 
-             ;; Send verification email
-             (send-verification-email-template! 
-              (assoc updated-user :verification-token verification-token)
-              frontend-url
-              resend?)
+             (if (:success result)
+               (do
+                 (log/info (str "Verification email sent - Email: " (:email user)
+                                " - Resend: " resend?
+                                " - ID: " (:id user)
+                                " - Time: " (time/instant)))
+                 (activity/add-activity-log! ds {:type :verification-email-sent
+                                                 :user-email (:email user)
+                                                 :user-name (:name user)
+                                                 :user-id (:id user)
+                                                 :message (if resend?
+                                                            "Verification email re-sent"
+                                                            "Verification email sent")
+                                                 :details {:resend resend?}}))
+               (do
+                 (log/error (str "Verification email FAILED to send - Email: " (:email user)
+                                 " - Resend: " resend?
+                                 " - ID: " (:id user)
+                                 " - Error: " (:error result)
+                                 " - Time: " (time/instant)))
+                 (activity/add-activity-log! ds {:type :verification-email-failed
+                                                 :user-email (:email user)
+                                                 :user-name (:name user)
+                                                 :user-id (:id user)
+                                                 :message "Verification email FAILED to send"
+                                                 :details {:resend resend?
+                                                           :error (:error result)
+                                                           :class (:class result)}})))
 
              {:status 200 :body {:message "Verification email sent. Please check your inbox."}}))
 

@@ -49,6 +49,10 @@ const Navbar = () => {
               Fichiers
             </Link>
 
+            <Link to="/journal" className="hover:text-gray-300 transition-colors py-1 px-2 rounded-md font-medium">
+              Journal
+            </Link>
+
             {isAdmin && <Link to="/admin" className="hover:text-gray-300 transition-colors py-1 px-2 rounded-md font-medium">
               Admin
             </Link>}
@@ -89,6 +93,10 @@ const Navbar = () => {
 
           <Link to="/files" className="block py-2 hover:bg-primary-hover rounded-md px-3" onClick={() => setIsMenuOpen(false)}>
             Fichiers
+          </Link>
+
+          <Link to="/journal" className="block py-2 hover:bg-primary-hover rounded-md px-3" onClick={() => setIsMenuOpen(false)}>
+            Journal
           </Link>
 
           {isAdmin && <Link to="/admin" className="block py-2 hover:bg-primary-hover rounded-md px-3" onClick={() => setIsMenuOpen(false)}>

@@ -570,6 +570,74 @@
                        RETURNING *"
                       comment-id author-id]))
 
+;; Journal functions
+;; NOTE: like the file/comment-GET path, these return raw snake_case maps
+;; (no Malli decode). Handlers map snake_case -> camelCase for the wire.
+(defn create-post [datasource {:keys [post-date title content tag created-by]}]
+  (safe-execute-one! datasource
+                     ["INSERT INTO journal_posts (post_date, title, content, tag, created_by)
+                       VALUES (?::date, ?::text, ?::text, ?::text, ?::uuid)
+                       RETURNING *"
+                      post-date title content tag created-by]))
+
+(defn get-posts [datasource {:keys [limit offset]}]
+  (safe-execute! datasource
+                 ["SELECT * FROM journal_posts
+                   ORDER BY post_date DESC, created_at DESC
+                   LIMIT ? OFFSET ?"
+                  (int (or limit 20)) (int (or offset 0))]))
+
+(defn get-post-by-id [datasource post-id]
+  (safe-execute-one! datasource
+                     ["SELECT * FROM journal_posts WHERE id = ?::uuid" post-id]))
+
+(defn update-post [datasource {:keys [id post-date title content tag]}]
+  (safe-execute-one! datasource
+                     ["UPDATE journal_posts SET
+                       post_date = COALESCE(?::date, post_date),
+                       title = COALESCE(?::text, title),
+                       content = COALESCE(?::text, content),
+                       tag = COALESCE(?::text, tag),
+                       updated_at = NOW()
+                       WHERE id = ?::uuid
+                       RETURNING *"
+                      post-date title content tag id]))
+
+(defn delete-post [datasource post-id]
+  (safe-execute-one! datasource
+                     ["DELETE FROM journal_posts WHERE id = ?::uuid RETURNING *"
+                      post-id]))
+
+(defn create-journal-attachment [datasource {:keys [post-id file-name file-path file-size content-type]}]
+  (safe-execute-one! datasource
+                     ["INSERT INTO journal_attachments (post_id, file_name, file_path, file_size, content_type)
+                       VALUES (?::uuid, ?::text, ?::text, ?::bigint, ?::text)
+                       RETURNING *"
+                      post-id file-name file-path file-size content-type]))
+
+(defn get-attachments-for-posts
+  "Fetch attachments for a collection of post ids in a single query."
+  [datasource post-ids]
+  (if (empty? post-ids)
+    []
+    (let [placeholders (->> (repeat (count post-ids) "?::uuid")
+                            (interpose ", ")
+                            (apply str))
+          query (str "SELECT * FROM journal_attachments
+                      WHERE post_id IN (" placeholders ")
+                      ORDER BY created_at ASC")]
+      (safe-execute! datasource (into [query] post-ids)))))
+
+(defn get-attachment-by-id [datasource attachment-id]
+  (safe-execute-one! datasource
+                     ["SELECT * FROM journal_attachments WHERE id = ?::uuid"
+                      attachment-id]))
+
+(defn delete-attachment [datasource attachment-id]
+  (safe-execute-one! datasource
+                     ["DELETE FROM journal_attachments WHERE id = ?::uuid RETURNING *"
+                      attachment-id]))
+
 (comment
   (def conf (aicn.system/get-config :local))
   (jdbc->hk-config (get-in conf [:db/pg :jdbc]))
