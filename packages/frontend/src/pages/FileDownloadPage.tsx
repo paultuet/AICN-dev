@@ -3,6 +3,15 @@ import { useIsAdmin } from "@/contexts/AuthContext";
 import api from "@/services/api";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+import {
+  Button,
+  Panel,
+  PageHead,
+  SectionRule,
+  Eyebrow,
+  LoadingSpinner,
+} from "@/components/ui";
+import { Upload, Download, Trash2, X, Tag, Calendar, HardDrive } from "lucide-react";
 
 const FILE_CATEGORIES = [
   "Documentation Générale",
@@ -210,86 +219,74 @@ const FileDownloadPage: React.FC = () => {
     return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">
-          Gestion des fichiers
-        </h1>
+  const totalFiles = allFiles.length;
 
+  return (
+    <div className="view relative w-full max-w-[1480px] mx-auto px-5 md:px-7 py-8 pb-20 min-h-screen">
+      <PageHead
+        eyebrow="Gestion documentaire"
+        title="Fichiers"
+        sub="Déposez et partagez les livrables du projet : modèles de données, dictionnaires, notes et inventaires."
+        stats={[{ value: totalFiles, label: "Fichiers" }]}
+      />
+
+      <div className={`grid gap-6 items-start ${isAdmin ? "lg:grid-cols-[380px_1fr]" : ""}`}>
         {/* Admin Upload Form */}
         {isAdmin && (
-          <div className="bg-white shadow rounded-lg p-6 mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Uploader un nouveau fichier
-            </h2>
+          <Panel ticks padded className="lg:sticky lg:top-[84px]">
+            <SectionRule icon={<Upload size={16} />}>Nouveau dépôt</SectionRule>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
+                <Eyebrow className="mb-1.5">Fichiers</Eyebrow>
                 <label
                   htmlFor="file-input"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block border border-dashed border-hair-strong rounded-lg p-5 text-center cursor-pointer hover:border-brand hover:bg-accent-soft transition-colors"
                 >
-                  Fichiers
+                  <Upload className="mx-auto text-ink-3 mb-2" size={22} />
+                  <div className="text-sm text-ink-2">Glisser des fichiers ici ou cliquer pour parcourir</div>
+                  <div className="text-xs text-ink-4 mt-1">plusieurs fichiers acceptés</div>
                 </label>
                 <input
                   id="file-input"
                   type="file"
                   multiple
                   onChange={handleFilesChange}
-                  className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                  className="hidden"
                   disabled={uploadLoading}
                 />
-                <p className="mt-1 text-xs text-gray-500">
-                  Vous pouvez sélectionner plusieurs fichiers
-                </p>
               </div>
 
               {/* Liste des fichiers sélectionnés avec leurs titres */}
               {fileUploads.length > 0 && (
                 <div className="space-y-3">
-                  <h3 className="text-sm font-medium text-gray-700">
-                    Fichiers à uploader ({fileUploads.length})
-                  </h3>
+                  <Eyebrow>Fichiers à uploader ({fileUploads.length})</Eyebrow>
                   {fileUploads.map((fileUpload, index) => (
                     <div
                       key={index}
-                      className="flex gap-2 items-start p-3 bg-gray-50 rounded-lg"
+                      className="flex gap-2 items-start p-3 bg-panel-2 border border-hair rounded-lg"
                     >
-                      <div className="flex-1 space-y-2">
-                        <p className="text-sm font-medium text-gray-900">
+                      <div className="flex-1 space-y-2 min-w-0">
+                        <p className="text-sm font-medium text-ink truncate">
                           {fileUpload.file.name}
                         </p>
                         <input
                           type="text"
                           placeholder="Titre du fichier"
                           value={fileUpload.title}
-                          onChange={(e) =>
-                            handleTitleChange(index, e.target.value)
-                          }
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          onChange={(e) => handleTitleChange(index, e.target.value)}
+                          className="w-full px-3 py-2 bg-panel border border-hair rounded-md text-sm text-ink placeholder:text-ink-4 focus:outline-none focus:border-brand focus:ring-[3px] focus:ring-accent-soft"
                           disabled={uploadLoading}
                         />
                       </div>
                       <button
                         type="button"
                         onClick={() => handleRemoveFile(index)}
-                        className="mt-1 text-red-600 hover:text-red-800"
+                        className="mt-1 text-ink-3 hover:text-danger transition-colors"
                         disabled={uploadLoading}
+                        aria-label="Retirer le fichier"
                       >
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
+                        <X size={18} />
                       </button>
                     </div>
                   ))}
@@ -297,17 +294,12 @@ const FileDownloadPage: React.FC = () => {
               )}
 
               <div>
-                <label
-                  htmlFor="category"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Catégorie
-                </label>
+                <Eyebrow className="mb-1.5">Catégorie</Eyebrow>
                 <select
                   id="category"
                   value={category}
                   onChange={(e) => setCategory(e.target.value as FileCategory)}
-                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full px-3 py-2 bg-panel-2 border border-hair rounded-lg text-sm text-ink focus:outline-none focus:border-brand focus:bg-panel focus:ring-[3px] focus:ring-accent-soft"
                   disabled={uploadLoading}
                 >
                   <option value="">Sélectionner une catégorie</option>
@@ -320,137 +312,130 @@ const FileDownloadPage: React.FC = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="version"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Version
-                </label>
+                <Eyebrow className="mb-1.5">Version</Eyebrow>
                 <input
                   id="version"
                   type="text"
                   value={version}
                   onChange={(e) => setVersion(e.target.value)}
-                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  placeholder="ex: 1.0.0"
+                  className="block w-full px-3 py-2 bg-panel-2 border border-hair rounded-lg text-sm text-ink placeholder:text-ink-4 focus:outline-none focus:border-brand focus:bg-panel focus:ring-[3px] focus:ring-accent-soft"
+                  placeholder="ex : 1.0.0"
                   disabled={uploadLoading}
                 />
               </div>
 
               <div>
-                <label
-                  htmlFor="upload-date"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Date d'upload
-                </label>
+                <Eyebrow className="mb-1.5">Date d'upload</Eyebrow>
                 <input
                   id="upload-date"
                   type="date"
                   value={uploadDate}
                   onChange={(e) => setUploadDate(e.target.value)}
-                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full px-3 py-2 bg-panel-2 border border-hair rounded-lg text-sm text-ink focus:outline-none focus:border-brand focus:bg-panel focus:ring-[3px] focus:ring-accent-soft"
                   disabled={uploadLoading}
                 />
               </div>
 
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded">
+                <div className="bg-danger-soft border border-danger/30 text-danger px-4 py-3 rounded-lg text-sm">
                   {error}
                 </div>
               )}
 
               {success && (
-                <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded">
+                <div className="bg-panel-2 border border-ok/30 text-ok px-4 py-3 rounded-lg text-sm">
                   {success}
                 </div>
               )}
 
-              <button
+              <Button
                 type="submit"
+                variant="primary"
+                fullWidth
+                isLoading={uploadLoading}
                 disabled={uploadLoading || fileUploads.length === 0}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                icon={<Upload size={16} />}
               >
                 {uploadLoading
-                  ? "Upload en cours..."
+                  ? "Upload en cours…"
                   : `Uploader ${fileUploads.length > 0 ? `(${fileUploads.length})` : ""}`}
-              </button>
+              </Button>
             </form>
-          </div>
+          </Panel>
         )}
 
         {/* Files List Display */}
-        <div className="bg-white shadow rounded-lg p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Fichiers disponibles au téléchargement
-          </h2>
+        <div className="min-w-0">
+          <SectionRule>
+            <Eyebrow>Fichiers disponibles au téléchargement</Eyebrow>
+          </SectionRule>
 
           {loading ? (
-            <div className="flex justify-center py-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
-            </div>
+            <LoadingSpinner size="lg" className="py-10" />
           ) : allFiles.length > 0 ? (
-            <div className="space-y-6">
+            <div className="space-y-7">
               {/* Grouper les fichiers par catégorie */}
               {[...FILE_CATEGORIES, "Sans catégorie"].map((cat) => {
                 const categoryFiles = allFiles.filter((file) =>
-                  cat === "Sans catégorie"
-                    ? !file.category
-                    : file.category === cat,
+                  cat === "Sans catégorie" ? !file.category : file.category === cat,
                 );
 
                 if (categoryFiles.length === 0) return null;
 
                 return (
                   <div key={cat} className="space-y-3">
-                    <h3 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
-                      {cat} ({categoryFiles.length})
-                    </h3>
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm font-semibold text-ink">{cat}</span>
+                      <span className="font-mono text-xs text-ink-3">{categoryFiles.length}</span>
+                      <span className="flex-1 h-px bg-hair" />
+                    </div>
                     {categoryFiles.map((file) => (
                       <div
                         key={file.id}
-                        className="border rounded-lg p-4 bg-gray-50"
+                        className="flex items-start justify-between gap-4 border border-hair rounded-xl bg-panel p-4 hover:shadow-panel transition-shadow"
                       >
-                        <div className="flex justify-between items-start">
-                          <div className="space-y-2 flex-1">
-                            {file.title && (
-                              <h4 className="text-base font-semibold text-gray-900">
-                                {file.title}
-                              </h4>
-                            )}
-                            <p className="font-medium text-gray-700">
-                              {file.fileName}
-                            </p>
-                            <div className="text-sm text-gray-600 space-y-1">
-                              <p>Version: {file.version}</p>
-                              <p>
-                                Date d'upload:{" "}
-                                {format(
-                                  new Date(file.uploadDate),
-                                  "dd MMMM yyyy",
-                                  { locale: fr },
-                                )}
-                              </p>
-                              <p>Taille: {formatFileSize(file.fileSize)}</p>
-                            </div>
+                        <div className="min-w-0 space-y-1">
+                          {file.title && (
+                            <h4 className="text-[15px] font-semibold text-ink break-words">
+                              {file.title}
+                            </h4>
+                          )}
+                          <p className="font-mono text-[13px] text-ink-2 break-all">
+                            {file.fileName}
+                          </p>
+                          <div className="flex flex-wrap gap-4 pt-1 text-xs text-ink-3 font-mono">
+                            <span className="inline-flex items-center gap-1">
+                              <Tag size={13} /> {file.version}
+                            </span>
+                            <span className="inline-flex items-center gap-1">
+                              <Calendar size={13} />{" "}
+                              {format(new Date(file.uploadDate), "dd MMM yyyy", { locale: fr })}
+                            </span>
+                            <span className="inline-flex items-center gap-1">
+                              <HardDrive size={13} /> {formatFileSize(file.fileSize)}
+                            </span>
                           </div>
+                        </div>
 
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => handleDownload(file)}
-                              className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        <div className="flex gap-2 shrink-0">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            icon={<Download size={15} />}
+                            onClick={() => handleDownload(file)}
+                          >
+                            Télécharger
+                          </Button>
+                          {isAdmin && (
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              onClick={() => handleDelete(file)}
+                              aria-label="Supprimer"
                             >
-                              Télécharger
-                            </button>
-                            {isAdmin && (
-                              <button
-                                onClick={() => handleDelete(file)}
-                                className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                              >
-                                Supprimer
-                              </button>
-                            )}
-                          </div>
+                              <Trash2 size={15} />
+                            </Button>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -459,9 +444,7 @@ const FileDownloadPage: React.FC = () => {
               })}
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-8">
-              Aucun fichier disponible pour le moment
-            </p>
+            <p className="empty">Aucun fichier disponible pour le moment</p>
           )}
         </div>
       </div>
