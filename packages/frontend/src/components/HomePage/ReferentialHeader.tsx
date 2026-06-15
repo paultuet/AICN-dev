@@ -36,7 +36,7 @@ const ReferentialHeader: React.FC<ReferentialHeaderProps> = ({
   isConversationsEnabled
 }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-gray-400">
+    <div className="bg-panel shadow-panel rounded-xl p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 border border-hair ticks">
       <div className="flex flex-col gap-6">
         <div className="flex flex-col md:flex-row gap-6">
           <SearchBar

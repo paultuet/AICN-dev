@@ -11,6 +11,7 @@ import {
   ReferentialContent,
   ConversationSidebarContainer,
 } from '@/components/HomePage';
+import { PageHead } from '@/components/ui';
 
 /**
  * Page d'accueil affichant les référentiels et les conversations
@@ -133,16 +134,20 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="relative w-full sm:px-3 md:px-4 py-4 sm:py-6 bg-gray-100 min-h-screen">
+    <div className="view relative w-full max-w-[1480px] mx-auto px-4 sm:px-6 md:px-7 py-6 md:py-8 pb-20 min-h-screen">
       {isConversationsFeatureEnabled && (
         <ConversationSidebarContainer
           referentials={referentials}
         />
       )}
 
-      <h1 className="text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 text-primary">
-        Référentiels FIDJI - AICN
-      </h1>
+      <PageHead
+        eyebrow="Dictionnaire de données"
+        title="Référentiels"
+        accent="FIDJI · AICN"
+        sub="Structure hiérarchique du modèle de données d'interopérabilité — équipements, maintenance, énergie et documentation."
+        stats={[{ value: referentials.length, label: 'Entités N1' }]}
+      />
 
       <ReferentialHeader
         searchTerm={searchTerm}
