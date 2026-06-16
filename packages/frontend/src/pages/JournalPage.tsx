@@ -18,8 +18,8 @@ import {
   useDeleteJournalPost,
   useJournalPosts,
 } from "@/hooks/useJournalPosts";
-import { useJournalTags } from "@/hooks/useJournalTags";
 import { JournalAttachment, JournalPost } from "@/types/journal";
+import { FILE_CATEGORIES } from "@/constants/fileCategories";
 import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 const JournalPostFormModal = React.lazy(
@@ -45,7 +45,6 @@ const formatDate = (d: string): string => {
 const JournalPage: React.FC = () => {
   const isAdmin = useIsAdmin();
   const { data: posts = [], isLoading, error } = useJournalPosts();
-  const { data: tags = [] } = useJournalTags();
   const deletePostMut = useDeleteJournalPost();
   const deleteAttMut = useDeleteJournalAttachment();
 
@@ -54,13 +53,13 @@ const JournalPage: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<JournalPost | null>(null);
 
-  // Union of the synced vocabulary with tags actually present on posts, so a tag
-  // renamed/removed in Airtable still remains a usable filter for old posts.
+  // Categories list (same as the Documents page) plus any tag actually present on
+  // a post, so an older/edited tag still remains a usable filter.
   const tagOptions = useMemo(() => {
-    const set = new Set<string>(tags);
+    const set = new Set<string>(FILE_CATEGORIES);
     posts.forEach((p) => p.tag && set.add(p.tag));
-    return Array.from(set).sort((a, b) => a.localeCompare(b, "fr"));
-  }, [tags, posts]);
+    return Array.from(set);
+  }, [posts]);
 
   const filteredPosts = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -244,7 +243,6 @@ const JournalPage: React.FC = () => {
             isOpen={modalOpen}
             onClose={() => setModalOpen(false)}
             post={editing}
-            tags={tags}
           />
         </Suspense>
       )}

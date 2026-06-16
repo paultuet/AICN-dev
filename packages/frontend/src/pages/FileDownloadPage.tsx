@@ -12,21 +12,7 @@ import {
   LoadingSpinner,
 } from "@/components/ui";
 import { Upload, Download, Trash2, X, Tag, Calendar, HardDrive } from "lucide-react";
-
-const FILE_CATEGORIES = [
-  "Documentation Générale",
-  "Nomenclature des missions et responsabilités AM<>PM",
-  "RIO - Inventaires d’équipements",
-  "RIO - Inventaires d’espaces",
-  "RIO - Inventaires de contrats",
-  "RIO - Inventaires de tiers",
-  "RIO - Inventaires de systèmes",
-  "RIO - Plans de comptage électriques",
-  "RIO - PPAT",
-  "RIO - Rapports d’observations de bureaux de contrôle",
-  "RIO - Historiques de consommation énergétique",
-] as const;
-type FileCategory = (typeof FILE_CATEGORIES)[number];
+import { FILE_CATEGORIES, type FileCategory } from "@/constants/fileCategories";
 
 interface FileInfo {
   id: string;

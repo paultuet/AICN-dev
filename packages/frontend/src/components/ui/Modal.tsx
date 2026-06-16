@@ -11,7 +11,9 @@ interface ModalProps {
 }
 
 /**
- * Modal/Dialog component with configurable size and actions
+ * Modal/Dialog component with configurable size and actions.
+ * Uses the design-system tokens (panel/hair/ink) and an explicit z-index on the
+ * panel so it always paints above the backdrop.
  */
 const Modal: React.FC<ModalProps> = ({
   isOpen,
@@ -61,28 +63,27 @@ const Modal: React.FC<ModalProps> = ({
 
   return createPortal(
     <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4 text-center">
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
-          aria-hidden="true"
-        />
-        
+      {/* Backdrop */}
+      <div className="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true" />
+
+      {/* Centering container */}
+      <div className="flex min-h-full items-start justify-center p-4 sm:p-6">
         <div
           ref={modalRef}
-          className={`transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all ${sizeClasses[size]}`}
+          className={`relative z-10 my-4 w-full ${sizeClasses[size]} overflow-hidden rounded-lg border border-hair bg-panel text-left shadow-pop`}
         >
           {title && (
-            <div className="bg-gray-50 px-4 py-3 sm:px-6 border-b border-gray-200">
-              <h3 className="text-lg font-medium text-gray-900">{title}</h3>
+            <div className="bg-panel-2 px-4 py-3 sm:px-6 border-b border-hair">
+              <h3 className="text-lg font-semibold text-ink">{title}</h3>
             </div>
           )}
-          
+
           <div className="px-4 py-4 sm:px-6">
             {children}
           </div>
-          
+
           {actions && (
-            <div className="bg-gray-50 px-4 py-3 sm:px-6 border-t border-gray-200 flex justify-end space-x-2">
+            <div className="bg-panel-2 px-4 py-3 sm:px-6 border-t border-hair flex justify-end gap-2">
               {actions}
             </div>
           )}

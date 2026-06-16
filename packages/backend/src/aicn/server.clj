@@ -57,7 +57,10 @@
   (fn [request]
     (let [response (handler request)]
       (-> response
-          (assoc-in [:headers "X-Frame-Options"] "DENY")
+          ;; SAMEORIGIN (au lieu de DENY) pour autoriser l'app à encadrer ses
+          ;; propres pages statiques (ex. iframe du Simulateur DC). Le framing
+          ;; cross-origin reste interdit.
+          (assoc-in [:headers "X-Frame-Options"] "SAMEORIGIN")
           (assoc-in [:headers "X-Content-Type-Options"] "nosniff")
           (assoc-in [:headers "Referrer-Policy"] "strict-origin-when-cross-origin")
           (assoc-in [:headers "Strict-Transport-Security"] "max-age=31536000; includeSubDomains")))))

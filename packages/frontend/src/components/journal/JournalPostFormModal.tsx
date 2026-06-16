@@ -7,14 +7,16 @@ import {
   useUploadJournalAttachments,
 } from "@/hooks/useJournalPosts";
 import { JournalPost } from "@/types/journal";
+import { FILE_CATEGORIES } from "@/constants/fileCategories";
 import { isHtmlEmpty, sanitizeHtml } from "@/utils/sanitizeHtml";
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
   post?: JournalPost | null;
-  tags: string[];
 }
+
+const TAG_OPTIONS = FILE_CATEGORIES.map((c) => ({ value: c, label: c }));
 
 const todayStr = () => new Date().toISOString().slice(0, 10);
 
@@ -23,7 +25,7 @@ const extractError = (e: unknown): string => {
   return err?.response?.data?.error || err?.message || "Une erreur est survenue.";
 };
 
-const JournalPostFormModal: React.FC<Props> = ({ isOpen, onClose, post, tags }) => {
+const JournalPostFormModal: React.FC<Props> = ({ isOpen, onClose, post }) => {
   const createMut = useCreateJournalPost();
   const updateMut = useUpdateJournalPost();
   const uploadMut = useUploadJournalAttachments();
@@ -81,7 +83,7 @@ const JournalPostFormModal: React.FC<Props> = ({ isOpen, onClose, post, tags }) 
       if (files.length > 0) {
         try {
           await uploadMut.mutateAsync({ postId: persisted.id, files });
-        } catch (e) {
+        } catch {
           // Post is saved; only the attachments failed. Keep the modal open so
           // the admin can retry (savedPost is set → no duplicate post).
           setWarning(
@@ -109,7 +111,7 @@ const JournalPostFormModal: React.FC<Props> = ({ isOpen, onClose, post, tags }) 
           <Button variant="outline" onClick={onClose} disabled={submitting}>
             Annuler
           </Button>
-          <Button variant="secondary" onClick={handleSubmit} isLoading={submitting}>
+          <Button variant="primary" onClick={handleSubmit} isLoading={submitting}>
             Enregistrer
           </Button>
         </>
@@ -132,53 +134,42 @@ const JournalPostFormModal: React.FC<Props> = ({ isOpen, onClose, post, tags }) 
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        {tags.length > 0 ? (
-          <SelectInput
-            label="Tag"
-            fullWidth
-            placeholder="Sélectionner un tag"
-            value={tag}
-            onChange={setTag}
-            options={tags.map((t) => ({ value: t, label: t }))}
-          />
-        ) : (
-          <TextInput
-            label="Tag"
-            fullWidth
-            value={tag}
-            placeholder="Tag"
-            helpText="La liste de tags n'est pas encore synchronisée depuis Airtable."
-            onChange={(e) => setTag(e.target.value)}
-          />
-        )}
+        <SelectInput
+          label="Tag"
+          fullWidth
+          placeholder="Sélectionner un tag"
+          value={tag}
+          onChange={setTag}
+          options={TAG_OPTIONS}
+        />
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             Contenu
           </label>
           <RichTextEditor value={content} onChange={setContent} />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             Pièces jointes (optionnel)
           </label>
           <input
             type="file"
             multiple
             onChange={handleFilesChange}
-            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+            className="block w-full text-sm text-ink-2 border border-hair rounded-lg cursor-pointer bg-panel-2 focus:outline-none"
             disabled={submitting}
           />
           {files.length > 0 && (
-            <ul className="mt-2 text-sm text-gray-600 list-disc pl-5">
+            <ul className="mt-2 text-sm text-ink-2 list-disc pl-5">
               {files.map((f, i) => (
                 <li key={i}>{f.name}</li>
               ))}
             </ul>
           )}
           {post && (
-            <p className="mt-1 text-xs text-gray-500">
+            <p className="mt-1 text-xs text-ink-3">
               Les pièces jointes existantes se gèrent depuis la carte du post.
             </p>
           )}
