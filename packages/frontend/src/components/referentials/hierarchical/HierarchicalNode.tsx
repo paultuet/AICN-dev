@@ -6,6 +6,11 @@ import { ChevronRight, ChevronDown, ChatBubbleIcon } from "@/components/icons";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useLovNew } from "@/hooks/useLovNew";
 import {
+  MIN_COLUMN_WIDTH,
+  setColumnWidth,
+  useColumnWidths,
+} from "./useColumnWidths";
+import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -420,6 +425,74 @@ const TruncatedCell: React.FC<{ text?: string | null }> = ({ text }) => {
   );
 };
 
+// Column definitions for the fields table. `key` identifies the column in the
+// shared session width store; `defaultWidth` (px) is used until the user drags a
+// column edge. Cell order in <FieldRow> must stay in sync with this list.
+interface FieldColumn {
+  key: string;
+  label: string;
+  defaultWidth: number;
+  center?: boolean;
+}
+
+const FIELD_COLUMNS: FieldColumn[] = [
+  { key: "code-champ", label: "Code champ", defaultWidth: 110 },
+  { key: "libelle", label: "Libellé du champ", defaultWidth: 200 },
+  { key: "commentaire", label: "Commentaire", defaultWidth: 260 },
+  { key: "nom-champ-code", label: "Nom du champ codé", defaultWidth: 170 },
+  { key: "type-donnee", label: "Type de donnée", defaultWidth: 120 },
+  { key: "cle-primaire", label: "PK", defaultWidth: 60, center: true },
+  { key: "cle-etrangere", label: "FK", defaultWidth: 140 },
+  { key: "champ-multivalue", label: "Multivalué", defaultWidth: 100, center: true },
+  { key: "exemple", label: "Exemple", defaultWidth: 90, center: true },
+  { key: "notes", label: "Notes", defaultWidth: 80, center: true },
+];
+
+const CONV_COLUMN: FieldColumn = { key: "conv", label: "Conv.", defaultWidth: 80, center: true };
+
+/**
+ * Drag handle on the right edge of a column header. Dragging updates the shared
+ * session width store (in-memory, not persisted). Uses pointer events so it
+ * works with mouse and touch.
+ */
+const ColumnResizeHandle: React.FC<{ columnKey: string; width: number }> = ({
+  columnKey,
+  width,
+}) => {
+  const handlePointerDown = (e: React.PointerEvent<HTMLSpanElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const startX = e.clientX;
+    const startWidth = width;
+
+    const handleMove = (ev: PointerEvent) => {
+      setColumnWidth(columnKey, startWidth + (ev.clientX - startX));
+    };
+    const handleUp = () => {
+      window.removeEventListener("pointermove", handleMove);
+      window.removeEventListener("pointerup", handleUp);
+      document.body.style.cursor = "";
+      document.body.style.userSelect = "";
+    };
+
+    window.addEventListener("pointermove", handleMove);
+    window.addEventListener("pointerup", handleUp);
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+  };
+
+  return (
+    <span
+      role="separator"
+      aria-orientation="vertical"
+      aria-label="Redimensionner la colonne"
+      onPointerDown={handlePointerDown}
+      onClick={(e) => e.stopPropagation()}
+      className="absolute top-0 right-0 z-10 h-full w-1.5 cursor-col-resize select-none touch-none hover:bg-blue-400/70 active:bg-blue-500"
+    />
+  );
+};
+
 const FieldsTable: React.FC<FieldsTableProps> = ({
   fields,
   searchTerm,
@@ -431,38 +504,37 @@ const FieldsTable: React.FC<FieldsTableProps> = ({
   isConversationFeatureEnabled,
 }) => {
   const { data: lovNewData } = useLovNew();
+  const columnWidths = useColumnWidths();
+
+  const columns = isConversationFeatureEnabled
+    ? [...FIELD_COLUMNS, CONV_COLUMN]
+    : FIELD_COLUMNS;
+  const widthOf = (column: FieldColumn) =>
+    columnWidths[column.key] ?? column.defaultWidth;
+  const totalWidth = columns.reduce((sum, column) => sum + widthOf(column), 0);
 
   return (
     <div className="overflow-x-auto border-t border-gray-200">
-      <table className="w-full text-sm table-fixed">
+      <table
+        className="text-sm table-fixed"
+        style={{ width: totalWidth, minWidth: "100%" }}
+      >
         <colgroup>
-          <col style={{ width: '7%' }} />
-          <col style={{ width: '14%' }} />
-          <col style={{ width: '19%' }} />
-          <col style={{ width: '12%' }} />
-          <col style={{ width: '9%' }} />
-          <col style={{ width: '4%' }} />
-          <col style={{ width: '9%' }} />
-          <col style={{ width: '6%' }} />
-          <col style={{ width: '6%' }} />
-          <col style={{ width: '6%' }} />
-          {isConversationFeatureEnabled && <col style={{ width: '6%' }} />}
+          {columns.map((column) => (
+            <col key={column.key} style={{ width: widthOf(column), minWidth: MIN_COLUMN_WIDTH }} />
+          ))}
         </colgroup>
         <thead>
           <tr className="bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            <th className="px-3 py-2">Code champ</th>
-            <th className="px-3 py-2">Libellé du champ</th>
-            <th className="px-3 py-2">Commentaire</th>
-            <th className="px-3 py-2">Nom du champ codé</th>
-            <th className="px-3 py-2">Type de donnée</th>
-            <th className="px-3 py-2">PK</th>
-            <th className="px-3 py-2">FK</th>
-            <th className="px-3 py-2 text-center">Multivalué</th>
-            <th className="px-3 py-2 text-center">Exemple</th>
-            <th className="px-3 py-2 text-center">Notes</th>
-            {isConversationFeatureEnabled && (
-              <th className="px-3 py-2 text-center">Conv.</th>
-            )}
+            {columns.map((column) => (
+              <th
+                key={column.key}
+                className={`relative px-3 py-2 ${column.center ? "text-center" : ""}`}
+              >
+                <span className="block truncate">{column.label}</span>
+                <ColumnResizeHandle columnKey={column.key} width={widthOf(column)} />
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-100">
