@@ -20,7 +20,6 @@ import ResetPasswordPage from "@/pages/ResetPasswordPage";
 import AdminApprovePage from "@/pages/AdminApprovePage";
 import FileDownloadPage from "@/pages/FileDownloadPage";
 import JournalPage from "@/pages/JournalPage";
-import SimulateurDcPage from "@/pages/SimulateurDcPage";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useAuth, useIsAdmin } from "@/contexts/AuthContext";
 import { track } from "@/services/telemetry";
@@ -161,7 +160,6 @@ function Root() {
           {isAdmin && <Route path="admin" element={<AdminPage />} />}
           <Route path="files" element={<FileDownloadPage />} />
           <Route path="journal" element={<JournalPage />} />
-          <Route path="simulateur" element={<SimulateurDcPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>
