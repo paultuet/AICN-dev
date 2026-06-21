@@ -112,9 +112,11 @@
                                     core/get-all-referentiels-interceptor]
                      :responses {200 {:body :any}
                                  401 {:body :any}}
-                     :handler (fn [{:keys [aicn/all-referentiels]}]
+                     :handler (fn [{:keys [aicn/all-referentiels aicn/sync-stats aicn/journal-tags-sync]}]
                                 {:status 200
-                                 :body all-referentiels})}}]
+                                 :body {:referentiels all-referentiels
+                                        :stats sync-stats
+                                        :journal-tags journal-tags-sync}})}}]
 
     ["/admin/users" {:get {:summary "Get all users (admin only)"
                            :interceptors [(auth/restrict-role-interceptor :ADMIN)]

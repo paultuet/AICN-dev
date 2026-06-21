@@ -9,10 +9,24 @@ const AirtableSync = () => {
   const queryClient = useQueryClient();
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncStatus, setSyncStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [syncMessage, setSyncMessage] = useState<string>('');
 
   if (!user || user.role !== 'ADMIN') {
     return null;
   }
+
+  // Build a human summary of what actually came in, e.g.
+  // "lov_new : 218 lignes, 17 listes · Tables Sources : 396 lignes"
+  const summariseStats = (stats: unknown): string => {
+    if (!stats || typeof stats !== 'object') return '';
+    return Object.entries(stats as Record<string, { records?: number; 'lov-tables'?: number }>)
+      .map(([table, s]) => {
+        const rows = `${s?.records ?? 0} ligne${(s?.records ?? 0) > 1 ? 's' : ''}`;
+        const lists = s?.['lov-tables'] != null ? `, ${s['lov-tables']} listes` : '';
+        return `${table} : ${rows}${lists}`;
+      })
+      .join(' · ');
+  };
 
   const handleSync = async () => {
     if (!window.confirm("Voulez-vous synchroniser les données depuis Airtable ?")) {
@@ -21,16 +35,28 @@ const AirtableSync = () => {
 
     setIsSyncing(true);
     setSyncStatus('idle');
+    setSyncMessage('');
     try {
-      await api.post("/sync");
-      // Invalider le cache pour forcer le rechargement des référentiels
-      await queryClient.invalidateQueries({ queryKey: ['referentials'] });
+      const res = await api.post("/sync");
+      // Invalider les caches pour forcer le rechargement des données Airtable :
+      // les référentiels ET les listes de valeurs (LOV), sinon les popups LOV
+      // continuent d'afficher l'ancien cache navigateur après la synchro.
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['referentials'] }),
+        queryClient.invalidateQueries({ queryKey: ['lov-new'] }),
+      ]);
+      setSyncMessage(summariseStats(res?.data?.stats));
       setSyncStatus('success');
-      setTimeout(() => setSyncStatus('idle'), 3000);
+      setTimeout(() => setSyncStatus('idle'), 8000);
     } catch (error) {
+      // Surface the real backend error (POST /sync returns {error: {message ...}} on 500)
+      // instead of a silent generic message, so a failing sync is diagnosable.
+      const axiosErr = error as { response?: { data?: { error?: { message?: string } } } };
+      const detail = axiosErr?.response?.data?.error?.message;
       console.error('Sync error:', error);
+      setSyncMessage(detail ? `Échec : ${detail}` : '');
       setSyncStatus('error');
-      setTimeout(() => setSyncStatus('idle'), 5000);
+      setTimeout(() => setSyncStatus('idle'), 10000);
     } finally {
       setIsSyncing(false);
     }
@@ -59,6 +85,11 @@ const AirtableSync = () => {
           <span className="text-red-800 font-medium">Erreur lors de la synchronisation</span>
         )}
       </div>
+      {syncMessage && (
+        <p className={`text-xs ${syncStatus === 'error' ? 'text-red-900' : 'text-green-900'}`}>
+          {syncMessage}
+        </p>
+      )}
     </div>
   );
 }

@@ -115,11 +115,33 @@
     (io/make-parents f)
     f))
 
-(defn sync-tables [auth tables]
-  (doseq [table tables]
-    (let [data (fetch-all auth table)
-          filename (str (str/replace table #" " "-") ".json")]
-      (spit-json (write-data-file filename) data))))
+(defn- table-sync-stats
+  "Per-table sync stats for observability. For lov_new, also report the number of
+   distinct lov_table groups, since that is what drives the LOV popups in the UI
+   (a popup is empty when its lov_table has no rows in the cache)."
+  [table data]
+  (cond-> {:records (count data)}
+    (= table (:lov-new table-names))
+    (assoc :lov-tables (->> data
+                            (keep #(get-in % [:fields :lov_table]))
+                            distinct
+                            count))))
+
+(defn sync-tables
+  "Fetch each table from Airtable and overwrite its JSON cache file.
+   Returns a map of table-name -> stats (record counts) so callers can surface
+   what actually came in and detect a partial/empty sync."
+  [auth tables]
+  (reduce
+   (fn [acc table]
+     (let [data     (fetch-all auth table)
+           filename (str (str/replace table #" " "-") ".json")
+           stats    (table-sync-stats table data)]
+       (spit-json (write-data-file filename) data)
+       (logger/info (str "Airtable sync: " table " -> " (pr-str stats)))
+       (assoc acc table stats)))
+   {}
+   tables))
 
 ;; ---------------------------------------------------------------------------
 ;; File reading

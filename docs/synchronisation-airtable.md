@@ -8,23 +8,33 @@ La synchronisation récupère **toutes les données** depuis Airtable et **rempl
 
 ### Tables synchronisées
 
-- `liens-niveaux` - Mappings hiérarchiques (NIV1 → NIV2 → NIV3 → NIV4)
-- `lov` - Listes de valeurs
-- `cat_ref` - Catégories de référence
-- `ref_list` - Liste maîtresse des enregistrements
+- `Tables Sources` — structure des référentiels (entités, champs, clés étrangères / références LOV)
+- `lov_new` — listes de valeurs (colonnes `id_code`, `Value`, `complement_value`, `lov_table`)
 
 ### Stockage des données
 
-Les données Airtable sont stockées dans des fichiers EDN (format Clojure) :
+Les données Airtable sont stockées dans des fichiers **JSON**, dans le répertoire défini par la
+variable d'environnement `DATA_DIR` :
+
+- En local : `packages/backend/resources/data/` (valeur par défaut)
+- En production (Fly.io) : `/data/cache`, sur le **volume persistant** (cf. `fly.toml`), pour que le
+  cache survive aux redémarrages de la machine.
+
 ```
-packages/backend/resources/data/
-├── ref_list.edn
-├── liens-niveaux.edn
-├── lov.edn
-└── cat_ref.edn
+$DATA_DIR/
+├── Tables-Sources.json
+└── lov_new.json
 ```
 
+Si aucune synchronisation n'a encore été lancée, l'application retombe sur une copie « seed » embarquée
+dans l'image Docker (les mêmes fichiers JSON committés au dépôt sous `packages/backend/resources/data/`).
+Une synchro réussie **remplace** le fichier sur le volume.
+
 **Important** : Ces données ne sont PAS stockées en base de données PostgreSQL.
+
+> Après une synchro, la réponse de `POST /api/sync` renvoie le nombre de lignes récupérées par table
+> (et, pour `lov_new`, le nombre de listes distinctes). C'est le moyen de vérifier qu'une synchro a bien
+> ramené les données attendues (ex. `lov_new : 218 lignes, 17 listes`).
 
 ---
 

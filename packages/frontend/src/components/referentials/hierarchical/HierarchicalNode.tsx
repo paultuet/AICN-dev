@@ -22,8 +22,10 @@ import CommentPopover from "@/components/comments/CommentPopover";
 function findLovNewEntries(fkValue: string, lovNewData: LovNewEntry[]): LovNewEntry[] {
   // Match on the `lov_table` column of lov_new, populated in Airtable.
   // FK example: "lov_types_mesures_surfaces.id_type_mesure_surface" → table = "lov_types_mesures_surfaces"
-  const fkTable = fkValue.split('.')[0];
-  return lovNewData.filter(e => e.lov_table === fkTable);
+  // Compare trimmed + case-insensitive as a safety net against accidental whitespace/casing
+  // drift in the Airtable data (distinct names like lov_omniclass_table23 vs _table_13 stay distinct).
+  const fkTable = (fkValue.split('.')[0] ?? '').trim().toLowerCase();
+  return lovNewData.filter(e => (e.lov_table ?? '').trim().toLowerCase() === fkTable);
 }
 
 interface HierarchicalNodeProps {
@@ -612,6 +614,11 @@ const FieldRow: React.FC<FieldRowProps> = ({
                   {entries.length === 0 ? (
                     <div className="p-6 text-sm text-gray-500 text-center">
                       Aucune entrée correspondante n'a été trouvée pour <span className="font-mono">{fk}</span>.
+                      <br />
+                      <span className="text-xs text-gray-400">
+                        Si la valeur existe dans Airtable, la synchronisation est peut-être à relancer
+                        (Admin → Airtable → « Synchroniser avec Airtable »).
+                      </span>
                     </div>
                   ) : (
                     <table className="min-w-full text-sm">

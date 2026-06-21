@@ -35,8 +35,11 @@
 (def sync-referentiels-from-airtable-interceptor
   {:enter (fn [ctx]
             (try
-              (airtable/sync-tables (get-in ctx [:request :adapter/airtable]) (airtable/get-tables-names))
-              (assoc-in ctx [:request :aicn/journal-tags-sync] (sync-journal-tags! ctx))
+              (let [stats (airtable/sync-tables (get-in ctx [:request :adapter/airtable])
+                                                (airtable/get-tables-names))]
+                (-> ctx
+                    (assoc-in [:request :aicn/sync-stats] stats)
+                    (assoc-in [:request :aicn/journal-tags-sync] (sync-journal-tags! ctx))))
               (catch Exception e
                 (let [error-details {:message (.getMessage e)
                                      :class (str (.getClass e))
