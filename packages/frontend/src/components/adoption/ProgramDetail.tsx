@@ -44,7 +44,7 @@ const ProgramDetail: React.FC<ProgramDetailProps> = ({
         {programme.name || "(sans nom)"}
       </h2>
       <Button variant="primary" onClick={onToggleRegister}>
-        {registerOpen ? "Masquer l'inscription" : "Inscrire des participants"}
+        {registerOpen ? "Masquer l'inscription" : "Inscrire des organisations"}
       </Button>
     </div>
 

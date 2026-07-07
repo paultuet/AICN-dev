@@ -4,8 +4,6 @@ import { Button, TextInput } from "@/components/ui";
 import { useToast } from "@/contexts/ToastContext";
 import { useSubmitRegistration } from "@/hooks/useAdoption";
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 interface RegistrationFormProps {
   programId: string;
   programName: string | null;
@@ -22,7 +20,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
 }) => {
   const { showToast } = useToast();
   const mutation = useSubmitRegistration();
-  // Addresses confirmed on the last successful submit (spec §3.4 — echo them back).
+  // Organizations confirmed on the last successful submit — echoed back.
   const [confirmed, setConfirmed] = useState<string[] | null>(null);
 
   const updateRow = (idx: number, value: string) => {
@@ -43,21 +41,17 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
   };
 
   const handleSubmit = () => {
-    const emails = rows.map((r) => r.trim()).filter(Boolean);
-    if (emails.length === 0) {
-      showToast("error", "Saisissez au moins une adresse email.");
+    const orgs = rows.map((r) => r.trim()).filter(Boolean);
+    if (orgs.length === 0) {
+      showToast("error", "Saisissez au moins une organisation.");
       return;
     }
-    if (emails.some((e) => !EMAIL_RE.test(e))) {
-      showToast("error", "Certaines adresses email sont invalides.");
-      return;
-    }
-    const unique = Array.from(new Set(emails));
+    const unique = Array.from(new Set(orgs));
     mutation.mutate(
-      { programId, programName, emails: unique },
+      { programId, programName, organizations: unique },
       {
         onSuccess: () => {
-          showToast("success", `${unique.length} participant(s) inscrit(s).`);
+          showToast("success", `${unique.length} organisation(s) inscrite(s).`);
           setConfirmed(unique);
           onRowsChange([""]);
         },
@@ -71,23 +65,23 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
   return (
     <div className="mb-6 rounded-xl border border-accent-line bg-accent-soft p-5">
       <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.04em] text-accent-ink">
-        Inscription de participants
+        Inscription d'organisations
       </h4>
 
       <div className="space-y-2">
         {rows.map((value, idx) => (
           <div key={idx} className="flex items-center gap-2">
             <TextInput
-              type="email"
+              type="text"
               fullWidth
-              placeholder="adresse@exemple.com"
+              placeholder="Nom de l'organisation"
               value={value}
               onChange={(e) => updateRow(idx, e.target.value)}
             />
             <Button
               variant="ghost"
               size="sm"
-              aria-label="Retirer cette adresse"
+              aria-label="Retirer cette organisation"
               onClick={() => removeRow(idx)}
               className="!px-2"
             >
@@ -99,7 +93,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
 
       <div className="mt-3 flex flex-wrap items-center gap-2.5">
         <Button variant="outline" size="sm" icon={<Plus size={15} />} onClick={addRow}>
-          Ajouter une adresse
+          Ajouter une organisation
         </Button>
         <Button
           variant="primary"
@@ -114,7 +108,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
       {confirmed && confirmed.length > 0 && (
         <div className="mt-3 rounded-lg border border-hair bg-panel p-3 text-[13px]">
           <div className="mb-1 flex items-center gap-1.5 font-semibold text-ok">
-            <Check size={15} /> {confirmed.length} participant(s) inscrit(s)
+            <Check size={15} /> {confirmed.length} organisation(s) inscrite(s)
           </div>
           <div className="text-ink-2">{confirmed.join(", ")}</div>
         </div>

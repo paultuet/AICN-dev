@@ -141,9 +141,9 @@
 
 ;; Program registration notification (adoption dashboards → admin)
 (defn build-program-registration-email
-  [base-url admin-email {:keys [program-name emails submitter-name submitter-email]}]
+  [base-url admin-email {:keys [program-name organizations submitter-name submitter-email]}]
   (let [template-data {:program-name program-name
-                       :emails emails
+                       :organizations organizations
                        :submitter-name submitter-name
                        :submitter-email submitter-email
                        :admin-url (str base-url "/admin")

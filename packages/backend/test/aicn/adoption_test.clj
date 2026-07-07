@@ -137,14 +137,14 @@
            (try (adopt/get-adoption-status-matrix {:token "" :app-id "app"})
                 (catch clojure.lang.ExceptionInfo e (:type (ex-data e))))))))
 
-;; --- Registration email cleaning (private fn accessed via var) ---
+;; --- Registration organization cleaning (private fn accessed via var) ---
 
-(deftest email-cleaning
-  (let [clean @#'adoption/clean-emails]
-    (testing "trims, drops invalid/empty, and de-duplicates"
-      (is (= ["a@b.com" "dup@b.com"]
-             (clean ["a@b.com" " a@b.com " "dup@b.com" "dup@b.com" "not-an-email" ""]))))
-    (testing "returns empty when nothing is valid"
-      (is (= [] (clean ["" "  " "nope" "@x" "a@"]))))
+(deftest organization-cleaning
+  (let [clean @#'adoption/clean-organizations]
+    (testing "trims, drops blanks, de-duplicates (no email format required)"
+      (is (= ["ACME Corp" "Beeldi"]
+             (clean ["ACME Corp" " ACME Corp " "Beeldi" "Beeldi" "  " ""]))))
+    (testing "returns empty when everything is blank"
+      (is (= [] (clean ["" "   "]))))
     (testing "accepts a single non-collection value"
-      (is (= ["solo@x.io"] (clean "solo@x.io"))))))
+      (is (= ["Solo Org"] (clean "Solo Org"))))))

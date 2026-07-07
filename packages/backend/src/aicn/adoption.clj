@@ -64,15 +64,10 @@
     (Integer/parseInt (str s))
     default))
 
-(def ^:private email-re #"(?i)[^@\s]+@[^@\s]+\.[^@\s]+")
-
-(defn- valid-email? [s]
-  (and (string? s) (re-matches email-re (str/trim s))))
-
-(defn- clean-emails [emails]
-  (->> (if (sequential? emails) emails [emails])
+(defn- clean-organizations [orgs]
+  (->> (if (sequential? orgs) orgs [orgs])
        (map #(str/trim (str %)))
-       (filter valid-email?)
+       (remove str/blank?)
        distinct
        vec))
 
@@ -80,7 +75,7 @@
   {:id                (str (:id r))
    :programAirtableId (:program_airtable_id r)
    :programName       (:program_name r)
-   :emails            (:emails r)
+   :organizations     (:organizations r)
    :submittedBy       (str (:submitted_by r))
    :submittedByEmail  (:submitted_by_email r)
    :submittedByName   (:submitted_by_name r)
@@ -89,7 +84,7 @@
 (defn- notify-admin-of-registration!
   "Best-effort admin email. Never throws: a mail failure must not fail the
    registration itself."
-  [request user program-name emails]
+  [request user program-name organizations]
   (try
     (let [admin-email (get-in request [:config :admin :email])
           base-url    (get-in request [:config :frontend :url])]
@@ -99,7 +94,7 @@
                       (email/build-program-registration-email
                        base-url admin-email
                        {:program-name program-name
-                        :emails emails
+                        :organizations organizations
                         :submitter-name (:name user)
                         :submitter-email (:email user)}))]
           (when-not (:success result)
@@ -110,20 +105,20 @@
 (defn create-registration-handler [request]
   (let [ds    (:db/ds request)
         user  (:session/user request)
-        {:keys [programId programName emails]} (:body-params request)
-        clean (clean-emails emails)]
+        {:keys [programId programName organizations]} (:body-params request)
+        clean (clean-organizations organizations)]
     (cond
       (str/blank? (str programId))
       (response/bad-request {:error "programId est obligatoire"})
 
       (empty? clean)
-      (response/bad-request {:error "Au moins une adresse email valide est requise"})
+      (response/bad-request {:error "Au moins une organisation est requise"})
 
       :else
       (let [rec (db/create-program-registration
                  ds {:program-airtable-id programId
                      :program-name programName
-                     :emails clean
+                     :organizations clean
                      :submitted-by (:id user)})]
         (activity/add-activity-log! ds {:type :program-registration-created
                                         :user-email (:email user)

@@ -29,21 +29,21 @@ const columns = [
     render: (r: ProgramRegistration) => r.programName || "—",
   },
   {
-    key: "emails",
-    header: "Participants",
+    key: "organizations",
+    header: "Organisations",
     width: "[36%]",
     render: (r: ProgramRegistration) => (
       <div>
         <span className="mr-2 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-700">
-          {r.emails.length}
+          {r.organizations.length}
         </span>
-        <span className="break-words">{r.emails.join(", ")}</span>
+        <span className="break-words">{r.organizations.join(", ")}</span>
       </div>
     ),
   },
   {
     key: "submittedByEmail",
-    header: "Soumis par",
+    header: "Inscrit par (email)",
     width: "[22%]",
     render: (r: ProgramRegistration) => r.submittedByEmail || r.submittedByName || "—",
   },
@@ -70,7 +70,8 @@ export const RegistrationsList: React.FC = () => {
           Inscriptions ({registrations.length})
         </h2>
         <p className="mt-1 text-sm text-gray-600">
-          Participants inscrits aux programmes d'adoption via la page Adoption.
+          Organisations inscrites aux programmes d'adoption (avec l'email de la personne
+          qui les a inscrites).
         </p>
       </div>
 

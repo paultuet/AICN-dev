@@ -50,7 +50,7 @@ export interface ProgramRegistration {
   id: string;
   programAirtableId: string;
   programName: string | null;
-  emails: string[];
+  organizations: string[];
   submittedBy: string;
   submittedByEmail: string | null;
   submittedByName: string | null;
@@ -60,5 +60,5 @@ export interface ProgramRegistration {
 export interface SubmitRegistrationInput {
   programId: string;
   programName: string | null;
-  emails: string[];
+  organizations: string[];
 }
