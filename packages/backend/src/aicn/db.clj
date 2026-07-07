@@ -638,6 +638,26 @@
                      ["DELETE FROM journal_attachments WHERE id = ?::uuid RETURNING *"
                       attachment-id]))
 
+;; Program registrations (adoption dashboards)
+;; Raw snake_case maps (no Malli decode); handlers map to camelCase for the wire.
+;; `emails` is a Clojure vector -> bound as jsonb by SettableParameter above.
+(defn create-program-registration
+  [datasource {:keys [program-airtable-id program-name emails submitted-by]}]
+  (safe-execute-one! datasource
+                     ["INSERT INTO program_registrations (program_airtable_id, program_name, emails, submitted_by)
+                       VALUES (?::text, ?::text, ?::jsonb, ?::uuid)
+                       RETURNING *"
+                      program-airtable-id program-name emails submitted-by]))
+
+(defn get-program-registrations [datasource {:keys [limit offset]}]
+  (safe-execute! datasource
+                 ["SELECT pr.*, u.email AS submitted_by_email, u.name AS submitted_by_name
+                   FROM program_registrations pr
+                   LEFT JOIN users u ON u.id = pr.submitted_by
+                   ORDER BY pr.created_at DESC
+                   LIMIT ? OFFSET ?"
+                  (int (or limit 100)) (int (or offset 0))]))
+
 (comment
   (def conf (aicn.system/get-config :local))
   (jdbc->hk-config (get-in conf [:db/pg :jdbc]))

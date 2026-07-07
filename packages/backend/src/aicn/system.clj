@@ -5,6 +5,7 @@
             [clojure.java.io :as io]
             [aicn.server]
             [aicn.adapters.airtable]
+            [aicn.adapters.adoption]
             [aicn.email]
             [aicn.migrations]
             [aicn.logger]

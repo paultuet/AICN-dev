@@ -42,7 +42,7 @@
 (defn- ->url [{:keys [app-id]} table-name]
   (str "https://api.airtable.com/v0/" app-id "/" table-name))
 
-(defn- request [{:keys [token] :as auth} {:keys [method table-name offset]}]
+(defn request [{:keys [token] :as auth} {:keys [method table-name offset]}]
   (try
     (let [response (hc/request (cond-> {:url (->url auth table-name)
                                         :method method
@@ -77,7 +77,7 @@
                        :message (.getMessage e)}
                       e)))))
 
-(defn- fetch-all [auth table-name]
+(defn fetch-all [auth table-name]
   (loop [all-records []
          initial-offset nil]
     (let [{:keys [records offset]} (request auth {:method :get :table-name table-name :offset initial-offset})]

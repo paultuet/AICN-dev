@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import AirtableSync from "@/components/AirtableSync";
 import { UsersList } from "../components/admin/UsersList";
 import { ActivityLogs } from "../components/admin/ActivityLogs";
+import { RegistrationsList } from "../components/admin/RegistrationsList";
 import { PageHead } from "@/components/ui";
 
-type AdminTab = "users" | "logs" | "airtable";
+type AdminTab = "users" | "logs" | "registrations" | "airtable";
 
 const TABS: { id: AdminTab; label: string }[] = [
   { id: "users", label: "Utilisateurs" },
   { id: "logs", label: "Logs d'activité" },
+  { id: "registrations", label: "Inscriptions" },
   { id: "airtable", label: "Airtable" },
 ];
 
@@ -49,6 +51,7 @@ const AdminPage: React.FC = () => {
       <div className="mt-8">
         {activeTab === "users" && <UsersList />}
         {activeTab === "logs" && <ActivityLogs />}
+        {activeTab === "registrations" && <RegistrationsList />}
         {activeTab === "airtable" && <AirtableSync />}
       </div>
     </div>

@@ -139,6 +139,20 @@
      :subject (str "AICN — Nouvel utilisateur en attente d'approbation : " name)
      :body email-body}))
 
+;; Program registration notification (adoption dashboards → admin)
+(defn build-program-registration-email
+  [base-url admin-email {:keys [program-name emails submitter-name submitter-email]}]
+  (let [template-data {:program-name program-name
+                       :emails emails
+                       :submitter-name submitter-name
+                       :submitter-email submitter-email
+                       :admin-url (str base-url "/admin")
+                       :year (current-year)}
+        email-body (selmer/render-file "program-registration.html" template-data)]
+    {:to admin-email
+     :subject (str "AICN — Nouvelle inscription au programme : " program-name)
+     :body email-body}))
+
 ;; Account approved email
 (defn build-account-approved-email [base-url {:keys [email name]}]
   (let [login-url (str base-url "/login")

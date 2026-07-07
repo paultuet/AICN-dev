@@ -1,6 +1,6 @@
 import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react'
-import { type LucideIcon, Layers, FileText, Newspaper, Settings, LogOut, Menu, X } from 'lucide-react'
+import { type LucideIcon, Layers, FileText, Newspaper, LayoutGrid, Settings, LogOut, Menu, X } from 'lucide-react'
 import { useAuth, useIsAdmin } from '@/contexts/AuthContext'
 
 interface NavItemDef {
@@ -17,6 +17,7 @@ const Navbar = () => {
 
   const navItems: NavItemDef[] = [
     { to: '/', label: 'Référentiels', icon: Layers, end: true },
+    { to: '/adoption', label: 'Adoption', icon: LayoutGrid },
     { to: '/files', label: 'Fichiers', icon: FileText },
     { to: '/journal', label: 'Journal', icon: Newspaper },
   ]

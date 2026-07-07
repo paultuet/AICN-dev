@@ -1,6 +1,7 @@
 (ns aicn.routes
   (:require
    [aicn.activity-logs :as activity]
+   [aicn.adoption :as adoption]
    [aicn.auth :as auth]
    [aicn.core :as core]
    [aicn.db :as db]
@@ -448,4 +449,23 @@
      {:delete {:summary "Delete a journal attachment (admin only)"
                :interceptors [(auth/restrict-role-interceptor :ADMIN)]
                :responses {200 {:body :any} 401 {:body :any} 404 {:body :any}}
-               :handler journal/delete-attachment-handler}}]]]))
+               :handler journal/delete-attachment-handler}}]
+
+    ;; Adoption dashboards (live Airtable proxy). Reads: any authenticated user.
+    ["/adoption/status" {:get {:summary "Adoption status matrix (live Airtable)"
+                               :responses {200 {:body :any} 502 {:body :any} 503 {:body :any}}
+                               :handler adoption/adoption-status-handler}}]
+
+    ["/adoption/programmes" {:get {:summary "Adoption programmes + agenda (live Airtable)"
+                                   :responses {200 {:body :any} 502 {:body :any} 503 {:body :any}}
+                                   :handler adoption/adoption-programmes-handler}}]
+
+    ;; Registrations: POST = any authenticated user; GET = admin only.
+    ["/adoption/registrations"
+     {:get  {:summary "List program registrations (admin only)"
+             :interceptors [(auth/restrict-role-interceptor :ADMIN)]
+             :responses {200 {:body :any} 401 {:body :any}}
+             :handler adoption/list-registrations-handler}
+      :post {:summary "Submit a program registration"
+             :responses {200 {:body :any} 400 {:body :any}}
+             :handler adoption/create-registration-handler}}]]]))

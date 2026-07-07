@@ -1,6 +1,10 @@
 ;; resources/config.edn
 {:adapter/airtable {:token #env AIRTABLE_TOKEN
                     :app-id #env AIRTABLE_APP_ID}
+ ;; Adoption dashboards. Defaults to the main AIRTABLE_* creds; override only if
+ ;; the adoption tables ("ECR MODEL V2") live in a different base.
+ :adapter/adoption-airtable {:token  #or [#env ADOPTION_AIRTABLE_TOKEN #env AIRTABLE_TOKEN]
+                             :app-id #or [#env ADOPTION_AIRTABLE_APP_ID #env AIRTABLE_APP_ID]}
  :db/jdbc {:dbtype "postgresql"
            :dbname #env DB_NAME
            :host #env DB_HOST
@@ -23,6 +27,7 @@
  :http/server {:port #long #or [#env PORT 1337]
                :dev-mode? false
                :adapter/airtable #ig/ref :adapter/airtable
+               :adapter/adoption-airtable #ig/ref :adapter/adoption-airtable
                :db/ds #ig/ref :db/pg
                :auth/jwt {:secret #env JWT_SECRET}
                :config {:frontend {:url #or [#env FRONTEND_URL "http://localhost:3000"]}
