@@ -16,6 +16,14 @@ const AdoptionPage: React.FC = () => {
 
   const active = subView === "suivi" ? status : programmes;
 
+  // Refresh the WHOLE dashboard from Airtable, not just the visible sub-view —
+  // otherwise a rename shows up in one view while the other keeps its cached
+  // (staleTime) copy, e.g. a program title updating in "Suivi" but not "Programmes".
+  const refreshAll = () => {
+    status.refetch();
+    programmes.refetch();
+  };
+
   const stats: PageStat[] =
     subView === "suivi"
       ? [
@@ -43,8 +51,8 @@ const AdoptionPage: React.FC = () => {
           <Button
             variant="outline"
             icon={<RefreshCw size={15} />}
-            isLoading={active.isFetching}
-            onClick={() => active.refetch()}
+            isLoading={status.isFetching || programmes.isFetching}
+            onClick={refreshAll}
           >
             Rafraîchir
           </Button>
