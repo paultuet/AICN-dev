@@ -10,7 +10,7 @@ import { adoptionErrorText } from "@/components/adoption/errorText";
 type SubView = "suivi" | "programmes";
 
 const AdoptionPage: React.FC = () => {
-  const [subView, setSubView] = useState<SubView>("suivi");
+  const [subView, setSubView] = useState<SubView>("programmes");
   const status = useAdoptionStatus();
   const programmes = useAdoptionProgrammes();
 
@@ -60,11 +60,11 @@ const AdoptionPage: React.FC = () => {
       />
 
       <div className="mb-6 flex flex-wrap items-center gap-2">
-        <Pill active={subView === "suivi"} onClick={() => setSubView("suivi")}>
-          Suivi par statut
-        </Pill>
         <Pill active={subView === "programmes"} onClick={() => setSubView("programmes")}>
           Programmes
+        </Pill>
+        <Pill active={subView === "suivi"} onClick={() => setSubView("suivi")}>
+          Suivi par statut
         </Pill>
         {active.dataUpdatedAt > 0 && (
           <span className="ml-auto font-mono text-[11px] text-ink-3">
