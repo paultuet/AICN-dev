@@ -35,10 +35,15 @@ export interface AdoptionProgramme {
   id: string;
   name: string | null;
   rank?: number | null;
+  objectif: string | null;
   description: string | null;
+  /** Airtable "Contenu des travaux" — description détaillée du programme. */
+  contenuTravaux: string | null;
   cible: string | null;
   livrables: string | null;
   communication: string | null;
+  /** Airtable "Logistique et réunions". */
+  logistique: string | null;
   events: AdoptionEvent[];
 }
 

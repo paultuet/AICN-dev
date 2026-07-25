@@ -12,6 +12,8 @@
 ;; --- Fixtures (keys as produced by aicn.utils/from-json) ---
 
 (def ^:private k-desc  (keyword "Description-du-programme"))
+(def ^:private k-contenu (keyword "Contenu-des-travaux"))
+(def ^:private k-logist  (keyword "Logistique-et-réunions"))
 (def ^:private k-pgmnm (keyword "Name-(from-pgm_adopt)"))
 (def ^:private k-type  (keyword "Type-de-métier-(from-Company)"))
 (def ^:private k-logo  (keyword "Logo-(from-Company)"))
@@ -21,8 +23,10 @@
 ;; RANK deliberately out of source order: recPgm2 (1) must sort before recPgm1 (2).
 (def ^:private pgm-records
   [{:id "recPgm1" :fields {:Name "Adoption Data Spaces" :RANK 2
-                           k-desc "desc DS" :Cible "cible DS"
-                           :Livrables "liv DS" :Communication "comm DS"}}
+                           :Objectif "obj DS"
+                           k-desc "desc DS" k-contenu "contenu DS"
+                           :Cible "cible DS" :Livrables "liv DS"
+                           :Communication "comm DS" k-logist "logist DS"}}
    {:id "recPgm2" :fields {:Name "Adoption métier des référentiels d'interopérabilité" :RANK 1}}])
 
 (def ^:private logo-attachment
@@ -99,10 +103,13 @@
         (is (= ["recPgm2" "recPgm1"] (mapv :id programmes))))
       (testing "program fields are mapped"
         (is (= "Adoption Data Spaces" (:name ds)))
+        (is (= "obj DS" (:objectif ds)))
         (is (= "desc DS" (:description ds)))
+        (is (= "contenu DS" (:contenuTravaux ds)))
         (is (= "cible DS" (:cible ds)))
         (is (= "liv DS" (:livrables ds)))
-        (is (= "comm DS" (:communication ds))))
+        (is (= "comm DS" (:communication ds)))
+        (is (= "logist DS" (:logistique ds))))
       (testing "events are attached to their program and sorted by numEvent"
         (is (= [1 2] (mapv :numEvent (:events ds))))
         (is (= ["First" "Second"] (mapv :titre (:events ds)))))

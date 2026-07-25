@@ -57,10 +57,13 @@ const ProgramDetail: React.FC<ProgramDetailProps> = ({
       />
     )}
 
+    <Section title="Objectif" value={programme.objectif} />
     <Section title="Description du programme d'adoption" value={programme.description} />
+    <Section title="Contenu des travaux" value={programme.contenuTravaux} />
     <Section title="Cible" value={programme.cible} />
     <Section title="Livrables" value={programme.livrables} />
     <Section title="Communication" value={programme.communication} />
+    <Section title="Logistique et réunions" value={programme.logistique} />
 
     <div className="mb-0">
       <SectionRule icon={<CalendarClock size={16} />}>Agenda</SectionRule>

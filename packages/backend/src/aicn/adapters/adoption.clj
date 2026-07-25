@@ -163,21 +163,25 @@
 
 (defn- ->program-card [p events-by-pgm]
   (let [f (field-index (:fields p))]
-    {:id            (:id p)
-     :name          (fget f "Name")
-     :rank          (fget f "RANK")
-     :description   (fget f "Description du programme")
-     :cible         (fget f "Cible")
-     :livrables     (fget f "Livrables")
-     :communication (fget f "Communication")
-     :events        (->> (get events-by-pgm (:id p) [])
-                         (mapv ->event)
-                         (sort-by (fn [e] [(or (:numEvent e) 0) (str (:date e))]))
-                         vec)}))
+    {:id             (:id p)
+     :name           (fget f "Name")
+     :rank           (fget f "RANK")
+     :objectif       (fget f "Objectif")
+     :description    (fget f "Description du programme")
+     :contenuTravaux (fget f "Contenu des travaux")
+     :cible          (fget f "Cible")
+     :livrables      (fget f "Livrables")
+     :communication  (fget f "Communication")
+     :logistique     (fget f "Logistique et réunions")
+     :events         (->> (get events-by-pgm (:id p) [])
+                          (mapv ->event)
+                          (sort-by (fn [e] [(or (:numEvent e) 0) (str (:date e))]))
+                          vec)}))
 
 (defn get-adoption-programmes
-  "Return {:programmes [{:id :name :description :cible :livrables :communication
-   :events [...]}]}. Each event is attached to its program via the pgm_adopt link."
+  "Return {:programmes [{:id :name :objectif :description :contenuTravaux :cible
+   :livrables :communication :logistique :events [...]}]}. Each event is attached
+   to its program via the pgm_adopt link."
   [auth]
   (let [pgm    (by-rank (fetch-table auth table-pgm-adopt))
         events (fetch-table auth table-agenda)
